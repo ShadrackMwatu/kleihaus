@@ -24,12 +24,11 @@ The frontend can optionally send the same quote request payload to a secure back
 VITE_QUOTE_ENDPOINT=
 ```
 
-When `VITE_QUOTE_ENDPOINT` is empty, the form still works through WhatsApp and logs that the email backend is not configured yet. When configured, the frontend sends this JSON payload:
+When `VITE_QUOTE_ENDPOINT` is empty, the form still works through WhatsApp and shows a customer-friendly message that email submission is being prepared. When configured, the frontend sends this JSON payload:
 
 ```json
 {
   "type": "quote_request",
-  "to": "sales@kleihaus.com",
   "name": "...",
   "email": "...",
   "phone": "...",

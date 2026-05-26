@@ -1,13 +1,11 @@
+import { emailSubmissionService } from './emailSubmissionService'
+
 const QUOTE_WHATSAPP_NUMBER = '254748827166'
-const QUOTE_RECIPIENT_EMAIL = 'sales@kleihaus.com'
 
 const trimValue = (value) => String(value || '').trim()
 
-const getQuoteEndpoint = () => trimValue(import.meta.env.VITE_QUOTE_ENDPOINT)
-
 const normalizeQuoteRequest = (request = {}) => ({
   type: 'quote_request',
-  to: QUOTE_RECIPIENT_EMAIL,
   name: trimValue(request.name),
   email: trimValue(request.email),
   phone: trimValue(request.phone),
@@ -43,48 +41,6 @@ const buildWhatsAppMessage = (payload) =>
 const buildWhatsAppUrl = (payload) =>
   `https://wa.me/${QUOTE_WHATSAPP_NUMBER}?text=${encodeURIComponent(buildWhatsAppMessage(payload))}`
 
-const submitToBackend = async (payload) => {
-  const endpoint = getQuoteEndpoint()
-
-  if (!endpoint) {
-    console.info('Kleihaus quote email backend endpoint is not configured yet.')
-    return {
-      configured: false,
-      status: 'not_configured',
-      message: 'WhatsApp request has been prepared/opened. Email backend endpoint is not configured yet.',
-    }
-  }
-
-  try {
-    const response = await fetch(endpoint, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    })
-
-    if (!response.ok) {
-      return {
-        configured: true,
-        status: 'failed',
-        message: `Email backend returned ${response.status}. WhatsApp request was still prepared.`,
-      }
-    }
-
-    return {
-      configured: true,
-      status: 'submitted',
-      message: 'WhatsApp request has been prepared and the email backend received the request.',
-    }
-  } catch (error) {
-    console.warn('Kleihaus quote email backend request failed.', error)
-    return {
-      configured: true,
-      status: 'failed',
-      message: 'WhatsApp request was prepared, but the email backend could not be reached.',
-    }
-  }
-}
-
 export const quoteRequestService = {
   prepare(request) {
     const payload = normalizeQuoteRequest(request)
@@ -108,7 +64,7 @@ export const quoteRequestService = {
   },
 
   async submitBackend(payload) {
-    return submitToBackend(payload)
+    return emailSubmissionService.submitQuoteRequest(payload)
   },
 
   buildWhatsAppMessage,
