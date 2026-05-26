@@ -30,6 +30,7 @@ import {
 } from './data/intelligenceData'
 import { analyticsService } from './services/analyticsService'
 import { recommendationService } from './services/recommendationService'
+import { quoteRequestService } from './services/quoteRequestService'
 
 const whatsappUrl =
   'https://wa.me/254748827166?text=Hello%20Kleihaus%2C%20I%27d%20like%20to%20share%20my%20room%20size%2C%20tile%20type%2C%20location%20and%20budget%20for%20a%20quote.'
@@ -718,6 +719,48 @@ function ProjectCustomers() {
 }
 
 function Contact({ onWhatsAppClick }) {
+  const [quoteForm, setQuoteForm] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    location: '',
+    message: '',
+  })
+  const [quoteErrors, setQuoteErrors] = useState([])
+  const [quoteStatus, setQuoteStatus] = useState('')
+
+  const updateQuoteField = (field) => (event) => {
+    setQuoteForm((current) => ({ ...current, [field]: event.target.value }))
+    if (quoteErrors.length > 0) setQuoteErrors([])
+    if (quoteStatus) setQuoteStatus('')
+  }
+
+  const submitQuoteRequest = async (event) => {
+    event.preventDefault()
+
+    const preparedRequest = quoteRequestService.prepare(quoteForm)
+    if (!preparedRequest.ok) {
+      setQuoteErrors(preparedRequest.errors)
+      setQuoteStatus('')
+      return
+    }
+
+    analyticsService.track('quote_form_submitted', {
+      source: 'contact_form',
+      location: preparedRequest.payload.location || 'not_provided',
+      hasEmail: Boolean(preparedRequest.payload.email),
+      hasPhone: Boolean(preparedRequest.payload.phone),
+    })
+    analyticsService.track('product_interest', { product: 'contact_form_quote_request', category: 'Project quotation' })
+    analyticsService.track('contact_form_submit', { source: 'contact_form', category: 'Project quotation' })
+
+    window.open(preparedRequest.whatsappUrl, '_blank', 'noopener,noreferrer')
+
+    const backendResult = await quoteRequestService.submitBackend(preparedRequest.payload)
+    setQuoteStatus(backendResult.message)
+    setQuoteErrors([])
+  }
+
   return (
     <section id="contact" className="bg-neutral-950 text-white">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 lg:grid-cols-[0.9fr_1.1fr]">
@@ -752,11 +795,7 @@ function Contact({ onWhatsAppClick }) {
         </div>
 
         <form
-          onSubmit={(event) => {
-            event.preventDefault()
-            analyticsService.track('product_interest', { product: 'contact_form_quote_request', category: 'Project quotation' })
-            analyticsService.track('contact_form_submit', { source: 'contact_form', category: 'Project quotation' })
-          }}
+          onSubmit={submitQuoteRequest}
           className="rounded-md bg-white p-5 text-neutral-950 shadow-xl sm:p-6"
         >
           <div className="mb-5">
@@ -764,16 +803,30 @@ function Contact({ onWhatsAppClick }) {
             <p className="mt-1 text-sm leading-6 text-neutral-600">Include room size, tile type, location and budget so the quote can be more useful.</p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
-            <Input placeholder="Your name" required />
-            <Input type="email" placeholder="Email address" required />
+            <Input name="name" placeholder="Your name" value={quoteForm.name} onChange={updateQuoteField('name')} required />
+            <Input name="email" type="email" placeholder="Email address" value={quoteForm.email} onChange={updateQuoteField('email')} />
           </div>
           <div className="mt-4 grid gap-4 sm:grid-cols-2">
-            <Input placeholder="Phone number" />
-            <Input placeholder="Project location" />
+            <Input name="phone" placeholder="Phone number" value={quoteForm.phone} onChange={updateQuoteField('phone')} />
+            <Input name="location" placeholder="Project location" value={quoteForm.location} onChange={updateQuoteField('location')} />
           </div>
           <div className="mt-4">
-            <Textarea placeholder="Example: 32m² floor tiles, matte finish, delivery to Machakos, budget range..." rows={5} />
+            <Textarea
+              name="message"
+              placeholder="Example: 32m² floor tiles, matte finish, delivery to Machakos, budget range..."
+              rows={5}
+              value={quoteForm.message}
+              onChange={updateQuoteField('message')}
+            />
           </div>
+          {quoteErrors.length > 0 && (
+            <div className="mt-4 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
+              {quoteErrors.map((error) => (
+                <p key={error}>{error}</p>
+              ))}
+            </div>
+          )}
+          {quoteStatus && <p className="mt-4 rounded-md border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800">{quoteStatus}</p>}
           <div className="mt-5 flex flex-wrap gap-3">
             <Button>Send request</Button>
             <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" onClick={() => onWhatsAppClick('contact_form')}>
