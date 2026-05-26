@@ -49,25 +49,55 @@ This report is management intelligence only. It should be generated from backend
 - Contact form submissions
 - Repeat category or product interest
 
-## 7. Weak Signals
+## 7. WhatsApp Inquiry Trends
+
+- Header, mobile sticky, category card and product card WhatsApp clicks
+- Product or category context included in prefilled WhatsApp inquiries
+- Month-over-month movement in WhatsApp lead sources
+
+## 8. Quote Request Trends
+
+- Quote form submission volume
+- Location patterns from privacy-safe summaries
+- Common project categories from categorized backend payloads
+
+## 9. Guide Topics Clicked
+
+- Coming-soon guide topics customers clicked
+- Topics that should be written first for SEO and customer education
+- Guide topics that correlate with quote or WhatsApp interest
+
+## 10. Weak Signals
 
 - Low-volume but repeated searches
 - Product combinations appearing together
 - New location or project-type patterns
 
-## 8. Inventory Recommendations
+## 11. Emerging Product Interests
+
+- Product categories gaining repeated interest
+- New combinations such as tiles plus grout, bathroom tiles plus sanitaryware, or paints plus floor finishes
+- Product cards that generate quote intent
+
+## 12. Recommended SEO Topics
+
+- Articles to prioritize from search and guide-click signals
+- Landing pages to expand from single-page SEO sections
+- Local search opportunities for Nairobi, Machakos and Makueni
+
+## 13. Recommended Inventory Focus
 
 - Product ranges to check for stock readiness
 - Slow-moving categories to monitor
 - Product combinations to bundle
 
-## 9. Marketing Recommendations
+## 14. Marketing Recommendations
 
 - Search terms to use in content
 - Categories to feature on homepage or WhatsApp campaigns
 - Inspiration spaces to promote
 
-## 10. Supplier Recommendations
+## 15. Supplier Recommendations
 
 - Categories to discuss with suppliers
 - Finishes to source in small test quantities

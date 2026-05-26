@@ -80,6 +80,9 @@ VITE_ANALYTICS_ENDPOINT=
 VITE_ENABLE_RECOMMENDATIONS=true
 VITE_ENABLE_MONTHLY_REPORTS=false
 VITE_MONTHLY_REPORT_RECIPIENTS=
+VITE_MONTHLY_REPORT_ENDPOINT=
+VITE_GA_MEASUREMENT_ID=
+VITE_QUOTE_ENDPOINT=
 ```
 
 Production secrets must be configured in the backend or deployment platform, never committed to the repository.

@@ -84,6 +84,9 @@ export const analyticsService = {
       category_interest: events.filter((event) => event.eventType === 'category_click'),
       product_interest: events.filter((event) => event.eventType === 'product_interest'),
       recommendation_signals: events.filter((event) => event.eventType === 'recommendation_signal'),
+      lead_generation_events: events.filter((event) =>
+        ['search_submitted', 'category_clicked', 'product_interest_clicked', 'whatsapp_cta_clicked', 'quote_form_submitted', 'guide_topic_clicked'].includes(event.eventType),
+      ),
       high_value_whatsapp_alerts: whatsappAlertService.getAlerts(),
       monthly_summary_data: this.buildMonthlySummary(events),
     }
@@ -98,13 +101,23 @@ export const analyticsService = {
           acc[key] = (acc[key] || 0) + 1
           return acc
         }, {})
+    const countByAny = (eventTypes, field) =>
+      events
+        .filter((event) => eventTypes.includes(event.eventType) && event.payload?.[field])
+        .reduce((acc, event) => {
+          const key = event.payload[field]
+          acc[key] = (acc[key] || 0) + 1
+          return acc
+        }, {})
 
     return {
-      top_searches: countBy('search', 'query'),
+      top_searches: countByAny(['search', 'search_submitted'], 'query'),
       emerging_searches: countBy('autocomplete_select', 'query'),
-      most_viewed_categories: countBy('category_click', 'category'),
-      product_interest: countBy('product_interest', 'product'),
-      whatsapp_inquiry_trends: countBy('whatsapp_click', 'source'),
+      most_viewed_categories: countByAny(['category_click', 'category_clicked'], 'category'),
+      product_interest: countByAny(['product_interest', 'product_interest_clicked'], 'product'),
+      whatsapp_inquiry_trends: countByAny(['whatsapp_click', 'whatsapp_cta_clicked'], 'source'),
+      quote_request_trends: countBy('quote_form_submitted', 'source'),
+      guide_topics_clicked: countBy('guide_topic_clicked', 'topic'),
       high_value_whatsapp_alerts: whatsappAlertService.getAlerts().map((alert) => alert.reason),
       county_location_interest: countBy('location_interest', 'location'),
       weak_signals: events

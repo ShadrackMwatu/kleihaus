@@ -28,12 +28,16 @@ import {
   suggestedSearches,
   trendingSearches,
 } from './data/intelligenceData'
+import { contentTopics } from './data/contentTopics'
 import { analyticsService } from './services/analyticsService'
 import { recommendationService } from './services/recommendationService'
 import { quoteRequestService } from './services/quoteRequestService'
 
 const whatsappUrl =
   'https://wa.me/254748827166?text=Hello%20Kleihaus%2C%20I%27d%20like%20to%20share%20my%20room%20size%2C%20tile%20type%2C%20location%20and%20budget%20for%20a%20quote.'
+
+const whatsappInquiryUrl = (subject) =>
+  `https://wa.me/254748827166?text=${encodeURIComponent(`Hello Kleihaus, I would like a quote for ${subject}. Please share availability, price guidance and delivery options.`)}`
 
 const navItems = [
   { label: 'Home', href: '#top' },
@@ -48,51 +52,98 @@ const categories = [
   {
     name: 'Floor Tiles',
     blurb: 'Hard-wearing finishes for living rooms, kitchens, shops and project floors.',
+    use: 'Homes, shops, offices and rental units',
     img: '/images/tiles-floor.jpg',
     icon: Store,
   },
   {
     name: 'Wall Tiles',
     blurb: 'Clean ceramic, decor and feature wall surfaces for kitchens and interiors.',
+    use: 'Kitchens, bathrooms and feature walls',
     img: '/images/tiles-wall.jpg',
     icon: ClipboardList,
   },
   {
     name: 'Outdoor Tiles',
     blurb: 'Textured tile options for balconies, patios, walkways and wet areas.',
+    use: 'Balconies, patios, entries and wet zones',
     img: '/images/tiles-floor-2.jpg',
     icon: Sparkles,
   },
   {
     name: 'Bathroom Tiles',
     blurb: 'Coordinated wall and floor finishes for calm, modern bathrooms.',
+    use: 'Bathrooms, showers and cloakrooms',
     img: '/images/bathroom-blue-1.jpg',
     icon: ShowerHead,
   },
   {
     name: 'Sanitaryware',
     blurb: 'Basins, toilets, baths, showers, taps and bathroom accessories.',
+    use: 'Complete bathroom fittings and upgrades',
     img: '/images/sanitary-set-1.jpg',
     icon: ShowerHead,
   },
   {
     name: 'Paints',
     blurb: 'Interior, exterior, roof and floor paints for complete finishing.',
+    use: 'Interior walls, exterior walls, floors and roofs',
     img: '/images/paint-interior.jpg',
     icon: PaintBucket,
   },
   {
     name: 'Adhesives & Grout',
     blurb: 'Tile adhesives, grout, trims, spacers and finishing essentials.',
+    use: 'Tile fixing, joints and installation finishes',
     img: '/images/adhesive.jpg',
     icon: Brush,
   },
   {
     name: 'Installation Support',
     blurb: 'Product guidance, site advice and practical tile laying support.',
+    use: 'Quantity planning, product matching and site guidance',
     img: '/images/tiler-service.jpg',
     icon: Wrench,
   },
+]
+
+const seoLandingSections = [
+  {
+    title: 'Tiles in Nairobi',
+    text: 'Explore practical floor, wall, bathroom and outdoor tile options for Nairobi homes, shops, rentals and project sites.',
+  },
+  {
+    title: 'Bathroom Tiles Kenya',
+    text: 'Find bathroom tile ideas for compact spaces, shower walls, wet areas and complete modern bathroom finishes.',
+  },
+  {
+    title: 'Sanitaryware Kenya',
+    text: 'Request guidance on basins, toilets, taps, mixers, showers, baths and accessories for retail or project orders.',
+  },
+  {
+    title: 'Tile Adhesive and Grout Kenya',
+    text: 'Match tiles with the right adhesive, grout, trims and installation essentials for stronger, cleaner finishes.',
+  },
+  {
+    title: 'Paints and Finishes Kenya',
+    text: 'Source interior, exterior, roof and floor paints alongside tiles and sanitaryware for a complete finishing quote.',
+  },
+  {
+    title: 'Modern Bathroom Designs Kenya',
+    text: 'Plan coordinated tile, sanitaryware, tapware and accessory combinations for clean contemporary bathrooms.',
+  },
+  {
+    title: '60x60 Tiles Kenya',
+    text: 'Ask about 60x60 tile options for living rooms, bedrooms, offices and development projects.',
+  },
+]
+
+const onlineContactItems = [
+  { label: 'Phone', value: '+254 748 827 166', href: 'tel:+254748827166' },
+  { label: 'Email', value: 'sales@kleihaus.com', href: 'mailto:sales@kleihaus.com' },
+  { label: 'Locations', value: 'Nairobi | Machakos | Makueni' },
+  { label: 'Website', value: 'www.kleihaus.com', href: 'https://www.kleihaus.com/' },
+  { label: 'Social profiles', value: 'Official profile links will be added after verification.' },
 ]
 
 const productGroups = [
@@ -392,7 +443,7 @@ function Hero({ onWhatsAppClick }) {
           <img src="/images/kleihaus-structure.jpg" alt="" className="absolute inset-0 h-full w-full object-cover opacity-60" />
           <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/80 to-neutral-900/20" />
           <div className="relative flex min-h-[460px] max-w-3xl flex-col justify-center px-5 py-10 sm:px-10">
-            <p className="text-xs font-semibold uppercase tracking-wide text-emerald-200">Retail and project supply</p>
+            <p className="text-xs font-semibold uppercase text-emerald-200">Retail and project supply</p>
             <h1 className="mt-4 max-w-2xl text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
               Tiles, sanitaryware, paints and finishing materials for homes and projects.
             </h1>
@@ -437,7 +488,7 @@ function FeatureTile({ image, title, text }) {
   )
 }
 
-function ShopByCategory({ selectedCategory, onCategoryClick }) {
+function ShopByCategory({ selectedCategory, onCategoryClick, onWhatsAppClick }) {
   return (
     <section id="catalogue" className="mx-auto max-w-7xl px-4 py-14">
       <div className="mb-7 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
@@ -458,13 +509,16 @@ function ShopByCategory({ selectedCategory, onCategoryClick }) {
         {categories.map((category) => {
           const Icon = category.icon
           return (
-            <a
+            <article
               key={category.name}
-              href="#contact"
-              onClick={() => onCategoryClick(category.name)}
               className="group overflow-hidden rounded-md border border-neutral-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-emerald-700 hover:shadow-md"
             >
-              <div className="relative aspect-[4/3] overflow-hidden bg-neutral-100">
+              <button
+                type="button"
+                onClick={() => onCategoryClick(category.name)}
+                className="block w-full text-left"
+              >
+                <div className="relative aspect-[4/3] overflow-hidden bg-neutral-100">
                 <img
                   src={category.img}
                   alt={category.name}
@@ -477,20 +531,45 @@ function ShopByCategory({ selectedCategory, onCategoryClick }) {
                 <div className="absolute left-3 top-3 inline-flex h-10 w-10 items-center justify-center rounded-md bg-white/95 text-emerald-800 shadow-sm">
                   <Icon className="h-5 w-5" />
                 </div>
-              </div>
+                </div>
+              </button>
               <div className="p-4">
                 <div className="flex items-center justify-between gap-3">
                   <h3 className="text-lg font-semibold text-neutral-950">{category.name}</h3>
                   <ArrowRight className="h-4 w-4 shrink-0 text-neutral-400 transition group-hover:text-emerald-700" />
                 </div>
                 <p className="mt-2 text-sm leading-6 text-neutral-600">{category.blurb}</p>
+                <p className="mt-2 text-xs font-semibold uppercase text-neutral-500">Common use</p>
+                <p className="mt-1 text-sm leading-6 text-neutral-600">{category.use}</p>
                 {selectedCategory === category.name && (
                   <span className="mt-3 inline-flex rounded-md bg-emerald-50 px-2 py-1 text-xs font-semibold text-emerald-800">
                     Recommended for you
                   </span>
                 )}
+                <div className="mt-4 flex flex-wrap gap-2">
+                  <a
+                    href="#contact"
+                    onClick={() => onCategoryClick(category.name)}
+                    className="inline-flex items-center justify-center rounded-md border border-neutral-300 px-3 py-2 text-xs font-semibold text-neutral-900 hover:border-emerald-700"
+                  >
+                    Request quote
+                  </a>
+                  <a
+                    href={whatsappInquiryUrl(category.name)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => {
+                      onCategoryClick(category.name)
+                      onWhatsAppClick(`category_card_${category.name}`)
+                    }}
+                    className="inline-flex items-center justify-center gap-1.5 rounded-md bg-emerald-700 px-3 py-2 text-xs font-semibold text-white hover:bg-emerald-800"
+                  >
+                    <MessageCircle className="h-3.5 w-3.5" />
+                    WhatsApp
+                  </a>
+                </div>
               </div>
-            </a>
+            </article>
           )
         })}
       </div>
@@ -498,7 +577,7 @@ function ShopByCategory({ selectedCategory, onCategoryClick }) {
   )
 }
 
-function ProductCatalogue({ onProductInterest }) {
+function ProductCatalogue({ onProductInterest, onWhatsAppClick }) {
   return (
     <section className="border-y border-neutral-200 bg-neutral-50">
       <div className="mx-auto max-w-7xl px-4 py-14">
@@ -520,10 +599,8 @@ function ProductCatalogue({ onProductInterest }) {
               </div>
               <div className="grid gap-4 md:grid-cols-3">
                 {group.items.map((item) => (
-                  <a
+                  <article
                     key={item.name}
-                    href="#contact"
-                    onClick={() => onProductInterest(item.name, group.title)}
                     className="group overflow-hidden rounded-md border border-neutral-200 bg-white shadow-sm transition hover:border-emerald-700"
                   >
                     <img src={item.img} alt={item.name} className="aspect-[5/4] w-full object-cover transition duration-300 group-hover:scale-105" />
@@ -533,13 +610,68 @@ function ProductCatalogue({ onProductInterest }) {
                         <ArrowRight className="h-4 w-4 text-neutral-400 group-hover:text-emerald-700" />
                       </div>
                       <p className="mt-1 text-sm text-neutral-600">{item.detail}</p>
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        <a
+                          href="#contact"
+                          onClick={() => onProductInterest(item.name, group.title)}
+                          className="inline-flex items-center justify-center rounded-md border border-neutral-300 px-3 py-2 text-xs font-semibold text-neutral-900 hover:border-emerald-700"
+                        >
+                          Request quote
+                        </a>
+                        <a
+                          href={whatsappInquiryUrl(item.name)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => {
+                            onProductInterest(item.name, group.title)
+                            onWhatsAppClick(`product_card_${item.name}`)
+                          }}
+                          className="inline-flex items-center justify-center gap-1.5 rounded-md bg-emerald-700 px-3 py-2 text-xs font-semibold text-white hover:bg-emerald-800"
+                        >
+                          <MessageCircle className="h-3.5 w-3.5" />
+                          WhatsApp
+                        </a>
+                      </div>
                     </div>
-                  </a>
+                  </article>
                 ))}
               </div>
             </div>
           ))}
         </div>
+      </div>
+    </section>
+  )
+}
+
+function SeoLandingSections({ onWhatsAppClick }) {
+  return (
+    <section className="mx-auto max-w-7xl px-4 py-14">
+      <div className="mb-7 max-w-3xl">
+        <p className="text-sm font-semibold uppercase text-emerald-700">Kenya finishing materials</p>
+        <h2 className="mt-2 text-3xl font-semibold text-neutral-950">Popular Kleihaus catalogue searches</h2>
+        <p className="mt-2 text-sm leading-6 text-neutral-600">
+          These customer-facing sections prepare the single-page site for future dedicated product and location landing pages.
+        </p>
+      </div>
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {seoLandingSections.map((section) => (
+          <a
+            key={section.title}
+            href={whatsappInquiryUrl(section.title)}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => onWhatsAppClick(`seo_section_${section.title}`)}
+            className="rounded-md border border-neutral-200 bg-white p-5 shadow-sm transition hover:border-emerald-700 hover:shadow-md"
+          >
+            <h3 className="text-base font-semibold text-neutral-950">{section.title}</h3>
+            <p className="mt-2 text-sm leading-6 text-neutral-600">{section.text}</p>
+            <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-emerald-800">
+              Ask on WhatsApp
+              <ArrowRight className="h-4 w-4" />
+            </span>
+          </a>
+        ))}
       </div>
     </section>
   )
@@ -673,6 +805,13 @@ function InspirationGallery({ onCategoryClick }) {
 function Services() {
   return (
     <section className="mx-auto max-w-7xl px-4 py-14">
+      <div className="mb-7 max-w-3xl">
+        <p className="text-sm font-semibold uppercase text-emerald-700">Why choose Kleihaus?</p>
+        <h2 className="mt-2 text-3xl font-semibold text-neutral-950">Support for better finishing decisions</h2>
+        <p className="mt-2 text-sm leading-6 text-neutral-600">
+          Kleihaus focuses on curated finishing materials, project quotation support, delivery coordination and installation guidance across Nairobi, Machakos and Makueni.
+        </p>
+      </div>
       <div className="grid gap-4 md:grid-cols-4">
         {serviceBadges.map((service) => {
           const Icon = service.icon
@@ -686,6 +825,66 @@ function Services() {
             </div>
           )
         })}
+      </div>
+    </section>
+  )
+}
+
+function HelpfulGuides({ onGuideClick }) {
+  return (
+    <section className="border-y border-neutral-200 bg-neutral-50">
+      <div className="mx-auto max-w-7xl px-4 py-14">
+        <div className="mb-7 max-w-3xl">
+          <p className="text-sm font-semibold uppercase text-emerald-700">Helpful guides</p>
+          <h2 className="mt-2 text-3xl font-semibold text-neutral-950">Coming-soon buying guides</h2>
+          <p className="mt-2 text-sm leading-6 text-neutral-600">
+            Educational topics being prepared to help customers plan quantities, finishes and product combinations before requesting a quote.
+          </p>
+        </div>
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {contentTopics.map((topic) => (
+            <a
+              key={topic.title}
+              href="#contact"
+              onClick={() => onGuideClick(topic.title)}
+              className="rounded-md border border-neutral-200 bg-white p-5 shadow-sm transition hover:border-emerald-700"
+            >
+              <p className="text-xs font-semibold uppercase text-neutral-500">Coming soon</p>
+              <h3 className="mt-2 text-base font-semibold text-neutral-950">{topic.title}</h3>
+              <p className="mt-2 text-sm leading-6 text-neutral-600">{topic.summary}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function FindKleihausOnline() {
+  return (
+    <section className="mx-auto max-w-7xl px-4 py-14">
+      <div className="rounded-md border border-neutral-200 bg-white p-5 shadow-sm sm:p-7">
+        <div className="mb-6 max-w-3xl">
+          <p className="text-sm font-semibold uppercase text-emerald-700">Find Kleihaus online</p>
+          <h2 className="mt-2 text-3xl font-semibold text-neutral-950">Visit or contact Kleihaus Ceramics</h2>
+          <p className="mt-2 text-sm leading-6 text-neutral-600">
+            For product availability, project quotations and delivery coordination, contact the Kleihaus team directly.
+          </p>
+        </div>
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+          {onlineContactItems.map((item) => (
+            <div key={item.label} className="rounded-md bg-neutral-50 p-4">
+              <p className="text-xs font-semibold uppercase text-neutral-500">{item.label}</p>
+              {item.href ? (
+                <a href={item.href} className="mt-2 block break-words text-sm font-semibold text-neutral-950 hover:text-emerald-800">
+                  {item.value}
+                </a>
+              ) : (
+                <p className="mt-2 text-sm font-semibold leading-6 text-neutral-950">{item.value}</p>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )
@@ -853,6 +1052,21 @@ function Footer() {
   )
 }
 
+function MobileStickyWhatsApp({ onWhatsAppClick }) {
+  return (
+    <a
+      href={whatsappUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={() => onWhatsAppClick('mobile_sticky')}
+      className="fixed bottom-4 left-4 right-4 z-40 inline-flex items-center justify-center gap-2 rounded-md bg-emerald-700 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-neutral-900/20 md:hidden"
+    >
+      <MessageCircle className="h-4 w-4" />
+      Request quote on WhatsApp
+    </a>
+  )
+}
+
 export default function App() {
   const [projectType] = useState('Homeowner')
   const [searchQuery, setSearchQuery] = useState('')
@@ -862,25 +1076,34 @@ export default function App() {
   const refreshSignals = () => setEventRevision((revision) => revision + 1)
 
   const handleSearch = (query) => {
+    analyticsService.track('search_submitted', { query: query.toLowerCase(), projectType })
     analyticsService.track('search', { query: query.toLowerCase(), projectType })
     setSearchQuery(query)
     refreshSignals()
   }
 
   const handleCategoryClick = (category) => {
+    analyticsService.track('category_clicked', { category, projectType })
     analyticsService.track('category_click', { category, projectType })
     setSelectedCategory(category)
     refreshSignals()
   }
 
   const handleProductInterest = (product, category) => {
+    analyticsService.track('product_interest_clicked', { product, category, projectType })
     analyticsService.track('product_interest', { product, category, projectType })
     setSelectedCategory(category)
     refreshSignals()
   }
 
   const handleWhatsAppClick = (source) => {
+    analyticsService.track('whatsapp_cta_clicked', { source, projectType, selectedCategory })
     analyticsService.track('whatsapp_click', { source, projectType, selectedCategory })
+    refreshSignals()
+  }
+
+  const handleGuideClick = (topic) => {
+    analyticsService.track('guide_topic_clicked', { topic, projectType })
     refreshSignals()
   }
 
@@ -895,13 +1118,17 @@ export default function App() {
         onWhatsAppClick={handleWhatsAppClick}
       />
       <Hero onWhatsAppClick={handleWhatsAppClick} />
-      <ShopByCategory selectedCategory={selectedCategory} onCategoryClick={handleCategoryClick} />
-      <ProductCatalogue onProductInterest={handleProductInterest} />
+      <ShopByCategory selectedCategory={selectedCategory} onCategoryClick={handleCategoryClick} onWhatsAppClick={handleWhatsAppClick} />
+      <ProductCatalogue onProductInterest={handleProductInterest} onWhatsAppClick={handleWhatsAppClick} />
+      <SeoLandingSections onWhatsAppClick={handleWhatsAppClick} />
       <QuantityEstimator />
       <InspirationGallery onCategoryClick={handleCategoryClick} />
       <Services />
       <ProjectCustomers />
+      <HelpfulGuides onGuideClick={handleGuideClick} />
+      <FindKleihausOnline />
       <Contact onWhatsAppClick={handleWhatsAppClick} />
+      <MobileStickyWhatsApp onWhatsAppClick={handleWhatsAppClick} />
       <Footer />
     </div>
   )
