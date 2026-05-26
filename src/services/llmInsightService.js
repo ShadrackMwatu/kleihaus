@@ -21,6 +21,36 @@ export const llmInsightService = {
     ]
   },
 
+  prepareInventoryRecommendations(summary) {
+    const productInterestCount = Object.keys(summary.product_interest || {}).length
+    return [
+      productInterestCount
+        ? 'Prioritize stock checks for product types receiving repeated interest.'
+        : 'Wait for more product-interest events before changing inventory priorities.',
+      'Compare category interest against current supplier lead times and fast-moving finishes.',
+    ]
+  },
+
+  prepareMarketingRecommendations(summary) {
+    const searchCount = Object.keys(summary.top_searches || {}).length
+    return [
+      searchCount
+        ? 'Turn recurring search themes into catalogue highlights, WhatsApp scripts, and social content.'
+        : 'Encourage more on-site search usage through clearer catalogue prompts.',
+      'Use high-intent quotation terms to refine landing-page and WhatsApp copy.',
+    ]
+  },
+
+  prepareSupplierRecommendations(summary) {
+    const categoryCount = Object.keys(summary.most_viewed_categories || {}).length
+    return [
+      categoryCount
+        ? 'Share category interest summaries with suppliers during range planning.'
+        : 'Collect more category-click data before supplier negotiations.',
+      'Use weak signals to test small-batch sourcing before committing to broad stock.',
+    ]
+  },
+
   futureIntegrations: {
     llmProvider: 'placeholder: call a backend LLM service for summarization and procurement insights',
     promptLibrary: 'placeholder: keep operational prompts on the backend, never in the public bundle',

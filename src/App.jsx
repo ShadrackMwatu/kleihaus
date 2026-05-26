@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useState } from 'react'
 import {
   ArrowRight,
   Brush,
@@ -17,7 +17,6 @@ import {
   Sparkles,
   Store,
   Ruler,
-  TrendingUp,
   Truck,
   Users,
   Wrench,
@@ -27,7 +26,6 @@ import {
   inspirationSpaces,
   popularCategories,
   suggestedSearches,
-  trendingProducts,
   trendingSearches,
 } from './data/intelligenceData'
 import { analyticsService } from './services/analyticsService'
@@ -266,37 +264,27 @@ function SearchAutocomplete({ value, onChange, projectType, onSearch }) {
 
       {active && (
         <div className="absolute left-0 right-0 top-full z-50 mt-2 rounded-md border border-neutral-200 bg-white p-3 shadow-xl">
-          <div className="grid gap-3 lg:grid-cols-3">
-            <SuggestionColumn title="Suggested searches" items={value ? suggestions : suggestedSearches} onSelect={submitSearch} />
-            <SuggestionColumn title="Trending searches" items={trendingSearches} onSelect={submitSearch} />
-            <SuggestionColumn title="Popular categories" items={popularCategories} onSelect={submitSearch} />
+          <div className="grid gap-1.5">
+            {[...(value ? suggestions : suggestedSearches), ...trendingSearches, ...popularCategories]
+              .filter((item, index, list) => list.indexOf(item) === index)
+              .slice(0, 8)
+              .map((item) => (
+                <button
+                  key={item}
+                  type="button"
+                  className="rounded-md px-2 py-1.5 text-left text-sm text-neutral-700 hover:bg-emerald-50 hover:text-emerald-800"
+                  onMouseDown={(event) => {
+                    event.preventDefault()
+                    analyticsService.track('autocomplete_select', { query: item, source: 'search_autocomplete' })
+                    submitSearch(item)
+                  }}
+                >
+                  {item}
+                </button>
+              ))}
           </div>
         </div>
       )}
-    </div>
-  )
-}
-
-function SuggestionColumn({ title, items, onSelect }) {
-  return (
-    <div>
-      <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-neutral-500">{title}</p>
-      <div className="grid gap-1.5">
-        {items.slice(0, 6).map((item) => (
-          <button
-            key={item}
-            type="button"
-            className="rounded-md px-2 py-1.5 text-left text-sm text-neutral-700 hover:bg-emerald-50 hover:text-emerald-800"
-            onMouseDown={(event) => {
-              event.preventDefault()
-              analyticsService.track('autocomplete_select', { query: item, source: title })
-              onSelect(item)
-            }}
-          >
-            {item}
-          </button>
-        ))}
-      </div>
     </div>
   )
 }
@@ -646,123 +634,6 @@ function QuantityEstimator() {
   )
 }
 
-function CatalogueDiscovery({ onSearch, onCategoryClick, recommendations }) {
-  return (
-    <section className="mx-auto max-w-7xl px-4 py-14">
-      <div className="mb-8">
-        <div>
-          <p className="text-sm font-semibold uppercase text-emerald-700">Smarter search</p>
-          <h2 className="mt-2 text-3xl font-semibold text-neutral-950">Smarter catalogue discovery</h2>
-          <p className="mt-2 text-sm leading-6 text-neutral-600">
-            Find useful product ideas faster with suggested searches, popular categories and helpful matching ranges.
-          </p>
-        </div>
-      </div>
-
-      <div className="grid gap-5 lg:grid-cols-4">
-        <IntelligenceList title="Suggested searches" icon={Search} items={suggestedSearches} onSelect={onSearch} />
-        <IntelligenceList title="Trending searches" icon={TrendingUp} items={trendingSearches} onSelect={onSearch} />
-        <IntelligenceList title="Popular Categories" icon={Store} items={popularCategories} onSelect={onCategoryClick} />
-        <div className="rounded-md border border-neutral-200 bg-white p-5 shadow-sm">
-          <div className="flex items-center gap-2">
-            <Sparkles className="h-5 w-5 text-emerald-700" />
-            <h3 className="font-semibold text-neutral-950">Helpful matches</h3>
-          </div>
-          <div className="mt-4 grid gap-2">
-            {recommendations.relatedCategories.map((item) => (
-              <button
-                key={item}
-                type="button"
-                onClick={() => onCategoryClick(item)}
-                className="rounded-md border border-neutral-200 px-3 py-2 text-left text-sm font-medium text-neutral-700 hover:border-emerald-700 hover:text-emerald-800"
-              >
-                {item}
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-function IntelligenceList({ title, icon: Icon, items, onSelect }) {
-  return (
-    <div className="rounded-md border border-neutral-200 bg-white p-5 shadow-sm">
-      <div className="flex items-center gap-2">
-        <Icon className="h-5 w-5 text-emerald-700" />
-        <h3 className="font-semibold text-neutral-950">{title}</h3>
-      </div>
-      <div className="mt-4 grid gap-2">
-        {items.map((item) => (
-          <button
-            key={item}
-            type="button"
-            onClick={() => onSelect(item)}
-            className="rounded-md bg-neutral-50 px-3 py-2 text-left text-sm font-medium text-neutral-700 hover:bg-emerald-50 hover:text-emerald-800"
-          >
-            {item}
-          </button>
-        ))}
-      </div>
-    </div>
-  )
-}
-
-function TrendingAndRecommendations({ recommendations, onProductInterest }) {
-  return (
-    <section className="border-y border-neutral-200 bg-white">
-      <div className="mx-auto max-w-7xl px-4 py-14">
-        <div className="mb-8">
-          <p className="text-sm font-semibold uppercase text-emerald-700">Popular this week</p>
-          <h2 className="mt-2 text-3xl font-semibold text-neutral-950">Trending Products</h2>
-        </div>
-
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-          {trendingProducts.map((product) => (
-            <a
-              key={product.name}
-              href="#contact"
-              onClick={() => onProductInterest(product.name, product.category)}
-              className="group overflow-hidden rounded-md border border-neutral-200 bg-white shadow-sm hover:border-emerald-700"
-            >
-              <img src={product.img} alt={product.name} className="aspect-[5/4] w-full object-cover transition duration-300 group-hover:scale-105" />
-              <div className="p-4">
-                <p className="text-xs font-semibold uppercase text-emerald-700">{product.category}</p>
-                <h3 className="mt-1 text-sm font-semibold text-neutral-950">{product.name}</h3>
-                <p className="mt-2 text-sm leading-6 text-neutral-600">{product.signal}</p>
-              </div>
-            </a>
-          ))}
-        </div>
-
-        <div className="mt-8 grid gap-5 lg:grid-cols-2">
-          <RecommendationCard title="Customers also viewed" items={recommendations.customersAlsoViewed} />
-          <RecommendationCard title="Complementary products" items={recommendations.complementaryProducts} />
-        </div>
-      </div>
-    </section>
-  )
-}
-
-function RecommendationCard({ title, items }) {
-  return (
-    <div className="rounded-md border border-neutral-200 bg-neutral-50 p-5">
-      <div className="flex items-center gap-2">
-        <TrendingUp className="h-5 w-5 text-emerald-700" />
-        <h3 className="font-semibold text-neutral-950">{title}</h3>
-      </div>
-      <div className="mt-4 flex flex-wrap gap-2">
-        {items.map((item) => (
-          <span key={item} className="rounded-md border border-neutral-200 bg-white px-3 py-2 text-sm font-medium text-neutral-700">
-            {item}
-          </span>
-        ))}
-      </div>
-    </div>
-  )
-}
-
 function InspirationGallery({ onCategoryClick }) {
   return (
     <section className="mx-auto max-w-7xl px-4 py-14">
@@ -960,10 +831,6 @@ export default function App() {
     refreshSignals()
   }
 
-  const recommendations = useMemo(
-    () => recommendationService.getRecommendations({ selectedCategory, projectType }),
-    [selectedCategory, projectType],
-  )
   return (
     <div className="min-h-screen overflow-x-hidden bg-white text-neutral-900">
       <Header
@@ -976,14 +843,8 @@ export default function App() {
       />
       <Hero onWhatsAppClick={handleWhatsAppClick} />
       <ShopByCategory selectedCategory={selectedCategory} onCategoryClick={handleCategoryClick} />
-      <CatalogueDiscovery
-        onSearch={handleSearch}
-        onCategoryClick={handleCategoryClick}
-        recommendations={recommendations}
-      />
       <ProductCatalogue onProductInterest={handleProductInterest} />
       <QuantityEstimator />
-      <TrendingAndRecommendations recommendations={recommendations} onProductInterest={handleProductInterest} />
       <InspirationGallery onCategoryClick={handleCategoryClick} />
       <Services />
       <ProjectCustomers />

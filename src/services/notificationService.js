@@ -1,8 +1,8 @@
 export const notificationService = {
-  prepareWeeklyEmail(report) {
+  prepareMonthlyEmail(report) {
     return {
-      to: import.meta.env.VITE_WEEKLY_REPORT_RECIPIENTS || '',
-      subject: 'Kleihaus Weekly Intelligence Report',
+      to: import.meta.env.VITE_MONTHLY_REPORT_RECIPIENTS || '',
+      subject: 'Kleihaus Monthly Management Intelligence Report',
       body: report,
       status: 'prepared_not_sent',
     }

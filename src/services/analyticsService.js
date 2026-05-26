@@ -85,11 +85,11 @@ export const analyticsService = {
       product_interest: events.filter((event) => event.eventType === 'product_interest'),
       recommendation_signals: events.filter((event) => event.eventType === 'recommendation_signal'),
       high_value_whatsapp_alerts: whatsappAlertService.getAlerts(),
-      weekly_summary_data: this.buildWeeklySummary(events),
+      monthly_summary_data: this.buildMonthlySummary(events),
     }
   },
 
-  buildWeeklySummary(events = readEvents()) {
+  buildMonthlySummary(events = readEvents()) {
     const countBy = (eventType, field) =>
       events
         .filter((event) => event.eventType === eventType && event.payload?.[field])
@@ -103,6 +103,7 @@ export const analyticsService = {
       top_searches: countBy('search', 'query'),
       emerging_searches: countBy('autocomplete_select', 'query'),
       most_viewed_categories: countBy('category_click', 'category'),
+      product_interest: countBy('product_interest', 'product'),
       whatsapp_inquiry_trends: countBy('whatsapp_click', 'source'),
       high_value_whatsapp_alerts: whatsappAlertService.getAlerts().map((alert) => alert.reason),
       county_location_interest: countBy('location_interest', 'location'),
@@ -116,6 +117,6 @@ export const analyticsService = {
   futureIntegrations: {
     llmIntentClassifier: 'placeholder: classify searches into room, budget, material and urgency intent',
     cloudWarehouseSync: 'placeholder: sync anonymized aggregate events to a consent-aware analytics backend',
-    recommendationTraining: 'placeholder: train weekly category affinity and complementary-product models',
+    recommendationTraining: 'placeholder: train monthly category affinity and complementary-product models',
   },
 }

@@ -21,7 +21,7 @@ The current Phase 1 service layer is organized around:
 - `src/services/analyticsService.js`: anonymized event capture for searches, category clicks, product interest, WhatsApp clicks, quotation requests, and contact submissions.
 - `src/services/recommendationService.js`: customer-facing recommendation preparation plus internal category/search signal aggregation.
 - `src/services/whatsappAlertService.js`: high-value action filtering and WhatsApp-ready alert payload preparation.
-- `src/services/reportingService.js`: weekly report summary preparation.
+- `src/services/reportingService.js`: monthly management report summary preparation.
 - `src/services/notificationService.js`: email and WhatsApp notification payload preparation.
 - `src/services/llmInsightService.js`: intent classification and future LLM insight placeholders.
 - `src/data/intelligenceData.js`: AI-ready data structures, category relationships, search suggestions, trending products, project-type signals, and inspiration data.
@@ -39,20 +39,22 @@ Recommended future flow:
 1. Frontend captures anonymized behavioral events.
 2. Frontend sends only allowed event payloads to `VITE_ANALYTICS_ENDPOINT`.
 3. Cloudflare Worker validates, strips personal fields, and stores aggregate-safe records.
-4. Weekly scheduled job summarizes trends and prepares reports.
+4. Monthly scheduled job summarizes trends and prepares reports.
 
-## Weekly Email Reporting
+## Monthly Email Reporting
 
-Weekly reporting should include:
+Monthly reporting should include:
 
-- Top searches
-- Emerging searches
-- Most viewed categories
-- WhatsApp inquiry trends
-- Quotation intent signals
-- Location/county interest
-- Weak signals
-- Recommended business actions
+- Top Searches
+- Emerging Demand Signals
+- Most Requested Product Types
+- County/Location Interest
+- Most Clicked Categories
+- High-Intent Customer Signals
+- Weak Signals
+- Inventory Recommendations
+- Marketing Recommendations
+- Supplier Recommendations
 
 Reports should be sent to:
 
@@ -76,8 +78,8 @@ Use placeholders only:
 VITE_ENABLE_ANALYTICS=false
 VITE_ANALYTICS_ENDPOINT=
 VITE_ENABLE_RECOMMENDATIONS=true
-VITE_ENABLE_WEEKLY_REPORTS=false
-VITE_WEEKLY_REPORT_RECIPIENTS=
+VITE_ENABLE_MONTHLY_REPORTS=false
+VITE_MONTHLY_REPORT_RECIPIENTS=
 ```
 
 Production secrets must be configured in the backend or deployment platform, never committed to the repository.

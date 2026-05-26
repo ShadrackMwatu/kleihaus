@@ -13,7 +13,7 @@ export const intelligenceCollections = {
   category_interest: [],
   product_interest: [],
   recommendation_signals: [],
-  weekly_summary_data: {
+  monthly_summary_data: {
     top_searches: [],
     emerging_searches: [],
     most_viewed_categories: [],
