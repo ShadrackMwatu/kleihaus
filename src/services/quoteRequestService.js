@@ -3,6 +3,8 @@ import { emailSubmissionService } from './emailSubmissionService'
 const QUOTE_WHATSAPP_NUMBER = '254748827166'
 
 const trimValue = (value) => String(value || '').trim()
+const cleanMessageText = (value) => trimValue(value).replace(/\r\n/g, '\n').replace(/\n{3,}/g, '\n\n')
+const displayValue = (value) => trimValue(value) || 'Not provided'
 
 const normalizeQuoteRequest = (request = {}) => ({
   type: 'quote_request',
@@ -27,15 +29,15 @@ const validateQuoteRequest = (payload) => {
 
 const buildWhatsAppMessage = (payload) =>
   [
-    'Kleihaus Ceramics quote request',
+    'Hello Kleihaus Ceramics, I would like a quote.',
     '',
-    `Name: ${payload.name}`,
-    `Email: ${payload.email || 'Not provided'}`,
-    `Phone: ${payload.phone || 'Not provided'}`,
-    `Location: ${payload.location || 'Not provided'}`,
+    `Name: ${displayValue(payload.name)}`,
+    `Email: ${displayValue(payload.email)}`,
+    `Phone: ${displayValue(payload.phone)}`,
+    `Location: ${displayValue(payload.location)}`,
     '',
-    'Project/request details:',
-    payload.message,
+    'Request:',
+    cleanMessageText(payload.message),
   ].join('\n')
 
 const buildWhatsAppUrl = (payload) =>
