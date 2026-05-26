@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import {
   ArrowRight,
+  BarChart3,
+  Brain,
   Brush,
   CheckCircle2,
   ClipboardList,
+  Database,
   Mail,
   MapPin,
   Menu,
@@ -15,11 +18,23 @@ import {
   ShowerHead,
   Sparkles,
   Store,
+  TrendingUp,
   Truck,
   Users,
   Wrench,
   X,
 } from 'lucide-react'
+import {
+  intelligenceCollections,
+  inspirationSpaces,
+  popularCategories,
+  projectTypes,
+  suggestedSearches,
+  trendingProducts,
+  trendingSearches,
+} from './data/intelligenceData'
+import { analyticsService } from './services/analyticsService'
+import { recommendationService } from './services/recommendationService'
 
 const whatsappUrl =
   'https://wa.me/254748827166?text=Hello%20Kleihaus%2C%20I%27d%20like%20to%20share%20my%20room%20size%2C%20tile%20type%2C%20location%20and%20budget%20for%20a%20quote.'
@@ -221,7 +236,95 @@ function TopStrip() {
   )
 }
 
-function Header() {
+function SearchAutocomplete({ value, onChange, projectType, onSearch }) {
+  const [active, setActive] = useState(false)
+  const suggestions = recommendationService.getSearchSuggestions(value, projectType)
+
+  const submitSearch = (query) => {
+    const cleaned = query.trim()
+    if (!cleaned) return
+    onSearch(cleaned)
+    setActive(false)
+  }
+
+  return (
+    <div className="relative min-w-0 flex-1">
+      <label className="flex min-w-0 items-center gap-2 rounded-md border border-neutral-300 bg-neutral-50 px-3 py-2.5">
+        <Search className="h-4 w-4 text-neutral-500" />
+        <input
+          type="search"
+          value={value}
+          onChange={(event) => {
+            onChange(event.target.value)
+            setActive(true)
+          }}
+          onFocus={() => setActive(true)}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter') submitSearch(value)
+          }}
+          placeholder="Search tiles, sanitaryware, paints, adhesives..."
+          className="w-full bg-transparent text-sm outline-none placeholder:text-neutral-500"
+        />
+      </label>
+
+      {active && (
+        <div className="absolute left-0 right-0 top-full z-50 mt-2 rounded-md border border-neutral-200 bg-white p-3 shadow-xl">
+          <div className="grid gap-3 lg:grid-cols-3">
+            <SuggestionColumn title="Suggested searches" items={value ? suggestions : suggestedSearches} onSelect={submitSearch} />
+            <SuggestionColumn title="Trending searches" items={trendingSearches} onSelect={submitSearch} />
+            <SuggestionColumn title="Popular categories" items={popularCategories} onSelect={submitSearch} />
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+
+function SuggestionColumn({ title, items, onSelect }) {
+  return (
+    <div>
+      <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-neutral-500">{title}</p>
+      <div className="grid gap-1.5">
+        {items.slice(0, 6).map((item) => (
+          <button
+            key={item}
+            type="button"
+            className="rounded-md px-2 py-1.5 text-left text-sm text-neutral-700 hover:bg-emerald-50 hover:text-emerald-800"
+            onMouseDown={(event) => {
+              event.preventDefault()
+              analyticsService.track('autocomplete_select', { query: item, source: title })
+              onSelect(item)
+            }}
+          >
+            {item}
+          </button>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function ProjectTypeSelector({ projectType, setProjectType }) {
+  return (
+    <label className="hidden items-center gap-2 rounded-md border border-neutral-300 bg-white px-3 py-2.5 text-sm text-neutral-700 lg:flex">
+      <span className="whitespace-nowrap text-xs font-semibold uppercase text-neutral-500">Project</span>
+      <select
+        value={projectType}
+        onChange={(event) => {
+          analyticsService.track('recommendation_signal', { projectType: event.target.value, source: 'project_type_selector' })
+          setProjectType(event.target.value)
+        }}
+        className="bg-transparent text-sm font-semibold text-neutral-900 outline-none"
+      >
+        {projectTypes.map((type) => (
+          <option key={type}>{type}</option>
+        ))}
+      </select>
+    </label>
+  )
+}
+
+function Header({ projectType, setProjectType, searchQuery, setSearchQuery, onSearch, onCategoryClick, onWhatsAppClick }) {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
@@ -232,14 +335,9 @@ function Header() {
           <Logo compact />
         </a>
 
-        <label className="hidden min-w-0 items-center gap-2 rounded-md border border-neutral-300 bg-neutral-50 px-3 py-2.5 lg:flex">
-          <Search className="h-4 w-4 text-neutral-500" />
-          <input
-            type="search"
-            placeholder="Search tiles, sanitaryware, paints, adhesives..."
-            className="w-full bg-transparent text-sm outline-none placeholder:text-neutral-500"
-          />
-        </label>
+        <div className="hidden lg:block">
+          <SearchAutocomplete value={searchQuery} onChange={setSearchQuery} projectType={projectType} onSearch={onSearch} />
+        </div>
 
         <nav className="hidden items-center gap-5 xl:flex">
           {navItems.map((item) => (
@@ -250,10 +348,11 @@ function Header() {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
+          <ProjectTypeSelector projectType={projectType} setProjectType={setProjectType} />
           <a href="tel:+254748827166" className="whitespace-nowrap text-sm font-semibold text-neutral-800 hover:text-emerald-800">
             +254 748 827 166
           </a>
-          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" onClick={() => onWhatsAppClick('header')}>
             <Button className="gap-2 bg-emerald-700 px-3.5 hover:bg-emerald-800">
               <MessageCircle className="h-4 w-4" />
               WhatsApp
@@ -261,7 +360,7 @@ function Header() {
           </a>
         </div>
 
-        <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="lg:hidden">
+        <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="lg:hidden" onClick={() => onWhatsAppClick('mobile_header')}>
           <Button className="gap-1.5 bg-emerald-700 px-3 py-2 text-xs hover:bg-emerald-800">
             <MessageCircle className="h-4 w-4" />
             WhatsApp
@@ -284,6 +383,7 @@ function Header() {
             <a
               key={item}
               href="#catalogue"
+              onClick={() => onCategoryClick(item)}
               className="shrink-0 rounded-md border border-neutral-200 bg-neutral-50 px-3 py-2 text-sm font-medium text-neutral-700 hover:border-emerald-700 hover:text-emerald-800"
             >
               {item}
@@ -294,9 +394,23 @@ function Header() {
 
       {menuOpen && (
         <div className="border-t border-neutral-200 bg-white px-4 py-4 shadow-lg lg:hidden">
-          <label className="mb-4 flex items-center gap-2 rounded-md border border-neutral-300 bg-neutral-50 px-3 py-2.5">
-            <Search className="h-4 w-4 text-neutral-500" />
-            <input type="search" placeholder="Search catalogue..." className="w-full bg-transparent text-sm outline-none" />
+          <div className="mb-4">
+            <SearchAutocomplete value={searchQuery} onChange={setSearchQuery} projectType={projectType} onSearch={onSearch} />
+          </div>
+          <label className="mb-4 flex items-center gap-2 rounded-md border border-neutral-300 bg-white px-3 py-2.5 text-sm">
+            <span className="text-xs font-semibold uppercase text-neutral-500">Project</span>
+            <select
+              value={projectType}
+              onChange={(event) => {
+                analyticsService.track('recommendation_signal', { projectType: event.target.value, source: 'mobile_project_selector' })
+                setProjectType(event.target.value)
+              }}
+              className="w-full bg-transparent font-semibold outline-none"
+            >
+              {projectTypes.map((type) => (
+                <option key={type}>{type}</option>
+              ))}
+            </select>
           </label>
           <nav className="grid gap-2">
             {navItems.map((item) => (
@@ -320,7 +434,7 @@ function Header() {
   )
 }
 
-function Hero() {
+function Hero({ onWhatsAppClick }) {
   return (
     <section id="top" className="bg-stone-100">
       <div className="mx-auto grid max-w-7xl gap-5 px-4 py-6 lg:grid-cols-[1.15fr_0.85fr] lg:py-10">
@@ -342,7 +456,7 @@ function Hero() {
                   <ArrowRight className="h-4 w-4" />
                 </Button>
               </a>
-              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" onClick={() => onWhatsAppClick('hero')}>
                 <ButtonSecondary className="gap-2 border-white/40 bg-white/10 text-white hover:bg-white/20">
                   <MessageCircle className="h-4 w-4" />
                   Request quote on WhatsApp
@@ -373,7 +487,7 @@ function FeatureTile({ image, title, text }) {
   )
 }
 
-function ShopByCategory() {
+function ShopByCategory({ selectedCategory, onCategoryClick }) {
   return (
     <section id="catalogue" className="mx-auto max-w-7xl px-4 py-14">
       <div className="mb-7 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
@@ -397,6 +511,7 @@ function ShopByCategory() {
             <a
               key={category.name}
               href="#contact"
+              onClick={() => onCategoryClick(category.name)}
               className="group overflow-hidden rounded-md border border-neutral-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-emerald-700 hover:shadow-md"
             >
               <div className="relative aspect-[4/3] overflow-hidden bg-neutral-100">
@@ -419,6 +534,11 @@ function ShopByCategory() {
                   <ArrowRight className="h-4 w-4 shrink-0 text-neutral-400 transition group-hover:text-emerald-700" />
                 </div>
                 <p className="mt-2 text-sm leading-6 text-neutral-600">{category.blurb}</p>
+                {selectedCategory === category.name && (
+                  <span className="mt-3 inline-flex rounded-md bg-emerald-50 px-2 py-1 text-xs font-semibold text-emerald-800">
+                    Recommended for you
+                  </span>
+                )}
               </div>
             </a>
           )
@@ -428,7 +548,7 @@ function ShopByCategory() {
   )
 }
 
-function ProductCatalogue() {
+function ProductCatalogue({ onProductInterest }) {
   return (
     <section className="border-y border-neutral-200 bg-neutral-50">
       <div className="mx-auto max-w-7xl px-4 py-14">
@@ -450,7 +570,12 @@ function ProductCatalogue() {
               </div>
               <div className="grid gap-4 md:grid-cols-3">
                 {group.items.map((item) => (
-                  <a key={item.name} href="#contact" className="group overflow-hidden rounded-md border border-neutral-200 bg-white shadow-sm transition hover:border-emerald-700">
+                  <a
+                    key={item.name}
+                    href="#contact"
+                    onClick={() => onProductInterest(item.name, group.title)}
+                    className="group overflow-hidden rounded-md border border-neutral-200 bg-white shadow-sm transition hover:border-emerald-700"
+                  >
                     <img src={item.img} alt={item.name} className="aspect-[5/4] w-full object-cover transition duration-300 group-hover:scale-105" />
                     <div className="p-4">
                       <div className="flex items-center justify-between gap-3">
@@ -464,6 +589,217 @@ function ProductCatalogue() {
               </div>
             </div>
           ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function SearchIntelligence({ projectType, selectedCategory, onSearch, onCategoryClick, recommendations }) {
+  return (
+    <section className="mx-auto max-w-7xl px-4 py-14">
+      <div className="mb-8 grid gap-4 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
+        <div>
+          <p className="text-sm font-semibold uppercase text-emerald-700">AI-ready search intelligence</p>
+          <h2 className="mt-2 text-3xl font-semibold text-neutral-950">Smarter catalogue discovery</h2>
+          <p className="mt-2 text-sm leading-6 text-neutral-600">
+            Phase 1 tracks anonymous search and interest signals so future recommendations can learn from demand patterns without storing personal details.
+          </p>
+        </div>
+        <div className="rounded-md border border-emerald-100 bg-emerald-50 p-4">
+          <p className="text-sm font-semibold text-emerald-900">Personalized for: {projectType}</p>
+          <p className="mt-1 text-sm text-emerald-800">Current signal: {selectedCategory}</p>
+        </div>
+      </div>
+
+      <div className="grid gap-5 lg:grid-cols-4">
+        <IntelligenceList title="Suggested searches" icon={Search} items={suggestedSearches} onSelect={onSearch} />
+        <IntelligenceList title="Trending searches" icon={TrendingUp} items={trendingSearches} onSelect={onSearch} />
+        <IntelligenceList title="Popular Categories" icon={Store} items={popularCategories} onSelect={onCategoryClick} />
+        <div className="rounded-md border border-neutral-200 bg-white p-5 shadow-sm">
+          <div className="flex items-center gap-2">
+            <Brain className="h-5 w-5 text-emerald-700" />
+            <h3 className="font-semibold text-neutral-950">Related categories</h3>
+          </div>
+          <div className="mt-4 grid gap-2">
+            {recommendations.relatedCategories.map((item) => (
+              <button
+                key={item}
+                type="button"
+                onClick={() => onCategoryClick(item)}
+                className="rounded-md border border-neutral-200 px-3 py-2 text-left text-sm font-medium text-neutral-700 hover:border-emerald-700 hover:text-emerald-800"
+              >
+                {item}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function IntelligenceList({ title, icon: Icon, items, onSelect }) {
+  return (
+    <div className="rounded-md border border-neutral-200 bg-white p-5 shadow-sm">
+      <div className="flex items-center gap-2">
+        <Icon className="h-5 w-5 text-emerald-700" />
+        <h3 className="font-semibold text-neutral-950">{title}</h3>
+      </div>
+      <div className="mt-4 grid gap-2">
+        {items.map((item) => (
+          <button
+            key={item}
+            type="button"
+            onClick={() => onSelect(item)}
+            className="rounded-md bg-neutral-50 px-3 py-2 text-left text-sm font-medium text-neutral-700 hover:bg-emerald-50 hover:text-emerald-800"
+          >
+            {item}
+          </button>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function TrendingAndRecommendations({ recommendations, onProductInterest }) {
+  return (
+    <section className="border-y border-neutral-200 bg-white">
+      <div className="mx-auto max-w-7xl px-4 py-14">
+        <div className="mb-8">
+          <p className="text-sm font-semibold uppercase text-emerald-700">Recommendation signals</p>
+          <h2 className="mt-2 text-3xl font-semibold text-neutral-950">Trending Products</h2>
+        </div>
+
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+          {trendingProducts.map((product) => (
+            <a
+              key={product.name}
+              href="#contact"
+              onClick={() => onProductInterest(product.name, product.category)}
+              className="group overflow-hidden rounded-md border border-neutral-200 bg-white shadow-sm hover:border-emerald-700"
+            >
+              <img src={product.img} alt={product.name} className="aspect-[5/4] w-full object-cover transition duration-300 group-hover:scale-105" />
+              <div className="p-4">
+                <p className="text-xs font-semibold uppercase text-emerald-700">{product.category}</p>
+                <h3 className="mt-1 text-sm font-semibold text-neutral-950">{product.name}</h3>
+                <p className="mt-2 text-sm leading-6 text-neutral-600">{product.signal}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <div className="mt-8 grid gap-5 lg:grid-cols-2">
+          <RecommendationCard title="Customers also viewed" items={recommendations.customersAlsoViewed} />
+          <RecommendationCard title="Complementary products" items={recommendations.complementaryProducts} />
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function RecommendationCard({ title, items }) {
+  return (
+    <div className="rounded-md border border-neutral-200 bg-neutral-50 p-5">
+      <div className="flex items-center gap-2">
+        <TrendingUp className="h-5 w-5 text-emerald-700" />
+        <h3 className="font-semibold text-neutral-950">{title}</h3>
+      </div>
+      <div className="mt-4 flex flex-wrap gap-2">
+        {items.map((item) => (
+          <span key={item} className="rounded-md border border-neutral-200 bg-white px-3 py-2 text-sm font-medium text-neutral-700">
+            {item}
+          </span>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function InspirationGallery({ onCategoryClick }) {
+  return (
+    <section className="mx-auto max-w-7xl px-4 py-14">
+      <div className="mb-8">
+        <p className="text-sm font-semibold uppercase text-emerald-700">Inspiration gallery</p>
+        <h2 className="mt-2 text-3xl font-semibold text-neutral-950">Explore spaces before you request a quote</h2>
+      </div>
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {inspirationSpaces.map((space) => {
+          const Icon = space.icon
+          return (
+            <button
+              key={space.name}
+              type="button"
+              onClick={() => onCategoryClick(space.name)}
+              className="group overflow-hidden rounded-md border border-neutral-200 bg-white text-left shadow-sm hover:border-emerald-700"
+            >
+              <div className="relative">
+                <img src={space.img} alt={space.name} className="aspect-[4/3] w-full object-cover transition duration-300 group-hover:scale-105" />
+                <span className="absolute left-3 top-3 inline-flex h-10 w-10 items-center justify-center rounded-md bg-white/95 text-emerald-800">
+                  <Icon className="h-5 w-5" />
+                </span>
+              </div>
+              <div className="p-4">
+                <h3 className="text-lg font-semibold text-neutral-950">{space.name}</h3>
+                <p className="mt-2 text-sm leading-6 text-neutral-600">{space.text}</p>
+              </div>
+            </button>
+          )
+        })}
+      </div>
+    </section>
+  )
+}
+
+function IntelligenceDashboard({ adminSignals, collections }) {
+  const dashboardItems = [
+    { title: 'Top searches', value: Object.keys(adminSignals.topSearches).length || 'Ready', icon: Search },
+    { title: 'Search trends', value: Object.keys(adminSignals.searchTrends).length || 'Ready', icon: TrendingUp },
+    { title: 'Category popularity', value: Object.keys(adminSignals.categoryPopularity).length || 'Ready', icon: BarChart3 },
+    { title: 'Weak signal detection', value: adminSignals.weakSignalDetection.length || 'Ready', icon: Brain },
+  ]
+
+  return (
+    <section className="border-y border-neutral-200 bg-neutral-950 text-white">
+      <div className="mx-auto max-w-7xl px-4 py-14">
+        <div className="mb-8 grid gap-4 lg:grid-cols-[0.8fr_1.2fr]">
+          <div>
+            <p className="text-sm font-semibold uppercase text-emerald-300">Admin intelligence dashboard</p>
+            <h2 className="mt-2 text-3xl font-semibold">Phase 1 analytics foundation</h2>
+          </div>
+          <p className="text-sm leading-6 text-neutral-300">
+            This placeholder prepares Kleihaus for top searches, emerging searches, category popularity, WhatsApp inquiry trends, county/location interest and future LLM-assisted insights.
+          </p>
+        </div>
+
+        <div className="grid gap-4 md:grid-cols-4">
+          {dashboardItems.map((item) => {
+            const Icon = item.icon
+            return (
+              <div key={item.title} className="rounded-md border border-white/10 bg-white/5 p-5">
+                <Icon className="h-5 w-5 text-emerald-300" />
+                <p className="mt-4 text-2xl font-semibold">{item.value}</p>
+                <p className="mt-1 text-sm text-neutral-300">{item.title}</p>
+              </div>
+            )
+          })}
+        </div>
+
+        <div className="mt-6 rounded-md border border-white/10 bg-white/5 p-5">
+          <div className="flex items-center gap-2">
+            <Database className="h-5 w-5 text-emerald-300" />
+            <h3 className="font-semibold">AI-ready data structures</h3>
+          </div>
+          <div className="mt-4 grid gap-2 text-sm text-neutral-300 sm:grid-cols-2 lg:grid-cols-5">
+            {Object.keys(collections).map((key) => (
+              <span key={key} className="rounded-md bg-white/5 px-3 py-2">
+                {key}
+              </span>
+            ))}
+          </div>
+          <p className="mt-4 text-xs leading-5 text-neutral-400">
+            Privacy-preserving by design: events are anonymous, contact fields are excluded, and the current phase stores lightweight behavioral signals locally for future consent-aware backend learning.
+          </p>
         </div>
       </div>
     </section>
@@ -518,7 +854,7 @@ function ProjectCustomers() {
   )
 }
 
-function Contact() {
+function Contact({ onWhatsAppClick }) {
   return (
     <section id="contact" className="bg-neutral-950 text-white">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 lg:grid-cols-[0.9fr_1.1fr]">
@@ -529,7 +865,7 @@ function Contact() {
             For faster assistance, send your room size, tile type, delivery location and budget range. Kleihaus can help match the right tile, sanitaryware, paint, adhesive or grout to your project.
           </p>
 
-          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex">
+          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex" onClick={() => onWhatsAppClick('contact_primary')}>
             <Button className="gap-2 bg-emerald-700 hover:bg-emerald-800">
               <MessageCircle className="h-4 w-4" />
               Request quote on WhatsApp
@@ -552,7 +888,13 @@ function Contact() {
           </div>
         </div>
 
-        <form onSubmit={(event) => event.preventDefault()} className="rounded-md bg-white p-5 text-neutral-950 shadow-xl sm:p-6">
+        <form
+          onSubmit={(event) => {
+            event.preventDefault()
+            analyticsService.track('product_interest', { product: 'contact_form_quote_request', category: 'Project quotation' })
+          }}
+          className="rounded-md bg-white p-5 text-neutral-950 shadow-xl sm:p-6"
+        >
           <div className="mb-5">
             <h3 className="text-lg font-semibold">Tell us what you need</h3>
             <p className="mt-1 text-sm leading-6 text-neutral-600">Include room size, tile type, location and budget so the quote can be more useful.</p>
@@ -570,7 +912,7 @@ function Contact() {
           </div>
           <div className="mt-5 flex flex-wrap gap-3">
             <Button>Send request</Button>
-            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" onClick={() => onWhatsAppClick('contact_form')}>
               <ButtonSecondary className="gap-2">
                 <MessageCircle className="h-4 w-4" />
                 Chat on WhatsApp
@@ -595,15 +937,71 @@ function Footer() {
 }
 
 export default function App() {
+  const [projectType, setProjectType] = useState('Homeowner')
+  const [searchQuery, setSearchQuery] = useState('')
+  const [selectedCategory, setSelectedCategory] = useState('Floor Tiles')
+  const [eventRevision, setEventRevision] = useState(0)
+
+  const refreshSignals = () => setEventRevision((revision) => revision + 1)
+
+  const handleSearch = (query) => {
+    analyticsService.track('search', { query: query.toLowerCase(), projectType })
+    setSearchQuery(query)
+    refreshSignals()
+  }
+
+  const handleCategoryClick = (category) => {
+    analyticsService.track('category_click', { category, projectType })
+    setSelectedCategory(category)
+    refreshSignals()
+  }
+
+  const handleProductInterest = (product, category) => {
+    analyticsService.track('product_interest', { product, category, projectType })
+    setSelectedCategory(category)
+    refreshSignals()
+  }
+
+  const handleWhatsAppClick = (source) => {
+    analyticsService.track('whatsapp_click', { source, projectType, selectedCategory })
+    refreshSignals()
+  }
+
+  const recommendations = useMemo(
+    () => recommendationService.getRecommendations({ selectedCategory, projectType }),
+    [selectedCategory, projectType],
+  )
+
+  const collections = useMemo(() => analyticsService.getCollections(), [eventRevision])
+  const adminSignals = useMemo(() => recommendationService.getAdminSignals(analyticsService.getEvents()), [eventRevision])
+
   return (
     <div className="min-h-screen overflow-x-hidden bg-white text-neutral-900">
-      <Header />
-      <Hero />
-      <ShopByCategory />
-      <ProductCatalogue />
+      <Header
+        projectType={projectType}
+        setProjectType={setProjectType}
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        onSearch={handleSearch}
+        onCategoryClick={handleCategoryClick}
+        onWhatsAppClick={handleWhatsAppClick}
+      />
+      <Hero onWhatsAppClick={handleWhatsAppClick} />
+      <ShopByCategory selectedCategory={selectedCategory} onCategoryClick={handleCategoryClick} />
+      <SearchIntelligence
+        projectType={projectType}
+        selectedCategory={selectedCategory}
+        onSearch={handleSearch}
+        onCategoryClick={handleCategoryClick}
+        recommendations={recommendations}
+      />
+      <ProductCatalogue onProductInterest={handleProductInterest} />
+      <TrendingAndRecommendations recommendations={recommendations} onProductInterest={handleProductInterest} />
+      <InspirationGallery onCategoryClick={handleCategoryClick} />
       <Services />
       <ProjectCustomers />
-      <Contact />
+      <IntelligenceDashboard adminSignals={adminSignals} collections={{ ...intelligenceCollections, ...collections }} />
+      <Contact onWhatsAppClick={handleWhatsAppClick} />
       <Footer />
     </div>
   )
