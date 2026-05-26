@@ -215,7 +215,7 @@ function Logo({ compact = false }) {
 
 function TopStrip() {
   return (
-    <div className="hidden bg-neutral-950 text-white sm:block">
+    <div className="hidden bg-[#A65F1E] text-white sm:block">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2 text-xs">
         <div className="flex items-center gap-5">
           <a href="tel:+254748827166" className="inline-flex items-center gap-1.5 hover:text-emerald-200">
