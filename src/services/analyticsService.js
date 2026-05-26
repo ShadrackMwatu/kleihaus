@@ -1,3 +1,5 @@
+import { whatsappAlertService } from './whatsappAlertService'
+
 const STORAGE_KEY = 'kleihaus_ai_intelligence_events_v1'
 const SESSION_KEY = 'kleihaus_anonymous_session_v1'
 const MAX_EVENTS = 250
@@ -65,7 +67,9 @@ export const analyticsService = {
       source: 'kleihaus_website',
     }
 
-    writeEvents([...readEvents(), event])
+    const events = [...readEvents(), event]
+    writeEvents(events)
+    whatsappAlertService.processEvent(event, events)
     return event
   },
 
@@ -80,6 +84,7 @@ export const analyticsService = {
       category_interest: events.filter((event) => event.eventType === 'category_click'),
       product_interest: events.filter((event) => event.eventType === 'product_interest'),
       recommendation_signals: events.filter((event) => event.eventType === 'recommendation_signal'),
+      high_value_whatsapp_alerts: whatsappAlertService.getAlerts(),
       weekly_summary_data: this.buildWeeklySummary(events),
     }
   },
@@ -99,6 +104,7 @@ export const analyticsService = {
       emerging_searches: countBy('autocomplete_select', 'query'),
       most_viewed_categories: countBy('category_click', 'category'),
       whatsapp_inquiry_trends: countBy('whatsapp_click', 'source'),
+      high_value_whatsapp_alerts: whatsappAlertService.getAlerts().map((alert) => alert.reason),
       county_location_interest: countBy('location_interest', 'location'),
       weak_signals: events
         .filter((event) => event.eventType === 'search' && event.payload?.query?.length > 2)

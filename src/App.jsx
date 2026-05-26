@@ -797,6 +797,7 @@ function Contact({ onWhatsAppClick }) {
           onSubmit={(event) => {
             event.preventDefault()
             analyticsService.track('product_interest', { product: 'contact_form_quote_request', category: 'Project quotation' })
+            analyticsService.track('contact_form_submit', { source: 'contact_form', category: 'Project quotation' })
           }}
           className="rounded-md bg-white p-5 text-neutral-950 shadow-xl sm:p-6"
         >
