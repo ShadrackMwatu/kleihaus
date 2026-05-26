@@ -1,8 +1,8 @@
 import React, { useMemo, useState } from 'react'
 import {
   ArrowRight,
-  Brain,
   Brush,
+  Calculator,
   CheckCircle2,
   ClipboardList,
   Mail,
@@ -16,6 +16,7 @@ import {
   ShowerHead,
   Sparkles,
   Store,
+  Ruler,
   TrendingUp,
   Truck,
   Users,
@@ -555,20 +556,106 @@ function ProductCatalogue({ onProductInterest }) {
   )
 }
 
-function SearchIntelligence({ projectType, selectedCategory, onSearch, onCategoryClick, recommendations }) {
+function QuantityEstimator() {
+  const [area, setArea] = useState('')
+  const [tileSize, setTileSize] = useState('60x60')
+  const [waste, setWaste] = useState('10')
+
+  const tileAreas = {
+    '30x30': 0.09,
+    '40x40': 0.16,
+    '60x60': 0.36,
+    '60x120': 0.72,
+  }
+
+  const numericArea = Number(area)
+  const numericWaste = Number(waste)
+  const estimatedTiles =
+    numericArea > 0 ? Math.ceil((numericArea * (1 + numericWaste / 100)) / tileAreas[tileSize]) : 0
+  const estimatedBoxes = estimatedTiles ? Math.ceil(estimatedTiles / 4) : 0
+
   return (
     <section className="mx-auto max-w-7xl px-4 py-14">
-      <div className="mb-8 grid gap-4 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
+      <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
         <div>
-          <p className="text-sm font-semibold uppercase text-emerald-700">AI-ready search intelligence</p>
-          <h2 className="mt-2 text-3xl font-semibold text-neutral-950">Smarter catalogue discovery</h2>
-          <p className="mt-2 text-sm leading-6 text-neutral-600">
-            Phase 1 tracks anonymous search and interest signals so future recommendations can learn from demand patterns without storing personal details.
+          <p className="text-sm font-semibold uppercase text-emerald-700">Quantity estimator</p>
+          <h2 className="mt-2 text-3xl font-semibold text-neutral-950">Estimate tiles before requesting a quote</h2>
+          <p className="mt-3 text-sm leading-6 text-neutral-600">
+            Use this quick guide to estimate tile quantities. Final quantities should be confirmed after room measurements, tile layout and site conditions are reviewed.
           </p>
         </div>
-        <div className="rounded-md border border-emerald-100 bg-emerald-50 p-4">
-          <p className="text-sm font-semibold text-emerald-900">Personalized for: {projectType}</p>
-          <p className="mt-1 text-sm text-emerald-800">Current signal: {selectedCategory}</p>
+
+        <div className="rounded-md border border-neutral-200 bg-white p-5 shadow-sm">
+          <div className="grid gap-4 sm:grid-cols-3">
+            <label className="grid gap-2 text-sm font-medium text-neutral-700">
+              Area in m2
+              <Input
+                type="number"
+                min="0"
+                value={area}
+                onChange={(event) => setArea(event.target.value)}
+                placeholder="32"
+              />
+            </label>
+            <label className="grid gap-2 text-sm font-medium text-neutral-700">
+              Tile size
+              <select
+                value={tileSize}
+                onChange={(event) => setTileSize(event.target.value)}
+                className="w-full rounded-md border border-neutral-300 bg-white px-3 py-2.5 text-sm outline-none transition focus:border-emerald-700 focus:ring-2 focus:ring-emerald-100"
+              >
+                <option value="30x30">30 x 30 cm</option>
+                <option value="40x40">40 x 40 cm</option>
+                <option value="60x60">60 x 60 cm</option>
+                <option value="60x120">60 x 120 cm</option>
+              </select>
+            </label>
+            <label className="grid gap-2 text-sm font-medium text-neutral-700">
+              Waste allowance
+              <select
+                value={waste}
+                onChange={(event) => setWaste(event.target.value)}
+                className="w-full rounded-md border border-neutral-300 bg-white px-3 py-2.5 text-sm outline-none transition focus:border-emerald-700 focus:ring-2 focus:ring-emerald-100"
+              >
+                <option value="5">5%</option>
+                <option value="10">10%</option>
+                <option value="15">15%</option>
+              </select>
+            </label>
+          </div>
+
+          <div className="mt-5 grid gap-3 sm:grid-cols-2">
+            <div className="rounded-md bg-neutral-50 p-4">
+              <div className="flex items-center gap-2 text-sm font-semibold text-neutral-700">
+                <Ruler className="h-4 w-4 text-emerald-700" />
+                Estimated tiles
+              </div>
+              <p className="mt-2 text-3xl font-semibold text-neutral-950">{estimatedTiles || '-'}</p>
+            </div>
+            <div className="rounded-md bg-neutral-50 p-4">
+              <div className="flex items-center gap-2 text-sm font-semibold text-neutral-700">
+                <Calculator className="h-4 w-4 text-emerald-700" />
+                Approx. boxes
+              </div>
+              <p className="mt-2 text-3xl font-semibold text-neutral-950">{estimatedBoxes || '-'}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function CatalogueDiscovery({ onSearch, onCategoryClick, recommendations }) {
+  return (
+    <section className="mx-auto max-w-7xl px-4 py-14">
+      <div className="mb-8">
+        <div>
+          <p className="text-sm font-semibold uppercase text-emerald-700">Smarter search</p>
+          <h2 className="mt-2 text-3xl font-semibold text-neutral-950">Smarter catalogue discovery</h2>
+          <p className="mt-2 text-sm leading-6 text-neutral-600">
+            Find useful product ideas faster with suggested searches, popular categories and helpful matching ranges.
+          </p>
         </div>
       </div>
 
@@ -578,8 +665,8 @@ function SearchIntelligence({ projectType, selectedCategory, onSearch, onCategor
         <IntelligenceList title="Popular Categories" icon={Store} items={popularCategories} onSelect={onCategoryClick} />
         <div className="rounded-md border border-neutral-200 bg-white p-5 shadow-sm">
           <div className="flex items-center gap-2">
-            <Brain className="h-5 w-5 text-emerald-700" />
-            <h3 className="font-semibold text-neutral-950">Related categories</h3>
+            <Sparkles className="h-5 w-5 text-emerald-700" />
+            <h3 className="font-semibold text-neutral-950">Helpful matches</h3>
           </div>
           <div className="mt-4 grid gap-2">
             {recommendations.relatedCategories.map((item) => (
@@ -627,7 +714,7 @@ function TrendingAndRecommendations({ recommendations, onProductInterest }) {
     <section className="border-y border-neutral-200 bg-white">
       <div className="mx-auto max-w-7xl px-4 py-14">
         <div className="mb-8">
-          <p className="text-sm font-semibold uppercase text-emerald-700">Recommendation signals</p>
+          <p className="text-sm font-semibold uppercase text-emerald-700">Popular this week</p>
           <h2 className="mt-2 text-3xl font-semibold text-neutral-950">Trending Products</h2>
         </div>
 
@@ -889,14 +976,13 @@ export default function App() {
       />
       <Hero onWhatsAppClick={handleWhatsAppClick} />
       <ShopByCategory selectedCategory={selectedCategory} onCategoryClick={handleCategoryClick} />
-      <SearchIntelligence
-        projectType={projectType}
-        selectedCategory={selectedCategory}
+      <CatalogueDiscovery
         onSearch={handleSearch}
         onCategoryClick={handleCategoryClick}
         recommendations={recommendations}
       />
       <ProductCatalogue onProductInterest={handleProductInterest} />
+      <QuantityEstimator />
       <TrendingAndRecommendations recommendations={recommendations} onProductInterest={handleProductInterest} />
       <InspirationGallery onCategoryClick={handleCategoryClick} />
       <Services />
