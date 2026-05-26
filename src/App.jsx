@@ -25,7 +25,6 @@ import {
 import {
   inspirationSpaces,
   popularCategories,
-  projectTypes,
   suggestedSearches,
   trendingProducts,
   trendingSearches,
@@ -301,27 +300,7 @@ function SuggestionColumn({ title, items, onSelect }) {
   )
 }
 
-function ProjectTypeSelector({ projectType, setProjectType }) {
-  return (
-    <label className="hidden items-center gap-2 rounded-md border border-neutral-300 bg-white px-3 py-2.5 text-sm text-neutral-700 lg:flex">
-      <span className="whitespace-nowrap text-xs font-semibold uppercase text-neutral-500">Project</span>
-      <select
-        value={projectType}
-        onChange={(event) => {
-          analyticsService.track('recommendation_signal', { projectType: event.target.value, source: 'project_type_selector' })
-          setProjectType(event.target.value)
-        }}
-        className="bg-transparent text-sm font-semibold text-neutral-900 outline-none"
-      >
-        {projectTypes.map((type) => (
-          <option key={type}>{type}</option>
-        ))}
-      </select>
-    </label>
-  )
-}
-
-function Header({ projectType, setProjectType, searchQuery, setSearchQuery, onSearch, onCategoryClick, onWhatsAppClick }) {
+function Header({ projectType, searchQuery, setSearchQuery, onSearch, onCategoryClick, onWhatsAppClick }) {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
@@ -345,7 +324,6 @@ function Header({ projectType, setProjectType, searchQuery, setSearchQuery, onSe
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <ProjectTypeSelector projectType={projectType} setProjectType={setProjectType} />
           <a href="tel:+254748827166" className="whitespace-nowrap text-sm font-semibold text-neutral-800 hover:text-emerald-800">
             +254 748 827 166
           </a>
@@ -394,21 +372,6 @@ function Header({ projectType, setProjectType, searchQuery, setSearchQuery, onSe
           <div className="mb-4">
             <SearchAutocomplete value={searchQuery} onChange={setSearchQuery} projectType={projectType} onSearch={onSearch} />
           </div>
-          <label className="mb-4 flex items-center gap-2 rounded-md border border-neutral-300 bg-white px-3 py-2.5 text-sm">
-            <span className="text-xs font-semibold uppercase text-neutral-500">Project</span>
-            <select
-              value={projectType}
-              onChange={(event) => {
-                analyticsService.track('recommendation_signal', { projectType: event.target.value, source: 'mobile_project_selector' })
-                setProjectType(event.target.value)
-              }}
-              className="w-full bg-transparent font-semibold outline-none"
-            >
-              {projectTypes.map((type) => (
-                <option key={type}>{type}</option>
-              ))}
-            </select>
-          </label>
           <nav className="grid gap-2">
             {navItems.map((item) => (
               <a
@@ -879,7 +842,7 @@ function Footer() {
 }
 
 export default function App() {
-  const [projectType, setProjectType] = useState('Homeowner')
+  const [projectType] = useState('Homeowner')
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('Floor Tiles')
   const [eventRevision, setEventRevision] = useState(0)
@@ -917,7 +880,6 @@ export default function App() {
     <div className="min-h-screen overflow-x-hidden bg-white text-neutral-900">
       <Header
         projectType={projectType}
-        setProjectType={setProjectType}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
         onSearch={handleSearch}
