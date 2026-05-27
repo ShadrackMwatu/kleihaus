@@ -21,7 +21,6 @@ import {
   X,
 } from 'lucide-react'
 import {
-  inspirationSpaces,
   suggestedSearches,
 } from './data/intelligenceData'
 import { contentTopics } from './data/contentTopics'
@@ -170,21 +169,6 @@ const serviceBadges = [
   { title: 'Delivery coordination', text: 'Support for deliveries to homes, sites and developments across key Kenyan service areas.', icon: Truck },
   { title: 'Installation guidance', text: 'Practical help with adhesives, grout, tile laying choices and finishing details.', icon: Wrench },
   { title: 'WhatsApp quote support', text: 'Fast response support for retail requests, project quotations and material matching.', icon: ClipboardList },
-]
-
-const areasServed = [
-  {
-    title: 'Tiles in Nairobi',
-    text: 'Tile, sanitaryware, paint and finishing material support for homes, apartments, shops and project sites in Nairobi.',
-  },
-  {
-    title: 'Building materials in Machakos',
-    text: 'Quotation support for floor tiles, bathroom tiles, adhesives, grout, paints and sanitaryware projects in Machakos.',
-  },
-  {
-    title: 'Tile supply in Makueni',
-    text: 'Guidance for Makueni customers planning durable tiles, bathroom finishes, paints and installation materials.',
-  },
 ]
 
 const faqItems = [
@@ -640,22 +624,6 @@ function ProductCatalogue({ onProductInterest, onWhatsAppClick }) {
   )
 }
 
-function CatalogueSummary() {
-  return (
-    <section aria-labelledby="catalogue-summary-heading" className="mx-auto max-w-7xl px-4 pb-16">
-      <div className="rounded-lg border border-neutral-200 bg-white p-5 shadow-sm sm:p-6">
-        <p className="text-sm font-semibold uppercase text-emerald-700">Catalogue summary</p>
-        <h2 id="catalogue-summary-heading" className="mt-2 text-2xl font-semibold text-neutral-950">
-          Tiles, sanitaryware, paints and finishing materials in Kenya
-        </h2>
-        <p className="mt-3 max-w-4xl text-sm leading-7 text-neutral-600">
-          Kleihaus Ceramics helps customers source floor tiles, wall tiles, bathroom tiles, outdoor tiles, sanitaryware, paints, tile adhesive, grout and installation support for homes, shops, developments and institutional projects across Kenya.
-        </p>
-      </div>
-    </section>
-  )
-}
-
 function QuantityEstimator() {
   const [area, setArea] = useState('')
   const [tileSize, setTileSize] = useState('60x60')
@@ -746,47 +714,6 @@ function QuantityEstimator() {
   )
 }
 
-function InspirationGallery({ onCategoryClick }) {
-  return (
-    <section className="mx-auto max-w-7xl px-4 py-16">
-      <div className="mb-8">
-        <p className="text-sm font-semibold uppercase text-emerald-700">Inspiration gallery</p>
-        <h2 className="mt-2 text-3xl font-semibold text-neutral-950">Explore spaces before you request a quote</h2>
-      </div>
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-        {inspirationSpaces.map((space) => {
-          const Icon = space.icon
-          return (
-            <button
-              key={space.name}
-              type="button"
-              onClick={() => onCategoryClick(space.name)}
-              className="group overflow-hidden rounded-md border border-neutral-200 bg-white text-left shadow-sm hover:border-emerald-700"
-            >
-              <div className="relative">
-                <img
-                  src={space.img}
-                  alt={`${space.name} tile and finishing inspiration by Kleihaus Ceramics`}
-                  loading="lazy"
-                  decoding="async"
-                  className="aspect-[4/3] w-full object-cover transition duration-300 group-hover:scale-105"
-                />
-                <span className="absolute left-3 top-3 inline-flex h-10 w-10 items-center justify-center rounded-md bg-white/95 text-emerald-800">
-                  <Icon className="h-5 w-5" />
-                </span>
-              </div>
-              <div className="p-4">
-                <h3 className="text-lg font-semibold text-neutral-950">{space.name}</h3>
-                <p className="mt-2 text-sm leading-6 text-neutral-600">{space.text}</p>
-              </div>
-            </button>
-          )
-        })}
-      </div>
-    </section>
-  )
-}
-
 function Services() {
   return (
     <section className="mx-auto max-w-7xl px-4 py-16">
@@ -810,32 +737,6 @@ function Services() {
             </div>
           )
         })}
-      </div>
-    </section>
-  )
-}
-
-function AreasWeServe() {
-  return (
-    <section aria-labelledby="areas-heading" className="bg-stone-100">
-      <div className="mx-auto max-w-7xl px-4 py-16">
-        <div className="mb-7 max-w-3xl">
-          <p className="text-sm font-semibold uppercase text-emerald-700">Areas we serve</p>
-          <h2 id="areas-heading" className="mt-2 text-3xl font-semibold text-neutral-950">
-            Local support for Nairobi, Machakos and Makueni
-          </h2>
-          <p className="mt-2 text-sm leading-6 text-neutral-600">
-            Kleihaus supports customers looking for tiles, sanitaryware and building finishing materials in Kenya without overcomplicating the quotation process.
-          </p>
-        </div>
-        <div className="grid gap-4 md:grid-cols-3">
-          {areasServed.map((area) => (
-            <article key={area.title} className="rounded-md border border-neutral-200 bg-white p-5 shadow-sm">
-              <h3 className="text-base font-semibold text-neutral-950">{area.title}</h3>
-              <p className="mt-2 text-sm leading-6 text-neutral-600">{area.text}</p>
-            </article>
-          ))}
-        </div>
       </div>
     </section>
   )
@@ -866,30 +767,14 @@ function HelpfulGuides({ onGuideClick }) {
             </a>
           ))}
         </div>
-      </div>
-    </section>
-  )
-}
-
-function FAQSection() {
-  return (
-    <section id="faq" aria-labelledby="faq-heading" className="mx-auto max-w-7xl px-4 py-16">
-      <div className="mb-7 max-w-3xl">
-        <p className="text-sm font-semibold uppercase text-emerald-700">Customer questions</p>
-        <h2 id="faq-heading" className="mt-2 text-3xl font-semibold text-neutral-950">
-          Frequently asked questions
-        </h2>
-        <p className="mt-2 text-sm leading-6 text-neutral-600">
-          Quick guidance for tile selection, grout choices, delivery planning, sanitaryware and project quotation support.
-        </p>
-      </div>
-      <div className="grid gap-4 lg:grid-cols-2">
-        {faqItems.map((item) => (
-          <article key={item.question} className="rounded-md border border-neutral-200 bg-white p-5 shadow-sm">
-            <h3 className="text-base font-semibold text-neutral-950">{item.question}</h3>
-            <p className="mt-2 text-sm leading-6 text-neutral-600">{item.answer}</p>
-          </article>
-        ))}
+        <div className="mt-10 grid gap-4 lg:grid-cols-2">
+          {faqItems.map((item) => (
+            <article key={item.question} className="rounded-md border border-neutral-200 bg-white p-5 shadow-sm">
+              <h3 className="text-base font-semibold text-neutral-950">{item.question}</h3>
+              <p className="mt-2 text-sm leading-6 text-neutral-600">{item.answer}</p>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   )
@@ -1103,13 +988,9 @@ export default function App() {
       <Hero onWhatsAppClick={handleWhatsAppClick} />
       <ShopByCategory selectedCategory={selectedCategory} onCategoryClick={handleCategoryClick} onWhatsAppClick={handleWhatsAppClick} />
       <ProductCatalogue onProductInterest={handleProductInterest} onWhatsAppClick={handleWhatsAppClick} />
-      <CatalogueSummary />
       <Services />
-      <AreasWeServe />
       <QuantityEstimator />
-      <InspirationGallery onCategoryClick={handleCategoryClick} />
       <HelpfulGuides onGuideClick={handleGuideClick} />
-      <FAQSection />
       <Contact onWhatsAppClick={handleWhatsAppClick} />
       <MobileStickyWhatsApp onWhatsAppClick={handleWhatsAppClick} />
       <Footer />
