@@ -107,6 +107,20 @@ SEO support includes:
 
 See `docs/SEO_STRATEGY.md` for the indexing roadmap.
 
+## Project Documentation
+
+Primary documentation:
+
+- `docs/CHANGELOG.md` - audited history of major project work.
+- `docs/PROJECT_AUDIT.md` - current project state, features, limitations and next improvements.
+- `docs/DEVELOPMENT_WORKFLOW.md` - local setup, build checks, git workflow and commit safety rules.
+- `docs/AI_BACKEND_ARCHITECTURE.md` - frontend/backend separation for analytics, recommendations and reporting.
+- `docs/SEO_STRATEGY.md` - SEO, Google indexing and AI-search readiness roadmap.
+- `docs/VISIBILITY_AND_GROWTH_ROADMAP.md` - Google visibility, content and conversion roadmap.
+- `docs/QUOTE_FORM_SUBMISSION.md` - WhatsApp quote submission and secure backend email preparation.
+
+Every future meaningful change must update `docs/CHANGELOG.md` and, where relevant, `docs/PROJECT_AUDIT.md`.
+
 ## Development Workflow
 
 Before editing:
