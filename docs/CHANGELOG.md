@@ -6,6 +6,13 @@ Rule: Every future meaningful change must update `docs/CHANGELOG.md` and, where 
 
 ## 2026-05-27
 
+### WhatsApp Quote Submission UX
+
+- Updated the quote form submission flow to navigate to WhatsApp in the same browser tab/window instead of opening a new tab.
+- Preserved quote validation, anonymized analytics tracking and backend-ready quote submission preparation.
+- Normalized WhatsApp message encoding so line breaks are preserved as `%0A` for WhatsApp mobile, WhatsApp Web and browser redirects.
+- Added backend-ready integration comments for future Cloudflare Worker, WhatsApp Business API, EmailJS and Formspree delivery paths.
+
 ### Project Documentation
 
 - Added root `README.md` with project overview, live website link, tech stack, setup commands, Cloudflare Pages deployment notes, environment variable placeholders and development workflow.

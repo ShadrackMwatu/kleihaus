@@ -27,8 +27,8 @@ const validateQuoteRequest = (payload) => {
   return errors
 }
 
-const buildWhatsAppMessage = (payload) =>
-  [
+const buildWhatsAppMessage = (payload) => {
+  const lines = [
     'Hello Kleihaus Ceramics, I would like a quote.',
     '',
     `Name: ${displayValue(payload.name)}`,
@@ -38,10 +38,18 @@ const buildWhatsAppMessage = (payload) =>
     '',
     'Request:',
     cleanMessageText(payload.message),
-  ].join('\n')
+  ]
+
+  return lines.join('\n').trim()
+}
+
+const encodeWhatsAppMessage = (message) =>
+  encodeURIComponent(message)
+    .replace(/%0D%0A/g, '%0A')
+    .replace(/%0D/g, '%0A')
 
 const buildWhatsAppUrl = (payload) =>
-  `https://wa.me/${QUOTE_WHATSAPP_NUMBER}?text=${encodeURIComponent(buildWhatsAppMessage(payload))}`
+  `https://wa.me/${QUOTE_WHATSAPP_NUMBER}?text=${encodeWhatsAppMessage(buildWhatsAppMessage(payload))}`
 
 export const quoteRequestService = {
   prepare(request) {
@@ -71,5 +79,6 @@ export const quoteRequestService = {
 
   buildWhatsAppMessage,
   buildWhatsAppUrl,
+  encodeWhatsAppMessage,
   validateQuoteRequest,
 }

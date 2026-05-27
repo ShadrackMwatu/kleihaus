@@ -454,7 +454,6 @@ function Hero({ onWhatsAppClick }) {
             alt="Kleihaus Ceramics tile and finishing materials showroom structure"
             loading="eager"
             decoding="async"
-            fetchpriority="high"
             className="absolute inset-0 h-full w-full object-cover opacity-65"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/75 to-neutral-900/10" />
@@ -816,11 +815,14 @@ function Contact({ onWhatsAppClick }) {
     analyticsService.track('product_interest', { product: 'contact_form_quote_request', category: 'Project quotation' })
     analyticsService.track('contact_form_submit', { source: 'contact_form', category: 'Project quotation' })
 
-    window.open(preparedRequest.whatsappUrl, '_blank', 'noopener,noreferrer')
-
-    const backendResult = await quoteRequestService.submitBackend(preparedRequest.payload)
-    setQuoteStatus(backendResult.message)
     setQuoteErrors([])
+    setQuoteStatus('Your WhatsApp quote request is ready. Please send it in WhatsApp so our team can respond.')
+
+    // Backend-ready: this same payload can later be delivered through a Cloudflare Worker,
+    // WhatsApp Business API, EmailJS, Formspree or another secure server-side integration.
+    void quoteRequestService.submitBackend(preparedRequest.payload).catch(() => {})
+
+    window.location.href = preparedRequest.whatsappUrl
   }
 
   return (
