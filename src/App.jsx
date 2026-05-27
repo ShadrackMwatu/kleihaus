@@ -789,6 +789,8 @@ function Contact({ onWhatsAppClick }) {
   })
   const [quoteErrors, setQuoteErrors] = useState([])
   const [quoteStatus, setQuoteStatus] = useState('')
+  const [quoteStatusType, setQuoteStatusType] = useState('success')
+  const [isQuoteSubmitting, setIsQuoteSubmitting] = useState(false)
 
   const updateQuoteField = (field) => (event) => {
     setQuoteForm((current) => ({ ...current, [field]: event.target.value }))
@@ -806,6 +808,10 @@ function Contact({ onWhatsAppClick }) {
       return
     }
 
+    setIsQuoteSubmitting(true)
+    setQuoteErrors([])
+    setQuoteStatus('')
+
     analyticsService.track('quote_form_submitted', {
       source: 'contact_form',
       location: preparedRequest.payload.location || 'not_provided',
@@ -815,14 +821,10 @@ function Contact({ onWhatsAppClick }) {
     analyticsService.track('product_interest', { product: 'contact_form_quote_request', category: 'Project quotation' })
     analyticsService.track('contact_form_submit', { source: 'contact_form', category: 'Project quotation' })
 
-    setQuoteErrors([])
-    setQuoteStatus('Your WhatsApp quote request is ready. Please send it in WhatsApp so our team can respond.')
-
-    // Backend-ready: this same payload can later be delivered through a Cloudflare Worker,
-    // WhatsApp Business API, EmailJS, Formspree or another secure server-side integration.
-    void quoteRequestService.submitBackend(preparedRequest.payload).catch(() => {})
-
-    window.location.href = preparedRequest.whatsappUrl
+    const backendResult = await quoteRequestService.submitBackend(preparedRequest.payload)
+    setQuoteStatusType(backendResult.ok ? 'success' : 'error')
+    setQuoteStatus(backendResult.message)
+    setIsQuoteSubmitting(false)
   }
 
   return (
@@ -853,6 +855,7 @@ function Contact({ onWhatsAppClick }) {
 
         <form
           onSubmit={submitQuoteRequest}
+          noValidate
           className="rounded-lg bg-white p-5 text-neutral-950 shadow-xl sm:p-6"
         >
           <div className="mb-5">
@@ -896,11 +899,23 @@ function Contact({ onWhatsAppClick }) {
               ))}
             </div>
           )}
-          {quoteStatus && <p className="mt-4 rounded-md border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800">{quoteStatus}</p>}
+          {quoteStatus && (
+            <p
+              className={`mt-4 rounded-md border px-4 py-3 text-sm ${
+                quoteStatusType === 'success'
+                  ? 'border-emerald-200 bg-emerald-50 text-emerald-800'
+                  : 'border-amber-200 bg-amber-50 text-amber-900'
+              }`}
+            >
+              {quoteStatus}
+            </p>
+          )}
           <div className="mt-5 flex flex-wrap gap-3">
-            <Button>Send request</Button>
+            <Button disabled={isQuoteSubmitting} className="disabled:cursor-not-allowed disabled:opacity-70">
+              {isQuoteSubmitting ? 'Sending request...' : 'Send request'}
+            </Button>
             <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" onClick={() => onWhatsAppClick('contact_form')}>
-              <ButtonSecondary className="group gap-2 hover:border-[#25D366]/70 hover:shadow-[0_0_16px_rgba(37,211,102,0.16)]">
+              <ButtonSecondary type="button" className="group gap-2 hover:border-[#25D366]/70 hover:shadow-[0_0_16px_rgba(37,211,102,0.16)]">
                 <WhatsAppBrandText>Chat on WhatsApp</WhatsAppBrandText>
               </ButtonSecondary>
             </a>

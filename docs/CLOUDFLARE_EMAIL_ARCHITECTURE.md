@@ -1,15 +1,17 @@
 # Cloudflare Email Architecture
 
-Kleihaus quote requests should use a secure backend endpoint for email delivery. The public website should prepare the request payload and open WhatsApp immediately, while email provider credentials stay on the server side.
+Kleihaus quote requests use a secure backend endpoint for email delivery. The public website prepares the request payload and posts it to `/api/quote-request`, while email provider credentials stay on the server side.
 
 ## Target Flow
 
 1. Customer submits the quote/contact form on the Kleihaus website.
-2. The frontend validates required fields and opens WhatsApp with a formatted quote message.
-3. The frontend prepares a JSON payload and posts it to `VITE_QUOTE_ENDPOINT` when configured.
-4. A Cloudflare Worker receives the payload, validates it, rate-limits abuse, and sanitizes the message.
-5. The Worker sends the email through a server-side email provider.
-6. Email is delivered to `sales@kleihaus.com`.
+2. The frontend validates required fields.
+3. The frontend posts a JSON payload to `/api/quote-request`.
+4. A Cloudflare Pages Function receives the payload, validates it and sanitizes the message.
+5. The Function stores the request in D1 when configured.
+6. The Function sends the email through Resend when backend variables are configured.
+7. Email is delivered to `sales@kleihaus.com`.
+8. WhatsApp Business API notification is skipped gracefully unless backend credentials are configured.
 
 ## Frontend Payload
 
@@ -17,24 +19,27 @@ The browser sends only a JSON request body. It does not contain API keys, SMTP p
 
 ```json
 {
-  "type": "quote_request",
   "name": "...",
   "email": "...",
   "phone": "...",
   "location": "...",
   "message": "...",
-  "timestamp": "ISO_DATE",
   "source": "kleihaus_website"
 }
 ```
 
-## Environment Placeholder
+## Backend Environment Variables
 
 ```env
-VITE_QUOTE_ENDPOINT=
+RESEND_API_KEY=
+QUOTE_EMAIL_TO=sales@kleihaus.com
+QUOTE_EMAIL_FROM=
+WHATSAPP_ACCESS_TOKEN=
+WHATSAPP_PHONE_NUMBER_ID=
+WHATSAPP_NOTIFY_TO=254748827166
 ```
 
-This value should be the public HTTPS URL of the Cloudflare Worker endpoint. It must not contain a secret.
+These values belong in Cloudflare Pages/Workers settings. Do not prefix backend secrets with `VITE_`.
 
 ## Why Secrets Stay Server-Side
 
@@ -51,13 +56,12 @@ The Cloudflare Worker can later integrate with:
 
 For production, prefer providers that support secure server-side API keys, domain verification, sender authentication, retry handling, and abuse protection.
 
-## Cloudflare Worker Responsibilities
+## Cloudflare Pages Function Responsibilities
 
 - Accept `POST` requests only.
-- Validate `type`, contact fields, message length, and timestamp.
+- Validate contact fields and message length.
 - Reject malformed or abusive submissions.
-- Apply CORS only for `https://www.kleihaus.com`.
-- Store provider API keys as Worker secrets.
+- Store provider API keys as backend secrets.
 - Send the quote request to `sales@kleihaus.com`.
 - Return a simple success or failure response to the frontend.
 
@@ -70,4 +74,4 @@ The same secure backend pattern can later support monthly management reporting:
 - Send reports to `muthamimwatu@gmail.com` and `sales@kleihaus.com`.
 - Keep reporting logic and email credentials out of the public frontend.
 
-No real email sending is implemented in the frontend. Email delivery begins only after a secure backend endpoint is configured.
+No real email sending is implemented in the frontend. Email delivery begins only after Cloudflare backend variables are configured.

@@ -1,8 +1,28 @@
 # Quote Form Submission
 
-## Current Phase 1 Behavior
+## Current Phase 2 Behavior
 
-The public Kleihaus quote/contact form validates the customer request in the browser, prepares a formatted WhatsApp quote message, and opens:
+The public Kleihaus quote/contact form validates the customer request in the browser and posts the payload to:
+
+```text
+/api/quote-request
+```
+
+The Cloudflare Pages Function receives the request, validates and sanitizes the payload, optionally stores it in D1, sends email through Resend when configured, and prepares WhatsApp Business API notification support when credentials are available.
+
+On backend success, the customer sees:
+
+```text
+Request submitted successfully. Our team will respond shortly.
+```
+
+On backend failure, the customer sees:
+
+```text
+We could not submit your request. Please try WhatsApp.
+```
+
+The manual "Chat on WhatsApp" button remains available and opens:
 
 `https://wa.me/254748827166?text=<encoded quote request>`
 
@@ -16,26 +36,24 @@ The message includes:
 
 The form also tracks the anonymized `quote_form_submitted` analytics event for future reporting. Personal contact fields are not written into behavioral analytics payloads.
 
-## Backend-Ready Email Delivery
+## Backend Email Delivery
 
-The frontend can optionally send the same quote request payload to a secure backend endpoint using:
+Backend delivery is handled by:
 
-```env
-VITE_QUOTE_ENDPOINT=
+```text
+functions/api/quote-request.js
 ```
 
-When `VITE_QUOTE_ENDPOINT` is empty, the form still works through WhatsApp and shows a customer-friendly message: "Your WhatsApp quote request is ready. Please send it in WhatsApp so our team can respond." When configured, the frontend sends this JSON payload:
+The frontend sends this JSON payload:
 
 ```json
 {
-  "type": "quote_request",
   "name": "...",
   "email": "...",
   "phone": "...",
   "location": "...",
   "message": "...",
-  "source": "kleihaus_website",
-  "timestamp": "ISO_DATE"
+  "source": "kleihaus_website"
 }
 ```
 
@@ -51,13 +69,14 @@ Email delivery should be handled by a backend/service endpoint such as:
 
 ## Security Rule
 
-Do not put SMTP passwords, email API keys, WhatsApp Business tokens, LLM keys, database credentials, or other secrets in frontend code or `VITE_` environment variables. Vite exposes `VITE_` variables to the browser bundle, so `VITE_QUOTE_ENDPOINT` must only contain a public endpoint URL, never a private key.
+Do not put SMTP passwords, email API keys, WhatsApp Business tokens, LLM keys, database credentials, or other secrets in frontend code or `VITE_` environment variables. Vite exposes `VITE_` variables to the browser bundle. Backend secrets must be configured in Cloudflare Pages/Workers settings.
 
 ## Recommended Backend Flow
 
-1. Browser validates the request and opens WhatsApp for immediate customer action.
-2. Browser posts the quote payload to `VITE_QUOTE_ENDPOINT` if configured.
+1. Browser validates the request.
+2. Browser posts the quote payload to `/api/quote-request`.
 3. Backend validates and sanitizes the payload.
-4. Backend sends email to `sales@kleihaus.com`.
-5. Backend stores only consent-aware, privacy-preserving operational data.
-6. Backend can later feed monthly management reporting without exposing intelligence panels on the public website.
+4. Backend stores the request if D1 is configured.
+5. Backend sends email to `sales@kleihaus.com`.
+6. Backend prepares or sends WhatsApp Business notification when configured.
+7. Backend can later feed monthly management reporting without exposing intelligence panels on the public website.

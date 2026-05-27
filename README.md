@@ -61,21 +61,28 @@ VITE_ANALYTICS_ENDPOINT=
 VITE_ENABLE_RECOMMENDATIONS=true
 VITE_ENABLE_MONTHLY_REPORTS=false
 VITE_MONTHLY_REPORT_RECIPIENTS=
-VITE_QUOTE_ENDPOINT=
 VITE_MONTHLY_REPORT_ENDPOINT=
+RESEND_API_KEY=
+QUOTE_EMAIL_TO=sales@kleihaus.com
+QUOTE_EMAIL_FROM=
+WHATSAPP_ACCESS_TOKEN=
+WHATSAPP_PHONE_NUMBER_ID=
+WHATSAPP_NOTIFY_TO=254748827166
 ```
 
-`VITE_QUOTE_ENDPOINT` is reserved for a secure backend quote/email endpoint such as a Cloudflare Worker. Do not place API keys, SMTP passwords, WhatsApp tokens, database credentials or LLM keys in frontend variables.
+Backend variables such as `RESEND_API_KEY`, `QUOTE_EMAIL_FROM` and WhatsApp Business API tokens must be configured in Cloudflare Pages/Workers settings, not exposed in frontend code. Do not place API keys, SMTP passwords, WhatsApp tokens, database credentials or LLM keys in `VITE_` variables.
 
 ## Quote and WhatsApp Flow
 
-The public quote form validates customer details, opens WhatsApp with a formatted quote message and optionally prepares a backend email submission when `VITE_QUOTE_ENDPOINT` is configured.
+The public quote form validates customer details and posts to `/api/quote-request`, a Cloudflare Pages Function that can store inquiries, send email notifications and prepare WhatsApp Business API notifications when backend variables are configured.
 
-Current customer-facing fallback message:
+Success message:
 
 ```text
-Your WhatsApp quote request is ready. Please send it in WhatsApp so our team can respond.
+Request submitted successfully. Our team will respond shortly.
 ```
+
+The separate "Chat on WhatsApp" button remains available as a manual fallback.
 
 ## AI and Backend Architecture
 
@@ -118,6 +125,7 @@ Primary documentation:
 - `docs/SEO_STRATEGY.md` - SEO, Google indexing and AI-search readiness roadmap.
 - `docs/VISIBILITY_AND_GROWTH_ROADMAP.md` - Google visibility, content and conversion roadmap.
 - `docs/QUOTE_FORM_SUBMISSION.md` - WhatsApp quote submission and secure backend email preparation.
+- `docs/QUOTE_BACKEND_AUTOMATION.md` - Cloudflare Pages Function quote automation, email delivery and D1 storage readiness.
 
 Every future meaningful change must update `docs/CHANGELOG.md` and, where relevant, `docs/PROJECT_AUDIT.md`.
 

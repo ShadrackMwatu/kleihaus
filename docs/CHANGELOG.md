@@ -6,6 +6,14 @@ Rule: Every future meaningful change must update `docs/CHANGELOG.md` and, where 
 
 ## 2026-05-27
 
+### Backend Quote Request Automation
+
+- Added Cloudflare Pages Function endpoint at `functions/api/quote-request.js` for secure quote request automation.
+- Updated the quote form so "Send request" posts to `/api/quote-request` instead of automatically redirecting to WhatsApp.
+- Preserved the manual "Chat on WhatsApp" fallback button for customers if backend submission fails.
+- Added backend-only environment variable placeholders for Resend email delivery, WhatsApp Business Cloud API notification and optional D1 storage.
+- Added `docs/QUOTE_BACKEND_AUTOMATION.md` documenting the frontend-to-backend flow, Cloudflare setup, D1 schema, testing steps and security notes.
+
 ### WhatsApp Quote Submission UX
 
 - Updated the quote form submission flow to navigate to WhatsApp in the same browser tab/window instead of opening a new tab.

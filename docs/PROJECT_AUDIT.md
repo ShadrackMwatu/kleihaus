@@ -104,16 +104,19 @@ These files are backend-ready foundations only. They must not expose secrets or 
 Current behavior:
 
 - The contact/quote form validates required customer details.
-- It builds a formatted WhatsApp quote request with readable line breaks.
-- It opens WhatsApp using `https://wa.me/254748827166?text=<encoded message>`.
+- It posts the quote request to the secure backend endpoint at `/api/quote-request`.
+- The backend validates, sanitizes and timestamps the request.
+- The backend can store quote requests in Cloudflare D1 when a database binding is configured.
+- The backend sends quote email notifications through Resend when backend secrets are configured.
+- The backend prepares WhatsApp Business Cloud API notification support when backend credentials are configured.
 - It tracks a `quote_form_submitted` analytics event.
-- It can optionally POST the request payload to `VITE_QUOTE_ENDPOINT` when a secure backend endpoint is configured.
+- The manual "Chat on WhatsApp" button remains available as a fallback.
 
 Email submission readiness:
 
 - Email credentials are not stored in frontend code.
-- `VITE_QUOTE_ENDPOINT` is the frontend pointer to a future secure backend endpoint, such as a Cloudflare Worker.
-- The backend endpoint would forward requests to an email provider such as Resend, SendGrid, Mailgun, EmailJS or a custom API.
+- Backend variables such as `RESEND_API_KEY`, `QUOTE_EMAIL_FROM` and WhatsApp Business API tokens must be configured in Cloudflare, not committed to the repo.
+- The backend endpoint can forward requests to Resend now and can later be extended for SendGrid, Mailgun, EmailJS or a custom API.
 
 ## SEO Status
 
@@ -137,8 +140,8 @@ See `docs/SEO_STRATEGY.md` for the detailed indexing and scaling roadmap.
 
 ## Known Limitations
 
-- The site is currently a static frontend; persistent analytics, email submission and monthly reports require a secure backend endpoint.
-- `VITE_QUOTE_ENDPOINT` is a placeholder until a Cloudflare Worker or equivalent API is deployed.
+- Persistent analytics and monthly reports still require a configured backend data store.
+- Quote email automation requires Cloudflare backend environment variables and verified Resend sender configuration.
 - Product inventory is represented as catalogue-style content, not a database-backed e-commerce catalogue.
 - Search is frontend-oriented and not yet backed by a persistent search index.
 - Monthly AI reports are documented and service-prepared, but not yet automatically sent.
