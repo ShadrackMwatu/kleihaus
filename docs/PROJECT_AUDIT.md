@@ -48,6 +48,8 @@ Key files and folders:
 - Build command: `npm run build`
 - Build output: `dist`
 - Deployment model: Cloudflare Pages automatically builds and deploys changes pushed to `main`.
+- Pages Functions are deployed from the repo-based `functions/` directory; no dashboard-created Worker is required.
+- `wrangler.toml` is intentionally minimal and does not declare D1 bindings until the production database is fully configured.
 
 Cloudflare deployment settings should not be changed casually. The current site is intended to remain a Vite static frontend deployed from GitHub.
 

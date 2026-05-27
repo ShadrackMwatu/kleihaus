@@ -8,6 +8,7 @@ Rule: Every future meaningful change must update `docs/CHANGELOG.md` and, where 
 
 ### Backend Quote Request Automation
 
+- Removed the D1 binding from `wrangler.toml` and removed `wrangler` from frontend dev dependencies so Cloudflare Pages can deploy the Vite site and repo-based `functions/` directory without requiring undeclared account resources during build.
 - Fixed the production quote API endpoint wiring by changing the frontend fetch target back to `/api/quote-request`.
 - Added `message` and `details` aliases alongside `requestDetails` in the quote request payload so current and future deployed function versions accept the same submission.
 - Confirmed the repo-based Cloudflare Pages Function path is `functions/api/quote-request.js` and the function exports `onRequestPost(context)`.

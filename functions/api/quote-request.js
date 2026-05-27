@@ -1,13 +1,18 @@
 const successMessage = 'Request submitted successfully. Our team will respond shortly.'
 
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type',
+}
+
 const json = (body, status = 200) =>
   Response.json(body, {
     status,
     headers: {
+      'Content-Type': 'application/json',
       'Cache-Control': 'no-store',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'POST, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type',
+      ...corsHeaders,
     },
   })
 
@@ -44,7 +49,7 @@ const validatePayload = (payload) => {
   return errors
 }
 
-const safeLog = (message, payload, extra = {}) => {
+const safeLog = (message, payload = {}, extra = {}) => {
   console.log(message, {
     requestId: payload.id,
     source: payload.source,
@@ -55,10 +60,11 @@ const safeLog = (message, payload, extra = {}) => {
 }
 
 const storeInquiry = async (env, payload) => {
-  // Future persistence hooks can extend this cleanly:
-  // Cloudflare D1, Supabase, Firebase, Airtable, or a custom API.
   const db = env?.QUOTE_REQUESTS_DB || env?.DB
-  if (!db) return { configured: false, stored: false }
+
+  if (!db) {
+    return { configured: false, stored: false, error: 'D1 binding missing' }
+  }
 
   try {
     await db
@@ -81,35 +87,93 @@ const storeInquiry = async (env, payload) => {
       .run()
 
     return { configured: true, stored: true }
-  } catch {
-    safeLog('quote storage failed', payload, { mode: 'storage_failed' })
-    return { configured: true, stored: false }
+  } catch (error) {
+    safeLog('quote storage failed', payload, {
+      mode: 'storage_failed',
+      error: error.message,
+    })
+
+    return {
+      configured: true,
+      stored: false,
+      error: error.message,
+    }
   }
 }
 
-const prepareEmailNotification = (env, payload) => {
-  // Future email hooks:
-  // Resend, EmailJS through a backend relay, SMTP, or a custom API.
-  const hasResend = Boolean(env?.RESEND_API_KEY && env?.QUOTE_EMAIL_FROM)
-  if (!hasResend) {
-    safeLog('notification credentials not configured', payload, { mode: 'email_skipped' })
-    return { configured: false, prepared: false }
+const sendEmailNotification = async (env, payload) => {
+  if (!env?.RESEND_API_KEY) {
+    return { configured: false, sent: false, error: 'RESEND_API_KEY missing' }
   }
 
-  return { configured: true, prepared: true, provider: 'resend_ready' }
+  const from = env.QUOTE_EMAIL_FROM || 'Kleihaus Ceramics <onboarding@resend.dev>'
+  const to = env.QUOTE_EMAIL_TO || 'sales@kleihaus.com'
+
+  const html = `
+    <h2>New Kleihaus Quote Request</h2>
+    <p><strong>Name:</strong> ${payload.name}</p>
+    <p><strong>Email:</strong> ${payload.email || 'Not provided'}</p>
+    <p><strong>Phone:</strong> ${payload.phone || 'Not provided'}</p>
+    <p><strong>Location:</strong> ${payload.location || 'Not provided'}</p>
+    <p><strong>Request details:</strong></p>
+    <p>${payload.requestDetails}</p>
+    <hr />
+    <p><strong>Request ID:</strong> ${payload.id}</p>
+    <p><strong>Captured at:</strong> ${payload.created_at}</p>
+  `
+
+  const response = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${env.RESEND_API_KEY}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      from,
+      to,
+      subject: `New quote request from ${payload.name}`,
+      html,
+    }),
+  })
+
+  const result = await response.json().catch(() => ({}))
+
+  if (!response.ok) {
+    safeLog('email notification failed', payload, {
+      mode: 'email_failed',
+      status: response.status,
+      error: JSON.stringify(result),
+    })
+
+    return {
+      configured: true,
+      sent: false,
+      status: response.status,
+      error: result,
+    }
+  }
+
+  return {
+    configured: true,
+    sent: true,
+    provider: 'resend',
+    id: result.id,
+  }
 }
 
-const prepareWhatsAppNotification = (env) => {
-  // Future WhatsApp hooks:
-  // WhatsApp Business API / Meta Graph API.
-  const hasWhatsApp = Boolean(env?.WHATSAPP_ACCESS_TOKEN && env?.WHATSAPP_PHONE_NUMBER_ID)
-  if (!hasWhatsApp) return { configured: false, prepared: false }
-
-  return { configured: true, prepared: true, provider: 'meta_graph_ready' }
+const prepareWhatsAppNotification = () => {
+  return {
+    configured: false,
+    sent: false,
+    note: 'Automatic WhatsApp sending requires WhatsApp Business API.',
+  }
 }
 
 export async function onRequestOptions() {
-  return json({ success: true })
+  return new Response(null, {
+    status: 204,
+    headers: corsHeaders,
+  })
 }
 
 export async function onRequestGet() {
@@ -133,16 +197,17 @@ export async function onRequestPost(context) {
   }
 
   const storage = await storeInquiry(context.env, payload)
-  const email = prepareEmailNotification(context.env, payload)
-  const whatsapp = prepareWhatsAppNotification(context.env)
-  const notificationsReady = email.configured || whatsapp.configured
-  const mode = notificationsReady ? 'captured_notifications_ready' : 'captured_without_notifications'
+  const email = await sendEmailNotification(context.env, payload)
+  const whatsapp = prepareWhatsAppNotification()
 
-  safeLog('quote request captured', payload, { mode })
+  safeLog('quote request captured', payload, {
+    storage,
+    email,
+    whatsapp,
+  })
 
   return json({
     success: true,
-    mode,
     message: successMessage,
     requestId: payload.id,
     capturedAt: payload.created_at,

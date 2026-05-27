@@ -1,8 +1,3 @@
 name = "kleihaus"
 compatibility_date = "2025-05-27"
 pages_build_output_dir = "dist"
-
-[[d1_databases]]
-binding = "DB"
-database_name = "kleihaus_quotes"
-database_id = "895e6c3b-9f44-46fe-a96a-c45c3fe3278b"
