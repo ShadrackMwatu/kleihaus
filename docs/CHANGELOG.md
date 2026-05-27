@@ -8,6 +8,9 @@ Rule: Every future meaningful change must update `docs/CHANGELOG.md` and, where 
 
 ### Backend Quote Request Automation
 
+- Fixed the repo-based Cloudflare Pages Function so it exports `onRequestPost(context)` for `/api/quote-request`.
+- Changed missing notification credentials from a public failure to a captured success response using `mode: "captured_without_notifications"`.
+- Added local development fallback messaging when Vite cannot reach the Pages Function endpoint.
 - Added Cloudflare Pages Function endpoint at `functions/api/quote-request.js` for secure quote request automation.
 - Updated the quote form so "Send request" posts to `/api/quote-request` instead of automatically redirecting to WhatsApp.
 - Preserved the manual "Chat on WhatsApp" fallback button for customers if backend submission fails.

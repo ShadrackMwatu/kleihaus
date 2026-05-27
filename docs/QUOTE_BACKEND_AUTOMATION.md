@@ -8,11 +8,12 @@ Kleihaus Phase 2 quote automation moves the main quote form from browser-to-What
 2. Frontend validates name, contact detail and request details.
 3. Frontend posts JSON to `/api/quote-request`.
 4. Cloudflare Pages Function validates and sanitizes the payload.
-5. Backend stores the inquiry if D1 storage is configured.
-6. Backend sends an email notification to `sales@kleihaus.com` through Resend when configured.
-7. Backend prepares/sends a WhatsApp Business Cloud API notification when credentials are configured.
+5. Backend prepares/stores the inquiry if a server-side storage binding is configured.
+6. Backend prepares email notification hooks for Resend, EmailJS, SMTP, or a custom API.
+7. Backend prepares WhatsApp Business / Meta Graph API notification hooks.
 8. Customer sees: "Request submitted successfully. Our team will respond shortly."
-9. If backend delivery fails, customer sees: "We could not submit your request. Please try WhatsApp."
+9. If notification credentials are missing, the backend still captures the request and returns success with `mode: "captured_without_notifications"`.
+10. If the local Vite dev server cannot reach `/api/quote-request`, the frontend shows: "Request prepared. Please use WhatsApp if submission does not complete."
 
 The separate "Chat on WhatsApp" button remains available as the manual fallback.
 
@@ -56,13 +57,24 @@ https://www.kleihaus.com/api/quote-request
 The function:
 
 - accepts `POST` JSON;
+- exports `onRequestPost(context)` for Cloudflare Pages Functions;
 - validates required fields;
 - sanitizes user input;
 - generates a server timestamp and request ID;
-- optionally stores the request in D1;
-- sends email through Resend when configured;
-- optionally sends WhatsApp Business Cloud API notification;
-- returns JSON success/failure.
+- prepares optional D1/Supabase/Firebase/Airtable persistence hooks;
+- prepares email notification hooks without exposing credentials;
+- prepares WhatsApp Business Cloud API notification hooks;
+- returns customer-safe JSON success/failure.
+
+When email or WhatsApp credentials are not configured, the function logs a safe server-side message and returns:
+
+```json
+{
+  "success": true,
+  "mode": "captured_without_notifications",
+  "message": "Request submitted successfully. Our team will respond shortly."
+}
+```
 
 ## Backend Environment Variables
 
@@ -87,7 +99,7 @@ Required:
 - `QUOTE_EMAIL_FROM`
 - `QUOTE_EMAIL_TO`
 
-`QUOTE_EMAIL_FROM` must be a verified sender/domain in Resend. If Resend is not configured, the backend returns a safe failure response and the frontend asks the customer to use WhatsApp.
+`QUOTE_EMAIL_FROM` must be a verified sender/domain in Resend before real email delivery is enabled. If notification credentials are not configured, the backend does not fail publicly; it captures the request and returns success.
 
 ## WhatsApp Business API Readiness
 
@@ -129,7 +141,7 @@ CREATE TABLE IF NOT EXISTS quote_requests (
 );
 ```
 
-If D1 is not configured, the function continues with email delivery.
+If D1 is not configured, the function continues safely and returns a captured response.
 
 ## Testing Steps
 
@@ -142,10 +154,11 @@ npm run dev
 
 Verify:
 
-- empty form shows browser validation / field validation;
+- empty form shows Kleihaus field validation;
 - valid form posts to `/api/quote-request`;
 - success displays "Request submitted successfully. Our team will respond shortly.";
-- backend failure displays "We could not submit your request. Please try WhatsApp.";
+- missing notification credentials still display the success message;
+- local Vite-only function unavailability displays "Request prepared. Please use WhatsApp if submission does not complete.";
 - Send request does not open WhatsApp;
 - manual "Chat on WhatsApp" still opens WhatsApp;
 - no secrets appear in browser code or source maps.

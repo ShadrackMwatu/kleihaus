@@ -107,8 +107,9 @@ Current behavior:
 - It posts the quote request to the secure backend endpoint at `/api/quote-request`.
 - The backend validates, sanitizes and timestamps the request.
 - The backend can store quote requests in Cloudflare D1 when a database binding is configured.
-- The backend sends quote email notifications through Resend when backend secrets are configured.
+- The backend prepares quote email hooks for Resend, EmailJS, SMTP or a custom API.
 - The backend prepares WhatsApp Business Cloud API notification support when backend credentials are configured.
+- If notification credentials are not configured, the backend still returns a captured success response so customers see "Request submitted successfully. Our team will respond shortly."
 - It tracks a `quote_form_submitted` analytics event.
 - The manual "Chat on WhatsApp" button remains available as a fallback.
 

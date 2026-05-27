@@ -74,7 +74,7 @@ Backend variables such as `RESEND_API_KEY`, `QUOTE_EMAIL_FROM` and WhatsApp Busi
 
 ## Quote and WhatsApp Flow
 
-The public quote form validates customer details and posts to `/api/quote-request`, a Cloudflare Pages Function that can store inquiries, send email notifications and prepare WhatsApp Business API notifications when backend variables are configured.
+The public quote form validates customer details and posts to `/api/quote-request`, a repo-based Cloudflare Pages Function that captures inquiries and prepares storage, email and WhatsApp notification hooks. If notification credentials are not configured yet, the backend still returns a safe customer success response.
 
 Success message:
 
