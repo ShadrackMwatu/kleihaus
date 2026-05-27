@@ -3,7 +3,6 @@ import {
   ArrowRight,
   Brush,
   Calculator,
-  CheckCircle2,
   ClipboardList,
   Mail,
   MapPin,
@@ -18,15 +17,12 @@ import {
   Store,
   Ruler,
   Truck,
-  Users,
   Wrench,
   X,
 } from 'lucide-react'
 import {
   inspirationSpaces,
-  popularCategories,
   suggestedSearches,
-  trendingSearches,
 } from './data/intelligenceData'
 import { contentTopics } from './data/contentTopics'
 import { analyticsService } from './services/analyticsService'
@@ -107,45 +103,6 @@ const categories = [
   },
 ]
 
-const seoLandingSections = [
-  {
-    title: 'Tiles in Nairobi',
-    text: 'Explore practical floor, wall, bathroom and outdoor tile options for Nairobi homes, shops, rentals and project sites.',
-  },
-  {
-    title: 'Bathroom Tiles Kenya',
-    text: 'Find bathroom tile ideas for compact spaces, shower walls, wet areas and complete modern bathroom finishes.',
-  },
-  {
-    title: 'Sanitaryware Kenya',
-    text: 'Request guidance on basins, toilets, taps, mixers, showers, baths and accessories for retail or project orders.',
-  },
-  {
-    title: 'Tile Adhesive and Grout Kenya',
-    text: 'Match tiles with the right adhesive, grout, trims and installation essentials for stronger, cleaner finishes.',
-  },
-  {
-    title: 'Paints and Finishes Kenya',
-    text: 'Source interior, exterior, roof and floor paints alongside tiles and sanitaryware for a complete finishing quote.',
-  },
-  {
-    title: 'Modern Bathroom Designs Kenya',
-    text: 'Plan coordinated tile, sanitaryware, tapware and accessory combinations for clean contemporary bathrooms.',
-  },
-  {
-    title: '60x60 Tiles Kenya',
-    text: 'Ask about 60x60 tile options for living rooms, bedrooms, offices and development projects.',
-  },
-]
-
-const onlineContactItems = [
-  { label: 'Phone', value: '+254 748 827 166', href: 'tel:+254748827166' },
-  { label: 'Email', value: 'sales@kleihaus.com', href: 'mailto:sales@kleihaus.com' },
-  { label: 'Locations', value: 'Nairobi | Machakos | Makueni' },
-  { label: 'Website', value: 'www.kleihaus.com', href: 'https://www.kleihaus.com/' },
-  { label: 'Social profiles', value: 'Official profile links will be added after verification.' },
-]
-
 const productGroups = [
   {
     title: 'Floor Tiles',
@@ -209,8 +166,6 @@ const serviceBadges = [
   { title: 'Installation support', text: 'Guidance on adhesives, grout, tile laying and finishing.', icon: Wrench },
   { title: 'Project quotations', text: 'Helpful estimates for room, home and bulk project needs.', icon: ClipboardList },
 ]
-
-const customerTypes = ['Homeowners', 'Contractors', 'Developers', 'Fundis / installers', 'Institutions']
 
 const Button = ({ className = '', children, ...props }) => (
   <button
@@ -317,9 +272,9 @@ function SearchAutocomplete({ value, onChange, projectType, onSearch }) {
       {active && (
         <div className="absolute left-0 right-0 top-full z-50 mt-2 rounded-md border border-neutral-200 bg-white p-3 shadow-xl">
           <div className="grid gap-1.5">
-            {[...(value ? suggestions : suggestedSearches), ...trendingSearches, ...popularCategories]
+            {[...(value ? suggestions : suggestedSearches)]
               .filter((item, index, list) => list.indexOf(item) === index)
-              .slice(0, 8)
+              .slice(0, 6)
               .map((item) => (
                 <button
                   key={item}
@@ -438,71 +393,49 @@ function Header({ projectType, searchQuery, setSearchQuery, onSearch, onCategory
 function Hero({ onWhatsAppClick }) {
   return (
     <section id="top" className="bg-stone-100">
-      <div className="mx-auto grid max-w-7xl gap-5 px-4 py-6 lg:grid-cols-[1.15fr_0.85fr] lg:py-10">
-        <div className="relative min-h-[460px] overflow-hidden rounded-md bg-neutral-950 text-white">
-          <img src="/images/kleihaus-structure.jpg" alt="" className="absolute inset-0 h-full w-full object-cover opacity-60" />
-          <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/80 to-neutral-900/20" />
-          <div className="relative flex min-h-[460px] max-w-3xl flex-col justify-center px-5 py-10 sm:px-10">
-            <p className="text-xs font-semibold uppercase text-emerald-200">Retail and project supply</p>
+      <div className="mx-auto max-w-7xl px-4 py-6 lg:py-10">
+        <div className="relative min-h-[520px] overflow-hidden rounded-lg bg-neutral-950 text-white shadow-xl">
+          <img src="/images/kleihaus-structure.jpg" alt="" className="absolute inset-0 h-full w-full object-cover opacity-65" />
+          <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/75 to-neutral-900/10" />
+          <div className="relative flex min-h-[520px] max-w-3xl flex-col justify-center px-5 py-12 sm:px-10 lg:px-12">
+            <p className="text-xs font-semibold uppercase text-emerald-200">Kleihaus Ceramics</p>
             <h1 className="mt-4 max-w-2xl text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
-              Tiles, sanitaryware, paints and finishing materials for homes and projects.
+              Premium tiles and finishing materials for Kenyan homes and projects.
             </h1>
-            <p className="mt-5 max-w-2xl text-base leading-7 text-neutral-100 sm:text-lg">
-              A premium Kleihaus catalogue for Kenyan homeowners, contractors and developers looking for reliable product guidance, practical finishing materials and clear quotations.
+            <p className="mt-5 max-w-xl text-base leading-7 text-neutral-100 sm:text-lg">
+              Browse tiles, sanitaryware, paints, adhesives and grout, then request a clear quote from the Kleihaus team.
             </p>
-            <div className="mt-7 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-wrap gap-3">
               <a href="#catalogue">
                 <Button className="gap-2 bg-white text-neutral-950 hover:bg-neutral-100">
                   Browse catalogue
                   <ArrowRight className="h-4 w-4" />
                 </Button>
               </a>
-              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" onClick={() => onWhatsAppClick('hero')}>
+              <a href="#contact" onClick={() => onWhatsAppClick('hero_quote_intent')}>
                 <ButtonSecondary className="gap-2 border-white/40 bg-white/10 text-white hover:bg-white/20">
-                  <MessageCircle className="h-4 w-4" />
-                  Request quote on WhatsApp
+                  Request quote
                 </ButtonSecondary>
               </a>
             </div>
           </div>
-        </div>
-
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
-          <FeatureTile image="/images/tiles-gallery-1.jpg" title="Catalogue-ready tile looks" text="Browse floor, wall, bathroom and outdoor tile directions for complete rooms." />
-          <FeatureTile image="/images/sanitary-set-1.jpg" title="Project finishing support" text="Combine sanitaryware, paints, adhesives and grout into one practical quote." />
         </div>
       </div>
     </section>
   )
 }
 
-function FeatureTile({ image, title, text }) {
-  return (
-    <div className="grid overflow-hidden rounded-md border border-neutral-200 bg-white shadow-sm sm:grid-cols-[0.9fr_1.1fr] lg:grid-cols-[0.95fr_1.05fr]">
-      <img src={image} alt="" className="h-44 w-full object-cover sm:h-full" />
-      <div className="flex flex-col justify-center p-5">
-        <h2 className="text-lg font-semibold text-neutral-950">{title}</h2>
-        <p className="mt-2 text-sm leading-6 text-neutral-600">{text}</p>
-      </div>
-    </div>
-  )
-}
-
 function ShopByCategory({ selectedCategory, onCategoryClick, onWhatsAppClick }) {
   return (
-    <section id="catalogue" className="mx-auto max-w-7xl px-4 py-14">
-      <div className="mb-7 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+    <section id="catalogue" className="mx-auto max-w-7xl px-4 py-16">
+      <div className="mb-8 max-w-3xl">
         <div>
           <p className="text-sm font-semibold uppercase text-emerald-700">Product catalogue</p>
           <h2 className="mt-2 text-3xl font-semibold text-neutral-950">Shop by category</h2>
           <p className="mt-2 max-w-2xl text-sm leading-6 text-neutral-600">
-            Choose a category, then send measurements or project details for guidance and quotation.
+            Choose the finish you need and send a quick WhatsApp inquiry for availability and quotation.
           </p>
         </div>
-        <a href="#contact" className="inline-flex items-center gap-2 text-sm font-semibold text-neutral-700 hover:text-emerald-800">
-          Request a project quote
-          <ArrowRight className="h-4 w-4" />
-        </a>
       </div>
 
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -511,7 +444,7 @@ function ShopByCategory({ selectedCategory, onCategoryClick, onWhatsAppClick }) 
           return (
             <article
               key={category.name}
-              className="group overflow-hidden rounded-md border border-neutral-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-emerald-700 hover:shadow-md"
+              className="group flex h-full flex-col overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-emerald-700 hover:shadow-md"
             >
               <button
                 type="button"
@@ -519,55 +452,43 @@ function ShopByCategory({ selectedCategory, onCategoryClick, onWhatsAppClick }) 
                 className="block w-full text-left"
               >
                 <div className="relative aspect-[4/3] overflow-hidden bg-neutral-100">
-                <img
-                  src={category.img}
-                  alt={category.name}
-                  className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
-                  onError={(event) => {
-                    event.currentTarget.onerror = null
-                    event.currentTarget.src = '/images/placeholder.jpg'
-                  }}
-                />
-                <div className="absolute left-3 top-3 inline-flex h-10 w-10 items-center justify-center rounded-md bg-white/95 text-emerald-800 shadow-sm">
-                  <Icon className="h-5 w-5" />
-                </div>
+                  <img
+                    src={category.img}
+                    alt={category.name}
+                    className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+                    onError={(event) => {
+                      event.currentTarget.onerror = null
+                      event.currentTarget.src = '/images/placeholder.jpg'
+                    }}
+                  />
+                  <div className="absolute left-3 top-3 inline-flex h-10 w-10 items-center justify-center rounded-md bg-white/95 text-emerald-800 shadow-sm">
+                    <Icon className="h-5 w-5" />
+                  </div>
                 </div>
               </button>
-              <div className="p-4">
+              <div className="flex flex-1 flex-col p-5">
                 <div className="flex items-center justify-between gap-3">
                   <h3 className="text-lg font-semibold text-neutral-950">{category.name}</h3>
                   <ArrowRight className="h-4 w-4 shrink-0 text-neutral-400 transition group-hover:text-emerald-700" />
                 </div>
                 <p className="mt-2 text-sm leading-6 text-neutral-600">{category.blurb}</p>
-                <p className="mt-2 text-xs font-semibold uppercase text-neutral-500">Common use</p>
-                <p className="mt-1 text-sm leading-6 text-neutral-600">{category.use}</p>
                 {selectedCategory === category.name && (
                   <span className="mt-3 inline-flex rounded-md bg-emerald-50 px-2 py-1 text-xs font-semibold text-emerald-800">
                     Recommended for you
                   </span>
                 )}
-                <div className="mt-4 flex flex-wrap gap-2">
-                  <a
-                    href="#contact"
-                    onClick={() => onCategoryClick(category.name)}
-                    className="inline-flex items-center justify-center rounded-md border border-neutral-300 px-3 py-2 text-xs font-semibold text-neutral-900 hover:border-emerald-700"
-                  >
-                    Request quote
-                  </a>
-                  <a
-                    href={whatsappInquiryUrl(category.name)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => {
-                      onCategoryClick(category.name)
-                      onWhatsAppClick(`category_card_${category.name}`)
-                    }}
-                    className="inline-flex items-center justify-center gap-1.5 rounded-md bg-emerald-700 px-3 py-2 text-xs font-semibold text-white hover:bg-emerald-800"
-                  >
-                    <MessageCircle className="h-3.5 w-3.5" />
-                    WhatsApp
-                  </a>
-                </div>
+                <a
+                  href={whatsappInquiryUrl(category.name)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => {
+                    onCategoryClick(category.name)
+                    onWhatsAppClick(`category_card_${category.name}`)
+                  }}
+                  className="mt-auto inline-flex items-center justify-center gap-1.5 rounded-md bg-emerald-700 px-3 py-2.5 text-sm font-semibold text-white hover:bg-emerald-800"
+                >
+                  Request quote
+                </a>
               </div>
             </article>
           )
@@ -580,15 +501,15 @@ function ShopByCategory({ selectedCategory, onCategoryClick, onWhatsAppClick }) 
 function ProductCatalogue({ onProductInterest, onWhatsAppClick }) {
   return (
     <section className="border-y border-neutral-200 bg-neutral-50">
-      <div className="mx-auto max-w-7xl px-4 py-14">
+      <div className="mx-auto max-w-7xl px-4 py-16">
         <div className="mb-8">
-          <p className="text-sm font-semibold uppercase text-emerald-700">Product-style ranges</p>
-          <h2 className="mt-2 text-3xl font-semibold text-neutral-950">Sample catalogue cards</h2>
+          <p className="text-sm font-semibold uppercase text-emerald-700">Featured highlights</p>
+          <h2 className="mt-2 text-3xl font-semibold text-neutral-950">Popular finishes to quote</h2>
           <p className="mt-2 max-w-2xl text-sm leading-6 text-neutral-600">
-            These sample cards show the type of finishes Kleihaus can help source and quote for retail or bulk project needs.
+            A concise look at tile, sanitaryware, paint and installation essentials Kleihaus can help source for retail or project needs.
           </p>
         </div>
-        <div className="space-y-10">
+        <div className="space-y-12">
           {productGroups.map((group) => (
             <div key={group.title}>
               <div className="mb-4 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
@@ -601,37 +522,27 @@ function ProductCatalogue({ onProductInterest, onWhatsAppClick }) {
                 {group.items.map((item) => (
                   <article
                     key={item.name}
-                    className="group overflow-hidden rounded-md border border-neutral-200 bg-white shadow-sm transition hover:border-emerald-700"
+                    className="group flex h-full flex-col overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-sm transition hover:border-emerald-700 hover:shadow-md"
                   >
                     <img src={item.img} alt={item.name} className="aspect-[5/4] w-full object-cover transition duration-300 group-hover:scale-105" />
-                    <div className="p-4">
+                    <div className="flex flex-1 flex-col p-5">
                       <div className="flex items-center justify-between gap-3">
                         <h4 className="text-sm font-semibold text-neutral-950">{item.name}</h4>
                         <ArrowRight className="h-4 w-4 text-neutral-400 group-hover:text-emerald-700" />
                       </div>
                       <p className="mt-1 text-sm text-neutral-600">{item.detail}</p>
-                      <div className="mt-4 flex flex-wrap gap-2">
-                        <a
-                          href="#contact"
-                          onClick={() => onProductInterest(item.name, group.title)}
-                          className="inline-flex items-center justify-center rounded-md border border-neutral-300 px-3 py-2 text-xs font-semibold text-neutral-900 hover:border-emerald-700"
-                        >
-                          Request quote
-                        </a>
-                        <a
-                          href={whatsappInquiryUrl(item.name)}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={() => {
-                            onProductInterest(item.name, group.title)
-                            onWhatsAppClick(`product_card_${item.name}`)
-                          }}
-                          className="inline-flex items-center justify-center gap-1.5 rounded-md bg-emerald-700 px-3 py-2 text-xs font-semibold text-white hover:bg-emerald-800"
-                        >
-                          <MessageCircle className="h-3.5 w-3.5" />
-                          WhatsApp
-                        </a>
-                      </div>
+                      <a
+                        href={whatsappInquiryUrl(item.name)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => {
+                          onProductInterest(item.name, group.title)
+                          onWhatsAppClick(`product_card_${item.name}`)
+                        }}
+                        className="mt-auto inline-flex items-center justify-center rounded-md border border-neutral-300 px-3 py-2.5 text-sm font-semibold text-neutral-900 hover:border-emerald-700 hover:text-emerald-800"
+                      >
+                        Request quote
+                      </a>
                     </div>
                   </article>
                 ))}
@@ -639,39 +550,6 @@ function ProductCatalogue({ onProductInterest, onWhatsAppClick }) {
             </div>
           ))}
         </div>
-      </div>
-    </section>
-  )
-}
-
-function SeoLandingSections({ onWhatsAppClick }) {
-  return (
-    <section className="mx-auto max-w-7xl px-4 py-14">
-      <div className="mb-7 max-w-3xl">
-        <p className="text-sm font-semibold uppercase text-emerald-700">Kenya finishing materials</p>
-        <h2 className="mt-2 text-3xl font-semibold text-neutral-950">Popular Kleihaus catalogue searches</h2>
-        <p className="mt-2 text-sm leading-6 text-neutral-600">
-          These customer-facing sections prepare the single-page site for future dedicated product and location landing pages.
-        </p>
-      </div>
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {seoLandingSections.map((section) => (
-          <a
-            key={section.title}
-            href={whatsappInquiryUrl(section.title)}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => onWhatsAppClick(`seo_section_${section.title}`)}
-            className="rounded-md border border-neutral-200 bg-white p-5 shadow-sm transition hover:border-emerald-700 hover:shadow-md"
-          >
-            <h3 className="text-base font-semibold text-neutral-950">{section.title}</h3>
-            <p className="mt-2 text-sm leading-6 text-neutral-600">{section.text}</p>
-            <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-emerald-800">
-              Ask on WhatsApp
-              <ArrowRight className="h-4 w-4" />
-            </span>
-          </a>
-        ))}
       </div>
     </section>
   )
@@ -696,17 +574,17 @@ function QuantityEstimator() {
   const estimatedBoxes = estimatedTiles ? Math.ceil(estimatedTiles / 4) : 0
 
   return (
-    <section className="mx-auto max-w-7xl px-4 py-14">
+    <section className="mx-auto max-w-7xl px-4 py-16">
       <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
         <div>
-          <p className="text-sm font-semibold uppercase text-emerald-700">Quantity estimator</p>
-          <h2 className="mt-2 text-3xl font-semibold text-neutral-950">Estimate tiles before requesting a quote</h2>
+          <p className="text-sm font-semibold uppercase text-emerald-700">Quote helper</p>
+          <h2 className="mt-2 text-3xl font-semibold text-neutral-950">Estimate tiles before you request a quote</h2>
           <p className="mt-3 text-sm leading-6 text-neutral-600">
-            Use this quick guide to estimate tile quantities. Final quantities should be confirmed after room measurements, tile layout and site conditions are reviewed.
+            Enter your area and tile size for a quick planning estimate. Final quantities can be confirmed when you share your project details.
           </p>
         </div>
 
-        <div className="rounded-md border border-neutral-200 bg-white p-5 shadow-sm">
+        <div className="rounded-lg border border-neutral-200 bg-white p-5 shadow-sm sm:p-6">
           <div className="grid gap-4 sm:grid-cols-3">
             <label className="grid gap-2 text-sm font-medium text-neutral-700">
               Area in m2
@@ -769,7 +647,7 @@ function QuantityEstimator() {
 
 function InspirationGallery({ onCategoryClick }) {
   return (
-    <section className="mx-auto max-w-7xl px-4 py-14">
+    <section className="mx-auto max-w-7xl px-4 py-16">
       <div className="mb-8">
         <p className="text-sm font-semibold uppercase text-emerald-700">Inspiration gallery</p>
         <h2 className="mt-2 text-3xl font-semibold text-neutral-950">Explore spaces before you request a quote</h2>
@@ -804,7 +682,7 @@ function InspirationGallery({ onCategoryClick }) {
 
 function Services() {
   return (
-    <section className="mx-auto max-w-7xl px-4 py-14">
+    <section className="mx-auto max-w-7xl px-4 py-16">
       <div className="mb-7 max-w-3xl">
         <p className="text-sm font-semibold uppercase text-emerald-700">Why choose Kleihaus?</p>
         <h2 className="mt-2 text-3xl font-semibold text-neutral-950">Support for better finishing decisions</h2>
@@ -833,7 +711,7 @@ function Services() {
 function HelpfulGuides({ onGuideClick }) {
   return (
     <section className="border-y border-neutral-200 bg-neutral-50">
-      <div className="mx-auto max-w-7xl px-4 py-14">
+      <div className="mx-auto max-w-7xl px-4 py-16">
         <div className="mb-7 max-w-3xl">
           <p className="text-sm font-semibold uppercase text-emerald-700">Helpful guides</p>
           <h2 className="mt-2 text-3xl font-semibold text-neutral-950">Coming-soon buying guides</h2>
@@ -853,63 +731,6 @@ function HelpfulGuides({ onGuideClick }) {
               <h3 className="mt-2 text-base font-semibold text-neutral-950">{topic.title}</h3>
               <p className="mt-2 text-sm leading-6 text-neutral-600">{topic.summary}</p>
             </a>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
-
-function FindKleihausOnline() {
-  return (
-    <section className="mx-auto max-w-7xl px-4 py-14">
-      <div className="rounded-md border border-neutral-200 bg-white p-5 shadow-sm sm:p-7">
-        <div className="mb-6 max-w-3xl">
-          <p className="text-sm font-semibold uppercase text-emerald-700">Find Kleihaus online</p>
-          <h2 className="mt-2 text-3xl font-semibold text-neutral-950">Visit or contact Kleihaus Ceramics</h2>
-          <p className="mt-2 text-sm leading-6 text-neutral-600">
-            For product availability, project quotations and delivery coordination, contact the Kleihaus team directly.
-          </p>
-        </div>
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
-          {onlineContactItems.map((item) => (
-            <div key={item.label} className="rounded-md bg-neutral-50 p-4">
-              <p className="text-xs font-semibold uppercase text-neutral-500">{item.label}</p>
-              {item.href ? (
-                <a href={item.href} className="mt-2 block break-words text-sm font-semibold text-neutral-950 hover:text-emerald-800">
-                  {item.value}
-                </a>
-              ) : (
-                <p className="mt-2 text-sm font-semibold leading-6 text-neutral-950">{item.value}</p>
-              )}
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
-
-function ProjectCustomers() {
-  return (
-    <section id="about" className="bg-stone-100">
-      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-        <div>
-          <p className="text-sm font-semibold uppercase text-emerald-700">Retail and wholesale support</p>
-          <h2 className="mt-2 text-3xl font-semibold text-neutral-950">For single rooms, full homes and project-based orders.</h2>
-          <p className="mt-4 leading-7 text-neutral-700">
-            Kleihaus Ceramics supports homeowners buying for one room, contractors quoting several spaces, developers working across units, fundis choosing installation materials, and institutions planning durable finishes.
-          </p>
-          <p className="mt-3 leading-7 text-neutral-700">
-            Share your quantities, location, finish preference and budget. The team can help align tiles, sanitaryware, paints, adhesives and grout into a practical retail or project quotation.
-          </p>
-        </div>
-        <div className="grid gap-3 sm:grid-cols-2">
-          {customerTypes.map((type) => (
-            <div key={type} className="flex items-center gap-3 rounded-md border border-neutral-200 bg-white p-4 shadow-sm">
-              <Users className="h-5 w-5 text-emerald-700" />
-              <span className="text-sm font-semibold text-neutral-900">{type}</span>
-            </div>
           ))}
         </div>
       </div>
@@ -962,20 +783,13 @@ function Contact({ onWhatsAppClick }) {
 
   return (
     <section id="contact" className="bg-neutral-950 text-white">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 lg:grid-cols-[0.9fr_1.1fr]">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 lg:grid-cols-[0.9fr_1.1fr]">
         <div>
           <p className="text-sm font-semibold uppercase text-emerald-300">Contact Kleihaus</p>
-          <h2 className="mt-2 text-3xl font-semibold">Request product guidance or a project quote.</h2>
+          <h2 className="mt-2 text-3xl font-semibold">Request a product or project quote.</h2>
           <p className="mt-4 leading-7 text-neutral-300">
-            For faster assistance, send your room size, tile type, delivery location and budget range. Kleihaus can help match the right tile, sanitaryware, paint, adhesive or grout to your project.
+            Share your room size, preferred finish, delivery location and budget. Kleihaus will respond with product guidance and quote support.
           </p>
-
-          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex" onClick={() => onWhatsAppClick('contact_primary')}>
-            <Button className="gap-2 bg-emerald-700 hover:bg-emerald-800">
-              <MessageCircle className="h-4 w-4" />
-              Request quote on WhatsApp
-            </Button>
-          </a>
 
           <div className="mt-7 space-y-3 text-sm text-neutral-200">
             <a href="tel:+254748827166" className="flex items-center gap-3 hover:text-white">
@@ -995,21 +809,34 @@ function Contact({ onWhatsAppClick }) {
 
         <form
           onSubmit={submitQuoteRequest}
-          className="rounded-md bg-white p-5 text-neutral-950 shadow-xl sm:p-6"
+          className="rounded-lg bg-white p-5 text-neutral-950 shadow-xl sm:p-6"
         >
           <div className="mb-5">
             <h3 className="text-lg font-semibold">Tell us what you need</h3>
             <p className="mt-1 text-sm leading-6 text-neutral-600">Include room size, tile type, location and budget so the quote can be more useful.</p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
-            <Input name="name" placeholder="Your name" value={quoteForm.name} onChange={updateQuoteField('name')} required />
-            <Input name="email" type="email" placeholder="Email address" value={quoteForm.email} onChange={updateQuoteField('email')} />
+            <label className="grid gap-2 text-sm font-medium text-neutral-700">
+              Name
+              <Input name="name" placeholder="Your name" value={quoteForm.name} onChange={updateQuoteField('name')} required />
+            </label>
+            <label className="grid gap-2 text-sm font-medium text-neutral-700">
+              Email
+              <Input name="email" type="email" placeholder="Email address" value={quoteForm.email} onChange={updateQuoteField('email')} />
+            </label>
           </div>
           <div className="mt-4 grid gap-4 sm:grid-cols-2">
-            <Input name="phone" placeholder="Phone number" value={quoteForm.phone} onChange={updateQuoteField('phone')} />
-            <Input name="location" placeholder="Project location" value={quoteForm.location} onChange={updateQuoteField('location')} />
+            <label className="grid gap-2 text-sm font-medium text-neutral-700">
+              Phone
+              <Input name="phone" placeholder="Phone number" value={quoteForm.phone} onChange={updateQuoteField('phone')} />
+            </label>
+            <label className="grid gap-2 text-sm font-medium text-neutral-700">
+              Location
+              <Input name="location" placeholder="Project location" value={quoteForm.location} onChange={updateQuoteField('location')} />
+            </label>
           </div>
-          <div className="mt-4">
+          <label className="mt-4 grid gap-2 text-sm font-medium text-neutral-700">
+            Request details
             <Textarea
               name="message"
               placeholder="Example: 32m² floor tiles, matte finish, delivery to Machakos, budget range..."
@@ -1017,7 +844,7 @@ function Contact({ onWhatsAppClick }) {
               value={quoteForm.message}
               onChange={updateQuoteField('message')}
             />
-          </div>
+          </label>
           {quoteErrors.length > 0 && (
             <div className="mt-4 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
               {quoteErrors.map((error) => (
@@ -1120,13 +947,10 @@ export default function App() {
       <Hero onWhatsAppClick={handleWhatsAppClick} />
       <ShopByCategory selectedCategory={selectedCategory} onCategoryClick={handleCategoryClick} onWhatsAppClick={handleWhatsAppClick} />
       <ProductCatalogue onProductInterest={handleProductInterest} onWhatsAppClick={handleWhatsAppClick} />
-      <SeoLandingSections onWhatsAppClick={handleWhatsAppClick} />
+      <Services />
       <QuantityEstimator />
       <InspirationGallery onCategoryClick={handleCategoryClick} />
-      <Services />
-      <ProjectCustomers />
       <HelpfulGuides onGuideClick={handleGuideClick} />
-      <FindKleihausOnline />
       <Contact onWhatsAppClick={handleWhatsAppClick} />
       <MobileStickyWhatsApp onWhatsAppClick={handleWhatsAppClick} />
       <Footer />

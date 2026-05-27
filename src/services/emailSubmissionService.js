@@ -1,4 +1,5 @@
 const trimValue = (value) => String(value || '').trim()
+const customerWhatsAppMessage = 'Your WhatsApp quote request is ready. Please send it in WhatsApp so our team can respond.'
 
 const getQuoteEndpoint = () => trimValue(import.meta.env.VITE_QUOTE_ENDPOINT)
 
@@ -28,7 +29,7 @@ export const emailSubmissionService = {
         configured: false,
         status: 'prepared',
         payload,
-        message: 'WhatsApp request opened successfully. Email submission is being prepared.',
+        message: customerWhatsAppMessage,
       }
     }
 
@@ -45,7 +46,7 @@ export const emailSubmissionService = {
           configured: true,
           status: 'failed',
           payload,
-          message: 'WhatsApp request opened successfully. Email submission is being prepared.',
+          message: customerWhatsAppMessage,
         }
       }
 
@@ -62,7 +63,7 @@ export const emailSubmissionService = {
         configured: true,
         status: 'failed',
         payload,
-        message: 'WhatsApp request opened successfully. Email submission is being prepared.',
+        message: customerWhatsAppMessage,
       }
     }
   },

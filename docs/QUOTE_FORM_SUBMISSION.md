@@ -24,7 +24,7 @@ The frontend can optionally send the same quote request payload to a secure back
 VITE_QUOTE_ENDPOINT=
 ```
 
-When `VITE_QUOTE_ENDPOINT` is empty, the form still works through WhatsApp and shows a customer-friendly message that email submission is being prepared. When configured, the frontend sends this JSON payload:
+When `VITE_QUOTE_ENDPOINT` is empty, the form still works through WhatsApp and shows a customer-friendly message: "Your WhatsApp quote request is ready. Please send it in WhatsApp so our team can respond." When configured, the frontend sends this JSON payload:
 
 ```json
 {
