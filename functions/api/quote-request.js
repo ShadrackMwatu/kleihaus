@@ -72,7 +72,10 @@ const logSafe = (event, payload = {}, extra = {}) => {
 const insertQuoteRequest = async (env, payload) => {
   const db = env?.QUOTE_REQUESTS_DB || env?.DB
 
+  console.log('D1_INSERT_ATTEMPT', { requestId: payload.id, source: payload.source })
+
   if (!db) {
+    logSafe('D1_INSERT_FAILED', payload, { error: 'D1 database binding is not configured.' })
     return {
       success: false,
       configured: false,
@@ -141,13 +144,22 @@ const sendResendEmail = async (env, payload) => {
   const apiKey = clean(env?.RESEND_API_KEY, 500)
   const from = clean(env?.QUOTE_EMAIL_FROM, 300)
   const to = clean(env?.QUOTE_EMAIL_TO || 'sales@kleihaus.com', 300)
+  const missing = [
+    !apiKey && 'RESEND_API_KEY',
+    !from && 'QUOTE_EMAIL_FROM',
+    !to && 'QUOTE_EMAIL_TO',
+  ].filter(Boolean)
 
-  if (!apiKey || !from || !to) {
+  console.log('RESEND_EMAIL_ATTEMPT', { requestId: payload.id, to })
+
+  if (missing.length > 0) {
+    logSafe('RESEND_EMAIL_FAILED', payload, { missing })
     return {
       success: false,
       configured: false,
       sent: false,
-      error: 'RESEND_API_KEY, QUOTE_EMAIL_FROM, or QUOTE_EMAIL_TO is missing.',
+      error: `Missing email configuration: ${missing.join(', ')}`,
+      missing,
     }
   }
 
@@ -192,15 +204,23 @@ const sendWhatsAppBusinessNotification = async (env, payload) => {
   const token = clean(env?.WHATSAPP_ACCESS_TOKEN, 1000)
   const phoneNumberId = clean(env?.WHATSAPP_PHONE_NUMBER_ID, 120)
   const to = clean(env?.WHATSAPP_TO_NUMBER, 80)
+  const missing = [
+    !token && 'WHATSAPP_ACCESS_TOKEN',
+    !phoneNumberId && 'WHATSAPP_PHONE_NUMBER_ID',
+    !to && 'WHATSAPP_TO_NUMBER',
+  ].filter(Boolean)
 
-  if (!token || !phoneNumberId || !to) {
+  console.log('WHATSAPP_ATTEMPT', { requestId: payload.id })
+
+  if (missing.length > 0) {
     const skipped = {
       success: true,
       configured: false,
       sent: false,
       reason: 'WhatsApp Business API not configured',
+      missing,
     }
-    console.log('WHATSAPP_SKIPPED_OR_SENT', { requestId: payload.id, sent: false, reason: skipped.reason })
+    console.log('WHATSAPP_SKIPPED', { requestId: payload.id, reason: skipped.reason, missing })
     return skipped
   }
 
@@ -225,7 +245,7 @@ const sendWhatsAppBusinessNotification = async (env, payload) => {
     const result = await response.json().catch(() => ({}))
 
     if (!response.ok) {
-      logSafe('WHATSAPP_SEND_FAILED', payload, { status: response.status })
+      logSafe('WHATSAPP_FAILED', payload, { status: response.status })
       return {
         success: false,
         configured: true,
@@ -235,10 +255,10 @@ const sendWhatsAppBusinessNotification = async (env, payload) => {
       }
     }
 
-    console.log('WHATSAPP_SKIPPED_OR_SENT', { requestId: payload.id, sent: true })
+    console.log('WHATSAPP_SUCCESS', { requestId: payload.id })
     return { success: true, configured: true, sent: true, provider: 'whatsapp_business_api', response: result }
   } catch (error) {
-    logSafe('WHATSAPP_SEND_FAILED', payload, { error: error.message })
+    logSafe('WHATSAPP_FAILED', payload, { error: error.message })
     return { success: false, configured: true, sent: false, error: error.message }
   }
 }
