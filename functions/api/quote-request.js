@@ -328,9 +328,11 @@ const sendResendEmail = async (env, payload) => {
     !to && 'QUOTE_EMAIL_TO',
   ].filter(Boolean)
 
+  console.log('INTERNAL_EMAIL_ATTEMPT', { requestId: payload.id, to })
   console.log('RESEND_EMAIL_ATTEMPT', { requestId: payload.id, to })
 
   if (missing.length > 0) {
+    logSafe('INTERNAL_EMAIL_FAILED', payload, { missing })
     logSafe('RESEND_EMAIL_FAILED', payload, { missing })
     return {
       success: false,
@@ -360,6 +362,7 @@ const sendResendEmail = async (env, payload) => {
     const result = await response.json().catch(() => ({}))
 
     if (!response.ok) {
+      logSafe('INTERNAL_EMAIL_FAILED', payload, { status: response.status })
       logSafe('RESEND_EMAIL_FAILED', payload, { status: response.status })
       return {
         success: false,
@@ -370,9 +373,11 @@ const sendResendEmail = async (env, payload) => {
       }
     }
 
+    console.log('INTERNAL_EMAIL_SUCCESS', { requestId: payload.id, emailId: result.id })
     console.log('RESEND_EMAIL_SUCCESS', { requestId: payload.id, emailId: result.id })
     return { success: true, configured: true, sent: true, provider: 'resend', id: result.id }
   } catch (error) {
+    logSafe('INTERNAL_EMAIL_FAILED', payload, { error: error.message })
     logSafe('RESEND_EMAIL_FAILED', payload, { error: error.message })
     return { success: false, configured: true, sent: false, error: error.message }
   }
@@ -591,15 +596,33 @@ const settleNotification = (result, fallback) => {
   }
 }
 
-const deliverQuoteNotifications = async (env, payload) => {
-  const [emailResult, customerEmailResult, whatsappResult] = await Promise.allSettled([
-    sendResendEmail(env, payload),
+const getWhatsAppStatusForResponse = (env) => {
+  const missing = [
+    !clean(env?.WHATSAPP_ACCESS_TOKEN, 1000) && 'WHATSAPP_ACCESS_TOKEN',
+    !clean(env?.WHATSAPP_PHONE_NUMBER_ID, 120) && 'WHATSAPP_PHONE_NUMBER_ID',
+    !clean(env?.WHATSAPP_TO_NUMBER, 80) && 'WHATSAPP_TO_NUMBER',
+  ].filter(Boolean)
+
+  if (missing.length > 0) {
+    return {
+      success: true,
+      configured: false,
+      sent: false,
+      reason: 'WhatsApp Business API not configured',
+      missing,
+    }
+  }
+
+  return { success: true, queued: true, sent: null, mode: 'background' }
+}
+
+const deliverBackgroundNotifications = async (env, payload) => {
+  const [customerEmailResult, whatsappResult] = await Promise.allSettled([
     sendCustomerConfirmationEmail(env, payload),
     sendWhatsAppBusinessNotification(env, payload),
   ])
 
   return {
-    email: settleNotification(emailResult, 'Email delivery failed.'),
     customerEmail: settleNotification(customerEmailResult, 'Customer confirmation email delivery failed.'),
     whatsapp: settleNotification(whatsappResult, 'WhatsApp delivery failed.'),
   }
@@ -608,7 +631,6 @@ const deliverQuoteNotifications = async (env, payload) => {
 const logNotificationResults = (payload, results) => {
   console.log('QUOTE_NOTIFICATIONS_SETTLED', {
     requestId: payload.id,
-    emailSent: Boolean(results.email?.sent),
     customerEmailSent: Boolean(results.customerEmail?.sent),
     whatsappSent: Boolean(results.whatsapp?.sent),
     whatsappReason: results.whatsapp?.reason,
@@ -645,17 +667,36 @@ export async function onRequestPost(context) {
     hasEmail: Boolean(payload.email),
     hasPhone: Boolean(payload.phone),
   })
+  console.log('FRONTEND_PAYLOAD_RECEIVED', {
+    requestId: payload.id,
+    hasName: Boolean(payload.name),
+    hasEmail: Boolean(payload.email),
+    hasPhone: Boolean(payload.phone),
+    hasLocation: Boolean(payload.location),
+    hasRequestDetails: Boolean(payload.requestDetails),
+  })
 
   const storage = await insertQuoteRequest(context.env, payload)
   if (!storage.success) {
     return json({ success: false, message: 'Quote request could not be saved.', storage }, 500)
   }
 
-  const notificationWork = deliverQuoteNotifications(context.env, payload)
+  const email = await sendResendEmail(context.env, payload)
+  const backgroundWork = deliverBackgroundNotifications(context.env, payload)
   const waitUntil = getWaitUntil(context)
+  const whatsapp = getWhatsAppStatusForResponse(context.env)
+  const customerEmail = payload.email && isValidEmail(payload.email)
+    ? { success: true, queued: true, sent: null, mode: 'background' }
+    : {
+        success: true,
+        configured: true,
+        sent: false,
+        skipped: true,
+        reason: 'Customer email not provided or invalid.',
+      }
 
   if (waitUntil) {
-    waitUntil(notificationWork.then((results) => logNotificationResults(payload, results)))
+    waitUntil(backgroundWork.then((results) => logNotificationResults(payload, results)))
 
     return json({
       success: true,
@@ -663,13 +704,13 @@ export async function onRequestPost(context) {
       requestId: payload.id,
       createdAt: payload.created_at,
       storage,
-      email: { success: true, queued: true, sent: null, mode: 'background' },
-      customerEmail: { success: true, queued: true, sent: null, mode: 'background' },
-      whatsapp: { success: true, queued: true, sent: null, mode: 'background' },
+      email,
+      customerEmail,
+      whatsapp,
     })
   }
 
-  const notifications = await notificationWork
+  const notifications = await backgroundWork
 
   return json({
     success: true,
@@ -677,7 +718,7 @@ export async function onRequestPost(context) {
     requestId: payload.id,
     createdAt: payload.created_at,
     storage,
-    email: notifications.email,
+    email,
     customerEmail: notifications.customerEmail,
     whatsapp: notifications.whatsapp,
   })

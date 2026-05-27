@@ -786,6 +786,7 @@ function Contact({ onWhatsAppClick }) {
     phone: '',
     location: '',
     message: '',
+    requestDetails: '',
   })
   const [quoteErrors, setQuoteErrors] = useState([])
   const [quoteStatus, setQuoteStatus] = useState('')
@@ -833,6 +834,7 @@ function Contact({ onWhatsAppClick }) {
         phone: '',
         location: '',
         message: '',
+        requestDetails: '',
       })
       window.setTimeout(() => setIsQuoteSubmitting(false), 800)
       return
