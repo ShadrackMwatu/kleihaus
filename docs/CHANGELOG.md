@@ -9,6 +9,7 @@ Rule: Every future meaningful change must update `docs/CHANGELOG.md` and, where 
 ### Backend Quote Request Automation
 
 - Fixed the production quote API endpoint wiring by changing the frontend fetch target back to `/api/quote-request`.
+- Added `message` and `details` aliases alongside `requestDetails` in the quote request payload so current and future deployed function versions accept the same submission.
 - Confirmed the repo-based Cloudflare Pages Function path is `functions/api/quote-request.js` and the function exports `onRequestPost(context)`.
 - Adjusted the endpoint so missing notification/storage credentials still return a captured success response instead of a public failure.
 - Fixed the repo-based Cloudflare Pages Function so it exports `onRequestPost(context)` for `/api/quote-request`.

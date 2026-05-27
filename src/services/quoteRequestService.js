@@ -44,6 +44,8 @@ export const quoteRequestService = {
           phone: payload.phone,
           location: payload.location,
           requestDetails: payload.requestDetails,
+          message: payload.requestDetails,
+          details: payload.requestDetails,
           source: payload.source || 'kleihaus_website',
         }),
       })
