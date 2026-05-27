@@ -138,6 +138,8 @@ const getLeadInsights = (payload) => {
 const buildEmailSubject = (payload, insights) =>
   `${EMAIL_SUBJECT_PREFIX} • ${payload.location || 'Website'} • ${insights.inquiryType}`
 
+const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(clean(email, 180))
+
 const normalizePayload = (body = {}) => {
   const requestDetails = clean(body.requestDetails || body.message || body.details, 3000)
 
@@ -376,6 +378,139 @@ const sendResendEmail = async (env, payload) => {
   }
 }
 
+const buildCustomerEmailHtml = (payload, insights) => {
+  const whatsappUrl = 'https://wa.me/254748827166'
+
+  return `
+  <div style="margin:0;padding:0;background:#f5f1eb;font-family:Arial,Helvetica,sans-serif;color:#1f1a17;">
+    <div style="max-width:640px;margin:0 auto;padding:28px 16px;">
+      <div style="background:#1f1a17;border-radius:14px 14px 0 0;padding:26px;border-bottom:5px solid #a65f1e;">
+        <p style="margin:0 0 8px;color:#d8a15f;font-size:12px;letter-spacing:2px;font-weight:700;">KLEIHAUS CERAMICS</p>
+        <h1 style="margin:0;color:#ffffff;font-size:24px;line-height:1.25;">We received your request</h1>
+        <p style="margin:10px 0 0;color:#f2dfc8;font-size:14px;">Inspiring Living</p>
+      </div>
+
+      <div style="background:#ffffff;border:1px solid #e7ded2;border-top:0;border-radius:0 0 14px 14px;padding:24px;">
+        <p style="margin:0 0 14px;font-size:16px;line-height:1.7;">Hello ${escapeHtml(payload.name)},</p>
+        <p style="margin:0 0 14px;font-size:15px;line-height:1.7;color:#3d352e;">
+          Thank you for contacting Kleihaus Ceramics. Our team has received your request and will review it shortly.
+        </p>
+
+        <div style="border:1px solid #eadfce;background:#fffaf3;border-radius:12px;padding:16px;margin:18px 0;">
+          <p style="margin:0 0 6px;color:#6f4a24;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Lead Reference</p>
+          <p style="margin:0;color:#1f1a17;font-size:22px;font-weight:700;">${escapeHtml(insights.leadReference)}</p>
+          ${payload.location ? `<p style="margin:8px 0 0;color:#6b6258;font-size:14px;">Location: ${escapeHtml(payload.location)}</p>` : ''}
+        </div>
+
+        <p style="margin:0 0 16px;font-size:15px;line-height:1.7;color:#3d352e;">
+          For urgent project support, you can also reach us directly on WhatsApp.
+        </p>
+
+        <a href="${whatsappUrl}" style="display:inline-block;background:#25D366;color:#0f2418;text-decoration:none;font-weight:700;padding:12px 16px;border-radius:8px;">Chat with Kleihaus on WhatsApp</a>
+
+        <p style="margin:22px 0 0;font-size:13px;line-height:1.6;color:#6b6258;">
+          Kleihaus Ceramics<br />
+          Tiles, sanitaryware, paints and finishing materials for homes and projects.
+        </p>
+      </div>
+    </div>
+  </div>
+`
+}
+
+const buildCustomerEmailText = (payload, insights) =>
+  [
+    'We received your Kleihaus request',
+    '',
+    `Hello ${payload.name},`,
+    '',
+    'Thank you for contacting Kleihaus Ceramics. Our team has received your request and will review it shortly.',
+    '',
+    `Lead Reference: ${insights.leadReference}`,
+    payload.location ? `Location: ${payload.location}` : '',
+    '',
+    'For urgent project support, you can also reach us directly on WhatsApp:',
+    'https://wa.me/254748827166',
+    '',
+    'Kleihaus Ceramics',
+    'Tiles, sanitaryware, paints and finishing materials for homes and projects.',
+  ]
+    .filter(Boolean)
+    .join('\n')
+
+const sendCustomerConfirmationEmail = async (env, payload) => {
+  const customerEmail = clean(payload.email, 180)
+  const apiKey = clean(env?.RESEND_API_KEY, 500)
+  const from = clean(env?.QUOTE_EMAIL_FROM, 300)
+  const insights = getLeadInsights(payload)
+  const missing = [
+    !apiKey && 'RESEND_API_KEY',
+    !from && 'QUOTE_EMAIL_FROM',
+  ].filter(Boolean)
+
+  console.log('CUSTOMER_EMAIL_ATTEMPT', {
+    requestId: payload.id,
+    hasCustomerEmail: Boolean(customerEmail),
+  })
+
+  if (!customerEmail || !isValidEmail(customerEmail)) {
+    return {
+      success: true,
+      configured: true,
+      sent: false,
+      skipped: true,
+      reason: 'Customer email not provided or invalid.',
+    }
+  }
+
+  if (missing.length > 0) {
+    logSafe('CUSTOMER_EMAIL_FAILED', payload, { missing })
+    return {
+      success: false,
+      configured: false,
+      sent: false,
+      error: `Missing customer email configuration: ${missing.join(', ')}`,
+      missing,
+    }
+  }
+
+  try {
+    const response = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from,
+        to: customerEmail,
+        subject: 'We received your Kleihaus request',
+        html: buildCustomerEmailHtml(payload, insights),
+        text: buildCustomerEmailText(payload, insights),
+      }),
+    })
+
+    const result = await response.json().catch(() => ({}))
+
+    if (!response.ok) {
+      logSafe('CUSTOMER_EMAIL_FAILED', payload, { status: response.status })
+      return {
+        success: false,
+        configured: true,
+        sent: false,
+        status: response.status,
+        error: result?.message || 'Customer confirmation email request failed.',
+      }
+    }
+
+    console.log('CUSTOMER_EMAIL_SUCCESS', { requestId: payload.id, emailId: result.id })
+    return { success: true, configured: true, sent: true, provider: 'resend', id: result.id }
+  } catch (error) {
+    logSafe('CUSTOMER_EMAIL_FAILED', payload, { error: error.message })
+    return { success: false, configured: true, sent: false, error: error.message }
+  }
+}
+
 const sendWhatsAppBusinessNotification = async (env, payload) => {
   const token = clean(env?.WHATSAPP_ACCESS_TOKEN, 1000)
   const phoneNumberId = clean(env?.WHATSAPP_PHONE_NUMBER_ID, 120)
@@ -457,13 +592,15 @@ const settleNotification = (result, fallback) => {
 }
 
 const deliverQuoteNotifications = async (env, payload) => {
-  const [emailResult, whatsappResult] = await Promise.allSettled([
+  const [emailResult, customerEmailResult, whatsappResult] = await Promise.allSettled([
     sendResendEmail(env, payload),
+    sendCustomerConfirmationEmail(env, payload),
     sendWhatsAppBusinessNotification(env, payload),
   ])
 
   return {
     email: settleNotification(emailResult, 'Email delivery failed.'),
+    customerEmail: settleNotification(customerEmailResult, 'Customer confirmation email delivery failed.'),
     whatsapp: settleNotification(whatsappResult, 'WhatsApp delivery failed.'),
   }
 }
@@ -472,6 +609,7 @@ const logNotificationResults = (payload, results) => {
   console.log('QUOTE_NOTIFICATIONS_SETTLED', {
     requestId: payload.id,
     emailSent: Boolean(results.email?.sent),
+    customerEmailSent: Boolean(results.customerEmail?.sent),
     whatsappSent: Boolean(results.whatsapp?.sent),
     whatsappReason: results.whatsapp?.reason,
   })
@@ -526,6 +664,7 @@ export async function onRequestPost(context) {
       createdAt: payload.created_at,
       storage,
       email: { success: true, queued: true, sent: null, mode: 'background' },
+      customerEmail: { success: true, queued: true, sent: null, mode: 'background' },
       whatsapp: { success: true, queued: true, sent: null, mode: 'background' },
     })
   }
@@ -539,6 +678,7 @@ export async function onRequestPost(context) {
     createdAt: payload.created_at,
     storage,
     email: notifications.email,
+    customerEmail: notifications.customerEmail,
     whatsapp: notifications.whatsapp,
   })
 }
