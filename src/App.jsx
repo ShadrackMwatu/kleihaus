@@ -185,6 +185,13 @@ const ButtonSecondary = ({ className = '', children, ...props }) => (
   </button>
 )
 
+const WhatsAppBrandText = ({ children = 'WhatsApp', iconClassName = 'h-4 w-4' }) => (
+  <>
+    <MessageCircle className={`${iconClassName} text-[#25D366] drop-shadow-[0_0_6px_rgba(37,211,102,0.35)] transition group-hover:text-[#3ee77b]`} />
+    <span className="text-[#25D366] transition group-hover:text-[#3ee77b]">{children}</span>
+  </>
+)
+
 const Input = (props) => (
   <input
     {...props}
@@ -324,17 +331,15 @@ function Header({ projectType, searchQuery, setSearchQuery, onSearch, onCategory
             +254 748 827 166
           </a>
           <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" onClick={() => onWhatsAppClick('header')}>
-            <Button className="gap-2 bg-emerald-700 px-3.5 hover:bg-emerald-800">
-              <MessageCircle className="h-4 w-4" />
-              WhatsApp
+            <Button className="group gap-2 bg-neutral-950 px-3.5 hover:border-[#25D366]/60 hover:bg-neutral-900 hover:shadow-[0_0_18px_rgba(37,211,102,0.22)]">
+              <WhatsAppBrandText />
             </Button>
           </a>
         </div>
 
         <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="lg:hidden" onClick={() => onWhatsAppClick('mobile_header')}>
-          <Button className="gap-1.5 bg-emerald-700 px-3 py-2 text-xs hover:bg-emerald-800">
-            <MessageCircle className="h-4 w-4" />
-            WhatsApp
+          <Button className="group gap-1.5 bg-neutral-950 px-3 py-2 text-xs hover:border-[#25D366]/60 hover:bg-neutral-900 hover:shadow-[0_0_16px_rgba(37,211,102,0.22)]">
+            <WhatsAppBrandText />
           </Button>
         </a>
 
@@ -856,9 +861,8 @@ function Contact({ onWhatsAppClick }) {
           <div className="mt-5 flex flex-wrap gap-3">
             <Button>Send request</Button>
             <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" onClick={() => onWhatsAppClick('contact_form')}>
-              <ButtonSecondary className="gap-2">
-                <MessageCircle className="h-4 w-4" />
-                Chat on WhatsApp
+              <ButtonSecondary className="group gap-2 hover:border-[#25D366]/70 hover:shadow-[0_0_16px_rgba(37,211,102,0.16)]">
+                <WhatsAppBrandText>Chat on WhatsApp</WhatsAppBrandText>
               </ButtonSecondary>
             </a>
           </div>
@@ -886,10 +890,9 @@ function MobileStickyWhatsApp({ onWhatsAppClick }) {
       target="_blank"
       rel="noopener noreferrer"
       onClick={() => onWhatsAppClick('mobile_sticky')}
-      className="fixed bottom-4 left-4 right-4 z-40 inline-flex items-center justify-center gap-2 rounded-md bg-emerald-700 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-neutral-900/20 md:hidden"
+      className="group fixed bottom-4 left-4 right-4 z-40 inline-flex items-center justify-center gap-2 rounded-md border border-[#25D366]/40 bg-neutral-950 px-4 py-3 text-sm font-semibold shadow-lg shadow-neutral-900/20 transition hover:shadow-[0_0_20px_rgba(37,211,102,0.28)] md:hidden"
     >
-      <MessageCircle className="h-4 w-4" />
-      Request quote on WhatsApp
+      <WhatsAppBrandText>Request quote on WhatsApp</WhatsAppBrandText>
     </a>
   )
 }
