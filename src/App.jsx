@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import {
   ArrowRight,
   Brush,
@@ -33,6 +33,16 @@ const whatsappUrl =
 
 const whatsappInquiryUrl = (subject) =>
   `https://wa.me/254748827166?text=${encodeURIComponent(`Hello Kleihaus, I would like a quote for ${subject}. Please share availability, price guidance and delivery options.`)}`
+
+const emptyQuoteForm = {
+  name: '',
+  email: '',
+  phone: '',
+  location: '',
+  message: '',
+  requestDetails: '',
+  details: '',
+}
 
 const seoTitle = 'Kleihaus Ceramics | Tiles, Sanitaryware, Paints & Building Materials Kenya'
 const seoDescription =
@@ -780,14 +790,9 @@ function HelpfulGuides({ onGuideClick }) {
 }
 
 function Contact({ onWhatsAppClick }) {
-  const [quoteForm, setQuoteForm] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    location: '',
-    message: '',
-    requestDetails: '',
-  })
+  const quoteFormRef = useRef(null)
+  const [quoteForm, setQuoteForm] = useState(emptyQuoteForm)
+  const [quoteFormResetKey, setQuoteFormResetKey] = useState(0)
   const [quoteErrors, setQuoteErrors] = useState([])
   const [quoteStatus, setQuoteStatus] = useState('')
   const [quoteStatusType, setQuoteStatusType] = useState('success')
@@ -828,14 +833,9 @@ function Contact({ onWhatsAppClick }) {
     setQuoteStatusType(backendResult.ok ? 'success' : 'error')
     setQuoteStatus(backendResult.message)
     if (backendResult.ok) {
-      setQuoteForm({
-        name: '',
-        email: '',
-        phone: '',
-        location: '',
-        message: '',
-        requestDetails: '',
-      })
+      setQuoteForm(emptyQuoteForm)
+      quoteFormRef.current?.reset()
+      setQuoteFormResetKey((current) => current + 1)
       window.setTimeout(() => setIsQuoteSubmitting(false), 800)
       return
     }
@@ -869,8 +869,11 @@ function Contact({ onWhatsAppClick }) {
         </div>
 
         <form
+          key={quoteFormResetKey}
+          ref={quoteFormRef}
           onSubmit={submitQuoteRequest}
           noValidate
+          autoComplete="off"
           className="rounded-lg bg-white p-5 text-neutral-950 shadow-xl sm:p-6"
         >
           <div className="mb-5">
@@ -880,27 +883,28 @@ function Contact({ onWhatsAppClick }) {
           <div className="grid gap-4 sm:grid-cols-2">
             <label className="grid gap-2 text-sm font-medium text-neutral-700">
               Name
-              <Input name="name" placeholder="Your name" value={quoteForm.name} onChange={updateQuoteField('name')} required />
+              <Input name="name" autoComplete="off" placeholder="Your name" value={quoteForm.name} onChange={updateQuoteField('name')} required />
             </label>
             <label className="grid gap-2 text-sm font-medium text-neutral-700">
               Email
-              <Input name="email" type="email" placeholder="Email address" value={quoteForm.email} onChange={updateQuoteField('email')} />
+              <Input name="email" type="email" autoComplete="off" placeholder="Email address" value={quoteForm.email} onChange={updateQuoteField('email')} />
             </label>
           </div>
           <div className="mt-4 grid gap-4 sm:grid-cols-2">
             <label className="grid gap-2 text-sm font-medium text-neutral-700">
               Phone
-              <Input name="phone" placeholder="Phone number" value={quoteForm.phone} onChange={updateQuoteField('phone')} />
+              <Input name="phone" autoComplete="off" placeholder="Phone number" value={quoteForm.phone} onChange={updateQuoteField('phone')} />
             </label>
             <label className="grid gap-2 text-sm font-medium text-neutral-700">
               Location
-              <Input name="location" placeholder="Project location" value={quoteForm.location} onChange={updateQuoteField('location')} />
+              <Input name="location" autoComplete="off" placeholder="Project location" value={quoteForm.location} onChange={updateQuoteField('location')} />
             </label>
           </div>
           <label className="mt-4 grid gap-2 text-sm font-medium text-neutral-700">
             Request details
             <Textarea
               name="message"
+              autoComplete="off"
               placeholder="Example: 32m² floor tiles, matte finish, delivery to Machakos, budget range..."
               rows={5}
               value={quoteForm.message}
