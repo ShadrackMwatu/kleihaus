@@ -1,6 +1,7 @@
 name = "kleihaus"
-compatibility_date = "2026-05-27"
-pages_build_output_dir = "dist"
+main = "src/worker.js"
+compatibility_date = "2025-05-27"
+
 [[d1_databases]]
 binding = "DB"
 database_name = "kleihaus_quotes"
