@@ -1,0 +1,18 @@
+{
+  "name": "Kleihaus Ceramics",
+  "short_name": "Kleihaus",
+  "description": "Tiles, sanitaryware, paints, adhesives and finishing materials for homes, projects and developments across Kenya.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#A65F1E",
+  "icons": [
+    {
+      "src": "/images/kleihaus-logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ]
+}

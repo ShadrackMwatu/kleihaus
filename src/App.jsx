@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   ArrowRight,
   Brush,
@@ -34,6 +34,11 @@ const whatsappUrl =
 
 const whatsappInquiryUrl = (subject) =>
   `https://wa.me/254748827166?text=${encodeURIComponent(`Hello Kleihaus, I would like a quote for ${subject}. Please share availability, price guidance and delivery options.`)}`
+
+const seoTitle = 'Kleihaus Ceramics | Tiles, Sanitaryware, Paints & Building Materials Kenya'
+const seoDescription =
+  'Kleihaus Ceramics supplies tiles, sanitaryware, paints, adhesives and finishing materials for homes, projects and developments across Kenya.'
+const canonicalUrl = 'https://www.kleihaus.com/'
 
 const navItems = [
   { label: 'Home', href: '#top' },
@@ -161,10 +166,53 @@ const productGroups = [
 ]
 
 const serviceBadges = [
-  { title: 'Quality products', text: 'Curated finishes selected for practical Kenyan projects.', icon: ShieldCheck },
-  { title: 'Site delivery available', text: 'Support for deliveries to homes, sites and developments.', icon: Truck },
-  { title: 'Installation support', text: 'Guidance on adhesives, grout, tile laying and finishing.', icon: Wrench },
-  { title: 'Project quotations', text: 'Helpful estimates for room, home and bulk project needs.', icon: ClipboardList },
+  { title: 'Reliable supply support', text: 'Curated finishing materials from tile, sanitaryware, paint and installation categories.', icon: ShieldCheck },
+  { title: 'Delivery coordination', text: 'Support for deliveries to homes, sites and developments across key Kenyan service areas.', icon: Truck },
+  { title: 'Installation guidance', text: 'Practical help with adhesives, grout, tile laying choices and finishing details.', icon: Wrench },
+  { title: 'WhatsApp quote support', text: 'Fast response support for retail requests, project quotations and material matching.', icon: ClipboardList },
+]
+
+const areasServed = [
+  {
+    title: 'Tiles in Nairobi',
+    text: 'Tile, sanitaryware, paint and finishing material support for homes, apartments, shops and project sites in Nairobi.',
+  },
+  {
+    title: 'Building materials in Machakos',
+    text: 'Quotation support for floor tiles, bathroom tiles, adhesives, grout, paints and sanitaryware projects in Machakos.',
+  },
+  {
+    title: 'Tile supply in Makueni',
+    text: 'Guidance for Makueni customers planning durable tiles, bathroom finishes, paints and installation materials.',
+  },
+]
+
+const faqItems = [
+  {
+    question: 'How do I choose the right tiles for my project?',
+    answer:
+      'Consider the room, surface finish, slip resistance, cleaning needs and budget. Kleihaus can help match floor tiles, wall tiles, bathroom tiles and outdoor tiles to the way the space will be used.',
+  },
+  {
+    question: 'Can Kleihaus help me choose tile adhesive and grout?',
+    answer:
+      'Yes. Adhesive and grout should match the tile type, area of use and expected moisture or foot traffic. Kleihaus can guide practical combinations for stronger installations.',
+  },
+  {
+    question: 'Does Kleihaus support delivery and project quotations?',
+    answer:
+      'Kleihaus supports retail and project quotation requests. Share your room size, product type, delivery location and budget so the team can respond with useful guidance.',
+  },
+  {
+    question: 'Can I request sanitaryware guidance?',
+    answer:
+      'Yes. Kleihaus can help customers compare basins, toilets, taps, mixers, showers and accessories for modern bathroom finishes.',
+  },
+  {
+    question: 'What information should I send on WhatsApp?',
+    answer:
+      'Send the room size, preferred tile or finish, delivery location, quantity estimate and budget range. Photos or inspiration references can also help.',
+  },
 ]
 
 const Button = ({ className = '', children, ...props }) => (
@@ -192,6 +240,28 @@ const WhatsAppBrandText = ({ children = 'WhatsApp', iconClassName = 'h-4 w-4' })
   </>
 )
 
+const setMetaContent = (selector, content) => {
+  const tag = document.querySelector(selector)
+  if (tag) tag.setAttribute('content', content)
+}
+
+function SeoManager() {
+  useEffect(() => {
+    document.title = seoTitle
+    setMetaContent('meta[name="description"]', seoDescription)
+    setMetaContent('meta[name="robots"]', 'index, follow, max-image-preview:large')
+    setMetaContent('meta[property="og:title"]', seoTitle)
+    setMetaContent('meta[property="og:description"]', seoDescription)
+    setMetaContent('meta[name="twitter:title"]', seoTitle)
+    setMetaContent('meta[name="twitter:description"]', seoDescription)
+
+    const canonical = document.querySelector('link[rel="canonical"]')
+    if (canonical) canonical.setAttribute('href', canonicalUrl)
+  }, [])
+
+  return null
+}
+
 const Input = (props) => (
   <input
     {...props}
@@ -212,6 +282,8 @@ function Logo({ compact = false }) {
       <img
         src="/images/kleihaus-logo.jpg"
         alt="Kleihaus Ceramics"
+        loading="eager"
+        decoding="async"
         className={`${compact ? 'h-9 w-9' : 'h-11 w-11'} rounded-md border border-neutral-200 object-contain`}
       />
       <div className={compact ? 'leading-tight' : ''}>
@@ -400,7 +472,14 @@ function Hero({ onWhatsAppClick }) {
     <section id="top" className="bg-stone-100">
       <div className="mx-auto max-w-7xl px-4 py-6 lg:py-10">
         <div className="relative min-h-[520px] overflow-hidden rounded-lg bg-neutral-950 text-white shadow-xl">
-          <img src="/images/kleihaus-structure.jpg" alt="" className="absolute inset-0 h-full w-full object-cover opacity-65" />
+          <img
+            src="/images/kleihaus-structure.jpg"
+            alt="Kleihaus Ceramics tile and finishing materials showroom structure"
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
+            className="absolute inset-0 h-full w-full object-cover opacity-65"
+          />
           <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/75 to-neutral-900/10" />
           <div className="relative flex min-h-[520px] max-w-3xl flex-col justify-center px-5 py-12 sm:px-10 lg:px-12">
             <p className="text-xs font-semibold uppercase text-emerald-200">Kleihaus Ceramics</p>
@@ -459,7 +538,9 @@ function ShopByCategory({ selectedCategory, onCategoryClick, onWhatsAppClick }) 
                 <div className="relative aspect-[4/3] overflow-hidden bg-neutral-100">
                   <img
                     src={category.img}
-                    alt={category.name}
+                    alt={`${category.name} supplied by Kleihaus Ceramics in Kenya`}
+                    loading="lazy"
+                    decoding="async"
                     className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
                     onError={(event) => {
                       event.currentTarget.onerror = null
@@ -529,7 +610,13 @@ function ProductCatalogue({ onProductInterest, onWhatsAppClick }) {
                     key={item.name}
                     className="group flex h-full flex-col overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-sm transition hover:border-emerald-700 hover:shadow-md"
                   >
-                    <img src={item.img} alt={item.name} className="aspect-[5/4] w-full object-cover transition duration-300 group-hover:scale-105" />
+                    <img
+                      src={item.img}
+                      alt={`${item.name} from Kleihaus Ceramics catalogue`}
+                      loading="lazy"
+                      decoding="async"
+                      className="aspect-[5/4] w-full object-cover transition duration-300 group-hover:scale-105"
+                    />
                     <div className="flex flex-1 flex-col p-5">
                       <div className="flex items-center justify-between gap-3">
                         <h4 className="text-sm font-semibold text-neutral-950">{item.name}</h4>
@@ -555,6 +642,22 @@ function ProductCatalogue({ onProductInterest, onWhatsAppClick }) {
             </div>
           ))}
         </div>
+      </div>
+    </section>
+  )
+}
+
+function CatalogueSummary() {
+  return (
+    <section aria-labelledby="catalogue-summary-heading" className="mx-auto max-w-7xl px-4 pb-16">
+      <div className="rounded-lg border border-neutral-200 bg-white p-5 shadow-sm sm:p-6">
+        <p className="text-sm font-semibold uppercase text-emerald-700">Catalogue summary</p>
+        <h2 id="catalogue-summary-heading" className="mt-2 text-2xl font-semibold text-neutral-950">
+          Tiles, sanitaryware, paints and finishing materials in Kenya
+        </h2>
+        <p className="mt-3 max-w-4xl text-sm leading-7 text-neutral-600">
+          Kleihaus Ceramics helps customers source floor tiles, wall tiles, bathroom tiles, outdoor tiles, sanitaryware, paints, tile adhesive, grout and installation support for homes, shops, developments and institutional projects across Kenya.
+        </p>
       </div>
     </section>
   )
@@ -668,7 +771,13 @@ function InspirationGallery({ onCategoryClick }) {
               className="group overflow-hidden rounded-md border border-neutral-200 bg-white text-left shadow-sm hover:border-emerald-700"
             >
               <div className="relative">
-                <img src={space.img} alt={space.name} className="aspect-[4/3] w-full object-cover transition duration-300 group-hover:scale-105" />
+                <img
+                  src={space.img}
+                  alt={`${space.name} tile and finishing inspiration by Kleihaus Ceramics`}
+                  loading="lazy"
+                  decoding="async"
+                  className="aspect-[4/3] w-full object-cover transition duration-300 group-hover:scale-105"
+                />
                 <span className="absolute left-3 top-3 inline-flex h-10 w-10 items-center justify-center rounded-md bg-white/95 text-emerald-800">
                   <Icon className="h-5 w-5" />
                 </span>
@@ -713,6 +822,32 @@ function Services() {
   )
 }
 
+function AreasWeServe() {
+  return (
+    <section aria-labelledby="areas-heading" className="bg-stone-100">
+      <div className="mx-auto max-w-7xl px-4 py-16">
+        <div className="mb-7 max-w-3xl">
+          <p className="text-sm font-semibold uppercase text-emerald-700">Areas we serve</p>
+          <h2 id="areas-heading" className="mt-2 text-3xl font-semibold text-neutral-950">
+            Local support for Nairobi, Machakos and Makueni
+          </h2>
+          <p className="mt-2 text-sm leading-6 text-neutral-600">
+            Kleihaus supports customers looking for tiles, sanitaryware and building finishing materials in Kenya without overcomplicating the quotation process.
+          </p>
+        </div>
+        <div className="grid gap-4 md:grid-cols-3">
+          {areasServed.map((area) => (
+            <article key={area.title} className="rounded-md border border-neutral-200 bg-white p-5 shadow-sm">
+              <h3 className="text-base font-semibold text-neutral-950">{area.title}</h3>
+              <p className="mt-2 text-sm leading-6 text-neutral-600">{area.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function HelpfulGuides({ onGuideClick }) {
   return (
     <section className="border-y border-neutral-200 bg-neutral-50">
@@ -738,6 +873,30 @@ function HelpfulGuides({ onGuideClick }) {
             </a>
           ))}
         </div>
+      </div>
+    </section>
+  )
+}
+
+function FAQSection() {
+  return (
+    <section id="faq" aria-labelledby="faq-heading" className="mx-auto max-w-7xl px-4 py-16">
+      <div className="mb-7 max-w-3xl">
+        <p className="text-sm font-semibold uppercase text-emerald-700">Customer questions</p>
+        <h2 id="faq-heading" className="mt-2 text-3xl font-semibold text-neutral-950">
+          Frequently asked questions
+        </h2>
+        <p className="mt-2 text-sm leading-6 text-neutral-600">
+          Quick guidance for tile selection, grout choices, delivery planning, sanitaryware and project quotation support.
+        </p>
+      </div>
+      <div className="grid gap-4 lg:grid-cols-2">
+        {faqItems.map((item) => (
+          <article key={item.question} className="rounded-md border border-neutral-200 bg-white p-5 shadow-sm">
+            <h3 className="text-base font-semibold text-neutral-950">{item.question}</h3>
+            <p className="mt-2 text-sm leading-6 text-neutral-600">{item.answer}</p>
+          </article>
+        ))}
       </div>
     </section>
   )
@@ -939,6 +1098,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-white text-neutral-900">
+      <SeoManager />
       <Header
         projectType={projectType}
         searchQuery={searchQuery}
@@ -950,10 +1110,13 @@ export default function App() {
       <Hero onWhatsAppClick={handleWhatsAppClick} />
       <ShopByCategory selectedCategory={selectedCategory} onCategoryClick={handleCategoryClick} onWhatsAppClick={handleWhatsAppClick} />
       <ProductCatalogue onProductInterest={handleProductInterest} onWhatsAppClick={handleWhatsAppClick} />
+      <CatalogueSummary />
       <Services />
+      <AreasWeServe />
       <QuantityEstimator />
       <InspirationGallery onCategoryClick={handleCategoryClick} />
       <HelpfulGuides onGuideClick={handleGuideClick} />
+      <FAQSection />
       <Contact onWhatsAppClick={handleWhatsAppClick} />
       <MobileStickyWhatsApp onWhatsAppClick={handleWhatsAppClick} />
       <Footer />
