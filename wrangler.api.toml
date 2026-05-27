@@ -1,0 +1,17 @@
+name = "kleihaus-api"
+main = "src/api-worker.js"
+compatibility_date = "2025-05-27"
+
+routes = [
+  { pattern = "api.kleihaus.com", custom_domain = true }
+]
+
+[vars]
+QUOTE_EMAIL_TO = "sales@kleihaus.com"
+QUOTE_EMAIL_FROM = "Kleihaus Ceramics <sales@kleihaus.com>"
+WHATSAPP_TO_NUMBER = "254748827166"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "kleihaus_quotes"
+database_id = "895e6c3b-9f44-46fe-a96a-c45c3fe3278b"

@@ -1,8 +1,6 @@
-const API_ENDPOINT = '/api/quote-request'
-const developmentFallbackMessage = 'Request prepared. Please use WhatsApp if submission does not complete.'
+const API_ENDPOINT = 'https://api.kleihaus.com/quote-request'
 
 const clean = (value) => String(value || '').trim()
-const isDevelopmentMode = () => Boolean(import.meta.env?.DEV)
 
 export const quoteRequestService = {
   prepare(form) {
@@ -14,7 +12,6 @@ export const quoteRequestService = {
       message: clean(form.message || form.requestDetails),
       requestDetails: clean(form.message || form.requestDetails),
       source: 'kleihaus_website',
-      service: 'Quote request',
     }
 
     const errors = []
@@ -53,13 +50,6 @@ export const quoteRequestService = {
 
       const data = await response.json().catch(() => ({}))
 
-      if (isDevelopmentMode() && [404, 405, 501].includes(response.status)) {
-        return {
-          ok: false,
-          message: developmentFallbackMessage,
-        }
-      }
-
       if (!response.ok || !data.success) {
         return {
           ok: false,
@@ -72,13 +62,6 @@ export const quoteRequestService = {
         message: data.message || 'Request submitted successfully. Our team will respond shortly.',
       }
     } catch (error) {
-      if (isDevelopmentMode()) {
-        return {
-          ok: false,
-          message: developmentFallbackMessage,
-        }
-      }
-
       return {
         ok: false,
         message: 'We could not submit your request. Please try WhatsApp.',

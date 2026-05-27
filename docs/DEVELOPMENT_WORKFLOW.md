@@ -123,7 +123,7 @@ QUOTE_EMAIL_TO=sales@kleihaus.com
 QUOTE_EMAIL_FROM=
 WHATSAPP_ACCESS_TOKEN=
 WHATSAPP_PHONE_NUMBER_ID=
-WHATSAPP_NOTIFY_TO=254748827166
+WHATSAPP_TO_NUMBER=254748827166
 ```
 
 ## Verification Before Push
@@ -148,7 +148,7 @@ Then verify:
 - Mobile layout works.
 - Images load and have useful alt text.
 - WhatsApp links open correctly.
-- Quote form posts to `/api/quote-request`.
+- Quote form posts to `https://api.kleihaus.com/quote-request`.
 - Manual WhatsApp fallback links open correctly.
 - Public website does not expose backend/internal AI wording.
 - `git status` does not show `node_modules/`, `dist/` or secrets.

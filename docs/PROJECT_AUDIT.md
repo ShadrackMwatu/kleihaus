@@ -49,7 +49,8 @@ Key files and folders:
 - Build output: `dist`
 - Deployment model: Cloudflare Pages automatically builds and deploys changes pushed to `main`.
 - Pages Functions are deployed from the repo-based `functions/` directory; no dashboard-created Worker is required.
-- `wrangler.toml` is intentionally minimal and does not declare D1 bindings until the production database is fully configured.
+- `wrangler.toml` includes the repo-based D1 binding used by the quote backend.
+- The permanent API subdomain `https://api.kleihaus.com` is served by the repo-based Worker entrypoint `src/api-worker.js` using `wrangler.api.toml`.
 
 Cloudflare deployment settings should not be changed casually. The current site is intended to remain a Vite static frontend deployed from GitHub.
 
@@ -106,12 +107,12 @@ These files are backend-ready foundations only. They must not expose secrets or 
 Current behavior:
 
 - The contact/quote form validates required customer details.
-- It posts the quote request to the secure backend endpoint at `/api/quote-request`.
+- It posts the quote request to the secure backend endpoint at `https://api.kleihaus.com/quote-request`.
 - The backend validates, sanitizes and timestamps the request.
-- The backend can store quote requests in Cloudflare D1 when a database binding is configured.
-- The backend prepares quote email hooks for Resend, EmailJS, SMTP or a custom API.
-- The backend prepares WhatsApp Business Cloud API notification support when backend credentials are configured.
-- If notification credentials are not configured, the backend still returns a captured success response so customers see "Request submitted successfully. Our team will respond shortly."
+- The backend stores quote requests in Cloudflare D1 table `quote_requests`.
+- The backend sends real email through Resend using `RESEND_API_KEY`, `QUOTE_EMAIL_FROM`, and `QUOTE_EMAIL_TO`.
+- The backend returns `success: true` only after D1 storage and Resend email delivery succeed.
+- The backend skips WhatsApp automation unless WhatsApp Business Cloud API credentials are configured.
 - It tracks a `quote_form_submitted` analytics event.
 - The manual "Chat on WhatsApp" button remains available as a fallback.
 
@@ -119,7 +120,7 @@ Email submission readiness:
 
 - Email credentials are not stored in frontend code.
 - Backend variables such as `RESEND_API_KEY`, `QUOTE_EMAIL_FROM` and WhatsApp Business API tokens must be configured in Cloudflare, not committed to the repo.
-- The backend endpoint can forward requests to Resend now and can later be extended for SendGrid, Mailgun, EmailJS or a custom API.
+- The backend endpoint sends through Resend now and can later be extended for SendGrid, Mailgun, EmailJS or a custom API.
 
 ## SEO Status
 

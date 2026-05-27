@@ -5,7 +5,7 @@
 The public Kleihaus quote/contact form validates the customer request in the browser and posts the payload to:
 
 ```text
-/api/quote-request
+https://api.kleihaus.com/quote-request
 ```
 
 The Cloudflare Pages Function receives the request, validates and sanitizes the payload, optionally stores it in D1, sends email through Resend when configured, and prepares WhatsApp Business API notification support when credentials are available.
@@ -52,7 +52,7 @@ The frontend sends this JSON payload:
   "email": "...",
   "phone": "...",
   "location": "...",
-  "message": "...",
+  "requestDetails": "...",
   "source": "kleihaus_website"
 }
 ```
@@ -74,7 +74,7 @@ Do not put SMTP passwords, email API keys, WhatsApp Business tokens, LLM keys, d
 ## Recommended Backend Flow
 
 1. Browser validates the request.
-2. Browser posts the quote payload to `/api/quote-request`.
+2. Browser posts the quote payload to `https://api.kleihaus.com/quote-request`.
 3. Backend validates and sanitizes the payload.
 4. Backend stores the request if D1 is configured.
 5. Backend sends email to `sales@kleihaus.com`.

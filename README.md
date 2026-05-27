@@ -67,14 +67,14 @@ QUOTE_EMAIL_TO=sales@kleihaus.com
 QUOTE_EMAIL_FROM=
 WHATSAPP_ACCESS_TOKEN=
 WHATSAPP_PHONE_NUMBER_ID=
-WHATSAPP_NOTIFY_TO=254748827166
+WHATSAPP_TO_NUMBER=254748827166
 ```
 
 Backend variables such as `RESEND_API_KEY`, `QUOTE_EMAIL_FROM` and WhatsApp Business API tokens must be configured in Cloudflare Pages/Workers settings, not exposed in frontend code. Do not place API keys, SMTP passwords, WhatsApp tokens, database credentials or LLM keys in `VITE_` variables.
 
 ## Quote and WhatsApp Flow
 
-The public quote form validates customer details and posts to `/api/quote-request`, a repo-based Cloudflare Pages Function that captures inquiries and prepares storage, email and WhatsApp notification hooks. If notification credentials are not configured yet, the backend still returns a safe customer success response.
+The public quote form validates customer details and posts to `https://api.kleihaus.com/quote-request`, a repo-based Cloudflare Pages Function that stores inquiries in D1 and sends email through Resend before returning success. WhatsApp automation is attempted only when WhatsApp Business API variables are configured.
 
 Success message:
 

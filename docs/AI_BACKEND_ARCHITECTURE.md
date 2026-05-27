@@ -87,7 +87,7 @@ QUOTE_EMAIL_TO=sales@kleihaus.com
 QUOTE_EMAIL_FROM=
 WHATSAPP_ACCESS_TOKEN=
 WHATSAPP_PHONE_NUMBER_ID=
-WHATSAPP_NOTIFY_TO=254748827166
+WHATSAPP_TO_NUMBER=254748827166
 ```
 
 Production secrets must be configured in the backend or deployment platform, never committed to the repository.

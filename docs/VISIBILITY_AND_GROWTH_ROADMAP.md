@@ -88,7 +88,7 @@ Do not expose monthly intelligence dashboards on the public website.
 
 - Keep WhatsApp visible in the header, product cards, category cards, contact section and mobile sticky CTA.
 - Prefill WhatsApp messages with product or category context.
-- Keep the quote form submitting to `/api/quote-request`.
+- Keep the quote form submitting to `https://api.kleihaus.com/quote-request`.
 - Keep manual WhatsApp links available as customer fallback.
 - Use `VITE_MONTHLY_REPORT_ENDPOINT=` later for secure monthly reporting delivery.
 - Never place WhatsApp tokens, email API keys, SMTP passwords or database credentials in frontend code.

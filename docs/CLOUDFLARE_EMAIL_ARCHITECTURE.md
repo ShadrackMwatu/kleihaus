@@ -1,12 +1,12 @@
 # Cloudflare Email Architecture
 
-Kleihaus quote requests use a secure backend endpoint for email delivery. The public website prepares the request payload and posts it to `/api/quote-request`, while email provider credentials stay on the server side.
+Kleihaus quote requests use a secure backend endpoint for email delivery. The public website prepares the request payload and posts it to `https://api.kleihaus.com/quote-request`, while email provider credentials stay on the server side.
 
 ## Target Flow
 
 1. Customer submits the quote/contact form on the Kleihaus website.
 2. The frontend validates required fields.
-3. The frontend posts a JSON payload to `/api/quote-request`.
+3. The frontend posts a JSON payload to `https://api.kleihaus.com/quote-request`.
 4. A Cloudflare Pages Function receives the payload, validates it and sanitizes the message.
 5. The Function stores the request in D1 when configured.
 6. The Function sends the email through Resend when backend variables are configured.
@@ -36,7 +36,7 @@ QUOTE_EMAIL_TO=sales@kleihaus.com
 QUOTE_EMAIL_FROM=
 WHATSAPP_ACCESS_TOKEN=
 WHATSAPP_PHONE_NUMBER_ID=
-WHATSAPP_NOTIFY_TO=254748827166
+WHATSAPP_TO_NUMBER=254748827166
 ```
 
 These values belong in Cloudflare Pages/Workers settings. Do not prefix backend secrets with `VITE_`.

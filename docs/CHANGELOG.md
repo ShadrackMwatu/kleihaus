@@ -8,16 +8,21 @@ Rule: Every future meaningful change must update `docs/CHANGELOG.md` and, where 
 
 ### Backend Quote Request Automation
 
-- Removed the D1 binding from `wrangler.toml` and removed `wrangler` from frontend dev dependencies so Cloudflare Pages can deploy the Vite site and repo-based `functions/` directory without requiring undeclared account resources during build.
-- Fixed the production quote API endpoint wiring by changing the frontend fetch target back to `/api/quote-request`.
+- Updated quote submission to use the permanent backend API `https://api.kleihaus.com/quote-request` instead of relative Pages Function paths or preview deployment URLs.
+- Added repo-based API Worker entrypoint `src/api-worker.js` and `wrangler.api.toml` so `api.kleihaus.com` uses the same quote handler as `functions/api/quote-request.js`.
+- Added safe non-secret Worker vars for quote email recipient, sender, and WhatsApp recipient in `wrangler.api.toml`; API tokens remain Cloudflare secrets.
+- Reintroduced the repo-based D1 binding in `wrangler.toml` for `quote_requests` persistence.
+- Tightened backend success so quote requests return `success: true` only after D1 storage and Resend email delivery succeed.
+- Added WhatsApp Business API structure using `WHATSAPP_ACCESS_TOKEN`, `WHATSAPP_PHONE_NUMBER_ID`, and `WHATSAPP_TO_NUMBER`; missing credentials return a clear skipped reason.
+- Fixed the production quote API endpoint wiring by changing the frontend fetch target back to `https://api.kleihaus.com/quote-request`.
 - Added `message` and `details` aliases alongside `requestDetails` in the quote request payload so current and future deployed function versions accept the same submission.
 - Confirmed the repo-based Cloudflare Pages Function path is `functions/api/quote-request.js` and the function exports `onRequestPost(context)`.
-- Adjusted the endpoint so missing notification/storage credentials still return a captured success response instead of a public failure.
-- Fixed the repo-based Cloudflare Pages Function so it exports `onRequestPost(context)` for `/api/quote-request`.
-- Changed missing notification credentials from a public failure to a captured success response using `mode: "captured_without_notifications"`.
+- Adjusted the endpoint so D1 storage or Resend failures return `success: false` instead of showing a false success.
+- Fixed the repo-based Cloudflare Pages Function so it exports `onRequestPost(context)` for `https://api.kleihaus.com/quote-request`.
+- Changed WhatsApp automation to report a clear skipped status unless WhatsApp Business API is configured.
 - Added local development fallback messaging when Vite cannot reach the Pages Function endpoint.
 - Added Cloudflare Pages Function endpoint at `functions/api/quote-request.js` for secure quote request automation.
-- Updated the quote form so "Send request" posts to `/api/quote-request` instead of automatically redirecting to WhatsApp.
+- Updated the quote form so "Send request" posts to `https://api.kleihaus.com/quote-request` instead of automatically redirecting to WhatsApp.
 - Preserved the manual "Chat on WhatsApp" fallback button for customers if backend submission fails.
 - Added backend-only environment variable placeholders for Resend email delivery, WhatsApp Business Cloud API notification and optional D1 storage.
 - Added `docs/QUOTE_BACKEND_AUTOMATION.md` documenting the frontend-to-backend flow, Cloudflare setup, D1 schema, testing steps and security notes.
