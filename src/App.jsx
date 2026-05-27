@@ -801,6 +801,8 @@ function Contact({ onWhatsAppClick }) {
   const submitQuoteRequest = async (event) => {
     event.preventDefault()
 
+    if (isQuoteSubmitting) return
+
     const preparedRequest = quoteRequestService.prepare(quoteForm)
     if (!preparedRequest.ok) {
       setQuoteErrors(preparedRequest.errors)
@@ -824,6 +826,17 @@ function Contact({ onWhatsAppClick }) {
     const backendResult = await quoteRequestService.submitBackend(preparedRequest.payload)
     setQuoteStatusType(backendResult.ok ? 'success' : 'error')
     setQuoteStatus(backendResult.message)
+    if (backendResult.ok) {
+      setQuoteForm({
+        name: '',
+        email: '',
+        phone: '',
+        location: '',
+        message: '',
+      })
+      window.setTimeout(() => setIsQuoteSubmitting(false), 800)
+      return
+    }
     setIsQuoteSubmitting(false)
   }
 
@@ -912,7 +925,7 @@ function Contact({ onWhatsAppClick }) {
           )}
           <div className="mt-5 flex flex-wrap gap-3">
             <Button disabled={isQuoteSubmitting} className="disabled:cursor-not-allowed disabled:opacity-70">
-              {isQuoteSubmitting ? 'Sending request...' : 'Send request'}
+              {isQuoteSubmitting ? 'Sending...' : 'Send request'}
             </Button>
             <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" onClick={() => onWhatsAppClick('contact_form')}>
               <ButtonSecondary type="button" className="group gap-2 hover:border-[#25D366]/70 hover:shadow-[0_0_16px_rgba(37,211,102,0.16)]">
