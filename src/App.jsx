@@ -43,7 +43,7 @@ const canonicalUrl = 'https://www.kleihaus.com/'
 const navItems = [
   { label: 'Home', href: '#top' },
   { label: 'About', href: '#about' },
-  { label: 'Product Catalogue', href: '#catalogue' },
+  { label: 'Catalogue', href: '#catalogue' },
   { label: 'Contact', href: '#contact' },
 ]
 
@@ -297,20 +297,20 @@ function Logo({ compact = false }) {
 function TopStrip() {
   return (
     <div className="hidden bg-[#A65F1E] text-white sm:block">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2 text-xs">
-        <div className="flex items-center gap-5">
-          <a href="tel:+254748827166" className="inline-flex items-center gap-1.5 hover:text-emerald-200">
-            <Phone className="h-3.5 w-3.5" />
-            +254 748 827 166
-          </a>
-          <a href="mailto:sales@kleihaus.com" className="inline-flex items-center gap-1.5 hover:text-emerald-200">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-1.5 text-[11px]">
+        <div className="inline-flex items-center gap-1.5 text-white/90">
+          <MapPin className="h-3.5 w-3.5" />
+          Nairobi | Machakos | Makueni
+        </div>
+        <div className="flex items-center gap-5 text-white/90">
+          <a href="mailto:sales@kleihaus.com" className="inline-flex items-center gap-1.5 transition hover:text-white">
             <Mail className="h-3.5 w-3.5" />
             sales@kleihaus.com
           </a>
-        </div>
-        <div className="inline-flex items-center gap-1.5 text-neutral-200">
-          <MapPin className="h-3.5 w-3.5" />
-          Nairobi | Machakos | Makueni
+          <a href="tel:+254748827166" className="inline-flex items-center gap-1.5 transition hover:text-white">
+            <Phone className="h-3.5 w-3.5" />
+            +254 748 827 166
+          </a>
         </div>
       </div>
     </div>
@@ -330,8 +330,8 @@ function SearchAutocomplete({ value, onChange, projectType, onSearch }) {
 
   return (
     <div className="relative min-w-0 flex-1">
-      <label className="flex min-w-0 items-center gap-2 rounded-md border border-neutral-300 bg-neutral-50 px-3 py-2.5">
-        <Search className="h-4 w-4 text-neutral-500" />
+      <label className="flex min-w-0 items-center gap-2 rounded-md border border-neutral-200 bg-white px-3 py-2 shadow-sm transition focus-within:border-[#A65F1E]/50 focus-within:shadow-md">
+        <Search className="h-4 w-4 text-neutral-400" />
         <input
           type="search"
           value={value}
@@ -343,8 +343,8 @@ function SearchAutocomplete({ value, onChange, projectType, onSearch }) {
           onKeyDown={(event) => {
             if (event.key === 'Enter') submitSearch(value)
           }}
-          placeholder="Search tiles, sanitaryware, paints, adhesives..."
-          className="w-full bg-transparent text-sm outline-none placeholder:text-neutral-500"
+          placeholder="Search tiles, sanitaryware, paints..."
+          className="w-full bg-transparent text-sm outline-none placeholder:text-neutral-400"
         />
       </label>
 
@@ -381,27 +381,24 @@ function Header({ projectType, searchQuery, setSearchQuery, onSearch, onCategory
   return (
     <header className="sticky top-0 z-50 border-b border-neutral-200 bg-white/95 backdrop-blur">
       <TopStrip />
-      <div className="mx-auto grid max-w-7xl grid-cols-[1fr_auto_auto] items-center gap-3 px-4 py-3 lg:grid-cols-[auto_minmax(220px,1fr)_auto_auto] lg:gap-5">
+      <div className="mx-auto grid max-w-7xl grid-cols-[1fr_auto_auto] items-center gap-3 px-4 py-3 lg:grid-cols-[auto_minmax(240px,420px)_1fr_auto] lg:gap-6">
         <a href="#top" aria-label="Kleihaus Ceramics home" className="min-w-0" onClick={() => setMenuOpen(false)}>
           <Logo compact />
         </a>
 
-        <div className="hidden lg:block">
+        <div className="hidden min-w-0 lg:block">
           <SearchAutocomplete value={searchQuery} onChange={setSearchQuery} projectType={projectType} onSearch={onSearch} />
         </div>
 
-        <nav className="hidden items-center gap-5 xl:flex">
+        <nav className="hidden items-center justify-end gap-5 xl:flex">
           {navItems.map((item) => (
-            <a key={item.href} href={item.href} className="text-sm font-medium text-neutral-700 hover:text-neutral-950">
+            <a key={item.href} href={item.href} className="text-sm font-medium text-neutral-600 transition hover:text-neutral-950">
               {item.label}
             </a>
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
-          <a href="tel:+254748827166" className="whitespace-nowrap text-sm font-semibold text-neutral-800 hover:text-emerald-800">
-            +254 748 827 166
-          </a>
+        <div className="hidden items-center justify-end lg:flex">
           <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" onClick={() => onWhatsAppClick('header')}>
             <Button className="group gap-2 bg-neutral-950 px-3.5 hover:border-[#25D366]/60 hover:bg-neutral-900 hover:shadow-[0_0_18px_rgba(37,211,102,0.22)]">
               <WhatsAppBrandText />
@@ -425,14 +422,14 @@ function Header({ projectType, searchQuery, setSearchQuery, onSearch, onCategory
         </button>
       </div>
 
-      <div className="border-t border-neutral-200 bg-white">
-        <div className="mx-auto flex max-w-7xl gap-2 overflow-x-auto px-4 py-2.5">
+      <div className="border-t border-neutral-100 bg-white">
+        <div className="mx-auto flex max-w-7xl gap-2 overflow-x-auto px-4 py-2">
           {categoryNav.map((item) => (
             <a
               key={item}
               href="#catalogue"
               onClick={() => onCategoryClick(item)}
-              className="shrink-0 rounded-md border border-neutral-200 bg-neutral-50 px-3 py-2 text-sm font-medium text-neutral-700 hover:border-emerald-700 hover:text-emerald-800"
+              className="shrink-0 rounded-full border border-neutral-200 bg-white px-3.5 py-1.5 text-xs font-medium text-neutral-600 transition hover:border-[#A65F1E]/40 hover:bg-stone-50 hover:text-[#A65F1E]"
             >
               {item}
             </a>
@@ -457,10 +454,6 @@ function Header({ projectType, searchQuery, setSearchQuery, onSearch, onCategory
               </a>
             ))}
           </nav>
-          <a href="tel:+254748827166" className="mt-4 flex items-center gap-2 text-sm font-semibold text-neutral-800">
-            <Phone className="h-4 w-4 text-emerald-700" />
-            +254 748 827 166
-          </a>
         </div>
       )}
     </header>
