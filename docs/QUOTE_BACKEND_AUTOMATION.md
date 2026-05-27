@@ -25,6 +25,22 @@ The frontend posts to:
 /api/quote-request
 ```
 
+The fetch URL must remain relative and include the leading slash:
+
+```js
+fetch('/api/quote-request', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    name,
+    email,
+    phone,
+    location,
+    requestDetails,
+  }),
+})
+```
+
 The browser must not contain email API keys, SMTP passwords, WhatsApp tokens or database credentials.
 
 ## Request Payload

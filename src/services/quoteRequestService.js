@@ -1,84 +1,86 @@
-import { emailSubmissionService } from './emailSubmissionService'
+const API_ENDPOINT = '/api/quote-request'
+const developmentFallbackMessage = 'Request prepared. Please use WhatsApp if submission does not complete.'
 
-const QUOTE_WHATSAPP_NUMBER = '254748827166'
-
-const trimValue = (value) => String(value || '').trim()
-const cleanMessageText = (value) => trimValue(value).replace(/\r\n/g, '\n').replace(/\n{3,}/g, '\n\n')
-const displayValue = (value) => trimValue(value) || 'Not provided'
-
-const normalizeQuoteRequest = (request = {}) => ({
-  type: 'quote_request',
-  name: trimValue(request.name),
-  email: trimValue(request.email),
-  phone: trimValue(request.phone),
-  location: trimValue(request.location),
-  message: trimValue(request.message),
-  source: 'kleihaus_website',
-  timestamp: request.timestamp || new Date().toISOString(),
-})
-
-const validateQuoteRequest = (payload) => {
-  const errors = []
-
-  if (!payload.name) errors.push('Please enter your name.')
-  if (!payload.email && !payload.phone) errors.push('Please enter a phone number or email address.')
-  if (!payload.message) errors.push('Please describe what you need quoted.')
-
-  return errors
-}
-
-const buildWhatsAppMessage = (payload) => {
-  const lines = [
-    'Hello Kleihaus Ceramics, I would like a quote.',
-    '',
-    `Name: ${displayValue(payload.name)}`,
-    `Email: ${displayValue(payload.email)}`,
-    `Phone: ${displayValue(payload.phone)}`,
-    `Location: ${displayValue(payload.location)}`,
-    '',
-    'Request:',
-    cleanMessageText(payload.message),
-  ]
-
-  return lines.join('\n').trim()
-}
-
-const encodeWhatsAppMessage = (message) =>
-  encodeURIComponent(message)
-    .replace(/%0D%0A/g, '%0A')
-    .replace(/%0D/g, '%0A')
-
-const buildWhatsAppUrl = (payload) =>
-  `https://wa.me/${QUOTE_WHATSAPP_NUMBER}?text=${encodeWhatsAppMessage(buildWhatsAppMessage(payload))}`
+const clean = (value) => String(value || '').trim()
+const isDevelopmentMode = () => Boolean(import.meta.env?.DEV)
 
 export const quoteRequestService = {
-  prepare(request) {
-    const payload = normalizeQuoteRequest(request)
-    const errors = validateQuoteRequest(payload)
-
-    if (errors.length > 0) {
-      return {
-        ok: false,
-        errors,
-        payload,
-        whatsappUrl: '',
-      }
+  prepare(form) {
+    const payload = {
+      name: clean(form.name),
+      email: clean(form.email),
+      phone: clean(form.phone),
+      location: clean(form.location),
+      message: clean(form.message || form.requestDetails),
+      requestDetails: clean(form.message || form.requestDetails),
+      source: 'kleihaus_website',
+      service: 'Quote request',
     }
 
+    const errors = []
+
+    if (!payload.name) errors.push('Please enter your name.')
+    if (!payload.phone && !payload.email) errors.push('Please enter your phone number or email address.')
+    if (!payload.message) errors.push('Please describe what you need.')
+
     return {
-      ok: true,
-      errors: [],
+      ok: errors.length === 0,
+      errors,
       payload,
-      whatsappUrl: buildWhatsAppUrl(payload),
     }
   },
 
   async submitBackend(payload) {
-    return emailSubmissionService.submitQuoteRequest(payload)
-  },
+    try {
+      console.log('Submitting quote request...')
+      const response = await fetch(API_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: payload.name,
+          email: payload.email,
+          phone: payload.phone,
+          location: payload.location,
+          requestDetails: payload.requestDetails,
+          source: payload.source || 'kleihaus_website',
+        }),
+      })
+      console.log('Response status:', response.status)
 
-  buildWhatsAppMessage,
-  buildWhatsAppUrl,
-  encodeWhatsAppMessage,
-  validateQuoteRequest,
+      const data = await response.json().catch(() => ({}))
+
+      if (isDevelopmentMode() && [404, 405, 501].includes(response.status)) {
+        return {
+          ok: false,
+          message: developmentFallbackMessage,
+        }
+      }
+
+      if (!response.ok || !data.success) {
+        return {
+          ok: false,
+          message: data.message || 'We could not submit your request. Please try WhatsApp.',
+        }
+      }
+
+      return {
+        ok: true,
+        message: data.message || 'Request submitted successfully. Our team will respond shortly.',
+      }
+    } catch (error) {
+      if (isDevelopmentMode()) {
+        return {
+          ok: false,
+          message: developmentFallbackMessage,
+        }
+      }
+
+      return {
+        ok: false,
+        message: 'We could not submit your request. Please try WhatsApp.',
+      }
+    }
+  },
 }
