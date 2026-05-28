@@ -1,13 +1,10 @@
 name = "kleihaus-api"
 main = "src/api-worker.js"
 compatibility_date = "2025-05-27"
-
-routes = [
-  { pattern = "api.kleihaus.com", custom_domain = true }
-]
+workers_dev = false
 
 [vars]
-QUOTE_EMAIL_TO = "sales@kleihaus.com"
+SALES_EMAIL = "sales@kleihaus.com"
 QUOTE_EMAIL_FROM = "Kleihaus Ceramics <sales@kleihaus.com>"
 WHATSAPP_TO_NUMBER = "254748827166"
 

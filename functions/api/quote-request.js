@@ -316,22 +316,50 @@ const buildEmailText = (payload, insights, subject) =>
     `Internal UUID: ${payload.id}`,
   ].join('\n')
 
-const sendResendEmail = async (env, payload) => {
-  const apiKey = clean(env?.RESEND_API_KEY, 500)
-  const from = clean(env?.QUOTE_EMAIL_FROM, 300)
-  const to = clean(env?.QUOTE_EMAIL_TO || 'sales@kleihaus.com', 300)
+const createResendClient = (apiKey) => ({
+  emails: {
+    async send(emailPayload) {
+      const response = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${apiKey}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(emailPayload),
+      })
+
+      const result = await response.json().catch(() => ({}))
+
+      if (!response.ok) {
+        const error = new Error(result?.message || 'Resend email request failed.')
+        error.status = response.status
+        error.result = result
+        throw error
+      }
+
+      return result
+    },
+  },
+})
+
+const sendResendEmail = async (env = {}, payload) => {
+  const apiKey = clean(env.RESEND_API_KEY, 500)
+  const from = clean(env.QUOTE_EMAIL_FROM, 300)
+  const salesEmail = env.SALES_EMAIL || 'sales@kleihaus.com'
+  const to = clean(salesEmail, 300)
   const insights = getLeadInsights(payload)
   const subject = buildEmailSubject(payload, insights)
   const missing = [
     !apiKey && 'RESEND_API_KEY',
     !from && 'QUOTE_EMAIL_FROM',
-    !to && 'QUOTE_EMAIL_TO',
+    !to && 'SALES_EMAIL',
   ].filter(Boolean)
 
   console.log('INTERNAL_EMAIL_ATTEMPT', { requestId: payload.id, to })
   console.log('RESEND_EMAIL_ATTEMPT', { requestId: payload.id, to })
 
   if (missing.length > 0) {
+    console.error('INTERNAL_EMAIL_FAILED', new Error(`Missing email configuration: ${missing.join(', ')}`))
     logSafe('INTERNAL_EMAIL_FAILED', payload, { missing })
     logSafe('RESEND_EMAIL_FAILED', payload, { missing })
     return {
@@ -344,42 +372,23 @@ const sendResendEmail = async (env, payload) => {
   }
 
   try {
-    const response = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        from,
-        to,
-        subject,
-        html: buildEmailHtml(payload, insights),
-        text: buildEmailText(payload, insights, subject),
-      }),
+    const resend = createResendClient(apiKey)
+    const internalEmailResult = await resend.emails.send({
+      from,
+      to,
+      subject,
+      html: buildEmailHtml(payload, insights),
+      text: buildEmailText(payload, insights, subject),
     })
 
-    const result = await response.json().catch(() => ({}))
-
-    if (!response.ok) {
-      logSafe('INTERNAL_EMAIL_FAILED', payload, { status: response.status })
-      logSafe('RESEND_EMAIL_FAILED', payload, { status: response.status })
-      return {
-        success: false,
-        configured: true,
-        sent: false,
-        status: response.status,
-        error: result?.message || 'Resend email request failed.',
-      }
-    }
-
-    console.log('INTERNAL_EMAIL_SUCCESS', { requestId: payload.id, emailId: result.id })
-    console.log('RESEND_EMAIL_SUCCESS', { requestId: payload.id, emailId: result.id })
-    return { success: true, configured: true, sent: true, provider: 'resend', id: result.id }
+    console.log('INTERNAL_EMAIL_SUCCESS', { requestId: payload.id, emailId: internalEmailResult.id })
+    console.log('RESEND_EMAIL_SUCCESS', { requestId: payload.id, emailId: internalEmailResult.id })
+    return { success: true, configured: true, sent: true, provider: 'resend', id: internalEmailResult.id }
   } catch (error) {
+    console.error('INTERNAL_EMAIL_FAILED', error)
     logSafe('INTERNAL_EMAIL_FAILED', payload, { error: error.message })
     logSafe('RESEND_EMAIL_FAILED', payload, { error: error.message })
-    return { success: false, configured: true, sent: false, error: error.message }
+    return { success: false, configured: true, sent: false, status: error.status, error: error.message }
   }
 }
 
@@ -682,6 +691,10 @@ export async function onRequestPost(context) {
   }
 
   const email = await sendResendEmail(context.env, payload)
+  if (!email.success) {
+    return json({ success: false, error: 'Internal email failed' }, 500)
+  }
+
   const backgroundWork = deliverBackgroundNotifications(context.env, payload)
   const waitUntil = getWaitUntil(context)
   const whatsapp = getWhatsAppStatusForResponse(context.env)

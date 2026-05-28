@@ -34,6 +34,12 @@ const whatsappUrl =
 const whatsappInquiryUrl = (subject) =>
   `https://wa.me/254748827166?text=${encodeURIComponent(`Hello Kleihaus, I would like a quote for ${subject}. Please share availability, price guidance and delivery options.`)}`
 
+const isDevelopment = () => typeof import.meta !== 'undefined' && Boolean(import.meta.env?.DEV)
+
+const debugLog = (event, details) => {
+  if (isDevelopment()) console.log(event, details)
+}
+
 const emptyQuoteForm = {
   name: '',
   email: '',
@@ -43,6 +49,16 @@ const emptyQuoteForm = {
   requestDetails: '',
   details: '',
 }
+
+const getEmptyQuoteForm = () => ({
+  name: '',
+  email: '',
+  phone: '',
+  location: '',
+  message: '',
+  requestDetails: '',
+  details: '',
+})
 
 const seoTitle = 'Kleihaus Ceramics | Tiles, Sanitaryware, Paints & Building Materials Kenya'
 const seoDescription =
@@ -833,11 +849,21 @@ function Contact({ onWhatsAppClick }) {
     setQuoteStatusType(backendResult.ok ? 'success' : 'error')
     setQuoteStatus(backendResult.message)
     if (backendResult.ok) {
-      setQuoteForm(emptyQuoteForm)
+      debugLog('QUOTE_FRONTEND_SUCCESS_CLEARING_FORM', {
+        requestId: backendResult.data?.requestId,
+        emailSent: backendResult.data?.email?.sent,
+      })
+      setQuoteForm(getEmptyQuoteForm())
       quoteFormRef.current?.reset()
       setQuoteFormResetKey((current) => current + 1)
       window.setTimeout(() => setIsQuoteSubmitting(false), 800)
       return
+    }
+    if (backendResult.data?.success && !backendResult.data?.email?.sent) {
+      debugLog('QUOTE_FRONTEND_EMAIL_NOT_SENT', {
+        requestId: backendResult.data?.requestId,
+        emailError: backendResult.data?.email?.error,
+      })
     }
     setIsQuoteSubmitting(false)
   }

@@ -1,5 +1,5 @@
 const trimValue = (value) => String(value || '').trim()
-const quoteEndpoint = 'https://api.kleihaus.com/quote-request'
+const quoteEndpoint = '/api/quote-request'
 
 const successMessage = 'Request submitted successfully. Our team will respond shortly.'
 const failureMessage = 'We could not submit your request. Please try WhatsApp.'

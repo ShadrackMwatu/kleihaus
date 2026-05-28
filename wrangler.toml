@@ -2,6 +2,11 @@ name = "kleihaus"
 compatibility_date = "2025-05-27"
 pages_build_output_dir = "dist"
 
+[vars]
+SALES_EMAIL = "sales@kleihaus.com"
+QUOTE_EMAIL_FROM = "Kleihaus Ceramics <sales@kleihaus.com>"
+WHATSAPP_TO_NUMBER = "254748827166"
+
 [[d1_databases]]
 binding = "DB"
 database_name = "kleihaus_quotes"

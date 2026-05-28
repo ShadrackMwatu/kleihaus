@@ -1,6 +1,12 @@
-const API_ENDPOINT = 'https://api.kleihaus.com/quote-request'
+const API_ENDPOINT = '/api/quote-request'
 
 const clean = (value) => String(value || '').trim()
+const isDevelopment = () =>
+  typeof import.meta !== 'undefined' && Boolean(import.meta.env?.DEV)
+
+const debugLog = (event, details) => {
+  if (isDevelopment()) console.log(event, details)
+}
 
 export const quoteRequestService = {
   prepare(form) {
@@ -29,7 +35,14 @@ export const quoteRequestService = {
 
   async submitBackend(payload) {
     try {
-      console.log('Submitting quote request...')
+      debugLog('QUOTE_FRONTEND_SUBMIT_ATTEMPT', {
+        hasName: Boolean(payload.name),
+        hasEmail: Boolean(payload.email),
+        hasPhone: Boolean(payload.phone),
+        hasLocation: Boolean(payload.location),
+        hasRequestDetails: Boolean(payload.requestDetails),
+      })
+
       const response = await fetch(API_ENDPOINT, {
         method: 'POST',
         headers: {
@@ -46,20 +59,43 @@ export const quoteRequestService = {
           source: payload.source || 'kleihaus_website',
         }),
       })
-      console.log('Response status:', response.status)
 
       const data = await response.json().catch(() => ({}))
+      debugLog('QUOTE_FRONTEND_API_RESPONSE', {
+        status: response.status,
+        success: data.success,
+        storageStored: data.storage?.stored,
+        emailSent: data.email?.sent,
+        emailProvider: data.email?.provider,
+        emailId: data.email?.id,
+        emailError: data.email?.error,
+      })
 
       if (!response.ok || !data.success) {
         return {
           ok: false,
           message: data.message || 'We could not submit your request. Please try WhatsApp.',
+          data,
+        }
+      }
+
+      if (!data.email?.sent) {
+        debugLog('QUOTE_FRONTEND_EMAIL_NOT_SENT', {
+          emailSent: data.email?.sent,
+          emailError: data.email?.error,
+        })
+
+        return {
+          ok: false,
+          message: 'Your request was saved, but email delivery was not confirmed. Please use WhatsApp so our team can respond quickly.',
+          data,
         }
       }
 
       return {
         ok: true,
         message: data.message || 'Request submitted successfully. Our team will respond shortly.',
+        data,
       }
     } catch (error) {
       return {
