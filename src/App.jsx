@@ -807,6 +807,8 @@ function HelpfulGuides({ onGuideClick }) {
 
 function Contact({ onWhatsAppClick }) {
   const quoteFormRef = useRef(null)
+  const quoteStatusRef = useRef(null)
+  const quoteStatusTimeoutRef = useRef(null)
   const [quoteForm, setQuoteForm] = useState(emptyQuoteForm)
   const [quoteFormResetKey, setQuoteFormResetKey] = useState(0)
   const [quoteErrors, setQuoteErrors] = useState([])
@@ -814,10 +816,19 @@ function Contact({ onWhatsAppClick }) {
   const [quoteStatusType, setQuoteStatusType] = useState('success')
   const [isQuoteSubmitting, setIsQuoteSubmitting] = useState(false)
 
+  useEffect(() => {
+    return () => {
+      if (quoteStatusTimeoutRef.current) window.clearTimeout(quoteStatusTimeoutRef.current)
+    }
+  }, [])
+
   const updateQuoteField = (field) => (event) => {
     setQuoteForm((current) => ({ ...current, [field]: event.target.value }))
     if (quoteErrors.length > 0) setQuoteErrors([])
-    if (quoteStatus) setQuoteStatus('')
+    if (quoteStatus) {
+      setQuoteStatus('')
+      if (quoteStatusTimeoutRef.current) window.clearTimeout(quoteStatusTimeoutRef.current)
+    }
   }
 
   const submitQuoteRequest = async (event) => {
@@ -849,6 +860,7 @@ function Contact({ onWhatsAppClick }) {
     setQuoteStatusType(backendResult.ok ? 'success' : 'error')
     setQuoteStatus(backendResult.message)
     if (backendResult.ok) {
+      if (quoteStatusTimeoutRef.current) window.clearTimeout(quoteStatusTimeoutRef.current)
       debugLog('QUOTE_FRONTEND_SUCCESS_CLEARING_FORM', {
         requestId: backendResult.data?.requestId,
         emailSent: backendResult.data?.email?.sent,
@@ -856,6 +868,19 @@ function Contact({ onWhatsAppClick }) {
       setQuoteForm(getEmptyQuoteForm())
       quoteFormRef.current?.reset()
       setQuoteFormResetKey((current) => current + 1)
+      window.setTimeout(() => {
+        const quoteStatusTop = quoteStatusRef.current
+          ? quoteStatusRef.current.getBoundingClientRect().top + window.scrollY - 96
+          : 0
+
+        window.scrollTo({
+          top: Math.max(quoteStatusTop, 0),
+          behavior: 'smooth',
+        })
+      }, 0)
+      quoteStatusTimeoutRef.current = window.setTimeout(() => {
+        setQuoteStatus('')
+      }, 8000)
       window.setTimeout(() => setIsQuoteSubmitting(false), 800)
       return
     }
@@ -946,6 +971,7 @@ function Contact({ onWhatsAppClick }) {
           )}
           {quoteStatus && (
             <p
+              ref={quoteStatusRef}
               className={`mt-4 rounded-md border px-4 py-3 text-sm ${
                 quoteStatusType === 'success'
                   ? 'border-emerald-200 bg-emerald-50 text-emerald-800'
