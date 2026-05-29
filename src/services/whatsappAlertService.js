@@ -52,20 +52,21 @@ const includesAny = (value = '', terms = []) => {
 }
 
 const countCategoryViews = (events, category) =>
-  events.filter((event) => event.eventType === 'category_click' && event.payload?.category === category).length
+  events.filter((event) => event.eventType === 'category_click' && (event.productCategory || event.payload?.category) === category).length
 
 const getAlertReason = (event, events) => {
   if (event.eventType === 'whatsapp_click') return 'clicked WhatsApp'
-  if (event.eventType === 'contact_form_submit') return 'submitted contact form'
+  if (event.eventType === 'quote_form_submit_attempt') return 'started quote submission'
+  if (event.eventType === 'quote_form_submit_success') return 'submitted quote form'
 
-  if (event.eventType === 'search') {
-    const query = event.payload?.query || ''
+  if (event.eventType === 'search_query') {
+    const query = event.searchQuery || event.payload?.query || ''
     if (includesAny(query, urgentSearchTerms)) return `searched high-intent term: ${query}`
     if (includesAny(query, productSearchTerms)) return `searched product: ${query}`
   }
 
   if (event.eventType === 'category_click') {
-    const category = event.payload?.category
+    const category = event.productCategory || event.payload?.category
     if (category && countCategoryViews(events, category) >= REPEATED_CATEGORY_THRESHOLD) {
       return `viewed category repeatedly: ${category}`
     }
@@ -80,12 +81,12 @@ const buildAlertMessage = (event, reason) => {
     'Kleihaus high-value website action',
     `Reason: ${reason}`,
     `Action: ${event.eventType}`,
-    payload.query ? `Search: ${payload.query}` : null,
-    payload.category ? `Category: ${payload.category}` : null,
-    payload.product ? `Product: ${payload.product}` : null,
-    payload.source ? `Source: ${payload.source}` : null,
+    event.searchQuery || payload.query ? `Search: ${event.searchQuery || payload.query}` : null,
+    event.productCategory || payload.category ? `Category: ${event.productCategory || payload.category}` : null,
+    event.productName || payload.product ? `Product: ${event.productName || payload.product}` : null,
+    event.clickedElement || payload.source ? `Source: ${event.clickedElement || payload.source}` : null,
     payload.projectType ? `Project type: ${payload.projectType}` : null,
-    `Session: ${event.anonymousSessionId}`,
+    `Session: ${event.sessionId || event.anonymousSessionId}`,
     `Time: ${event.timestamp}`,
   ]
     .filter(Boolean)

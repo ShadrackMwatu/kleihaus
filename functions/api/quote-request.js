@@ -33,6 +33,7 @@ const escapeHtml = (value) =>
     .replace(/\n/g, '<br />')
 
 const includesAny = (text, keywords) => keywords.some((keyword) => text.includes(keyword))
+const getDb = (env) => env?.QUOTE_REQUESTS_DB || env?.DB
 
 const getLeadReferenceParts = (createdAt) => {
   const parts = new Intl.DateTimeFormat('en-GB', {
@@ -87,8 +88,13 @@ const normalizeKenyanPhone = (phone) => {
   return digits
 }
 
-const classifyInquiryType = (payload) => {
-  const text = `${payload.requestDetails} ${payload.location} ${payload.source}`.toLowerCase()
+const classifyInquiryType = (payload, journey = {}) => {
+  const journeyText = [
+    journey.searchQuery,
+    ...(journey.clickedProducts || []),
+    ...(journey.clickedCategories || []),
+  ].join(' ')
+  const text = `${payload.requestDetails} ${payload.location} ${payload.source} ${journeyText}`.toLowerCase()
 
   if (includesAny(text, ['warehouse', 'bulk', 'large quantity', 'container', 'pallet', 'supply order'])) return 'Warehouse / Bulk Supply'
   if (includesAny(text, ['wholesale', 'reseller', 'dealer', 'distributor', 'trade price'])) return 'Wholesale Inquiry'
@@ -101,11 +107,12 @@ const classifyInquiryType = (payload) => {
   return 'General Product Inquiry'
 }
 
-const getLeadPriority = (payload, inquiryType) => {
-  const text = `${payload.requestDetails} ${payload.location}`.toLowerCase()
+const getLeadPriority = (payload, inquiryType, journey = {}) => {
+  const text = `${payload.requestDetails} ${payload.location} ${journey.searchQuery || ''}`.toLowerCase()
   const highPriorityKeywords = ['wholesale', 'bulk', 'warehouse', 'urgent', 'large quantity', 'contractor', 'project', 'hotel', 'school', 'hospital']
   const mediumPriorityKeywords = ['residential', 'bathroom', 'kitchen', 'floor', 'house', 'home']
 
+  if ((journey.engagementScore || 0) >= 8) return 'High'
   if (includesAny(text, highPriorityKeywords) || ['Warehouse / Bulk Supply', 'Wholesale Inquiry', 'Commercial Project'].includes(inquiryType)) {
     return 'High'
   }
@@ -121,9 +128,9 @@ const getFollowUpWindow = (priority) => {
   return 'Same business day'
 }
 
-const getLeadInsights = (payload) => {
-  const inquiryType = classifyInquiryType(payload)
-  const priority = getLeadPriority(payload, inquiryType)
+const getLeadInsights = (payload, journey = {}) => {
+  const inquiryType = classifyInquiryType(payload, journey)
+  const priority = getLeadPriority(payload, inquiryType, journey)
 
   return {
     inquiryType,
@@ -132,6 +139,7 @@ const getLeadInsights = (payload) => {
     leadReference: buildLeadReference(payload),
     createdAtEat: formatTimestampEat(payload.created_at),
     normalizedPhone: normalizeKenyanPhone(payload.phone),
+    journey,
   }
 }
 
@@ -152,6 +160,17 @@ const normalizePayload = (body = {}) => {
     requestDetails,
     message: requestDetails,
     source: clean(body.source || 'kleihaus_website', 80),
+    anonymousVisitorId: clean(body.anonymousVisitorId, 120),
+    sessionId: clean(body.sessionId, 120),
+    pagePath: clean(body.pagePath, 600),
+    referrer: clean(body.referrer, 600),
+    utmSource: clean(body.utmSource || body.utm_source, 160),
+    utmMedium: clean(body.utmMedium || body.utm_medium, 160),
+    utmCampaign: clean(body.utmCampaign || body.utm_campaign, 180),
+    lastSearchQuery: clean(body.lastSearchQuery || body.searchQuery, 240),
+    clickedProducts: Array.isArray(body.clickedProducts) ? body.clickedProducts.map((item) => clean(item, 180)).filter(Boolean).slice(-8) : [],
+    clickedCategories: Array.isArray(body.clickedCategories) ? body.clickedCategories.map((item) => clean(item, 180)).filter(Boolean).slice(-8) : [],
+    whatsappClicked: Boolean(body.whatsappClicked),
     created_at: new Date().toISOString(),
     status: 'captured',
   }
@@ -177,8 +196,155 @@ const logSafe = (event, payload = {}, extra = {}) => {
   })
 }
 
+const ensureCustomerJourneyEventsTable = async (db) => {
+  await db
+    .prepare(
+      `CREATE TABLE IF NOT EXISTS customer_journey_events (
+        id TEXT PRIMARY KEY,
+        anonymous_visitor_id TEXT NOT NULL,
+        session_id TEXT NOT NULL,
+        event_type TEXT NOT NULL,
+        page_path TEXT,
+        referrer TEXT,
+        utm_source TEXT,
+        utm_medium TEXT,
+        utm_campaign TEXT,
+        search_query TEXT,
+        clicked_element TEXT,
+        product_category TEXT,
+        product_name TEXT,
+        lead_reference TEXT,
+        metadata_json TEXT,
+        created_at TEXT NOT NULL
+      )`
+    )
+    .run()
+}
+
+const ignoreDuplicateColumn = async (operation) => {
+  try {
+    await operation()
+  } catch (error) {
+    if (!/duplicate column|already exists/i.test(error.message || '')) throw error
+  }
+}
+
+const ensureQuoteJourneyColumns = async (db) => {
+  await ignoreDuplicateColumn(() => db.prepare('ALTER TABLE quote_requests ADD COLUMN anonymous_visitor_id TEXT').run())
+  await ignoreDuplicateColumn(() => db.prepare('ALTER TABLE quote_requests ADD COLUMN session_id TEXT').run())
+  await ignoreDuplicateColumn(() => db.prepare('ALTER TABLE quote_requests ADD COLUMN lead_reference TEXT').run())
+  await ignoreDuplicateColumn(() => db.prepare('ALTER TABLE quote_requests ADD COLUMN journey_summary_json TEXT').run())
+  await ignoreDuplicateColumn(() => db.prepare('ALTER TABLE quote_requests ADD COLUMN lead_score INTEGER DEFAULT 0').run())
+}
+
+const getEventResults = (result) => result?.results || []
+
+const summarizeJourneyContext = (payload, events = []) => {
+  const searchQueries = [
+    payload.lastSearchQuery,
+    ...events.map((event) => event.search_query),
+  ].filter(Boolean)
+  const clickedProducts = [
+    ...payload.clickedProducts,
+    ...events.map((event) => event.product_name),
+  ].filter(Boolean)
+  const clickedCategories = [
+    ...payload.clickedCategories,
+    ...events.map((event) => event.product_category),
+  ].filter(Boolean)
+  const keyClicks = events
+    .map((event) => event.clicked_element || event.product_name || event.product_category)
+    .filter(Boolean)
+    .slice(-8)
+  const whatsappClicked = payload.whatsappClicked || events.some((event) => event.event_type === 'whatsapp_click')
+  const searchQuery = searchQueries[0] || ''
+  const source = payload.utmSource || events.find((event) => event.utm_source)?.utm_source || ''
+  const referrer = payload.referrer || events.find((event) => event.referrer)?.referrer || ''
+  const utmCampaign = payload.utmCampaign || events.find((event) => event.utm_campaign)?.utm_campaign || ''
+  const engagementScore = Math.min(
+    10,
+    events.length +
+      (searchQuery ? 2 : 0) +
+      (whatsappClicked ? 2 : 0) +
+      Math.min(clickedProducts.length, 3) +
+      Math.min(clickedCategories.length, 2) +
+      (source || referrer ? 1 : 0)
+  )
+  const opportunitySignals = [
+    searchQuery && includesAny(searchQuery.toLowerCase(), ['600x600', '450x450', 'tiles', 'tile']) ? 'strong tile search intent' : '',
+    whatsappClicked ? 'clicked WhatsApp before quote' : '',
+    includesAny(`${payload.requestDetails} ${searchQuery}`.toLowerCase(), ['urgent', 'wholesale', 'bulk', 'project']) ? 'project or urgency signal' : '',
+    source || referrer ? 'attributed acquisition source' : '',
+  ].filter(Boolean)
+
+  return {
+    source: source || 'Website',
+    referrer,
+    utmSource: source,
+    utmMedium: payload.utmMedium || events.find((event) => event.utm_medium)?.utm_medium || '',
+    utmCampaign,
+    searchQuery,
+    clickedProducts: [...new Set(clickedProducts)].slice(-8),
+    clickedCategories: [...new Set(clickedCategories)].slice(-8),
+    keyClicks: [...new Set(keyClicks)].slice(-8),
+    whatsappClicked,
+    engagementScore,
+    eventCount: events.length,
+    opportunitySignals,
+    journeySummary:
+      events.length || searchQuery || whatsappClicked
+        ? `${searchQuery ? `Searched "${searchQuery}". ` : ''}${clickedProducts.length ? `Clicked ${[...new Set(clickedProducts)].slice(0, 3).join(', ')}. ` : ''}${whatsappClicked ? 'Used WhatsApp before submitting. ' : ''}${source ? `Source: ${source}.` : ''}`.trim()
+        : 'No prior journey signals captured.',
+  }
+}
+
+const loadJourneyContext = async (env, payload) => {
+  const db = getDb(env)
+  const fallback = summarizeJourneyContext(payload, [])
+
+  if (!db || !payload.sessionId) return fallback
+
+  try {
+    await ensureCustomerJourneyEventsTable(db)
+    const result = await db
+      .prepare(
+        `SELECT event_type, page_path, referrer, utm_source, utm_medium, utm_campaign, search_query,
+                clicked_element, product_category, product_name, created_at
+           FROM customer_journey_events
+          WHERE session_id = ?
+          ORDER BY created_at DESC
+          LIMIT 40`
+      )
+      .bind(payload.sessionId)
+      .all()
+
+    return summarizeJourneyContext(payload, getEventResults(result).reverse())
+  } catch (error) {
+    logSafe('JOURNEY_CONTEXT_FAILED', payload, { error: error.message })
+    return fallback
+  }
+}
+
+const linkJourneyEventsToLead = async (env, payload, leadReference) => {
+  const db = getDb(env)
+  if (!db || !payload.sessionId) return { success: true, linked: false, reason: 'No journey session.' }
+
+  try {
+    await ensureCustomerJourneyEventsTable(db)
+    await db
+      .prepare('UPDATE customer_journey_events SET lead_reference = ? WHERE session_id = ? AND (lead_reference IS NULL OR lead_reference = "")')
+      .bind(leadReference, payload.sessionId)
+      .run()
+
+    return { success: true, linked: true }
+  } catch (error) {
+    logSafe('JOURNEY_LINK_FAILED', payload, { error: error.message })
+    return { success: false, linked: false, error: error.message }
+  }
+}
+
 const insertQuoteRequest = async (env, payload) => {
-  const db = env?.QUOTE_REQUESTS_DB || env?.DB
+  const db = getDb(env)
 
   console.log('D1_INSERT_ATTEMPT', { requestId: payload.id, source: payload.source })
 
@@ -192,11 +358,13 @@ const insertQuoteRequest = async (env, payload) => {
   }
 
   try {
+    await ensureQuoteJourneyColumns(db)
     await db
       .prepare(
         `INSERT INTO quote_requests
-          (id, name, email, phone, location, message, source, status, created_at)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`
+          (id, name, email, phone, location, message, source, status, created_at,
+           anonymous_visitor_id, session_id, lead_reference, journey_summary_json, lead_score)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
       )
       .bind(
         payload.id,
@@ -207,15 +375,46 @@ const insertQuoteRequest = async (env, payload) => {
         payload.requestDetails,
         payload.source,
         payload.status,
-        payload.created_at
+        payload.created_at,
+        payload.anonymousVisitorId,
+        payload.sessionId,
+        payload.leadReference,
+        JSON.stringify(payload.journey || {}),
+        payload.journey?.engagementScore || 0
       )
       .run()
 
     console.log('D1_INSERT_SUCCESS', { requestId: payload.id, source: payload.source })
     return { success: true, configured: true, stored: true }
   } catch (error) {
-    logSafe('D1_INSERT_FAILED', payload, { error: error.message })
-    return { success: false, configured: true, stored: false, error: error.message }
+    logSafe('D1_EXTENDED_INSERT_FAILED', payload, { error: error.message })
+
+    try {
+      await db
+        .prepare(
+          `INSERT INTO quote_requests
+            (id, name, email, phone, location, message, source, status, created_at)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`
+        )
+        .bind(
+          payload.id,
+          payload.name,
+          payload.email,
+          payload.phone,
+          payload.location,
+          payload.requestDetails,
+          payload.source,
+          payload.status,
+          payload.created_at
+        )
+        .run()
+
+      console.log('D1_INSERT_SUCCESS', { requestId: payload.id, source: payload.source, mode: 'fallback' })
+      return { success: true, configured: true, stored: true, fallback: true }
+    } catch (fallbackError) {
+      logSafe('D1_INSERT_FAILED', payload, { error: fallbackError.message })
+      return { success: false, configured: true, stored: false, error: fallbackError.message }
+    }
   }
 }
 
@@ -260,7 +459,22 @@ const buildEmailHtml = (payload, insights) => {
             <tr><td style="padding:8px 0;color:#6b6258;width:170px;">Inquiry Type</td><td style="padding:8px 0;font-weight:700;">${escapeHtml(insights.inquiryType)}</td></tr>
             <tr><td style="padding:8px 0;color:#6b6258;">Priority</td><td style="padding:8px 0;font-weight:700;color:${priorityColor};">${escapeHtml(insights.priority)}</td></tr>
             <tr><td style="padding:8px 0;color:#6b6258;">Follow-up Window</td><td style="padding:8px 0;font-weight:700;">${escapeHtml(insights.followUpWindow)}</td></tr>
+            <tr><td style="padding:8px 0;color:#6b6258;">Engagement Score</td><td style="padding:8px 0;font-weight:700;">${escapeHtml(String(insights.journey?.engagementScore || 0))}/10</td></tr>
           </table>
+        </div>
+
+        <div style="border:1px solid #eadfce;border-radius:12px;padding:18px;margin-bottom:18px;">
+          <h3 style="margin:0 0 14px;color:#1f1a17;font-size:18px;">Customer Journey Signals</h3>
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;font-size:14px;">
+            <tr><td style="padding:8px 0;color:#6b6258;width:170px;">Source / Referrer</td><td style="padding:8px 0;">${escapeHtml(insights.journey?.source || insights.journey?.referrer || 'Not captured')}</td></tr>
+            <tr><td style="padding:8px 0;color:#6b6258;">UTM Campaign</td><td style="padding:8px 0;">${escapeHtml(insights.journey?.utmCampaign || 'Not captured')}</td></tr>
+            <tr><td style="padding:8px 0;color:#6b6258;">Search Query</td><td style="padding:8px 0;">${escapeHtml(insights.journey?.searchQuery || 'Not captured')}</td></tr>
+            <tr><td style="padding:8px 0;color:#6b6258;">Key Clicks</td><td style="padding:8px 0;">${escapeHtml((insights.journey?.keyClicks || []).join(', ') || 'Not captured')}</td></tr>
+            <tr><td style="padding:8px 0;color:#6b6258;">WhatsApp Clicked</td><td style="padding:8px 0;font-weight:700;">${insights.journey?.whatsappClicked ? 'Yes' : 'No'}</td></tr>
+          </table>
+          <div style="margin-top:12px;background:#fbf8f3;border-left:4px solid #166534;padding:12px 14px;border-radius:8px;color:#302923;font-size:14px;line-height:1.5;">
+            ${escapeHtml(insights.journey?.journeySummary || 'No prior journey signals captured.')}
+          </div>
         </div>
 
         <div style="border:1px solid #eadfce;border-radius:12px;padding:18px;margin-bottom:18px;">
@@ -302,7 +516,16 @@ const buildEmailText = (payload, insights, subject) =>
     `Inquiry Type: ${insights.inquiryType}`,
     `Priority: ${insights.priority}`,
     `Follow-up Window: ${insights.followUpWindow}`,
+    `Engagement Score: ${insights.journey?.engagementScore || 0}/10`,
     insights.normalizedPhone ? `WhatsApp: https://wa.me/${insights.normalizedPhone}` : 'WhatsApp: Phone number not available',
+    '',
+    'Customer Journey Signals:',
+    `Source / Referrer: ${insights.journey?.source || insights.journey?.referrer || 'Not captured'}`,
+    `UTM Campaign: ${insights.journey?.utmCampaign || 'Not captured'}`,
+    `Search Query: ${insights.journey?.searchQuery || 'Not captured'}`,
+    `Key Clicks: ${(insights.journey?.keyClicks || []).join(', ') || 'Not captured'}`,
+    `WhatsApp Clicked: ${insights.journey?.whatsappClicked ? 'Yes' : 'No'}`,
+    `Journey Summary: ${insights.journey?.journeySummary || 'No prior journey signals captured.'}`,
     '',
     'Request Details:',
     payload.requestDetails,
@@ -342,12 +565,12 @@ const createResendClient = (apiKey) => ({
   },
 })
 
-const sendResendEmail = async (env = {}, payload) => {
+const sendResendEmail = async (env = {}, payload, journey) => {
   const apiKey = clean(env.RESEND_API_KEY, 500)
   const from = clean(env.QUOTE_EMAIL_FROM, 300)
   const salesEmail = env.SALES_EMAIL || 'sales@kleihaus.com'
   const to = clean(salesEmail, 300)
-  const insights = getLeadInsights(payload)
+  const insights = getLeadInsights(payload, journey)
   const subject = buildEmailSubject(payload, insights)
   const missing = [
     !apiKey && 'RESEND_API_KEY',
@@ -670,6 +893,9 @@ export async function onRequestPost(context) {
     return json({ success: false, message: 'Quote request validation failed.', errors: validationErrors }, 400)
   }
 
+  payload.leadReference = buildLeadReference(payload)
+  payload.journey = await loadJourneyContext(context.env, payload)
+
   console.log('QUOTE_REQUEST_RECEIVED', {
     requestId: payload.id,
     source: payload.source,
@@ -683,6 +909,7 @@ export async function onRequestPost(context) {
     hasPhone: Boolean(payload.phone),
     hasLocation: Boolean(payload.location),
     hasRequestDetails: Boolean(payload.requestDetails),
+    hasJourneySession: Boolean(payload.sessionId),
   })
 
   const storage = await insertQuoteRequest(context.env, payload)
@@ -690,7 +917,9 @@ export async function onRequestPost(context) {
     return json({ success: false, message: 'Quote request could not be saved.', storage }, 500)
   }
 
-  const email = await sendResendEmail(context.env, payload)
+  await linkJourneyEventsToLead(context.env, payload, payload.leadReference)
+
+  const email = await sendResendEmail(context.env, payload, payload.journey)
   if (!email.success) {
     return json({ success: false, error: 'Internal email failed' }, 500)
   }
@@ -715,6 +944,7 @@ export async function onRequestPost(context) {
       success: true,
       message: SUCCESS_MESSAGE,
       requestId: payload.id,
+      leadReference: payload.leadReference,
       createdAt: payload.created_at,
       storage,
       email,
@@ -729,6 +959,7 @@ export async function onRequestPost(context) {
     success: true,
     message: SUCCESS_MESSAGE,
     requestId: payload.id,
+    leadReference: payload.leadReference,
     createdAt: payload.created_at,
     storage,
     email,

@@ -304,7 +304,7 @@ function Logo({ compact = false }) {
   )
 }
 
-function TopStrip() {
+function TopStrip({ onContactClick }) {
   return (
     <div className="hidden bg-[#A65F1E] text-white sm:block">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-1.5 text-[11px]">
@@ -313,11 +313,11 @@ function TopStrip() {
           Nairobi | Machakos | Makueni
         </div>
         <div className="flex items-center gap-5 text-white/90">
-          <a href="mailto:sales@kleihaus.com" className="inline-flex items-center gap-1.5 transition hover:text-white">
+          <a href="mailto:sales@kleihaus.com" className="inline-flex items-center gap-1.5 transition hover:text-white" onClick={() => onContactClick('email_click', 'top_strip_email')}>
             <Mail className="h-3.5 w-3.5" />
             sales@kleihaus.com
           </a>
-          <a href="tel:+254748827166" className="inline-flex items-center gap-1.5 transition hover:text-white">
+          <a href="tel:+254748827166" className="inline-flex items-center gap-1.5 transition hover:text-white" onClick={() => onContactClick('phone_click', 'top_strip_phone')}>
             <Phone className="h-3.5 w-3.5" />
             +254 748 827 166
           </a>
@@ -385,12 +385,12 @@ function SearchAutocomplete({ value, onChange, projectType, onSearch }) {
   )
 }
 
-function Header({ projectType, searchQuery, setSearchQuery, onSearch, onCategoryClick, onWhatsAppClick }) {
+function Header({ projectType, searchQuery, setSearchQuery, onSearch, onCategoryClick, onWhatsAppClick, onContactClick }) {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
     <header className="sticky top-0 z-50 border-b border-neutral-200 bg-white/95 backdrop-blur">
-      <TopStrip />
+      <TopStrip onContactClick={onContactClick} />
       <div className="mx-auto grid max-w-7xl grid-cols-[1fr_auto_auto] items-center gap-3 px-4 py-3 lg:grid-cols-[auto_minmax(240px,420px)_1fr_auto] lg:gap-6">
         <a href="#top" aria-label="Kleihaus Ceramics home" className="min-w-0" onClick={() => setMenuOpen(false)}>
           <Logo compact />
@@ -470,7 +470,7 @@ function Header({ projectType, searchQuery, setSearchQuery, onSearch, onCategory
   )
 }
 
-function Hero({ onWhatsAppClick }) {
+function Hero({ onWhatsAppClick, onQuoteClick }) {
   return (
     <section id="top" className="bg-stone-100">
       <div className="mx-auto max-w-7xl px-4 py-6 lg:py-10">
@@ -498,7 +498,7 @@ function Hero({ onWhatsAppClick }) {
                   <ArrowRight className="h-4 w-4" />
                 </Button>
               </a>
-              <a href="#contact" onClick={() => onWhatsAppClick('hero_quote_intent')}>
+              <a href="#contact" onClick={() => onQuoteClick('hero_quote_intent')}>
                 <ButtonSecondary className="gap-2 border-white/40 bg-white/10 text-white hover:bg-white/20">
                   Request quote
                 </ButtonSecondary>
@@ -809,6 +809,8 @@ function Contact({ onWhatsAppClick }) {
   const quoteFormRef = useRef(null)
   const quoteStatusRef = useRef(null)
   const quoteStatusTimeoutRef = useRef(null)
+  const hasTrackedQuoteFormStartRef = useRef(false)
+  const hasTrackedQuoteFormViewRef = useRef(false)
   const [quoteForm, setQuoteForm] = useState(emptyQuoteForm)
   const [quoteFormResetKey, setQuoteFormResetKey] = useState(0)
   const [quoteErrors, setQuoteErrors] = useState([])
@@ -817,13 +819,42 @@ function Contact({ onWhatsAppClick }) {
   const [isQuoteSubmitting, setIsQuoteSubmitting] = useState(false)
 
   useEffect(() => {
+    const form = quoteFormRef.current
+    if (!form || typeof IntersectionObserver === 'undefined') {
+      if (!hasTrackedQuoteFormViewRef.current) {
+        hasTrackedQuoteFormViewRef.current = true
+        analyticsService.track('quote_form_view', { clickedElement: 'contact_form' })
+      }
+
+      return () => {
+        if (quoteStatusTimeoutRef.current) window.clearTimeout(quoteStatusTimeoutRef.current)
+      }
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasTrackedQuoteFormViewRef.current) {
+          hasTrackedQuoteFormViewRef.current = true
+          analyticsService.track('quote_form_view', { clickedElement: 'contact_form' })
+        }
+      },
+      { threshold: 0.35 },
+    )
+
+    observer.observe(form)
+
     return () => {
+      observer.disconnect()
       if (quoteStatusTimeoutRef.current) window.clearTimeout(quoteStatusTimeoutRef.current)
     }
   }, [])
 
   const updateQuoteField = (field) => (event) => {
     setQuoteForm((current) => ({ ...current, [field]: event.target.value }))
+    if (!hasTrackedQuoteFormStartRef.current) {
+      hasTrackedQuoteFormStartRef.current = true
+      analyticsService.track('quote_form_start', { clickedElement: field })
+    }
     if (quoteErrors.length > 0) setQuoteErrors([])
     if (quoteStatus) {
       setQuoteStatus('')
@@ -847,19 +878,23 @@ function Contact({ onWhatsAppClick }) {
     setQuoteErrors([])
     setQuoteStatus('')
 
-    analyticsService.track('quote_form_submitted', {
-      source: 'contact_form',
+    analyticsService.track('quote_form_submit_attempt', {
+      clickedElement: 'contact_form',
+      productCategory: 'Project quotation',
       location: preparedRequest.payload.location || 'not_provided',
       hasEmail: Boolean(preparedRequest.payload.email),
       hasPhone: Boolean(preparedRequest.payload.phone),
     })
-    analyticsService.track('product_interest', { product: 'contact_form_quote_request', category: 'Project quotation' })
-    analyticsService.track('contact_form_submit', { source: 'contact_form', category: 'Project quotation' })
 
     const backendResult = await quoteRequestService.submitBackend(preparedRequest.payload)
     setQuoteStatusType(backendResult.ok ? 'success' : 'error')
     setQuoteStatus(backendResult.message)
     if (backendResult.ok) {
+      analyticsService.track('quote_form_submit_success', {
+        clickedElement: 'contact_form',
+        leadReference: backendResult.data?.leadReference,
+        requestId: backendResult.data?.requestId,
+      })
       if (quoteStatusTimeoutRef.current) window.clearTimeout(quoteStatusTimeoutRef.current)
       debugLog('QUOTE_FRONTEND_SUCCESS_CLEARING_FORM', {
         requestId: backendResult.data?.requestId,
@@ -884,6 +919,11 @@ function Contact({ onWhatsAppClick }) {
       window.setTimeout(() => setIsQuoteSubmitting(false), 800)
       return
     }
+    analyticsService.track('quote_form_submit_error', {
+      clickedElement: 'contact_form',
+      status: backendResult.data?.status,
+      reason: backendResult.data?.error || backendResult.message,
+    })
     if (backendResult.data?.success && !backendResult.data?.email?.sent) {
       debugLog('QUOTE_FRONTEND_EMAIL_NOT_SENT', {
         requestId: backendResult.data?.requestId,
@@ -904,11 +944,11 @@ function Contact({ onWhatsAppClick }) {
           </p>
 
           <div className="mt-7 space-y-3 text-sm text-neutral-200">
-            <a href="tel:+254748827166" className="flex items-center gap-3 hover:text-white">
+            <a href="tel:+254748827166" className="flex items-center gap-3 hover:text-white" onClick={() => analyticsService.track('phone_click', { clickedElement: 'contact_phone' })}>
               <Phone className="h-4 w-4 text-emerald-300" />
               +254 748 827 166
             </a>
-            <a href="mailto:sales@kleihaus.com" className="flex items-center gap-3 hover:text-white">
+            <a href="mailto:sales@kleihaus.com" className="flex items-center gap-3 hover:text-white" onClick={() => analyticsService.track('email_click', { clickedElement: 'contact_email' })}>
               <Mail className="h-4 w-4 text-emerald-300" />
               sales@kleihaus.com
             </a>
@@ -1030,30 +1070,40 @@ export default function App() {
 
   const refreshSignals = () => setEventRevision((revision) => revision + 1)
 
+  useEffect(() => {
+    analyticsService.track('page_view', { clickedElement: 'app_mount' })
+  }, [])
+
   const handleSearch = (query) => {
-    analyticsService.track('search_submitted', { query: query.toLowerCase(), projectType })
-    analyticsService.track('search', { query: query.toLowerCase(), projectType })
+    analyticsService.track('search_query', { searchQuery: query.toLowerCase(), projectType })
     setSearchQuery(query)
     refreshSignals()
   }
 
   const handleCategoryClick = (category) => {
-    analyticsService.track('category_clicked', { category, projectType })
-    analyticsService.track('category_click', { category, projectType })
+    analyticsService.track('category_click', { productCategory: category, clickedElement: 'category_navigation', projectType })
     setSelectedCategory(category)
     refreshSignals()
   }
 
   const handleProductInterest = (product, category) => {
-    analyticsService.track('product_interest_clicked', { product, category, projectType })
-    analyticsService.track('product_interest', { product, category, projectType })
+    analyticsService.track('product_click', { productName: product, productCategory: category, clickedElement: 'product_card', projectType })
     setSelectedCategory(category)
     refreshSignals()
   }
 
   const handleWhatsAppClick = (source) => {
-    analyticsService.track('whatsapp_cta_clicked', { source, projectType, selectedCategory })
-    analyticsService.track('whatsapp_click', { source, projectType, selectedCategory })
+    analyticsService.track('whatsapp_click', { clickedElement: source, projectType, productCategory: selectedCategory })
+    refreshSignals()
+  }
+
+  const handleQuoteClick = (source) => {
+    analyticsService.track('contact_click', { clickedElement: source, projectType, productCategory: selectedCategory })
+    refreshSignals()
+  }
+
+  const handleContactClick = (eventType, source) => {
+    analyticsService.track(eventType, { clickedElement: source, projectType, productCategory: selectedCategory })
     refreshSignals()
   }
 
@@ -1072,8 +1122,9 @@ export default function App() {
         onSearch={handleSearch}
         onCategoryClick={handleCategoryClick}
         onWhatsAppClick={handleWhatsAppClick}
+        onContactClick={handleContactClick}
       />
-      <Hero onWhatsAppClick={handleWhatsAppClick} />
+      <Hero onWhatsAppClick={handleWhatsAppClick} onQuoteClick={handleQuoteClick} />
       <ShopByCategory selectedCategory={selectedCategory} onCategoryClick={handleCategoryClick} onWhatsAppClick={handleWhatsAppClick} />
       <ProductCatalogue onProductInterest={handleProductInterest} onWhatsAppClick={handleWhatsAppClick} />
       <Services />

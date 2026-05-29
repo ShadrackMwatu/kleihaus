@@ -1,3 +1,5 @@
+import { analyticsService } from './analyticsService'
+
 const API_ENDPOINT = '/api/quote-request'
 
 const clean = (value) => String(value || '').trim()
@@ -35,6 +37,8 @@ export const quoteRequestService = {
 
   async submitBackend(payload) {
     try {
+      const journeyContext = analyticsService.getJourneyContext()
+
       debugLog('QUOTE_FRONTEND_SUBMIT_ATTEMPT', {
         hasName: Boolean(payload.name),
         hasEmail: Boolean(payload.email),
@@ -57,6 +61,7 @@ export const quoteRequestService = {
           message: payload.requestDetails,
           details: payload.requestDetails,
           source: payload.source || 'kleihaus_website',
+          ...journeyContext,
         }),
       })
 
