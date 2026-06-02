@@ -579,10 +579,12 @@ const sendResendEmail = async (env = {}, payload, journey) => {
   ].filter(Boolean)
 
   console.log('INTERNAL_EMAIL_ATTEMPT', { requestId: payload.id, to })
+  console.log('RESEND_ATTEMPT', { requestId: payload.id, to })
   console.log('RESEND_EMAIL_ATTEMPT', { requestId: payload.id, to })
 
   if (missing.length > 0) {
     console.error('INTERNAL_EMAIL_FAILED', new Error(`Missing email configuration: ${missing.join(', ')}`))
+    console.error('RESEND_FAILURE', { requestId: payload.id, missing })
     logSafe('INTERNAL_EMAIL_FAILED', payload, { missing })
     logSafe('RESEND_EMAIL_FAILED', payload, { missing })
     return {
@@ -605,10 +607,12 @@ const sendResendEmail = async (env = {}, payload, journey) => {
     })
 
     console.log('INTERNAL_EMAIL_SUCCESS', { requestId: payload.id, emailId: internalEmailResult.id })
+    console.log('RESEND_SUCCESS', { requestId: payload.id, emailId: internalEmailResult.id })
     console.log('RESEND_EMAIL_SUCCESS', { requestId: payload.id, emailId: internalEmailResult.id })
     return { success: true, configured: true, sent: true, provider: 'resend', id: internalEmailResult.id }
   } catch (error) {
     console.error('INTERNAL_EMAIL_FAILED', error)
+    console.error('RESEND_FAILURE', { requestId: payload.id, status: error.status, error: error.message })
     logSafe('INTERNAL_EMAIL_FAILED', payload, { error: error.message })
     logSafe('RESEND_EMAIL_FAILED', payload, { error: error.message })
     return { success: false, configured: true, sent: false, status: error.status, error: error.message }

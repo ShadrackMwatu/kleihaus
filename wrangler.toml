@@ -1,6 +1,11 @@
 name = "kleihaus"
 compatibility_date = "2025-01-01"
 main = "src/worker.js"
+workers_dev = true
+routes = [
+  { pattern = "www.kleihaus.com", zone_name = "kleihaus.com", custom_domain = true },
+  { pattern = "kleihaus.com", zone_name = "kleihaus.com", custom_domain = true },
+]
 
 [assets]
 directory = "./dist"
