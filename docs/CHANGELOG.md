@@ -8,6 +8,11 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-06-03
 
+### Footer Branding Message
+
+- Centered the footer bottom bar and replaced the service-area line with the brand message "Inspiring Living".
+- Kept the footer gradient, footer columns, links, WhatsApp, email, phone, quote form and API behavior unchanged.
+
 ### Footer Brand Color
 
 - Applied a warm Kleihaus logo-inspired bronze gradient across the full footer area below the white divider.

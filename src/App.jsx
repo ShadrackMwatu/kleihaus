@@ -1315,9 +1315,9 @@ function Footer() {
         </div>
       </div>
       <div className="border-t border-white/20">
-        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-5 text-xs text-orange-50 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-center gap-2 px-4 py-5 text-center text-orange-50">
           <p>© {new Date().getFullYear()} Kleihaus Ceramics. All Rights Reserved</p>
-          <p>Serving retail and project customers across Kenya.</p>
+          <p className="text-sm font-medium tracking-wide">Inspiring Living</p>
         </div>
       </div>
     </footer>
