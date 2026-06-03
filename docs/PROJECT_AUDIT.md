@@ -161,7 +161,8 @@ Current SEO foundations include:
 - `public/sitemap.xml`.
 - `public/robots.txt`.
 - `public/site.webmanifest`.
-- Organization, LocalBusiness, Store, WebSite, SearchAction, ContactPoint and FAQ structured data.
+- Organization, LocalBusiness, Store, WebSite, SearchAction, ContactPoint, FAQ and catalogue `ItemList` structured data.
+- Incomplete Product rich-result schema was removed for quote-based catalogue categories without fabricating price, review, rating or availability data.
 - One primary H1 on the homepage.
 - H2/H3 hierarchy for major sections.
 - Crawlable category and guide content.

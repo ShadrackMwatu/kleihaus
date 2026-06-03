@@ -8,6 +8,12 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-06-03
 
+### Product Structured Data Search Console Fix
+
+- Replaced incomplete catalogue-category Product JSON-LD with an `ItemList` of catalogue categories linked to `#catalogue`.
+- Kept Organization, LocalBusiness, Store, WebSite, SearchAction and FAQ structured data intact.
+- Avoided fabricating prices, availability, reviews, ratings or aggregate rating data for quote-based catalogue categories.
+
 ### Premium Homepage Hero Carousel
 
 - Replaced the static homepage hero image with a five-image carousel using existing showroom, tile, bathroom, paint and adhesive assets.
