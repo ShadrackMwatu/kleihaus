@@ -1315,9 +1315,11 @@ function Footer() {
         </div>
       </div>
       <div className="border-t border-white/20">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-center gap-2 px-4 py-5 text-center text-orange-50">
-          <p>© {new Date().getFullYear()} Kleihaus Ceramics. All Rights Reserved</p>
-          <p className="text-sm font-medium tracking-wide">Inspiring Living</p>
+        <div className="mx-auto flex max-w-7xl items-center justify-center px-4 py-5 text-center text-orange-50">
+          <p className="text-xs">
+            © {new Date().getFullYear()} Kleihaus Ceramics. All Rights Reserved.{' '}
+            <span className="font-semibold tracking-wide text-orange-50">Inspiring Living</span>
+          </p>
         </div>
       </div>
     </footer>

@@ -12,6 +12,7 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 - Centered the footer bottom bar and replaced the service-area line with the brand message "Inspiring Living".
 - Kept the footer gradient, footer columns, links, WhatsApp, email, phone, quote form and API behavior unchanged.
+- Refined the footer bottom bar so the copyright and "Inspiring Living" brand message appear on one centered line.
 
 ### Footer Brand Color
 
