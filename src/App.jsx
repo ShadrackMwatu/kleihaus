@@ -96,10 +96,10 @@ const seoDescription =
 const canonicalUrl = 'https://www.kleihaus.com/'
 
 const navItems = [
-  { label: 'Home', href: '#top' },
-  { label: 'About', href: '#about' },
-  { label: 'Catalogue', href: '#catalogue' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', section: 'home' },
+  { label: 'About', section: 'about' },
+  { label: 'Catalogue', section: 'catalogue' },
+  { label: 'Contact', section: 'contact' },
 ]
 
 const categoryNav = ['Floor Tiles', 'Wall Tiles', 'Bathroom Tiles', 'Sanitaryware', 'Paints', 'Adhesives & Grout', 'Installation']
@@ -445,16 +445,21 @@ function SearchAutocomplete({ value, onChange, projectType, onSearch }) {
   )
 }
 
-function Header({ projectType, searchQuery, setSearchQuery, onSearch, onCategoryClick, onWhatsAppClick, onContactClick }) {
+function Header({ projectType, searchQuery, setSearchQuery, onSearch, activeSection, onSectionChange, onCategoryClick, onWhatsAppClick, onContactClick }) {
   const [menuOpen, setMenuOpen] = useState(false)
+
+  const handleNavClick = (section) => {
+    onSectionChange(section)
+    setMenuOpen(false)
+  }
 
   return (
     <header className="sticky top-0 z-50 border-b border-neutral-200 bg-white/95 backdrop-blur">
       <TopStrip onContactClick={onContactClick} />
       <div className="mx-auto grid max-w-7xl grid-cols-[1fr_auto_auto] items-center gap-3 px-4 py-3 lg:grid-cols-[auto_minmax(240px,420px)_1fr_auto] lg:gap-6">
-        <a href="#top" aria-label="Kleihaus Ceramics home" className="min-w-0" onClick={() => setMenuOpen(false)}>
+        <button type="button" aria-label="Kleihaus Ceramics home" className="min-w-0 text-left" onClick={() => handleNavClick('home')}>
           <Logo compact />
-        </a>
+        </button>
 
         <div className="hidden min-w-0 lg:block">
           <SearchAutocomplete value={searchQuery} onChange={setSearchQuery} projectType={projectType} onSearch={onSearch} />
@@ -462,9 +467,19 @@ function Header({ projectType, searchQuery, setSearchQuery, onSearch, onCategory
 
         <nav className="hidden items-center justify-end gap-5 xl:flex">
           {navItems.map((item) => (
-            <a key={item.href} href={item.href} className="text-sm font-medium text-neutral-600 transition hover:text-neutral-950">
+            <button
+              key={item.section}
+              type="button"
+              aria-current={activeSection === item.section ? 'page' : undefined}
+              onClick={() => handleNavClick(item.section)}
+              className={`rounded-md px-2 py-1.5 text-sm font-medium transition focus:outline-none focus:ring-2 focus:ring-emerald-200 ${
+                activeSection === item.section
+                  ? 'bg-emerald-50 text-emerald-800'
+                  : 'text-neutral-600 hover:bg-neutral-50 hover:text-neutral-950'
+              }`}
+            >
               {item.label}
-            </a>
+            </button>
           ))}
         </nav>
 
@@ -495,14 +510,17 @@ function Header({ projectType, searchQuery, setSearchQuery, onSearch, onCategory
       <div className="border-t border-neutral-100 bg-white">
         <div className="mx-auto flex max-w-7xl gap-2 overflow-x-auto px-4 py-2">
           {categoryNav.map((item) => (
-            <a
+            <button
               key={item}
-              href="#catalogue"
-              onClick={() => onCategoryClick(item)}
-              className="shrink-0 rounded-full border border-neutral-200 bg-white px-3.5 py-1.5 text-xs font-medium text-neutral-600 transition hover:border-emerald-600/40 hover:bg-emerald-50 hover:text-emerald-700"
+              type="button"
+              onClick={() => {
+                onCategoryClick(item)
+                onSectionChange('catalogue')
+              }}
+              className="shrink-0 rounded-full border border-neutral-200 bg-white px-3.5 py-1.5 text-xs font-medium text-neutral-600 transition hover:border-emerald-600/40 hover:bg-emerald-50 hover:text-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200"
             >
               {item}
-            </a>
+            </button>
           ))}
         </div>
       </div>
@@ -514,14 +532,17 @@ function Header({ projectType, searchQuery, setSearchQuery, onSearch, onCategory
           </div>
           <nav className="grid gap-2">
             {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="rounded-md px-2 py-2 text-sm font-semibold text-neutral-800 hover:bg-neutral-50"
-                onClick={() => setMenuOpen(false)}
+              <button
+                key={item.section}
+                type="button"
+                aria-current={activeSection === item.section ? 'page' : undefined}
+                className={`rounded-md px-2 py-2 text-left text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-200 ${
+                  activeSection === item.section ? 'bg-emerald-50 text-emerald-800' : 'text-neutral-800 hover:bg-neutral-50'
+                }`}
+                onClick={() => handleNavClick(item.section)}
               >
                 {item.label}
-              </a>
+              </button>
             ))}
           </nav>
         </div>
@@ -548,7 +569,7 @@ function usePrefersReducedMotion() {
   return prefersReducedMotion
 }
 
-function Hero({ onWhatsAppClick, onQuoteClick }) {
+function Hero({ onWhatsAppClick, onQuoteClick, onSectionChange }) {
   const [activeSlide, setActiveSlide] = useState(0)
   const [hasInteracted, setHasInteracted] = useState(false)
   const prefersReducedMotion = usePrefersReducedMotion()
@@ -603,17 +624,20 @@ function Hero({ onWhatsAppClick, onQuoteClick }) {
               Browse tiles, sanitaryware, paints, adhesives and grout, then request a clear quote from the Kleihaus team.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <a href="#catalogue">
-                <Button className="gap-2 bg-white text-neutral-950 hover:bg-neutral-100">
-                  Browse catalogue
-                  <ArrowRight className="h-4 w-4" />
-                </Button>
-              </a>
-              <a href="#contact" onClick={() => onQuoteClick('hero_quote_intent')}>
-                <ButtonSecondary className="gap-2 border-white/40 bg-white/10 text-white hover:bg-white/20">
-                  Request quote
-                </ButtonSecondary>
-              </a>
+              <Button type="button" onClick={() => onSectionChange('catalogue')} className="gap-2 bg-white text-neutral-950 hover:bg-neutral-100">
+                Browse catalogue
+                <ArrowRight className="h-4 w-4" />
+              </Button>
+              <ButtonSecondary
+                type="button"
+                onClick={() => {
+                  onQuoteClick('hero_quote_intent')
+                  onSectionChange('contact')
+                }}
+                className="gap-2 border-white/40 bg-white/10 text-white hover:bg-white/20"
+              >
+                Request quote
+              </ButtonSecondary>
               <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" onClick={() => onWhatsAppClick('hero_whatsapp')}>
                 <ButtonSecondary className="group gap-2 border-white/40 bg-white/10 text-white hover:bg-white/20">
                   <WhatsAppBrandText>WhatsApp inquiry</WhatsAppBrandText>
@@ -1342,6 +1366,7 @@ function MobileStickyWhatsApp({ onWhatsAppClick }) {
 
 export default function App() {
   const [projectType] = useState('Homeowner')
+  const [activeSection, setActiveSection] = useState('home')
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('Floor Tiles')
   const [eventRevision, setEventRevision] = useState(0)
@@ -1356,6 +1381,18 @@ export default function App() {
     analyticsService.track('search_query', { searchQuery: query.toLowerCase(), projectType })
     setSearchQuery(query)
     refreshSignals()
+  }
+
+  const handleSectionChange = (section) => {
+    setActiveSection(section)
+    analyticsService.track('navigation_click', { clickedElement: `nav_${section}`, projectType, productCategory: selectedCategory })
+    refreshSignals()
+    window.requestAnimationFrame(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+      })
+    })
   }
 
   const handleCategoryClick = (category) => {
@@ -1398,18 +1435,20 @@ export default function App() {
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
         onSearch={handleSearch}
+        activeSection={activeSection}
+        onSectionChange={handleSectionChange}
         onCategoryClick={handleCategoryClick}
         onWhatsAppClick={handleWhatsAppClick}
         onContactClick={handleContactClick}
       />
-      <Hero onWhatsAppClick={handleWhatsAppClick} onQuoteClick={handleQuoteClick} />
-      <AboutSection />
-      <ShopByCategory selectedCategory={selectedCategory} onCategoryClick={handleCategoryClick} onWhatsAppClick={handleWhatsAppClick} />
-      <ProductCatalogue onProductInterest={handleProductInterest} onWhatsAppClick={handleWhatsAppClick} />
-      <Services />
-      <QuantityEstimator />
-      <HelpfulGuides onGuideClick={handleGuideClick} />
-      <Contact onWhatsAppClick={handleWhatsAppClick} />
+      {activeSection === 'home' && (
+        <Hero onWhatsAppClick={handleWhatsAppClick} onQuoteClick={handleQuoteClick} onSectionChange={handleSectionChange} />
+      )}
+      {activeSection === 'about' && <AboutSection />}
+      {activeSection === 'catalogue' && (
+        <ShopByCategory selectedCategory={selectedCategory} onCategoryClick={handleCategoryClick} onWhatsAppClick={handleWhatsAppClick} />
+      )}
+      {activeSection === 'contact' && <Contact onWhatsAppClick={handleWhatsAppClick} />}
       <MobileStickyWhatsApp onWhatsAppClick={handleWhatsAppClick} />
       <Footer />
     </div>

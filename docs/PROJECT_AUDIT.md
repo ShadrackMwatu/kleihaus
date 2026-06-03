@@ -134,17 +134,12 @@ The stale Pages integration must be disconnected from the old account or removed
 
 ## Public Frontend Features
 
-- Premium header with top utility strip, logo, search, navigation and WhatsApp CTA.
-- Category navigation for major product groups.
-- Hero section with clear business positioning and a premium image carousel.
-- Hero trust badges for quote support, delivery coordination, installation guidance and service areas.
-- About Kleihaus section linked from the primary navigation.
-- Shop-by-category cards.
-- Product/category highlights.
-- Trust and service section.
-- Quantity estimator / quote helper.
-- Helpful buying guidance section for customer planning topics.
-- Contact and quote form.
+- Premium header with top utility strip, logo, search, state-driven navigation and WhatsApp CTA.
+- Category navigation for major product groups that opens the compact catalogue panel.
+- Home panel with clear business positioning, premium hero carousel and hero trust badges.
+- About panel with Kleihaus positioning, service areas and concise trust/support points.
+- Catalogue panel with clickable category cards, icons, descriptions and quote CTAs.
+- Contact panel with the existing quote form and direct contact details.
 - WhatsApp inquiry links with pre-filled messages.
 - Structured footer with products, services, contact, WhatsApp, email, locations and response expectation.
 
