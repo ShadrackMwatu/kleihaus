@@ -306,7 +306,7 @@ function Logo({ compact = false }) {
 
 function TopStrip({ onContactClick }) {
   return (
-    <div className="hidden bg-[#A65F1E] text-white sm:block">
+    <div className="hidden bg-[#16A34A] text-white sm:block">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-1.5 text-[11px]">
         <div className="inline-flex items-center gap-1.5 text-white/90">
           <MapPin className="h-3.5 w-3.5" />
