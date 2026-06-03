@@ -1314,8 +1314,8 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-5 text-xs text-neutral-400 sm:flex-row sm:items-center sm:justify-between">
+      <div className="border-t border-white/10 bg-[#9A5A24]">
+        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-5 text-xs text-orange-50 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Kleihaus Ceramics. All Rights Reserved</p>
           <p>Serving retail and project customers across Kenya.</p>
         </div>

@@ -8,6 +8,11 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-06-03
 
+### Footer Bottom Brand Color
+
+- Updated only the lower footer strip below the divider to use the warm Kleihaus logo-inspired bronze `#9A5A24`.
+- Kept the upper footer content area, links, quote form, WhatsApp links, API endpoint and structured data unchanged.
+
 ### Product Structured Data Search Console Fix
 
 - Replaced incomplete catalogue-category Product JSON-LD with an `ItemList` of catalogue categories linked to `#catalogue`.
