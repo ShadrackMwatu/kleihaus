@@ -136,7 +136,7 @@ The stale Pages integration must be disconnected from the old account or removed
 
 - Premium header with top utility strip, logo, search, navigation and WhatsApp CTA.
 - Category navigation for major product groups.
-- Hero section with clear business positioning.
+- Hero section with clear business positioning and a premium image carousel.
 - Hero trust badges for quote support, delivery coordination, installation guidance and service areas.
 - About Kleihaus section linked from the primary navigation.
 - Shop-by-category cards.

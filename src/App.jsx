@@ -4,6 +4,8 @@ import {
   Brush,
   Calculator,
   ClipboardList,
+  ChevronLeft,
+  ChevronRight,
   Mail,
   MapPin,
   Menu,
@@ -33,6 +35,34 @@ const whatsappUrl =
 
 const whatsappInquiryUrl = (subject) =>
   `https://wa.me/254748827166?text=${encodeURIComponent(`Hello Kleihaus, I would like a quote for ${subject}. Please share availability, price guidance and delivery options.`)}`
+
+const heroSlides = [
+  {
+    image: '/images/kleihaus-structure.jpg',
+    alt: 'Kleihaus Ceramics showroom structure for tiles and finishing materials',
+    label: 'Showroom supply',
+  },
+  {
+    image: '/images/tiles-floor.jpg',
+    alt: 'Premium floor tiles supplied by Kleihaus Ceramics',
+    label: 'Tile finishes',
+  },
+  {
+    image: '/images/bathroom-blue-1.jpg',
+    alt: 'Blue bathroom and sanitaryware display supplied by Kleihaus Ceramics',
+    label: 'Bathroom sets',
+  },
+  {
+    image: '/images/paint-interior.jpg',
+    alt: 'Interior paint options for Kleihaus finishing projects',
+    label: 'Paint finishes',
+  },
+  {
+    image: '/images/adhesive.jpg',
+    alt: 'Tile adhesive and installation materials supplied by Kleihaus Ceramics',
+    label: 'Installation essentials',
+  },
+]
 
 const isDevelopment = () => typeof import.meta !== 'undefined' && Boolean(import.meta.env?.DEV)
 
@@ -500,19 +530,70 @@ function Header({ projectType, searchQuery, setSearchQuery, onSearch, onCategory
   )
 }
 
+function usePrefersReducedMotion() {
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') return undefined
+
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const updatePreference = () => setPrefersReducedMotion(mediaQuery.matches)
+
+    updatePreference()
+    mediaQuery.addEventListener?.('change', updatePreference)
+
+    return () => mediaQuery.removeEventListener?.('change', updatePreference)
+  }, [])
+
+  return prefersReducedMotion
+}
+
 function Hero({ onWhatsAppClick, onQuoteClick }) {
+  const [activeSlide, setActiveSlide] = useState(0)
+  const [hasInteracted, setHasInteracted] = useState(false)
+  const prefersReducedMotion = usePrefersReducedMotion()
+
+  useEffect(() => {
+    if (prefersReducedMotion || hasInteracted) return undefined
+
+    const rotation = window.setInterval(() => {
+      setActiveSlide((current) => (current + 1) % heroSlides.length)
+    }, 5000)
+
+    return () => window.clearInterval(rotation)
+  }, [hasInteracted, prefersReducedMotion])
+
+  const goToSlide = (index) => {
+    setHasInteracted(true)
+    setActiveSlide((index + heroSlides.length) % heroSlides.length)
+  }
+
+  const currentSlide = heroSlides[activeSlide]
+
   return (
     <section id="top" className="bg-stone-100">
       <div className="mx-auto max-w-7xl px-4 py-6 lg:py-10">
         <div className="relative min-h-[520px] overflow-hidden rounded-lg bg-neutral-950 text-white shadow-xl">
-          <img
-            src="/images/kleihaus-structure.jpg"
-            alt="Kleihaus Ceramics tile and finishing materials showroom structure"
-            loading="eager"
-            decoding="async"
-            className="absolute inset-0 h-full w-full object-cover opacity-65"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/75 to-neutral-900/10" />
+          <div className="absolute inset-0">
+            {heroSlides.map((slide, index) => {
+              const isActive = index === activeSlide
+              const motionClass = prefersReducedMotion ? '' : isActive ? 'translate-x-0 scale-100' : 'translate-x-8 scale-105'
+
+              return (
+                <img
+                  key={slide.image}
+                  src={slide.image}
+                  alt={slide.alt}
+                  loading={index === 0 ? 'eager' : 'lazy'}
+                  decoding="async"
+                  aria-hidden={!isActive}
+                  className={`absolute inset-0 h-full w-full object-cover transition-[opacity,transform] duration-1000 ease-out ${isActive ? 'opacity-100' : 'opacity-0'} ${motionClass}`}
+                />
+              )
+            })}
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-r from-neutral-950/75 via-neutral-950/35 to-white/5" />
+          <div className="absolute inset-0 bg-gradient-to-br from-emerald-950/20 via-transparent to-white/10" />
           <div className="relative flex min-h-[520px] max-w-3xl flex-col justify-center px-5 py-12 sm:px-10 lg:px-12">
             <p className="text-xs font-semibold uppercase text-emerald-200">Kleihaus Ceramics</p>
             <h1 className="mt-4 max-w-2xl text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
@@ -538,6 +619,39 @@ function Hero({ onWhatsAppClick, onQuoteClick }) {
                   <WhatsAppBrandText>WhatsApp inquiry</WhatsAppBrandText>
                 </ButtonSecondary>
               </a>
+            </div>
+          </div>
+          <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between gap-4 sm:left-10 sm:right-10 lg:left-12 lg:right-12">
+            <div className="flex items-center gap-2">
+              {heroSlides.map((slide, index) => (
+                <button
+                  key={slide.image}
+                  type="button"
+                  aria-label={`Show ${slide.label} hero image`}
+                  aria-current={index === activeSlide ? 'true' : undefined}
+                  onClick={() => goToSlide(index)}
+                  className={`h-2.5 rounded-full transition-all ${index === activeSlide ? 'w-8 bg-white' : 'w-2.5 bg-white/50 hover:bg-white/80'}`}
+                />
+              ))}
+            </div>
+            <div className="hidden items-center gap-2 sm:flex">
+              <span className="rounded-full bg-white/15 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">{currentSlide.label}</span>
+              <button
+                type="button"
+                aria-label="Previous hero image"
+                onClick={() => goToSlide(activeSlide - 1)}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/35 bg-white/10 text-white backdrop-blur-sm transition hover:bg-white/20"
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </button>
+              <button
+                type="button"
+                aria-label="Next hero image"
+                onClick={() => goToSlide(activeSlide + 1)}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/35 bg-white/10 text-white backdrop-blur-sm transition hover:bg-white/20"
+              >
+                <ChevronRight className="h-4 w-4" />
+              </button>
             </div>
           </div>
         </div>

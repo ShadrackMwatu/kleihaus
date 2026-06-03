@@ -8,6 +8,13 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-06-03
 
+### Premium Homepage Hero Carousel
+
+- Replaced the static homepage hero image with a five-image carousel using existing showroom, tile, bathroom, paint and adhesive assets.
+- Added a light-balanced directional overlay that protects hero text readability on the left while keeping product imagery visible on the right.
+- Added carousel dots, desktop previous/next controls, 5-second auto-rotation and reduced-motion handling.
+- Preserved the existing hero headline, subtext, catalogue CTA, quote CTA, WhatsApp CTA, analytics tracking and quote form behavior.
+
 ### Homepage Structure And Conversion Polish
 
 - Added a real `#about` section so the About navigation link has a matching homepage destination.
