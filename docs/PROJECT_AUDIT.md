@@ -137,14 +137,16 @@ The stale Pages integration must be disconnected from the old account or removed
 - Premium header with top utility strip, logo, search, navigation and WhatsApp CTA.
 - Category navigation for major product groups.
 - Hero section with clear business positioning.
+- Hero trust badges for quote support, delivery coordination, installation guidance and service areas.
+- About Kleihaus section linked from the primary navigation.
 - Shop-by-category cards.
 - Product/category highlights.
 - Trust and service section.
 - Quantity estimator / quote helper.
-- Helpful guides section for future content marketing.
+- Helpful buying guidance section for customer planning topics.
 - Contact and quote form.
 - WhatsApp inquiry links with pre-filled messages.
-- Minimal professional footer.
+- Structured footer with products, services, contact, WhatsApp, email, locations and response expectation.
 
 The public frontend should not display admin dashboards, analytics tables, AI implementation details, weak-signal detection, backend logs or endpoint configuration details.
 

@@ -8,6 +8,16 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-06-03
 
+### Homepage Structure And Conversion Polish
+
+- Added a real `#about` section so the About navigation link has a matching homepage destination.
+- Added hero trust badges for retail/project quotes, delivery coordination, installation guidance and service areas.
+- Added a hero WhatsApp inquiry CTA alongside catalogue browsing and quote request actions.
+- Reframed the buying guide section as helpful planning guidance instead of "coming soon" content.
+- Expanded quote guidance so customers are prompted for room size, product type, quantity, location and budget range.
+- Reworked the footer into structured Products, Services and Contact columns with WhatsApp, email, locations and response expectation.
+- Replaced remaining public frontend brown accents in `src/App.jsx` with green/emerald brand styling.
+
 ### Worker Assets Documentation And Brand Metadata
 
 - Updated brand theme metadata from `#A65F1E` to `#16A34A` in `index.html` and `public/site.webmanifest`.

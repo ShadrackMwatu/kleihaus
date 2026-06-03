@@ -197,6 +197,36 @@ const serviceBadges = [
   { title: 'WhatsApp quote support', text: 'Fast response support for retail requests, project quotations and material matching.', icon: ClipboardList },
 ]
 
+const heroTrustBadges = [
+  { label: 'Retail & Project Quotes', icon: ClipboardList },
+  { label: 'Delivery Coordination', icon: Truck },
+  { label: 'Installation Guidance', icon: Wrench },
+  { label: 'Nairobi | Machakos | Makueni', icon: MapPin },
+]
+
+const aboutSupportPoints = [
+  {
+    title: 'Retail and project quotations',
+    text: 'Quote support for homeowners, contractors, shops and project teams planning material orders.',
+    icon: ClipboardList,
+  },
+  {
+    title: 'Delivery coordination',
+    text: 'Practical delivery guidance for Nairobi, Machakos, Makueni and wider Kenya where practical.',
+    icon: Truck,
+  },
+  {
+    title: 'Installation guidance',
+    text: 'Help matching tiles with adhesives, grout, trims and site-ready installation essentials.',
+    icon: Wrench,
+  },
+  {
+    title: 'Product matching support',
+    text: 'Guidance across tiles, sanitaryware, paints and finishing materials so rooms feel coordinated.',
+    icon: ShieldCheck,
+  },
+]
+
 const faqItems = [
   {
     question: 'How do I choose the right tiles for my project?',
@@ -340,7 +370,7 @@ function SearchAutocomplete({ value, onChange, projectType, onSearch }) {
 
   return (
     <div className="relative min-w-0 flex-1">
-      <label className="flex min-w-0 items-center gap-2 rounded-md border border-neutral-200 bg-white px-3 py-2 shadow-sm transition focus-within:border-[#A65F1E]/50 focus-within:shadow-md">
+      <label className="flex min-w-0 items-center gap-2 rounded-md border border-neutral-200 bg-white px-3 py-2 shadow-sm transition focus-within:border-emerald-600/50 focus-within:shadow-md">
         <Search className="h-4 w-4 text-neutral-400" />
         <input
           type="search"
@@ -439,7 +469,7 @@ function Header({ projectType, searchQuery, setSearchQuery, onSearch, onCategory
               key={item}
               href="#catalogue"
               onClick={() => onCategoryClick(item)}
-              className="shrink-0 rounded-full border border-neutral-200 bg-white px-3.5 py-1.5 text-xs font-medium text-neutral-600 transition hover:border-[#A65F1E]/40 hover:bg-stone-50 hover:text-[#A65F1E]"
+              className="shrink-0 rounded-full border border-neutral-200 bg-white px-3.5 py-1.5 text-xs font-medium text-neutral-600 transition hover:border-emerald-600/40 hover:bg-emerald-50 hover:text-emerald-700"
             >
               {item}
             </a>
@@ -503,8 +533,67 @@ function Hero({ onWhatsAppClick, onQuoteClick }) {
                   Request quote
                 </ButtonSecondary>
               </a>
+              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" onClick={() => onWhatsAppClick('hero_whatsapp')}>
+                <ButtonSecondary className="group gap-2 border-white/40 bg-white/10 text-white hover:bg-white/20">
+                  <WhatsAppBrandText>WhatsApp inquiry</WhatsAppBrandText>
+                </ButtonSecondary>
+              </a>
             </div>
           </div>
+        </div>
+        <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {heroTrustBadges.map((badge) => {
+            const Icon = badge.icon
+            return (
+              <div key={badge.label} className="flex items-center gap-3 rounded-lg border border-emerald-100 bg-white px-4 py-3 text-sm font-semibold text-neutral-800 shadow-sm">
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-md bg-emerald-50 text-emerald-700">
+                  <Icon className="h-4 w-4" />
+                </span>
+                {badge.label}
+              </div>
+            )
+          })}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function AboutSection() {
+  return (
+    <section id="about" className="bg-white">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+        <div>
+          <p className="text-sm font-semibold uppercase text-emerald-700">About Kleihaus</p>
+          <h2 className="mt-2 text-3xl font-semibold text-neutral-950">A practical finishing materials partner for homes, shops and projects.</h2>
+          <p className="mt-4 text-sm leading-7 text-neutral-600">
+            Kleihaus Ceramics supplies tiles, sanitaryware, paints, adhesives, grout and finishing materials for customers planning durable, well-matched spaces across Kenya.
+          </p>
+          <p className="mt-3 text-sm leading-7 text-neutral-600">
+            The team supports retail requests and project quotations in Nairobi, Machakos, Makueni and wider Kenya where practical, helping customers compare product types, quantities, delivery needs and installation choices before they buy.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-2 text-xs font-semibold text-emerald-800">
+            {['Tiles', 'Sanitaryware', 'Paints', 'Adhesives', 'Grout', 'Finishing materials'].map((item) => (
+              <span key={item} className="rounded-full bg-emerald-50 px-3 py-1.5">
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div className="grid gap-4 sm:grid-cols-2">
+          {aboutSupportPoints.map((point) => {
+            const Icon = point.icon
+            return (
+              <article key={point.title} className="rounded-lg border border-neutral-200 bg-white p-5 shadow-sm">
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-md bg-emerald-50 text-emerald-800">
+                  <Icon className="h-5 w-5" />
+                </div>
+                <h3 className="mt-4 text-base font-semibold text-neutral-950">{point.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-neutral-600">{point.text}</p>
+              </article>
+            )
+          })}
         </div>
       </div>
     </section>
@@ -676,6 +765,17 @@ function QuantityEstimator() {
           <p className="mt-3 text-sm leading-6 text-neutral-600">
             Enter your area and tile size for a quick planning estimate. Final quantities can be confirmed when you share your project details.
           </p>
+          <div className="mt-5 rounded-lg border border-emerald-100 bg-emerald-50 p-4">
+            <p className="text-sm font-semibold text-emerald-900">For a faster quote, include:</p>
+            <ul className="mt-3 grid gap-2 text-sm text-emerald-900 sm:grid-cols-2">
+              {['Room size', 'Product type', 'Quantity', 'Location', 'Budget range'].map((item) => (
+                <li key={item} className="flex items-center gap-2">
+                  <ShieldCheck className="h-4 w-4 shrink-0 text-emerald-700" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         <div className="rounded-lg border border-neutral-200 bg-white p-5 shadow-sm sm:p-6">
@@ -772,10 +872,10 @@ function HelpfulGuides({ onGuideClick }) {
     <section className="border-y border-neutral-200 bg-neutral-50">
       <div className="mx-auto max-w-7xl px-4 py-16">
         <div className="mb-7 max-w-3xl">
-          <p className="text-sm font-semibold uppercase text-emerald-700">Helpful guides</p>
-          <h2 className="mt-2 text-3xl font-semibold text-neutral-950">Coming-soon buying guides</h2>
+          <p className="text-sm font-semibold uppercase text-emerald-700">Helpful buying guidance</p>
+          <h2 className="mt-2 text-3xl font-semibold text-neutral-950">Planning guides for better material choices</h2>
           <p className="mt-2 text-sm leading-6 text-neutral-600">
-            Educational topics being prepared to help customers plan quantities, finishes and product combinations before requesting a quote.
+            Use these planning topics to frame your quote request. If you need help now, tap a topic and send the team your room size, product type, quantity, location and budget range.
           </p>
         </div>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -786,7 +886,7 @@ function HelpfulGuides({ onGuideClick }) {
               onClick={() => onGuideClick(topic.title)}
               className="rounded-md border border-neutral-200 bg-white p-5 shadow-sm transition hover:border-emerald-700"
             >
-              <p className="text-xs font-semibold uppercase text-neutral-500">Coming soon</p>
+              <p className="text-xs font-semibold uppercase text-emerald-700">Planning support</p>
               <h3 className="mt-2 text-base font-semibold text-neutral-950">{topic.title}</h3>
               <p className="mt-2 text-sm leading-6 text-neutral-600">{topic.summary}</p>
             </a>
@@ -940,7 +1040,7 @@ function Contact({ onWhatsAppClick }) {
           <p className="text-sm font-semibold uppercase text-emerald-300">Contact Kleihaus</p>
           <h2 className="mt-2 text-3xl font-semibold">Request a product or project quote.</h2>
           <p className="mt-4 leading-7 text-neutral-300">
-            Share your room size, preferred finish, delivery location and budget. Kleihaus will respond with product guidance and quote support.
+            Share your room size, product type, quantity, location and budget range. Kleihaus will respond with product guidance and quote support.
           </p>
 
           <div className="mt-7 space-y-3 text-sm text-neutral-200">
@@ -969,7 +1069,7 @@ function Contact({ onWhatsAppClick }) {
         >
           <div className="mb-5">
             <h3 className="text-lg font-semibold">Tell us what you need</h3>
-            <p className="mt-1 text-sm leading-6 text-neutral-600">Include room size, tile type, location and budget so the quote can be more useful.</p>
+            <p className="mt-1 text-sm leading-6 text-neutral-600">Include room size, product type, quantity, location and budget range so the quote can be more useful.</p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             <label className="grid gap-2 text-sm font-medium text-neutral-700">
@@ -996,7 +1096,7 @@ function Contact({ onWhatsAppClick }) {
             <Textarea
               name="message"
               autoComplete="off"
-              placeholder="Example: 32m² floor tiles, matte finish, delivery to Machakos, budget range..."
+              placeholder="Example: 32 m2 floor tiles, matte finish, 85 pieces, delivery to Machakos, budget range..."
               rows={5}
               value={quoteForm.message}
               onChange={updateQuoteField('message')}
@@ -1039,10 +1139,72 @@ function Contact({ onWhatsAppClick }) {
 
 function Footer() {
   return (
-    <footer className="border-t border-neutral-200 bg-white">
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-center gap-2 px-4 py-8 text-center">
-        <p className="text-xs text-neutral-500">© {new Date().getFullYear()} Kleihaus Ceramics. All Rights Reserved</p>
-        <p className="text-xs font-medium text-neutral-400">Inspiring living</p>
+    <footer className="border-t border-neutral-200 bg-neutral-950 text-white">
+      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 md:grid-cols-[1.2fr_0.8fr_0.8fr_1fr]">
+        <div>
+          <div className="flex items-center gap-3">
+            <img
+              src="/images/kleihaus-logo.jpg"
+              alt="Kleihaus Ceramics"
+              loading="lazy"
+              decoding="async"
+              className="h-10 w-10 rounded-md border border-white/20 bg-white object-contain"
+            />
+            <div className="leading-tight">
+              <div className="text-base font-semibold text-white">Kleihaus Ceramics</div>
+              <div className="text-xs text-emerald-300">Inspiring living</div>
+            </div>
+          </div>
+          <p className="mt-4 max-w-sm text-sm leading-6 text-neutral-300">
+            Tiles, sanitaryware, paints, adhesives, grout and finishing materials for homes, retail orders and project quotations in Kenya.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-sm font-semibold uppercase text-neutral-100">Products</h3>
+          <ul className="mt-3 grid gap-2 text-sm text-neutral-300">
+            {['Floor tiles', 'Wall tiles', 'Bathroom tiles', 'Sanitaryware', 'Paints', 'Adhesives & grout'].map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="text-sm font-semibold uppercase text-neutral-100">Services</h3>
+          <ul className="mt-3 grid gap-2 text-sm text-neutral-300">
+            {['Retail quotes', 'Project quotations', 'Delivery coordination', 'Installation guidance', 'Product matching'].map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="text-sm font-semibold uppercase text-neutral-100">Contact</h3>
+          <div className="mt-3 grid gap-3 text-sm text-neutral-300">
+            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 text-neutral-100 hover:text-white">
+              <WhatsAppBrandText>WhatsApp</WhatsAppBrandText>
+            </a>
+            <a href="mailto:sales@kleihaus.com" className="inline-flex items-center gap-2 hover:text-white">
+              <Mail className="h-4 w-4 text-emerald-300" />
+              sales@kleihaus.com
+            </a>
+            <a href="tel:+254748827166" className="inline-flex items-center gap-2 hover:text-white">
+              <Phone className="h-4 w-4 text-emerald-300" />
+              +254 748 827 166
+            </a>
+            <div className="inline-flex items-start gap-2">
+              <MapPin className="mt-0.5 h-4 w-4 text-emerald-300" />
+              <span>Nairobi | Machakos | Makueni</span>
+            </div>
+            <p className="text-neutral-400">Typical response: shortly after quote submission during business hours.</p>
+          </div>
+        </div>
+      </div>
+      <div className="border-t border-white/10">
+        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-5 text-xs text-neutral-400 sm:flex-row sm:items-center sm:justify-between">
+          <p>© {new Date().getFullYear()} Kleihaus Ceramics. All Rights Reserved</p>
+          <p>Serving retail and project customers across Kenya.</p>
+        </div>
       </div>
     </footer>
   )
@@ -1125,6 +1287,7 @@ export default function App() {
         onContactClick={handleContactClick}
       />
       <Hero onWhatsAppClick={handleWhatsAppClick} onQuoteClick={handleQuoteClick} />
+      <AboutSection />
       <ShopByCategory selectedCategory={selectedCategory} onCategoryClick={handleCategoryClick} onWhatsAppClick={handleWhatsAppClick} />
       <ProductCatalogue onProductInterest={handleProductInterest} onWhatsAppClick={handleWhatsAppClick} />
       <Services />
