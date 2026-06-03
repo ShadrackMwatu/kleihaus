@@ -10,8 +10,9 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ### Compact Homepage Navigation
 
-- Converted the main homepage navigation from anchor-only jumps into state-driven Home, About, Catalogue and Contact panels near the top of the page.
-- Reduced long homepage scrolling by no longer stacking About, catalogue, product highlights, trust, quote helper, guidance and contact sections in one continuous flow.
+- Converted the homepage below the hero into a compact segmented Catalogue, About, Guidance and Quote content area.
+- Connected the header navigation to the compact content area instead of relying on long anchor jumps.
+- Reduced long homepage scrolling by merging About, services, helpful guidance, quote helper and contact content into focused panels.
 - Preserved the hero carousel, trust badges, WhatsApp links, clickable catalogue cards, quote form behavior, analytics tracking and `/api/quote-request`.
 
 ### Footer Branding Message

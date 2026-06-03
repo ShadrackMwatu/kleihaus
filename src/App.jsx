@@ -102,6 +102,13 @@ const navItems = [
   { label: 'Contact', section: 'contact' },
 ]
 
+const panelItems = [
+  { label: 'Catalogue', panel: 'catalogue' },
+  { label: 'About', panel: 'about' },
+  { label: 'Guidance', panel: 'guidance' },
+  { label: 'Quote', panel: 'quote' },
+]
+
 const categoryNav = ['Floor Tiles', 'Wall Tiles', 'Bathroom Tiles', 'Sanitaryware', 'Paints', 'Adhesives & Grout', 'Installation']
 
 const categories = [
@@ -282,6 +289,29 @@ const faqItems = [
     question: 'What information should I send on WhatsApp?',
     answer:
       'Send the room size, preferred tile or finish, delivery location, quantity estimate and budget range. Photos or inspiration references can also help.',
+  },
+]
+
+const planningTips = [
+  {
+    title: 'Choose by room use',
+    text: 'Match the finish to moisture, cleaning needs, foot traffic and the look you want.',
+    icon: Store,
+  },
+  {
+    title: 'Confirm tile size and quantity',
+    text: 'Share room measurements, preferred tile size and an allowance for cuts or breakage.',
+    icon: Ruler,
+  },
+  {
+    title: 'Match adhesive and grout',
+    text: 'Use fixing materials that suit the tile type, surface and wet or dry area.',
+    icon: Brush,
+  },
+  {
+    title: 'Share location and budget',
+    text: 'Add delivery location and budget range so the quote can be useful from the first reply.',
+    icon: MapPin,
   },
 ]
 
@@ -593,8 +623,8 @@ function Hero({ onWhatsAppClick, onQuoteClick, onSectionChange }) {
 
   return (
     <section id="top" className="bg-stone-100">
-      <div className="mx-auto max-w-7xl px-4 py-6 lg:py-10">
-        <div className="relative min-h-[520px] overflow-hidden rounded-lg bg-neutral-950 text-white shadow-xl">
+      <div className="mx-auto max-w-7xl px-4 py-4 lg:py-6">
+        <div className="relative h-[min(74vh,680px)] min-h-[430px] overflow-hidden rounded-lg bg-neutral-950 text-white shadow-xl">
           <div className="absolute inset-0">
             {heroSlides.map((slide, index) => {
               const isActive = index === activeSlide
@@ -615,7 +645,7 @@ function Hero({ onWhatsAppClick, onQuoteClick, onSectionChange }) {
           </div>
           <div className="absolute inset-0 bg-gradient-to-r from-neutral-950/75 via-neutral-950/35 to-white/5" />
           <div className="absolute inset-0 bg-gradient-to-br from-emerald-950/20 via-transparent to-white/10" />
-          <div className="relative flex min-h-[520px] max-w-3xl flex-col justify-center px-5 py-12 sm:px-10 lg:px-12">
+          <div className="relative flex h-full max-w-3xl flex-col justify-center px-5 py-12 sm:px-10 lg:px-12">
             <p className="text-xs font-semibold uppercase text-emerald-200">Kleihaus Ceramics</p>
             <h1 className="mt-4 max-w-2xl text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
               Premium tiles and finishing materials for Kenyan homes and projects.
@@ -738,20 +768,79 @@ function AboutSection() {
   )
 }
 
-function ShopByCategory({ selectedCategory, onCategoryClick, onWhatsAppClick }) {
+function AboutPanel() {
   return (
-    <section id="catalogue" className="mx-auto max-w-7xl px-4 py-16">
-      <div className="mb-8 max-w-3xl">
+    <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+      <div>
+        <p className="text-sm font-semibold uppercase text-emerald-700">About Kleihaus</p>
+        <h2 className="mt-2 text-2xl font-semibold text-neutral-950 sm:text-3xl">Finishing materials support for homes, retail orders and projects.</h2>
+        <p className="mt-3 text-sm leading-7 text-neutral-600">
+          Kleihaus supplies tiles, sanitaryware, paints, adhesives, grout and finishing materials for customers planning durable, coordinated spaces.
+        </p>
+        <p className="mt-3 text-sm leading-7 text-neutral-600">
+          The team supports retail and project quotation requests across Nairobi, Machakos, Makueni and wider Kenya where practical.
+        </p>
+      </div>
+      <div className="grid gap-3 sm:grid-cols-2">
+        {aboutSupportPoints.map((point) => {
+          const Icon = point.icon
+          return (
+            <article key={point.title} className="rounded-lg border border-neutral-200 bg-white p-4 shadow-sm">
+              <div className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-emerald-50 text-emerald-800">
+                <Icon className="h-5 w-5" />
+              </div>
+              <h3 className="mt-3 text-sm font-semibold text-neutral-950">{point.title}</h3>
+              <p className="mt-1 text-sm leading-6 text-neutral-600">{point.text}</p>
+            </article>
+          )
+        })}
+      </div>
+    </div>
+  )
+}
+
+function GuidancePanel() {
+  return (
+    <div>
+      <div className="max-w-3xl">
+        <p className="text-sm font-semibold uppercase text-emerald-700">Planning guidance</p>
+        <h2 className="mt-2 text-2xl font-semibold text-neutral-950 sm:text-3xl">Plan the quote before you send it.</h2>
+        <p className="mt-2 text-sm leading-6 text-neutral-600">
+          Keep the request simple and practical: room size, product type, quantity, location and budget range.
+        </p>
+      </div>
+      <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        {planningTips.map((tip) => {
+          const Icon = tip.icon
+          return (
+            <article key={tip.title} className="rounded-lg border border-neutral-200 bg-white p-4 shadow-sm">
+              <div className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-emerald-50 text-emerald-800">
+                <Icon className="h-5 w-5" />
+              </div>
+              <h3 className="mt-3 text-sm font-semibold text-neutral-950">{tip.title}</h3>
+              <p className="mt-1 text-sm leading-6 text-neutral-600">{tip.text}</p>
+            </article>
+          )
+        })}
+      </div>
+    </div>
+  )
+}
+
+function ShopByCategory({ selectedCategory, onCategoryClick, onWhatsAppClick, compact = false }) {
+  return (
+    <section id="catalogue" className={compact ? '' : 'mx-auto max-w-7xl px-4 py-16'}>
+      <div className={compact ? 'mb-5 max-w-3xl' : 'mb-8 max-w-3xl'}>
         <div>
           <p className="text-sm font-semibold uppercase text-emerald-700">Product catalogue</p>
-          <h2 className="mt-2 text-3xl font-semibold text-neutral-950">Shop by category</h2>
+          <h2 className="mt-2 text-2xl font-semibold text-neutral-950 sm:text-3xl">Shop by category</h2>
           <p className="mt-2 max-w-2xl text-sm leading-6 text-neutral-600">
             Choose the finish you need and send a quick WhatsApp inquiry for availability and quotation.
           </p>
         </div>
       </div>
 
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
         {categories.map((category) => {
           const Icon = category.icon
           return (
@@ -781,9 +870,9 @@ function ShopByCategory({ selectedCategory, onCategoryClick, onWhatsAppClick }) 
                   </div>
                 </div>
               </button>
-              <div className="flex flex-1 flex-col p-5">
+              <div className="flex flex-1 flex-col p-4">
                 <div className="flex items-center justify-between gap-3">
-                  <h3 className="text-lg font-semibold text-neutral-950">{category.name}</h3>
+                  <h3 className="text-base font-semibold text-neutral-950">{category.name}</h3>
                   <ArrowRight className="h-4 w-4 shrink-0 text-neutral-400 transition group-hover:text-emerald-700" />
                 </div>
                 <p className="mt-2 text-sm leading-6 text-neutral-600">{category.blurb}</p>
@@ -1043,7 +1132,7 @@ function HelpfulGuides({ onGuideClick }) {
   )
 }
 
-function Contact({ onWhatsAppClick }) {
+function Contact({ onWhatsAppClick, compact = false }) {
   const quoteFormRef = useRef(null)
   const quoteStatusRef = useRef(null)
   const quoteStatusTimeoutRef = useRef(null)
@@ -1172,11 +1261,11 @@ function Contact({ onWhatsAppClick }) {
   }
 
   return (
-    <section id="contact" className="bg-neutral-950 text-white">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 lg:grid-cols-[0.9fr_1.1fr]">
+    <section id="contact" className={compact ? 'rounded-xl bg-neutral-950 text-white' : 'bg-neutral-950 text-white'}>
+      <div className={`${compact ? 'grid gap-6 p-5 sm:p-6' : 'mx-auto grid max-w-7xl gap-10 px-4 py-16'} lg:grid-cols-[0.9fr_1.1fr]`}>
         <div>
           <p className="text-sm font-semibold uppercase text-emerald-300">Contact Kleihaus</p>
-          <h2 className="mt-2 text-3xl font-semibold">Request a product or project quote.</h2>
+          <h2 className="mt-2 text-2xl font-semibold sm:text-3xl">Request a product or project quote.</h2>
           <p className="mt-4 leading-7 text-neutral-300">
             Share your room size, product type, quantity, location and budget range. Kleihaus will respond with product guidance and quote support.
           </p>
@@ -1364,12 +1453,53 @@ function MobileStickyWhatsApp({ onWhatsAppClick }) {
   )
 }
 
+function CompactContentArea({ activePanel, onPanelChange, selectedCategory, onCategoryClick, onWhatsAppClick, contentRef }) {
+  return (
+    <section ref={contentRef} className="bg-white">
+      <div className="mx-auto max-w-7xl px-4 py-8 lg:py-10">
+        <div className="rounded-xl border border-neutral-200 bg-neutral-50 p-3 shadow-sm sm:p-4">
+          <div className="mb-5 flex gap-2 overflow-x-auto" role="tablist" aria-label="Kleihaus homepage content">
+            {panelItems.map((item) => (
+              <button
+                key={item.panel}
+                type="button"
+                role="tab"
+                aria-selected={activePanel === item.panel}
+                aria-controls={`panel-${item.panel}`}
+                onClick={() => onPanelChange(item.panel)}
+                className={`shrink-0 rounded-md px-4 py-2 text-sm font-semibold transition focus:outline-none focus:ring-2 focus:ring-emerald-200 ${
+                  activePanel === item.panel
+                    ? 'bg-neutral-950 text-white shadow-sm'
+                    : 'bg-white text-neutral-700 hover:bg-emerald-50 hover:text-emerald-800'
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+
+          <div id={`panel-${activePanel}`} role="tabpanel" className="rounded-lg bg-white p-4 sm:p-6">
+            {activePanel === 'catalogue' && (
+              <ShopByCategory compact selectedCategory={selectedCategory} onCategoryClick={onCategoryClick} onWhatsAppClick={onWhatsAppClick} />
+            )}
+            {activePanel === 'about' && <AboutPanel />}
+            {activePanel === 'guidance' && <GuidancePanel />}
+            {activePanel === 'quote' && <Contact compact onWhatsAppClick={onWhatsAppClick} />}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 export default function App() {
   const [projectType] = useState('Homeowner')
   const [activeSection, setActiveSection] = useState('home')
+  const [activePanel, setActivePanel] = useState('catalogue')
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('Floor Tiles')
   const [eventRevision, setEventRevision] = useState(0)
+  const contentAreaRef = useRef(null)
 
   const refreshSignals = () => setEventRevision((revision) => revision + 1)
 
@@ -1380,16 +1510,26 @@ export default function App() {
   const handleSearch = (query) => {
     analyticsService.track('search_query', { searchQuery: query.toLowerCase(), projectType })
     setSearchQuery(query)
+    setActiveSection('catalogue')
+    setActivePanel('catalogue')
     refreshSignals()
   }
 
   const handleSectionChange = (section) => {
     setActiveSection(section)
+    if (section === 'home') setActivePanel('catalogue')
+    if (section === 'about') setActivePanel('about')
+    if (section === 'catalogue') setActivePanel('catalogue')
+    if (section === 'contact') setActivePanel('quote')
     analyticsService.track('navigation_click', { clickedElement: `nav_${section}`, projectType, productCategory: selectedCategory })
     refreshSignals()
     window.requestAnimationFrame(() => {
+      const targetTop = section === 'home'
+        ? 0
+        : Math.max((contentAreaRef.current?.getBoundingClientRect().top || 0) + window.scrollY - 96, 0)
+
       window.scrollTo({
-        top: 0,
+        top: targetTop,
         behavior: window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
       })
     })
@@ -1398,6 +1538,15 @@ export default function App() {
   const handleCategoryClick = (category) => {
     analyticsService.track('category_click', { productCategory: category, clickedElement: 'category_navigation', projectType })
     setSelectedCategory(category)
+    setActiveSection('catalogue')
+    setActivePanel('catalogue')
+    refreshSignals()
+  }
+
+  const handlePanelChange = (panel) => {
+    setActivePanel(panel)
+    setActiveSection(panel === 'quote' ? 'contact' : panel === 'guidance' ? 'home' : panel)
+    analyticsService.track('navigation_click', { clickedElement: `panel_${panel}`, projectType, productCategory: selectedCategory })
     refreshSignals()
   }
 
@@ -1441,14 +1590,15 @@ export default function App() {
         onWhatsAppClick={handleWhatsAppClick}
         onContactClick={handleContactClick}
       />
-      {activeSection === 'home' && (
-        <Hero onWhatsAppClick={handleWhatsAppClick} onQuoteClick={handleQuoteClick} onSectionChange={handleSectionChange} />
-      )}
-      {activeSection === 'about' && <AboutSection />}
-      {activeSection === 'catalogue' && (
-        <ShopByCategory selectedCategory={selectedCategory} onCategoryClick={handleCategoryClick} onWhatsAppClick={handleWhatsAppClick} />
-      )}
-      {activeSection === 'contact' && <Contact onWhatsAppClick={handleWhatsAppClick} />}
+      <Hero onWhatsAppClick={handleWhatsAppClick} onQuoteClick={handleQuoteClick} onSectionChange={handleSectionChange} />
+      <CompactContentArea
+        activePanel={activePanel}
+        onPanelChange={handlePanelChange}
+        selectedCategory={selectedCategory}
+        onCategoryClick={handleCategoryClick}
+        onWhatsAppClick={handleWhatsAppClick}
+        contentRef={contentAreaRef}
+      />
       <MobileStickyWhatsApp onWhatsAppClick={handleWhatsAppClick} />
       <Footer />
     </div>

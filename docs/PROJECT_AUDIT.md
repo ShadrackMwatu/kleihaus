@@ -136,10 +136,12 @@ The stale Pages integration must be disconnected from the old account or removed
 
 - Premium header with top utility strip, logo, search, state-driven navigation and WhatsApp CTA.
 - Category navigation for major product groups that opens the compact catalogue panel.
-- Home panel with clear business positioning, premium hero carousel and hero trust badges.
-- About panel with Kleihaus positioning, service areas and concise trust/support points.
+- Home area with clear business positioning, premium hero carousel and hero trust badges.
+- Compact segmented content area for Catalogue, About, Guidance and Quote.
 - Catalogue panel with clickable category cards, icons, descriptions and quote CTAs.
-- Contact panel with the existing quote form and direct contact details.
+- About panel with Kleihaus positioning, service areas and concise trust/support points.
+- Guidance panel with concise quote-planning tips.
+- Quote panel with the existing quote form and direct contact details.
 - WhatsApp inquiry links with pre-filled messages.
 - Structured footer with products, services, contact, WhatsApp, email, locations and response expectation.
 
