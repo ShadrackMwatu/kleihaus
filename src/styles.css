@@ -1,5 +1,198 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-html, body, #root { height: 100%; }
-body { @apply bg-white text-neutral-900; }
+
+:root {
+  --kleihaus-green: #16A34A;
+  --kleihaus-green-dark: #15803D;
+  --kleihaus-ink: #171717;
+  --kleihaus-soft: #F7F5F0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 138px;
+}
+
+body {
+  @apply bg-white text-neutral-900;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  background:
+    radial-gradient(circle at top left, rgba(22, 163, 74, 0.08), transparent 32rem),
+    linear-gradient(180deg, #ffffff 0%, #fbfaf7 42%, #ffffff 100%);
+}
+
+::selection {
+  background: rgba(22, 163, 74, 0.18);
+  color: var(--kleihaus-ink);
+}
+
+img {
+  max-width: 100%;
+}
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+a[role='button'],
+input,
+textarea,
+select {
+  touch-action: manipulation;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid rgba(22, 163, 74, 0.34);
+  outline-offset: 3px;
+}
+
+header.sticky {
+  box-shadow: 0 10px 30px rgba(23, 23, 23, 0.06);
+}
+
+section {
+  position: relative;
+}
+
+section[id='top'] > div > div {
+  border-radius: 1.35rem;
+  box-shadow: 0 30px 80px rgba(23, 23, 23, 0.22);
+}
+
+section[id='top'] h1,
+section h2,
+section h3 {
+  text-wrap: balance;
+  letter-spacing: -0.025em;
+}
+
+section[id='top'] p,
+section p {
+  text-wrap: pretty;
+}
+
+article,
+form,
+section .shadow-sm,
+section .shadow-xl {
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+article:hover {
+  transform: translateY(-2px);
+}
+
+section[id='catalogue'] article,
+section.border-y article,
+section .rounded-md.border,
+form.rounded-lg {
+  border-radius: 1rem;
+}
+
+section[id='catalogue'] article:hover,
+section.border-y article:hover,
+section .rounded-md.border:hover {
+  box-shadow: 0 18px 45px rgba(23, 23, 23, 0.08);
+}
+
+section[id='catalogue'] img,
+section.border-y img {
+  background: #f3f4f6;
+}
+
+input,
+textarea,
+select {
+  font-size: 16px;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #8a8178;
+}
+
+form button,
+form a button,
+header button,
+header a button,
+section a button {
+  min-height: 44px;
+}
+
+#contact form {
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+}
+
+#contact textarea {
+  min-height: 9rem;
+}
+
+footer {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 120px;
+  }
+
+  body {
+    background: #ffffff;
+  }
+
+  section[id='top'] > div {
+    padding-top: 0.75rem;
+  }
+
+  section[id='top'] > div > div,
+  section[id='top'] > div > div > div {
+    min-height: 470px;
+  }
+
+  section[id='top'] h1 {
+    font-size: clamp(2.35rem, 11vw, 3.5rem);
+  }
+
+  section[id='catalogue'],
+  section > div.mx-auto {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .fixed.bottom-4 {
+    bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+
+  footer {
+    padding-bottom: 5.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
