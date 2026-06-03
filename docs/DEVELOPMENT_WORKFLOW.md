@@ -4,7 +4,7 @@ This document defines the safe workflow for working on the Kleihaus website.
 
 Rule: Every future meaningful change must update `docs/CHANGELOG.md` and, where relevant, `docs/PROJECT_AUDIT.md`.
 
-## Local Repository
+## Source Of Truth
 
 Local folder:
 
@@ -24,20 +24,28 @@ Main branch:
 main
 ```
 
-Do not create another repository for this project. The existing local folder and GitHub repository are the source of truth.
+Do not create another repository for this project. Do not migrate production to Cloudflare Pages unless that is explicitly approved.
 
-## Cloudflare Pages Deployment
+## Current Deployment Path
 
-Cloudflare Pages deploys the static site from the GitHub repository.
-
-Expected build settings:
+Production currently deploys as:
 
 ```text
-Build command: npm run build
-Build output directory: dist
+GitHub main
+-> Cloudflare Workers Builds
+-> Worker Assets
+-> Worker "kleihaus"
+-> kleihaus.com
+-> www.kleihaus.com
 ```
 
-Do not alter Cloudflare deployment settings unless the project owner explicitly requests it.
+The active frontend quote endpoint is:
+
+```text
+/api/quote-request
+```
+
+`api.kleihaus.com` is legacy and is not currently required by the frontend. Cloudflare Pages references in older notes are historical/stale.
 
 ## Local Setup Commands
 
@@ -59,32 +67,97 @@ The Vite dev server normally starts at:
 http://localhost:5173
 ```
 
-If the port is busy, Vite may choose another local port.
-
 Build production output:
 
 ```bash
 npm run build
 ```
 
-## Safe Git Workflow
+## Deployment Runbook
 
-Before editing:
+1. Check the repo:
 
 ```bash
 git status
 ```
 
-After a meaningful update:
+2. Install and build:
 
 ```bash
-git status
-git add README.md docs/
-git commit -m "Document Kleihaus project progress and workflow"
+npm install
+npm run build
+```
+
+3. Review changes:
+
+```bash
+git diff
+```
+
+4. Commit and push:
+
+```bash
+git add .
+git commit -m "Describe the change"
 git push origin main
 ```
 
-For website code changes, stage only the relevant project files. Avoid using broad staging if unrelated files are modified.
+5. Confirm GitHub check:
+
+```text
+Workers Builds: kleihaus -> success
+```
+
+6. Verify production:
+
+```text
+GET https://www.kleihaus.com
+GET https://www.kleihaus.com/api/quote-request
+OPTIONS https://www.kleihaus.com/api/quote-request
+POST https://www.kleihaus.com/api/quote-request
+```
+
+Expected `GET /api/quote-request`:
+
+```json
+{ "success": false, "message": "Method not allowed" }
+```
+
+Expected quote `POST`:
+
+```json
+{
+  "success": true,
+  "storage": { "stored": true },
+  "email": { "sent": true }
+}
+```
+
+## Cloudflare Worker Files
+
+Active files:
+
+- `wrangler.toml`
+- `src/worker.js`
+- `functions/api/quote-request.js`
+- `functions/api/track-event.js`
+
+Legacy files retained for now:
+
+- `wrangler.api.toml`
+- `src/api-worker.js`
+
+The legacy files are not referenced by the current Worker Assets deployment and may be archived or removed later only after explicit approval.
+
+## Stale Pages Check Troubleshooting
+
+If GitHub shows a failing `Cloudflare Pages` check while `Workers Builds: kleihaus` passes, check whether the failing details URL points to:
+
+```text
+bded816dd798bcf88e4ccc0ce5d16bcb
+```
+
+That is a stale Cloudflare account/integration and is not the active production deployment. It must be disconnected from that old Cloudflare account or removed by Cloudflare Support.
 
 ## What Not To Commit
 
@@ -94,6 +167,7 @@ Do not commit:
 - `dist/`
 - `.env`
 - `.env.local`
+- `.dev.vars`
 - API keys
 - SMTP passwords
 - WhatsApp tokens
@@ -106,64 +180,40 @@ Keep `package-lock.json` tracked because it records exact dependency versions.
 
 ## Environment Variables
 
-Use `.env.example` for placeholders only. Real secrets must be configured in the secure hosting/backend environment, not in frontend source files.
+Use `.env.example` for placeholders only. Real secrets must be configured in Cloudflare Worker settings, not in frontend source files.
 
-Current frontend placeholders include:
+Current placeholders:
 
 ```env
-VITE_GA_MEASUREMENT_ID=
-VITE_ENABLE_ANALYTICS=false
-VITE_ANALYTICS_ENDPOINT=
-VITE_ENABLE_RECOMMENDATIONS=true
-VITE_ENABLE_MONTHLY_REPORTS=false
-VITE_MONTHLY_REPORT_RECIPIENTS=
-VITE_MONTHLY_REPORT_ENDPOINT=
+QUOTE_EMAIL_FROM=Kleihaus Ceramics <sales@kleihaus.com>
+SALES_EMAIL=sales@kleihaus.com
+WHATSAPP_TO_NUMBER=254748827166
 RESEND_API_KEY=
-QUOTE_EMAIL_TO=sales@kleihaus.com
-QUOTE_EMAIL_FROM=
+
 WHATSAPP_ACCESS_TOKEN=
 WHATSAPP_PHONE_NUMBER_ID=
-WHATSAPP_TO_NUMBER=254748827166
 ```
+
+`WHATSAPP_ACCESS_TOKEN` and `WHATSAPP_PHONE_NUMBER_ID` are optional and only needed for WhatsApp Business API notifications.
 
 ## Verification Before Push
 
 Run:
 
 ```bash
+npm install
 npm run build
-```
-
-For UI changes, also run:
-
-```bash
-npm run dev
 ```
 
 Then verify:
 
-- Page loads locally.
+- Page loads locally or in production after deploy.
 - No console errors.
 - No horizontal scrolling.
 - Mobile layout works.
 - Images load and have useful alt text.
 - WhatsApp links open correctly.
-- Quote form posts to `https://api.kleihaus.com/quote-request`.
+- Quote form posts to `/api/quote-request`.
 - Manual WhatsApp fallback links open correctly.
 - Public website does not expose backend/internal AI wording.
 - `git status` does not show `node_modules/`, `dist/` or secrets.
-
-## Documentation Requirement
-
-Every future meaningful change must update:
-
-- `docs/CHANGELOG.md`
-
-And, where relevant:
-
-- `docs/PROJECT_AUDIT.md`
-- `docs/DEVELOPMENT_WORKFLOW.md`
-- `docs/SEO_STRATEGY.md`
-- `docs/QUOTE_FORM_SUBMISSION.md`
-- `docs/AI_BACKEND_ARCHITECTURE.md`
-- `docs/VISIBILITY_AND_GROWTH_ROADMAP.md`

@@ -1,6 +1,6 @@
 # Kleihaus Project Audit
 
-This audit summarizes the current state of the Kleihaus website repository.
+This audit summarizes the current production architecture and repository state for the Kleihaus website.
 
 Rule: Every future meaningful change must update `docs/CHANGELOG.md` and, where relevant, `docs/PROJECT_AUDIT.md`.
 
@@ -21,7 +21,42 @@ Rule: Every future meaningful change must update `docs/CHANGELOG.md` and, where 
 - Tailwind CSS
 - Framer Motion
 - Lucide React
-- Cloudflare Pages static deployment
+- Cloudflare Workers Builds
+- Cloudflare Worker Assets
+- Cloudflare D1
+- Resend
+
+## Current Deployment Flow
+
+Production currently uses Worker Assets:
+
+```text
+GitHub main
+-> Cloudflare Workers Builds
+-> Worker Assets
+-> Worker "kleihaus"
+-> kleihaus.com
+-> www.kleihaus.com
+```
+
+Active deployment files:
+
+- `wrangler.toml` - current Worker Assets deployment config.
+- `src/worker.js` - Worker entrypoint that handles API routes and serves `env.ASSETS`.
+- `functions/api/quote-request.js` - shared quote handler using Cloudflare Pages Functions-style exports.
+- `functions/api/track-event.js` - customer journey event endpoint.
+
+Cloudflare Pages is not the current production path. Earlier Pages references in old docs or changelog entries are historical/stale.
+
+## Active Quote Endpoint
+
+The frontend posts quote requests to:
+
+```text
+/api/quote-request
+```
+
+The old `api.kleihaus.com` path is legacy and not currently required by the frontend.
 
 ## Repository Structure
 
@@ -30,33 +65,74 @@ Key files and folders:
 - `src/App.jsx` - main customer-facing site structure and UI sections.
 - `src/main.jsx` - React entry point.
 - `src/styles.css` - Tailwind and site styling.
-- `src/SmartImage.jsx` - image helper component.
-- `src/data/contentTopics.js` - helpful guide topic foundation.
-- `src/data/intelligenceData.js` - backend-ready intelligence data structures.
-- `src/services/` - service layer for analytics, recommendations, reporting, notifications, quotes, email submission and future LLM insights.
+- `src/worker.js` - active Cloudflare Worker Assets entrypoint.
+- `src/services/quoteRequestService.js` - frontend quote submission service.
+- `functions/api/quote-request.js` - backend quote request handler.
+- `database/schema.sql` - D1 schema for quote and journey records.
 - `public/images/` - site imagery.
 - `public/sitemap.xml` - sitemap for indexing.
 - `public/robots.txt` - crawler directives.
 - `public/site.webmanifest` - web app/site metadata.
 - `docs/` - project documentation.
+- `intelligence/` - future backend intelligence workspace.
 
-## Deployment Flow
+## Legacy API Worker Files
 
-- GitHub repository: `https://github.com/ShadrackMwatu/kleihaus`
-- Production branch: `main`
-- Hosting target: Cloudflare Pages
-- Build command: `npm run build`
-- Build output: `dist`
-- Deployment model: Cloudflare Pages automatically builds and deploys changes pushed to `main`.
-- Pages Functions are deployed from the repo-based `functions/` directory; no dashboard-created Worker is required.
-- `wrangler.toml` includes the repo-based D1 binding used by the quote backend.
-- The permanent API subdomain `https://api.kleihaus.com` is served by the repo-based Worker entrypoint `src/api-worker.js` using `wrangler.api.toml`.
+These files remain in the repo but are not referenced by the active Worker Assets config:
 
-Cloudflare deployment settings should not be changed casually. The current site is intended to remain a Vite static frontend deployed from GitHub.
+- `wrangler.api.toml`
+- `src/api-worker.js`
+
+They were used/planned for the older `api.kleihaus.com` Worker path. Do not delete them without explicit approval. They are safe candidates to archive or remove later after production has been stable on same-origin `/api/quote-request`.
+
+## Quote and Contact Flow
+
+Current behavior:
+
+- The contact/quote form validates required customer details.
+- It posts to `/api/quote-request`.
+- `src/worker.js` routes the request before static assets.
+- The backend validates, sanitizes and timestamps the request.
+- The backend stores quote requests in Cloudflare D1 table `quote_requests`.
+- The backend sends internal sales email through Resend using `RESEND_API_KEY`, `QUOTE_EMAIL_FROM`, and `SALES_EMAIL`.
+- The backend returns `success: true` only after required D1 storage and internal Resend email delivery succeed.
+- The backend queues customer confirmation email.
+- The backend skips WhatsApp automation unless WhatsApp Business Cloud API credentials are configured.
+- The manual "Chat on WhatsApp" button remains available as a fallback.
+
+## Cloudflare Runtime Requirements
+
+Required Worker values:
+
+- `QUOTE_EMAIL_FROM`
+- `SALES_EMAIL`
+- `WHATSAPP_TO_NUMBER`
+- `RESEND_API_KEY` as a secret
+- D1 binding `DB`
+- Assets binding `ASSETS`
+
+Optional WhatsApp Business API values:
+
+- `WHATSAPP_ACCESS_TOKEN`
+- `WHATSAPP_PHONE_NUMBER_ID`
+
+## Stale Cloudflare Pages Check
+
+GitHub may still show a failing `Cloudflare Pages` check from stale account:
+
+```text
+bded816dd798bcf88e4ccc0ce5d16bcb
+```
+
+This is not the production deployment path. The working deployment check is:
+
+```text
+Workers Builds: kleihaus
+```
+
+The stale Pages integration must be disconnected from the old account or removed by Cloudflare Support.
 
 ## Public Frontend Features
-
-The public website is a clean customer-facing ceramics catalogue and quotation platform. Current visible features include:
 
 - Premium header with top utility strip, logo, search, navigation and WhatsApp CTA.
 - Category navigation for major product groups.
@@ -71,56 +147,6 @@ The public website is a clean customer-facing ceramics catalogue and quotation p
 - Minimal professional footer.
 
 The public frontend should not display admin dashboards, analytics tables, AI implementation details, weak-signal detection, backend logs or endpoint configuration details.
-
-## Backend-Ready Intelligence Features
-
-The repository includes service-layer preparation for future backend intelligence:
-
-- Search event capture.
-- Category click tracking.
-- Product interest tracking.
-- WhatsApp CTA tracking.
-- Quote form submission events.
-- Guide topic click tracking.
-- Recommendation scoring preparation.
-- Weak-signal and emerging-demand preparation.
-- Monthly report preparation.
-- Future LLM insight generation placeholders.
-
-Important files:
-
-- `src/services/analyticsService.js`
-- `src/services/recommendationService.js`
-- `src/services/reportingService.js`
-- `src/services/notificationService.js`
-- `src/services/llmInsightService.js`
-- `src/services/quoteRequestService.js`
-- `src/services/emailSubmissionService.js`
-- `src/data/intelligenceData.js`
-- `docs/AI_BACKEND_ARCHITECTURE.md`
-- `docs/MONTHLY_AI_REPORT_TEMPLATE.md`
-
-These files are backend-ready foundations only. They must not expose secrets or private operational intelligence in the public UI.
-
-## Quote and Contact Flow
-
-Current behavior:
-
-- The contact/quote form validates required customer details.
-- It posts the quote request to the secure backend endpoint at `https://api.kleihaus.com/quote-request`.
-- The backend validates, sanitizes and timestamps the request.
-- The backend stores quote requests in Cloudflare D1 table `quote_requests`.
-- The backend sends real email through Resend using `RESEND_API_KEY`, `QUOTE_EMAIL_FROM`, and `QUOTE_EMAIL_TO`.
-- The backend returns `success: true` only after D1 storage and Resend email delivery succeed.
-- The backend skips WhatsApp automation unless WhatsApp Business Cloud API credentials are configured.
-- It tracks a `quote_form_submitted` analytics event.
-- The manual "Chat on WhatsApp" button remains available as a fallback.
-
-Email submission readiness:
-
-- Email credentials are not stored in frontend code.
-- Backend variables such as `RESEND_API_KEY`, `QUOTE_EMAIL_FROM` and WhatsApp Business API tokens must be configured in Cloudflare, not committed to the repo.
-- The backend endpoint sends through Resend now and can later be extended for SendGrid, Mailgun, EmailJS or a custom API.
 
 ## SEO Status
 
@@ -140,24 +166,19 @@ Current SEO foundations include:
 - Image alt text coverage.
 - Kenya-focused local SEO mentions for Nairobi, Machakos and Makueni.
 
-See `docs/SEO_STRATEGY.md` for the detailed indexing and scaling roadmap.
-
 ## Known Limitations
 
-- Persistent analytics and monthly reports still require a configured backend data store.
-- Quote email automation requires Cloudflare backend environment variables and verified Resend sender configuration.
+- WhatsApp Business API notification is optional and skipped unless credentials are configured.
 - Product inventory is represented as catalogue-style content, not a database-backed e-commerce catalogue.
-- Search is frontend-oriented and not yet backed by a persistent search index.
+- Search is frontend-oriented and not backed by a persistent search index.
 - Monthly AI reports are documented and service-prepared, but not yet automatically sent.
-- Social profile placeholders should remain placeholders until real official URLs are provided.
+- The stale Cloudflare Pages check must be cleaned up outside this repo.
 
 ## Next Recommended Improvements
 
-- Deploy a secure Cloudflare Worker for quote/email submissions.
-- Connect a privacy-preserving analytics store such as Cloudflare D1, KV, Supabase or another database.
-- Add real catalogue data with product names, dimensions, finishes, images and availability.
-- Add Google Search Console and Google Analytics 4 after official account setup.
-- Add official social profile URLs when available.
+- Update or archive legacy API-worker docs once the same-origin Worker Assets path remains stable.
+- Add a fuller deployment troubleshooting runbook with screenshots or dashboard paths.
+- Add Google Search Console and GA4 after official account setup.
 - Expand SEO landing pages for product and location searches.
 - Add automated monthly management reports for search, quote and WhatsApp trends.
 - Continue testing mobile layout, WhatsApp links, quote flow and build output before every push.

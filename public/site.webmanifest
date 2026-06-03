@@ -6,7 +6,7 @@
   "scope": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#A65F1E",
+  "theme_color": "#16A34A",
   "icons": [
     {
       "src": "/images/kleihaus-logo.jpg",

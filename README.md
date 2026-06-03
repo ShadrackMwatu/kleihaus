@@ -1,15 +1,39 @@
 # Kleihaus Ceramics Website
 
-Kleihaus Ceramics is a premium ceramics and finishing materials catalogue for customers looking for tiles, sanitaryware, paints, adhesives, grout and project quotation support in Kenya.
+Kleihaus Ceramics is a customer-facing ceramics and finishing materials catalogue for tiles, sanitaryware, paints, adhesives, grout and project quotation support in Kenya.
 
 Live website: https://www.kleihaus.com/
+
+## Current Production Architecture
+
+Production currently runs through Cloudflare Worker Assets, not Cloudflare Pages:
+
+```text
+GitHub main
+-> Cloudflare Workers Builds
+-> Worker Assets
+-> Worker "kleihaus"
+-> kleihaus.com
+-> www.kleihaus.com
+```
+
+The active quote endpoint is same-origin:
+
+```text
+/api/quote-request
+```
+
+`api.kleihaus.com` is legacy and is not currently required by the frontend. Older documentation and changelog entries may mention Cloudflare Pages or `api.kleihaus.com`; treat those references as historical unless this README or `docs/PROJECT_AUDIT.md` says otherwise.
 
 ## Tech Stack
 
 - React
 - Vite
 - Tailwind CSS
-- Cloudflare Pages
+- Cloudflare Workers Builds
+- Cloudflare Worker Assets
+- Cloudflare D1
+- Resend
 
 ## Local Setup
 
@@ -24,125 +48,127 @@ The local Vite server normally runs at:
 http://localhost:5173
 ```
 
-If that port is already in use, Vite will choose the next available port.
-
 ## Production Build
 
 ```bash
 npm run build
 ```
 
-The static production output is generated in `dist/` and is compatible with Cloudflare Pages.
+The static production output is generated in `dist/`. The Worker uses `env.ASSETS` to serve the Vite build and routes API requests before assets.
 
-## Deployment Workflow
+## Deployment Runbook
 
-The `main` branch is the production source of truth. Cloudflare Pages should build from this repository using:
-
-```bash
-npm run build
-```
-
-Build output directory:
-
-```text
-dist
-```
-
-Do not commit `node_modules/`, `dist/`, local `.env` files or secrets.
-
-## Environment Variables
-
-The repository includes placeholders in `.env.example`.
-
-```env
-VITE_GA_MEASUREMENT_ID=
-VITE_ENABLE_ANALYTICS=false
-VITE_ANALYTICS_ENDPOINT=
-VITE_ENABLE_RECOMMENDATIONS=true
-VITE_ENABLE_MONTHLY_REPORTS=false
-VITE_MONTHLY_REPORT_RECIPIENTS=
-VITE_MONTHLY_REPORT_ENDPOINT=
-RESEND_API_KEY=
-QUOTE_EMAIL_TO=sales@kleihaus.com
-QUOTE_EMAIL_FROM=
-WHATSAPP_ACCESS_TOKEN=
-WHATSAPP_PHONE_NUMBER_ID=
-WHATSAPP_TO_NUMBER=254748827166
-```
-
-Backend variables such as `RESEND_API_KEY`, `QUOTE_EMAIL_FROM` and WhatsApp Business API tokens must be configured in Cloudflare Pages/Workers settings, not exposed in frontend code. Do not place API keys, SMTP passwords, WhatsApp tokens, database credentials or LLM keys in `VITE_` variables.
-
-## Quote and WhatsApp Flow
-
-The public quote form validates customer details and posts to `https://api.kleihaus.com/quote-request`, a repo-based Cloudflare Pages Function that stores inquiries in D1 and sends email through Resend before returning success. WhatsApp automation is attempted only when WhatsApp Business API variables are configured.
-
-Success message:
-
-```text
-Request submitted successfully. Our team will respond shortly.
-```
-
-The separate "Chat on WhatsApp" button remains available as a manual fallback.
-
-## AI and Backend Architecture
-
-The public website stays clean and customer-facing. Analytics, recommendations, reporting, LLM insight preparation and future monthly intelligence reporting live in service-layer files and documentation.
-
-Important files:
-
-- `src/services/analyticsService.js`
-- `src/services/recommendationService.js`
-- `src/services/reportingService.js`
-- `src/services/notificationService.js`
-- `src/services/llmInsightService.js`
-- `src/data/intelligenceData.js`
-- `docs/AI_BACKEND_ARCHITECTURE.md`
-
-Do not expose internal dashboards, search logs, weak-signal detection, private analytics tables or backend endpoint details on the public website.
-
-## SEO and Indexing
-
-SEO support includes:
-
-- Metadata and Open Graph tags in `index.html`
-- `public/robots.txt`
-- `public/sitemap.xml`
-- `public/site.webmanifest`
-- Organization, LocalBusiness, Store, WebSite, SearchAction and FAQ structured data
-- Crawlable product/category content
-- Helpful guides and FAQ content
-
-See `docs/SEO_STRATEGY.md` for the indexing roadmap.
-
-## Project Documentation
-
-Primary documentation:
-
-- `docs/CHANGELOG.md` - audited history of major project work.
-- `docs/PROJECT_AUDIT.md` - current project state, features, limitations and next improvements.
-- `docs/DEVELOPMENT_WORKFLOW.md` - local setup, build checks, git workflow and commit safety rules.
-- `docs/AI_BACKEND_ARCHITECTURE.md` - frontend/backend separation for analytics, recommendations and reporting.
-- `docs/SEO_STRATEGY.md` - SEO, Google indexing and AI-search readiness roadmap.
-- `docs/VISIBILITY_AND_GROWTH_ROADMAP.md` - Google visibility, content and conversion roadmap.
-- `docs/QUOTE_FORM_SUBMISSION.md` - WhatsApp quote submission and secure backend email preparation.
-- `docs/QUOTE_BACKEND_AUTOMATION.md` - Cloudflare Pages Function quote automation, email delivery and D1 storage readiness.
-
-Every future meaningful change must update `docs/CHANGELOG.md` and, where relevant, `docs/PROJECT_AUDIT.md`.
-
-## Development Workflow
-
-Before editing:
+1. Confirm the worktree is clean before starting:
 
 ```bash
 git status
 ```
 
-After a meaningful update:
+2. Make the intended code or documentation change.
+
+3. Verify locally:
+
+```bash
+npm install
+npm run build
+```
+
+4. Commit and push to `main`:
 
 ```bash
 git add .
-git commit -m "Update Kleihaus website"
+git commit -m "Describe the change"
 git push origin main
 ```
 
-Keep changes scoped, preserve Cloudflare deployment settings and avoid committing generated dependencies or secrets.
+5. Confirm GitHub shows:
+
+```text
+Workers Builds: kleihaus
+conclusion: success
+```
+
+6. Verify production:
+
+```bash
+GET https://www.kleihaus.com
+GET https://www.kleihaus.com/api/quote-request
+OPTIONS https://www.kleihaus.com/api/quote-request
+POST https://www.kleihaus.com/api/quote-request
+```
+
+Expected quote POST result:
+
+```json
+{
+  "success": true,
+  "storage": { "stored": true },
+  "email": { "sent": true }
+}
+```
+
+## Cloudflare Configuration
+
+Active Worker config is in `wrangler.toml`:
+
+- Worker name: `kleihaus`
+- Entry file: `src/worker.js`
+- Assets directory: `./dist`
+- Assets binding: `ASSETS`
+- API routes run first for `/api/*`
+- D1 binding: `DB`
+
+Do not move production to Cloudflare Pages unless the deployment strategy is intentionally changed.
+
+## Environment Variables
+
+The repository includes placeholders in `.env.example`.
+
+Backend-only values must be configured in Cloudflare Worker settings, not exposed in frontend code:
+
+```env
+QUOTE_EMAIL_FROM=Kleihaus Ceramics <sales@kleihaus.com>
+SALES_EMAIL=sales@kleihaus.com
+WHATSAPP_TO_NUMBER=254748827166
+RESEND_API_KEY=
+
+WHATSAPP_ACCESS_TOKEN=
+WHATSAPP_PHONE_NUMBER_ID=
+```
+
+`WHATSAPP_ACCESS_TOKEN` and `WHATSAPP_PHONE_NUMBER_ID` are optional. If absent, the backend skips WhatsApp Business API notification gracefully while preserving quote submission and email delivery.
+
+## Quote and WhatsApp Flow
+
+The public quote form validates customer details and posts to `/api/quote-request`. The Worker routes that request to `functions/api/quote-request.js`, stores the inquiry in D1, sends the internal sales email through Resend, queues the customer confirmation email, and returns success only after required backend work succeeds.
+
+The separate "Chat on WhatsApp" button remains available as a manual fallback.
+
+## Legacy Files
+
+`wrangler.api.toml` and `src/api-worker.js` are retained for historical/legacy API-worker context. They are not referenced by the current `wrangler.toml` Worker Assets deployment path and are safe candidates to archive or remove later after explicit approval.
+
+## Stale Cloudflare Pages Check
+
+A stale Cloudflare Pages integration from account:
+
+```text
+bded816dd798bcf88e4ccc0ce5d16bcb
+```
+
+may still publish a failing `Cloudflare Pages` check on GitHub. The working production path is the passing `Workers Builds: kleihaus` check from the current Worker account. The stale Pages check must be removed from that old Cloudflare account or by Cloudflare Support.
+
+## Project Documentation
+
+Primary documentation:
+
+- `docs/CHANGELOG.md`
+- `docs/PROJECT_AUDIT.md`
+- `docs/DEVELOPMENT_WORKFLOW.md`
+- `docs/AI_BACKEND_ARCHITECTURE.md`
+- `docs/SEO_STRATEGY.md`
+- `docs/VISIBILITY_AND_GROWTH_ROADMAP.md`
+- `docs/QUOTE_FORM_SUBMISSION.md`
+- `docs/QUOTE_BACKEND_AUTOMATION.md`
+
+Every future meaningful change must update `docs/CHANGELOG.md` and, where relevant, `docs/PROJECT_AUDIT.md`.

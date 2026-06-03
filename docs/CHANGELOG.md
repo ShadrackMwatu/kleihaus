@@ -4,6 +4,21 @@ This changelog records meaningful project work so the Kleihaus website can be au
 
 Rule: Every future meaningful change must update `docs/CHANGELOG.md` and, where relevant, `docs/PROJECT_AUDIT.md`.
 
+Current deployment note: production now uses GitHub `main` -> Cloudflare Workers Builds -> Worker Assets -> Worker `kleihaus` -> `kleihaus.com` and `www.kleihaus.com`. The active quote endpoint is `/api/quote-request`. Older entries that mention Cloudflare Pages or `https://api.kleihaus.com/quote-request` are historical and describe earlier deployment states, not the current production path.
+
+## 2026-06-03
+
+### Worker Assets Documentation And Brand Metadata
+
+- Updated brand theme metadata from `#A65F1E` to `#16A34A` in `index.html` and `public/site.webmanifest`.
+- Documented the current production architecture: GitHub `main` -> Cloudflare Workers Builds -> Worker Assets -> Worker `kleihaus` -> `kleihaus.com` and `www.kleihaus.com`.
+- Documented the active same-origin quote endpoint `/api/quote-request`.
+- Marked `api.kleihaus.com` as legacy and not currently required by the frontend.
+- Marked Cloudflare Pages references as historical/stale unless explicitly reintroduced later.
+- Added deployment runbook steps for pushing to `main`, checking `Workers Builds: kleihaus`, and verifying the live quote endpoint.
+- Added troubleshooting note for the stale Cloudflare Pages check from account `bded816dd798bcf88e4ccc0ce5d16bcb`.
+- Reviewed `wrangler.api.toml` and `src/api-worker.js`; both remain in the repo as legacy API-worker files and are not referenced by the active Worker Assets deployment.
+
 ## 2026-05-27
 
 ### Backend Quote Request Automation
