@@ -1699,8 +1699,8 @@ function CategoryLandingPage({ page, onSectionChange, onWhatsAppClick, onQuoteCl
 function Footer({ onWhatsAppClick }) {
   return (
     <footer data-site-footer className="border-t border-white/30 bg-[linear-gradient(180deg,#8B4E1C_0%,#A65F1E_100%)] text-orange-50">
-      <div className="mx-auto grid max-w-4xl gap-5 px-4 py-5 sm:gap-8 sm:py-8 lg:py-9 md:grid-cols-3 md:gap-12 lg:gap-16">
-        <div className="w-full">
+      <div className="mx-auto grid max-w-6xl gap-5 px-4 py-5 sm:gap-8 sm:py-8 lg:py-9 md:grid-cols-3 md:gap-12 lg:gap-16">
+        <div className="w-full md:justify-self-start">
           <h3 className="text-sm font-semibold uppercase text-white">Products</h3>
           <ul className="mt-2 grid gap-0.5 text-xs text-orange-50/90 sm:gap-1.5 sm:text-sm">
             {['Floor tiles', 'Wall tiles', 'Bathroom tiles', 'Sanitaryware', 'Paints', 'Adhesives & grout'].map((item) => (
@@ -1709,7 +1709,7 @@ function Footer({ onWhatsAppClick }) {
           </ul>
         </div>
 
-        <div className="w-full">
+        <div className="w-full md:max-w-max md:justify-self-center">
           <h3 className="text-sm font-semibold uppercase text-white">Services</h3>
           <ul className="mt-2 grid gap-0.5 text-xs text-orange-50/90 sm:gap-1.5 sm:text-sm">
             {['Retail quotes', 'Project quotations', 'Delivery coordination', 'Installation guidance', 'Product matching'].map((item) => (
@@ -1718,7 +1718,7 @@ function Footer({ onWhatsAppClick }) {
           </ul>
         </div>
 
-        <div className="w-full">
+        <div className="w-full md:max-w-max md:justify-self-end">
           <h3 className="text-sm font-semibold uppercase text-white">Contact</h3>
           <div className="mt-2 grid gap-1.5 text-xs text-orange-50/90 sm:gap-2 sm:text-sm">
             <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 text-white hover:text-orange-50">

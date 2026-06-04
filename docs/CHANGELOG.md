@@ -8,6 +8,11 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-06-04
 
+### Footer Column Alignment
+
+- Adjusted the desktop footer grid so Products aligns left, Services remains centered and Contact aligns right.
+- Widened the footer content container while preserving mobile stacking, footer colors, contact links and the green branding strip.
+
 ### Footer Spacing Tightening
 
 - Reduced the bronze footer section height by tightening vertical padding and list spacing.
