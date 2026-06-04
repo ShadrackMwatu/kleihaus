@@ -1699,28 +1699,28 @@ function CategoryLandingPage({ page, onSectionChange, onWhatsAppClick, onQuoteCl
 function Footer({ onWhatsAppClick }) {
   return (
     <footer data-site-footer className="border-t border-white/30 bg-[linear-gradient(180deg,#8B4E1C_0%,#A65F1E_100%)] text-orange-50">
-      <div className="mx-auto grid max-w-5xl gap-4 px-4 py-6 sm:gap-8 sm:py-12 md:grid-cols-3 md:justify-items-center">
-        <div>
+      <div className="mx-auto grid max-w-4xl gap-5 px-4 py-5 sm:gap-8 sm:py-8 lg:py-9 md:grid-cols-3 md:gap-12 lg:gap-16">
+        <div className="w-full">
           <h3 className="text-sm font-semibold uppercase text-white">Products</h3>
-          <ul className="mt-2 grid gap-1 text-xs text-orange-50/90 sm:mt-3 sm:gap-2 sm:text-sm">
+          <ul className="mt-2 grid gap-0.5 text-xs text-orange-50/90 sm:gap-1.5 sm:text-sm">
             {['Floor tiles', 'Wall tiles', 'Bathroom tiles', 'Sanitaryware', 'Paints', 'Adhesives & grout'].map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>
         </div>
 
-        <div>
+        <div className="w-full">
           <h3 className="text-sm font-semibold uppercase text-white">Services</h3>
-          <ul className="mt-2 grid gap-1 text-xs text-orange-50/90 sm:mt-3 sm:gap-2 sm:text-sm">
+          <ul className="mt-2 grid gap-0.5 text-xs text-orange-50/90 sm:gap-1.5 sm:text-sm">
             {['Retail quotes', 'Project quotations', 'Delivery coordination', 'Installation guidance', 'Product matching'].map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>
         </div>
 
-        <div>
+        <div className="w-full">
           <h3 className="text-sm font-semibold uppercase text-white">Contact</h3>
-          <div className="mt-2 grid gap-1.5 text-xs text-orange-50/90 sm:mt-3 sm:gap-3 sm:text-sm">
+          <div className="mt-2 grid gap-1.5 text-xs text-orange-50/90 sm:gap-2 sm:text-sm">
             <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 text-white hover:text-orange-50">
               <WhatsAppBrandText>WhatsApp</WhatsAppBrandText>
             </a>

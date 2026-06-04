@@ -8,6 +8,12 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-06-04
 
+### Footer Spacing Tightening
+
+- Reduced the bronze footer section height by tightening vertical padding and list spacing.
+- Kept Products, Services and Contact evenly distributed in a centered three-column layout.
+- Preserved the green footer branding strip and all footer contact links.
+
 ### Footer Contact Text Cleanup
 
 - Removed the footer response-time sentence from the Contact column while preserving WhatsApp, email, phone, locations and footer branding.
