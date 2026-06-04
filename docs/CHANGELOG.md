@@ -8,6 +8,11 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-06-03
 
+### Footer Branding Strip Green
+
+- Updated only the bottom-most footer branding strip to use the site green `#16A34A`, matching the top contact bar.
+- Preserved the bronze footer gradient, footer columns, links, WhatsApp, email, phone, quote form and structured data.
+
 ### Compact Homepage Navigation
 
 - Converted the homepage below the hero into a compact segmented Catalogue, About, Guidance and Quote content area.

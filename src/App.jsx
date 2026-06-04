@@ -1427,11 +1427,11 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className="border-t border-white/20">
-        <div className="mx-auto flex max-w-7xl items-center justify-center px-4 py-5 text-center text-orange-50">
-          <p className="text-xs">
+      <div className="border-t border-white/20 bg-[#16A34A]">
+        <div className="mx-auto flex max-w-7xl items-center justify-center px-4 py-5 text-center text-white">
+          <p className="text-xs font-medium">
             © {new Date().getFullYear()} Kleihaus Ceramics. All Rights Reserved.{' '}
-            <span className="font-semibold tracking-wide text-orange-50">Inspiring Living</span>
+            <span className="font-semibold tracking-wide text-white">Inspiring Living</span>
           </p>
         </div>
       </div>
