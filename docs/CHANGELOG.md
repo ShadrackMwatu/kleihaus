@@ -6,6 +6,15 @@ Rule: Every future meaningful change must update `docs/CHANGELOG.md` and, where 
 
 Current deployment note: production now uses GitHub `main` -> Cloudflare Workers Builds -> Worker Assets -> Worker `kleihaus` -> `kleihaus.com` and `www.kleihaus.com`. The active quote endpoint is `/api/quote-request`. Older entries that mention Cloudflare Pages or `https://api.kleihaus.com/quote-request` are historical and describe earlier deployment states, not the current production path.
 
+## 2026-06-04
+
+### Compact Homepage Audit And Polish
+
+- Audited the compact homepage, navigation, carousel, catalogue cards, quote flow, footer and structured data after recent frontend changes.
+- Tightened mobile hero CSS so the hero min-height no longer applies to the trust strip.
+- Added an active state to the category strip so selected catalogue categories are clearer and keyboard-accessible.
+- Confirmed the footer branding strip remains green `#16A34A` and the structured data fix does not reintroduce Product or Offer schema.
+
 ## 2026-06-03
 
 ### Footer Branding Strip Green

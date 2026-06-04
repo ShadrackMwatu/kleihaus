@@ -475,7 +475,7 @@ function SearchAutocomplete({ value, onChange, projectType, onSearch }) {
   )
 }
 
-function Header({ projectType, searchQuery, setSearchQuery, onSearch, activeSection, onSectionChange, onCategoryClick, onWhatsAppClick, onContactClick }) {
+function Header({ projectType, searchQuery, setSearchQuery, onSearch, activeSection, selectedCategory, onSectionChange, onCategoryClick, onWhatsAppClick, onContactClick }) {
   const [menuOpen, setMenuOpen] = useState(false)
 
   const handleNavClick = (section) => {
@@ -543,11 +543,16 @@ function Header({ projectType, searchQuery, setSearchQuery, onSearch, activeSect
             <button
               key={item}
               type="button"
+              aria-current={selectedCategory === item ? 'true' : undefined}
               onClick={() => {
                 onCategoryClick(item)
                 onSectionChange('catalogue')
               }}
-              className="shrink-0 rounded-full border border-neutral-200 bg-white px-3.5 py-1.5 text-xs font-medium text-neutral-600 transition hover:border-emerald-600/40 hover:bg-emerald-50 hover:text-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200"
+              className={`shrink-0 rounded-full border px-3.5 py-1.5 text-xs font-medium transition focus:outline-none focus:ring-2 focus:ring-emerald-200 ${
+                selectedCategory === item
+                  ? 'border-emerald-600 bg-emerald-50 text-emerald-800'
+                  : 'border-neutral-200 bg-white text-neutral-600 hover:border-emerald-600/40 hover:bg-emerald-50 hover:text-emerald-700'
+              }`}
             >
               {item}
             </button>
@@ -624,7 +629,7 @@ function Hero({ onWhatsAppClick, onQuoteClick, onSectionChange }) {
   return (
     <section id="top" className="bg-stone-100">
       <div className="mx-auto max-w-7xl px-4 py-4 lg:py-6">
-        <div className="relative h-[min(74vh,680px)] min-h-[430px] overflow-hidden rounded-lg bg-neutral-950 text-white shadow-xl">
+        <div className="hero-carousel relative h-[min(74vh,680px)] min-h-[430px] overflow-hidden rounded-lg bg-neutral-950 text-white shadow-xl">
           <div className="absolute inset-0">
             {heroSlides.map((slide, index) => {
               const isActive = index === activeSlide
@@ -1585,6 +1590,7 @@ export default function App() {
         setSearchQuery={setSearchQuery}
         onSearch={handleSearch}
         activeSection={activeSection}
+        selectedCategory={selectedCategory}
         onSectionChange={handleSectionChange}
         onCategoryClick={handleCategoryClick}
         onWhatsAppClick={handleWhatsAppClick}

@@ -162,9 +162,8 @@ footer {
     padding-top: 0.75rem;
   }
 
-  section[id='top'] > div > div,
-  section[id='top'] > div > div > div {
-    min-height: 470px;
+  .hero-carousel {
+    min-height: 430px;
   }
 
   section[id='top'] h1 {

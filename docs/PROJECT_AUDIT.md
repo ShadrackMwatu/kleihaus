@@ -135,7 +135,7 @@ The stale Pages integration must be disconnected from the old account or removed
 ## Public Frontend Features
 
 - Premium header with top utility strip, logo, search, state-driven navigation and WhatsApp CTA.
-- Category navigation for major product groups that opens the compact catalogue panel.
+- Category navigation for major product groups that opens the compact catalogue panel and highlights the selected category.
 - Home area with clear business positioning, premium hero carousel and hero trust badges.
 - Compact segmented content area for Catalogue, About, Guidance and Quote.
 - Catalogue panel with clickable category cards, icons, descriptions and quote CTAs.
