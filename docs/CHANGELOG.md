@@ -8,6 +8,12 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-06-04
 
+### Mobile Footer WhatsApp CTA Placement
+
+- Moved the mobile "Request quote on WhatsApp" CTA into the footer immediately above the green branding strip.
+- Hid the fixed mobile WhatsApp CTA when the footer is visible so the green footer strip remains the final visible website element.
+- Removed extra mobile footer bottom padding while preserving safe-area padding inside the green branding strip.
+
 ### SEO Category Pages And Local SEO Guidance
 
 - Added lightweight frontend category landing pages for `/floor-tiles`, `/wall-tiles`, `/bathroom-tiles`, `/sanitaryware`, `/paints` and `/adhesives-grout`.

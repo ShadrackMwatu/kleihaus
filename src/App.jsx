@@ -1696,9 +1696,9 @@ function CategoryLandingPage({ page, onSectionChange, onWhatsAppClick, onQuoteCl
   )
 }
 
-function Footer() {
+function Footer({ onWhatsAppClick }) {
   return (
-    <footer className="border-t border-white/30 bg-[linear-gradient(180deg,#8B4E1C_0%,#A65F1E_100%)] text-orange-50">
+    <footer data-site-footer className="border-t border-white/30 bg-[linear-gradient(180deg,#8B4E1C_0%,#A65F1E_100%)] text-orange-50">
       <div className="mx-auto grid max-w-7xl gap-4 px-4 py-6 sm:gap-8 sm:py-12 md:grid-cols-[1.2fr_0.8fr_0.8fr_1fr]">
         <div>
           <div className="flex items-center gap-3">
@@ -1759,8 +1759,19 @@ function Footer() {
           </div>
         </div>
       </div>
+      <div className="border-t border-white/20 px-4 py-3 md:hidden">
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => onWhatsAppClick?.('footer_mobile_cta')}
+          className="group mx-auto flex max-w-sm items-center justify-center gap-2 rounded-md border border-[#25D366]/40 bg-neutral-950 px-4 py-2.5 text-xs font-semibold shadow-lg shadow-neutral-900/20 transition hover:shadow-[0_0_20px_rgba(37,211,102,0.28)]"
+        >
+          <WhatsAppBrandText>Request quote on WhatsApp</WhatsAppBrandText>
+        </a>
+      </div>
       <div className="border-t border-white/20 bg-[#16A34A]">
-        <div className="mx-auto flex max-w-7xl items-center justify-center px-4 py-2.5 text-center text-white sm:py-5">
+        <div className="footer-brand-strip mx-auto flex max-w-7xl items-center justify-center px-4 py-2.5 text-center text-white sm:py-5">
           <p className="text-xs font-medium">
             © {new Date().getFullYear()} Kleihaus Ceramics. All Rights Reserved.{' '}
             <span className="font-semibold tracking-wide text-white">Inspiring Living</span>
@@ -1772,7 +1783,24 @@ function Footer() {
 }
 
 function MobileStickyWhatsApp({ onWhatsAppClick, hidden = false }) {
-  if (hidden) return null
+  const [footerInView, setFooterInView] = useState(false)
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || typeof IntersectionObserver === 'undefined') return undefined
+
+    const footer = document.querySelector('[data-site-footer]')
+    if (!footer) return undefined
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setFooterInView(entry.isIntersecting),
+      { threshold: 0.01 },
+    )
+
+    observer.observe(footer)
+    return () => observer.disconnect()
+  }, [])
+
+  if (hidden || footerInView) return null
 
   return (
     <a
@@ -1971,7 +1999,7 @@ export default function App() {
         </>
       )}
       <MobileStickyWhatsApp hidden={activePanel === 'quote'} onWhatsAppClick={handleWhatsAppClick} />
-      <Footer />
+      <Footer onWhatsAppClick={handleWhatsAppClick} />
     </div>
   )
 }

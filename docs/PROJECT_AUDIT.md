@@ -145,6 +145,7 @@ The stale Pages integration must be disconnected from the old account or removed
 - Guidance panel with concise quote-planning tips.
 - Quote panel with the existing quote form and direct contact details.
 - Mobile layout uses reduced hero sizing, compact trust badges and catalogue cards, narrowed panel spacing and quote-aware sticky WhatsApp behavior.
+- Mobile footer places the WhatsApp quote CTA above the green branding strip; the green strip remains the final visible footer element.
 - WhatsApp inquiry links with pre-filled messages.
 - Structured footer with products, services, contact, WhatsApp, email, locations and response expectation.
 
