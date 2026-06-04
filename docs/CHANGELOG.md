@@ -8,6 +8,15 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-06-04
 
+### Mobile Layout Audit And Polish
+
+- Reduced mobile hero height and headline scale so the carousel image remains visible and CTAs stay easier to reach.
+- Tightened trust badges, segmented panel spacing, catalogue cards, sticky WhatsApp spacing and footer spacing for smaller screens.
+- Narrowed mobile section spacing rules so compact homepage panels are not forced into oversized vertical gaps.
+- Reduced catalogue image ratios and sticky WhatsApp height to keep mobile calls-to-action visible.
+- Hid the sticky WhatsApp button while the Quote panel is active to avoid covering the quote form.
+- Preserved quote submission, WhatsApp links, analytics tracking, structured data and `/api/quote-request`.
+
 ### Compact Homepage Audit And Polish
 
 - Audited the compact homepage, navigation, carousel, catalogue cards, quote flow, footer and structured data after recent frontend changes.

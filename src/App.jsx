@@ -629,7 +629,7 @@ function Hero({ onWhatsAppClick, onQuoteClick, onSectionChange }) {
   return (
     <section id="top" className="bg-stone-100">
       <div className="mx-auto max-w-7xl px-4 py-4 lg:py-6">
-        <div className="hero-carousel relative h-[min(74vh,680px)] min-h-[430px] overflow-hidden rounded-lg bg-neutral-950 text-white shadow-xl">
+        <div className="hero-carousel relative h-[58vh] max-h-[520px] min-h-[320px] overflow-hidden rounded-lg bg-neutral-950 text-white shadow-xl sm:h-[min(72vh,640px)] sm:min-h-[430px] lg:h-[min(74vh,680px)]">
           <div className="absolute inset-0">
             {heroSlides.map((slide, index) => {
               const isActive = index === activeSlide
@@ -650,16 +650,16 @@ function Hero({ onWhatsAppClick, onQuoteClick, onSectionChange }) {
           </div>
           <div className="absolute inset-0 bg-gradient-to-r from-neutral-950/75 via-neutral-950/35 to-white/5" />
           <div className="absolute inset-0 bg-gradient-to-br from-emerald-950/20 via-transparent to-white/10" />
-          <div className="relative flex h-full max-w-3xl flex-col justify-center px-5 py-12 sm:px-10 lg:px-12">
+          <div className="relative flex h-full max-w-3xl flex-col justify-center px-5 py-8 pb-14 sm:px-10 sm:py-12 lg:px-12">
             <p className="text-xs font-semibold uppercase text-emerald-200">Kleihaus Ceramics</p>
-            <h1 className="mt-4 max-w-2xl text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
+            <h1 className="mt-2.5 max-w-2xl text-[clamp(2.125rem,7vw,2.625rem)] font-semibold leading-[1.08] text-white sm:mt-4 sm:text-5xl sm:leading-tight lg:text-6xl">
               Premium tiles and finishing materials for Kenyan homes and projects.
             </h1>
-            <p className="mt-5 max-w-xl text-base leading-7 text-neutral-100 sm:text-lg">
+            <p className="mt-3 max-w-xl text-sm leading-5 text-neutral-100 sm:mt-5 sm:text-lg sm:leading-7">
               Browse tiles, sanitaryware, paints, adhesives and grout, then request a clear quote from the Kleihaus team.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button type="button" onClick={() => onSectionChange('catalogue')} className="gap-2 bg-white text-neutral-950 hover:bg-neutral-100">
+            <div className="mt-5 flex flex-wrap gap-2 sm:mt-8 sm:gap-3">
+              <Button type="button" onClick={() => onSectionChange('catalogue')} className="gap-1.5 bg-white px-2.5 py-1.5 text-xs text-neutral-950 hover:bg-neutral-100 sm:gap-2 sm:px-4 sm:py-2.5 sm:text-sm">
                 Browse catalogue
                 <ArrowRight className="h-4 w-4" />
               </Button>
@@ -669,18 +669,18 @@ function Hero({ onWhatsAppClick, onQuoteClick, onSectionChange }) {
                   onQuoteClick('hero_quote_intent')
                   onSectionChange('contact')
                 }}
-                className="gap-2 border-white/40 bg-white/10 text-white hover:bg-white/20"
+                className="gap-1.5 border-white/40 bg-white/10 px-2.5 py-1.5 text-xs text-white hover:bg-white/20 sm:gap-2 sm:px-4 sm:py-2.5 sm:text-sm"
               >
                 Request quote
               </ButtonSecondary>
               <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" onClick={() => onWhatsAppClick('hero_whatsapp')}>
-                <ButtonSecondary className="group gap-2 border-white/40 bg-white/10 text-white hover:bg-white/20">
+                <ButtonSecondary className="group gap-1.5 border-white/40 bg-white/10 px-2.5 py-1.5 text-xs text-white hover:bg-white/20 sm:gap-2 sm:px-4 sm:py-2.5 sm:text-sm">
                   <WhatsAppBrandText>WhatsApp inquiry</WhatsAppBrandText>
                 </ButtonSecondary>
               </a>
             </div>
           </div>
-          <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between gap-4 sm:left-10 sm:right-10 lg:left-12 lg:right-12">
+          <div className="absolute bottom-4 left-5 right-5 flex items-center justify-between gap-4 sm:bottom-5 sm:left-10 sm:right-10 lg:left-12 lg:right-12">
             <div className="flex items-center gap-2">
               {heroSlides.map((slide, index) => (
                 <button
@@ -714,12 +714,12 @@ function Hero({ onWhatsAppClick, onQuoteClick, onSectionChange }) {
             </div>
           </div>
         </div>
-        <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-3 grid grid-cols-2 gap-2 sm:mt-4 sm:gap-3 lg:grid-cols-4">
           {heroTrustBadges.map((badge) => {
             const Icon = badge.icon
             return (
-              <div key={badge.label} className="flex items-center gap-3 rounded-lg border border-emerald-100 bg-white px-4 py-3 text-sm font-semibold text-neutral-800 shadow-sm">
-                <span className="inline-flex h-9 w-9 items-center justify-center rounded-md bg-emerald-50 text-emerald-700">
+              <div key={badge.label} className="flex min-h-0 items-center gap-2 rounded-lg border border-emerald-100 bg-white px-2.5 py-1.5 text-[11px] font-semibold leading-snug text-neutral-800 shadow-sm sm:gap-3 sm:px-4 sm:py-3 sm:text-sm">
+                <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-emerald-50 text-emerald-700 sm:h-9 sm:w-9">
                   <Icon className="h-4 w-4" />
                 </span>
                 {badge.label}
@@ -835,17 +835,17 @@ function GuidancePanel() {
 function ShopByCategory({ selectedCategory, onCategoryClick, onWhatsAppClick, compact = false }) {
   return (
     <section id="catalogue" className={compact ? '' : 'mx-auto max-w-7xl px-4 py-16'}>
-      <div className={compact ? 'mb-5 max-w-3xl' : 'mb-8 max-w-3xl'}>
+      <div className={compact ? 'mb-4 max-w-3xl sm:mb-5' : 'mb-8 max-w-3xl'}>
         <div>
-          <p className="text-sm font-semibold uppercase text-emerald-700">Product catalogue</p>
-          <h2 className="mt-2 text-2xl font-semibold text-neutral-950 sm:text-3xl">Shop by category</h2>
-          <p className="mt-2 max-w-2xl text-sm leading-6 text-neutral-600">
+          <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Product catalogue</p>
+          <h2 className="mt-1.5 text-xl font-semibold text-neutral-950 sm:mt-2 sm:text-3xl">Shop by category</h2>
+          <p className="mt-2 max-w-2xl text-xs leading-5 text-neutral-600 sm:text-sm sm:leading-6">
             Choose the finish you need and send a quick WhatsApp inquiry for availability and quotation.
           </p>
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+      <div className="grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-4">
         {categories.map((category) => {
           const Icon = category.icon
           return (
@@ -858,7 +858,7 @@ function ShopByCategory({ selectedCategory, onCategoryClick, onWhatsAppClick, co
                 onClick={() => onCategoryClick(category.name)}
                 className="block w-full text-left"
               >
-                <div className="relative aspect-[4/3] overflow-hidden bg-neutral-100">
+                <div className="relative aspect-[16/9] overflow-hidden bg-neutral-100 sm:aspect-[4/3]">
                   <img
                     src={category.img}
                     alt={`${category.name} supplied by Kleihaus Ceramics in Kenya`}
@@ -870,19 +870,19 @@ function ShopByCategory({ selectedCategory, onCategoryClick, onWhatsAppClick, co
                       event.currentTarget.src = '/images/placeholder.jpg'
                     }}
                   />
-                  <div className="absolute left-3 top-3 inline-flex h-10 w-10 items-center justify-center rounded-md bg-white/95 text-emerald-800 shadow-sm">
-                    <Icon className="h-5 w-5" />
+                  <div className="absolute left-2 top-2 inline-flex h-7 w-7 items-center justify-center rounded-md bg-white/95 text-emerald-800 shadow-sm sm:left-3 sm:top-3 sm:h-10 sm:w-10">
+                    <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
                   </div>
                 </div>
               </button>
-              <div className="flex flex-1 flex-col p-4">
-                <div className="flex items-center justify-between gap-3">
-                  <h3 className="text-base font-semibold text-neutral-950">{category.name}</h3>
+              <div className="flex flex-1 flex-col p-2.5 sm:p-4">
+                <div className="flex items-center justify-between gap-2 sm:gap-3">
+                  <h3 className="text-sm font-semibold leading-snug text-neutral-950 sm:text-base">{category.name}</h3>
                   <ArrowRight className="h-4 w-4 shrink-0 text-neutral-400 transition group-hover:text-emerald-700" />
                 </div>
-                <p className="mt-2 text-sm leading-6 text-neutral-600">{category.blurb}</p>
+                <p className="mt-1 line-clamp-2 text-[11px] leading-4 text-neutral-600 sm:mt-2 sm:text-sm sm:leading-6">{category.blurb}</p>
                 {selectedCategory === category.name && (
-                  <span className="mt-3 inline-flex rounded-md bg-emerald-50 px-2 py-1 text-xs font-semibold text-emerald-800">
+                  <span className="mt-2 inline-flex rounded-md bg-emerald-50 px-2 py-1 text-[11px] font-semibold text-emerald-800 sm:mt-3 sm:text-xs">
                     Recommended for you
                   </span>
                 )}
@@ -894,7 +894,7 @@ function ShopByCategory({ selectedCategory, onCategoryClick, onWhatsAppClick, co
                     onCategoryClick(category.name)
                     onWhatsAppClick(`category_card_${category.name}`)
                   }}
-                  className="mt-auto inline-flex items-center justify-center gap-1.5 rounded-md bg-emerald-700 px-3 py-2.5 text-sm font-semibold text-white hover:bg-emerald-800"
+                  className="mt-auto inline-flex items-center justify-center gap-1.5 rounded-md bg-emerald-700 px-2.5 py-1.5 text-xs font-semibold text-white hover:bg-emerald-800 sm:px-3 sm:py-2.5 sm:text-sm"
                 >
                   Request quote
                 </a>
@@ -1372,7 +1372,7 @@ function Contact({ onWhatsAppClick, compact = false }) {
 function Footer() {
   return (
     <footer className="border-t border-white/30 bg-[linear-gradient(180deg,#8B4E1C_0%,#A65F1E_100%)] text-orange-50">
-      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 md:grid-cols-[1.2fr_0.8fr_0.8fr_1fr]">
+      <div className="mx-auto grid max-w-7xl gap-4 px-4 py-6 sm:gap-8 sm:py-12 md:grid-cols-[1.2fr_0.8fr_0.8fr_1fr]">
         <div>
           <div className="flex items-center gap-3">
             <img
@@ -1387,14 +1387,14 @@ function Footer() {
               <div className="text-xs text-orange-100">Inspiring living</div>
             </div>
           </div>
-          <p className="mt-4 max-w-sm text-sm leading-6 text-orange-50/90">
+          <p className="mt-2 max-w-sm text-xs leading-5 text-orange-50/90 sm:mt-4 sm:text-sm sm:leading-6">
             Tiles, sanitaryware, paints, adhesives, grout and finishing materials for homes, retail orders and project quotations in Kenya.
           </p>
         </div>
 
         <div>
           <h3 className="text-sm font-semibold uppercase text-white">Products</h3>
-          <ul className="mt-3 grid gap-2 text-sm text-orange-50/90">
+          <ul className="mt-2 grid gap-1 text-xs text-orange-50/90 sm:mt-3 sm:gap-2 sm:text-sm">
             {['Floor tiles', 'Wall tiles', 'Bathroom tiles', 'Sanitaryware', 'Paints', 'Adhesives & grout'].map((item) => (
               <li key={item}>{item}</li>
             ))}
@@ -1403,7 +1403,7 @@ function Footer() {
 
         <div>
           <h3 className="text-sm font-semibold uppercase text-white">Services</h3>
-          <ul className="mt-3 grid gap-2 text-sm text-orange-50/90">
+          <ul className="mt-2 grid gap-1 text-xs text-orange-50/90 sm:mt-3 sm:gap-2 sm:text-sm">
             {['Retail quotes', 'Project quotations', 'Delivery coordination', 'Installation guidance', 'Product matching'].map((item) => (
               <li key={item}>{item}</li>
             ))}
@@ -1412,7 +1412,7 @@ function Footer() {
 
         <div>
           <h3 className="text-sm font-semibold uppercase text-white">Contact</h3>
-          <div className="mt-3 grid gap-3 text-sm text-orange-50/90">
+          <div className="mt-2 grid gap-1.5 text-xs text-orange-50/90 sm:mt-3 sm:gap-3 sm:text-sm">
             <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 text-white hover:text-orange-50">
               <WhatsAppBrandText>WhatsApp</WhatsAppBrandText>
             </a>
@@ -1433,7 +1433,7 @@ function Footer() {
         </div>
       </div>
       <div className="border-t border-white/20 bg-[#16A34A]">
-        <div className="mx-auto flex max-w-7xl items-center justify-center px-4 py-5 text-center text-white">
+        <div className="mx-auto flex max-w-7xl items-center justify-center px-4 py-2.5 text-center text-white sm:py-5">
           <p className="text-xs font-medium">
             © {new Date().getFullYear()} Kleihaus Ceramics. All Rights Reserved.{' '}
             <span className="font-semibold tracking-wide text-white">Inspiring Living</span>
@@ -1444,14 +1444,16 @@ function Footer() {
   )
 }
 
-function MobileStickyWhatsApp({ onWhatsAppClick }) {
+function MobileStickyWhatsApp({ onWhatsAppClick, hidden = false }) {
+  if (hidden) return null
+
   return (
     <a
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
       onClick={() => onWhatsAppClick('mobile_sticky')}
-      className="group fixed bottom-4 left-4 right-4 z-40 inline-flex items-center justify-center gap-2 rounded-md border border-[#25D366]/40 bg-neutral-950 px-4 py-3 text-sm font-semibold shadow-lg shadow-neutral-900/20 transition hover:shadow-[0_0_20px_rgba(37,211,102,0.28)] md:hidden"
+      className="group fixed bottom-2.5 left-4 right-4 z-40 inline-flex items-center justify-center gap-2 rounded-md border border-[#25D366]/40 bg-neutral-950 px-4 py-2 text-xs font-semibold shadow-lg shadow-neutral-900/20 transition hover:shadow-[0_0_20px_rgba(37,211,102,0.28)] md:hidden"
     >
       <WhatsAppBrandText>Request quote on WhatsApp</WhatsAppBrandText>
     </a>
@@ -1461,9 +1463,9 @@ function MobileStickyWhatsApp({ onWhatsAppClick }) {
 function CompactContentArea({ activePanel, onPanelChange, selectedCategory, onCategoryClick, onWhatsAppClick, contentRef }) {
   return (
     <section ref={contentRef} className="bg-white">
-      <div className="mx-auto max-w-7xl px-4 py-8 lg:py-10">
-        <div className="rounded-xl border border-neutral-200 bg-neutral-50 p-3 shadow-sm sm:p-4">
-          <div className="mb-5 flex gap-2 overflow-x-auto" role="tablist" aria-label="Kleihaus homepage content">
+      <div className="mx-auto max-w-7xl px-4 py-4 sm:py-8 lg:py-10">
+        <div className="rounded-xl border border-neutral-200 bg-neutral-50 p-2 shadow-sm sm:p-4">
+          <div className="mb-2.5 flex gap-1.5 overflow-x-auto pb-1 sm:mb-5 sm:gap-2 sm:pb-0" role="tablist" aria-label="Kleihaus homepage content">
             {panelItems.map((item) => (
               <button
                 key={item.panel}
@@ -1472,7 +1474,7 @@ function CompactContentArea({ activePanel, onPanelChange, selectedCategory, onCa
                 aria-selected={activePanel === item.panel}
                 aria-controls={`panel-${item.panel}`}
                 onClick={() => onPanelChange(item.panel)}
-                className={`shrink-0 rounded-md px-4 py-2 text-sm font-semibold transition focus:outline-none focus:ring-2 focus:ring-emerald-200 ${
+                className={`shrink-0 rounded-md px-2.5 py-1.5 text-xs font-semibold transition focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:px-4 sm:py-2 sm:text-sm ${
                   activePanel === item.panel
                     ? 'bg-neutral-950 text-white shadow-sm'
                     : 'bg-white text-neutral-700 hover:bg-emerald-50 hover:text-emerald-800'
@@ -1483,7 +1485,7 @@ function CompactContentArea({ activePanel, onPanelChange, selectedCategory, onCa
             ))}
           </div>
 
-          <div id={`panel-${activePanel}`} role="tabpanel" className="rounded-lg bg-white p-4 sm:p-6">
+          <div id={`panel-${activePanel}`} role="tabpanel" className="rounded-lg bg-white p-2.5 sm:p-6">
             {activePanel === 'catalogue' && (
               <ShopByCategory compact selectedCategory={selectedCategory} onCategoryClick={onCategoryClick} onWhatsAppClick={onWhatsAppClick} />
             )}
@@ -1605,7 +1607,7 @@ export default function App() {
         onWhatsAppClick={handleWhatsAppClick}
         contentRef={contentAreaRef}
       />
-      <MobileStickyWhatsApp onWhatsAppClick={handleWhatsAppClick} />
+      <MobileStickyWhatsApp hidden={activePanel === 'quote'} onWhatsAppClick={handleWhatsAppClick} />
       <Footer />
     </div>
   )

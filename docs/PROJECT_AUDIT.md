@@ -142,6 +142,7 @@ The stale Pages integration must be disconnected from the old account or removed
 - About panel with Kleihaus positioning, service areas and concise trust/support points.
 - Guidance panel with concise quote-planning tips.
 - Quote panel with the existing quote form and direct contact details.
+- Mobile layout uses reduced hero sizing, compact trust badges and catalogue cards, narrowed panel spacing and quote-aware sticky WhatsApp behavior.
 - WhatsApp inquiry links with pre-filled messages.
 - Structured footer with products, services, contact, WhatsApp, email, locations and response expectation.
 

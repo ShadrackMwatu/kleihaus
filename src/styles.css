@@ -145,6 +145,13 @@ section a button {
   min-height: 9rem;
 }
 
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
 footer {
   padding-bottom: env(safe-area-inset-bottom);
 }
@@ -163,25 +170,32 @@ footer {
   }
 
   .hero-carousel {
-    min-height: 430px;
+    min-height: 320px;
   }
 
   section[id='top'] h1 {
-    font-size: clamp(2.35rem, 11vw, 3.5rem);
+    font-size: clamp(2.125rem, 7vw, 2.625rem);
   }
 
-  section[id='catalogue'],
-  section > div.mx-auto {
-    padding-top: 3.5rem;
-    padding-bottom: 3.5rem;
+  section[id='top'] button,
+  section[id='top'] a button {
+    min-height: 38px;
   }
 
   .fixed.bottom-4 {
     bottom: max(1rem, env(safe-area-inset-bottom));
   }
 
+  .fixed.bottom-3 {
+    bottom: max(0.75rem, env(safe-area-inset-bottom));
+  }
+
+  .fixed.bottom-2\.5 {
+    bottom: max(0.625rem, env(safe-area-inset-bottom));
+  }
+
   footer {
-    padding-bottom: 5.5rem;
+    padding-bottom: 4rem;
   }
 }
 
