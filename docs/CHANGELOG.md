@@ -8,6 +8,16 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-06-04
 
+### SEO Category Pages And Local SEO Guidance
+
+- Added lightweight frontend category landing pages for `/floor-tiles`, `/wall-tiles`, `/bathroom-tiles`, `/sanitaryware`, `/paints` and `/adhesives-grout`.
+- Added route-specific title, meta description, canonical URL and safe CollectionPage, BreadcrumbList and ItemList JSON-LD for category pages.
+- Updated `public/sitemap.xml` with the new category URLs while keeping `public/robots.txt` pointed at the sitemap.
+- Added homepage category links to the new guides while preserving quote and WhatsApp CTAs.
+- Added `docs/LOCAL_SEO_GOOGLE_BUSINESS_PROFILE.md` with manual Google Business Profile optimization guidance for Nairobi, Machakos and Makueni.
+- Kept the quote-based catalogue policy: no Product or Offer schema without real product pages, truthful prices and current availability.
+- Continued mobile compaction and image SEO review with meaningful alt text, lazy loading for gallery images and eager loading only for first hero/category lead images.
+
 ### Mobile Layout Audit And Polish
 
 - Reduced mobile hero height and headline scale so the carousel image remains visible and CTAs stay easier to reach.

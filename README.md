@@ -144,6 +144,23 @@ The public quote form validates customer details and posts to `/api/quote-reques
 
 The separate "Chat on WhatsApp" button remains available as a manual fallback.
 
+## Public SEO Routes
+
+The site includes lightweight frontend category landing pages for quote-focused search visibility:
+
+- `/floor-tiles`
+- `/wall-tiles`
+- `/bathroom-tiles`
+- `/sanitaryware`
+- `/paints`
+- `/adhesives-grout`
+
+These pages are catalogue and quote-planning pages. They must not use Product or Offer structured data unless Kleihaus later publishes real product pages with truthful prices and current availability.
+
+`public/sitemap.xml` includes these URLs, and `public/robots.txt` references the sitemap.
+
+Local Google Business Profile setup guidance is documented in `docs/LOCAL_SEO_GOOGLE_BUSINESS_PROFILE.md`. Profile creation and verification must be completed manually by the business owner.
+
 ## Legacy Files
 
 `wrangler.api.toml` and `src/api-worker.js` are retained for historical/legacy API-worker context. They are not referenced by the current `wrangler.toml` Worker Assets deployment path and are safe candidates to archive or remove later after explicit approval.

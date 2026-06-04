@@ -74,6 +74,7 @@ Key files and folders:
 - `public/robots.txt` - crawler directives.
 - `public/site.webmanifest` - web app/site metadata.
 - `docs/` - project documentation.
+- `docs/LOCAL_SEO_GOOGLE_BUSINESS_PROFILE.md` - manual Google Business Profile guidance for local SEO.
 - `intelligence/` - future backend intelligence workspace.
 
 ## Legacy API Worker Files
@@ -139,6 +140,7 @@ The stale Pages integration must be disconnected from the old account or removed
 - Home area with clear business positioning, premium hero carousel and hero trust badges.
 - Compact segmented content area for Catalogue, About, Guidance and Quote.
 - Catalogue panel with clickable category cards, icons, descriptions and quote CTAs.
+- Category landing pages for `/floor-tiles`, `/wall-tiles`, `/bathroom-tiles`, `/sanitaryware`, `/paints` and `/adhesives-grout`.
 - About panel with Kleihaus positioning, service areas and concise trust/support points.
 - Guidance panel with concise quote-planning tips.
 - Quote panel with the existing quote form and direct contact details.
@@ -160,12 +162,17 @@ Current SEO foundations include:
 - `public/robots.txt`.
 - `public/site.webmanifest`.
 - Organization, LocalBusiness, Store, WebSite, SearchAction, ContactPoint, FAQ and catalogue `ItemList` structured data.
+- Category landing pages use safe `CollectionPage`, `BreadcrumbList` and `ItemList` JSON-LD only.
+- `public/sitemap.xml` includes homepage, catalogue/contact anchors and the six category landing page URLs.
 - Incomplete Product rich-result schema was removed for quote-based catalogue categories without fabricating price, review, rating or availability data.
+- Product and Offer schema must not be reintroduced until Kleihaus has real product pages with truthful price and current availability data.
 - One primary H1 on the homepage.
 - H2/H3 hierarchy for major sections.
 - Crawlable category and guide content.
 - Image alt text coverage.
+- Image SEO uses meaningful alt text, lazy loading for non-hero/gallery images and eager loading only for first hero or lead category images.
 - Kenya-focused local SEO mentions for Nairobi, Machakos and Makueni.
+- Local SEO guidance for Google Business Profile lives in `docs/LOCAL_SEO_GOOGLE_BUSINESS_PROFILE.md`; profile creation and verification must be completed manually by the business owner.
 
 ## Known Limitations
 
@@ -180,6 +187,6 @@ Current SEO foundations include:
 - Update or archive legacy API-worker docs once the same-origin Worker Assets path remains stable.
 - Add a fuller deployment troubleshooting runbook with screenshots or dashboard paths.
 - Add Google Search Console and GA4 after official account setup.
-- Expand SEO landing pages for product and location searches.
+- Expand location-specific SEO pages only after the service-area strategy and verified Google Business Profile details are settled.
 - Add automated monthly management reports for search, quote and WhatsApp trends.
 - Continue testing mobile layout, WhatsApp links, quote flow and build output before every push.

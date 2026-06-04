@@ -227,6 +227,114 @@ const productGroups = [
   },
 ]
 
+const categoryLandingPages = [
+  {
+    path: '/floor-tiles',
+    category: 'Floor Tiles',
+    title: 'Floor Tiles Kenya | Kleihaus Ceramics',
+    description: 'Browse floor tile ideas for homes, shops and projects in Kenya. Request a Kleihaus quote based on quantity, location and project needs.',
+    eyebrow: 'Floor tile quotes',
+    h1: 'Floor tiles for homes, shops and projects in Kenya',
+    intro:
+      'Kleihaus helps customers compare floor tile finishes for living rooms, kitchens, shops, offices and rental projects. Share your room size, preferred finish, quantity estimate and delivery location for practical quote support.',
+    notes: ['Living rooms and kitchens', 'Retail and office floors', 'Rental units and project sites'],
+    images: [
+      { src: '/images/tiles-floor.jpg', alt: 'Polished floor tiles for Kenyan home and project interiors', label: 'Polished indoor floors' },
+      { src: '/images/tiles-floor-2.jpg', alt: 'Textured floor tiles suitable for entries and busy areas', label: 'Textured floor finishes' },
+      { src: '/images/tiles-gallery-1.jpg', alt: 'Floor tile display options for coordinated room finishes', label: 'Coordinated tile options' },
+      { src: '/images/kitchen.jpg', alt: 'Kitchen floor tile inspiration for Kleihaus quote planning', label: 'Kitchen floor ideas' },
+    ],
+  },
+  {
+    path: '/wall-tiles',
+    category: 'Wall Tiles',
+    title: 'Wall Tiles Kenya | Kitchen & Interior Wall Tiles | Kleihaus',
+    description: 'Explore wall tile options for kitchens, bathrooms and feature walls. Request Kleihaus quote guidance for availability, quantity and delivery.',
+    eyebrow: 'Wall tile quotes',
+    h1: 'Wall tiles for kitchens, bathrooms and feature interiors',
+    intro:
+      'Wall tiles can lift kitchens, bathrooms and feature areas while keeping surfaces easy to clean. Kleihaus can help match colors, textures and quantities for retail or project quotations.',
+    notes: ['Kitchen splashbacks', 'Bathroom walls', 'Decor and feature surfaces'],
+    images: [
+      { src: '/images/tiles-wall.jpg', alt: 'Kitchen wall tiles and splashback finishes supplied by Kleihaus', label: 'Kitchen wall tiles' },
+      { src: '/images/tiles-wall-2.jpg', alt: 'Neutral wall tile finish for clean interior surfaces', label: 'Neutral wall finishes' },
+      { src: '/images/tiles-decor.jpg', alt: 'Decorative wall tiles for feature surfaces and accents', label: 'Decor wall tiles' },
+      { src: '/images/tile-fittings.jpg', alt: 'Tile fittings and trims for wall tile finishing', label: 'Wall tile fittings' },
+    ],
+  },
+  {
+    path: '/bathroom-tiles',
+    category: 'Bathroom Tiles',
+    title: 'Bathroom Tiles Kenya | Shower & Wet Area Tiles | Kleihaus',
+    description: 'Plan bathroom tile combinations for showers, walls and floors. Request a Kleihaus quote based on room size, tile type and location.',
+    eyebrow: 'Bathroom tile quotes',
+    h1: 'Bathroom tiles for modern wet areas and coordinated suites',
+    intro:
+      'Bathroom tile choices should balance slip resistance, cleaning, moisture exposure and visual comfort. Kleihaus supports wall and floor combinations for compact bathrooms, shower areas and full suites.',
+    notes: ['Bathroom walls and floors', 'Shower and wet areas', 'Coordinated sanitaryware support'],
+    images: [
+      { src: '/images/bathroom-blue-1.jpg', alt: 'Blue bathroom tile and sanitaryware display for quote planning', label: 'Coordinated bathroom look' },
+      { src: '/images/shower-rail-1.jpg', alt: 'Shower area tile and rail inspiration for wet rooms', label: 'Shower area finishes' },
+      { src: '/images/sanitary-accessories.jpg', alt: 'Bathroom accessories for complete tile and sanitaryware planning', label: 'Bathroom accessories' },
+      { src: '/images/sanitary-showers.jpg', alt: 'Shower fixtures paired with bathroom tile finishes', label: 'Shower fixtures' },
+    ],
+  },
+  {
+    path: '/sanitaryware',
+    category: 'Sanitaryware',
+    title: 'Sanitaryware Kenya | Basins, Toilets, Taps & Showers | Kleihaus',
+    description: 'Browse sanitaryware quote support for basins, toilets, taps, mixers, showers and bathroom accessories from Kleihaus Ceramics.',
+    eyebrow: 'Sanitaryware quotes',
+    h1: 'Sanitaryware for bathrooms, renovations and project orders',
+    intro:
+      'Kleihaus supports sanitaryware inquiries for basins, toilets, baths, showers, taps, mixers and bathroom accessories. Share the room style, quantity and location for useful quote guidance.',
+    notes: ['Basins and toilets', 'Taps, mixers and showers', 'Bathroom accessories'],
+    images: [
+      { src: '/images/sanitary-set-1.jpg', alt: 'Sanitaryware set for bathroom quote planning in Kenya', label: 'Bathroom sets' },
+      { src: '/images/sanitary-basins.jpg', alt: 'Bathroom basins available for sanitaryware quote inquiries', label: 'Basins' },
+      { src: '/images/sanitary-toilets.jpg', alt: 'Modern toilet options for bathroom projects and renovations', label: 'Toilets' },
+      { src: '/images/taps-display-1.jpg', alt: 'Tap and mixer display for coordinated sanitaryware finishes', label: 'Taps and mixers' },
+      { src: '/images/sink-mixer-1.png', alt: 'Sink mixer fitting for bathroom and kitchen finishing', label: 'Mixers' },
+    ],
+  },
+  {
+    path: '/paints',
+    category: 'Paints',
+    title: 'Paints Kenya | Interior, Exterior, Roof & Floor Paints | Kleihaus',
+    description: 'Request Kleihaus paint quote guidance for interior, exterior, roof and floor finishes based on surface area, location and project needs.',
+    eyebrow: 'Paint quote support',
+    h1: 'Paints for interior, exterior, roof and floor finishing',
+    intro:
+      'Paint choices depend on the surface, weather exposure, cleaning needs and finish preference. Kleihaus helps customers plan paint inquiries for rooms, exterior walls, floors and roofs.',
+    notes: ['Interior wall finishes', 'Exterior and roof paint', 'Floor and utility coatings'],
+    images: [
+      { src: '/images/paint-interior.jpg', alt: 'Interior paint finish options for Kleihaus quote planning', label: 'Interior paints' },
+      { src: '/images/paint-exterior.jpg', alt: 'Exterior paint options for weather-exposed walls', label: 'Exterior paints' },
+      { src: '/images/paint-roof.jpg', alt: 'Roof paint finish for Kenyan homes and buildings', label: 'Roof paints' },
+      { src: '/images/paint-floor.jpg', alt: 'Floor paint option for durable utility surfaces', label: 'Floor paints' },
+    ],
+  },
+  {
+    path: '/adhesives-grout',
+    category: 'Adhesives & Grout',
+    title: 'Tile Adhesives & Grout Kenya | Kleihaus Ceramics',
+    description: 'Plan tile adhesive, grout, trims, spacers and installation essentials with Kleihaus quote support for tile projects in Kenya.',
+    eyebrow: 'Installation material quotes',
+    h1: 'Tile adhesives, grout and installation essentials',
+    intro:
+      'Good tile performance depends on the right adhesive, grout and finishing accessories for the tile type, surface and wet or dry area. Kleihaus can help customers plan installation material requests.',
+    notes: ['Tile adhesive and grout', 'Trims, spacers and fittings', 'Installer support materials'],
+    images: [
+      { src: '/images/adhesive.jpg', alt: 'Tile adhesive for floor and wall tile installation', label: 'Tile adhesive' },
+      { src: '/images/grout.jpg', alt: 'Tile grout for clean joint finishing', label: 'Tile grout' },
+      { src: '/images/tile-tools.jpg', alt: 'Tile tools and accessories for installation support', label: 'Tile tools' },
+      { src: '/images/tiler-service.jpg', alt: 'Tile installation support and site guidance', label: 'Installation support' },
+    ],
+  },
+]
+
+const categoryLandingByPath = Object.fromEntries(categoryLandingPages.map((page) => [page.path, page]))
+
 const serviceBadges = [
   { title: 'Reliable supply support', text: 'Curated finishing materials from tile, sanitaryware, paint and installation categories.', icon: ShieldCheck },
   { title: 'Delivery coordination', text: 'Support for deliveries to homes, sites and developments across key Kenyan service areas.', icon: Truck },
@@ -345,19 +453,90 @@ const setMetaContent = (selector, content) => {
   if (tag) tag.setAttribute('content', content)
 }
 
-function SeoManager() {
+const getRouteSchema = (page) => {
+  if (!page) return null
+
+  const pageUrl = `https://www.kleihaus.com${page.path}`
+
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'CollectionPage',
+        '@id': `${pageUrl}#collection`,
+        url: pageUrl,
+        name: page.h1,
+        description: page.description,
+        isPartOf: {
+          '@type': 'WebSite',
+          '@id': 'https://www.kleihaus.com/#website',
+          name: 'Kleihaus Ceramics',
+          url: 'https://www.kleihaus.com/',
+        },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `${pageUrl}#breadcrumb`,
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: 'https://www.kleihaus.com/',
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: page.category,
+            item: pageUrl,
+          },
+        ],
+      },
+      {
+        '@type': 'ItemList',
+        '@id': `${pageUrl}#gallery`,
+        name: `${page.category} quote planning gallery`,
+        itemListElement: page.images.map((image, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          name: image.label,
+          url: `${pageUrl}#gallery`,
+        })),
+      },
+    ],
+  }
+}
+
+function SeoManager({ page }) {
   useEffect(() => {
-    document.title = seoTitle
-    setMetaContent('meta[name="description"]', seoDescription)
+    const title = page?.title || seoTitle
+    const description = page?.description || seoDescription
+    const routeCanonicalUrl = page ? `https://www.kleihaus.com${page.path}` : canonicalUrl
+
+    document.title = title
+    setMetaContent('meta[name="description"]', description)
     setMetaContent('meta[name="robots"]', 'index, follow, max-image-preview:large')
-    setMetaContent('meta[property="og:title"]', seoTitle)
-    setMetaContent('meta[property="og:description"]', seoDescription)
-    setMetaContent('meta[name="twitter:title"]', seoTitle)
-    setMetaContent('meta[name="twitter:description"]', seoDescription)
+    setMetaContent('meta[property="og:title"]', title)
+    setMetaContent('meta[property="og:description"]', description)
+    setMetaContent('meta[property="og:url"]', routeCanonicalUrl)
+    setMetaContent('meta[name="twitter:title"]', title)
+    setMetaContent('meta[name="twitter:description"]', description)
 
     const canonical = document.querySelector('link[rel="canonical"]')
-    if (canonical) canonical.setAttribute('href', canonicalUrl)
-  }, [])
+    if (canonical) canonical.setAttribute('href', routeCanonicalUrl)
+
+    const existingRouteSchema = document.getElementById('kleihaus-route-schema')
+    if (existingRouteSchema) existingRouteSchema.remove()
+
+    const routeSchema = getRouteSchema(page)
+    if (routeSchema) {
+      const script = document.createElement('script')
+      script.id = 'kleihaus-route-schema'
+      script.type = 'application/ld+json'
+      script.textContent = JSON.stringify(routeSchema)
+      document.head.appendChild(script)
+    }
+  }, [page])
 
   return null
 }
@@ -848,6 +1027,7 @@ function ShopByCategory({ selectedCategory, onCategoryClick, onWhatsAppClick, co
       <div className="grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-4">
         {categories.map((category) => {
           const Icon = category.icon
+          const landingPage = categoryLandingPages.find((page) => page.category === category.name)
           return (
             <article
               key={category.name}
@@ -881,6 +1061,20 @@ function ShopByCategory({ selectedCategory, onCategoryClick, onWhatsAppClick, co
                   <ArrowRight className="h-4 w-4 shrink-0 text-neutral-400 transition group-hover:text-emerald-700" />
                 </div>
                 <p className="mt-1 line-clamp-2 text-[11px] leading-4 text-neutral-600 sm:mt-2 sm:text-sm sm:leading-6">{category.blurb}</p>
+                {landingPage && (
+                  <a
+                    href={landingPage.path}
+                    className="mt-2 inline-flex text-[11px] font-semibold text-emerald-700 hover:text-emerald-900 sm:text-xs"
+                    onClick={() => {
+                      analyticsService.track('category_click', {
+                        productCategory: category.name,
+                        clickedElement: `category_landing_${landingPage.path}`,
+                      })
+                    }}
+                  >
+                    View guide
+                  </a>
+                )}
                 {selectedCategory === category.name && (
                   <span className="mt-2 inline-flex rounded-md bg-emerald-50 px-2 py-1 text-[11px] font-semibold text-emerald-800 sm:mt-3 sm:text-xs">
                     Recommended for you
@@ -1369,6 +1563,139 @@ function Contact({ onWhatsAppClick, compact = false }) {
   )
 }
 
+function CategoryLandingPage({ page, onSectionChange, onWhatsAppClick, onQuoteClick }) {
+  return (
+    <main className="bg-white">
+      <section className="border-b border-emerald-100 bg-stone-50">
+        <div className="mx-auto grid max-w-7xl gap-6 px-4 py-8 sm:py-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+          <div>
+            <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">{page.eyebrow}</p>
+            <h1 className="mt-2 max-w-3xl text-[clamp(2rem,8vw,2.75rem)] font-semibold leading-tight text-neutral-950 sm:text-5xl">
+              {page.h1}
+            </h1>
+            <p className="mt-3 max-w-2xl text-sm leading-6 text-neutral-700 sm:mt-4 sm:text-base sm:leading-7">
+              {page.intro}
+            </p>
+            <p className="mt-3 max-w-2xl text-xs leading-5 text-neutral-600 sm:text-sm sm:leading-6">
+              Quotes depend on current availability, quantity, delivery location and project needs. Share measurements, finish preference and budget range so the Kleihaus team can respond with useful guidance.
+            </p>
+            <div className="mt-5 flex flex-wrap gap-2">
+              <Button
+                type="button"
+                className="gap-1.5 px-3 py-2 text-xs sm:px-4 sm:py-2.5 sm:text-sm"
+                onClick={() => {
+                  onQuoteClick(`category_quote_${page.path}`)
+                  onSectionChange('contact')
+                }}
+              >
+                Request quote
+                <ArrowRight className="h-4 w-4" />
+              </Button>
+              <a href={whatsappInquiryUrl(page.category)} target="_blank" rel="noopener noreferrer" onClick={() => onWhatsAppClick(`category_page_${page.path}`)}>
+                <ButtonSecondary type="button" className="group gap-1.5 px-3 py-2 text-xs sm:px-4 sm:py-2.5 sm:text-sm">
+                  <WhatsAppBrandText>WhatsApp inquiry</WhatsAppBrandText>
+                </ButtonSecondary>
+              </a>
+            </div>
+          </div>
+          <div className="grid grid-cols-3 gap-2 sm:gap-3">
+            {page.images.slice(0, 3).map((image, index) => (
+              <img
+                key={image.src}
+                src={image.src}
+                alt={image.alt}
+                loading={index === 0 ? 'eager' : 'lazy'}
+                decoding="async"
+                className={`h-full min-h-28 w-full rounded-lg object-cover shadow-sm ${index === 0 ? 'col-span-2 row-span-2 aspect-[4/3]' : 'aspect-square'}`}
+                onError={(event) => {
+                  event.currentTarget.onerror = null
+                  event.currentTarget.src = '/images/placeholder.jpg'
+                }}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="gallery" className="mx-auto max-w-7xl px-4 py-8 sm:py-12">
+        <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
+          <div>
+            <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Quote planning</p>
+            <h2 className="mt-2 text-2xl font-semibold text-neutral-950 sm:text-3xl">What to share with Kleihaus</h2>
+            <ul className="mt-4 grid gap-2 text-sm text-neutral-700">
+              {page.notes.map((note) => (
+                <li key={note} className="flex items-start gap-2">
+                  <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-emerald-700" />
+                  <span>{note}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-5 rounded-lg border border-emerald-100 bg-emerald-50 p-4 text-sm leading-6 text-emerald-950">
+              Include room size, product type, quantity, location and budget range. Photos or inspiration references can help the team match finishes more quickly.
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+            {page.images.map((image) => (
+              <figure key={image.src} className="overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-sm">
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  loading="lazy"
+                  decoding="async"
+                  className="aspect-[4/3] w-full object-cover"
+                  onError={(event) => {
+                    event.currentTarget.onerror = null
+                    event.currentTarget.src = '/images/placeholder.jpg'
+                  }}
+                />
+                <figcaption className="px-3 py-2 text-xs font-semibold text-neutral-700">{image.label}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-y border-neutral-200 bg-neutral-50">
+        <div className="mx-auto grid max-w-7xl gap-4 px-4 py-7 sm:py-10 md:grid-cols-3">
+          {[
+            'Retail and project quotations',
+            'Availability depends on quantity and supplier stock',
+            'Delivery support for Nairobi, Machakos, Makueni and wider Kenya where practical',
+          ].map((item) => (
+            <div key={item} className="rounded-lg border border-neutral-200 bg-white p-4 text-sm font-semibold leading-6 text-neutral-800 shadow-sm">
+              {item}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 py-8 sm:py-12">
+        <div className="flex flex-col gap-3 rounded-xl bg-neutral-950 p-5 text-white sm:p-7 md:flex-row md:items-center md:justify-between">
+          <div>
+            <h2 className="text-xl font-semibold sm:text-2xl">Ready to plan a {page.category.toLowerCase()} quote?</h2>
+            <p className="mt-2 text-sm leading-6 text-neutral-300">
+              Send the basics now, then the Kleihaus team can guide availability, matching options and next steps.
+            </p>
+          </div>
+          <div className="flex shrink-0 flex-wrap gap-2">
+            <a href="/" className="inline-flex items-center justify-center rounded-md border border-white/30 px-3 py-2 text-xs font-semibold text-white hover:bg-white/10 sm:text-sm">
+              Back home
+            </a>
+            <a href="/#catalogue" className="inline-flex items-center justify-center rounded-md border border-white/30 px-3 py-2 text-xs font-semibold text-white hover:bg-white/10 sm:text-sm">
+              Browse catalogue
+            </a>
+            <a href={whatsappInquiryUrl(page.category)} target="_blank" rel="noopener noreferrer" onClick={() => onWhatsAppClick(`category_page_bottom_${page.path}`)}>
+              <ButtonSecondary type="button" className="group gap-1.5 px-3 py-2 text-xs sm:text-sm">
+                <WhatsAppBrandText>WhatsApp</WhatsAppBrandText>
+              </ButtonSecondary>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+  )
+}
+
 function Footer() {
   return (
     <footer className="border-t border-white/30 bg-[linear-gradient(180deg,#8B4E1C_0%,#A65F1E_100%)] text-orange-50">
@@ -1499,20 +1826,40 @@ function CompactContentArea({ activePanel, onPanelChange, selectedCategory, onCa
   )
 }
 
+const normalizePath = (path) => {
+  if (!path || path === '/') return '/'
+  return path.replace(/\/+$/, '')
+}
+
 export default function App() {
   const [projectType] = useState('Homeowner')
+  const [currentPath, setCurrentPath] = useState(() => (typeof window === 'undefined' ? '/' : normalizePath(window.location.pathname)))
   const [activeSection, setActiveSection] = useState('home')
   const [activePanel, setActivePanel] = useState('catalogue')
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('Floor Tiles')
   const [eventRevision, setEventRevision] = useState(0)
   const contentAreaRef = useRef(null)
+  const activeCategoryPage = categoryLandingByPath[currentPath]
 
   const refreshSignals = () => setEventRevision((revision) => revision + 1)
 
   useEffect(() => {
     analyticsService.track('page_view', { clickedElement: 'app_mount' })
   }, [])
+
+  useEffect(() => {
+    const syncPath = () => setCurrentPath(normalizePath(window.location.pathname))
+    window.addEventListener('popstate', syncPath)
+    return () => window.removeEventListener('popstate', syncPath)
+  }, [])
+
+  const navigateHome = () => {
+    if (currentPath !== '/') {
+      window.history.pushState({}, '', '/')
+      setCurrentPath('/')
+    }
+  }
 
   const handleSearch = (query) => {
     analyticsService.track('search_query', { searchQuery: query.toLowerCase(), projectType })
@@ -1523,6 +1870,7 @@ export default function App() {
   }
 
   const handleSectionChange = (section) => {
+    navigateHome()
     setActiveSection(section)
     if (section === 'home') setActivePanel('catalogue')
     if (section === 'about') setActivePanel('about')
@@ -1531,18 +1879,21 @@ export default function App() {
     analyticsService.track('navigation_click', { clickedElement: `nav_${section}`, projectType, productCategory: selectedCategory })
     refreshSignals()
     window.requestAnimationFrame(() => {
-      const targetTop = section === 'home'
-        ? 0
-        : Math.max((contentAreaRef.current?.getBoundingClientRect().top || 0) + window.scrollY - 96, 0)
+      window.requestAnimationFrame(() => {
+        const targetTop = section === 'home'
+          ? 0
+          : Math.max((contentAreaRef.current?.getBoundingClientRect().top || 0) + window.scrollY - 96, 0)
 
-      window.scrollTo({
-        top: targetTop,
-        behavior: window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+        window.scrollTo({
+          top: targetTop,
+          behavior: window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+        })
       })
     })
   }
 
   const handleCategoryClick = (category) => {
+    navigateHome()
     analyticsService.track('category_click', { productCategory: category, clickedElement: 'category_navigation', projectType })
     setSelectedCategory(category)
     setActiveSection('catalogue')
@@ -1551,6 +1902,7 @@ export default function App() {
   }
 
   const handlePanelChange = (panel) => {
+    navigateHome()
     setActivePanel(panel)
     setActiveSection(panel === 'quote' ? 'contact' : panel === 'guidance' ? 'home' : panel)
     analyticsService.track('navigation_click', { clickedElement: `panel_${panel}`, projectType, productCategory: selectedCategory })
@@ -1585,7 +1937,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-white text-neutral-900">
-      <SeoManager />
+      <SeoManager page={activeCategoryPage} />
       <Header
         projectType={projectType}
         searchQuery={searchQuery}
@@ -1598,15 +1950,26 @@ export default function App() {
         onWhatsAppClick={handleWhatsAppClick}
         onContactClick={handleContactClick}
       />
-      <Hero onWhatsAppClick={handleWhatsAppClick} onQuoteClick={handleQuoteClick} onSectionChange={handleSectionChange} />
-      <CompactContentArea
-        activePanel={activePanel}
-        onPanelChange={handlePanelChange}
-        selectedCategory={selectedCategory}
-        onCategoryClick={handleCategoryClick}
-        onWhatsAppClick={handleWhatsAppClick}
-        contentRef={contentAreaRef}
-      />
+      {activeCategoryPage ? (
+        <CategoryLandingPage
+          page={activeCategoryPage}
+          onSectionChange={handleSectionChange}
+          onWhatsAppClick={handleWhatsAppClick}
+          onQuoteClick={handleQuoteClick}
+        />
+      ) : (
+        <>
+          <Hero onWhatsAppClick={handleWhatsAppClick} onQuoteClick={handleQuoteClick} onSectionChange={handleSectionChange} />
+          <CompactContentArea
+            activePanel={activePanel}
+            onPanelChange={handlePanelChange}
+            selectedCategory={selectedCategory}
+            onCategoryClick={handleCategoryClick}
+            onWhatsAppClick={handleWhatsAppClick}
+            contentRef={contentAreaRef}
+          />
+        </>
+      )}
       <MobileStickyWhatsApp hidden={activePanel === 'quote'} onWhatsAppClick={handleWhatsAppClick} />
       <Footer />
     </div>
