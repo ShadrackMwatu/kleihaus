@@ -1736,7 +1736,6 @@ function Footer({ onWhatsAppClick }) {
               <MapPin className="mt-0.5 h-4 w-4 text-orange-100" />
               <span>Nairobi | Machakos | Makueni</span>
             </div>
-            <p className="text-orange-50/80">Typical response: shortly after quote submission during business hours.</p>
           </div>
         </div>
       </div>

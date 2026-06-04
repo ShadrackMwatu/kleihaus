@@ -8,6 +8,10 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-06-04
 
+### Footer Contact Text Cleanup
+
+- Removed the footer response-time sentence from the Contact column while preserving WhatsApp, email, phone, locations and footer branding.
+
 ### Footer Branding Column Removal
 
 - Removed the bronze footer branding column with logo, tagline and descriptive paragraph.
