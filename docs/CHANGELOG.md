@@ -8,6 +8,12 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-06-04
 
+### Footer Branding Column Removal
+
+- Removed the bronze footer branding column with logo, tagline and descriptive paragraph.
+- Rebalanced the main footer into three centered columns for Products, Services and Contact.
+- Preserved the mobile footer WhatsApp CTA and the green branding strip.
+
 ### Mobile Footer WhatsApp CTA Placement
 
 - Moved the mobile "Request quote on WhatsApp" CTA into the footer immediately above the green branding strip.

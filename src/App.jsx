@@ -1699,26 +1699,7 @@ function CategoryLandingPage({ page, onSectionChange, onWhatsAppClick, onQuoteCl
 function Footer({ onWhatsAppClick }) {
   return (
     <footer data-site-footer className="border-t border-white/30 bg-[linear-gradient(180deg,#8B4E1C_0%,#A65F1E_100%)] text-orange-50">
-      <div className="mx-auto grid max-w-7xl gap-4 px-4 py-6 sm:gap-8 sm:py-12 md:grid-cols-[1.2fr_0.8fr_0.8fr_1fr]">
-        <div>
-          <div className="flex items-center gap-3">
-            <img
-              src="/images/kleihaus-logo.jpg"
-              alt="Kleihaus Ceramics"
-              loading="lazy"
-              decoding="async"
-              className="h-10 w-10 rounded-md border border-white/20 bg-white object-contain"
-            />
-            <div className="leading-tight">
-              <div className="text-base font-semibold text-white">Kleihaus Ceramics</div>
-              <div className="text-xs text-orange-100">Inspiring living</div>
-            </div>
-          </div>
-          <p className="mt-2 max-w-sm text-xs leading-5 text-orange-50/90 sm:mt-4 sm:text-sm sm:leading-6">
-            Tiles, sanitaryware, paints, adhesives, grout and finishing materials for homes, retail orders and project quotations in Kenya.
-          </p>
-        </div>
-
+      <div className="mx-auto grid max-w-5xl gap-4 px-4 py-6 sm:gap-8 sm:py-12 md:grid-cols-3 md:justify-items-center">
         <div>
           <h3 className="text-sm font-semibold uppercase text-white">Products</h3>
           <ul className="mt-2 grid gap-1 text-xs text-orange-50/90 sm:mt-3 sm:gap-2 sm:text-sm">

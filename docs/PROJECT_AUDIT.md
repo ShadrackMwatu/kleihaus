@@ -147,7 +147,7 @@ The stale Pages integration must be disconnected from the old account or removed
 - Mobile layout uses reduced hero sizing, compact trust badges and catalogue cards, narrowed panel spacing and quote-aware sticky WhatsApp behavior.
 - Mobile footer places the WhatsApp quote CTA above the green branding strip; the green strip remains the final visible footer element.
 - WhatsApp inquiry links with pre-filled messages.
-- Structured footer with products, services, contact, WhatsApp, email, locations and response expectation.
+- Structured footer with balanced Products, Services and Contact columns plus WhatsApp, email, phone, locations and response expectation.
 
 The public frontend should not display admin dashboards, analytics tables, AI implementation details, weak-signal detection, backend logs or endpoint configuration details.
 
