@@ -99,7 +99,7 @@ Current behavior:
 - The backend returns `success: true` only after required D1 storage and internal Resend email delivery succeed.
 - The backend queues customer confirmation email.
 - The backend skips WhatsApp automation unless WhatsApp Business Cloud API credentials are configured.
-- The manual "Chat on WhatsApp" button remains available as a fallback.
+- Frontend support CTAs open an in-site support modal and submit through `/api/quote-request`; they do not redirect customers to WhatsApp Web or external WhatsApp URLs.
 
 ## Cloudflare Runtime Requirements
 
@@ -145,8 +145,8 @@ The stale Pages integration must be disconnected from the old account or removed
 - About panel with Kleihaus positioning, service areas and concise trust/support points.
 - Guidance panel with concise quote-planning tips.
 - Quote panel with the existing quote form and direct contact details.
-- Mobile layout uses reduced hero sizing, compact trust badges and catalogue cards, narrowed panel spacing and quote-aware sticky WhatsApp behavior.
-- Mobile footer places the WhatsApp quote CTA above the green branding strip; the green strip remains the final visible footer element.
+- Mobile layout uses reduced hero sizing, compact trust badges and catalogue cards, narrowed panel spacing and quote-aware floating support behavior.
+- Mobile footer places the support CTA above the green branding strip; the green strip remains the final visible footer element.
 - WhatsApp inquiry links with pre-filled messages.
 - Structured footer with balanced Products, Services and Contact columns plus WhatsApp, email, phone, locations and response expectation.
 - Footer Services is intentionally concise: Finishing Advisory, Delivery and Installation.

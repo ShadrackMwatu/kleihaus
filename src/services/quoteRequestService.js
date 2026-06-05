@@ -79,7 +79,7 @@ export const quoteRequestService = {
       if (!response.ok || !data.success) {
         return {
           ok: false,
-          message: data.message || 'We could not submit your request. Please try WhatsApp.',
+          message: data.message || 'We could not submit your request. Please try again or call Kleihaus.',
           data,
         }
       }
@@ -92,7 +92,7 @@ export const quoteRequestService = {
 
         return {
           ok: false,
-          message: 'Your request was saved, but email delivery was not confirmed. Please use WhatsApp so our team can respond quickly.',
+          message: 'Your request was saved, but email delivery was not confirmed. Please call Kleihaus so our team can respond quickly.',
           data,
         }
       }
@@ -105,7 +105,7 @@ export const quoteRequestService = {
     } catch (error) {
       return {
         ok: false,
-        message: 'We could not submit your request. Please try WhatsApp.',
+        message: 'We could not submit your request. Please try again or call Kleihaus.',
       }
     }
   },

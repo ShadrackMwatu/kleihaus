@@ -30,12 +30,6 @@ import { analyticsService } from './services/analyticsService'
 import { recommendationService } from './services/recommendationService'
 import { quoteRequestService } from './services/quoteRequestService'
 
-const whatsappUrl =
-  'https://wa.me/254748827166?text=Hello%20Kleihaus%2C%20I%27d%20like%20to%20share%20my%20room%20size%2C%20tile%20type%2C%20location%20and%20budget%20for%20a%20quote.'
-
-const whatsappInquiryUrl = (subject) =>
-  `https://wa.me/254748827166?text=${encodeURIComponent(`Hello Kleihaus, I would like a quote for ${subject}. Please share availability, price guidance and delivery details.`)}`
-
 const heroSlides = [
   {
     image: '/images/kleihaus-structure.jpg',
@@ -718,7 +712,7 @@ function SearchAutocomplete({ value, onChange, projectType, onSearch }) {
   )
 }
 
-function Header({ projectType, searchQuery, setSearchQuery, onSearch, activeSection, selectedCategory, onSectionChange, onCategoryClick, onWhatsAppClick, onContactClick }) {
+function Header({ projectType, searchQuery, setSearchQuery, onSearch, activeSection, selectedCategory, onSectionChange, onCategoryClick, onSupportClick, onContactClick }) {
   const [menuOpen, setMenuOpen] = useState(false)
 
   const handleNavClick = (section) => {
@@ -757,18 +751,14 @@ function Header({ projectType, searchQuery, setSearchQuery, onSearch, activeSect
         </nav>
 
         <div className="hidden items-center justify-end lg:flex">
-          <a href={whatsappUrl} onClick={() => onWhatsAppClick('header')}>
-            <Button className="group gap-2 bg-neutral-950 px-3.5 hover:border-[#25D366]/60 hover:bg-neutral-900 hover:shadow-[0_0_18px_rgba(37,211,102,0.22)]">
-              <WhatsAppBrandText />
-            </Button>
-          </a>
-        </div>
-
-        <a href={whatsappUrl} className="lg:hidden" onClick={() => onWhatsAppClick('mobile_header')}>
-          <Button className="group gap-1.5 bg-neutral-950 px-3 py-2 text-xs hover:border-[#25D366]/60 hover:bg-neutral-900 hover:shadow-[0_0_16px_rgba(37,211,102,0.22)]">
+          <Button type="button" onClick={() => onSupportClick('header')} className="group gap-2 bg-neutral-950 px-3.5 hover:border-[#25D366]/60 hover:bg-neutral-900 hover:shadow-[0_0_18px_rgba(37,211,102,0.22)]">
             <WhatsAppBrandText />
           </Button>
-        </a>
+        </div>
+
+        <Button type="button" onClick={() => onSupportClick('mobile_header')} className="group gap-1.5 bg-neutral-950 px-3 py-2 text-xs hover:border-[#25D366]/60 hover:bg-neutral-900 hover:shadow-[0_0_16px_rgba(37,211,102,0.22)] lg:hidden">
+          <WhatsAppBrandText />
+        </Button>
 
         <button
           className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-neutral-300 lg:hidden"
@@ -847,7 +837,7 @@ function usePrefersReducedMotion() {
   return prefersReducedMotion
 }
 
-function Hero({ onWhatsAppClick, onQuoteClick, onSectionChange }) {
+function Hero({ onSupportClick, onQuoteClick, onSectionChange }) {
   const [activeSlide, setActiveSlide] = useState(0)
   const [hasInteracted, setHasInteracted] = useState(false)
   const prefersReducedMotion = usePrefersReducedMotion()
@@ -917,11 +907,9 @@ function Hero({ onWhatsAppClick, onQuoteClick, onSectionChange }) {
               >
                 Request quote
               </ButtonSecondary>
-              <a href={whatsappUrl} onClick={() => onWhatsAppClick('hero_whatsapp')}>
-                <ButtonSecondary className="group gap-1.5 border-white/40 bg-white/10 px-2.5 py-1.5 text-xs text-white hover:bg-white/20 sm:gap-2 sm:px-4 sm:py-2.5 sm:text-sm">
-                  <WhatsAppBrandText>WhatsApp inquiry</WhatsAppBrandText>
-                </ButtonSecondary>
-              </a>
+              <ButtonSecondary type="button" onClick={() => onSupportClick('hero_whatsapp')} className="group gap-1.5 border-white/40 bg-white/10 px-2.5 py-1.5 text-xs text-white hover:bg-white/20 sm:gap-2 sm:px-4 sm:py-2.5 sm:text-sm">
+                <WhatsAppBrandText>WhatsApp inquiry</WhatsAppBrandText>
+              </ButtonSecondary>
             </div>
           </div>
           <div className="absolute bottom-4 left-5 right-5 flex items-center justify-between gap-4 sm:bottom-5 sm:left-10 sm:right-10 lg:left-12 lg:right-12">
@@ -1076,7 +1064,7 @@ function GuidancePanel() {
   )
 }
 
-function ShopByCategory({ selectedCategory, onCategoryClick, onGuideClick, onWhatsAppClick, compact = false }) {
+function ShopByCategory({ selectedCategory, onCategoryClick, onGuideClick, onSupportClick, compact = false }) {
   return (
     <section id="catalogue" className={compact ? '' : 'mx-auto max-w-7xl px-4 py-16'}>
       <div className={compact ? 'mb-4 max-w-3xl sm:mb-5' : 'mb-8 max-w-3xl'}>
@@ -1149,16 +1137,16 @@ function ShopByCategory({ selectedCategory, onCategoryClick, onGuideClick, onWha
                     Recommended for you
                   </span>
                 )}
-                <a
-                  href={whatsappInquiryUrl(category.name)}
+                <button
+                  type="button"
                   onClick={() => {
                     onCategoryClick(category.name)
-                    onWhatsAppClick(`category_card_${category.name}`)
+                    onSupportClick(`category_card_${category.name}`, `I would like a quote for ${category.name}. Please share availability, price guidance and delivery details.`)
                   }}
                   className="mt-auto inline-flex items-center justify-center gap-1.5 rounded-md bg-emerald-700 px-2.5 py-1.5 text-xs font-semibold text-white hover:bg-emerald-800 sm:px-3 sm:py-2.5 sm:text-sm"
                 >
                   Request quote
-                </a>
+                </button>
               </div>
             </article>
           )
@@ -1168,7 +1156,7 @@ function ShopByCategory({ selectedCategory, onCategoryClick, onGuideClick, onWha
   )
 }
 
-function ProductCatalogue({ onProductInterest, onWhatsAppClick }) {
+function ProductCatalogue({ onProductInterest, onSupportClick }) {
   return (
     <section className="border-y border-neutral-200 bg-neutral-50">
       <div className="mx-auto max-w-7xl px-4 py-16">
@@ -1208,16 +1196,16 @@ function ProductCatalogue({ onProductInterest, onWhatsAppClick }) {
                         <ArrowRight className="h-4 w-4 text-neutral-400 group-hover:text-emerald-700" />
                       </div>
                       <p className="mt-1 text-sm text-neutral-600">{item.detail}</p>
-                      <a
-                        href={whatsappInquiryUrl(item.name)}
+                      <button
+                        type="button"
                         onClick={() => {
                           onProductInterest(item.name, group.title)
-                          onWhatsAppClick(`product_card_${item.name}`)
+                          onSupportClick(`product_card_${item.name}`, `I would like a quote for ${item.name}. Please share availability, price guidance and delivery details.`)
                         }}
                         className="mt-auto inline-flex items-center justify-center rounded-md border border-neutral-300 px-3 py-2.5 text-sm font-semibold text-neutral-900 hover:border-emerald-700 hover:text-emerald-800"
                       >
                         Request quote
-                      </a>
+                      </button>
                     </div>
                   </article>
                 ))}
@@ -1397,7 +1385,7 @@ function HelpfulGuides({ onGuideClick }) {
   )
 }
 
-function Contact({ onWhatsAppClick, compact = false }) {
+function Contact({ onSupportClick, compact = false }) {
   const quoteFormRef = useRef(null)
   const quoteStatusRef = useRef(null)
   const quoteStatusTimeoutRef = useRef(null)
@@ -1617,11 +1605,9 @@ function Contact({ onWhatsAppClick, compact = false }) {
             <Button disabled={isQuoteSubmitting} className="disabled:cursor-not-allowed disabled:opacity-70">
               {isQuoteSubmitting ? 'Sending...' : 'Send request'}
             </Button>
-            <a href={whatsappUrl} onClick={() => onWhatsAppClick('contact_form')}>
-              <ButtonSecondary type="button" className="group gap-2 hover:border-[#25D366]/70 hover:shadow-[0_0_16px_rgba(37,211,102,0.16)]">
-                <WhatsAppBrandText>Chat on WhatsApp</WhatsAppBrandText>
-              </ButtonSecondary>
-            </a>
+            <ButtonSecondary type="button" onClick={() => onSupportClick('contact_form')} className="group gap-2 hover:border-[#25D366]/70 hover:shadow-[0_0_16px_rgba(37,211,102,0.16)]">
+              <WhatsAppBrandText>Chat on WhatsApp</WhatsAppBrandText>
+            </ButtonSecondary>
           </div>
         </form>
       </div>
@@ -1629,7 +1615,173 @@ function Contact({ onWhatsAppClick, compact = false }) {
   )
 }
 
-function CategoryLandingPage({ page, onSectionChange, onWhatsAppClick, onQuoteClick }) {
+function SupportModal({ open, source, initialMessage = '', onClose }) {
+  const [form, setForm] = useState(() => ({
+    name: '',
+    phone: '',
+    email: '',
+    message: initialMessage,
+  }))
+  const [errors, setErrors] = useState([])
+  const [status, setStatus] = useState('')
+  const [statusType, setStatusType] = useState('success')
+  const [submitting, setSubmitting] = useState(false)
+
+  useEffect(() => {
+    if (!open) return
+
+    setForm({
+      name: '',
+      phone: '',
+      email: '',
+      message: initialMessage,
+    })
+    setErrors([])
+    setStatus('')
+    setStatusType('success')
+  }, [open, initialMessage])
+
+  useEffect(() => {
+    if (!open) return undefined
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') onClose()
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [open, onClose])
+
+  if (!open) return null
+
+  const updateField = (field) => (event) => {
+    setForm((current) => ({ ...current, [field]: event.target.value }))
+    if (errors.length > 0) setErrors([])
+    if (status) setStatus('')
+  }
+
+  const submitSupportRequest = async (event) => {
+    event.preventDefault()
+    if (submitting) return
+
+    const preparedRequest = quoteRequestService.prepare({
+      ...form,
+      location: '',
+      requestDetails: form.message,
+    })
+
+    if (!preparedRequest.ok) {
+      setErrors(preparedRequest.errors)
+      setStatus('')
+      return
+    }
+
+    setSubmitting(true)
+    setErrors([])
+    setStatus('')
+    analyticsService.track('quote_form_submit_attempt', {
+      clickedElement: source || 'support_modal',
+      productCategory: 'Support request',
+      hasEmail: Boolean(preparedRequest.payload.email),
+      hasPhone: Boolean(preparedRequest.payload.phone),
+    })
+
+    const backendResult = await quoteRequestService.submitBackend({
+      ...preparedRequest.payload,
+      source: 'support_modal',
+    })
+
+    setStatusType(backendResult.ok ? 'success' : 'error')
+    setStatus(backendResult.message)
+
+    if (backendResult.ok) {
+      analyticsService.track('quote_form_submit_success', {
+        clickedElement: source || 'support_modal',
+        leadReference: backendResult.data?.leadReference,
+        requestId: backendResult.data?.requestId,
+      })
+      setForm({ name: '', phone: '', email: '', message: '' })
+      setSubmitting(false)
+      return
+    }
+
+    analyticsService.track('quote_form_submit_error', {
+      clickedElement: source || 'support_modal',
+      reason: backendResult.data?.error || backendResult.message,
+    })
+    setSubmitting(false)
+  }
+
+  return (
+    <div className="fixed inset-0 z-[70] flex items-end justify-center bg-neutral-950/60 px-4 py-4 backdrop-blur-sm sm:items-center" role="dialog" aria-modal="true" aria-labelledby="support-modal-title">
+      <div className="w-full max-w-lg overflow-hidden rounded-xl bg-white text-neutral-950 shadow-2xl">
+        <div className="flex items-start justify-between gap-4 border-b border-neutral-200 px-5 py-4">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wide text-emerald-700">Kleihaus support</p>
+            <h2 id="support-modal-title" className="mt-1 text-xl font-semibold">Need Help?</h2>
+            <p className="mt-1 text-sm leading-6 text-neutral-600">
+              Send your request here. Our team receives it by email and backend notification.
+            </p>
+          </div>
+          <button type="button" onClick={onClose} className="rounded-md p-2 text-neutral-500 hover:bg-neutral-100 hover:text-neutral-950" aria-label="Close support form">
+            <X className="h-5 w-5" />
+          </button>
+        </div>
+
+        <form onSubmit={submitSupportRequest} noValidate autoComplete="off" className="grid gap-4 px-5 py-5">
+          <label className="grid gap-2 text-sm font-medium text-neutral-700">
+            Name
+            <Input name="support-name" autoComplete="off" placeholder="Your name" value={form.name} onChange={updateField('name')} required />
+          </label>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <label className="grid gap-2 text-sm font-medium text-neutral-700">
+              Phone
+              <Input name="support-phone" autoComplete="off" placeholder="Phone number" value={form.phone} onChange={updateField('phone')} />
+            </label>
+            <label className="grid gap-2 text-sm font-medium text-neutral-700">
+              Email
+              <Input name="support-email" type="email" autoComplete="off" placeholder="Email address" value={form.email} onChange={updateField('email')} />
+            </label>
+          </div>
+          <label className="grid gap-2 text-sm font-medium text-neutral-700">
+            Message
+            <Textarea
+              name="support-message"
+              autoComplete="off"
+              placeholder="Tell us what you need help with..."
+              rows={4}
+              value={form.message}
+              onChange={updateField('message')}
+              required
+            />
+          </label>
+
+          {errors.length > 0 && (
+            <div className="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
+              {errors.map((error) => (
+                <p key={error}>{error}</p>
+              ))}
+            </div>
+          )}
+          {status && (
+            <p className={`rounded-md border px-4 py-3 text-sm ${statusType === 'success' ? 'border-emerald-200 bg-emerald-50 text-emerald-800' : 'border-amber-200 bg-amber-50 text-amber-900'}`}>
+              {status}
+            </p>
+          )}
+
+          <div className="flex flex-wrap justify-end gap-3">
+            <ButtonSecondary type="button" onClick={onClose}>Close</ButtonSecondary>
+            <Button type="submit" disabled={submitting} className="disabled:cursor-not-allowed disabled:opacity-70">
+              {submitting ? 'Sending...' : 'Send request'}
+            </Button>
+          </div>
+        </form>
+      </div>
+    </div>
+  )
+}
+
+function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteClick }) {
   return (
     <main className="bg-white">
       <section className="border-b border-emerald-100 bg-stone-50">
@@ -1657,11 +1809,9 @@ function CategoryLandingPage({ page, onSectionChange, onWhatsAppClick, onQuoteCl
                 Request quote
                 <ArrowRight className="h-4 w-4" />
               </Button>
-              <a href={whatsappInquiryUrl(page.category)} onClick={() => onWhatsAppClick(`category_page_${page.path}`)}>
-                <ButtonSecondary type="button" className="group gap-1.5 px-3 py-2 text-xs sm:px-4 sm:py-2.5 sm:text-sm">
-                  <WhatsAppBrandText>WhatsApp inquiry</WhatsAppBrandText>
-                </ButtonSecondary>
-              </a>
+              <ButtonSecondary type="button" onClick={() => onSupportClick(`category_page_${page.path}`, `I would like a quote for ${page.category}. Please share availability, price guidance and delivery details.`)} className="group gap-1.5 px-3 py-2 text-xs sm:px-4 sm:py-2.5 sm:text-sm">
+                <WhatsAppBrandText>WhatsApp inquiry</WhatsAppBrandText>
+              </ButtonSecondary>
             </div>
           </div>
           <div className="grid grid-cols-3 gap-2 sm:gap-3">
@@ -1738,11 +1888,9 @@ function CategoryLandingPage({ page, onSectionChange, onWhatsAppClick, onQuoteCl
             <a href="/#catalogue" className="inline-flex items-center justify-center rounded-md border border-white/30 px-3 py-2 text-xs font-semibold text-white hover:bg-white/10 sm:text-sm">
               Browse catalogue
             </a>
-            <a href={whatsappInquiryUrl(page.category)} onClick={() => onWhatsAppClick(`category_page_bottom_${page.path}`)}>
-              <ButtonSecondary type="button" className="group gap-1.5 px-3 py-2 text-xs sm:text-sm">
-                <WhatsAppBrandText>WhatsApp</WhatsAppBrandText>
-              </ButtonSecondary>
-            </a>
+            <ButtonSecondary type="button" onClick={() => onSupportClick(`category_page_bottom_${page.path}`, `I would like a quote for ${page.category}. Please share availability, price guidance and delivery details.`)} className="group gap-1.5 px-3 py-2 text-xs sm:text-sm">
+              <WhatsAppBrandText>WhatsApp</WhatsAppBrandText>
+            </ButtonSecondary>
           </div>
         </div>
       </section>
@@ -1750,7 +1898,7 @@ function CategoryLandingPage({ page, onSectionChange, onWhatsAppClick, onQuoteCl
   )
 }
 
-function Footer({ onWhatsAppClick }) {
+function Footer({ onSupportClick }) {
   return (
     <footer data-site-footer className="border-t border-white/30 bg-[linear-gradient(180deg,#8B4E1C_0%,#A65F1E_100%)] text-orange-50">
       <div className="mx-auto grid max-w-6xl gap-5 px-4 py-5 sm:gap-8 sm:py-8 lg:py-9 md:grid-cols-3 md:gap-12 lg:gap-16">
@@ -1775,9 +1923,9 @@ function Footer({ onWhatsAppClick }) {
         <div className="w-full md:max-w-max md:justify-self-end">
           <h3 className="text-sm font-semibold uppercase text-white">Contact</h3>
           <div className="mt-2 grid gap-1.5 text-xs text-orange-50/90 sm:gap-2 sm:text-sm">
-            <a href={whatsappUrl} onClick={() => onWhatsAppClick?.('footer_whatsapp')} className="group inline-flex items-center gap-2 text-white hover:text-orange-50">
+            <button type="button" onClick={() => onSupportClick?.('footer_whatsapp')} className="group inline-flex items-center gap-2 text-left text-white hover:text-orange-50">
               <WhatsAppBrandText>WhatsApp</WhatsAppBrandText>
-            </a>
+            </button>
             <a href="mailto:sales@kleihaus.com" className="inline-flex items-center gap-2 hover:text-white">
               <Mail className="h-4 w-4 text-orange-100" />
               sales@kleihaus.com
@@ -1794,13 +1942,13 @@ function Footer({ onWhatsAppClick }) {
         </div>
       </div>
       <div className="border-t border-white/20 px-4 py-3 md:hidden">
-        <a
-          href={whatsappUrl}
-          onClick={() => onWhatsAppClick?.('footer_mobile_cta')}
+        <button
+          type="button"
+          onClick={() => onSupportClick?.('footer_mobile_cta')}
           className="group mx-auto flex max-w-sm items-center justify-center gap-2 rounded-md border border-[#25D366]/40 bg-neutral-950 px-4 py-2.5 text-xs font-semibold shadow-lg shadow-neutral-900/20 transition hover:shadow-[0_0_20px_rgba(37,211,102,0.28)]"
         >
           <WhatsAppBrandText>Request quote on WhatsApp</WhatsAppBrandText>
-        </a>
+        </button>
       </div>
       <div className="border-t border-white/20 bg-[#16A34A]">
         <div className="footer-brand-strip mx-auto flex max-w-7xl items-center justify-center px-4 py-2.5 text-center text-white sm:py-5">
@@ -1814,7 +1962,7 @@ function Footer({ onWhatsAppClick }) {
   )
 }
 
-function MobileStickyWhatsApp({ onWhatsAppClick, hidden = false }) {
+function FloatingSupportButton({ onSupportClick, hidden = false }) {
   const [footerInView, setFooterInView] = useState(false)
 
   useEffect(() => {
@@ -1835,17 +1983,17 @@ function MobileStickyWhatsApp({ onWhatsAppClick, hidden = false }) {
   if (hidden || footerInView) return null
 
   return (
-    <a
-      href={whatsappUrl}
-      onClick={() => onWhatsAppClick('mobile_sticky')}
+    <button
+      type="button"
+      onClick={() => onSupportClick('mobile_sticky')}
       className="group fixed bottom-2.5 left-4 right-4 z-40 inline-flex items-center justify-center gap-2 rounded-md border border-[#25D366]/40 bg-neutral-950 px-4 py-2 text-xs font-semibold shadow-lg shadow-neutral-900/20 transition hover:shadow-[0_0_20px_rgba(37,211,102,0.28)] md:hidden"
     >
-      <WhatsAppBrandText>Request quote on WhatsApp</WhatsAppBrandText>
-    </a>
+      <WhatsAppBrandText>Need Help?</WhatsAppBrandText>
+    </button>
   )
 }
 
-function CompactContentArea({ activePanel, onPanelChange, selectedCategory, onCategoryClick, onGuideClick, onWhatsAppClick, contentRef }) {
+function CompactContentArea({ activePanel, onPanelChange, selectedCategory, onCategoryClick, onGuideClick, onSupportClick, contentRef }) {
   return (
     <section ref={contentRef} className="bg-white">
       <div className="mx-auto max-w-7xl px-4 py-4 sm:py-8 lg:py-10">
@@ -1872,11 +2020,11 @@ function CompactContentArea({ activePanel, onPanelChange, selectedCategory, onCa
 
           <div id={`panel-${activePanel}`} role="tabpanel" className="rounded-lg bg-white p-2.5 sm:p-6">
             {activePanel === 'catalogue' && (
-              <ShopByCategory compact selectedCategory={selectedCategory} onCategoryClick={onCategoryClick} onGuideClick={onGuideClick} onWhatsAppClick={onWhatsAppClick} />
+              <ShopByCategory compact selectedCategory={selectedCategory} onCategoryClick={onCategoryClick} onGuideClick={onGuideClick} onSupportClick={onSupportClick} />
             )}
             {activePanel === 'about' && <AboutPanel />}
             {activePanel === 'guidance' && <GuidancePanel />}
-            {activePanel === 'quote' && <Contact compact onWhatsAppClick={onWhatsAppClick} />}
+            {activePanel === 'quote' && <Contact compact onSupportClick={onSupportClick} />}
           </div>
         </div>
       </div>
@@ -1897,6 +2045,11 @@ export default function App() {
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('Floor Tiles')
   const [eventRevision, setEventRevision] = useState(0)
+  const [supportModal, setSupportModal] = useState({
+    open: false,
+    source: 'support_button',
+    message: '',
+  })
   const contentAreaRef = useRef(null)
   const activeCategoryPage = categoryLandingByPath[currentPath]
 
@@ -1995,8 +2148,13 @@ export default function App() {
     refreshSignals()
   }
 
-  const handleWhatsAppClick = (source) => {
+  const handleSupportClick = (source, message = '') => {
     analyticsService.track('whatsapp_click', { clickedElement: source, projectType, productCategory: selectedCategory })
+    setSupportModal({
+      open: true,
+      source,
+      message,
+    })
     refreshSignals()
   }
 
@@ -2027,32 +2185,38 @@ export default function App() {
         selectedCategory={selectedCategory}
         onSectionChange={handleSectionChange}
         onCategoryClick={handleCategoryClick}
-        onWhatsAppClick={handleWhatsAppClick}
+        onSupportClick={handleSupportClick}
         onContactClick={handleContactClick}
       />
       {activeCategoryPage ? (
         <CategoryLandingPage
           page={activeCategoryPage}
           onSectionChange={handleSectionChange}
-          onWhatsAppClick={handleWhatsAppClick}
+          onSupportClick={handleSupportClick}
           onQuoteClick={handleQuoteClick}
         />
       ) : (
         <>
-          <Hero onWhatsAppClick={handleWhatsAppClick} onQuoteClick={handleQuoteClick} onSectionChange={handleSectionChange} />
+          <Hero onSupportClick={handleSupportClick} onQuoteClick={handleQuoteClick} onSectionChange={handleSectionChange} />
           <CompactContentArea
             activePanel={activePanel}
             onPanelChange={handlePanelChange}
             selectedCategory={selectedCategory}
             onCategoryClick={handleCategoryClick}
             onGuideClick={handleCategoryGuideClick}
-            onWhatsAppClick={handleWhatsAppClick}
+            onSupportClick={handleSupportClick}
             contentRef={contentAreaRef}
           />
         </>
       )}
-      <MobileStickyWhatsApp hidden={activePanel === 'quote'} onWhatsAppClick={handleWhatsAppClick} />
-      <Footer onWhatsAppClick={handleWhatsAppClick} />
+      <FloatingSupportButton hidden={activePanel === 'quote'} onSupportClick={handleSupportClick} />
+      <Footer onSupportClick={handleSupportClick} />
+      <SupportModal
+        open={supportModal.open}
+        source={supportModal.source}
+        initialMessage={supportModal.message}
+        onClose={() => setSupportModal((current) => ({ ...current, open: false }))}
+      />
     </div>
   )
 }

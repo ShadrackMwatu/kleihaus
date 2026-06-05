@@ -8,6 +8,12 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-06-05
 
+### In-Site Support Flow
+
+- Replaced frontend WhatsApp redirect CTAs with in-site support actions so customers stay on Kleihaus.com.
+- Added a floating "Need Help?" support button and modal form that submits through `/api/quote-request`.
+- Kept the quote form as the primary communication channel while preserving backend email delivery, D1 storage and optional WhatsApp Business API staff notifications.
+
 ### WhatsApp Click And Backend Notification Support
 
 - Updated public WhatsApp CTAs to navigate in the same browser tab instead of opening a separate tab or window.
