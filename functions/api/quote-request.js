@@ -755,11 +755,11 @@ const sendCustomerConfirmationEmail = async (env, payload) => {
 const sendWhatsAppBusinessNotification = async (env, payload) => {
   const token = clean(env?.WHATSAPP_ACCESS_TOKEN, 1000)
   const phoneNumberId = clean(env?.WHATSAPP_PHONE_NUMBER_ID, 120)
-  const to = clean(env?.WHATSAPP_TO_NUMBER, 80)
+  const to = clean(env?.WHATSAPP_TO_PHONE || env?.WHATSAPP_TO_NUMBER, 80)
   const missing = [
     !token && 'WHATSAPP_ACCESS_TOKEN',
     !phoneNumberId && 'WHATSAPP_PHONE_NUMBER_ID',
-    !to && 'WHATSAPP_TO_NUMBER',
+    !to && 'WHATSAPP_TO_PHONE',
   ].filter(Boolean)
 
   console.log('WHATSAPP_ATTEMPT', { requestId: payload.id })
@@ -797,6 +797,11 @@ const sendWhatsAppBusinessNotification = async (env, payload) => {
     const result = await response.json().catch(() => ({}))
 
     if (!response.ok) {
+      console.error('WHATSAPP_FAILED', {
+        requestId: payload.id,
+        status: response.status,
+        error: result?.error?.message || 'WhatsApp Business API request failed.',
+      })
       logSafe('WHATSAPP_FAILED', payload, { status: response.status })
       return {
         success: false,
@@ -810,6 +815,7 @@ const sendWhatsAppBusinessNotification = async (env, payload) => {
     console.log('WHATSAPP_SUCCESS', { requestId: payload.id })
     return { success: true, configured: true, sent: true, provider: 'whatsapp_business_api', response: result }
   } catch (error) {
+    console.error('WHATSAPP_FAILED', { requestId: payload.id, error: error.message })
     logSafe('WHATSAPP_FAILED', payload, { error: error.message })
     return { success: false, configured: true, sent: false, error: error.message }
   }
@@ -836,7 +842,7 @@ const getWhatsAppStatusForResponse = (env) => {
   const missing = [
     !clean(env?.WHATSAPP_ACCESS_TOKEN, 1000) && 'WHATSAPP_ACCESS_TOKEN',
     !clean(env?.WHATSAPP_PHONE_NUMBER_ID, 120) && 'WHATSAPP_PHONE_NUMBER_ID',
-    !clean(env?.WHATSAPP_TO_NUMBER, 80) && 'WHATSAPP_TO_NUMBER',
+    !clean(env?.WHATSAPP_TO_PHONE || env?.WHATSAPP_TO_NUMBER, 80) && 'WHATSAPP_TO_PHONE',
   ].filter(Boolean)
 
   if (missing.length > 0) {

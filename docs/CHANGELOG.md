@@ -8,6 +8,12 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-06-05
 
+### WhatsApp Click And Backend Notification Support
+
+- Updated public WhatsApp CTAs to navigate in the same browser tab instead of opening a separate tab or window.
+- Updated backend WhatsApp Business API notification support to use `WHATSAPP_TO_PHONE` with clean skipped status when optional credentials are missing.
+- Kept Resend email delivery as the required success channel; WhatsApp Business API notification failures do not fail quote submission.
+
 ### Responsive Images And SEO Copy Polish
 
 - Added width-specific responsive AVIF and WebP variants for larger public images, including 480w, 768w, 1024w and 1440w variants where useful.

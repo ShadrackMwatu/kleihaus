@@ -757,14 +757,14 @@ function Header({ projectType, searchQuery, setSearchQuery, onSearch, activeSect
         </nav>
 
         <div className="hidden items-center justify-end lg:flex">
-          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" onClick={() => onWhatsAppClick('header')}>
+          <a href={whatsappUrl} onClick={() => onWhatsAppClick('header')}>
             <Button className="group gap-2 bg-neutral-950 px-3.5 hover:border-[#25D366]/60 hover:bg-neutral-900 hover:shadow-[0_0_18px_rgba(37,211,102,0.22)]">
               <WhatsAppBrandText />
             </Button>
           </a>
         </div>
 
-        <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="lg:hidden" onClick={() => onWhatsAppClick('mobile_header')}>
+        <a href={whatsappUrl} className="lg:hidden" onClick={() => onWhatsAppClick('mobile_header')}>
           <Button className="group gap-1.5 bg-neutral-950 px-3 py-2 text-xs hover:border-[#25D366]/60 hover:bg-neutral-900 hover:shadow-[0_0_16px_rgba(37,211,102,0.22)]">
             <WhatsAppBrandText />
           </Button>
@@ -917,7 +917,7 @@ function Hero({ onWhatsAppClick, onQuoteClick, onSectionChange }) {
               >
                 Request quote
               </ButtonSecondary>
-              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" onClick={() => onWhatsAppClick('hero_whatsapp')}>
+              <a href={whatsappUrl} onClick={() => onWhatsAppClick('hero_whatsapp')}>
                 <ButtonSecondary className="group gap-1.5 border-white/40 bg-white/10 px-2.5 py-1.5 text-xs text-white hover:bg-white/20 sm:gap-2 sm:px-4 sm:py-2.5 sm:text-sm">
                   <WhatsAppBrandText>WhatsApp inquiry</WhatsAppBrandText>
                 </ButtonSecondary>
@@ -1151,8 +1151,6 @@ function ShopByCategory({ selectedCategory, onCategoryClick, onGuideClick, onWha
                 )}
                 <a
                   href={whatsappInquiryUrl(category.name)}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   onClick={() => {
                     onCategoryClick(category.name)
                     onWhatsAppClick(`category_card_${category.name}`)
@@ -1212,8 +1210,6 @@ function ProductCatalogue({ onProductInterest, onWhatsAppClick }) {
                       <p className="mt-1 text-sm text-neutral-600">{item.detail}</p>
                       <a
                         href={whatsappInquiryUrl(item.name)}
-                        target="_blank"
-                        rel="noopener noreferrer"
                         onClick={() => {
                           onProductInterest(item.name, group.title)
                           onWhatsAppClick(`product_card_${item.name}`)
@@ -1621,7 +1617,7 @@ function Contact({ onWhatsAppClick, compact = false }) {
             <Button disabled={isQuoteSubmitting} className="disabled:cursor-not-allowed disabled:opacity-70">
               {isQuoteSubmitting ? 'Sending...' : 'Send request'}
             </Button>
-            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" onClick={() => onWhatsAppClick('contact_form')}>
+            <a href={whatsappUrl} onClick={() => onWhatsAppClick('contact_form')}>
               <ButtonSecondary type="button" className="group gap-2 hover:border-[#25D366]/70 hover:shadow-[0_0_16px_rgba(37,211,102,0.16)]">
                 <WhatsAppBrandText>Chat on WhatsApp</WhatsAppBrandText>
               </ButtonSecondary>
@@ -1661,7 +1657,7 @@ function CategoryLandingPage({ page, onSectionChange, onWhatsAppClick, onQuoteCl
                 Request quote
                 <ArrowRight className="h-4 w-4" />
               </Button>
-              <a href={whatsappInquiryUrl(page.category)} target="_blank" rel="noopener noreferrer" onClick={() => onWhatsAppClick(`category_page_${page.path}`)}>
+              <a href={whatsappInquiryUrl(page.category)} onClick={() => onWhatsAppClick(`category_page_${page.path}`)}>
                 <ButtonSecondary type="button" className="group gap-1.5 px-3 py-2 text-xs sm:px-4 sm:py-2.5 sm:text-sm">
                   <WhatsAppBrandText>WhatsApp inquiry</WhatsAppBrandText>
                 </ButtonSecondary>
@@ -1742,7 +1738,7 @@ function CategoryLandingPage({ page, onSectionChange, onWhatsAppClick, onQuoteCl
             <a href="/#catalogue" className="inline-flex items-center justify-center rounded-md border border-white/30 px-3 py-2 text-xs font-semibold text-white hover:bg-white/10 sm:text-sm">
               Browse catalogue
             </a>
-            <a href={whatsappInquiryUrl(page.category)} target="_blank" rel="noopener noreferrer" onClick={() => onWhatsAppClick(`category_page_bottom_${page.path}`)}>
+            <a href={whatsappInquiryUrl(page.category)} onClick={() => onWhatsAppClick(`category_page_bottom_${page.path}`)}>
               <ButtonSecondary type="button" className="group gap-1.5 px-3 py-2 text-xs sm:text-sm">
                 <WhatsAppBrandText>WhatsApp</WhatsAppBrandText>
               </ButtonSecondary>
@@ -1779,7 +1775,7 @@ function Footer({ onWhatsAppClick }) {
         <div className="w-full md:max-w-max md:justify-self-end">
           <h3 className="text-sm font-semibold uppercase text-white">Contact</h3>
           <div className="mt-2 grid gap-1.5 text-xs text-orange-50/90 sm:gap-2 sm:text-sm">
-            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 text-white hover:text-orange-50">
+            <a href={whatsappUrl} onClick={() => onWhatsAppClick?.('footer_whatsapp')} className="group inline-flex items-center gap-2 text-white hover:text-orange-50">
               <WhatsAppBrandText>WhatsApp</WhatsAppBrandText>
             </a>
             <a href="mailto:sales@kleihaus.com" className="inline-flex items-center gap-2 hover:text-white">
@@ -1800,8 +1796,6 @@ function Footer({ onWhatsAppClick }) {
       <div className="border-t border-white/20 px-4 py-3 md:hidden">
         <a
           href={whatsappUrl}
-          target="_blank"
-          rel="noopener noreferrer"
           onClick={() => onWhatsAppClick?.('footer_mobile_cta')}
           className="group mx-auto flex max-w-sm items-center justify-center gap-2 rounded-md border border-[#25D366]/40 bg-neutral-950 px-4 py-2.5 text-xs font-semibold shadow-lg shadow-neutral-900/20 transition hover:shadow-[0_0_20px_rgba(37,211,102,0.28)]"
         >
@@ -1843,8 +1837,6 @@ function MobileStickyWhatsApp({ onWhatsAppClick, hidden = false }) {
   return (
     <a
       href={whatsappUrl}
-      target="_blank"
-      rel="noopener noreferrer"
       onClick={() => onWhatsAppClick('mobile_sticky')}
       className="group fixed bottom-2.5 left-4 right-4 z-40 inline-flex items-center justify-center gap-2 rounded-md border border-[#25D366]/40 bg-neutral-950 px-4 py-2 text-xs font-semibold shadow-lg shadow-neutral-900/20 transition hover:shadow-[0_0_20px_rgba(37,211,102,0.28)] md:hidden"
     >

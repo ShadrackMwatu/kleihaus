@@ -129,14 +129,14 @@ Backend-only values must be configured in Cloudflare Worker settings, not expose
 ```env
 QUOTE_EMAIL_FROM=Kleihaus Ceramics <sales@kleihaus.com>
 SALES_EMAIL=sales@kleihaus.com
-WHATSAPP_TO_NUMBER=254748827166
+WHATSAPP_TO_PHONE=254748827166
 RESEND_API_KEY=
 
 WHATSAPP_ACCESS_TOKEN=
 WHATSAPP_PHONE_NUMBER_ID=
 ```
 
-`WHATSAPP_ACCESS_TOKEN` and `WHATSAPP_PHONE_NUMBER_ID` are optional. If absent, the backend skips WhatsApp Business API notification gracefully while preserving quote submission and email delivery.
+`WHATSAPP_ACCESS_TOKEN`, `WHATSAPP_PHONE_NUMBER_ID`, and `WHATSAPP_TO_PHONE` are optional for WhatsApp Business API notifications. If absent, the backend skips WhatsApp notification gracefully while preserving quote submission and email delivery.
 
 ## Quote and WhatsApp Flow
 

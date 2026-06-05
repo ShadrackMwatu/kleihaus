@@ -107,7 +107,7 @@ Required Worker values:
 
 - `QUOTE_EMAIL_FROM`
 - `SALES_EMAIL`
-- `WHATSAPP_TO_NUMBER`
+- `WHATSAPP_TO_PHONE`
 - `RESEND_API_KEY` as a secret
 - D1 binding `DB`
 - Assets binding `ASSETS`
