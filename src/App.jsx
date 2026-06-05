@@ -1076,7 +1076,7 @@ function GuidancePanel() {
   )
 }
 
-function ShopByCategory({ selectedCategory, onCategoryClick, onWhatsAppClick, compact = false }) {
+function ShopByCategory({ selectedCategory, onCategoryClick, onGuideClick, onWhatsAppClick, compact = false }) {
   return (
     <section id="catalogue" className={compact ? '' : 'mx-auto max-w-7xl px-4 py-16'}>
       <div className={compact ? 'mb-4 max-w-3xl sm:mb-5' : 'mb-8 max-w-3xl'}>
@@ -1133,11 +1133,12 @@ function ShopByCategory({ selectedCategory, onCategoryClick, onWhatsAppClick, co
                   href={guideTarget}
                   aria-label={`View ${category.name} guide`}
                   className="group/link mt-2 inline-flex w-fit items-center gap-1 text-[10px] font-semibold uppercase tracking-wide text-emerald-700 underline decoration-emerald-200 underline-offset-4 transition hover:text-emerald-900 hover:decoration-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:text-xs"
-                  onClick={() => {
+                  onClick={(event) => {
                     analyticsService.track('category_click', {
                       productCategory: category.name,
                       clickedElement: `category_guide_${guideTarget}`,
                     })
+                    onGuideClick(event, guideTarget, category.name)
                   }}
                 >
                   View guide
@@ -1852,7 +1853,7 @@ function MobileStickyWhatsApp({ onWhatsAppClick, hidden = false }) {
   )
 }
 
-function CompactContentArea({ activePanel, onPanelChange, selectedCategory, onCategoryClick, onWhatsAppClick, contentRef }) {
+function CompactContentArea({ activePanel, onPanelChange, selectedCategory, onCategoryClick, onGuideClick, onWhatsAppClick, contentRef }) {
   return (
     <section ref={contentRef} className="bg-white">
       <div className="mx-auto max-w-7xl px-4 py-4 sm:py-8 lg:py-10">
@@ -1879,7 +1880,7 @@ function CompactContentArea({ activePanel, onPanelChange, selectedCategory, onCa
 
           <div id={`panel-${activePanel}`} role="tabpanel" className="rounded-lg bg-white p-2.5 sm:p-6">
             {activePanel === 'catalogue' && (
-              <ShopByCategory compact selectedCategory={selectedCategory} onCategoryClick={onCategoryClick} onWhatsAppClick={onWhatsAppClick} />
+              <ShopByCategory compact selectedCategory={selectedCategory} onCategoryClick={onCategoryClick} onGuideClick={onGuideClick} onWhatsAppClick={onWhatsAppClick} />
             )}
             {activePanel === 'about' && <AboutPanel />}
             {activePanel === 'guidance' && <GuidancePanel />}
@@ -1966,6 +1967,28 @@ export default function App() {
     refreshSignals()
   }
 
+  const handleCategoryGuideClick = (event, guideTarget, category) => {
+    if (!guideTarget) return
+
+    event.preventDefault()
+    setSelectedCategory(category)
+
+    if (guideTarget.startsWith('/#')) {
+      handleSectionChange(guideTarget.slice(2))
+      return
+    }
+
+    window.history.pushState({}, '', guideTarget)
+    setCurrentPath(normalizePath(guideTarget))
+    setActiveSection('catalogue')
+    setActivePanel('catalogue')
+    refreshSignals()
+    window.scrollTo({
+      top: 0,
+      behavior: window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+    })
+  }
+
   const handlePanelChange = (panel) => {
     navigateHome()
     setActivePanel(panel)
@@ -2030,6 +2053,7 @@ export default function App() {
             onPanelChange={handlePanelChange}
             selectedCategory={selectedCategory}
             onCategoryClick={handleCategoryClick}
+            onGuideClick={handleCategoryGuideClick}
             onWhatsAppClick={handleWhatsAppClick}
             contentRef={contentAreaRef}
           />
