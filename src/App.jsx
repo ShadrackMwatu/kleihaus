@@ -965,16 +965,16 @@ function AboutPanel() {
           The team supports retail and project quotation requests across Nairobi, Machakos, Makueni and wider Kenya where practical.
         </p>
       </div>
-      <div className="grid gap-3 sm:grid-cols-2">
+      <div className="grid gap-2.5 sm:grid-cols-2 sm:gap-3">
         {aboutSupportPoints.map((point) => {
           const Icon = point.icon
           return (
-            <article key={point.title} className="rounded-lg border border-neutral-200 bg-white p-4 shadow-sm">
-              <div className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-emerald-50 text-emerald-800">
-                <Icon className="h-5 w-5" />
+            <article key={point.title} className="rounded-lg border border-neutral-200 bg-white p-3 shadow-sm sm:p-4">
+              <div className="inline-flex h-9 w-9 items-center justify-center rounded-md bg-emerald-50 text-emerald-800 sm:h-10 sm:w-10">
+                <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
               </div>
-              <h3 className="mt-3 text-sm font-semibold text-neutral-950">{point.title}</h3>
-              <p className="mt-1 text-sm leading-6 text-neutral-600">{point.text}</p>
+              <h3 className="mt-2 text-sm font-semibold leading-snug text-neutral-950 sm:mt-3">{point.title}</h3>
+              <p className="mt-1 text-xs leading-5 text-neutral-600 sm:text-sm sm:leading-6">{point.text}</p>
             </article>
           )
         })}
@@ -993,16 +993,16 @@ function GuidancePanel() {
           Keep the request simple and practical: room size, product type, quantity, location and budget range.
         </p>
       </div>
-      <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-4 grid gap-2.5 sm:mt-5 sm:grid-cols-2 sm:gap-3 lg:grid-cols-4">
         {planningTips.map((tip) => {
           const Icon = tip.icon
           return (
-            <article key={tip.title} className="rounded-lg border border-neutral-200 bg-white p-4 shadow-sm">
-              <div className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-emerald-50 text-emerald-800">
-                <Icon className="h-5 w-5" />
+            <article key={tip.title} className="rounded-lg border border-neutral-200 bg-white p-3 shadow-sm sm:p-4">
+              <div className="inline-flex h-9 w-9 items-center justify-center rounded-md bg-emerald-50 text-emerald-800 sm:h-10 sm:w-10">
+                <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
               </div>
-              <h3 className="mt-3 text-sm font-semibold text-neutral-950">{tip.title}</h3>
-              <p className="mt-1 text-sm leading-6 text-neutral-600">{tip.text}</p>
+              <h3 className="mt-2 text-sm font-semibold leading-snug text-neutral-950 sm:mt-3">{tip.title}</h3>
+              <p className="mt-1 text-xs leading-5 text-neutral-600 sm:text-sm sm:leading-6">{tip.text}</p>
             </article>
           )
         })}

@@ -8,6 +8,13 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-06-04
 
+### UI UX Consistency Audit And Polish
+
+- Completed a frontend UI/UX consistency audit covering header, navigation, hero, CTA buttons, trust badges, catalogue cards, segmented panels, quote form, category pages and footer.
+- Tightened compact About and Guidance panel cards on mobile with smaller card padding, icon sizing and body text rhythm.
+- Confirmed the hero CTA set uses a consistent translucent premium style and the footer uses a balanced three-column desktop layout.
+- Preserved `/api/quote-request`, WhatsApp links, structured data, Cloudflare/Worker settings and quote form behavior.
+
 ### Hero Primary CTA Styling
 
 - Matched the hero carousel "Browse catalogue" CTA to the translucent premium styling used by the adjacent Request quote and WhatsApp inquiry buttons.
