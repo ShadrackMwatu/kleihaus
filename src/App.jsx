@@ -34,7 +34,7 @@ const whatsappUrl =
   'https://wa.me/254748827166?text=Hello%20Kleihaus%2C%20I%27d%20like%20to%20share%20my%20room%20size%2C%20tile%20type%2C%20location%20and%20budget%20for%20a%20quote.'
 
 const whatsappInquiryUrl = (subject) =>
-  `https://wa.me/254748827166?text=${encodeURIComponent(`Hello Kleihaus, I would like a quote for ${subject}. Please share availability, price guidance and delivery options.`)}`
+  `https://wa.me/254748827166?text=${encodeURIComponent(`Hello Kleihaus, I would like a quote for ${subject}. Please share availability, price guidance and delivery details.`)}`
 
 const heroSlides = [
   {
@@ -92,7 +92,7 @@ const getEmptyQuoteForm = () => ({
 
 const seoTitle = 'Kleihaus Ceramics | Tiles, Sanitaryware, Paints & Building Materials Kenya'
 const seoDescription =
-  'Kleihaus Ceramics supplies tiles, sanitaryware, paints, adhesives and finishing materials for homes, projects and developments across Kenya.'
+  'Kleihaus Ceramics is supplying tiles, sanitaryware, paints, adhesives, grout and finishing materials for homes, projects and developments across Kenya.'
 const canonicalUrl = 'https://www.kleihaus.com/'
 
 const navItems = [
@@ -232,11 +232,11 @@ const categoryLandingPages = [
     path: '/floor-tiles',
     category: 'Floor Tiles',
     title: 'Floor Tiles Kenya | Kleihaus Ceramics',
-    description: 'Browse floor tile ideas for homes, shops and projects in Kenya. Request a Kleihaus quote based on quantity, location and project needs.',
+    description: 'Browse floor tile ideas for homes, shops and projects in Kenya. Request a Kleihaus quote based on quantity, location and project details.',
     eyebrow: 'Floor tile quotes',
     h1: 'Floor tiles for homes, shops and projects in Kenya',
     intro:
-      'Kleihaus helps customers compare floor tile finishes for living rooms, kitchens, shops, offices and rental projects. Share your room size, preferred finish, quantity estimate and delivery location for practical quote support.',
+      'Kleihaus is helping customers compare floor tile finishes for living rooms, kitchens, shops, offices and rental projects. Share room size, preferred finish, quantity estimate and delivery location for practical quote support.',
     notes: ['Living rooms and kitchens', 'Retail and office floors', 'Rental units and project sites'],
     images: [
       { src: '/images/tiles-floor.jpg', alt: 'Polished floor tiles for Kenyan home and project interiors', label: 'Polished indoor floors' },
@@ -249,11 +249,11 @@ const categoryLandingPages = [
     path: '/wall-tiles',
     category: 'Wall Tiles',
     title: 'Wall Tiles Kenya | Kitchen & Interior Wall Tiles | Kleihaus',
-    description: 'Explore wall tile options for kitchens, bathrooms and feature walls. Request Kleihaus quote guidance for availability, quantity and delivery.',
+    description: 'Explore wall tile options for kitchens, bathrooms and feature walls. Request Kleihaus quote guidance for availability, quantity and delivery details.',
     eyebrow: 'Wall tile quotes',
     h1: 'Wall tiles for kitchens, bathrooms and feature interiors',
     intro:
-      'Wall tiles can lift kitchens, bathrooms and feature areas while keeping surfaces easy to clean. Kleihaus can help match colors, textures and quantities for retail or project quotations.',
+      'Wall tiles lift kitchens, bathrooms and feature areas while keeping surfaces easy to clean. Kleihaus is helping customers match colors, textures and quantities for retail or project quotations.',
     notes: ['Kitchen splashbacks', 'Bathroom walls', 'Decor and feature surfaces'],
     images: [
       { src: '/images/tiles-wall.jpg', alt: 'Kitchen wall tiles and splashback finishes supplied by Kleihaus', label: 'Kitchen wall tiles' },
@@ -322,7 +322,7 @@ const categoryLandingPages = [
     eyebrow: 'Installation material quotes',
     h1: 'Tile adhesives, grout and installation essentials',
     intro:
-      'Good tile performance depends on the right adhesive, grout and finishing accessories for the tile type, surface and wet or dry area. Kleihaus can help customers plan installation material requests.',
+      'Good tile performance depends on the right adhesive, grout and finishing accessories for the tile type, surface and wet or dry area. Kleihaus is helping customers plan installation material requests.',
     notes: ['Tile adhesive and grout', 'Trims, spacers and fittings', 'Installer support materials'],
     images: [
       { src: '/images/adhesive.jpg', alt: 'Tile adhesive for floor and wall tile installation', label: 'Tile adhesive' },
@@ -348,7 +348,7 @@ const categoryGuideTargets = {
 
 const serviceBadges = [
   { title: 'Reliable supply support', text: 'Curated finishing materials from tile, sanitaryware, paint and installation categories.', icon: ShieldCheck },
-  { title: 'Delivery coordination', text: 'Support for deliveries to homes, sites and developments across key Kenyan service areas.', icon: Truck },
+  { title: 'Delivery coordination', text: 'Delivery planning support for homes, sites and developments across key Kenyan service areas.', icon: Truck },
   { title: 'Installation guidance', text: 'Practical help with adhesives, grout, tile laying choices and finishing details.', icon: Wrench },
   { title: 'WhatsApp quote support', text: 'Fast response support for retail requests, project quotations and material matching.', icon: ClipboardList },
 ]
@@ -368,7 +368,7 @@ const aboutSupportPoints = [
   },
   {
     title: 'Delivery coordination',
-    text: 'Practical delivery guidance for Nairobi, Machakos, Makueni and wider Kenya where practical.',
+    text: 'Practical delivery guidance for Nairobi, Machakos, Makueni and wider Kenya service requests.',
     icon: Truck,
   },
   {
@@ -387,27 +387,27 @@ const faqItems = [
   {
     question: 'How do I choose the right tiles for my project?',
     answer:
-      'Consider the room, surface finish, slip resistance, cleaning needs and budget. Kleihaus can help match floor tiles, wall tiles, bathroom tiles and outdoor tiles to the way the space will be used.',
+      'Consider the room, surface finish, slip resistance, cleaning needs and budget. Kleihaus helps match floor tiles, wall tiles, bathroom tiles and outdoor tiles to the way the space will be used.',
   },
   {
     question: 'Can Kleihaus help me choose tile adhesive and grout?',
     answer:
-      'Yes. Adhesive and grout should match the tile type, area of use and expected moisture or foot traffic. Kleihaus can guide practical combinations for stronger installations.',
+      'Yes. Adhesive and grout should match the tile type, area of use and expected moisture or foot traffic. Kleihaus guides practical combinations for stronger installations.',
   },
   {
     question: 'Does Kleihaus support delivery and project quotations?',
     answer:
-      'Kleihaus supports retail and project quotation requests. Share your room size, product type, delivery location and budget so the team can respond with useful guidance.',
+      'Kleihaus supports retail and project quotation requests. Share room size, product type, delivery location and budget so the team responds with useful guidance.',
   },
   {
     question: 'Can I request sanitaryware guidance?',
     answer:
-      'Yes. Kleihaus can help customers compare basins, toilets, taps, mixers, showers and accessories for modern bathroom finishes.',
+      'Yes. Kleihaus helps customers compare basins, toilets, taps, mixers, showers and accessories for modern bathroom finishes.',
   },
   {
     question: 'What information should I send on WhatsApp?',
     answer:
-      'Send the room size, preferred tile or finish, delivery location, quantity estimate and budget range. Photos or inspiration references can also help.',
+      'Send the room size, preferred tile or finish, delivery location, quantity estimate and budget range. Photos or inspiration references also support better matching.',
   },
 ]
 
@@ -429,7 +429,7 @@ const planningTips = [
   },
   {
     title: 'Share location and budget',
-    text: 'Add delivery location and budget range so the quote can be useful from the first reply.',
+    text: 'Add delivery location and budget range so the first reply is more useful.',
     icon: MapPin,
   },
 ]
@@ -566,13 +566,53 @@ const Textarea = (props) => (
   />
 )
 
-const imageVariant = (src, extension) => src.replace(/\.(jpe?g|png)$/i, `.${extension}`)
+const responsiveImageWidths = {
+  '/images/adhesive.jpg': [480, 768],
+  '/images/bathroom-blue-1.jpg': [480, 768, 1024],
+  '/images/grout.jpg': [480, 768],
+  '/images/kitchen.jpg': [480, 768],
+  '/images/kleihaus-logo.jpg': [96, 192],
+  '/images/kleihaus-structure.jpg': [480, 768, 1024, 1440],
+  '/images/paint-exterior.jpg': [480, 768],
+  '/images/paint-floor.jpg': [480, 768],
+  '/images/paint-interior.jpg': [480, 768],
+  '/images/paint-roof.jpg': [480, 768],
+  '/images/placeholder.jpg': [480],
+  '/images/sanitary-accessories.jpg': [480, 768],
+  '/images/sanitary-basins.jpg': [480],
+  '/images/sanitary-baths.jpg': [480, 768],
+  '/images/sanitary-showers.jpg': [480, 768],
+  '/images/sanitary-taps.jpg': [480],
+  '/images/sanitary-toilets.jpg': [480],
+  '/images/shower-rail-1.jpg': [480, 768, 1024, 1440],
+  '/images/sink-accessories.jpg': [480, 768, 1024, 1440],
+  '/images/sink-gold-1.png': [480, 768, 1024],
+  '/images/sinks.jpg': [480],
+  '/images/taps-display-1.jpg': [480, 768],
+  '/images/tile-fittings.jpg': [480, 768],
+  '/images/tile-tools.jpg': [480, 768],
+  '/images/tiler-service.jpg': [480, 768],
+  '/images/tiles-floor-2.jpg': [480],
+  '/images/tiles-floor.jpg': [480],
+  '/images/tiles-gallery-1.jpg': [480],
+  '/images/tiles-wall-2.jpg': [480],
+  '/images/tiles-wall.jpg': [480],
+}
 
-function OptimizedImage({ src, alt, className = '', pictureClassName = 'contents', ...props }) {
+const imageVariant = (src, extension, width) =>
+  src.replace(/\.(jpe?g|png)$/i, width ? `-${width}.${extension}` : `.${extension}`)
+
+const imageSrcSet = (src, extension) => {
+  const widths = responsiveImageWidths[src]
+  if (!widths) return imageVariant(src, extension)
+  return widths.map((width) => `${imageVariant(src, extension, width)} ${width}w`).join(', ')
+}
+
+function OptimizedImage({ src, alt, className = '', pictureClassName = 'contents', sizes = '100vw', ...props }) {
   return (
     <picture className={pictureClassName}>
-      <source srcSet={imageVariant(src, 'avif')} type="image/avif" />
-      <source srcSet={imageVariant(src, 'webp')} type="image/webp" />
+      <source srcSet={imageSrcSet(src, 'avif')} sizes={sizes} type="image/avif" />
+      <source srcSet={imageSrcSet(src, 'webp')} sizes={sizes} type="image/webp" />
       <img src={src} alt={alt} className={className} {...props} />
     </picture>
   )
@@ -584,6 +624,7 @@ function Logo({ compact = false }) {
       <OptimizedImage
         src="/images/kleihaus-logo.jpg"
         alt="Kleihaus Ceramics"
+        sizes={compact ? '36px' : '44px'}
         loading="eager"
         decoding="async"
         className={`${compact ? 'h-9 w-9' : 'h-11 w-11'} rounded-md border border-neutral-200 object-contain`}
@@ -842,6 +883,7 @@ function Hero({ onWhatsAppClick, onQuoteClick, onSectionChange }) {
                   key={slide.image}
                   src={slide.image}
                   alt={slide.alt}
+                  sizes="100vw"
                   loading={index === 0 ? 'eager' : 'lazy'}
                   decoding="async"
                   aria-hidden={!isActive}
@@ -945,7 +987,7 @@ function AboutSection() {
             Kleihaus Ceramics supplies tiles, sanitaryware, paints, adhesives, grout and finishing materials for customers planning durable, well-matched spaces across Kenya.
           </p>
           <p className="mt-3 text-sm leading-7 text-neutral-600">
-            The team supports retail requests and project quotations in Nairobi, Machakos, Makueni and wider Kenya where practical, helping customers compare product types, quantities, delivery needs and installation choices before they buy.
+            The team supports retail requests and project quotations in Nairobi, Machakos, Makueni and wider Kenya service areas, helping customers compare product types, quantities, delivery needs and installation choices before they buy.
           </p>
           <div className="mt-6 flex flex-wrap gap-2 text-xs font-semibold text-emerald-800">
             {['Tiles', 'Sanitaryware', 'Paints', 'Adhesives', 'Grout', 'Finishing materials'].map((item) => (
@@ -985,7 +1027,7 @@ function AboutPanel() {
           Kleihaus supplies tiles, sanitaryware, paints, adhesives, grout and finishing materials for customers planning durable, coordinated spaces.
         </p>
         <p className="mt-3 text-sm leading-7 text-neutral-600">
-          The team supports retail and project quotation requests across Nairobi, Machakos, Makueni and wider Kenya where practical.
+          The team supports retail and project quotation requests across Nairobi, Machakos, Makueni and wider Kenya service areas.
         </p>
       </div>
       <div className="grid gap-2.5 sm:grid-cols-2 sm:gap-3">
@@ -1067,6 +1109,7 @@ function ShopByCategory({ selectedCategory, onCategoryClick, onWhatsAppClick, co
                   <OptimizedImage
                     src={category.img}
                     alt={`${category.name} supplied by Kleihaus Ceramics in Kenya`}
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                     loading="lazy"
                     decoding="async"
                     className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
@@ -1134,7 +1177,7 @@ function ProductCatalogue({ onProductInterest, onWhatsAppClick }) {
           <p className="text-sm font-semibold uppercase text-emerald-700">Featured highlights</p>
           <h2 className="mt-2 text-3xl font-semibold text-neutral-950">Popular finishes to quote</h2>
           <p className="mt-2 max-w-2xl text-sm leading-6 text-neutral-600">
-            A concise look at tile, sanitaryware, paint and installation essentials Kleihaus can help source for retail or project needs.
+            A concise look at tile, sanitaryware, paint and installation essentials Kleihaus is sourcing for retail and project needs.
           </p>
         </div>
         <div className="space-y-12">
@@ -1155,6 +1198,7 @@ function ProductCatalogue({ onProductInterest, onWhatsAppClick }) {
                     <OptimizedImage
                       src={item.img}
                       alt={`${item.name} from Kleihaus Ceramics catalogue`}
+                      sizes="(max-width: 768px) 100vw, 33vw"
                       loading="lazy"
                       decoding="async"
                       className="aspect-[5/4] w-full object-cover transition duration-300 group-hover:scale-105"
@@ -1214,7 +1258,7 @@ function QuantityEstimator() {
           <p className="text-sm font-semibold uppercase text-emerald-700">Quote helper</p>
           <h2 className="mt-2 text-3xl font-semibold text-neutral-950">Estimate tiles before you request a quote</h2>
           <p className="mt-3 text-sm leading-6 text-neutral-600">
-            Enter your area and tile size for a quick planning estimate. Final quantities can be confirmed when you share your project details.
+            Enter your area and tile size for a quick planning estimate. Final quantities are confirmed when you share project details.
           </p>
           <div className="mt-5 rounded-lg border border-emerald-100 bg-emerald-50 p-4">
             <p className="text-sm font-semibold text-emerald-900">For a faster quote, include:</p>
@@ -1520,7 +1564,7 @@ function Contact({ onWhatsAppClick, compact = false }) {
         >
           <div className="mb-5">
             <h3 className="text-lg font-semibold">Tell us what you need</h3>
-            <p className="mt-1 text-sm leading-6 text-neutral-600">Include room size, product type, quantity, location and budget range so the quote can be more useful.</p>
+            <p className="mt-1 text-sm leading-6 text-neutral-600">Share room size, product type, quantity, location and budget range for a more useful quote request.</p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             <label className="grid gap-2 text-sm font-medium text-neutral-700">
@@ -1602,7 +1646,7 @@ function CategoryLandingPage({ page, onSectionChange, onWhatsAppClick, onQuoteCl
               {page.intro}
             </p>
             <p className="mt-3 max-w-2xl text-xs leading-5 text-neutral-600 sm:text-sm sm:leading-6">
-              Quotes depend on current availability, quantity, delivery location and project needs. Share measurements, finish preference and budget range so the Kleihaus team can respond with useful guidance.
+              Quotes depend on current availability, quantity, delivery location and project details. Share measurements, finish preference and budget range so the Kleihaus team responds with useful guidance.
             </p>
             <div className="mt-5 flex flex-wrap gap-2">
               <Button
@@ -1629,6 +1673,7 @@ function CategoryLandingPage({ page, onSectionChange, onWhatsAppClick, onQuoteCl
                 key={image.src}
                 src={image.src}
                 alt={image.alt}
+                sizes={index === 0 ? '(max-width: 640px) 66vw, 45vw' : '(max-width: 640px) 33vw, 22vw'}
                 loading={index === 0 ? 'eager' : 'lazy'}
                 decoding="async"
                 className={`h-full min-h-28 w-full rounded-lg object-cover shadow-sm ${index === 0 ? 'col-span-2 row-span-2 aspect-[4/3]' : 'aspect-square'}`}
@@ -1656,7 +1701,7 @@ function CategoryLandingPage({ page, onSectionChange, onWhatsAppClick, onQuoteCl
               ))}
             </ul>
             <div className="mt-5 rounded-lg border border-emerald-100 bg-emerald-50 p-4 text-sm leading-6 text-emerald-950">
-              Include room size, product type, quantity, location and budget range. Photos or inspiration references can help the team match finishes more quickly.
+              Include room size, product type, quantity, location and budget range. Photos or inspiration references help the team match finishes more quickly.
             </div>
           </div>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
@@ -1665,6 +1710,7 @@ function CategoryLandingPage({ page, onSectionChange, onWhatsAppClick, onQuoteCl
                 <OptimizedImage
                   src={image.src}
                   alt={image.alt}
+                  sizes="(max-width: 640px) 50vw, 33vw"
                   loading="lazy"
                   decoding="async"
                   className="aspect-[4/3] w-full object-cover"
@@ -1685,7 +1731,7 @@ function CategoryLandingPage({ page, onSectionChange, onWhatsAppClick, onQuoteCl
           <div>
             <h2 className="text-xl font-semibold sm:text-2xl">Ready to plan a {page.category.toLowerCase()} quote?</h2>
             <p className="mt-2 text-sm leading-6 text-neutral-300">
-              Send the basics now, then the Kleihaus team can guide availability, matching options and next steps.
+              Send the basics now, then the Kleihaus team guides availability, matching options and next steps.
             </p>
           </div>
           <div className="flex shrink-0 flex-wrap gap-2">

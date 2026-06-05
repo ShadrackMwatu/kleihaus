@@ -175,6 +175,7 @@ Current SEO foundations include:
 - Image alt text coverage.
 - Image SEO uses meaningful alt text, lazy loading for non-hero/gallery images and eager loading only for first hero or lead category images.
 - Frontend images are served through AVIF, WebP and original JPG/PNG fallbacks using `<picture>` where rendered by React.
+- Larger public images also have width-specific AVIF and WebP variants such as 480w, 768w, 1024w and 1440w. The React image helper emits `srcSet` and context-aware `sizes` for hero, catalogue card, product card, category gallery and logo contexts.
 - The 33 public JPG/PNG assets total about 7.97 MB in original form, about 3.01 MB as WebP and about 1.82 MB as AVIF.
 - The 28 frontend-referenced JPG/PNG assets total about 5.94 MB in original form, about 2.72 MB as WebP and about 1.66 MB as AVIF.
 - Kenya-focused local SEO mentions for Nairobi, Machakos and Makueni.
@@ -230,6 +231,17 @@ Performance observations:
 - CSS is approximately 32.7 kB before gzip and 6.7 kB after gzip.
 - Hero/logo images load eagerly where needed; non-hero catalogue imagery uses lazy loading.
 - WebP and AVIF variants now exist for frontend-referenced JPG/PNG images; remaining performance work should focus on right-sized responsive image widths for very large source photos.
+- Responsive width variants now cover larger image assets; future performance work should focus on periodic image QA when new catalogue photos are added.
+
+## Responsive Image And SEO Copy Polish - 2026-06-05
+
+| Area | Result | Notes |
+| --- | --- | --- |
+| Responsive images | Pass | Width-specific AVIF/WebP variants were generated for larger public images while preserving originals and full-size modern fallbacks. |
+| Image rendering | Pass | `OptimizedImage` now emits AVIF-first and WebP-second `srcSet` values plus context-aware `sizes`. |
+| Guide links | Pass | Homepage category cards use consistent `View guide` text, premium styling, accessible labels and expected targets. |
+| Content voice | Pass | Visible homepage, FAQ, quote and category-page copy was tightened into active, confident language without overpromising stock, prices or delivery. |
+| Technical SEO | Pass | Sitemap includes category URLs, robots references the sitemap, canonical URLs are preserved and no Product or Offer schema is present. |
 
 ## Known Limitations
 

@@ -8,6 +8,14 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-06-05
 
+### Responsive Images And SEO Copy Polish
+
+- Added width-specific responsive AVIF and WebP variants for larger public images, including 480w, 768w, 1024w and 1440w variants where useful.
+- Updated the optimized image renderer to emit `srcSet` and context-aware `sizes` values for hero, catalogue card, product card, category gallery and logo images.
+- Rechecked homepage catalogue "View guide" links for consistent text, styling, targets and accessible labels.
+- Polished visible homepage, quote, FAQ and category-page copy into a more confident active brand voice while avoiding stock, price, delivery or installation overpromises.
+- Confirmed SEO foundations remain safe: unique category metadata, sitemap coverage, canonical URLs and no Product or Offer JSON-LD.
+
 ### Modern Image Format Optimization
 
 - Generated WebP and AVIF variants for all 33 public JPG/PNG image assets while preserving the original files as fallbacks.
