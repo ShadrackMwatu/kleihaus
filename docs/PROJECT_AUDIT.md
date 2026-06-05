@@ -200,6 +200,32 @@ Consistency notes:
 - Focus states, alt text, button labels and ARIA attributes are present for the main interactive elements.
 - No Product or Offer structured data should be added until real product pages, truthful prices and current availability exist.
 
+## Final Mobile QA And Accessibility Audit - 2026-06-05
+
+Rendered live-site QA was completed at 360px, 390px, 412px and 430px mobile viewport widths.
+
+| Area | Result | Notes |
+| --- | --- | --- |
+| Header | Pass | Logo, WhatsApp CTA and hamburger menu remain visible on narrow screens. |
+| Category chips | Pass | Horizontal chip layout fits mobile without clipped text. |
+| Hero carousel | Pass | Mobile H1 measured at 34px, hero CTAs are visible and carousel controls remain labelled. |
+| Trust and catalogue areas | Pass | Cards remain compact with no large blank support-card gaps detected in the rendered layout. |
+| Segmented panels | Pass | Catalogue, About, Guidance and Quote tabs fit at tested widths. |
+| Quote form | Pass | Existing form controls remain labelled by visible text or placeholders and continue posting to `/api/quote-request`. |
+| Footer | Pass | Bronze footer remains compact; mobile WhatsApp footer CTA sits above the green branding strip. |
+| Green branding strip | Pass | The final footer line remains `© 2026 Kleihaus Ceramics. All Rights Reserved. Inspiring Living`. |
+| Structured data | Pass | Live HTML contains no Product or Offer schema; Organization, LocalBusiness, Store, WebSite, FAQPage and ItemList remain. |
+| Accessibility labels | Fixed | Clickable catalogue category image buttons now include explicit `aria-label` values. |
+
+Lighthouse and axe command-line packages were not available in the local npm cache and were not added to avoid introducing audit-only dependencies. Manual equivalents were completed through rendered DOM checks for heading order, image alt text, accessible control names, focus-visible styling, canonical metadata, schema types, sitemap and robots availability.
+
+Performance observations:
+
+- Production build remains compact for a React/Vite marketing site: main JavaScript is approximately 217 kB before gzip and 65.5 kB after gzip.
+- CSS is approximately 32.7 kB before gzip and 6.7 kB after gzip.
+- Hero/logo images load eagerly where needed; non-hero catalogue imagery uses lazy loading.
+- Future performance work should focus on image format/size optimization, especially WebP/AVIF derivatives for large JPG/PNG assets.
+
 ## Known Limitations
 
 - WhatsApp Business API notification is optional and skipped unless credentials are configured.

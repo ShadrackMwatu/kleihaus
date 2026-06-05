@@ -1035,6 +1035,7 @@ function ShopByCategory({ selectedCategory, onCategoryClick, onWhatsAppClick, co
             >
               <button
                 type="button"
+                aria-label={`View ${category.name} category`}
                 onClick={() => onCategoryClick(category.name)}
                 className="block w-full text-left"
               >

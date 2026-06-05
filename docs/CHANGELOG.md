@@ -6,6 +6,16 @@ Rule: Every future meaningful change must update `docs/CHANGELOG.md` and, where 
 
 Current deployment note: production now uses GitHub `main` -> Cloudflare Workers Builds -> Worker Assets -> Worker `kleihaus` -> `kleihaus.com` and `www.kleihaus.com`. The active quote endpoint is `/api/quote-request`. Older entries that mention Cloudflare Pages or `https://api.kleihaus.com/quote-request` are historical and describe earlier deployment states, not the current production path.
 
+## 2026-06-05
+
+### Final Mobile QA And Accessibility Audit
+
+- Ran real-device-style mobile QA against the live site at 360px, 390px, 412px and 430px viewport widths.
+- Confirmed the hero headline stays at a compact mobile size, hero CTAs remain visible, tabs fit narrow screens, catalogue cards remain compact and the green footer strip remains the final footer element.
+- Confirmed live HTML still contains no Product or Offer JSON-LD and keeps Organization, LocalBusiness, Store, WebSite, FAQPage and ItemList schema.
+- Added accessible labels to clickable catalogue category image buttons so assistive technology receives meaningful button names.
+- Lighthouse and axe CLI packages were not available in the local cache; completed equivalent rendered DOM, SEO and accessibility checks without adding audit dependencies.
+
 ## 2026-06-04
 
 ### UI UX Consistency Audit And Polish
