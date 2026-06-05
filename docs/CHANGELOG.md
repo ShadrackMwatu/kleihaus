@@ -8,6 +8,10 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-06-04
 
+### Hero Primary CTA Styling
+
+- Matched the hero carousel "Browse catalogue" CTA to the translucent premium styling used by the adjacent Request quote and WhatsApp inquiry buttons.
+
 ### Footer Column Alignment
 
 - Adjusted the desktop footer grid so Products aligns left, Services remains centered and Contact aligns right.

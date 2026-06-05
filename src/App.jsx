@@ -838,10 +838,10 @@ function Hero({ onWhatsAppClick, onQuoteClick, onSectionChange }) {
               Browse tiles, sanitaryware, paints, adhesives and grout, then request a clear quote from the Kleihaus team.
             </p>
             <div className="mt-5 flex flex-wrap gap-2 sm:mt-8 sm:gap-3">
-              <Button type="button" onClick={() => onSectionChange('catalogue')} className="gap-1.5 bg-white px-2.5 py-1.5 text-xs text-neutral-950 hover:bg-neutral-100 sm:gap-2 sm:px-4 sm:py-2.5 sm:text-sm">
+              <ButtonSecondary type="button" onClick={() => onSectionChange('catalogue')} className="gap-1.5 border-white/40 bg-white/10 px-2.5 py-1.5 text-xs text-white hover:bg-white/20 sm:gap-2 sm:px-4 sm:py-2.5 sm:text-sm">
                 Browse catalogue
                 <ArrowRight className="h-4 w-4" />
-              </Button>
+              </ButtonSecondary>
               <ButtonSecondary
                 type="button"
                 onClick={() => {
