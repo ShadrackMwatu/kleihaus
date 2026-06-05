@@ -566,10 +566,22 @@ const Textarea = (props) => (
   />
 )
 
+const imageVariant = (src, extension) => src.replace(/\.(jpe?g|png)$/i, `.${extension}`)
+
+function OptimizedImage({ src, alt, className = '', pictureClassName = 'contents', ...props }) {
+  return (
+    <picture className={pictureClassName}>
+      <source srcSet={imageVariant(src, 'avif')} type="image/avif" />
+      <source srcSet={imageVariant(src, 'webp')} type="image/webp" />
+      <img src={src} alt={alt} className={className} {...props} />
+    </picture>
+  )
+}
+
 function Logo({ compact = false }) {
   return (
     <div className="flex items-center gap-3">
-      <img
+      <OptimizedImage
         src="/images/kleihaus-logo.jpg"
         alt="Kleihaus Ceramics"
         loading="eager"
@@ -826,7 +838,7 @@ function Hero({ onWhatsAppClick, onQuoteClick, onSectionChange }) {
               const motionClass = prefersReducedMotion ? '' : isActive ? 'translate-x-0 scale-100' : 'translate-x-8 scale-105'
 
               return (
-                <img
+                <OptimizedImage
                   key={slide.image}
                   src={slide.image}
                   alt={slide.alt}
@@ -1052,7 +1064,7 @@ function ShopByCategory({ selectedCategory, onCategoryClick, onWhatsAppClick, co
                 className="block w-full text-left"
               >
                 <div className="relative aspect-[16/9] overflow-hidden bg-neutral-100 sm:aspect-[4/3]">
-                  <img
+                  <OptimizedImage
                     src={category.img}
                     alt={`${category.name} supplied by Kleihaus Ceramics in Kenya`}
                     loading="lazy"
@@ -1140,7 +1152,7 @@ function ProductCatalogue({ onProductInterest, onWhatsAppClick }) {
                     key={item.name}
                     className="group flex h-full flex-col overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-sm transition hover:border-emerald-700 hover:shadow-md"
                   >
-                    <img
+                    <OptimizedImage
                       src={item.img}
                       alt={`${item.name} from Kleihaus Ceramics catalogue`}
                       loading="lazy"
@@ -1613,7 +1625,7 @@ function CategoryLandingPage({ page, onSectionChange, onWhatsAppClick, onQuoteCl
           </div>
           <div className="grid grid-cols-3 gap-2 sm:gap-3">
             {page.images.slice(0, 3).map((image, index) => (
-              <img
+              <OptimizedImage
                 key={image.src}
                 src={image.src}
                 alt={image.alt}
@@ -1650,7 +1662,7 @@ function CategoryLandingPage({ page, onSectionChange, onWhatsAppClick, onQuoteCl
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
             {page.images.map((image) => (
               <figure key={image.src} className="overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-sm">
-                <img
+                <OptimizedImage
                   src={image.src}
                   alt={image.alt}
                   loading="lazy"

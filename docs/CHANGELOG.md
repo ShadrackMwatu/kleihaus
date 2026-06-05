@@ -8,6 +8,14 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-06-05
 
+### Modern Image Format Optimization
+
+- Generated WebP and AVIF variants for all 33 public JPG/PNG image assets while preserving the original files as fallbacks.
+- Added a reusable optimized image renderer that serves AVIF first, WebP second and the original JPG/PNG fallback through `<picture>`.
+- Preserved eager loading for the logo and first hero/category lead images while keeping non-critical catalogue and gallery images lazy-loaded.
+- Reduced public original image weight from about 7.97 MB to about 3.01 MB for WebP-capable browsers and about 1.82 MB for AVIF-capable browsers.
+- Preserved page layout, hero carousel behavior, catalogue structure, quote flow, WhatsApp links and structured data policy.
+
 ### Catalogue Guide Links And Footer Services Polish
 
 - Added a consistent premium "View guide" link to every homepage catalogue category card, including fallback guide targets for Outdoor Tiles and Installation Support.

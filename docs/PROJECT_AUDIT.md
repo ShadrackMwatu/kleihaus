@@ -174,6 +174,9 @@ Current SEO foundations include:
 - Crawlable category and guide content.
 - Image alt text coverage.
 - Image SEO uses meaningful alt text, lazy loading for non-hero/gallery images and eager loading only for first hero or lead category images.
+- Frontend images are served through AVIF, WebP and original JPG/PNG fallbacks using `<picture>` where rendered by React.
+- The 33 public JPG/PNG assets total about 7.97 MB in original form, about 3.01 MB as WebP and about 1.82 MB as AVIF.
+- The 28 frontend-referenced JPG/PNG assets total about 5.94 MB in original form, about 2.72 MB as WebP and about 1.66 MB as AVIF.
 - Kenya-focused local SEO mentions for Nairobi, Machakos and Makueni.
 - Local SEO guidance for Google Business Profile lives in `docs/LOCAL_SEO_GOOGLE_BUSINESS_PROFILE.md`; profile creation and verification must be completed manually by the business owner.
 
@@ -226,7 +229,7 @@ Performance observations:
 - Production build remains compact for a React/Vite marketing site: main JavaScript is approximately 217 kB before gzip and 65.5 kB after gzip.
 - CSS is approximately 32.7 kB before gzip and 6.7 kB after gzip.
 - Hero/logo images load eagerly where needed; non-hero catalogue imagery uses lazy loading.
-- Future performance work should focus on image format/size optimization, especially WebP/AVIF derivatives for large JPG/PNG assets.
+- WebP and AVIF variants now exist for frontend-referenced JPG/PNG images; remaining performance work should focus on right-sized responsive image widths for very large source photos.
 
 ## Known Limitations
 
