@@ -335,6 +335,17 @@ const categoryLandingPages = [
 
 const categoryLandingByPath = Object.fromEntries(categoryLandingPages.map((page) => [page.path, page]))
 
+const categoryGuideTargets = {
+  'Floor Tiles': '/floor-tiles',
+  'Wall Tiles': '/wall-tiles',
+  'Outdoor Tiles': '/floor-tiles',
+  'Bathroom Tiles': '/bathroom-tiles',
+  Sanitaryware: '/sanitaryware',
+  Paints: '/paints',
+  'Adhesives & Grout': '/adhesives-grout',
+  'Installation Support': '/#contact',
+}
+
 const serviceBadges = [
   { title: 'Reliable supply support', text: 'Curated finishing materials from tile, sanitaryware, paint and installation categories.', icon: ShieldCheck },
   { title: 'Delivery coordination', text: 'Support for deliveries to homes, sites and developments across key Kenyan service areas.', icon: Truck },
@@ -1028,6 +1039,7 @@ function ShopByCategory({ selectedCategory, onCategoryClick, onWhatsAppClick, co
         {categories.map((category) => {
           const Icon = category.icon
           const landingPage = categoryLandingPages.find((page) => page.category === category.name)
+          const guideTarget = landingPage?.path || categoryGuideTargets[category.name] || '/#catalogue'
           return (
             <article
               key={category.name}
@@ -1062,20 +1074,20 @@ function ShopByCategory({ selectedCategory, onCategoryClick, onWhatsAppClick, co
                   <ArrowRight className="h-4 w-4 shrink-0 text-neutral-400 transition group-hover:text-emerald-700" />
                 </div>
                 <p className="mt-1 line-clamp-2 text-[11px] leading-4 text-neutral-600 sm:mt-2 sm:text-sm sm:leading-6">{category.blurb}</p>
-                {landingPage && (
-                  <a
-                    href={landingPage.path}
-                    className="mt-2 inline-flex text-[11px] font-semibold text-emerald-700 hover:text-emerald-900 sm:text-xs"
-                    onClick={() => {
-                      analyticsService.track('category_click', {
-                        productCategory: category.name,
-                        clickedElement: `category_landing_${landingPage.path}`,
-                      })
-                    }}
-                  >
-                    View guide
-                  </a>
-                )}
+                <a
+                  href={guideTarget}
+                  aria-label={`View ${category.name} guide`}
+                  className="group/link mt-2 inline-flex w-fit items-center gap-1 text-[10px] font-semibold uppercase tracking-wide text-emerald-700 underline decoration-emerald-200 underline-offset-4 transition hover:text-emerald-900 hover:decoration-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:text-xs"
+                  onClick={() => {
+                    analyticsService.track('category_click', {
+                      productCategory: category.name,
+                      clickedElement: `category_guide_${guideTarget}`,
+                    })
+                  }}
+                >
+                  View guide
+                  <ArrowRight className="h-3 w-3 transition group-hover/link:translate-x-0.5" />
+                </a>
                 {selectedCategory === category.name && (
                   <span className="mt-2 inline-flex rounded-md bg-emerald-50 px-2 py-1 text-[11px] font-semibold text-emerald-800 sm:mt-3 sm:text-xs">
                     Recommended for you
@@ -1656,20 +1668,6 @@ function CategoryLandingPage({ page, onSectionChange, onWhatsAppClick, onQuoteCl
         </div>
       </section>
 
-      <section className="border-y border-neutral-200 bg-neutral-50">
-        <div className="mx-auto grid max-w-7xl gap-4 px-4 py-7 sm:py-10 md:grid-cols-3">
-          {[
-            'Retail and project quotations',
-            'Availability depends on quantity and supplier stock',
-            'Delivery support for Nairobi, Machakos, Makueni and wider Kenya where practical',
-          ].map((item) => (
-            <div key={item} className="rounded-lg border border-neutral-200 bg-white p-4 text-sm font-semibold leading-6 text-neutral-800 shadow-sm">
-              {item}
-            </div>
-          ))}
-        </div>
-      </section>
-
       <section className="mx-auto max-w-7xl px-4 py-8 sm:py-12">
         <div className="flex flex-col gap-3 rounded-xl bg-neutral-950 p-5 text-white sm:p-7 md:flex-row md:items-center md:justify-between">
           <div>
@@ -1713,7 +1711,7 @@ function Footer({ onWhatsAppClick }) {
         <div className="w-full md:max-w-max md:justify-self-center">
           <h3 className="text-sm font-semibold uppercase text-white">Services</h3>
           <ul className="mt-2 grid gap-0.5 text-xs text-orange-50/90 sm:gap-1.5 sm:text-sm">
-            {['Retail quotes', 'Project quotations', 'Delivery coordination', 'Installation guidance', 'Product matching'].map((item) => (
+            {['Finishing Advisory', 'Delivery', 'Installation'].map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>

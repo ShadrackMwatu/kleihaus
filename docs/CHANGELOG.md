@@ -8,6 +8,13 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-06-05
 
+### Catalogue Guide Links And Footer Services Polish
+
+- Added a consistent premium "View guide" link to every homepage catalogue category card, including fallback guide targets for Outdoor Tiles and Installation Support.
+- Removed the highlighted category-page support statement strip while preserving category content, galleries and quote CTAs.
+- Simplified the footer Services column to Finishing Advisory, Delivery and Installation.
+- Preserved quote submission, WhatsApp links, structured data policy and `/api/quote-request`.
+
 ### Final Mobile QA And Accessibility Audit
 
 - Ran real-device-style mobile QA against the live site at 360px, 390px, 412px and 430px viewport widths.

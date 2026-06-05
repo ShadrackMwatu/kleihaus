@@ -140,6 +140,7 @@ The stale Pages integration must be disconnected from the old account or removed
 - Home area with clear business positioning, premium hero carousel and hero trust badges.
 - Compact segmented content area for Catalogue, About, Guidance and Quote.
 - Catalogue panel with clickable category cards, icons, descriptions and quote CTAs.
+- Catalogue category cards include consistent premium "View guide" links. Dedicated category guides point to their landing pages; Outdoor Tiles points to floor tile guidance and Installation Support points to the contact/quote flow.
 - Category landing pages for `/floor-tiles`, `/wall-tiles`, `/bathroom-tiles`, `/sanitaryware`, `/paints` and `/adhesives-grout`.
 - About panel with Kleihaus positioning, service areas and concise trust/support points.
 - Guidance panel with concise quote-planning tips.
@@ -148,6 +149,7 @@ The stale Pages integration must be disconnected from the old account or removed
 - Mobile footer places the WhatsApp quote CTA above the green branding strip; the green strip remains the final visible footer element.
 - WhatsApp inquiry links with pre-filled messages.
 - Structured footer with balanced Products, Services and Contact columns plus WhatsApp, email, phone, locations and response expectation.
+- Footer Services is intentionally concise: Finishing Advisory, Delivery and Installation.
 
 The public frontend should not display admin dashboards, analytics tables, AI implementation details, weak-signal detection, backend logs or endpoint configuration details.
 
