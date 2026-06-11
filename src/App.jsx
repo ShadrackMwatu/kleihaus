@@ -447,7 +447,7 @@ const ButtonSecondary = ({ className = '', children, ...props }) => (
   </button>
 )
 
-const WhatsAppBrandText = ({ children = 'WhatsApp', iconClassName = 'h-4 w-4' }) => (
+const WhatsAppBrandText = ({ children = 'Need Help?', iconClassName = 'h-4 w-4' }) => (
   <>
     <MessageCircle className={`${iconClassName} text-[#25D366] drop-shadow-[0_0_6px_rgba(37,211,102,0.35)] transition group-hover:text-[#3ee77b]`} />
     <span className="text-[#25D366] transition group-hover:text-[#3ee77b]">{children}</span>
@@ -1615,7 +1615,7 @@ function Contact({ onSupportClick, compact = false }) {
               {isQuoteSubmitting ? 'Sending...' : 'Send request'}
             </Button>
             <ButtonSecondary type="button" onClick={() => onSupportClick('contact_form')} className="group gap-2 hover:border-[#25D366]/70 hover:shadow-[0_0_16px_rgba(37,211,102,0.16)]">
-              <WhatsAppBrandText>Chat on WhatsApp</WhatsAppBrandText>
+              <WhatsAppBrandText>Open support form</WhatsAppBrandText>
             </ButtonSecondary>
           </div>
         </form>
@@ -1819,7 +1819,7 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
                 <ArrowRight className="h-4 w-4" />
               </Button>
               <ButtonSecondary type="button" onClick={() => onSupportClick(`category_page_${page.path}`, `I would like a quote for ${page.category}. Please share availability, price guidance and delivery details.`)} className="group gap-1.5 px-3 py-2 text-xs sm:px-4 sm:py-2.5 sm:text-sm">
-                <WhatsAppBrandText>WhatsApp inquiry</WhatsAppBrandText>
+                <WhatsAppBrandText>Support inquiry</WhatsAppBrandText>
               </ButtonSecondary>
             </div>
           </div>
@@ -1898,7 +1898,7 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
               Browse catalogue
             </a>
             <ButtonSecondary type="button" onClick={() => onSupportClick(`category_page_bottom_${page.path}`, `I would like a quote for ${page.category}. Please share availability, price guidance and delivery details.`)} className="group gap-1.5 px-3 py-2 text-xs sm:text-sm">
-              <WhatsAppBrandText>WhatsApp</WhatsAppBrandText>
+              <WhatsAppBrandText>Need help?</WhatsAppBrandText>
             </ButtonSecondary>
           </div>
         </div>
@@ -1933,7 +1933,7 @@ function Footer({ onSupportClick }) {
           <h3 className="text-sm font-semibold uppercase text-white">Contact</h3>
           <div className="mt-2 grid gap-1.5 text-xs text-orange-50/90 sm:gap-2 sm:text-sm">
             <button type="button" onClick={() => onSupportClick?.('footer_whatsapp')} className="group inline-flex items-center gap-2 text-left text-white hover:text-orange-50">
-              <WhatsAppBrandText>WhatsApp</WhatsAppBrandText>
+              <WhatsAppBrandText>Support</WhatsAppBrandText>
             </button>
             <a href="mailto:sales@kleihaus.com" className="inline-flex items-center gap-2 hover:text-white">
               <Mail className="h-4 w-4 text-orange-100" />
@@ -1956,7 +1956,7 @@ function Footer({ onSupportClick }) {
           onClick={() => onSupportClick?.('footer_mobile_cta')}
           className="group mx-auto flex max-w-sm items-center justify-center gap-2 rounded-md border border-[#25D366]/40 bg-neutral-950 px-4 py-2.5 text-xs font-semibold shadow-lg shadow-neutral-900/20 transition hover:shadow-[0_0_20px_rgba(37,211,102,0.28)]"
         >
-          <WhatsAppBrandText>Request quote on WhatsApp</WhatsAppBrandText>
+          <WhatsAppBrandText>Need Help?</WhatsAppBrandText>
         </button>
       </div>
       <div className="border-t border-white/20 bg-[#16A34A]">

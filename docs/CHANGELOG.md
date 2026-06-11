@@ -6,6 +6,14 @@ Rule: Every future meaningful change must update `docs/CHANGELOG.md` and, where 
 
 Current deployment note: production now uses GitHub `main` -> Cloudflare Workers Builds -> Worker Assets -> Worker `kleihaus` -> `kleihaus.com` and `www.kleihaus.com`. The active quote endpoint is `/api/quote-request`. Older entries that mention Cloudflare Pages or `https://api.kleihaus.com/quote-request` are historical and describe earlier deployment states, not the current production path.
 
+## 2026-06-11
+
+### Backend-Powered Support CTA Labels
+
+- Confirmed frontend support actions no longer redirect customers to `api.whatsapp.com`, `web.whatsapp.com` or `wa.me`.
+- Renamed visible former WhatsApp CTAs to "Need Help?", "Support inquiry", "Support" and "Open support form" so the UI matches the in-site modal flow.
+- Preserved `/api/quote-request` as the shared backend path for quote requests, support modal submissions, email delivery, D1 storage and optional WhatsApp Business API staff notifications.
+
 ## 2026-06-05
 
 ### Trust, Conversion And Local SEO Polish
