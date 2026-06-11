@@ -201,6 +201,14 @@ footer {
   footer {
     padding-bottom: 0;
   }
+
+  .footer-brand-strip {
+    padding-bottom: max(4.5rem, calc(env(safe-area-inset-bottom) + 3.5rem));
+  }
+
+  .mobile-conversion-bar {
+    padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

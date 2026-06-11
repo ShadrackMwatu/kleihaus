@@ -341,10 +341,10 @@ const categoryGuideTargets = {
 }
 
 const serviceBadges = [
-  { title: 'Wholesale & retail', text: 'Quote support for homeowners, shops, contractors and project teams.', icon: Store },
-  { title: 'Sourcing support', text: 'Guidance across tiles, sanitaryware, paints and installation materials.', icon: ShieldCheck },
-  { title: 'Delivery support', text: 'Delivery planning for Nairobi, Machakos, Makueni and wider Kenya requests.', icon: Truck },
-  { title: 'Professional guidance', text: 'Practical help matching tiles with adhesives, grout and finishes.', icon: Wrench },
+  { title: 'Fast Response', text: 'Send a clear quote request and the team can respond with practical next steps.', icon: Sparkles },
+  { title: 'Wholesale & Retail', text: 'Quote support for homeowners, shops, contractors and project teams.', icon: Store },
+  { title: 'Delivery Support', text: 'Delivery planning for Nairobi, Machakos, Makueni and wider Kenya requests.', icon: Truck },
+  { title: 'Professional Guidance', text: 'Practical help matching tiles with adhesives, grout and finishes.', icon: Wrench },
 ]
 
 const heroTrustBadges = [
@@ -380,29 +380,53 @@ const aboutSupportPoints = [
 
 const faqItems = [
   {
-    question: 'How do I choose the right tiles for my project?',
+    question: 'How much do tiles cost in Kenya?',
     answer:
-      'Consider the room, surface finish, slip resistance, cleaning needs and budget. Kleihaus helps match floor tiles, wall tiles, bathroom tiles and outdoor tiles to the way the space will be used.',
+      'Tile prices depend on tile size, finish, quantity, current supplier availability and delivery location. Share room size, preferred tile type and budget range so Kleihaus can prepare useful quote guidance.',
   },
   {
-    question: 'Does Kleihaus help with tile adhesive and grout selection?',
+    question: 'How much does sanitaryware cost?',
     answer:
-      'Yes. Adhesive and grout should match the tile type, area of use and expected moisture or foot traffic. Kleihaus guides practical combinations for stronger installations.',
+      'Sanitaryware prices vary by item, brand, finish and matching accessories. Send the basin, toilet, tap, mixer, shower or bathroom set you need and the team will guide available options.',
   },
   {
-    question: 'Does Kleihaus support delivery and project quotations?',
+    question: 'How much does paint cost for a project?',
     answer:
-      'Kleihaus supports retail and project quotation requests. Share room size, product type, delivery location and budget so the team responds with useful guidance.',
+      'Paint pricing depends on paint type, surface area, finish and number of coats. Share your room size, wall condition, colour direction and location for a more accurate quote conversation.',
   },
   {
-    question: 'Does Kleihaus support sanitaryware guidance?',
+    question: 'Does Kleihaus support delivery?',
     answer:
-      'Yes. Kleihaus helps customers compare basins, toilets, taps, mixers, showers and accessories for modern bathroom finishes.',
+      'Yes. Kleihaus supports delivery coordination for Nairobi, Machakos, Makueni and wider Kenya where practical, depending on order size, location and availability.',
   },
   {
-    question: 'What information should I include in a quote request?',
+    question: 'Does Kleihaus offer installation support?',
     answer:
-      'Share the room size, preferred tile or finish, delivery location, quantity estimate and budget range. Photos or inspiration references also support better matching.',
+      'Kleihaus provides installation guidance and product matching support, including adhesive, grout and accessory recommendations. Share photos, measurements and the surface type for better advice.',
+  },
+]
+
+const projectGalleryItems = [
+  {
+    title: 'Tile finish planning',
+    text: 'Floor and wall tile combinations for homes, shops and project quotation requests.',
+    image: '/images/tiles-gallery-1.jpg',
+    alt: 'Tile finish planning and product matching by Kleihaus Ceramics',
+    label: 'Tiles',
+  },
+  {
+    title: 'Bathroom coordination',
+    text: 'Sanitaryware, bathroom tiles and accessories matched for a cleaner finish.',
+    image: '/images/bathroom-blue-1.jpg',
+    alt: 'Bathroom tiles and sanitaryware coordination by Kleihaus Ceramics',
+    label: 'Bathrooms',
+  },
+  {
+    title: 'Paint and finishing support',
+    text: 'Paints, adhesives, grout and finishing materials selected around project needs.',
+    image: '/images/paint-interior.jpg',
+    alt: 'Interior paint and finishing materials support by Kleihaus Ceramics',
+    label: 'Paints',
   },
 ]
 
@@ -1330,24 +1354,24 @@ function QuantityEstimator() {
 
 function Services() {
   return (
-    <section className="mx-auto max-w-7xl px-4 py-16">
-      <div className="mb-7 max-w-3xl">
-        <p className="text-sm font-semibold uppercase text-emerald-700">Why choose Kleihaus?</p>
-        <h2 className="mt-2 text-3xl font-semibold text-neutral-950">Support for better finishing decisions</h2>
+    <section className="mx-auto max-w-7xl px-4 py-8 sm:py-12">
+      <div className="mb-5 max-w-3xl sm:mb-7">
+        <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Trust and support</p>
+        <h2 className="mt-2 text-2xl font-semibold text-neutral-950 sm:text-3xl">Support for better finishing decisions</h2>
         <p className="mt-2 text-sm leading-6 text-neutral-600">
           Kleihaus focuses on curated finishing materials, project quotation support, delivery coordination and installation guidance across Nairobi, Machakos and Makueni.
         </p>
       </div>
-      <div className="grid gap-4 md:grid-cols-4">
+      <div className="grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-4">
         {serviceBadges.map((service) => {
           const Icon = service.icon
           return (
-            <div key={service.title} className="rounded-md border border-neutral-200 bg-white p-5 shadow-sm">
-              <div className="inline-flex h-11 w-11 items-center justify-center rounded-md bg-emerald-50 text-emerald-800">
-                <Icon className="h-5 w-5" />
+            <div key={service.title} className="rounded-md border border-neutral-200 bg-white p-3 shadow-sm sm:p-5">
+              <div className="inline-flex h-9 w-9 items-center justify-center rounded-md bg-emerald-50 text-emerald-800 sm:h-11 sm:w-11">
+                <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
               </div>
-              <h3 className="mt-4 text-base font-semibold text-neutral-950">{service.title}</h3>
-              <p className="mt-2 text-sm leading-6 text-neutral-600">{service.text}</p>
+              <h3 className="mt-3 text-sm font-semibold text-neutral-950 sm:mt-4 sm:text-base">{service.title}</h3>
+              <p className="mt-1 text-xs leading-5 text-neutral-600 sm:mt-2 sm:text-sm sm:leading-6">{service.text}</p>
             </div>
           )
         })}
@@ -1356,13 +1380,62 @@ function Services() {
   )
 }
 
+function CustomerProjectGallery({ onQuoteClick }) {
+  return (
+    <section className="border-y border-neutral-200 bg-stone-50">
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:py-12">
+        <div className="mb-5 flex flex-col gap-3 sm:mb-7 md:flex-row md:items-end md:justify-between">
+          <div className="max-w-3xl">
+            <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Project inspiration</p>
+            <h2 className="mt-2 text-2xl font-semibold text-neutral-950 sm:text-3xl">Customer project gallery</h2>
+            <p className="mt-2 text-sm leading-6 text-neutral-600">
+              Use existing Kleihaus finish examples to plan tile, sanitaryware, paint and installation material requests.
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={onQuoteClick}
+            className="inline-flex w-fit items-center gap-1.5 rounded-md border border-emerald-700 px-3 py-2 text-xs font-semibold text-emerald-800 transition hover:bg-emerald-50 focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:text-sm"
+          >
+            Request a project quote
+            <ArrowRight className="h-4 w-4" />
+          </button>
+        </div>
+        <div className="grid gap-3 sm:grid-cols-3 sm:gap-4">
+          {projectGalleryItems.map((item) => (
+            <article key={item.title} className="overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-sm">
+              <OptimizedImage
+                src={item.image}
+                alt={item.alt}
+                sizes="(max-width: 640px) 100vw, 33vw"
+                loading="lazy"
+                decoding="async"
+                className="aspect-[16/10] w-full object-cover"
+                onError={(event) => {
+                  event.currentTarget.onerror = null
+                  event.currentTarget.src = '/images/placeholder.jpg'
+                }}
+              />
+              <div className="p-3 sm:p-4">
+                <p className="text-[11px] font-semibold uppercase tracking-wide text-emerald-700">{item.label}</p>
+                <h3 className="mt-1 text-sm font-semibold text-neutral-950 sm:text-base">{item.title}</h3>
+                <p className="mt-1 text-xs leading-5 text-neutral-600 sm:text-sm sm:leading-6">{item.text}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function HelpfulGuides({ onGuideClick }) {
   return (
     <section className="border-y border-neutral-200 bg-neutral-50">
-      <div className="mx-auto max-w-7xl px-4 py-16">
-        <div className="mb-7 max-w-3xl">
-          <p className="text-sm font-semibold uppercase text-emerald-700">Helpful buying guidance</p>
-          <h2 className="mt-2 text-3xl font-semibold text-neutral-950">Planning guides for better material choices</h2>
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:py-12">
+        <div className="mb-5 max-w-3xl sm:mb-7">
+          <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Helpful buying guidance</p>
+          <h2 className="mt-2 text-2xl font-semibold text-neutral-950 sm:text-3xl">Planning guides for better material choices</h2>
           <p className="mt-2 text-sm leading-6 text-neutral-600">
             Use these planning topics to frame your quote request. If you need help now, tap a topic and send the team your room size, product type, quantity, location and budget range.
           </p>
@@ -1381,9 +1454,9 @@ function HelpfulGuides({ onGuideClick }) {
             </a>
           ))}
         </div>
-        <div className="mt-10 grid gap-4 lg:grid-cols-2">
+        <div className="mt-8 grid gap-3 lg:grid-cols-2">
           {faqItems.map((item) => (
-            <article key={item.question} className="rounded-md border border-neutral-200 bg-white p-5 shadow-sm">
+            <article key={item.question} className="rounded-md border border-neutral-200 bg-white p-4 shadow-sm sm:p-5">
               <h3 className="text-base font-semibold text-neutral-950">{item.question}</h3>
               <p className="mt-2 text-sm leading-6 text-neutral-600">{item.answer}</p>
             </article>
@@ -1731,6 +1804,12 @@ function SupportModal({ open, source, initialMessage = '', onClose }) {
             <p className="mt-1 text-sm leading-6 text-neutral-600">
               Send your request here. Our team receives it by email and backend notification.
             </p>
+            <p className="mt-1 text-xs leading-5 text-neutral-500">
+              Prefer calling?{' '}
+              <a href="tel:+254748827166" className="font-semibold text-emerald-700 hover:text-emerald-900">
+                +254 748 827 166
+              </a>
+            </p>
           </div>
           <button type="button" onClick={onClose} className="rounded-md p-2 text-neutral-500 hover:bg-neutral-100 hover:text-neutral-950" aria-label="Close support form">
             <X className="h-5 w-5" />
@@ -1883,6 +1962,24 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
       </section>
 
       <section className="mx-auto max-w-7xl px-4 py-8 sm:py-12">
+        <div className="mb-6 rounded-xl border border-neutral-200 bg-white p-4 shadow-sm sm:p-5">
+          <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Explore related categories</p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {categoryLandingPages
+              .filter((relatedPage) => relatedPage.path !== page.path)
+              .slice(0, 6)
+              .map((relatedPage) => (
+                <a
+                  key={relatedPage.path}
+                  href={relatedPage.path}
+                  className="inline-flex items-center gap-1 rounded-md border border-neutral-200 px-3 py-2 text-xs font-semibold text-neutral-700 transition hover:border-emerald-700 hover:bg-emerald-50 hover:text-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-200"
+                >
+                  {relatedPage.category}
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </a>
+              ))}
+          </div>
+        </div>
         <div className="flex flex-col gap-3 rounded-xl bg-neutral-950 p-5 text-white sm:p-7 md:flex-row md:items-center md:justify-between">
           <div>
             <h2 className="text-xl font-semibold sm:text-2xl">Ready to plan a {page.category.toLowerCase()} quote?</h2>
@@ -1971,34 +2068,27 @@ function Footer({ onSupportClick }) {
   )
 }
 
-function FloatingSupportButton({ onSupportClick, hidden = false }) {
-  const [footerInView, setFooterInView] = useState(false)
-
-  useEffect(() => {
-    if (typeof window === 'undefined' || typeof IntersectionObserver === 'undefined') return undefined
-
-    const footer = document.querySelector('[data-site-footer]')
-    if (!footer) return undefined
-
-    const observer = new IntersectionObserver(
-      ([entry]) => setFooterInView(entry.isIntersecting),
-      { threshold: 0.01 },
-    )
-
-    observer.observe(footer)
-    return () => observer.disconnect()
-  }, [])
-
-  if (hidden || footerInView) return null
-
+function MobileStickyActions({ onWhatsAppClick, onQuoteClick }) {
   return (
-    <button
-      type="button"
-      onClick={() => onSupportClick('mobile_sticky')}
-      className="group fixed bottom-2.5 left-4 right-4 z-40 inline-flex items-center justify-center gap-2 rounded-md border border-[#25D366]/40 bg-neutral-950 px-4 py-2 text-xs font-semibold shadow-lg shadow-neutral-900/20 transition hover:shadow-[0_0_20px_rgba(37,211,102,0.28)] md:bottom-6 md:left-auto md:right-6 md:w-auto md:px-5 md:py-3 md:text-sm"
-    >
-      <WhatsAppBrandText>Need Help?</WhatsAppBrandText>
-    </button>
+    <div className="mobile-conversion-bar fixed inset-x-0 bottom-0 z-40 border-t border-white/15 bg-neutral-950/95 px-3 py-2 shadow-2xl shadow-neutral-950/30 backdrop-blur md:hidden">
+      <div className="mx-auto grid max-w-md grid-cols-2 gap-2">
+        <button
+          type="button"
+          onClick={onWhatsAppClick}
+          className="group inline-flex min-h-11 items-center justify-center gap-2 rounded-md border border-[#25D366]/45 bg-neutral-900 px-3 py-2 text-xs font-semibold text-white transition hover:shadow-[0_0_18px_rgba(37,211,102,0.25)] focus:outline-none focus:ring-2 focus:ring-[#25D366]/50"
+        >
+          <WhatsAppBrandText>WhatsApp</WhatsAppBrandText>
+        </button>
+        <button
+          type="button"
+          onClick={onQuoteClick}
+          className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-[#16A34A] px-3 py-2 text-xs font-semibold text-white shadow-sm transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200"
+        >
+          Request Quote
+          <ArrowRight className="h-4 w-4" />
+        </button>
+      </div>
+    </div>
   )
 }
 
@@ -2172,6 +2262,11 @@ export default function App() {
     refreshSignals()
   }
 
+  const handleMobileQuoteClick = () => {
+    handleQuoteClick('mobile_sticky_quote')
+    handleSectionChange('contact')
+  }
+
   const handleContactClick = (eventType, source) => {
     analyticsService.track(eventType, { clickedElement: source, projectType, productCategory: selectedCategory })
     refreshSignals()
@@ -2207,6 +2302,7 @@ export default function App() {
       ) : (
         <>
           <Hero onSupportClick={handleSupportClick} onQuoteClick={handleQuoteClick} onSectionChange={handleSectionChange} />
+          <Services />
           <CompactContentArea
             activePanel={activePanel}
             onPanelChange={handlePanelChange}
@@ -2216,9 +2312,17 @@ export default function App() {
             onSupportClick={handleSupportClick}
             contentRef={contentAreaRef}
           />
+          <CustomerProjectGallery onQuoteClick={() => {
+            handleQuoteClick('project_gallery_quote')
+            handleSectionChange('contact')
+          }} />
+          <HelpfulGuides onGuideClick={handleGuideClick} />
         </>
       )}
-      <FloatingSupportButton hidden={activePanel === 'quote'} onSupportClick={handleSupportClick} />
+      <MobileStickyActions
+        onWhatsAppClick={() => handleSupportClick('mobile_sticky_whatsapp', 'I would like WhatsApp support from Kleihaus. Please help me with products, pricing, delivery or installation guidance.')}
+        onQuoteClick={handleMobileQuoteClick}
+      />
       <Footer onSupportClick={handleSupportClick} />
       <SupportModal
         open={supportModal.open}

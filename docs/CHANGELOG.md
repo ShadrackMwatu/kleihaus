@@ -8,6 +8,15 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-06-11
 
+### Phase 2 Conversion Optimization
+
+- Added a persistent mobile conversion bar with WhatsApp-style support and Request Quote actions that keep customers on Kleihaus.com.
+- Added a compact trust section for Fast Response, Wholesale & Retail, Delivery Support and Professional Guidance.
+- Added a customer project gallery using existing image assets only.
+- Updated homepage FAQ content around tile prices, sanitaryware prices, paint prices, delivery and installation support without inventing prices.
+- Added related category links on category landing pages and expanded safe LocalBusiness/FAQ structured data while preserving the no Product/Offer schema policy.
+- Confirmed visible phone numbers remain click-to-call links.
+
 ### Backend-Powered Support CTA Labels
 
 - Confirmed frontend support actions no longer redirect customers to `api.whatsapp.com`, `web.whatsapp.com` or `wa.me`.

@@ -101,6 +101,17 @@ Current behavior:
 - The backend skips WhatsApp automation unless WhatsApp Business Cloud API credentials are configured.
 - Frontend support CTAs open an in-site support modal and submit through `/api/quote-request`; they do not redirect customers to WhatsApp Web or external WhatsApp URLs.
 
+## Phase 2 Conversion Surface
+
+- Mobile visitors see a persistent bottom action bar with WhatsApp-style support and Request Quote actions.
+- WhatsApp-style support actions open the in-site support form and submit through `/api/quote-request`; they do not redirect visitors to external WhatsApp URLs.
+- The homepage includes a compact trust section for Fast Response, Wholesale & Retail, Delivery Support and Professional Guidance.
+- A customer project gallery uses existing assets from `public/images/` for project inspiration without adding new media dependencies.
+- FAQ content targets common local search and Google Business Profile conversion questions around tile prices, sanitaryware prices, paint prices, delivery and installation support.
+- Category landing pages include related category links to improve internal navigation between tile, sanitaryware, paint and installation pages.
+- All visible phone numbers are rendered as click-to-call `tel:` links.
+- Structured data remains safe for Search Console: no Product or Offer JSON-LD is used; LocalBusiness and FAQ data describe service areas and quote guidance without fake prices.
+
 ## Cloudflare Runtime Requirements
 
 Required Worker values:
