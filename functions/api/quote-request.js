@@ -1,4 +1,5 @@
-const SUCCESS_MESSAGE = 'Request submitted successfully. Our team will respond shortly.'
+const EMAIL_SUCCESS_MESSAGE = 'Request sent successfully. Our team will respond by email or phone.'
+const WHATSAPP_SUCCESS_MESSAGE = 'Support request sent successfully. Our team will respond on WhatsApp.'
 const EMAIL_SUBJECT_PREFIX = 'Kleihaus Lead'
 
 const corsHeaders = {
@@ -34,6 +35,7 @@ const escapeHtml = (value) =>
 
 const includesAny = (text, keywords) => keywords.some((keyword) => text.includes(keyword))
 const getDb = (env) => env?.QUOTE_REQUESTS_DB || env?.DB
+const validChannels = new Set(['email', 'whatsapp'])
 
 const getLeadReferenceParts = (createdAt) => {
   const parts = new Intl.DateTimeFormat('en-GB', {
@@ -150,6 +152,9 @@ const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(clean(email, 1
 
 const normalizePayload = (body = {}) => {
   const requestDetails = clean(body.requestDetails || body.message || body.details, 3000)
+  const requestedChannel = clean(body.channel, 40).toLowerCase()
+  const channel = requestedChannel || 'email'
+  const intent = clean(body.intent || (channel === 'whatsapp' ? 'support' : 'quote'), 80).toLowerCase()
 
   return {
     id: crypto.randomUUID(),
@@ -160,6 +165,8 @@ const normalizePayload = (body = {}) => {
     requestDetails,
     message: requestDetails,
     source: clean(body.source || 'kleihaus_website', 80),
+    channel,
+    intent,
     anonymousVisitorId: clean(body.anonymousVisitorId, 120),
     sessionId: clean(body.sessionId, 120),
     pagePath: clean(body.pagePath, 600),
@@ -179,6 +186,7 @@ const normalizePayload = (body = {}) => {
 const validatePayload = (payload) => {
   const errors = []
 
+  if (!validChannels.has(payload.channel)) errors.push('Unsupported communication channel.')
   if (!payload.name) errors.push('Name is required.')
   if (!payload.phone && !payload.email) errors.push('Phone or email is required.')
   if (!payload.requestDetails) errors.push('Request details are required.')
@@ -190,6 +198,8 @@ const logSafe = (event, payload = {}, extra = {}) => {
   console.log(event, {
     requestId: payload.id,
     source: payload.source,
+    channel: payload.channel,
+    intent: payload.intent,
     hasEmail: Boolean(payload.email),
     hasPhone: Boolean(payload.phone),
     ...extra,
@@ -235,6 +245,8 @@ const ensureQuoteJourneyColumns = async (db) => {
   await ignoreDuplicateColumn(() => db.prepare('ALTER TABLE quote_requests ADD COLUMN lead_reference TEXT').run())
   await ignoreDuplicateColumn(() => db.prepare('ALTER TABLE quote_requests ADD COLUMN journey_summary_json TEXT').run())
   await ignoreDuplicateColumn(() => db.prepare('ALTER TABLE quote_requests ADD COLUMN lead_score INTEGER DEFAULT 0').run())
+  await ignoreDuplicateColumn(() => db.prepare('ALTER TABLE quote_requests ADD COLUMN channel TEXT DEFAULT "email"').run())
+  await ignoreDuplicateColumn(() => db.prepare('ALTER TABLE quote_requests ADD COLUMN intent TEXT DEFAULT "quote"').run())
 }
 
 const getEventResults = (result) => result?.results || []
@@ -363,8 +375,8 @@ const insertQuoteRequest = async (env, payload) => {
       .prepare(
         `INSERT INTO quote_requests
           (id, name, email, phone, location, message, source, status, created_at,
-           anonymous_visitor_id, session_id, lead_reference, journey_summary_json, lead_score)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+           anonymous_visitor_id, session_id, lead_reference, journey_summary_json, lead_score, channel, intent)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
       )
       .bind(
         payload.id,
@@ -380,7 +392,9 @@ const insertQuoteRequest = async (env, payload) => {
         payload.sessionId,
         payload.leadReference,
         JSON.stringify(payload.journey || {}),
-        payload.journey?.engagementScore || 0
+        payload.journey?.engagementScore || 0,
+        payload.channel,
+        payload.intent
       )
       .run()
 
@@ -578,6 +592,7 @@ const sendResendEmail = async (env = {}, payload, journey) => {
     !to && 'SALES_EMAIL',
   ].filter(Boolean)
 
+  console.log('CHANNEL_EMAIL_ATTEMPT', { requestId: payload.id, to, channel: payload.channel, intent: payload.intent })
   console.log('INTERNAL_EMAIL_ATTEMPT', { requestId: payload.id, to })
   console.log('RESEND_ATTEMPT', { requestId: payload.id, to })
   console.log('RESEND_EMAIL_ATTEMPT', { requestId: payload.id, to })
@@ -607,6 +622,7 @@ const sendResendEmail = async (env = {}, payload, journey) => {
     })
 
     console.log('INTERNAL_EMAIL_SUCCESS', { requestId: payload.id, emailId: internalEmailResult.id })
+    console.log('CHANNEL_EMAIL_SUCCESS', { requestId: payload.id, emailId: internalEmailResult.id })
     console.log('RESEND_SUCCESS', { requestId: payload.id, emailId: internalEmailResult.id })
     console.log('RESEND_EMAIL_SUCCESS', { requestId: payload.id, emailId: internalEmailResult.id })
     return { success: true, configured: true, sent: true, provider: 'resend', id: internalEmailResult.id }
@@ -616,6 +632,17 @@ const sendResendEmail = async (env = {}, payload, journey) => {
     logSafe('INTERNAL_EMAIL_FAILED', payload, { error: error.message })
     logSafe('RESEND_EMAIL_FAILED', payload, { error: error.message })
     return { success: false, configured: true, sent: false, status: error.status, error: error.message }
+  }
+}
+
+const skipEmailChannel = (payload, reason) => {
+  console.log('CHANNEL_EMAIL_SKIPPED', { requestId: payload.id, channel: payload.channel, intent: payload.intent, reason })
+  return {
+    success: true,
+    configured: true,
+    sent: false,
+    skipped: true,
+    reason,
   }
 }
 
@@ -752,7 +779,7 @@ const sendCustomerConfirmationEmail = async (env, payload) => {
   }
 }
 
-const sendWhatsAppBusinessNotification = async (env, payload) => {
+const sendWhatsAppBusinessNotification = async (env, payload, { required = false } = {}) => {
   const token = clean(env?.WHATSAPP_ACCESS_TOKEN, 1000)
   const phoneNumberId = clean(env?.WHATSAPP_PHONE_NUMBER_ID, 120)
   const to = clean(env?.WHATSAPP_TO_PHONE || env?.WHATSAPP_TO_NUMBER, 80)
@@ -762,16 +789,18 @@ const sendWhatsAppBusinessNotification = async (env, payload) => {
     !to && 'WHATSAPP_TO_PHONE',
   ].filter(Boolean)
 
+  console.log('CHANNEL_WHATSAPP_ATTEMPT', { requestId: payload.id, channel: payload.channel, intent: payload.intent })
   console.log('WHATSAPP_ATTEMPT', { requestId: payload.id })
 
   if (missing.length > 0) {
     const skipped = {
-      success: true,
+      success: !required,
       configured: false,
       sent: false,
       reason: 'WhatsApp Business API not configured',
       missing,
     }
+    console.log('CHANNEL_WHATSAPP_SKIPPED', { requestId: payload.id, reason: skipped.reason, missing })
     console.log('WHATSAPP_SKIPPED', { requestId: payload.id, reason: skipped.reason, missing })
     return skipped
   }
@@ -789,7 +818,7 @@ const sendWhatsAppBusinessNotification = async (env, payload) => {
         type: 'text',
         text: {
           preview_url: false,
-          body: `New Kleihaus quote request\n\nName: ${payload.name}\nPhone: ${payload.phone || 'Not provided'}\nEmail: ${payload.email || 'Not provided'}\nLocation: ${payload.location || 'Not provided'}\n\nRequest: ${payload.requestDetails}\n\nRequest ID: ${payload.id}`,
+          body: `New Kleihaus ${payload.intent || 'support'} request via ${payload.channel || 'website'}\n\nName: ${payload.name}\nPhone: ${payload.phone || 'Not provided'}\nEmail: ${payload.email || 'Not provided'}\nLocation: ${payload.location || 'Not provided'}\n\nRequest: ${payload.requestDetails}\n\nRequest ID: ${payload.id}`,
         },
       }),
     })
@@ -797,6 +826,11 @@ const sendWhatsAppBusinessNotification = async (env, payload) => {
     const result = await response.json().catch(() => ({}))
 
     if (!response.ok) {
+      console.error('CHANNEL_WHATSAPP_SKIPPED', {
+        requestId: payload.id,
+        status: response.status,
+        error: result?.error?.message || 'WhatsApp Business API request failed.',
+      })
       console.error('WHATSAPP_FAILED', {
         requestId: payload.id,
         status: response.status,
@@ -812,12 +846,25 @@ const sendWhatsAppBusinessNotification = async (env, payload) => {
       }
     }
 
+    console.log('CHANNEL_WHATSAPP_SUCCESS', { requestId: payload.id })
     console.log('WHATSAPP_SUCCESS', { requestId: payload.id })
     return { success: true, configured: true, sent: true, provider: 'whatsapp_business_api', response: result }
   } catch (error) {
+    console.error('CHANNEL_WHATSAPP_SKIPPED', { requestId: payload.id, error: error.message })
     console.error('WHATSAPP_FAILED', { requestId: payload.id, error: error.message })
     logSafe('WHATSAPP_FAILED', payload, { error: error.message })
     return { success: false, configured: true, sent: false, error: error.message }
+  }
+}
+
+const skipWhatsAppChannel = (payload, reason) => {
+  console.log('CHANNEL_WHATSAPP_SKIPPED', { requestId: payload.id, channel: payload.channel, intent: payload.intent, reason })
+  return {
+    success: true,
+    configured: true,
+    sent: false,
+    skipped: true,
+    reason,
   }
 }
 
@@ -838,41 +885,22 @@ const settleNotification = (result, fallback) => {
   }
 }
 
-const getWhatsAppStatusForResponse = (env) => {
-  const missing = [
-    !clean(env?.WHATSAPP_ACCESS_TOKEN, 1000) && 'WHATSAPP_ACCESS_TOKEN',
-    !clean(env?.WHATSAPP_PHONE_NUMBER_ID, 120) && 'WHATSAPP_PHONE_NUMBER_ID',
-    !clean(env?.WHATSAPP_TO_PHONE || env?.WHATSAPP_TO_NUMBER, 80) && 'WHATSAPP_TO_PHONE',
-  ].filter(Boolean)
-
-  if (missing.length > 0) {
-    return {
-      success: true,
-      configured: false,
-      sent: false,
-      reason: 'WhatsApp Business API not configured',
-      missing,
-    }
-  }
-
-  return { success: true, queued: true, sent: null, mode: 'background' }
-}
-
-const deliverBackgroundNotifications = async (env, payload) => {
-  const [customerEmailResult, whatsappResult] = await Promise.allSettled([
+const deliverEmailFollowUps = async (env, payload) => {
+  const [customerEmailResult] = await Promise.allSettled([
     sendCustomerConfirmationEmail(env, payload),
-    sendWhatsAppBusinessNotification(env, payload),
   ])
 
   return {
     customerEmail: settleNotification(customerEmailResult, 'Customer confirmation email delivery failed.'),
-    whatsapp: settleNotification(whatsappResult, 'WhatsApp delivery failed.'),
+    whatsapp: skipWhatsAppChannel(payload, 'Email quote channel does not trigger WhatsApp notification.'),
   }
 }
 
 const logNotificationResults = (payload, results) => {
   console.log('QUOTE_NOTIFICATIONS_SETTLED', {
     requestId: payload.id,
+    channel: payload.channel,
+    intent: payload.intent,
     customerEmailSent: Boolean(results.customerEmail?.sent),
     whatsappSent: Boolean(results.whatsapp?.sent),
     whatsappReason: results.whatsapp?.reason,
@@ -900,6 +928,9 @@ export async function onRequestPost(context) {
   const validationErrors = validatePayload(payload)
 
   if (validationErrors.length > 0) {
+    if (!validChannels.has(payload.channel)) {
+      console.log('CHANNEL_ROUTE_INVALID', { requestId: payload.id, channel: payload.channel, intent: payload.intent })
+    }
     return json({ success: false, message: 'Quote request validation failed.', errors: validationErrors }, 400)
   }
 
@@ -909,6 +940,8 @@ export async function onRequestPost(context) {
   console.log('QUOTE_REQUEST_RECEIVED', {
     requestId: payload.id,
     source: payload.source,
+    channel: payload.channel,
+    intent: payload.intent,
     hasEmail: Boolean(payload.email),
     hasPhone: Boolean(payload.phone),
   })
@@ -920,6 +953,8 @@ export async function onRequestPost(context) {
     hasLocation: Boolean(payload.location),
     hasRequestDetails: Boolean(payload.requestDetails),
     hasJourneySession: Boolean(payload.sessionId),
+    channel: payload.channel,
+    intent: payload.intent,
   })
 
   const storage = await insertQuoteRequest(context.env, payload)
@@ -929,32 +964,88 @@ export async function onRequestPost(context) {
 
   await linkJourneyEventsToLead(context.env, payload, payload.leadReference)
 
-  const email = await sendResendEmail(context.env, payload, payload.journey)
-  if (!email.success) {
-    return json({ success: false, error: 'Internal email failed' }, 500)
-  }
+  if (payload.channel === 'email') {
+    const email = await sendResendEmail(context.env, payload, payload.journey)
+    if (!email.success) {
+      return json({ success: false, error: 'Internal email failed', channel: payload.channel, intent: payload.intent, email }, 500)
+    }
 
-  const backgroundWork = deliverBackgroundNotifications(context.env, payload)
-  const waitUntil = getWaitUntil(context)
-  const whatsapp = getWhatsAppStatusForResponse(context.env)
-  const customerEmail = payload.email && isValidEmail(payload.email)
-    ? { success: true, queued: true, sent: null, mode: 'background' }
-    : {
+    const backgroundWork = deliverEmailFollowUps(context.env, payload)
+    const waitUntil = getWaitUntil(context)
+    const customerEmail = payload.email && isValidEmail(payload.email)
+      ? { success: true, queued: true, sent: null, mode: 'background' }
+      : {
+          success: true,
+          configured: true,
+          sent: false,
+          skipped: true,
+          reason: 'Customer email not provided or invalid.',
+        }
+    const whatsapp = skipWhatsAppChannel(payload, 'Email quote channel does not trigger WhatsApp notification.')
+
+    if (waitUntil) {
+      waitUntil(backgroundWork.then((results) => logNotificationResults(payload, results)))
+
+      return json({
         success: true,
-        configured: true,
-        sent: false,
-        skipped: true,
-        reason: 'Customer email not provided or invalid.',
-      }
+        message: EMAIL_SUCCESS_MESSAGE,
+        requestId: payload.id,
+        leadReference: payload.leadReference,
+        channel: payload.channel,
+        intent: payload.intent,
+        createdAt: payload.created_at,
+        storage,
+        email,
+        customerEmail,
+        whatsapp,
+      })
+    }
 
-  if (waitUntil) {
-    waitUntil(backgroundWork.then((results) => logNotificationResults(payload, results)))
+    const notifications = await backgroundWork
 
     return json({
       success: true,
-      message: SUCCESS_MESSAGE,
+      message: EMAIL_SUCCESS_MESSAGE,
       requestId: payload.id,
       leadReference: payload.leadReference,
+      channel: payload.channel,
+      intent: payload.intent,
+      createdAt: payload.created_at,
+      storage,
+      email,
+      customerEmail: notifications.customerEmail,
+      whatsapp: notifications.whatsapp,
+    })
+  }
+
+  if (payload.channel === 'whatsapp') {
+    const email = skipEmailChannel(payload, 'WhatsApp support channel does not trigger internal email.')
+    const customerEmail = skipEmailChannel(payload, 'WhatsApp support channel does not trigger customer confirmation email.')
+    const whatsapp = await sendWhatsAppBusinessNotification(context.env, payload, { required: true })
+
+    if (!whatsapp.success || !whatsapp.sent) {
+      return json({
+        success: false,
+        message: 'WhatsApp support delivery was not confirmed. Please call Kleihaus.',
+        requestId: payload.id,
+        leadReference: payload.leadReference,
+        channel: payload.channel,
+        intent: payload.intent,
+        createdAt: payload.created_at,
+        storage,
+        email,
+        customerEmail,
+        whatsapp,
+      }, whatsapp.configured === false ? 503 : 502)
+    }
+
+    return json({
+      success: true,
+      message: WHATSAPP_SUCCESS_MESSAGE,
+      requestId: payload.id,
+      leadReference: payload.leadReference,
+      channel: payload.channel,
+      intent: payload.intent,
       createdAt: payload.created_at,
       storage,
       email,
@@ -963,17 +1054,6 @@ export async function onRequestPost(context) {
     })
   }
 
-  const notifications = await backgroundWork
-
-  return json({
-    success: true,
-    message: SUCCESS_MESSAGE,
-    requestId: payload.id,
-    leadReference: payload.leadReference,
-    createdAt: payload.created_at,
-    storage,
-    email,
-    customerEmail: notifications.customerEmail,
-    whatsapp: notifications.whatsapp,
-  })
+  console.log('CHANNEL_ROUTE_INVALID', { requestId: payload.id, channel: payload.channel, intent: payload.intent })
+  return json({ success: false, message: 'Unsupported communication channel.', channel: payload.channel, intent: payload.intent }, 400)
 }

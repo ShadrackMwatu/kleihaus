@@ -20,6 +20,8 @@ export const quoteRequestService = {
       message: clean(form.message || form.requestDetails),
       requestDetails: clean(form.message || form.requestDetails),
       source: 'kleihaus_website',
+      channel: clean(form.channel || 'email'),
+      intent: clean(form.intent || 'quote'),
     }
 
     const errors = []
@@ -61,6 +63,8 @@ export const quoteRequestService = {
           message: payload.requestDetails,
           details: payload.requestDetails,
           source: payload.source || 'kleihaus_website',
+          channel: payload.channel || 'email',
+          intent: payload.intent || 'quote',
           ...journeyContext,
         }),
       })
@@ -84,7 +88,7 @@ export const quoteRequestService = {
         }
       }
 
-      if (!data.email?.sent) {
+      if ((payload.channel || 'email') === 'email' && !data.email?.sent) {
         debugLog('QUOTE_FRONTEND_EMAIL_NOT_SENT', {
           emailSent: data.email?.sent,
           emailError: data.email?.error,
@@ -97,9 +101,21 @@ export const quoteRequestService = {
         }
       }
 
+      if (payload.channel === 'whatsapp' && !data.whatsapp?.sent) {
+        return {
+          ok: false,
+          message: data.message || 'WhatsApp support delivery was not confirmed. Please call Kleihaus.',
+          data,
+        }
+      }
+
       return {
         ok: true,
-        message: data.message || 'Request submitted successfully. Our team will respond shortly.',
+        message:
+          data.message ||
+          (payload.channel === 'whatsapp'
+            ? 'Support request sent successfully. Our team will respond on WhatsApp.'
+            : 'Request sent successfully. Our team will respond by email or phone.'),
         data,
       }
     } catch (error) {

@@ -95,16 +95,17 @@ Current behavior:
 - `src/worker.js` routes the request before static assets.
 - The backend validates, sanitizes and timestamps the request.
 - The backend stores quote requests in Cloudflare D1 table `quote_requests`.
-- The backend sends internal sales email through Resend using `RESEND_API_KEY`, `QUOTE_EMAIL_FROM`, and `SALES_EMAIL`.
-- The backend returns `success: true` only after required D1 storage and internal Resend email delivery succeed.
-- The backend queues customer confirmation email.
-- The backend skips WhatsApp automation unless WhatsApp Business Cloud API credentials are configured.
-- Frontend support CTAs open an in-site support modal and submit through `/api/quote-request`; they do not redirect customers to WhatsApp Web or external WhatsApp URLs.
+- Quote form submissions send `channel: "email"` and `intent: "quote"`.
+- Email-channel submissions send internal sales email through Resend using `RESEND_API_KEY`, `QUOTE_EMAIL_FROM`, and `SALES_EMAIL`, may queue customer confirmation email, and explicitly skip WhatsApp notification.
+- Support modal submissions send `channel: "whatsapp"` and `intent: "support"`.
+- WhatsApp-channel submissions send WhatsApp Business API staff notifications when credentials are configured and explicitly skip internal/customer email.
+- Direct WhatsApp CTAs open WhatsApp directly and do not submit the website form.
+- D1 stores `channel` and `intent` where the extended schema is available, with legacy insert fallback preserved.
 
 ## Phase 2 Conversion Surface
 
-- Mobile visitors see a persistent bottom action bar with WhatsApp-style support and Request Quote actions.
-- WhatsApp-style support actions open the in-site support form and submit through `/api/quote-request`; they do not redirect visitors to external WhatsApp URLs.
+- Mobile visitors see a persistent bottom action bar with direct WhatsApp and Request Quote actions.
+- Direct WhatsApp actions open WhatsApp directly; support modal submissions use backend WhatsApp Business API delivery only.
 - The homepage includes a compact trust section for Fast Response, Wholesale & Retail, Delivery Support and Professional Guidance.
 - A customer project gallery uses existing assets from `public/images/` for project inspiration without adding new media dependencies.
 - FAQ content targets common local search and Google Business Profile conversion questions around tile prices, sanitaryware prices, paint prices, delivery and installation support.

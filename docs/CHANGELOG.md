@@ -8,9 +8,18 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-06-11
 
+### Communication Channel Separation
+
+- Added explicit `channel` and `intent` fields to frontend quote/support submissions.
+- Routed quote form submissions as `channel: "email"` and `intent: "quote"` so they require internal Resend email delivery and skip WhatsApp notifications.
+- Routed support modal submissions as `channel: "whatsapp"` and `intent: "support"` so they require WhatsApp Business API staff delivery and skip internal/customer email.
+- Updated direct WhatsApp CTAs in the header, hero, footer and sticky mobile action bar to open WhatsApp directly.
+- Added D1 audit columns for `channel` and `intent`, with legacy insert fallback preserved.
+- Added channel-specific backend logs and success messages for email and WhatsApp flows.
+
 ### Phase 2 Conversion Optimization
 
-- Added a persistent mobile conversion bar with WhatsApp-style support and Request Quote actions that keep customers on Kleihaus.com.
+- Added a persistent mobile conversion bar with direct WhatsApp and Request Quote actions.
 - Added a compact trust section for Fast Response, Wholesale & Retail, Delivery Support and Professional Guidance.
 - Added a customer project gallery using existing image assets only.
 - Updated homepage FAQ content around tile prices, sanitaryware prices, paint prices, delivery and installation support without inventing prices.

@@ -6,6 +6,8 @@ CREATE TABLE IF NOT EXISTS quote_requests (
   location TEXT,
   message TEXT NOT NULL,
   source TEXT DEFAULT 'kleihaus_website',
+  channel TEXT DEFAULT 'email',
+  intent TEXT DEFAULT 'quote',
   status TEXT DEFAULT 'captured',
   anonymous_visitor_id TEXT,
   session_id TEXT,
