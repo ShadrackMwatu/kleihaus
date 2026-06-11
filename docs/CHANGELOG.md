@@ -8,6 +8,13 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-06-05
 
+### Trust, Conversion And Local SEO Polish
+
+- Strengthened above-the-fold messaging with "Tiles. Sanitaryware. Paints.", Nairobi/Machakos/Makueni service-area copy and a more prominent green quote CTA.
+- Updated trust signals to emphasize Wholesale & Retail, Sourcing Support, Delivery Support and Professional Guidance.
+- Improved catalogue cards with clearer use-case tags and quote-support cues while preserving existing routes and `/api/quote-request`.
+- Refined homepage metadata, LocalBusiness schema copy, web manifest description and sitemap URLs for cleaner local SEO and Google Business Profile alignment.
+
 ### In-Site Support Flow
 
 - Replaced frontend WhatsApp redirect CTAs with in-site support actions so customers stay on Kleihaus.com.

@@ -138,8 +138,10 @@ The stale Pages integration must be disconnected from the old account or removed
 - Premium header with top utility strip, logo, search, state-driven navigation and WhatsApp CTA.
 - Category navigation for major product groups that opens the compact catalogue panel and highlights the selected category.
 - Home area with clear business positioning, premium hero carousel and hero trust badges.
+- Hero messaging leads with "Tiles. Sanitaryware. Paints.", retail/wholesale/project quote positioning and Nairobi, Machakos and Makueni service areas.
 - Compact segmented content area for Catalogue, About, Guidance and Quote.
 - Catalogue panel with clickable category cards, icons, descriptions and quote CTAs.
+- Catalogue cards include compact use-case and quote-support tags to reinforce sourcing, delivery and professional guidance.
 - Catalogue category cards include consistent premium "View guide" links. Dedicated category guides point to their landing pages; Outdoor Tiles points to floor tile guidance and Installation Support points to the contact/quote flow.
 - Category landing pages for `/floor-tiles`, `/wall-tiles`, `/bathroom-tiles`, `/sanitaryware`, `/paints` and `/adhesives-grout`.
 - About panel with Kleihaus positioning, service areas and concise trust/support points.
@@ -147,7 +149,7 @@ The stale Pages integration must be disconnected from the old account or removed
 - Quote panel with the existing quote form and direct contact details.
 - Mobile layout uses reduced hero sizing, compact trust badges and catalogue cards, narrowed panel spacing and quote-aware floating support behavior.
 - Mobile footer places the support CTA above the green branding strip; the green strip remains the final visible footer element.
-- WhatsApp inquiry links with pre-filled messages.
+- In-site support actions that open a modal and submit through `/api/quote-request` instead of redirecting customers to WhatsApp.
 - Structured footer with balanced Products, Services and Contact columns plus WhatsApp, email, phone, locations and response expectation.
 - Footer Services is intentionally concise: Finishing Advisory, Delivery and Installation.
 
@@ -166,7 +168,7 @@ Current SEO foundations include:
 - `public/site.webmanifest`.
 - Organization, LocalBusiness, Store, WebSite, SearchAction, ContactPoint, FAQ and catalogue `ItemList` structured data.
 - Category landing pages use safe `CollectionPage`, `BreadcrumbList` and `ItemList` JSON-LD only.
-- `public/sitemap.xml` includes homepage, catalogue/contact anchors and the six category landing page URLs.
+- `public/sitemap.xml` includes the homepage and six category landing page URLs without fragment-only sitemap entries.
 - Incomplete Product rich-result schema was removed for quote-based catalogue categories without fabricating price, review, rating or availability data.
 - Product and Offer schema must not be reintroduced until Kleihaus has real product pages with truthful price and current availability data.
 - One primary H1 on the homepage.

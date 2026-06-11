@@ -84,9 +84,9 @@ const getEmptyQuoteForm = () => ({
   details: '',
 })
 
-const seoTitle = 'Kleihaus Ceramics | Tiles, Sanitaryware, Paints & Building Materials Kenya'
+const seoTitle = 'Kleihaus Ceramics Kenya | Tiles, Sanitaryware & Paints'
 const seoDescription =
-  'Kleihaus Ceramics is supplying tiles, sanitaryware, paints, adhesives, grout and finishing materials for homes, projects and developments across Kenya.'
+  'Kleihaus Ceramics supplies tiles, sanitaryware, paints, adhesives, grout and finishing materials with retail, wholesale and project quote support in Nairobi, Machakos and Makueni.'
 const canonicalUrl = 'https://www.kleihaus.com/'
 
 const navItems = [
@@ -341,16 +341,17 @@ const categoryGuideTargets = {
 }
 
 const serviceBadges = [
-  { title: 'Reliable supply support', text: 'Curated finishing materials from tile, sanitaryware, paint and installation categories.', icon: ShieldCheck },
-  { title: 'Delivery coordination', text: 'Delivery planning support for homes, sites and developments across key Kenyan service areas.', icon: Truck },
-  { title: 'Installation guidance', text: 'Practical help with adhesives, grout, tile laying choices and finishing details.', icon: Wrench },
-  { title: 'WhatsApp quote support', text: 'Fast response support for retail requests, project quotations and material matching.', icon: ClipboardList },
+  { title: 'Wholesale & retail', text: 'Quote support for homeowners, shops, contractors and project teams.', icon: Store },
+  { title: 'Sourcing support', text: 'Guidance across tiles, sanitaryware, paints and installation materials.', icon: ShieldCheck },
+  { title: 'Delivery support', text: 'Delivery planning for Nairobi, Machakos, Makueni and wider Kenya requests.', icon: Truck },
+  { title: 'Professional guidance', text: 'Practical help matching tiles with adhesives, grout and finishes.', icon: Wrench },
 ]
 
 const heroTrustBadges = [
-  { label: 'Retail & Project Quotes', icon: ClipboardList },
-  { label: 'Delivery Coordination', icon: Truck },
-  { label: 'Installation Guidance', icon: Wrench },
+  { label: 'Wholesale & Retail', icon: Store },
+  { label: 'Sourcing Support', icon: ShieldCheck },
+  { label: 'Delivery Support', icon: Truck },
+  { label: 'Professional Guidance', icon: Wrench },
   { label: 'Nairobi | Machakos | Makueni', icon: MapPin },
 ]
 
@@ -384,7 +385,7 @@ const faqItems = [
       'Consider the room, surface finish, slip resistance, cleaning needs and budget. Kleihaus helps match floor tiles, wall tiles, bathroom tiles and outdoor tiles to the way the space will be used.',
   },
   {
-    question: 'Can Kleihaus help me choose tile adhesive and grout?',
+    question: 'Does Kleihaus help with tile adhesive and grout selection?',
     answer:
       'Yes. Adhesive and grout should match the tile type, area of use and expected moisture or foot traffic. Kleihaus guides practical combinations for stronger installations.',
   },
@@ -394,14 +395,14 @@ const faqItems = [
       'Kleihaus supports retail and project quotation requests. Share room size, product type, delivery location and budget so the team responds with useful guidance.',
   },
   {
-    question: 'Can I request sanitaryware guidance?',
+    question: 'Does Kleihaus support sanitaryware guidance?',
     answer:
       'Yes. Kleihaus helps customers compare basins, toilets, taps, mixers, showers and accessories for modern bathroom finishes.',
   },
   {
-    question: 'What information should I send on WhatsApp?',
+    question: 'What information should I include in a quote request?',
     answer:
-      'Send the room size, preferred tile or finish, delivery location, quantity estimate and budget range. Photos or inspiration references also support better matching.',
+      'Share the room size, preferred tile or finish, delivery location, quantity estimate and budget range. Photos or inspiration references also support better matching.',
   },
 ]
 
@@ -885,30 +886,34 @@ function Hero({ onSupportClick, onQuoteClick, onSectionChange }) {
           <div className="absolute inset-0 bg-gradient-to-r from-neutral-950/75 via-neutral-950/35 to-white/5" />
           <div className="absolute inset-0 bg-gradient-to-br from-emerald-950/20 via-transparent to-white/10" />
           <div className="relative flex h-full max-w-3xl flex-col justify-center px-5 py-8 pb-14 sm:px-10 sm:py-12 lg:px-12">
-            <p className="text-xs font-semibold uppercase text-emerald-200">Kleihaus Ceramics</p>
+            <p className="text-xs font-semibold uppercase tracking-wide text-emerald-200">Tiles. Sanitaryware. Paints. | Nairobi | Machakos | Makueni</p>
             <h1 className="mt-2.5 max-w-2xl text-[clamp(2.125rem,7vw,2.625rem)] font-semibold leading-[1.08] text-white sm:mt-4 sm:text-5xl sm:leading-tight lg:text-6xl">
-              Premium tiles and finishing materials for Kenyan homes and projects.
+              Finish homes and projects with Kleihaus Ceramics.
             </h1>
             <p className="mt-3 max-w-xl text-sm leading-5 text-neutral-100 sm:mt-5 sm:text-lg sm:leading-7">
-              Browse tiles, sanitaryware, paints, adhesives and grout, then request a clear quote from the Kleihaus team.
+              Tiles, sanitaryware, paints, adhesives and grout for retail, wholesale and project requests across Nairobi, Machakos and Makueni.
             </p>
             <div className="mt-5 flex flex-wrap gap-2 sm:mt-8 sm:gap-3">
-              <ButtonSecondary type="button" onClick={() => onSectionChange('catalogue')} className="gap-1.5 border-white/40 bg-white/10 px-2.5 py-1.5 text-xs text-white hover:bg-white/20 sm:gap-2 sm:px-4 sm:py-2.5 sm:text-sm">
-                Browse catalogue
-                <ArrowRight className="h-4 w-4" />
-              </ButtonSecondary>
-              <ButtonSecondary
+              <Button
                 type="button"
                 onClick={() => {
                   onQuoteClick('hero_quote_intent')
                   onSectionChange('contact')
                 }}
-                className="gap-1.5 border-white/40 bg-white/10 px-2.5 py-1.5 text-xs text-white hover:bg-white/20 sm:gap-2 sm:px-4 sm:py-2.5 sm:text-sm"
+                className="gap-1.5 border-emerald-600 bg-[#16A34A] px-3 py-2 text-xs text-white hover:bg-emerald-700 sm:gap-2 sm:px-5 sm:py-3 sm:text-sm"
               >
                 Request quote
+                <ArrowRight className="h-4 w-4" />
+              </Button>
+              <ButtonSecondary type="button" onClick={() => onSectionChange('catalogue')} className="gap-1.5 border-white/40 bg-white/10 px-2.5 py-1.5 text-xs text-white hover:bg-white/20 sm:gap-2 sm:px-4 sm:py-2.5 sm:text-sm">
+                Browse catalogue
               </ButtonSecondary>
-              <ButtonSecondary type="button" onClick={() => onSupportClick('hero_whatsapp')} className="group gap-1.5 border-white/40 bg-white/10 px-2.5 py-1.5 text-xs text-white hover:bg-white/20 sm:gap-2 sm:px-4 sm:py-2.5 sm:text-sm">
-                <WhatsAppBrandText>WhatsApp inquiry</WhatsAppBrandText>
+              <ButtonSecondary
+                type="button"
+                onClick={() => onSupportClick('hero_support')}
+                className="gap-1.5 border-white/40 bg-white/10 px-2.5 py-1.5 text-xs text-white hover:bg-white/20 sm:gap-2 sm:px-4 sm:py-2.5 sm:text-sm"
+              >
+                Need help?
               </ButtonSecondary>
             </div>
           </div>
@@ -946,7 +951,7 @@ function Hero({ onSupportClick, onQuoteClick, onSectionChange }) {
             </div>
           </div>
         </div>
-        <div className="mt-3 grid grid-cols-2 gap-2 sm:mt-4 sm:gap-3 lg:grid-cols-4">
+        <div className="mt-3 grid grid-cols-2 gap-2 sm:mt-4 sm:gap-3 md:grid-cols-3 lg:grid-cols-5">
           {heroTrustBadges.map((badge) => {
             const Icon = badge.icon
             return (
@@ -1072,7 +1077,7 @@ function ShopByCategory({ selectedCategory, onCategoryClick, onGuideClick, onSup
           <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Product catalogue</p>
           <h2 className="mt-1.5 text-xl font-semibold text-neutral-950 sm:mt-2 sm:text-3xl">Shop by category</h2>
           <p className="mt-2 max-w-2xl text-xs leading-5 text-neutral-600 sm:text-sm sm:leading-6">
-            Choose the finish you need and send a quick WhatsApp inquiry for availability and quotation.
+            Choose the finish you need, view the guide, then send a quote request for retail, wholesale or project support.
           </p>
         </div>
       </div>
@@ -1117,6 +1122,10 @@ function ShopByCategory({ selectedCategory, onCategoryClick, onGuideClick, onSup
                   <ArrowRight className="h-4 w-4 shrink-0 text-neutral-400 transition group-hover:text-emerald-700" />
                 </div>
                 <p className="mt-1 line-clamp-2 text-[11px] leading-4 text-neutral-600 sm:mt-2 sm:text-sm sm:leading-6">{category.blurb}</p>
+                <div className="mt-2 flex flex-wrap gap-1.5">
+                  <span className="rounded-md bg-emerald-50 px-2 py-1 text-[10px] font-semibold text-emerald-800 sm:text-xs">{category.use}</span>
+                  <span className="rounded-md bg-stone-100 px-2 py-1 text-[10px] font-semibold text-neutral-700 sm:text-xs">Quote support</span>
+                </div>
                 <a
                   href={guideTarget}
                   aria-label={`View ${category.name} guide`}
@@ -1549,7 +1558,7 @@ function Contact({ onSupportClick, compact = false }) {
         >
           <div className="mb-5">
             <h3 className="text-lg font-semibold">Tell us what you need</h3>
-            <p className="mt-1 text-sm leading-6 text-neutral-600">Share room size, product type, quantity, location and budget range for a more useful quote request.</p>
+            <p className="mt-1 text-sm leading-6 text-neutral-600">Share room size, product type, quantity, location and budget range. Successful requests are emailed to Kleihaus and routed to staff notifications when available.</p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             <label className="grid gap-2 text-sm font-medium text-neutral-700">
@@ -1602,7 +1611,7 @@ function Contact({ onSupportClick, compact = false }) {
             </p>
           )}
           <div className="mt-5 flex flex-wrap gap-3">
-            <Button disabled={isQuoteSubmitting} className="disabled:cursor-not-allowed disabled:opacity-70">
+            <Button disabled={isQuoteSubmitting} className="border-emerald-700 bg-[#16A34A] px-5 py-3 text-base shadow-md shadow-emerald-900/10 hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-70">
               {isQuoteSubmitting ? 'Sending...' : 'Send request'}
             </Button>
             <ButtonSecondary type="button" onClick={() => onSupportClick('contact_form')} className="group gap-2 hover:border-[#25D366]/70 hover:shadow-[0_0_16px_rgba(37,211,102,0.16)]">
@@ -1986,7 +1995,7 @@ function FloatingSupportButton({ onSupportClick, hidden = false }) {
     <button
       type="button"
       onClick={() => onSupportClick('mobile_sticky')}
-      className="group fixed bottom-2.5 left-4 right-4 z-40 inline-flex items-center justify-center gap-2 rounded-md border border-[#25D366]/40 bg-neutral-950 px-4 py-2 text-xs font-semibold shadow-lg shadow-neutral-900/20 transition hover:shadow-[0_0_20px_rgba(37,211,102,0.28)] md:hidden"
+      className="group fixed bottom-2.5 left-4 right-4 z-40 inline-flex items-center justify-center gap-2 rounded-md border border-[#25D366]/40 bg-neutral-950 px-4 py-2 text-xs font-semibold shadow-lg shadow-neutral-900/20 transition hover:shadow-[0_0_20px_rgba(37,211,102,0.28)] md:bottom-6 md:left-auto md:right-6 md:w-auto md:px-5 md:py-3 md:text-sm"
     >
       <WhatsAppBrandText>Need Help?</WhatsAppBrandText>
     </button>
