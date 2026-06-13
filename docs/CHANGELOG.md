@@ -8,9 +8,17 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-06-11
 
+### In-Site WhatsApp CTA Flow
+
+- Replaced direct frontend WhatsApp URL CTAs with in-site support modal triggers so visitors remain on Kleihaus.com.
+- Removed active frontend `wa.me` redirect URL generation from `src/App.jsx` and the high-value alert service.
+- Preserved support modal submissions as `channel: "whatsapp"` and `intent: "support"` through `/api/quote-request`.
+- Preserved quote form submissions as `channel: "email"` and `intent: "quote"` through `/api/quote-request`.
+- Kept backend delivery separation: WhatsApp/support submissions route to WhatsApp Business API staff notification only, while quote/email submissions route to email only.
+
 ### Communication CTA Same-Tab Audit
 
-- Re-audited active WhatsApp CTAs in `src/App.jsx`; header, hero, footer and sticky mobile WhatsApp actions use normal same-tab anchors without `target="_blank"` or `rel="noopener noreferrer"`.
+- Re-audited the previous direct WhatsApp CTA implementation; this behavior was later superseded by the in-site support modal flow above.
 - Confirmed quote form submissions continue to send `channel: "email"` and `intent: "quote"` through `/api/quote-request`.
 - Confirmed support modal submissions continue to send `channel: "whatsapp"` and `intent: "support"` through `/api/quote-request`.
 - Confirmed backend routing remains email-only for quote requests and WhatsApp-only for support requests.

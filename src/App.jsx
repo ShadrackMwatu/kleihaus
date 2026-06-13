@@ -478,12 +478,6 @@ const WhatsAppBrandText = ({ children = 'Need Help?', iconClassName = 'h-4 w-4' 
   </>
 )
 
-const directWhatsAppUrl = `https://wa.me/254748827166?text=${encodeURIComponent('Hello Kleihaus, I need help with tiles, sanitaryware, paints, delivery or installation support.')}`
-
-const trackDirectWhatsAppClick = (source) => {
-  analyticsService.track('whatsapp_click', { clickedElement: source, channel: 'direct_whatsapp' })
-}
-
 const setMetaContent = (selector, content) => {
   const tag = document.querySelector(selector)
   if (tag) tag.setAttribute('content', content)
@@ -782,14 +776,14 @@ function Header({ projectType, searchQuery, setSearchQuery, onSearch, activeSect
         </nav>
 
         <div className="hidden items-center justify-end lg:flex">
-          <a href={directWhatsAppUrl} onClick={() => trackDirectWhatsAppClick('header_whatsapp')} className="group inline-flex items-center justify-center gap-2 rounded-md border border-neutral-950 bg-neutral-950 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:border-[#25D366]/60 hover:bg-neutral-900 hover:shadow-[0_0_18px_rgba(37,211,102,0.22)] focus:outline-none focus:ring-2 focus:ring-[#25D366]/50">
+          <Button type="button" onClick={() => onSupportClick('header_whatsapp')} className="group gap-2 bg-neutral-950 px-3.5 hover:border-[#25D366]/60 hover:bg-neutral-900 hover:shadow-[0_0_18px_rgba(37,211,102,0.22)]">
             <WhatsAppBrandText>WhatsApp</WhatsAppBrandText>
-          </a>
+          </Button>
         </div>
 
-        <a href={directWhatsAppUrl} onClick={() => trackDirectWhatsAppClick('mobile_header_whatsapp')} className="group inline-flex items-center justify-center gap-1.5 rounded-md border border-neutral-950 bg-neutral-950 px-3 py-2 text-xs font-semibold text-white shadow-sm transition hover:border-[#25D366]/60 hover:bg-neutral-900 hover:shadow-[0_0_16px_rgba(37,211,102,0.22)] focus:outline-none focus:ring-2 focus:ring-[#25D366]/50 lg:hidden">
+        <Button type="button" onClick={() => onSupportClick('mobile_header_whatsapp')} className="group gap-1.5 bg-neutral-950 px-3 py-2 text-xs hover:border-[#25D366]/60 hover:bg-neutral-900 hover:shadow-[0_0_16px_rgba(37,211,102,0.22)] lg:hidden">
           <WhatsAppBrandText>WhatsApp</WhatsAppBrandText>
-        </a>
+        </Button>
 
         <button
           className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-neutral-300 lg:hidden"
@@ -938,13 +932,13 @@ function Hero({ onSupportClick, onQuoteClick, onSectionChange }) {
               <ButtonSecondary type="button" onClick={() => onSectionChange('catalogue')} className="gap-1.5 border-white/40 bg-white/10 px-2.5 py-1.5 text-xs text-white hover:bg-white/20 sm:gap-2 sm:px-4 sm:py-2.5 sm:text-sm">
                 Browse catalogue
               </ButtonSecondary>
-              <a
-                href={directWhatsAppUrl}
-                onClick={() => trackDirectWhatsAppClick('hero_whatsapp')}
-                className="group inline-flex items-center justify-center gap-1.5 rounded-md border border-white/40 bg-white/10 px-2.5 py-1.5 text-xs font-semibold text-white shadow-sm transition hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-[#25D366]/50 sm:gap-2 sm:px-4 sm:py-2.5 sm:text-sm"
+              <ButtonSecondary
+                type="button"
+                onClick={() => onSupportClick('hero_whatsapp')}
+                className="gap-1.5 border-white/40 bg-white/10 px-2.5 py-1.5 text-xs text-white hover:bg-white/20 sm:gap-2 sm:px-4 sm:py-2.5 sm:text-sm"
               >
                 <WhatsAppBrandText>WhatsApp</WhatsAppBrandText>
-              </a>
+              </ButtonSecondary>
             </div>
           </div>
           <div className="absolute bottom-4 left-5 right-5 flex items-center justify-between gap-4 sm:bottom-5 sm:left-10 sm:right-10 lg:left-12 lg:right-12">
@@ -2043,9 +2037,9 @@ function Footer({ onSupportClick }) {
         <div className="w-full md:max-w-max md:justify-self-end">
           <h3 className="text-sm font-semibold uppercase text-white">Contact</h3>
           <div className="mt-2 grid gap-1.5 text-xs text-orange-50/90 sm:gap-2 sm:text-sm">
-            <a href={directWhatsAppUrl} onClick={() => trackDirectWhatsAppClick('footer_whatsapp')} className="group inline-flex items-center gap-2 text-left text-white hover:text-orange-50">
+            <button type="button" onClick={() => onSupportClick?.('footer_whatsapp')} className="group inline-flex items-center gap-2 text-left text-white hover:text-orange-50">
               <WhatsAppBrandText>WhatsApp</WhatsAppBrandText>
-            </a>
+            </button>
             <a href="mailto:sales@kleihaus.com" className="inline-flex items-center gap-2 hover:text-white">
               <Mail className="h-4 w-4 text-orange-100" />
               sales@kleihaus.com
@@ -2082,17 +2076,17 @@ function Footer({ onSupportClick }) {
   )
 }
 
-function MobileStickyActions({ onQuoteClick }) {
+function MobileStickyActions({ onWhatsAppClick, onQuoteClick }) {
   return (
     <div className="mobile-conversion-bar fixed inset-x-0 bottom-0 z-40 border-t border-white/15 bg-neutral-950/95 px-3 py-2 shadow-2xl shadow-neutral-950/30 backdrop-blur md:hidden">
       <div className="mx-auto grid max-w-md grid-cols-2 gap-2">
-        <a
-          href={directWhatsAppUrl}
-          onClick={() => trackDirectWhatsAppClick('mobile_sticky_whatsapp')}
+        <button
+          type="button"
+          onClick={onWhatsAppClick}
           className="group inline-flex min-h-11 items-center justify-center gap-2 rounded-md border border-[#25D366]/45 bg-neutral-900 px-3 py-2 text-xs font-semibold text-white transition hover:shadow-[0_0_18px_rgba(37,211,102,0.25)] focus:outline-none focus:ring-2 focus:ring-[#25D366]/50"
         >
           <WhatsAppBrandText>WhatsApp</WhatsAppBrandText>
-        </a>
+        </button>
         <button
           type="button"
           onClick={onQuoteClick}
@@ -2334,6 +2328,7 @@ export default function App() {
         </>
       )}
       <MobileStickyActions
+        onWhatsAppClick={() => handleSupportClick('mobile_sticky_whatsapp', 'I would like WhatsApp support from Kleihaus. Please help me with products, pricing, delivery or installation guidance.')}
         onQuoteClick={handleMobileQuoteClick}
       />
       <Footer onSupportClick={handleSupportClick} />

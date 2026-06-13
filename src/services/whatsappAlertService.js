@@ -1,5 +1,4 @@
 const ALERT_STORAGE_KEY = 'kleihaus_high_value_whatsapp_alerts_v1'
-const BUSINESS_WHATSAPP_NUMBER = '254748827166'
 const REPEATED_CATEGORY_THRESHOLD = 3
 
 const urgentSearchTerms = ['quotation', 'quote', 'price', 'pricing', 'delivery', 'installation']
@@ -105,7 +104,6 @@ export const whatsappAlertService = {
       eventId: event.id,
       eventType: event.eventType,
       message,
-      whatsappUrl: `https://wa.me/${BUSINESS_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`,
       status: 'ready_for_whatsapp_business_api',
       timestamp: new Date().toISOString(),
     }

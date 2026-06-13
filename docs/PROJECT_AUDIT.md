@@ -99,7 +99,7 @@ Current behavior:
 - Email-channel submissions send internal sales email through Resend using `RESEND_API_KEY`, `QUOTE_EMAIL_FROM`, and `SALES_EMAIL`, may queue customer confirmation email, and explicitly skip WhatsApp notification.
 - Support modal submissions send `channel: "whatsapp"` and `intent: "support"`.
 - WhatsApp-channel submissions send WhatsApp Business API staff notifications when credentials are configured and explicitly skip internal/customer email.
-- Direct WhatsApp CTAs open WhatsApp directly and do not submit the website form.
+- WhatsApp/support CTAs open the in-site support modal and do not redirect visitors to external WhatsApp URLs.
 - D1 stores `channel` and `intent` where the extended schema is available, with legacy insert fallback preserved.
 
 ## Phase 2 Conversion Surface
@@ -147,7 +147,7 @@ The stale Pages integration must be disconnected from the old account or removed
 
 ## Public Frontend Features
 
-- Premium header with top utility strip, logo, search, state-driven navigation and same-tab direct WhatsApp CTA.
+- Premium header with top utility strip, logo, search, state-driven navigation and in-site WhatsApp/support CTA.
 - Category navigation for major product groups that opens the compact catalogue panel and highlights the selected category.
 - Home area with clear business positioning, premium hero carousel and hero trust badges.
 - Hero messaging leads with "Tiles. Sanitaryware. Paints.", retail/wholesale/project quote positioning and Nairobi, Machakos and Makueni service areas.
@@ -159,9 +159,9 @@ The stale Pages integration must be disconnected from the old account or removed
 - About panel with Kleihaus positioning, service areas and concise trust/support points.
 - Guidance panel with concise quote-planning tips.
 - Quote panel with the existing quote form and direct contact details.
-- Mobile layout uses reduced hero sizing, compact trust badges and catalogue cards, narrowed panel spacing and a sticky direct WhatsApp / Request Quote action bar.
+- Mobile layout uses reduced hero sizing, compact trust badges and catalogue cards, narrowed panel spacing and a sticky WhatsApp support / Request Quote action bar.
 - Mobile footer places the support modal CTA above the green branding strip; the green strip remains the final visible footer element.
-- Direct WhatsApp CTAs use same-tab links to WhatsApp only; support modal submissions use `/api/quote-request` with `channel: "whatsapp"`.
+- WhatsApp/support CTAs open the support modal on Kleihaus.com; support modal submissions use `/api/quote-request` with `channel: "whatsapp"`.
 - Structured footer with balanced Products, Services and Contact columns plus WhatsApp, email, phone and locations.
 - Footer Services is intentionally concise: Finishing Advisory, Delivery and Installation.
 
