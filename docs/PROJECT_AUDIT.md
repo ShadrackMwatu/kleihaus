@@ -147,7 +147,7 @@ The stale Pages integration must be disconnected from the old account or removed
 
 ## Public Frontend Features
 
-- Premium header with top utility strip, logo, search, state-driven navigation and in-site support CTA.
+- Premium header with top utility strip, logo, search, state-driven navigation and same-tab direct WhatsApp CTA.
 - Category navigation for major product groups that opens the compact catalogue panel and highlights the selected category.
 - Home area with clear business positioning, premium hero carousel and hero trust badges.
 - Hero messaging leads with "Tiles. Sanitaryware. Paints.", retail/wholesale/project quote positioning and Nairobi, Machakos and Makueni service areas.
@@ -159,10 +159,10 @@ The stale Pages integration must be disconnected from the old account or removed
 - About panel with Kleihaus positioning, service areas and concise trust/support points.
 - Guidance panel with concise quote-planning tips.
 - Quote panel with the existing quote form and direct contact details.
-- Mobile layout uses reduced hero sizing, compact trust badges and catalogue cards, narrowed panel spacing and quote-aware floating support behavior.
-- Mobile footer places the support CTA above the green branding strip; the green strip remains the final visible footer element.
-- In-site support actions that open a modal and submit through `/api/quote-request` instead of redirecting customers to WhatsApp.
-- Structured footer with balanced Products, Services and Contact columns plus support, email, phone, locations and response expectation.
+- Mobile layout uses reduced hero sizing, compact trust badges and catalogue cards, narrowed panel spacing and a sticky direct WhatsApp / Request Quote action bar.
+- Mobile footer places the support modal CTA above the green branding strip; the green strip remains the final visible footer element.
+- Direct WhatsApp CTAs use same-tab links to WhatsApp only; support modal submissions use `/api/quote-request` with `channel: "whatsapp"`.
+- Structured footer with balanced Products, Services and Contact columns plus WhatsApp, email, phone and locations.
 - Footer Services is intentionally concise: Finishing Advisory, Delivery and Installation.
 
 The public frontend should not display admin dashboards, analytics tables, AI implementation details, weak-signal detection, backend logs or endpoint configuration details.

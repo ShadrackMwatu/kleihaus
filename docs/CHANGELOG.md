@@ -8,6 +8,13 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-06-11
 
+### Communication CTA Same-Tab Audit
+
+- Re-audited active WhatsApp CTAs in `src/App.jsx`; header, hero, footer and sticky mobile WhatsApp actions use normal same-tab anchors without `target="_blank"` or `rel="noopener noreferrer"`.
+- Confirmed quote form submissions continue to send `channel: "email"` and `intent: "quote"` through `/api/quote-request`.
+- Confirmed support modal submissions continue to send `channel: "whatsapp"` and `intent: "support"` through `/api/quote-request`.
+- Confirmed backend routing remains email-only for quote requests and WhatsApp-only for support requests.
+
 ### Communication Channel Separation
 
 - Added explicit `channel` and `intent` fields to frontend quote/support submissions.
