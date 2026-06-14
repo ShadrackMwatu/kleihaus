@@ -8,6 +8,18 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-06-11
 
+### WhatsApp CTA Visual Standardization
+
+- Standardized WhatsApp/support CTAs across header, hero, contact form, category pages, footer and mobile sticky actions to the Kleihaus green primary button style.
+- Updated WhatsApp CTA icon/text treatment to white for consistent contrast on green buttons.
+- Preserved the in-site support modal behavior and existing email-only quote routing.
+
+### Compact Homepage And Block Spacing Pass
+
+- Tightened the top header, category navigation, hero, trust cards, compact content panel, catalogue cards, gallery, FAQ, quote panel and footer spacing.
+- Reduced homepage vertical height by lowering hero viewport bounds, shortening repeated copy, trimming section padding and making card grids denser.
+- Preserved the in-site WhatsApp/support modal flow, email-only quote flow, structured data policy and Worker Assets architecture.
+
 ### In-Site WhatsApp CTA Flow
 
 - Replaced direct frontend WhatsApp URL CTAs with in-site support modal triggers so visitors remain on Kleihaus.com.

@@ -108,56 +108,56 @@ const categoryNav = ['Floor Tiles', 'Wall Tiles', 'Bathroom Tiles', 'Sanitarywar
 const categories = [
   {
     name: 'Floor Tiles',
-    blurb: 'Hard-wearing finishes for living rooms, kitchens, shops and project floors.',
+    blurb: 'Durable finishes for homes, shops and projects.',
     use: 'Homes, shops, offices and rental units',
     img: '/images/tiles-floor.jpg',
     icon: Store,
   },
   {
     name: 'Wall Tiles',
-    blurb: 'Clean ceramic, decor and feature wall surfaces for kitchens and interiors.',
+    blurb: 'Clean ceramic and decor wall finishes.',
     use: 'Kitchens, bathrooms and feature walls',
     img: '/images/tiles-wall.jpg',
     icon: ClipboardList,
   },
   {
     name: 'Outdoor Tiles',
-    blurb: 'Textured tile options for balconies, patios, walkways and wet areas.',
+    blurb: 'Textured options for patios and wet areas.',
     use: 'Balconies, patios, entries and wet zones',
     img: '/images/tiles-floor-2.jpg',
     icon: Sparkles,
   },
   {
     name: 'Bathroom Tiles',
-    blurb: 'Coordinated wall and floor finishes for calm, modern bathrooms.',
+    blurb: 'Coordinated wall and floor bathroom finishes.',
     use: 'Bathrooms, showers and cloakrooms',
     img: '/images/bathroom-blue-1.jpg',
     icon: ShowerHead,
   },
   {
     name: 'Sanitaryware',
-    blurb: 'Basins, toilets, baths, showers, taps and bathroom accessories.',
+    blurb: 'Basins, toilets, taps, showers and accessories.',
     use: 'Complete bathroom fittings and upgrades',
     img: '/images/sanitary-set-1.jpg',
     icon: ShowerHead,
   },
   {
     name: 'Paints',
-    blurb: 'Interior, exterior, roof and floor paints for complete finishing.',
+    blurb: 'Interior, exterior, roof and floor paints.',
     use: 'Interior walls, exterior walls, floors and roofs',
     img: '/images/paint-interior.jpg',
     icon: PaintBucket,
   },
   {
     name: 'Adhesives & Grout',
-    blurb: 'Tile adhesives, grout, trims, spacers and finishing essentials.',
+    blurb: 'Adhesive, grout, trims and fixing essentials.',
     use: 'Tile fixing, joints and installation finishes',
     img: '/images/adhesive.jpg',
     icon: Brush,
   },
   {
     name: 'Installation Support',
-    blurb: 'Product guidance, site advice and practical tile laying support.',
+    blurb: 'Tile planning, matching and site guidance.',
     use: 'Quantity planning, product matching and site guidance',
     img: '/images/tiler-service.jpg',
     icon: Wrench,
@@ -473,10 +473,13 @@ const ButtonSecondary = ({ className = '', children, ...props }) => (
 
 const WhatsAppBrandText = ({ children = 'Need Help?', iconClassName = 'h-4 w-4' }) => (
   <>
-    <MessageCircle className={`${iconClassName} text-[#25D366] drop-shadow-[0_0_6px_rgba(37,211,102,0.35)] transition group-hover:text-[#3ee77b]`} />
-    <span className="text-[#25D366] transition group-hover:text-[#3ee77b]">{children}</span>
+    <MessageCircle className={`${iconClassName} text-white transition group-hover:text-white`} />
+    <span className="text-white transition group-hover:text-white">{children}</span>
   </>
 )
+
+const whatsappCtaClass =
+  'group gap-1.5 border-emerald-700 bg-emerald-700 text-white shadow-sm shadow-emerald-900/10 hover:border-emerald-800 hover:bg-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-200'
 
 const setMetaContent = (selector, content) => {
   const tag = document.querySelector(selector)
@@ -748,7 +751,7 @@ function Header({ projectType, searchQuery, setSearchQuery, onSearch, activeSect
   return (
     <header className="sticky top-0 z-50 border-b border-neutral-200 bg-white/95 backdrop-blur">
       <TopStrip onContactClick={onContactClick} />
-      <div className="mx-auto grid max-w-7xl grid-cols-[1fr_auto_auto] items-center gap-3 px-4 py-3 lg:grid-cols-[auto_minmax(240px,420px)_1fr_auto] lg:gap-6">
+      <div className="mx-auto grid max-w-7xl grid-cols-[1fr_auto_auto] items-center gap-2.5 px-4 py-2.5 lg:grid-cols-[auto_minmax(240px,420px)_1fr_auto] lg:gap-5">
         <button type="button" aria-label="Kleihaus Ceramics home" className="min-w-0 text-left" onClick={() => handleNavClick('home')}>
           <Logo compact />
         </button>
@@ -776,12 +779,12 @@ function Header({ projectType, searchQuery, setSearchQuery, onSearch, activeSect
         </nav>
 
         <div className="hidden items-center justify-end lg:flex">
-          <Button type="button" onClick={() => onSupportClick('header_whatsapp')} className="group gap-2 bg-neutral-950 px-3.5 hover:border-[#25D366]/60 hover:bg-neutral-900 hover:shadow-[0_0_18px_rgba(37,211,102,0.22)]">
+          <Button type="button" onClick={() => onSupportClick('header_whatsapp')} className={`${whatsappCtaClass} px-3.5 py-2.5 text-sm`}>
             <WhatsAppBrandText>WhatsApp</WhatsAppBrandText>
           </Button>
         </div>
 
-        <Button type="button" onClick={() => onSupportClick('mobile_header_whatsapp')} className="group gap-1.5 bg-neutral-950 px-3 py-2 text-xs hover:border-[#25D366]/60 hover:bg-neutral-900 hover:shadow-[0_0_16px_rgba(37,211,102,0.22)] lg:hidden">
+        <Button type="button" onClick={() => onSupportClick('mobile_header_whatsapp')} className={`${whatsappCtaClass} px-3 py-2 text-xs lg:hidden`}>
           <WhatsAppBrandText>WhatsApp</WhatsAppBrandText>
         </Button>
 
@@ -796,7 +799,7 @@ function Header({ projectType, searchQuery, setSearchQuery, onSearch, activeSect
       </div>
 
       <div className="border-t border-neutral-100 bg-white">
-        <div className="mx-auto flex max-w-7xl gap-2 overflow-x-auto px-4 py-2">
+        <div className="mx-auto flex max-w-7xl gap-1.5 overflow-x-auto px-4 py-1.5">
           {categoryNav.map((item) => (
             <button
               key={item}
@@ -806,7 +809,7 @@ function Header({ projectType, searchQuery, setSearchQuery, onSearch, activeSect
                 onCategoryClick(item)
                 onSectionChange('catalogue')
               }}
-              className={`shrink-0 rounded-full border px-3.5 py-1.5 text-xs font-medium transition focus:outline-none focus:ring-2 focus:ring-emerald-200 ${
+              className={`shrink-0 rounded-full border px-3 py-1 text-xs font-medium transition focus:outline-none focus:ring-2 focus:ring-emerald-200 ${
                 selectedCategory === item
                   ? 'border-emerald-600 bg-emerald-50 text-emerald-800'
                   : 'border-neutral-200 bg-white text-neutral-600 hover:border-emerald-600/40 hover:bg-emerald-50 hover:text-emerald-700'
@@ -886,8 +889,8 @@ function Hero({ onSupportClick, onQuoteClick, onSectionChange }) {
 
   return (
     <section id="top" className="bg-stone-100">
-      <div className="mx-auto max-w-7xl px-4 py-4 lg:py-6">
-        <div className="hero-carousel relative h-[58vh] max-h-[520px] min-h-[320px] overflow-hidden rounded-lg bg-neutral-950 text-white shadow-xl sm:h-[min(72vh,640px)] sm:min-h-[430px] lg:h-[min(74vh,680px)]">
+      <div className="mx-auto max-w-7xl px-4 py-3 lg:py-4">
+        <div className="hero-carousel relative h-[50vh] max-h-[460px] min-h-[280px] overflow-hidden rounded-lg bg-neutral-950 text-white shadow-xl sm:h-[min(62vh,560px)] sm:min-h-[360px] lg:h-[min(64vh,600px)]">
           <div className="absolute inset-0">
             {heroSlides.map((slide, index) => {
               const isActive = index === activeSlide
@@ -909,15 +912,15 @@ function Hero({ onSupportClick, onQuoteClick, onSectionChange }) {
           </div>
           <div className="absolute inset-0 bg-gradient-to-r from-neutral-950/75 via-neutral-950/35 to-white/5" />
           <div className="absolute inset-0 bg-gradient-to-br from-emerald-950/20 via-transparent to-white/10" />
-          <div className="relative flex h-full max-w-3xl flex-col justify-center px-5 py-8 pb-14 sm:px-10 sm:py-12 lg:px-12">
+          <div className="relative flex h-full max-w-3xl flex-col justify-center px-5 py-6 pb-12 sm:px-9 sm:py-10 lg:px-10">
             <p className="text-xs font-semibold uppercase tracking-wide text-emerald-200">Tiles. Sanitaryware. Paints. | Nairobi | Machakos | Makueni</p>
-            <h1 className="mt-2.5 max-w-2xl text-[clamp(2.125rem,7vw,2.625rem)] font-semibold leading-[1.08] text-white sm:mt-4 sm:text-5xl sm:leading-tight lg:text-6xl">
+            <h1 className="mt-2 max-w-2xl text-[clamp(2rem,6.4vw,2.5rem)] font-semibold leading-[1.08] text-white sm:mt-3 sm:text-5xl sm:leading-tight lg:text-5xl">
               Finish homes and projects with Kleihaus Ceramics.
             </h1>
-            <p className="mt-3 max-w-xl text-sm leading-5 text-neutral-100 sm:mt-5 sm:text-lg sm:leading-7">
+            <p className="mt-3 max-w-xl text-sm leading-5 text-neutral-100 sm:mt-4 sm:text-base sm:leading-7">
               Tiles, sanitaryware, paints, adhesives and grout for retail, wholesale and project requests across Nairobi, Machakos and Makueni.
             </p>
-            <div className="mt-5 flex flex-wrap gap-2 sm:mt-8 sm:gap-3">
+            <div className="mt-4 flex flex-wrap gap-2 sm:mt-6 sm:gap-3">
               <Button
                 type="button"
                 onClick={() => {
@@ -935,13 +938,13 @@ function Hero({ onSupportClick, onQuoteClick, onSectionChange }) {
               <ButtonSecondary
                 type="button"
                 onClick={() => onSupportClick('hero_whatsapp')}
-                className="gap-1.5 border-white/40 bg-white/10 px-2.5 py-1.5 text-xs text-white hover:bg-white/20 sm:gap-2 sm:px-4 sm:py-2.5 sm:text-sm"
+                className={`${whatsappCtaClass} px-2.5 py-1.5 text-xs sm:px-4 sm:py-2.5 sm:text-sm`}
               >
                 <WhatsAppBrandText>WhatsApp</WhatsAppBrandText>
               </ButtonSecondary>
             </div>
           </div>
-          <div className="absolute bottom-4 left-5 right-5 flex items-center justify-between gap-4 sm:bottom-5 sm:left-10 sm:right-10 lg:left-12 lg:right-12">
+          <div className="absolute bottom-3 left-5 right-5 flex items-center justify-between gap-4 sm:bottom-4 sm:left-10 sm:right-10 lg:left-10 lg:right-10">
             <div className="flex items-center gap-2">
               {heroSlides.map((slide, index) => (
                 <button
@@ -975,11 +978,11 @@ function Hero({ onSupportClick, onQuoteClick, onSectionChange }) {
             </div>
           </div>
         </div>
-        <div className="mt-3 grid grid-cols-2 gap-2 sm:mt-4 sm:gap-3 md:grid-cols-3 lg:grid-cols-5">
+        <div className="mt-2.5 grid grid-cols-2 gap-2 sm:mt-3 sm:gap-2.5 md:grid-cols-3 lg:grid-cols-5">
           {heroTrustBadges.map((badge) => {
             const Icon = badge.icon
             return (
-              <div key={badge.label} className="flex min-h-0 items-center gap-2 rounded-lg border border-emerald-100 bg-white px-2.5 py-1.5 text-[11px] font-semibold leading-snug text-neutral-800 shadow-sm sm:gap-3 sm:px-4 sm:py-3 sm:text-sm">
+              <div key={badge.label} className="flex min-h-0 items-center gap-2 rounded-lg border border-emerald-100 bg-white px-2.5 py-1.5 text-[11px] font-semibold leading-snug text-neutral-800 shadow-sm sm:px-3 sm:py-2 sm:text-sm">
                 <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-emerald-50 text-emerald-700 sm:h-9 sm:w-9">
                   <Icon className="h-4 w-4" />
                 </span>
@@ -1095,18 +1098,18 @@ function GuidancePanel() {
 
 function ShopByCategory({ selectedCategory, onCategoryClick, onGuideClick, onSupportClick, compact = false }) {
   return (
-    <section id="catalogue" className={compact ? '' : 'mx-auto max-w-7xl px-4 py-16'}>
-      <div className={compact ? 'mb-4 max-w-3xl sm:mb-5' : 'mb-8 max-w-3xl'}>
+    <section id="catalogue" className={compact ? '' : 'mx-auto max-w-7xl px-4 py-10'}>
+      <div className={compact ? 'mb-3 max-w-3xl sm:mb-4' : 'mb-6 max-w-3xl'}>
         <div>
           <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Product catalogue</p>
           <h2 className="mt-1.5 text-xl font-semibold text-neutral-950 sm:mt-2 sm:text-3xl">Shop by category</h2>
           <p className="mt-2 max-w-2xl text-xs leading-5 text-neutral-600 sm:text-sm sm:leading-6">
-            Choose the finish you need, view the guide, then send a quote request for retail, wholesale or project support.
+            Choose a category, view the guide, then send a focused quote request.
           </p>
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-4">
+      <div className="grid grid-cols-2 gap-2.5 sm:gap-3 lg:grid-cols-4">
         {categories.map((category) => {
           const Icon = category.icon
           const landingPage = categoryLandingPages.find((page) => page.category === category.name)
@@ -1122,7 +1125,7 @@ function ShopByCategory({ selectedCategory, onCategoryClick, onGuideClick, onSup
                 onClick={() => onCategoryClick(category.name)}
                 className="block w-full text-left"
               >
-                <div className="relative aspect-[16/9] overflow-hidden bg-neutral-100 sm:aspect-[4/3]">
+                <div className="relative aspect-[2/1] overflow-hidden bg-neutral-100 sm:aspect-[4/3]">
                   <OptimizedImage
                     src={category.img}
                     alt={`${category.name} supplied by Kleihaus Ceramics in Kenya`}
@@ -1135,25 +1138,24 @@ function ShopByCategory({ selectedCategory, onCategoryClick, onGuideClick, onSup
                       event.currentTarget.src = '/images/placeholder.jpg'
                     }}
                   />
-                  <div className="absolute left-2 top-2 inline-flex h-7 w-7 items-center justify-center rounded-md bg-white/95 text-emerald-800 shadow-sm sm:left-3 sm:top-3 sm:h-10 sm:w-10">
+                  <div className="absolute left-2 top-2 inline-flex h-7 w-7 items-center justify-center rounded-md bg-white/95 text-emerald-800 shadow-sm sm:left-3 sm:top-3 sm:h-9 sm:w-9">
                     <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
                   </div>
                 </div>
               </button>
-              <div className="flex flex-1 flex-col p-2.5 sm:p-4">
+              <div className="flex flex-1 flex-col p-2.5 sm:p-3">
                 <div className="flex items-center justify-between gap-2 sm:gap-3">
                   <h3 className="text-sm font-semibold leading-snug text-neutral-950 sm:text-base">{category.name}</h3>
                   <ArrowRight className="h-4 w-4 shrink-0 text-neutral-400 transition group-hover:text-emerald-700" />
                 </div>
-                <p className="mt-1 line-clamp-2 text-[11px] leading-4 text-neutral-600 sm:mt-2 sm:text-sm sm:leading-6">{category.blurb}</p>
-                <div className="mt-2 flex flex-wrap gap-1.5">
+                <p className="mt-1 line-clamp-2 text-[11px] leading-4 text-neutral-600 sm:text-sm sm:leading-5">{category.blurb}</p>
+                <div className="mt-1.5 flex flex-wrap gap-1.5">
                   <span className="rounded-md bg-emerald-50 px-2 py-1 text-[10px] font-semibold text-emerald-800 sm:text-xs">{category.use}</span>
-                  <span className="rounded-md bg-stone-100 px-2 py-1 text-[10px] font-semibold text-neutral-700 sm:text-xs">Quote support</span>
                 </div>
                 <a
                   href={guideTarget}
                   aria-label={`View ${category.name} guide`}
-                  className="group/link mt-2 inline-flex w-fit items-center gap-1 text-[10px] font-semibold uppercase tracking-wide text-emerald-700 underline decoration-emerald-200 underline-offset-4 transition hover:text-emerald-900 hover:decoration-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:text-xs"
+                  className="group/link mt-1.5 inline-flex w-fit items-center gap-1 text-[10px] font-semibold uppercase tracking-wide text-emerald-700 underline decoration-emerald-200 underline-offset-4 transition hover:text-emerald-900 hover:decoration-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:text-xs"
                   onClick={(event) => {
                     analyticsService.track('category_click', {
                       productCategory: category.name,
@@ -1166,7 +1168,7 @@ function ShopByCategory({ selectedCategory, onCategoryClick, onGuideClick, onSup
                   <ArrowRight className="h-3 w-3 transition group-hover/link:translate-x-0.5" />
                 </a>
                 {selectedCategory === category.name && (
-                  <span className="mt-2 inline-flex rounded-md bg-emerald-50 px-2 py-1 text-[11px] font-semibold text-emerald-800 sm:mt-3 sm:text-xs">
+                  <span className="mt-1.5 inline-flex rounded-md bg-emerald-50 px-2 py-1 text-[11px] font-semibold text-emerald-800 sm:text-xs">
                     Recommended for you
                   </span>
                 )}
@@ -1176,7 +1178,7 @@ function ShopByCategory({ selectedCategory, onCategoryClick, onGuideClick, onSup
                     onCategoryClick(category.name)
                     onSupportClick(`category_card_${category.name}`, `I would like a quote for ${category.name}. Please share availability, price guidance and delivery details.`)
                   }}
-                  className="mt-auto inline-flex items-center justify-center gap-1.5 rounded-md bg-emerald-700 px-2.5 py-1.5 text-xs font-semibold text-white hover:bg-emerald-800 sm:px-3 sm:py-2.5 sm:text-sm"
+                  className="mt-auto inline-flex items-center justify-center gap-1.5 rounded-md bg-emerald-700 px-2.5 py-1.5 text-xs font-semibold text-white hover:bg-emerald-800 sm:px-3 sm:py-2 sm:text-sm"
                 >
                   Request quote
                 </button>
@@ -1235,7 +1237,7 @@ function ProductCatalogue({ onProductInterest, onSupportClick }) {
                           onProductInterest(item.name, group.title)
                           onSupportClick(`product_card_${item.name}`, `I would like a quote for ${item.name}. Please share availability, price guidance and delivery details.`)
                         }}
-                        className="mt-auto inline-flex items-center justify-center rounded-md border border-neutral-300 px-3 py-2.5 text-sm font-semibold text-neutral-900 hover:border-emerald-700 hover:text-emerald-800"
+                        className="mt-auto inline-flex items-center justify-center rounded-md border border-emerald-700 bg-emerald-700 px-3 py-2 text-sm font-semibold text-white shadow-sm shadow-emerald-900/10 transition hover:border-emerald-800 hover:bg-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-200"
                       >
                         Request quote
                       </button>
@@ -1354,24 +1356,24 @@ function QuantityEstimator() {
 
 function Services() {
   return (
-    <section className="mx-auto max-w-7xl px-4 py-8 sm:py-12">
-      <div className="mb-5 max-w-3xl sm:mb-7">
+    <section className="mx-auto max-w-7xl px-4 py-6 sm:py-8">
+      <div className="mb-4 max-w-3xl">
         <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Trust and support</p>
-        <h2 className="mt-2 text-2xl font-semibold text-neutral-950 sm:text-3xl">Support for better finishing decisions</h2>
-        <p className="mt-2 text-sm leading-6 text-neutral-600">
-          Kleihaus focuses on curated finishing materials, project quotation support, delivery coordination and installation guidance across Nairobi, Machakos and Makueni.
+        <h2 className="mt-1.5 text-xl font-semibold text-neutral-950 sm:text-2xl">Support for confident finishing decisions</h2>
+        <p className="mt-1.5 text-sm leading-6 text-neutral-600">
+          Curated finishing materials, quote support and delivery guidance across Nairobi, Machakos and Makueni.
         </p>
       </div>
-      <div className="grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-4">
+      <div className="grid grid-cols-2 gap-2.5 sm:gap-3 lg:grid-cols-4">
         {serviceBadges.map((service) => {
           const Icon = service.icon
           return (
-            <div key={service.title} className="rounded-md border border-neutral-200 bg-white p-3 shadow-sm sm:p-5">
-              <div className="inline-flex h-9 w-9 items-center justify-center rounded-md bg-emerald-50 text-emerald-800 sm:h-11 sm:w-11">
+            <div key={service.title} className="rounded-md border border-neutral-200 bg-white p-3 shadow-sm sm:p-4">
+              <div className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-emerald-50 text-emerald-800 sm:h-10 sm:w-10">
                 <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
               </div>
-              <h3 className="mt-3 text-sm font-semibold text-neutral-950 sm:mt-4 sm:text-base">{service.title}</h3>
-              <p className="mt-1 text-xs leading-5 text-neutral-600 sm:mt-2 sm:text-sm sm:leading-6">{service.text}</p>
+              <h3 className="mt-2 text-sm font-semibold text-neutral-950 sm:text-base">{service.title}</h3>
+              <p className="mt-1 text-xs leading-5 text-neutral-600 sm:text-sm sm:leading-5">{service.text}</p>
             </div>
           )
         })}
@@ -1383,13 +1385,13 @@ function Services() {
 function CustomerProjectGallery({ onQuoteClick }) {
   return (
     <section className="border-y border-neutral-200 bg-stone-50">
-      <div className="mx-auto max-w-7xl px-4 py-8 sm:py-12">
-        <div className="mb-5 flex flex-col gap-3 sm:mb-7 md:flex-row md:items-end md:justify-between">
+      <div className="mx-auto max-w-7xl px-4 py-6 sm:py-8">
+        <div className="mb-4 flex flex-col gap-2 sm:mb-5 md:flex-row md:items-end md:justify-between">
           <div className="max-w-3xl">
             <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Project inspiration</p>
-            <h2 className="mt-2 text-2xl font-semibold text-neutral-950 sm:text-3xl">Customer project gallery</h2>
-            <p className="mt-2 text-sm leading-6 text-neutral-600">
-              Use existing Kleihaus finish examples to plan tile, sanitaryware, paint and installation material requests.
+            <h2 className="mt-1.5 text-xl font-semibold text-neutral-950 sm:text-2xl">Project inspiration</h2>
+            <p className="mt-1.5 text-sm leading-6 text-neutral-600">
+              Quick finish examples for tile, sanitaryware, paint and installation requests.
             </p>
           </div>
           <button
@@ -1401,7 +1403,7 @@ function CustomerProjectGallery({ onQuoteClick }) {
             <ArrowRight className="h-4 w-4" />
           </button>
         </div>
-        <div className="grid gap-3 sm:grid-cols-3 sm:gap-4">
+        <div className="grid gap-2.5 sm:grid-cols-3 sm:gap-3">
           {projectGalleryItems.map((item) => (
             <article key={item.title} className="overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-sm">
               <OptimizedImage
@@ -1410,16 +1412,16 @@ function CustomerProjectGallery({ onQuoteClick }) {
                 sizes="(max-width: 640px) 100vw, 33vw"
                 loading="lazy"
                 decoding="async"
-                className="aspect-[16/10] w-full object-cover"
+                className="aspect-[16/9] w-full object-cover"
                 onError={(event) => {
                   event.currentTarget.onerror = null
                   event.currentTarget.src = '/images/placeholder.jpg'
                 }}
               />
-              <div className="p-3 sm:p-4">
+              <div className="p-3">
                 <p className="text-[11px] font-semibold uppercase tracking-wide text-emerald-700">{item.label}</p>
                 <h3 className="mt-1 text-sm font-semibold text-neutral-950 sm:text-base">{item.title}</h3>
-                <p className="mt-1 text-xs leading-5 text-neutral-600 sm:text-sm sm:leading-6">{item.text}</p>
+                <p className="mt-1 text-xs leading-5 text-neutral-600 sm:text-sm sm:leading-5">{item.text}</p>
               </div>
             </article>
           ))}
@@ -1432,33 +1434,33 @@ function CustomerProjectGallery({ onQuoteClick }) {
 function HelpfulGuides({ onGuideClick }) {
   return (
     <section className="border-y border-neutral-200 bg-neutral-50">
-      <div className="mx-auto max-w-7xl px-4 py-8 sm:py-12">
-        <div className="mb-5 max-w-3xl sm:mb-7">
+      <div className="mx-auto max-w-7xl px-4 py-6 sm:py-8">
+        <div className="mb-4 max-w-3xl">
           <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Helpful buying guidance</p>
-          <h2 className="mt-2 text-2xl font-semibold text-neutral-950 sm:text-3xl">Planning guides for better material choices</h2>
-          <p className="mt-2 text-sm leading-6 text-neutral-600">
-            Use these planning topics to frame your quote request. If you need help now, tap a topic and send the team your room size, product type, quantity, location and budget range.
+          <h2 className="mt-1.5 text-xl font-semibold text-neutral-950 sm:text-2xl">Planning guidance</h2>
+          <p className="mt-1.5 text-sm leading-6 text-neutral-600">
+            Use these topics to send room size, product type, quantity, location and budget range.
           </p>
         </div>
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-2.5 md:grid-cols-2 lg:grid-cols-3">
           {contentTopics.map((topic) => (
             <a
               key={topic.title}
               href="#contact"
               onClick={() => onGuideClick(topic.title)}
-              className="rounded-md border border-neutral-200 bg-white p-5 shadow-sm transition hover:border-emerald-700"
+              className="rounded-md border border-neutral-200 bg-white p-3 shadow-sm transition hover:border-emerald-700 sm:p-4"
             >
               <p className="text-xs font-semibold uppercase text-emerald-700">Planning support</p>
-              <h3 className="mt-2 text-base font-semibold text-neutral-950">{topic.title}</h3>
-              <p className="mt-2 text-sm leading-6 text-neutral-600">{topic.summary}</p>
+              <h3 className="mt-1.5 text-sm font-semibold text-neutral-950 sm:text-base">{topic.title}</h3>
+              <p className="mt-1 text-xs leading-5 text-neutral-600 sm:text-sm sm:leading-5">{topic.summary}</p>
             </a>
           ))}
         </div>
-        <div className="mt-8 grid gap-3 lg:grid-cols-2">
+        <div className="mt-5 grid gap-2.5 lg:grid-cols-2">
           {faqItems.map((item) => (
-            <article key={item.question} className="rounded-md border border-neutral-200 bg-white p-4 shadow-sm sm:p-5">
-              <h3 className="text-base font-semibold text-neutral-950">{item.question}</h3>
-              <p className="mt-2 text-sm leading-6 text-neutral-600">{item.answer}</p>
+            <article key={item.question} className="rounded-md border border-neutral-200 bg-white p-3 shadow-sm sm:p-4">
+              <h3 className="text-sm font-semibold text-neutral-950 sm:text-base">{item.question}</h3>
+              <p className="mt-1.5 text-xs leading-5 text-neutral-600 sm:text-sm sm:leading-5">{item.answer}</p>
             </article>
           ))}
         </div>
@@ -1601,15 +1603,15 @@ function Contact({ onSupportClick, compact = false }) {
 
   return (
     <section id="contact" className={compact ? 'rounded-xl bg-neutral-950 text-white' : 'bg-neutral-950 text-white'}>
-      <div className={`${compact ? 'grid gap-6 p-5 sm:p-6' : 'mx-auto grid max-w-7xl gap-10 px-4 py-16'} lg:grid-cols-[0.9fr_1.1fr]`}>
+      <div className={`${compact ? 'grid gap-4 p-4 sm:p-5' : 'mx-auto grid max-w-7xl gap-8 px-4 py-10'} lg:grid-cols-[0.9fr_1.1fr]`}>
         <div>
           <p className="text-sm font-semibold uppercase text-emerald-300">Contact Kleihaus</p>
-          <h2 className="mt-2 text-2xl font-semibold sm:text-3xl">Request a product or project quote.</h2>
-          <p className="mt-4 leading-7 text-neutral-300">
-            Share your room size, product type, quantity, location and budget range. Kleihaus will respond with product guidance and quote support.
+          <h2 className="mt-1.5 text-2xl font-semibold sm:text-3xl">Request a quote.</h2>
+          <p className="mt-3 leading-6 text-neutral-300">
+            Share product type, quantity, location and budget range for a faster response.
           </p>
 
-          <div className="mt-7 space-y-3 text-sm text-neutral-200">
+          <div className="mt-5 space-y-2 text-sm text-neutral-200">
             <a href="tel:+254748827166" className="flex items-center gap-3 hover:text-white" onClick={() => analyticsService.track('phone_click', { clickedElement: 'contact_phone' })}>
               <Phone className="h-4 w-4 text-emerald-300" />
               +254 748 827 166
@@ -1631,13 +1633,13 @@ function Contact({ onSupportClick, compact = false }) {
           onSubmit={submitQuoteRequest}
           noValidate
           autoComplete="off"
-          className="rounded-lg bg-white p-5 text-neutral-950 shadow-xl sm:p-6"
+          className="rounded-lg bg-white p-4 text-neutral-950 shadow-xl sm:p-5"
         >
-          <div className="mb-5">
+          <div className="mb-4">
             <h3 className="text-lg font-semibold">Tell us what you need</h3>
-            <p className="mt-1 text-sm leading-6 text-neutral-600">Share room size, product type, quantity, location and budget range. Quote requests are emailed to Kleihaus only, then our team responds by email or phone.</p>
+            <p className="mt-1 text-sm leading-5 text-neutral-600">Quote requests are emailed to Kleihaus only; we respond by email or phone.</p>
           </div>
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid gap-3 sm:grid-cols-2">
             <label className="grid gap-2 text-sm font-medium text-neutral-700">
               Name
               <Input name="name" autoComplete="off" placeholder="Your name" value={quoteForm.name} onChange={updateQuoteField('name')} required />
@@ -1647,7 +1649,7 @@ function Contact({ onSupportClick, compact = false }) {
               <Input name="email" type="email" autoComplete="off" placeholder="Email address" value={quoteForm.email} onChange={updateQuoteField('email')} />
             </label>
           </div>
-          <div className="mt-4 grid gap-4 sm:grid-cols-2">
+          <div className="mt-3 grid gap-3 sm:grid-cols-2">
             <label className="grid gap-2 text-sm font-medium text-neutral-700">
               Phone
               <Input name="phone" autoComplete="off" placeholder="Phone number" value={quoteForm.phone} onChange={updateQuoteField('phone')} />
@@ -1657,19 +1659,19 @@ function Contact({ onSupportClick, compact = false }) {
               <Input name="location" autoComplete="off" placeholder="Project location" value={quoteForm.location} onChange={updateQuoteField('location')} />
             </label>
           </div>
-          <label className="mt-4 grid gap-2 text-sm font-medium text-neutral-700">
+          <label className="mt-3 grid gap-2 text-sm font-medium text-neutral-700">
             Request details
             <Textarea
               name="message"
               autoComplete="off"
               placeholder="Example: 32 m2 floor tiles, matte finish, 85 pieces, delivery to Machakos, budget range..."
-              rows={5}
+              rows={4}
               value={quoteForm.message}
               onChange={updateQuoteField('message')}
             />
           </label>
           {quoteErrors.length > 0 && (
-            <div className="mt-4 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
+            <div className="mt-3 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
               {quoteErrors.map((error) => (
                 <p key={error}>{error}</p>
               ))}
@@ -1678,7 +1680,7 @@ function Contact({ onSupportClick, compact = false }) {
           {quoteStatus && (
             <p
               ref={quoteStatusRef}
-              className={`mt-4 rounded-md border px-4 py-3 text-sm ${
+              className={`mt-3 rounded-md border px-4 py-3 text-sm ${
                 quoteStatusType === 'success'
                   ? 'border-emerald-200 bg-emerald-50 text-emerald-800'
                   : 'border-amber-200 bg-amber-50 text-amber-900'
@@ -1687,11 +1689,11 @@ function Contact({ onSupportClick, compact = false }) {
               {quoteStatus}
             </p>
           )}
-          <div className="mt-5 flex flex-wrap gap-3">
-            <Button disabled={isQuoteSubmitting} className="border-emerald-700 bg-[#16A34A] px-5 py-3 text-base shadow-md shadow-emerald-900/10 hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-70">
+          <div className="mt-4 flex flex-wrap gap-2.5">
+            <Button disabled={isQuoteSubmitting} className="border-emerald-700 bg-[#16A34A] px-4 py-2.5 text-sm shadow-md shadow-emerald-900/10 hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-70">
               {isQuoteSubmitting ? 'Sending...' : 'Send request'}
             </Button>
-            <ButtonSecondary type="button" onClick={() => onSupportClick('contact_form')} className="group gap-2 hover:border-[#25D366]/70 hover:shadow-[0_0_16px_rgba(37,211,102,0.16)]">
+            <ButtonSecondary type="button" onClick={() => onSupportClick('contact_form')} className={`${whatsappCtaClass} px-4 py-2.5 text-sm`}>
               <WhatsAppBrandText>Open support form</WhatsAppBrandText>
             </ButtonSecondary>
           </div>
@@ -1881,19 +1883,19 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
   return (
     <main className="bg-white">
       <section className="border-b border-emerald-100 bg-stone-50">
-        <div className="mx-auto grid max-w-7xl gap-6 px-4 py-8 sm:py-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+        <div className="mx-auto grid max-w-7xl gap-5 px-4 py-6 sm:py-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <div>
             <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">{page.eyebrow}</p>
-            <h1 className="mt-2 max-w-3xl text-[clamp(2rem,8vw,2.75rem)] font-semibold leading-tight text-neutral-950 sm:text-5xl">
+            <h1 className="mt-2 max-w-3xl text-[clamp(1.875rem,7vw,2.5rem)] font-semibold leading-tight text-neutral-950 sm:text-4xl">
               {page.h1}
             </h1>
-            <p className="mt-3 max-w-2xl text-sm leading-6 text-neutral-700 sm:mt-4 sm:text-base sm:leading-7">
+            <p className="mt-3 max-w-2xl text-sm leading-6 text-neutral-700 sm:text-base sm:leading-6">
               {page.intro}
             </p>
-            <p className="mt-3 max-w-2xl text-xs leading-5 text-neutral-600 sm:text-sm sm:leading-6">
+            <p className="mt-2 max-w-2xl text-xs leading-5 text-neutral-600 sm:text-sm sm:leading-5">
               Quotes depend on current availability, quantity, delivery location and project details. Share measurements, finish preference and budget range so the Kleihaus team responds with useful guidance.
             </p>
-            <div className="mt-5 flex flex-wrap gap-2">
+            <div className="mt-4 flex flex-wrap gap-2">
               <Button
                 type="button"
                 className="gap-1.5 px-3 py-2 text-xs sm:px-4 sm:py-2.5 sm:text-sm"
@@ -1905,7 +1907,7 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
                 Request quote
                 <ArrowRight className="h-4 w-4" />
               </Button>
-              <ButtonSecondary type="button" onClick={() => onSupportClick(`category_page_${page.path}`, `I would like a quote for ${page.category}. Please share availability, price guidance and delivery details.`)} className="group gap-1.5 px-3 py-2 text-xs sm:px-4 sm:py-2.5 sm:text-sm">
+              <ButtonSecondary type="button" onClick={() => onSupportClick(`category_page_${page.path}`, `I would like a quote for ${page.category}. Please share availability, price guidance and delivery details.`)} className={`${whatsappCtaClass} px-3 py-2 text-xs sm:px-4 sm:py-2.5 sm:text-sm`}>
                 <WhatsAppBrandText>Support inquiry</WhatsAppBrandText>
               </ButtonSecondary>
             </div>
@@ -1930,12 +1932,12 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
         </div>
       </section>
 
-      <section id="gallery" className="mx-auto max-w-7xl px-4 py-8 sm:py-12">
-        <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
+      <section id="gallery" className="mx-auto max-w-7xl px-4 py-6 sm:py-8">
+        <div className="grid gap-5 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
             <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Quote planning</p>
-            <h2 className="mt-2 text-2xl font-semibold text-neutral-950 sm:text-3xl">What to share with Kleihaus</h2>
-            <ul className="mt-4 grid gap-2 text-sm text-neutral-700">
+            <h2 className="mt-2 text-xl font-semibold text-neutral-950 sm:text-2xl">What to share</h2>
+            <ul className="mt-3 grid gap-1.5 text-sm text-neutral-700">
               {page.notes.map((note) => (
                 <li key={note} className="flex items-start gap-2">
                   <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-emerald-700" />
@@ -1943,7 +1945,7 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
                 </li>
               ))}
             </ul>
-            <div className="mt-5 rounded-lg border border-emerald-100 bg-emerald-50 p-4 text-sm leading-6 text-emerald-950">
+            <div className="mt-4 rounded-lg border border-emerald-100 bg-emerald-50 p-3 text-sm leading-5 text-emerald-950">
               Include room size, product type, quantity, location and budget range. Photos or inspiration references help the team match finishes more quickly.
             </div>
           </div>
@@ -1969,8 +1971,8 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-8 sm:py-12">
-        <div className="mb-6 rounded-xl border border-neutral-200 bg-white p-4 shadow-sm sm:p-5">
+      <section className="mx-auto max-w-7xl px-4 py-6 sm:py-8">
+        <div className="mb-4 rounded-xl border border-neutral-200 bg-white p-3 shadow-sm sm:p-4">
           <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Explore related categories</p>
           <div className="mt-3 flex flex-wrap gap-2">
             {categoryLandingPages
@@ -1988,7 +1990,7 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
               ))}
           </div>
         </div>
-        <div className="flex flex-col gap-3 rounded-xl bg-neutral-950 p-5 text-white sm:p-7 md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-col gap-3 rounded-xl bg-neutral-950 p-4 text-white sm:p-5 md:flex-row md:items-center md:justify-between">
           <div>
             <h2 className="text-xl font-semibold sm:text-2xl">Ready to plan a {page.category.toLowerCase()} quote?</h2>
             <p className="mt-2 text-sm leading-6 text-neutral-300">
@@ -2002,7 +2004,7 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
             <a href="/#catalogue" className="inline-flex items-center justify-center rounded-md border border-white/30 px-3 py-2 text-xs font-semibold text-white hover:bg-white/10 sm:text-sm">
               Browse catalogue
             </a>
-            <ButtonSecondary type="button" onClick={() => onSupportClick(`category_page_bottom_${page.path}`, `I would like a quote for ${page.category}. Please share availability, price guidance and delivery details.`)} className="group gap-1.5 px-3 py-2 text-xs sm:text-sm">
+            <ButtonSecondary type="button" onClick={() => onSupportClick(`category_page_bottom_${page.path}`, `I would like a quote for ${page.category}. Please share availability, price guidance and delivery details.`)} className={`${whatsappCtaClass} px-3 py-2 text-xs sm:text-sm`}>
               <WhatsAppBrandText>Need help?</WhatsAppBrandText>
             </ButtonSecondary>
           </div>
@@ -2015,7 +2017,7 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
 function Footer({ onSupportClick }) {
   return (
     <footer data-site-footer className="border-t border-white/30 bg-[linear-gradient(180deg,#8B4E1C_0%,#A65F1E_100%)] text-orange-50">
-      <div className="mx-auto grid max-w-6xl gap-5 px-4 py-5 sm:gap-8 sm:py-8 lg:py-9 md:grid-cols-3 md:gap-12 lg:gap-16">
+      <div className="mx-auto grid max-w-6xl gap-4 px-4 py-4 sm:gap-6 sm:py-6 lg:py-7 md:grid-cols-3 md:gap-10 lg:gap-14">
         <div className="w-full md:justify-self-start">
           <h3 className="text-sm font-semibold uppercase text-white">Products</h3>
           <ul className="mt-2 grid gap-0.5 text-xs text-orange-50/90 sm:gap-1.5 sm:text-sm">
@@ -2037,7 +2039,7 @@ function Footer({ onSupportClick }) {
         <div className="w-full md:max-w-max md:justify-self-end">
           <h3 className="text-sm font-semibold uppercase text-white">Contact</h3>
           <div className="mt-2 grid gap-1.5 text-xs text-orange-50/90 sm:gap-2 sm:text-sm">
-            <button type="button" onClick={() => onSupportClick?.('footer_whatsapp')} className="group inline-flex items-center gap-2 text-left text-white hover:text-orange-50">
+            <button type="button" onClick={() => onSupportClick?.('footer_whatsapp')} className={`${whatsappCtaClass} inline-flex w-fit items-center justify-center rounded-md px-3 py-2 text-left text-xs sm:text-sm`}>
               <WhatsAppBrandText>WhatsApp</WhatsAppBrandText>
             </button>
             <a href="mailto:sales@kleihaus.com" className="inline-flex items-center gap-2 hover:text-white">
@@ -2055,11 +2057,11 @@ function Footer({ onSupportClick }) {
           </div>
         </div>
       </div>
-      <div className="border-t border-white/20 px-4 py-3 md:hidden">
+      <div className="border-t border-white/20 px-4 py-2.5 md:hidden">
         <button
           type="button"
           onClick={() => onSupportClick?.('footer_mobile_support')}
-          className="group mx-auto flex max-w-sm items-center justify-center gap-2 rounded-md border border-[#25D366]/40 bg-neutral-950 px-4 py-2.5 text-xs font-semibold shadow-lg shadow-neutral-900/20 transition hover:shadow-[0_0_20px_rgba(37,211,102,0.28)]"
+          className={`${whatsappCtaClass} mx-auto flex max-w-sm items-center justify-center rounded-md px-4 py-2 text-xs font-semibold`}
         >
           <WhatsAppBrandText>Need Help?</WhatsAppBrandText>
         </button>
@@ -2083,7 +2085,7 @@ function MobileStickyActions({ onWhatsAppClick, onQuoteClick }) {
         <button
           type="button"
           onClick={onWhatsAppClick}
-          className="group inline-flex min-h-11 items-center justify-center gap-2 rounded-md border border-[#25D366]/45 bg-neutral-900 px-3 py-2 text-xs font-semibold text-white transition hover:shadow-[0_0_18px_rgba(37,211,102,0.25)] focus:outline-none focus:ring-2 focus:ring-[#25D366]/50"
+          className={`${whatsappCtaClass} inline-flex min-h-11 items-center justify-center rounded-md px-3 py-2 text-xs font-semibold`}
         >
           <WhatsAppBrandText>WhatsApp</WhatsAppBrandText>
         </button>
@@ -2103,9 +2105,9 @@ function MobileStickyActions({ onWhatsAppClick, onQuoteClick }) {
 function CompactContentArea({ activePanel, onPanelChange, selectedCategory, onCategoryClick, onGuideClick, onSupportClick, contentRef }) {
   return (
     <section ref={contentRef} className="bg-white">
-      <div className="mx-auto max-w-7xl px-4 py-4 sm:py-8 lg:py-10">
-        <div className="rounded-xl border border-neutral-200 bg-neutral-50 p-2 shadow-sm sm:p-4">
-          <div className="mb-2.5 flex gap-1.5 overflow-x-auto pb-1 sm:mb-5 sm:gap-2 sm:pb-0" role="tablist" aria-label="Kleihaus homepage content">
+      <div className="mx-auto max-w-7xl px-4 py-3 sm:py-5 lg:py-6">
+        <div className="rounded-xl border border-neutral-200 bg-neutral-50 p-2 shadow-sm sm:p-3">
+          <div className="mb-2 flex gap-1.5 overflow-x-auto pb-1 sm:mb-3 sm:gap-2 sm:pb-0" role="tablist" aria-label="Kleihaus homepage content">
             {panelItems.map((item) => (
               <button
                 key={item.panel}
@@ -2125,7 +2127,7 @@ function CompactContentArea({ activePanel, onPanelChange, selectedCategory, onCa
             ))}
           </div>
 
-          <div id={`panel-${activePanel}`} role="tabpanel" className="rounded-lg bg-white p-2.5 sm:p-6">
+          <div id={`panel-${activePanel}`} role="tabpanel" className="rounded-lg bg-white p-2.5 sm:p-4">
             {activePanel === 'catalogue' && (
               <ShopByCategory compact selectedCategory={selectedCategory} onCategoryClick={onCategoryClick} onGuideClick={onGuideClick} onSupportClick={onSupportClick} />
             )}

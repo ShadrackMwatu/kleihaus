@@ -104,14 +104,21 @@ Current behavior:
 
 ## Phase 2 Conversion Surface
 
-- Mobile visitors see a persistent bottom action bar with direct WhatsApp and Request Quote actions.
-- Direct WhatsApp actions open WhatsApp directly; support modal submissions use backend WhatsApp Business API delivery only.
+- Mobile visitors see a persistent bottom action bar with WhatsApp support and Request Quote actions.
+- WhatsApp/support actions open the in-site support modal; support modal submissions use backend WhatsApp Business API delivery only.
 - The homepage includes a compact trust section for Fast Response, Wholesale & Retail, Delivery Support and Professional Guidance.
 - A customer project gallery uses existing assets from `public/images/` for project inspiration without adding new media dependencies.
 - FAQ content targets common local search and Google Business Profile conversion questions around tile prices, sanitaryware prices, paint prices, delivery and installation support.
 - Category landing pages include related category links to improve internal navigation between tile, sanitaryware, paint and installation pages.
 - All visible phone numbers are rendered as click-to-call `tel:` links.
 - Structured data remains safe for Search Console: no Product or Offer JSON-LD is used; LocalBusiness and FAQ data describe service areas and quote guidance without fake prices.
+
+## Compact Layout Pass
+
+- The visible homepage blocks are intentionally compact: tighter header/category navigation, reduced hero height, smaller trust cards, denser catalogue cards, compact project gallery, shorter FAQ cards and a reduced footer.
+- Quote and support blocks keep clear CTAs while avoiding repeated trust/support copy.
+- WhatsApp/support CTAs use the same green primary-button visual system as catalogue quote actions, with white icon/text and consistent hover/focus states.
+- The compactness pass does not change `/api/quote-request`, Worker Assets deployment, D1 bindings, structured data policy or communication channel routing.
 
 ## Cloudflare Runtime Requirements
 

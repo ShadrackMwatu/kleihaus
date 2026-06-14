@@ -142,7 +142,7 @@ section a button {
 }
 
 #contact textarea {
-  min-height: 9rem;
+  min-height: 7.5rem;
 }
 
 .line-clamp-2 {
@@ -174,11 +174,11 @@ footer {
   }
 
   .hero-carousel {
-    min-height: 320px;
+    min-height: 280px;
   }
 
   section[id='top'] h1 {
-    font-size: clamp(2.125rem, 7vw, 2.625rem);
+    font-size: clamp(2rem, 6.4vw, 2.5rem);
   }
 
   section[id='top'] button,
