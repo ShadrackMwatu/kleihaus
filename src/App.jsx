@@ -340,13 +340,6 @@ const categoryGuideTargets = {
   'Installation Support': '/#contact',
 }
 
-const serviceBadges = [
-  { title: 'Fast Response', text: 'Send a clear quote request and the team can respond with practical next steps.', icon: Sparkles },
-  { title: 'Wholesale & Retail', text: 'Quote support for homeowners, shops, contractors and project teams.', icon: Store },
-  { title: 'Delivery Support', text: 'Delivery planning for Nairobi, Machakos, Makueni and wider Kenya requests.', icon: Truck },
-  { title: 'Professional Guidance', text: 'Practical help matching tiles with adhesives, grout and finishes.', icon: Wrench },
-]
-
 const heroTrustBadges = [
   { label: 'Wholesale & Retail', icon: Store },
   { label: 'Sourcing Support', icon: ShieldCheck },
@@ -1354,34 +1347,6 @@ function QuantityEstimator() {
   )
 }
 
-function Services() {
-  return (
-    <section className="mx-auto max-w-7xl px-4 py-6 sm:py-8">
-      <div className="mb-4 max-w-3xl">
-        <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Trust and support</p>
-        <h2 className="mt-1.5 text-xl font-semibold text-neutral-950 sm:text-2xl">Support for confident finishing decisions</h2>
-        <p className="mt-1.5 text-sm leading-6 text-neutral-600">
-          Curated finishing materials, quote support and delivery guidance across Nairobi, Machakos and Makueni.
-        </p>
-      </div>
-      <div className="grid grid-cols-2 gap-2.5 sm:gap-3 lg:grid-cols-4">
-        {serviceBadges.map((service) => {
-          const Icon = service.icon
-          return (
-            <div key={service.title} className="rounded-md border border-neutral-200 bg-white p-3 shadow-sm sm:p-4">
-              <div className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-emerald-50 text-emerald-800 sm:h-10 sm:w-10">
-                <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
-              </div>
-              <h3 className="mt-2 text-sm font-semibold text-neutral-950 sm:text-base">{service.title}</h3>
-              <p className="mt-1 text-xs leading-5 text-neutral-600 sm:text-sm sm:leading-5">{service.text}</p>
-            </div>
-          )
-        })}
-      </div>
-    </section>
-  )
-}
-
 function CustomerProjectGallery({ onQuoteClick }) {
   return (
     <section className="border-y border-neutral-200 bg-stone-50">
@@ -2312,7 +2277,6 @@ export default function App() {
       ) : (
         <>
           <Hero onSupportClick={handleSupportClick} onQuoteClick={handleQuoteClick} onSectionChange={handleSectionChange} />
-          <Services />
           <CompactContentArea
             activePanel={activePanel}
             onPanelChange={handlePanelChange}
