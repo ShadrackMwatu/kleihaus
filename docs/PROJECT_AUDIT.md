@@ -99,6 +99,7 @@ Current behavior:
 - Email-channel submissions send internal sales email through Resend using `RESEND_API_KEY`, `QUOTE_EMAIL_FROM`, and `SALES_EMAIL`, may queue customer confirmation email, and explicitly skip WhatsApp notification.
 - Support modal submissions send `channel: "whatsapp"` and `intent: "support"`.
 - WhatsApp-channel submissions send WhatsApp Business API staff notifications when credentials are configured and explicitly skip internal/customer email.
+- If WhatsApp Business API credentials are missing or delivery is unconfirmed, visitors still see a neutral support request received message while backend logs retain skipped/failed delivery details for audit.
 - WhatsApp/support CTAs open the in-site support modal and do not redirect visitors to external WhatsApp URLs.
 - D1 stores `channel` and `intent` where the extended schema is available, with legacy insert fallback preserved.
 

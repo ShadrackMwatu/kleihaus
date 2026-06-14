@@ -103,8 +103,8 @@ export const quoteRequestService = {
 
       if (payload.channel === 'whatsapp' && !data.whatsapp?.sent) {
         return {
-          ok: false,
-          message: data.message || 'WhatsApp support delivery was not confirmed. Please call Kleihaus.',
+          ok: true,
+          message: data.message || 'Support request received. Our team will contact you shortly.',
           data,
         }
       }
@@ -114,7 +114,7 @@ export const quoteRequestService = {
         message:
           data.message ||
           (payload.channel === 'whatsapp'
-            ? 'Support request sent successfully. Our team will respond on WhatsApp.'
+            ? 'Support request received. Our team will contact you shortly.'
             : 'Request sent successfully. Our team will respond by email or phone.'),
         data,
       }

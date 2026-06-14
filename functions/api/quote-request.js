@@ -1,5 +1,5 @@
 const EMAIL_SUCCESS_MESSAGE = 'Request sent successfully. Our team will respond by email or phone.'
-const WHATSAPP_SUCCESS_MESSAGE = 'Support request sent successfully. Our team will respond on WhatsApp.'
+const WHATSAPP_SUCCESS_MESSAGE = 'Support request received. Our team will contact you shortly.'
 const EMAIL_SUBJECT_PREFIX = 'Kleihaus Lead'
 
 const corsHeaders = {
@@ -1021,23 +1021,7 @@ export async function onRequestPost(context) {
   if (payload.channel === 'whatsapp') {
     const email = skipEmailChannel(payload, 'WhatsApp support channel does not trigger internal email.')
     const customerEmail = skipEmailChannel(payload, 'WhatsApp support channel does not trigger customer confirmation email.')
-    const whatsapp = await sendWhatsAppBusinessNotification(context.env, payload, { required: true })
-
-    if (!whatsapp.success || !whatsapp.sent) {
-      return json({
-        success: false,
-        message: 'WhatsApp support delivery was not confirmed. Please call Kleihaus.',
-        requestId: payload.id,
-        leadReference: payload.leadReference,
-        channel: payload.channel,
-        intent: payload.intent,
-        createdAt: payload.created_at,
-        storage,
-        email,
-        customerEmail,
-        whatsapp,
-      }, whatsapp.configured === false ? 503 : 502)
-    }
+    const whatsapp = await sendWhatsAppBusinessNotification(context.env, payload, { required: false })
 
     return json({
       success: true,

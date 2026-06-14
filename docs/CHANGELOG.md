@@ -8,6 +8,12 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-06-11
 
+### Support Modal Mobile Success Handling
+
+- Updated support modal submissions to show a customer-friendly received message even when WhatsApp Business API delivery is skipped or unconfirmed.
+- Kept backend WhatsApp delivery results available in logs and response metadata for audit without exposing credential/configuration issues to visitors.
+- Tightened the mobile support modal layout with compact spacing, shorter message field and a green Kleihaus submit CTA.
+
 ### WhatsApp CTA Visual Standardization
 
 - Standardized WhatsApp/support CTAs across header, hero, contact form, category pages, footer and mobile sticky actions to the Kleihaus green primary button style.

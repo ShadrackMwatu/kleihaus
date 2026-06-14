@@ -1805,13 +1805,13 @@ function SupportModal({ open, source, initialMessage = '', onClose }) {
   }
 
   return (
-    <div className="fixed inset-0 z-[70] flex items-end justify-center bg-neutral-950/60 px-4 py-4 backdrop-blur-sm sm:items-center" role="dialog" aria-modal="true" aria-labelledby="support-modal-title">
-      <div className="w-full max-w-lg overflow-hidden rounded-xl bg-white text-neutral-950 shadow-2xl">
-        <div className="flex items-start justify-between gap-4 border-b border-neutral-200 px-5 py-4">
+    <div className="fixed inset-0 z-[70] flex items-end justify-center bg-neutral-950/60 px-3 py-3 backdrop-blur-sm sm:items-center sm:px-4 sm:py-4" role="dialog" aria-modal="true" aria-labelledby="support-modal-title">
+      <div className="max-h-[calc(100vh-1.5rem)] w-full max-w-lg overflow-y-auto rounded-xl bg-white text-neutral-950 shadow-2xl sm:max-h-[calc(100vh-2rem)]">
+        <div className="flex items-start justify-between gap-3 border-b border-neutral-200 px-4 py-3 sm:gap-4 sm:px-5 sm:py-4">
           <div>
             <p className="text-xs font-semibold uppercase tracking-wide text-emerald-700">Kleihaus support</p>
-            <h2 id="support-modal-title" className="mt-1 text-xl font-semibold">Need Help?</h2>
-            <p className="mt-1 text-sm leading-6 text-neutral-600">
+            <h2 id="support-modal-title" className="mt-1 text-lg font-semibold sm:text-xl">Need Help?</h2>
+            <p className="mt-1 text-xs leading-5 text-neutral-600 sm:text-sm sm:leading-6">
               Send your support request here. It is routed to Kleihaus staff through WhatsApp Business when configured.
             </p>
             <p className="mt-1 text-xs leading-5 text-neutral-500">
@@ -1826,28 +1826,28 @@ function SupportModal({ open, source, initialMessage = '', onClose }) {
           </button>
         </div>
 
-        <form onSubmit={submitSupportRequest} noValidate autoComplete="off" className="grid gap-4 px-5 py-5">
-          <label className="grid gap-2 text-sm font-medium text-neutral-700">
+        <form onSubmit={submitSupportRequest} noValidate autoComplete="off" className="grid gap-3 px-4 py-4 sm:px-5 sm:py-5">
+          <label className="grid gap-1.5 text-sm font-medium text-neutral-700">
             Name
             <Input name="support-name" autoComplete="off" placeholder="Your name" value={form.name} onChange={updateField('name')} required />
           </label>
-          <div className="grid gap-4 sm:grid-cols-2">
-            <label className="grid gap-2 text-sm font-medium text-neutral-700">
+          <div className="grid gap-3 sm:grid-cols-2">
+            <label className="grid gap-1.5 text-sm font-medium text-neutral-700">
               Phone
               <Input name="support-phone" autoComplete="off" placeholder="Phone number" value={form.phone} onChange={updateField('phone')} />
             </label>
-            <label className="grid gap-2 text-sm font-medium text-neutral-700">
+            <label className="grid gap-1.5 text-sm font-medium text-neutral-700">
               Email
               <Input name="support-email" type="email" autoComplete="off" placeholder="Email address" value={form.email} onChange={updateField('email')} />
             </label>
           </div>
-          <label className="grid gap-2 text-sm font-medium text-neutral-700">
+          <label className="grid gap-1.5 text-sm font-medium text-neutral-700">
             Message
             <Textarea
               name="support-message"
               autoComplete="off"
               placeholder="Tell us what you need help with..."
-              rows={4}
+              rows={3}
               value={form.message}
               onChange={updateField('message')}
               required
@@ -1855,21 +1855,21 @@ function SupportModal({ open, source, initialMessage = '', onClose }) {
           </label>
 
           {errors.length > 0 && (
-            <div className="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
+            <div className="rounded-md border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-800">
               {errors.map((error) => (
                 <p key={error}>{error}</p>
               ))}
             </div>
           )}
           {status && (
-            <p className={`rounded-md border px-4 py-3 text-sm ${statusType === 'success' ? 'border-emerald-200 bg-emerald-50 text-emerald-800' : 'border-amber-200 bg-amber-50 text-amber-900'}`}>
+            <p className={`rounded-md border px-3 py-2 text-sm ${statusType === 'success' ? 'border-emerald-200 bg-emerald-50 text-emerald-800' : 'border-amber-200 bg-amber-50 text-amber-900'}`}>
               {status}
             </p>
           )}
 
-          <div className="flex flex-wrap justify-end gap-3">
-            <ButtonSecondary type="button" onClick={onClose}>Close</ButtonSecondary>
-            <Button type="submit" disabled={submitting} className="disabled:cursor-not-allowed disabled:opacity-70">
+          <div className="flex flex-wrap justify-end gap-2.5">
+            <ButtonSecondary type="button" onClick={onClose} className="px-4 py-2 text-sm">Close</ButtonSecondary>
+            <Button type="submit" disabled={submitting} className="border-emerald-700 bg-[#16A34A] px-4 py-2 text-sm shadow-sm shadow-emerald-900/10 hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-70">
               {submitting ? 'Sending...' : 'Send request'}
             </Button>
           </div>
