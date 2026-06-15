@@ -8,6 +8,12 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-06-11
 
+### Compact Buying Guide And FAQ
+
+- Condensed the bottom homepage planning guidance into a compact "Buying Guide & FAQs" section with four concise cards.
+- Replaced the long FAQ card grid with a four-question accordion covering tile prices, sanitaryware prices, delivery and installation guidance.
+- Aligned homepage FAQ structured data with the compact visible FAQ content without adding Product or Offer schema.
+
 ### Support Modal Mobile Success Handling
 
 - Updated support modal submissions to show a customer-friendly received message even when WhatsApp Business API delivery is skipped or unconfirmed.

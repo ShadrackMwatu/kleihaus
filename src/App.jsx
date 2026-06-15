@@ -25,7 +25,6 @@ import {
 import {
   suggestedSearches,
 } from './data/intelligenceData'
-import { contentTopics } from './data/contentTopics'
 import { analyticsService } from './services/analyticsService'
 import { recommendationService } from './services/recommendationService'
 import { quoteRequestService } from './services/quoteRequestService'
@@ -373,29 +372,43 @@ const aboutSupportPoints = [
 
 const faqItems = [
   {
-    question: 'How much do tiles cost in Kenya?',
-    answer:
-      'Tile prices depend on tile size, finish, quantity, current supplier availability and delivery location. Share room size, preferred tile type and budget range so Kleihaus can prepare useful quote guidance.',
+    question: 'How much do tiles cost?',
+    answer: 'Prices vary by size, finish and quantity. Request a quote for current pricing.',
   },
   {
     question: 'How much does sanitaryware cost?',
-    answer:
-      'Sanitaryware prices vary by item, brand, finish and matching accessories. Send the basin, toilet, tap, mixer, shower or bathroom set you need and the team will guide available options.',
+    answer: 'Prices depend on brand, finish and product type.',
   },
   {
-    question: 'How much does paint cost for a project?',
-    answer:
-      'Paint pricing depends on paint type, surface area, finish and number of coats. Share your room size, wall condition, colour direction and location for a more accurate quote conversation.',
+    question: 'Do you support delivery?',
+    answer: 'Yes. Delivery support is available subject to location and order requirements.',
   },
   {
-    question: 'Does Kleihaus support delivery?',
-    answer:
-      'Yes. Kleihaus supports delivery coordination for Nairobi, Machakos, Makueni and wider Kenya where practical, depending on order size, location and availability.',
+    question: 'Do you offer installation guidance?',
+    answer: 'Yes. We provide product matching and installation advice.',
+  },
+]
+
+const buyingGuideCards = [
+  {
+    title: 'Room Measurements',
+    text: 'Measure room size before requesting a quote.',
+    icon: Ruler,
   },
   {
-    question: 'Does Kleihaus offer installation support?',
-    answer:
-      'Kleihaus provides installation guidance and product matching support, including adhesive, grout and accessory recommendations. Share photos, measurements and the surface type for better advice.',
+    title: 'Tile Selection',
+    text: 'Choose by room type, finish and budget.',
+    icon: Store,
+  },
+  {
+    title: 'Delivery Support',
+    text: 'Delivery options available across Nairobi, Machakos and Makueni.',
+    icon: Truck,
+  },
+  {
+    title: 'Installation Guidance',
+    text: 'Advice on adhesives, grout and installation requirements.',
+    icon: Wrench,
   },
 ]
 
@@ -1397,36 +1410,58 @@ function CustomerProjectGallery({ onQuoteClick }) {
 }
 
 function HelpfulGuides({ onGuideClick }) {
+  const [openFaq, setOpenFaq] = useState(faqItems[0]?.question || '')
+
   return (
-    <section className="border-y border-neutral-200 bg-neutral-50">
-      <div className="mx-auto max-w-7xl px-4 py-6 sm:py-8">
-        <div className="mb-4 max-w-3xl">
-          <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Helpful buying guidance</p>
-          <h2 className="mt-1.5 text-xl font-semibold text-neutral-950 sm:text-2xl">Planning guidance</h2>
-          <p className="mt-1.5 text-sm leading-6 text-neutral-600">
-            Use these topics to send room size, product type, quantity, location and budget range.
+    <section id="faq" className="border-y border-neutral-200 bg-neutral-50">
+      <div className="mx-auto max-w-7xl px-4 py-5 sm:py-6">
+        <div className="mb-3 max-w-3xl">
+          <h2 className="text-xl font-semibold text-neutral-950 sm:text-2xl">Buying Guide & FAQs</h2>
+          <p className="mt-1 text-sm leading-5 text-neutral-600">
+            Quick answers on tiles, sanitaryware, paints, delivery and installation.
           </p>
         </div>
-        <div className="grid gap-2.5 md:grid-cols-2 lg:grid-cols-3">
-          {contentTopics.map((topic) => (
-            <a
-              key={topic.title}
-              href="#contact"
-              onClick={() => onGuideClick(topic.title)}
-              className="rounded-md border border-neutral-200 bg-white p-3 shadow-sm transition hover:border-emerald-700 sm:p-4"
-            >
-              <p className="text-xs font-semibold uppercase text-emerald-700">Planning support</p>
-              <h3 className="mt-1.5 text-sm font-semibold text-neutral-950 sm:text-base">{topic.title}</h3>
-              <p className="mt-1 text-xs leading-5 text-neutral-600 sm:text-sm sm:leading-5">{topic.summary}</p>
-            </a>
-          ))}
+        <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+          {buyingGuideCards.map((card) => {
+            const Icon = card.icon
+            return (
+              <button
+                key={card.title}
+                type="button"
+                onClick={() => onGuideClick(card.title)}
+                className="rounded-md border border-neutral-200 bg-white p-3 text-left shadow-sm transition hover:border-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200"
+              >
+                <div className="flex items-start gap-2.5">
+                  <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-emerald-50 text-emerald-800">
+                    <Icon className="h-4 w-4" />
+                  </span>
+                  <span>
+                    <span className="block text-sm font-semibold text-neutral-950">{card.title}</span>
+                    <span className="mt-0.5 block text-xs leading-5 text-neutral-600">{card.text}</span>
+                  </span>
+                </div>
+              </button>
+            )
+          })}
         </div>
-        <div className="mt-5 grid gap-2.5 lg:grid-cols-2">
-          {faqItems.map((item) => (
-            <article key={item.question} className="rounded-md border border-neutral-200 bg-white p-3 shadow-sm sm:p-4">
-              <h3 className="text-sm font-semibold text-neutral-950 sm:text-base">{item.question}</h3>
-              <p className="mt-1.5 text-xs leading-5 text-neutral-600 sm:text-sm sm:leading-5">{item.answer}</p>
-            </article>
+        <div className="mt-3 rounded-md border border-neutral-200 bg-white shadow-sm">
+          {faqItems.map((item, index) => (
+            <div key={item.question} className={index > 0 ? 'border-t border-neutral-200' : ''}>
+              <button
+                type="button"
+                onClick={() => setOpenFaq((current) => (current === item.question ? '' : item.question))}
+                className="flex w-full items-center justify-between gap-3 px-3 py-2.5 text-left text-sm font-semibold text-neutral-950 transition hover:bg-neutral-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-emerald-200"
+                aria-expanded={openFaq === item.question}
+              >
+                <span>{item.question}</span>
+                <span className="text-lg leading-none text-emerald-700">{openFaq === item.question ? '-' : '+'}</span>
+              </button>
+              {openFaq === item.question && (
+                <p className="px-3 pb-3 text-xs leading-5 text-neutral-600 sm:text-sm">
+                  {item.answer}
+                </p>
+              )}
+            </div>
           ))}
         </div>
       </div>
