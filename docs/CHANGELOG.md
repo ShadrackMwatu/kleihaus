@@ -8,6 +8,12 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-06-11
 
+### About Us Positioning
+
+- Strengthened the About Kleihaus copy to describe the business as a finishing partner, not only a retailer.
+- Added concise messaging for tiles, sanitaryware, paints, adhesives, tools, finishing advisory, logistics, installation services and tailored product/application training.
+- Incorporated professional installation workflow language around preparation, cutting, fixing, grouting, cleaning, right-tool selection and technical support without claiming official RUBI distribution status.
+
 ### Compact Buying Guide And FAQ
 
 - Condensed the bottom homepage planning guidance into a compact "Buying Guide & FAQs" section with four concise cards.

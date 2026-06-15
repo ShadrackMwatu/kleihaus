@@ -118,6 +118,7 @@ Current behavior:
 
 - The visible homepage blocks are intentionally compact: tighter header/category navigation, reduced hero height, smaller trust cards, denser catalogue cards, compact project gallery, shorter FAQ cards and a reduced footer.
 - The bottom buying guidance area is reduced to four concise guide cards and a compact FAQ accordion to preserve useful customer answers with less vertical height.
+- The About block positions Kleihaus as a finishing partner for materials, advisory, logistics, installation support and tailored training, with professional workflow language that avoids unsupported distributor claims.
 - Quote and support blocks keep clear CTAs while avoiding repeated trust/support copy.
 - WhatsApp/support CTAs use the same green primary-button visual system as catalogue quote actions, with white icon/text and consistent hover/focus states.
 - The compactness pass does not change `/api/quote-request`, Worker Assets deployment, D1 bindings, structured data policy or communication channel routing.

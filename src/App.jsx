@@ -349,23 +349,23 @@ const heroTrustBadges = [
 
 const aboutSupportPoints = [
   {
-    title: 'Retail and project quotations',
-    text: 'Quote support for homeowners, contractors, shops and project teams planning material orders.',
+    title: 'Finishing advisory',
+    text: 'Product selection, quantity guidance and budget-fit options for homes, contractors, developers and project teams.',
     icon: ClipboardList,
   },
   {
-    title: 'Delivery coordination',
-    text: 'Practical delivery guidance for Nairobi, Machakos, Makueni and wider Kenya service requests.',
+    title: 'Logistics and delivery',
+    text: 'Practical coordination for material movement across Nairobi, Machakos, Makueni and wider Kenya service requests.',
     icon: Truck,
   },
   {
-    title: 'Installation guidance',
-    text: 'Help matching tiles with adhesives, grout, trims and site-ready installation essentials.',
+    title: 'Installation support',
+    text: 'Support across preparation, cutting, fixing, grouting and cleaning so the final finish is durable and neat.',
     icon: Wrench,
   },
   {
-    title: 'Product matching support',
-    text: 'Guidance across tiles, sanitaryware, paints and finishing materials so rooms feel coordinated.',
+    title: 'Training and tools',
+    text: 'Tailored product-use guidance, right-tool recommendations and technical support for fundis and installation teams.',
     icon: ShieldCheck,
   },
 ]
@@ -1008,15 +1008,18 @@ function AboutSection() {
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
         <div>
           <p className="text-sm font-semibold uppercase text-emerald-700">About Kleihaus</p>
-          <h2 className="mt-2 text-3xl font-semibold text-neutral-950">A practical finishing materials partner for homes, shops and projects.</h2>
+          <h2 className="mt-2 text-3xl font-semibold text-neutral-950">A finishing partner from product choice to final finish.</h2>
           <p className="mt-4 text-sm leading-7 text-neutral-600">
-            Kleihaus Ceramics supplies tiles, sanitaryware, paints, adhesives, grout and finishing materials for customers planning durable, well-matched spaces across Kenya.
+            Kleihaus Ceramics supplies tiles, sanitaryware, paints, adhesives, tools and finishing materials for homes, commercial spaces and construction projects.
           </p>
           <p className="mt-3 text-sm leading-7 text-neutral-600">
-            The team supports retail requests and project quotations in Nairobi, Machakos, Makueni and wider Kenya service areas, helping customers compare product types, quantities, delivery needs and installation choices before they buy.
+            Beyond supply, the team helps homeowners, contractors, developers, fundis and project teams choose the right products, estimate quantities, coordinate logistics and follow professional installation standards from preparation and cutting to fixing, grouting, cleaning and handover.
+          </p>
+          <p className="mt-3 text-sm leading-7 text-neutral-600">
+            Kleihaus also supports actual installation services, right-tool recommendations and tailored product/application trainings across Nairobi, Machakos, Makueni and wider Kenya service areas.
           </p>
           <div className="mt-6 flex flex-wrap gap-2 text-xs font-semibold text-emerald-800">
-            {['Tiles', 'Sanitaryware', 'Paints', 'Adhesives', 'Grout', 'Finishing materials'].map((item) => (
+            {['Tiles', 'Sanitaryware', 'Paints', 'Adhesives', 'Tools', 'Training'].map((item) => (
               <span key={item} className="rounded-full bg-emerald-50 px-3 py-1.5">
                 {item}
               </span>
@@ -1048,12 +1051,15 @@ function AboutPanel() {
     <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
       <div>
         <p className="text-sm font-semibold uppercase text-emerald-700">About Kleihaus</p>
-        <h2 className="mt-2 text-2xl font-semibold text-neutral-950 sm:text-3xl">Finishing materials support for homes, retail orders and projects.</h2>
+        <h2 className="mt-2 text-2xl font-semibold text-neutral-950 sm:text-3xl">Finishing partner for homes, fundis, contractors and projects.</h2>
         <p className="mt-3 text-sm leading-7 text-neutral-600">
-          Kleihaus supplies tiles, sanitaryware, paints, adhesives, grout and finishing materials for customers planning durable, coordinated spaces.
+          Kleihaus supplies tiles, sanitaryware, paints, adhesives, tools and other finishing materials while helping customers choose the right products for their spaces, budgets and installation needs.
         </p>
         <p className="mt-3 text-sm leading-7 text-neutral-600">
-          The team supports retail and project quotation requests across Nairobi, Machakos, Makueni and wider Kenya service areas.
+          The team supports finishing advisory, quantity estimation, logistics and delivery, actual installation services, and tailored product/application trainings across Nairobi, Machakos, Makueni and wider Kenya where practical.
+        </p>
+        <p className="mt-3 text-sm leading-7 text-neutral-600">
+          Our guidance emphasizes professional installation standards, the right tools for the job, and the full workflow from preparation and cutting to fixing, grouting, cleaning and the final finish.
         </p>
       </div>
       <div className="grid gap-2.5 sm:grid-cols-2 sm:gap-3">
