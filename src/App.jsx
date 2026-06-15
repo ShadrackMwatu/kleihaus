@@ -324,6 +324,30 @@ const categoryLandingPages = [
       { src: '/images/tiler-service.jpg', alt: 'Tile installation support and site guidance', label: 'Installation support' },
     ],
   },
+  {
+    path: '/installation-support',
+    category: 'Installation Support',
+    title: 'Installation Support Kenya | Kleihaus Ceramics',
+    description: 'Plan tile and finishing installation support with Kleihaus, including site measurements, product matching, surface preparation, fixing, grouting, cleaning and training guidance.',
+    eyebrow: 'Installation support',
+    h1: 'Installation support from site planning to final finish',
+    intro:
+      'Kleihaus helps homeowners, fundis, contractors and project teams plan the full finishing workflow: measurements, quantity guidance, product matching, surface preparation, cutting and drilling needs, fixing, grouting, cleaning and handover.',
+    notes: [
+      'Site measurement and quantity planning',
+      'Product matching for tiles, adhesives, grout, trims, sanitaryware and paints',
+      'Preparation, cutting, drilling, fixing, grouting, cleaning and handover guidance',
+      'Optional logistics, delivery coordination, tailored training and technical support',
+    ],
+    images: [
+      { src: '/images/tiler-service.jpg', alt: 'Tile installer preparing installation support for Kleihaus customers', label: 'Site installation support' },
+      { src: '/images/tile-tools.jpg', alt: 'Tile tools for cutting drilling fixing and installation workflow planning', label: 'Right tools for the job' },
+      { src: '/images/adhesive.jpg', alt: 'Tile adhesive matched to surface preparation and fixing needs', label: 'Adhesive matching' },
+      { src: '/images/grout.jpg', alt: 'Tile grout for clean finishing and handover support', label: 'Grouting and finishing' },
+      { src: '/images/tile-fittings.jpg', alt: 'Tile trims spacers and fittings for installation support', label: 'Trims and fittings' },
+      { src: '/images/tiles-gallery-1.jpg', alt: 'Finished tile installation inspiration for customer handover planning', label: 'Final finish' },
+    ],
+  },
 ]
 
 const categoryLandingByPath = Object.fromEntries(categoryLandingPages.map((page) => [page.path, page]))
@@ -336,7 +360,7 @@ const categoryGuideTargets = {
   Sanitaryware: '/sanitaryware',
   Paints: '/paints',
   'Adhesives & Grout': '/adhesives-grout',
-  'Installation Support': '/#contact',
+  'Installation Support': '/installation-support',
 }
 
 const heroTrustBadges = [

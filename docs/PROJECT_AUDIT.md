@@ -164,8 +164,8 @@ The stale Pages integration must be disconnected from the old account or removed
 - Compact segmented content area for Catalogue, About, Guidance and Quote.
 - Catalogue panel with clickable category cards, icons, descriptions and quote CTAs.
 - Catalogue cards include compact use-case and quote-support tags to reinforce sourcing, delivery and professional guidance.
-- Catalogue category cards include consistent premium "View guide" links. Dedicated category guides point to their landing pages; Outdoor Tiles points to floor tile guidance and Installation Support points to the contact/quote flow.
-- Category landing pages for `/floor-tiles`, `/wall-tiles`, `/bathroom-tiles`, `/sanitaryware`, `/paints` and `/adhesives-grout`.
+- Catalogue category cards include consistent premium "View guide" links. Dedicated category guides point to their landing pages; Outdoor Tiles points to floor tile guidance and Installation Support points to its own installation guide.
+- Category landing pages for `/floor-tiles`, `/wall-tiles`, `/bathroom-tiles`, `/sanitaryware`, `/paints`, `/adhesives-grout` and `/installation-support`.
 - About panel with Kleihaus positioning, service areas and concise trust/support points.
 - Guidance panel with concise quote-planning tips.
 - Quote panel with the existing quote form and direct contact details.

@@ -8,6 +8,11 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-06-11
 
+### Installation Support Guide
+
+- Added a dedicated `/installation-support` guide so the homepage Installation Support "View guide" action opens relevant installation content instead of the contact fallback.
+- Covered site measurements, quantity planning, product matching, surface preparation, cutting/drilling, fixing, grouting, cleaning, handover, logistics and tailored training guidance.
+
 ### About Us Positioning
 
 - Strengthened the About Kleihaus copy to describe the business as a finishing partner, not only a retailer.
