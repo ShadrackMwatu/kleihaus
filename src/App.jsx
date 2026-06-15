@@ -511,6 +511,19 @@ const WhatsAppBrandText = ({ children = 'Need Help?', iconClassName = 'h-4 w-4' 
 const whatsappCtaClass =
   'group gap-1.5 border-emerald-700 bg-emerald-700 text-white shadow-sm shadow-emerald-900/10 hover:border-emerald-800 hover:bg-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-200'
 
+const KLEIHAUS_WHATSAPP_PHONE = '254748827166'
+const DEFAULT_WHATSAPP_MESSAGE =
+  'Hello Kleihaus, I would like help with tiles, sanitaryware, paints, pricing, delivery or installation support.'
+
+const buildWhatsAppUrl = (message = DEFAULT_WHATSAPP_MESSAGE) =>
+  `https://wa.me/${KLEIHAUS_WHATSAPP_PHONE}?text=${encodeURIComponent(message || DEFAULT_WHATSAPP_MESSAGE)}`
+
+const openWhatsAppChat = (message) => {
+  if (typeof window !== 'undefined') {
+    window.location.href = buildWhatsAppUrl(message)
+  }
+}
+
 const setMetaContent = (selector, content) => {
   const tag = document.querySelector(selector)
   if (tag) tag.setAttribute('content', content)
@@ -1499,7 +1512,7 @@ function HelpfulGuides({ onGuideClick }) {
   )
 }
 
-function Contact({ onSupportClick, compact = false }) {
+function Contact({ onSupportFormClick, compact = false }) {
   const quoteFormRef = useRef(null)
   const quoteStatusRef = useRef(null)
   const quoteStatusTimeoutRef = useRef(null)
@@ -1723,7 +1736,7 @@ function Contact({ onSupportClick, compact = false }) {
             <Button disabled={isQuoteSubmitting} className="border-emerald-700 bg-[#16A34A] px-4 py-2.5 text-sm shadow-md shadow-emerald-900/10 hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-70">
               {isQuoteSubmitting ? 'Sending...' : 'Send request'}
             </Button>
-            <ButtonSecondary type="button" onClick={() => onSupportClick('contact_form')} className={`${whatsappCtaClass} px-4 py-2.5 text-sm`}>
+            <ButtonSecondary type="button" onClick={() => onSupportFormClick('contact_form')} className={`${whatsappCtaClass} px-4 py-2.5 text-sm`}>
               <WhatsAppBrandText>Open support form</WhatsAppBrandText>
             </ButtonSecondary>
           </div>
@@ -1842,7 +1855,7 @@ function SupportModal({ open, source, initialMessage = '', onClose }) {
             <p className="text-xs font-semibold uppercase tracking-wide text-emerald-700">Kleihaus support</p>
             <h2 id="support-modal-title" className="mt-1 text-lg font-semibold sm:text-xl">Need Help?</h2>
             <p className="mt-1 text-xs leading-5 text-neutral-600 sm:text-sm sm:leading-6">
-              Send your support request here. It is routed to Kleihaus staff through WhatsApp Business when configured.
+              Send your support request here, or open WhatsApp chat for a direct conversation.
             </p>
             <p className="mt-1 text-xs leading-5 text-neutral-500">
               Prefer calling?{' '}
@@ -1899,6 +1912,13 @@ function SupportModal({ open, source, initialMessage = '', onClose }) {
 
           <div className="flex flex-wrap justify-end gap-2.5">
             <ButtonSecondary type="button" onClick={onClose} className="px-4 py-2 text-sm">Close</ButtonSecondary>
+            <button
+              type="button"
+              onClick={() => openWhatsAppChat(form.message || initialMessage || DEFAULT_WHATSAPP_MESSAGE)}
+              className={`${whatsappCtaClass} inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-semibold`}
+            >
+              <WhatsAppBrandText>Chat on WhatsApp</WhatsAppBrandText>
+            </button>
             <Button type="submit" disabled={submitting} className="border-emerald-700 bg-[#16A34A] px-4 py-2 text-sm shadow-sm shadow-emerald-900/10 hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-70">
               {submitting ? 'Sending...' : 'Send request'}
             </Button>
@@ -2132,7 +2152,7 @@ function MobileStickyActions({ onWhatsAppClick, onQuoteClick }) {
   )
 }
 
-function CompactContentArea({ activePanel, onPanelChange, selectedCategory, onCategoryClick, onGuideClick, onSupportClick, contentRef }) {
+function CompactContentArea({ activePanel, onPanelChange, selectedCategory, onCategoryClick, onGuideClick, onSupportClick, onSupportFormClick, contentRef }) {
   return (
     <section ref={contentRef} className="bg-white">
       <div className="mx-auto max-w-7xl px-4 py-3 sm:py-5 lg:py-6">
@@ -2163,7 +2183,7 @@ function CompactContentArea({ activePanel, onPanelChange, selectedCategory, onCa
             )}
             {activePanel === 'about' && <AboutPanel />}
             {activePanel === 'guidance' && <GuidancePanel />}
-            {activePanel === 'quote' && <Contact compact onSupportClick={onSupportClick} />}
+            {activePanel === 'quote' && <Contact compact onSupportFormClick={onSupportFormClick} />}
           </div>
         </div>
       </div>
@@ -2289,6 +2309,12 @@ export default function App() {
 
   const handleSupportClick = (source, message = '') => {
     analyticsService.track('whatsapp_click', { clickedElement: source, projectType, productCategory: selectedCategory })
+    openWhatsAppChat(message || DEFAULT_WHATSAPP_MESSAGE)
+    refreshSignals()
+  }
+
+  const handleSupportFormClick = (source, message = '') => {
+    analyticsService.track('whatsapp_click', { clickedElement: source, projectType, productCategory: selectedCategory })
     setSupportModal({
       open: true,
       source,
@@ -2349,6 +2375,7 @@ export default function App() {
             onCategoryClick={handleCategoryClick}
             onGuideClick={handleCategoryGuideClick}
             onSupportClick={handleSupportClick}
+            onSupportFormClick={handleSupportFormClick}
             contentRef={contentAreaRef}
           />
           <CustomerProjectGallery onQuoteClick={() => {

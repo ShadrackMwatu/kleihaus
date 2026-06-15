@@ -97,16 +97,17 @@ Current behavior:
 - The backend stores quote requests in Cloudflare D1 table `quote_requests`.
 - Quote form submissions send `channel: "email"` and `intent: "quote"`.
 - Email-channel submissions send internal sales email through Resend using `RESEND_API_KEY`, `QUOTE_EMAIL_FROM`, and `SALES_EMAIL`, may queue customer confirmation email, and explicitly skip WhatsApp notification.
+- Customer-facing WhatsApp CTAs use same-tab `wa.me/254748827166?text=...` click-to-chat links; browsers cannot send WhatsApp messages silently without opening WhatsApp.
 - Support modal submissions send `channel: "whatsapp"` and `intent: "support"`.
-- WhatsApp-channel submissions send WhatsApp Business API staff notifications when credentials are configured and explicitly skip internal/customer email.
+- WhatsApp-channel backend submissions send WhatsApp Business API staff notifications when credentials are configured and explicitly skip internal/customer email.
 - If WhatsApp Business API credentials are missing or delivery is unconfirmed, visitors still see a neutral support request received message while backend logs retain skipped/failed delivery details for audit.
-- WhatsApp/support CTAs open the in-site support modal and do not redirect visitors to external WhatsApp URLs.
+- WhatsApp Business API notification remains optional and missing credentials do not break quote or support submission.
 - D1 stores `channel` and `intent` where the extended schema is available, with legacy insert fallback preserved.
 
 ## Phase 2 Conversion Surface
 
-- Mobile visitors see a persistent bottom action bar with WhatsApp support and Request Quote actions.
-- WhatsApp/support actions open the in-site support modal; support modal submissions use backend WhatsApp Business API delivery only.
+- Mobile visitors see a persistent bottom action bar with WhatsApp click-to-chat and Request Quote actions.
+- The support form remains available from the quote/contact panel and can submit backend support requests with optional WhatsApp Business API staff notification.
 - The homepage includes a compact trust section for Fast Response, Wholesale & Retail, Delivery Support and Professional Guidance.
 - A customer project gallery uses existing assets from `public/images/` for project inspiration without adding new media dependencies.
 - FAQ content targets common local search and Google Business Profile conversion questions around tile prices, sanitaryware prices, paint prices, delivery and installation support.
@@ -157,7 +158,7 @@ The stale Pages integration must be disconnected from the old account or removed
 
 ## Public Frontend Features
 
-- Premium header with top utility strip, logo, search, state-driven navigation and in-site WhatsApp/support CTA.
+- Premium header with top utility strip, logo, search, state-driven navigation and WhatsApp click-to-chat CTA.
 - Category navigation for major product groups that opens the compact catalogue panel and highlights the selected category.
 - Home area with clear business positioning, premium hero carousel and hero trust badges.
 - Hero messaging leads with "Tiles. Sanitaryware. Paints.", retail/wholesale/project quote positioning and Nairobi, Machakos and Makueni service areas.
@@ -169,9 +170,9 @@ The stale Pages integration must be disconnected from the old account or removed
 - About panel with Kleihaus positioning, service areas and concise trust/support points.
 - Guidance panel with concise quote-planning tips.
 - Quote panel with the existing quote form and direct contact details.
-- Mobile layout uses reduced hero sizing, compact trust badges and catalogue cards, narrowed panel spacing and a sticky WhatsApp support / Request Quote action bar.
-- Mobile footer places the support modal CTA above the green branding strip; the green strip remains the final visible footer element.
-- WhatsApp/support CTAs open the support modal on Kleihaus.com; support modal submissions use `/api/quote-request` with `channel: "whatsapp"`.
+- Mobile layout uses reduced hero sizing, compact trust badges and catalogue cards, narrowed panel spacing and a sticky WhatsApp / Request Quote action bar.
+- Mobile footer places the WhatsApp CTA above the green branding strip; the green strip remains the final visible footer element.
+- WhatsApp CTAs open WhatsApp/Web WhatsApp using the official click-to-chat format; support form submissions use `/api/quote-request` with `channel: "whatsapp"`.
 - Structured footer with balanced Products, Services and Contact columns plus WhatsApp, email, phone and locations.
 - Footer Services is intentionally concise: Finishing Advisory, Delivery and Installation.
 

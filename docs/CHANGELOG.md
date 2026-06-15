@@ -8,6 +8,12 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-06-11
 
+### WhatsApp Support Behavior Audit
+
+- Restored customer-facing WhatsApp CTAs to same-tab `wa.me/254748827166?text=...` click-to-chat links because normal browser WhatsApp actions cannot send silently.
+- Kept the support form available through `/api/quote-request` with `channel: "whatsapp"` and optional backend WhatsApp Business API staff notifications.
+- Clarified support modal wording and added a direct "Chat on WhatsApp" action while preserving the phone fallback link.
+
 ### Installation Support Guide
 
 - Added a dedicated `/installation-support` guide so the homepage Installation Support "View guide" action opens relevant installation content instead of the contact fallback.
