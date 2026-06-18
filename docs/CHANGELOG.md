@@ -8,6 +8,13 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-06-11
 
+### Local SEO Landing Pages And Guides
+
+- Added route-aware local SEO landing pages for tiles, sanitaryware, paints and installation support across Nairobi, Machakos, Makueni and Kenya.
+- Added practical content guide pages for tile buying, bathroom renovation, paint selection, adhesive/grout planning, installation best practices and cost estimation.
+- Added compact crawlable footer SEO links for popular searches, project guides and locations served without changing quote, WhatsApp, Worker or backend behavior.
+- Expanded sitemap coverage to include all new public SEO routes and documented Google Business Profile/Search Console next steps.
+
 ### SEO Metadata And Structured Data
 
 - Added route-aware SEO coverage for `/tiles` with title, description, canonical metadata, CollectionPage JSON-LD and sitemap coverage.

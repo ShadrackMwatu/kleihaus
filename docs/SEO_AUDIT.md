@@ -59,6 +59,37 @@ No DNS, Cloudflare settings, Worker bindings, secrets, backend API routes, quote
 - Added crawlable footer product links for category guide routes, including `/tiles`.
 - Updated the web manifest description to include tools, delivery coordination, installation support and finishing advisory.
 
+## 2026-06-18 Local SEO Phase
+
+Additional route-aware pages were added for local service visibility:
+
+- Tiles: `/tiles-nairobi`, `/tiles-machakos`, `/tiles-makueni`, `/tiles-kenya`
+- Sanitaryware: `/sanitaryware-nairobi`, `/sanitaryware-machakos`, `/sanitaryware-makueni`, `/sanitaryware-kenya`
+- Paints: `/paints-nairobi`, `/paints-machakos`, `/paints-makueni`, `/paints-kenya`
+- Installation support: `/installation-support-nairobi`, `/installation-support-machakos`, `/installation-support-makueni`, `/installation-support-kenya`
+
+Content SEO guide pages were added:
+
+- `/tile-buying-guide`
+- `/bathroom-renovation-guide`
+- `/paint-selection-guide`
+- `/adhesive-grout-guide`
+- `/installation-best-practices`
+- `/cost-estimation-guide`
+
+These pages use shared page components but varied service/location content, unique H1/title/description values, crawlable internal links, visible support sections and safe CollectionPage/WebPage plus BreadcrumbList JSON-LD. The copy uses service-area language such as "supporting projects in" and avoids unverified branch claims.
+
+Performance SEO findings:
+
+- Existing optimized image component, responsive image variants, lazy loading and aspect-ratio classes remain in use.
+- New local/guide pages reuse existing assets and image rendering patterns, so no new heavy media or dependencies were added.
+- Above-the-fold route images keep eager loading only where the existing page component already uses it; gallery images remain lazy loaded.
+
+Footer/internal linking updates:
+
+- Added compact crawlable footer links for popular searches, project guides and locations served.
+- Related page chips on guide/local pages use real anchors, not JavaScript-only actions.
+
 ## Structured Data Policy
 
 No Product, Offer, AggregateRating or review schema was added.
@@ -76,6 +107,8 @@ This is intentional. Kleihaus currently presents quote-led categories rather tha
 - `/paints`
 - `/adhesives-grout`
 - `/installation-support`
+- 16 local SEO service routes for Nairobi, Machakos, Makueni and Kenya
+- 6 project/content guide routes
 
 ## SPA Metadata Limitation
 
@@ -93,11 +126,13 @@ Most modern search crawlers can process client-rendered metadata, but static sou
 - Confirm `robots.txt` references `https://www.kleihaus.com/sitemap.xml`.
 - Confirm sitemap XML includes all current public routes.
 - After deployment, run Google Rich Results Test and request validation in Google Search Console.
+- Inspect important new URLs in Search Console after deployment.
+- Monitor impressions and crawl/index coverage for local service and guide URLs.
 
 ## Remaining Recommendations
 
 - Submit the updated sitemap in Google Search Console after deployment.
 - Use Google Rich Results Test on the homepage and key guide routes.
 - Keep Google Business Profile categories, service areas, phone number and website URL aligned with the site copy.
-- Add more granular location/service pages only if Kleihaus can maintain useful, non-duplicate content for those pages.
+- Keep local landing pages useful and periodically refreshed with real service details, photos and customer questions.
 - Continue avoiding Product/Offer schema until product-level pages have real displayed prices, availability and accurate offer details.

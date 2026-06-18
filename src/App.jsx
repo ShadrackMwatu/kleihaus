@@ -370,7 +370,297 @@ const categoryLandingPages = [
   },
 ]
 
-const categoryLandingByPath = Object.fromEntries(categoryLandingPages.map((page) => [page.path, page]))
+const locationSeoTargets = [
+  {
+    slug: 'nairobi',
+    label: 'Nairobi',
+    phrase: 'homes, apartments, retail spaces and project sites in Nairobi',
+    logistics: 'delivery coordination within Nairobi depends on order size, site access and timing',
+  },
+  {
+    slug: 'machakos',
+    label: 'Machakos',
+    phrase: 'homes, rentals, commercial spaces and construction projects in Machakos',
+    logistics: 'delivery support to Machakos is planned around quantity, supplier availability and site requirements',
+  },
+  {
+    slug: 'makueni',
+    label: 'Makueni',
+    phrase: 'home builds, renovations and project sites in Makueni',
+    logistics: 'Makueni delivery coordination is available where practical based on order details and route planning',
+  },
+  {
+    slug: 'kenya',
+    label: 'Kenya',
+    phrase: 'retail customers, contractors, fundis, developers and project teams across Kenya',
+    logistics: 'wider Kenya logistics support is reviewed case by case based on product mix, quantity and destination',
+  },
+]
+
+const localSeoServiceTargets = [
+  {
+    slug: 'tiles',
+    label: 'Tiles',
+    titleLabel: 'Tiles',
+    basePath: '/tiles',
+    guidePath: '/tile-buying-guide',
+    imageSet: ['/images/tiles-floor.jpg', '/images/tiles-wall.jpg', '/images/bathroom-blue-1.jpg', '/images/tile-tools.jpg'],
+    focus:
+      'floor tiles, wall tiles, bathroom tiles and outdoor tile finishes with adhesive, grout and trim guidance',
+    planning:
+      'Share room measurements, tile size preference, finish, quantity estimate and delivery location so Kleihaus can guide suitable options.',
+  },
+  {
+    slug: 'sanitaryware',
+    label: 'Sanitaryware',
+    titleLabel: 'Sanitaryware',
+    basePath: '/sanitaryware',
+    guidePath: '/bathroom-renovation-guide',
+    imageSet: ['/images/sanitary-set-1.jpg', '/images/sanitary-basins.jpg', '/images/sanitary-toilets.jpg', '/images/taps-display-1.jpg'],
+    focus:
+      'basins, toilets, taps, mixers, showers and bathroom accessories matched with bathroom tile plans',
+    planning:
+      'Share bathroom layout, preferred finish, fixture list, quantity and location so Kleihaus can support coordinated sanitaryware planning.',
+  },
+  {
+    slug: 'paints',
+    label: 'Paints',
+    titleLabel: 'Paints',
+    basePath: '/paints',
+    guidePath: '/paint-selection-guide',
+    imageSet: ['/images/paint-interior.jpg', '/images/paint-exterior.jpg', '/images/paint-roof.jpg', '/images/paint-floor.jpg'],
+    focus:
+      'interior paints, exterior paints, roof paints and floor coatings selected around surface condition and finish goals',
+    planning:
+      'Share room or surface area, interior or exterior use, preferred finish, location and project timing for practical paint guidance.',
+  },
+  {
+    slug: 'installation-support',
+    label: 'Installation Support',
+    titleLabel: 'Installation Support',
+    basePath: '/installation-support',
+    guidePath: '/installation-best-practices',
+    imageSet: ['/images/tiler-service.jpg', '/images/tile-tools.jpg', '/images/adhesive.jpg', '/images/grout.jpg'],
+    focus:
+      'site measurement, product matching, surface preparation, cutting, drilling, fixing, grouting, cleaning and handover support',
+    planning:
+      'Share site photos, measurements, tile or finish type, substrate condition and location so Kleihaus can advise on the installation workflow.',
+  },
+]
+
+const buildLocalSeoLandingPage = (service, location) => ({
+  path: `/${service.slug}-${location.slug}`,
+  category: `${service.label} ${location.label}`,
+  schemaType: 'CollectionPage',
+  title: `${service.titleLabel} ${location.label} | Kleihaus Ceramics Kenya`,
+  description: `${service.titleLabel} support for ${location.label}: ${service.focus}. Kleihaus helps with advisory, quantity guidance, delivery coordination and installation support.`,
+  eyebrow: `${service.titleLabel} in ${location.label}`,
+  h1: `${service.titleLabel} support for ${location.label} projects`,
+  intro: `Kleihaus supports ${location.phrase} with ${service.focus}. The team helps customers move from product choice to quantity planning, logistics, delivery coordination and installation support without claiming a separate branch in every service area.`,
+  notes: [
+    service.planning,
+    `Kleihaus can help compare product fit, budget expectations, installation needs and finishing materials for ${location.label}.`,
+    `For logistics, ${location.logistics}.`,
+  ],
+  sections: [
+    {
+      title: `Planning ${service.titleLabel.toLowerCase()} for ${location.label}`,
+      text: `${service.planning} This keeps the first quote conversation focused and helps the team recommend realistic next steps.`,
+    },
+    {
+      title: 'Advisory and matching support',
+      text: `Kleihaus can guide product matching, complementary materials, right-tool selection and technical considerations for fundis, homeowners, contractors and project teams.`,
+    },
+    {
+      title: 'Delivery and installation coordination',
+      text: `${location.logistics}. Installation support, tailored training and application guidance can be discussed where the project needs more than material supply.`,
+    },
+  ],
+  images: service.imageSet.map((src, index) => ({
+    src,
+    alt: `${service.titleLabel} planning and quote support for ${location.label} by Kleihaus Ceramics`,
+    label: index === 0 ? `${service.titleLabel} planning` : ['Product matching', 'Project support', 'Finishing guidance'][index - 1],
+  })),
+  relatedLinks: [
+    { label: service.label, href: service.basePath },
+    { label: `${service.label} guide`, href: service.guidePath },
+    { label: 'Cost estimation guide', href: '/cost-estimation-guide' },
+    { label: 'Request quote', href: '/#contact' },
+  ],
+})
+
+const localSeoLandingPages = localSeoServiceTargets.flatMap((service) =>
+  locationSeoTargets.map((location) => buildLocalSeoLandingPage(service, location)),
+)
+
+const guideSeoPages = [
+  {
+    path: '/tile-buying-guide',
+    category: 'Tile Buying Guide',
+    schemaType: 'WebPage',
+    title: 'Tile Buying Guide Kenya | Kleihaus Ceramics',
+    description: 'A practical tile buying guide for Kenya covering room use, tile finishes, quantities, adhesives, grout, delivery and installation support.',
+    eyebrow: 'Project guide',
+    h1: 'Tile buying guide for better finishing decisions',
+    intro:
+      'Choosing tiles is easier when the room use, surface condition, quantity, finish, fixing materials and delivery plan are considered together. Kleihaus helps customers compare options before requesting a quote.',
+    notes: ['Match tile finish to the room and cleaning needs', 'Estimate area and allowance for cuts', 'Plan adhesive, grout, trims and installation support'],
+    sections: [
+      { title: 'Start with the room use', text: 'Wet areas, busy floors, kitchens and feature walls each need different tile characteristics. Share where the tile will be installed so advice is practical.' },
+      { title: 'Plan quantities before price', text: 'Room measurements, tile size and cutting allowance affect quantity. Kleihaus can help turn measurements into a clearer quote request.' },
+      { title: 'Do not ignore fixing materials', text: 'Adhesive, grout, trims and tools affect the final finish. Matching them early helps reduce site delays and poor installation outcomes.' },
+    ],
+    images: [
+      { src: '/images/tiles-floor.jpg', alt: 'Floor tile options for Kleihaus tile buying guidance', label: 'Floor tiles' },
+      { src: '/images/tiles-wall.jpg', alt: 'Wall tile options for kitchen and bathroom planning', label: 'Wall tiles' },
+      { src: '/images/tile-tools.jpg', alt: 'Tile tools and installation essentials for buying guide planning', label: 'Tools and installation' },
+    ],
+    relatedLinks: [
+      { label: 'Tiles', href: '/tiles' },
+      { label: 'Adhesives & grout', href: '/adhesives-grout' },
+      { label: 'Installation support', href: '/installation-support' },
+    ],
+  },
+  {
+    path: '/bathroom-renovation-guide',
+    category: 'Bathroom Renovation Guide',
+    schemaType: 'WebPage',
+    title: 'Bathroom Renovation Guide Kenya | Kleihaus Ceramics',
+    description: 'Plan bathroom tiles, sanitaryware, taps, showers, accessories, delivery and installation support with Kleihaus Ceramics.',
+    eyebrow: 'Project guide',
+    h1: 'Bathroom renovation guide for tiles and sanitaryware',
+    intro:
+      'A strong bathroom plan connects tile choices, sanitaryware, fittings, waterproofing expectations, delivery timing and installation workflow. Kleihaus supports practical quote planning before materials are selected.',
+    notes: ['Coordinate bathroom tiles and sanitaryware', 'Confirm measurements and fixture list', 'Plan delivery, fixing and finishing needs'],
+    sections: [
+      { title: 'Coordinate the full room', text: 'Tiles, basins, toilets, taps, mixers, showers and accessories should be considered together so the final bathroom feels intentional.' },
+      { title: 'Share measurements and photos', text: 'Room size, wall height, plumbing points and photos help the team identify suitable quantities and product matching questions.' },
+      { title: 'Plan installation support early', text: 'Surface preparation, cutting, drilling, fixing, grouting and cleaning should be discussed before materials arrive on site.' },
+    ],
+    images: [
+      { src: '/images/bathroom-blue-1.jpg', alt: 'Bathroom tile and sanitaryware planning by Kleihaus Ceramics', label: 'Bathroom planning' },
+      { src: '/images/sanitary-set-1.jpg', alt: 'Sanitaryware set for renovation quote guidance', label: 'Sanitaryware' },
+      { src: '/images/sanitary-showers.jpg', alt: 'Shower fixtures for bathroom renovation planning', label: 'Shower fixtures' },
+    ],
+    relatedLinks: [
+      { label: 'Bathroom tiles', href: '/bathroom-tiles' },
+      { label: 'Sanitaryware', href: '/sanitaryware' },
+      { label: 'Installation support', href: '/installation-support' },
+    ],
+  },
+  {
+    path: '/paint-selection-guide',
+    category: 'Paint Selection Guide',
+    schemaType: 'WebPage',
+    title: 'Paint Selection Guide Kenya | Interior, Exterior & Roof Paints',
+    description: 'Choose interior, exterior, roof and floor paints with practical Kleihaus guidance on surface condition, finish, quantity and delivery.',
+    eyebrow: 'Project guide',
+    h1: 'Paint selection guide for durable finishes',
+    intro:
+      'Paint performance depends on the surface, weather exposure, cleaning needs, preparation and finish preference. Kleihaus helps customers structure paint quote requests around these details.',
+    notes: ['Match paint to interior, exterior, roof or floor use', 'Estimate surface area before requesting a quote', 'Consider preparation and application guidance'],
+    sections: [
+      { title: 'Choose by surface and exposure', text: 'Interior walls, exterior walls, roofs and floors face different wear. The right paint conversation starts with the surface.' },
+      { title: 'Prepare before application', text: 'Cleaning, filling, priming and drying conditions affect finish quality. Ask about preparation needs when requesting paint support.' },
+      { title: 'Plan quantity and delivery', text: 'Area, coats, color choice and location all shape the quote. Delivery can be coordinated where practical based on order details.' },
+    ],
+    images: [
+      { src: '/images/paint-interior.jpg', alt: 'Interior paint finish selection guide by Kleihaus', label: 'Interior paints' },
+      { src: '/images/paint-exterior.jpg', alt: 'Exterior paint guidance for weather-exposed walls', label: 'Exterior paints' },
+      { src: '/images/paint-roof.jpg', alt: 'Roof paint selection support for Kenya projects', label: 'Roof paints' },
+    ],
+    relatedLinks: [
+      { label: 'Paints', href: '/paints' },
+      { label: 'Cost estimation guide', href: '/cost-estimation-guide' },
+      { label: 'Request quote', href: '/#contact' },
+    ],
+  },
+  {
+    path: '/adhesive-grout-guide',
+    category: 'Adhesive & Grout Guide',
+    schemaType: 'WebPage',
+    title: 'Tile Adhesive & Grout Guide Kenya | Kleihaus Ceramics',
+    description: 'Understand tile adhesive, grout, trims, spacers and installation essentials before requesting a Kleihaus project quote.',
+    eyebrow: 'Project guide',
+    h1: 'Adhesive and grout guide for cleaner tile installation',
+    intro:
+      'Tile quality alone does not guarantee a good finish. Adhesive, grout, surface preparation, spacing, trims and installer workflow all influence durability and appearance.',
+    notes: ['Match adhesive to tile type and surface', 'Choose grout around joint width and finish', 'Plan trims, tools and cleaning requirements'],
+    sections: [
+      { title: 'Match adhesive to the job', text: 'Tile size, tile type, surface condition and wet-area exposure affect adhesive choice. Share these details before buying.' },
+      { title: 'Use grout as a finishing decision', text: 'Grout color, joint width and cleaning expectations influence the final look as much as the tile itself.' },
+      { title: 'Support installers with the right tools', text: 'Trims, spacers, cutting tools and cleaning materials help fundis and project teams produce a neater handover.' },
+    ],
+    images: [
+      { src: '/images/adhesive.jpg', alt: 'Tile adhesive guide for floor and wall installation', label: 'Tile adhesive' },
+      { src: '/images/grout.jpg', alt: 'Tile grout guide for clean joint finishing', label: 'Grout' },
+      { src: '/images/tile-fittings.jpg', alt: 'Tile trims and fittings for installation planning', label: 'Trims and fittings' },
+    ],
+    relatedLinks: [
+      { label: 'Adhesives & grout', href: '/adhesives-grout' },
+      { label: 'Installation best practices', href: '/installation-best-practices' },
+      { label: 'Tiles', href: '/tiles' },
+    ],
+  },
+  {
+    path: '/installation-best-practices',
+    category: 'Installation Best Practices',
+    schemaType: 'WebPage',
+    title: 'Tile Installation Best Practices Kenya | Kleihaus Support',
+    description: 'Practical installation guidance for preparation, cutting, drilling, fixing, grouting, cleaning, handover and tailored training support.',
+    eyebrow: 'Project guide',
+    h1: 'Installation best practices from planning to handover',
+    intro:
+      'Professional finishing depends on preparation, the right tools, product matching and disciplined site workflow. Kleihaus supports customers and installers with practical guidance across the process.',
+    notes: ['Check surface preparation and measurements', 'Plan cutting, drilling, fixing and grouting', 'Clean, inspect and hand over the final finish'],
+    sections: [
+      { title: 'Prepare the site first', text: 'Confirm measurements, substrate condition, levels, moisture exposure and product requirements before installation starts.' },
+      { title: 'Use the right tools and materials', text: 'Cutting, drilling, adhesive selection, spacers and grout should match the tile and site conditions.' },
+      { title: 'Finish with inspection and cleaning', text: 'A clean handover includes grout checks, surface cleaning, edge finishing and guidance for care after installation.' },
+    ],
+    images: [
+      { src: '/images/tiler-service.jpg', alt: 'Tile installer best practices and site support', label: 'Installation support' },
+      { src: '/images/tile-tools.jpg', alt: 'Right tools for tile cutting drilling and fixing', label: 'Right tools' },
+      { src: '/images/grout.jpg', alt: 'Grouting and finishing stage for tile installation', label: 'Grouting' },
+    ],
+    relatedLinks: [
+      { label: 'Installation support', href: '/installation-support' },
+      { label: 'Adhesive & grout guide', href: '/adhesive-grout-guide' },
+      { label: 'Cost estimation guide', href: '/cost-estimation-guide' },
+    ],
+  },
+  {
+    path: '/cost-estimation-guide',
+    category: 'Cost Estimation Guide',
+    schemaType: 'WebPage',
+    title: 'Tile, Paint & Sanitaryware Cost Estimation Guide Kenya | Kleihaus',
+    description: 'Plan quote requests with general cost factors for tiles, sanitaryware, paints, delivery and installation support without unsupported price claims.',
+    eyebrow: 'Project guide',
+    h1: 'Cost estimation guide for finishing materials',
+    intro:
+      'Kleihaus does not publish unsupported fixed prices on the site because costs depend on product choice, quantity, availability, delivery and site needs. This guide helps customers prepare a better quote request.',
+    notes: ['Prices vary by size, finish, brand and quantity', 'Delivery and installation needs affect total planning', 'Share measurements and budget range for focused quote support'],
+    sections: [
+      { title: 'What affects material cost', text: 'Tile size, finish, sanitaryware brand, paint type, adhesive, grout, trims and accessories all influence the final quote.' },
+      { title: 'What affects delivery and installation', text: 'Location, access, order volume, site readiness and installation complexity can affect planning and coordination.' },
+      { title: 'How to request a useful quote', text: 'Share room measurements, product type, quantity, preferred finish, location, timing and budget range so the team can respond with better guidance.' },
+    ],
+    images: [
+      { src: '/images/kleihaus-structure.jpg', alt: 'Kleihaus Ceramics quote planning support for finishing materials', label: 'Quote planning' },
+      { src: '/images/tiles-floor.jpg', alt: 'Tiles as a cost estimation factor for finishing projects', label: 'Tiles' },
+      { src: '/images/paint-interior.jpg', alt: 'Paint selection as a cost estimation factor', label: 'Paints' },
+    ],
+    relatedLinks: [
+      { label: 'Tiles', href: '/tiles' },
+      { label: 'Sanitaryware', href: '/sanitaryware' },
+      { label: 'Paints', href: '/paints' },
+    ],
+  },
+]
+
+const seoLandingPages = [...categoryLandingPages, ...localSeoLandingPages, ...guideSeoPages]
+
+const categoryLandingByPath = Object.fromEntries(seoLandingPages.map((page) => [page.path, page]))
 
 const categoryGuideTargets = {
   Tiles: '/tiles',
@@ -575,7 +865,7 @@ const getRouteSchema = (page) => {
     '@context': 'https://schema.org',
     '@graph': [
       {
-        '@type': 'CollectionPage',
+        '@type': page.schemaType || 'CollectionPage',
         '@id': `${pageUrl}#collection`,
         url: pageUrl,
         name: page.h1,
@@ -2069,20 +2359,31 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
         </div>
       </section>
 
+      {page.sections?.length > 0 && (
+        <section className="mx-auto max-w-7xl px-4 py-4 sm:py-6">
+          <div className="grid gap-3 md:grid-cols-3">
+            {page.sections.map((section) => (
+              <article key={section.title} className="rounded-xl border border-neutral-200 bg-white p-4 shadow-sm">
+                <h2 className="text-base font-semibold text-neutral-950">{section.title}</h2>
+                <p className="mt-2 text-sm leading-6 text-neutral-600">{section.text}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
+
       <section className="mx-auto max-w-7xl px-4 py-6 sm:py-8">
         <div className="mb-4 rounded-xl border border-neutral-200 bg-white p-3 shadow-sm sm:p-4">
-          <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Explore related categories</p>
+          <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Explore related pages</p>
           <div className="mt-3 flex flex-wrap gap-2">
-            {categoryLandingPages
-              .filter((relatedPage) => relatedPage.path !== page.path)
-              .slice(0, 6)
+            {(page.relatedLinks || seoLandingPages.filter((relatedPage) => relatedPage.path !== page.path).slice(0, 6))
               .map((relatedPage) => (
                 <a
-                  key={relatedPage.path}
-                  href={relatedPage.path}
+                  key={relatedPage.href || relatedPage.path}
+                  href={relatedPage.href || relatedPage.path}
                   className="inline-flex items-center gap-1 rounded-md border border-neutral-200 px-3 py-2 text-xs font-semibold text-neutral-700 transition hover:border-emerald-700 hover:bg-emerald-50 hover:text-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-200"
                 >
-                  {relatedPage.category}
+                  {relatedPage.label || relatedPage.category}
                   <ArrowRight className="h-3.5 w-3.5" />
                 </a>
               ))}
@@ -2121,6 +2422,24 @@ function Footer({ onSupportClick }) {
     { label: 'Sanitaryware', href: '/sanitaryware' },
     { label: 'Paints', href: '/paints' },
     { label: 'Adhesives & grout', href: '/adhesives-grout' },
+  ]
+  const popularSearchLinks = [
+    { label: 'Tiles Nairobi', href: '/tiles-nairobi' },
+    { label: 'Tiles Machakos', href: '/tiles-machakos' },
+    { label: 'Sanitaryware Kenya', href: '/sanitaryware-kenya' },
+    { label: 'Paints Makueni', href: '/paints-makueni' },
+  ]
+  const projectGuideLinks = [
+    { label: 'Tile buying guide', href: '/tile-buying-guide' },
+    { label: 'Bathroom renovation guide', href: '/bathroom-renovation-guide' },
+    { label: 'Paint selection guide', href: '/paint-selection-guide' },
+    { label: 'Cost estimation guide', href: '/cost-estimation-guide' },
+  ]
+  const locationLinks = [
+    { label: 'Nairobi', href: '/tiles-nairobi' },
+    { label: 'Machakos', href: '/tiles-machakos' },
+    { label: 'Makueni', href: '/tiles-makueni' },
+    { label: 'Kenya', href: '/tiles-kenya' },
   ]
 
   return (
@@ -2167,6 +2486,26 @@ function Footer({ onSupportClick }) {
               <span>Nairobi | Machakos | Makueni</span>
             </div>
           </div>
+        </div>
+      </div>
+      <div className="border-t border-white/15 px-4 py-4">
+        <div className="mx-auto grid max-w-6xl gap-4 text-xs text-orange-50/90 sm:grid-cols-3 sm:text-sm">
+          {[
+            ['Popular searches', popularSearchLinks],
+            ['Project guides', projectGuideLinks],
+            ['Locations served', locationLinks],
+          ].map(([title, links]) => (
+            <div key={title}>
+              <h3 className="text-xs font-semibold uppercase text-white">{title}</h3>
+              <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1.5">
+                {links.map((link) => (
+                  <a key={link.href} href={link.href} className="transition hover:text-white focus:outline-none focus:ring-2 focus:ring-orange-100/70">
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
       <div className="border-t border-white/20 px-4 py-2.5 md:hidden">
