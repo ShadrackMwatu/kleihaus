@@ -8,6 +8,13 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-06-11
 
+### Local SEO Content Architecture
+
+- Audited the SEO route inventory and confirmed product/service location pages and general guide pages exist, while location-specific guide pages such as `/tile-buying-guide-nairobi` do not.
+- Chose location hubs over dozens of near-duplicate location-guide pages to reduce thin content, doorway-page and keyword cannibalization risk.
+- Added `/locations/nairobi`, `/locations/machakos` and `/locations/makueni` with location-relevant logistics, project planning and advisory content plus internal links to products, services and guides.
+- Updated sitemap coverage and footer location links to include the new location hub structure.
+
 ### Local SEO Landing Pages And Guides
 
 - Added route-aware local SEO landing pages for tiles, sanitaryware, paints and installation support across Nairobi, Machakos, Makueni and Kenya.

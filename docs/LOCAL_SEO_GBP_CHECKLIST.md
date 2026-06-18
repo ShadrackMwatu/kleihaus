@@ -30,6 +30,9 @@ This checklist is for manual follow-up outside the repository. Do not store Goog
 - Inspect important URLs after deployment:
   - `/`
   - `/tiles`
+  - `/locations/nairobi`
+  - `/locations/machakos`
+  - `/locations/makueni`
   - `/tiles-nairobi`
   - `/sanitaryware-nairobi`
   - `/paints-nairobi`

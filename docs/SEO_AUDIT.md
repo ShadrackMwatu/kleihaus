@@ -79,6 +79,14 @@ Content SEO guide pages were added:
 
 These pages use shared page components but varied service/location content, unique H1/title/description values, crawlable internal links, visible support sections and safe CollectionPage/WebPage plus BreadcrumbList JSON-LD. The copy uses service-area language such as "supporting projects in" and avoids unverified branch claims.
 
+Location-specific guide audit:
+
+- Location-specific guide routes such as `/tile-buying-guide-nairobi`, `/tile-buying-guide-machakos`, `/tile-buying-guide-makueni`, `/cost-estimation-guide-nairobi`, `/cost-estimation-guide-machakos` and `/cost-estimation-guide-makueni` were not present.
+- Creating every guide-location combination is not recommended right now because the repo does not yet contain enough distinct local evidence, photos, project examples or maintained pricing/logistics detail for each combination.
+- The preferred structure is location hubs: `/locations/nairobi`, `/locations/machakos` and `/locations/makueni`.
+- Each hub contains location-relevant project planning, delivery/logistics considerations, product availability framing, advisory guidance and crawlable links to tiles, sanitaryware, paints, installation support and core guides.
+- This structure keeps local intent coverage while reducing duplicate content, doorway-page and keyword cannibalization risk.
+
 Performance SEO findings:
 
 - Existing optimized image component, responsive image variants, lazy loading and aspect-ratio classes remain in use.
@@ -109,6 +117,7 @@ This is intentional. Kleihaus currently presents quote-led categories rather tha
 - `/installation-support`
 - 16 local SEO service routes for Nairobi, Machakos, Makueni and Kenya
 - 6 project/content guide routes
+- 3 location hub routes: `/locations/nairobi`, `/locations/machakos`, `/locations/makueni`
 
 ## SPA Metadata Limitation
 

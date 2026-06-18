@@ -484,6 +484,7 @@ const buildLocalSeoLandingPage = (service, location) => ({
   relatedLinks: [
     { label: service.label, href: service.basePath },
     { label: `${service.label} guide`, href: service.guidePath },
+    { label: `${location.label} hub`, href: `/locations/${location.slug}` },
     { label: 'Cost estimation guide', href: '/cost-estimation-guide' },
     { label: 'Request quote', href: '/#contact' },
   ],
@@ -658,7 +659,148 @@ const guideSeoPages = [
   },
 ]
 
-const seoLandingPages = [...categoryLandingPages, ...localSeoLandingPages, ...guideSeoPages]
+const locationHubPages = [
+  {
+    path: '/locations/nairobi',
+    category: 'Nairobi',
+    schemaType: 'WebPage',
+    title: 'Kleihaus Nairobi | Tiles, Sanitaryware, Paints & Installation Support',
+    description: 'Kleihaus supports Nairobi homes, apartments, retail spaces and project sites with tiles, sanitaryware, paints, delivery coordination and installation guidance.',
+    eyebrow: 'Location hub',
+    h1: 'Kleihaus support for Nairobi projects',
+    intro:
+      'Nairobi projects often need fast product comparison, clear quantity planning and practical delivery coordination around apartments, retail spaces, offices and busy construction sites. Kleihaus helps customers plan tiles, sanitaryware, paints, adhesives, grout and installation support without claiming a separate Nairobi branch.',
+    notes: [
+      'Useful for apartments, shops, offices, rentals and residential renovations',
+      'Delivery timing depends on traffic, access, order size and supplier availability',
+      'Advisory can cover product matching, quantities, installation workflow and tailored training needs',
+    ],
+    sections: [
+      {
+        title: 'Urban project planning',
+        text: 'Nairobi customers often need compact delivery windows, product substitutions where stock moves quickly and coordinated finishing decisions for small or busy sites.',
+      },
+      {
+        title: 'What to share',
+        text: 'Send room measurements, building access details, preferred delivery timing, product type and any site photos so quote support can be more specific.',
+      },
+      {
+        title: 'Useful internal guides',
+        text: 'Use the buying and cost guides to prepare measurements, budget range, installation requirements and delivery expectations before requesting a quote.',
+      },
+    ],
+    images: [
+      { src: '/images/kleihaus-structure.jpg', alt: 'Kleihaus Ceramics support for Nairobi finishing material projects', label: 'Nairobi support' },
+      { src: '/images/tiles-floor.jpg', alt: 'Tile planning for Nairobi homes apartments and retail spaces', label: 'Tiles' },
+      { src: '/images/bathroom-blue-1.jpg', alt: 'Bathroom tile and sanitaryware planning for Nairobi projects', label: 'Bathrooms' },
+    ],
+    relatedLinks: [
+      { label: 'Tiles Nairobi', href: '/tiles-nairobi' },
+      { label: 'Sanitaryware Nairobi', href: '/sanitaryware-nairobi' },
+      { label: 'Paints Nairobi', href: '/paints-nairobi' },
+      { label: 'Installation Support Nairobi', href: '/installation-support-nairobi' },
+      { label: 'Tile buying guide', href: '/tile-buying-guide' },
+      { label: 'Cost estimation guide', href: '/cost-estimation-guide' },
+      { label: 'Bathroom renovation guide', href: '/bathroom-renovation-guide' },
+      { label: 'Paint selection guide', href: '/paint-selection-guide' },
+      { label: 'Adhesive & grout guide', href: '/adhesive-grout-guide' },
+    ],
+  },
+  {
+    path: '/locations/machakos',
+    category: 'Machakos',
+    schemaType: 'WebPage',
+    title: 'Kleihaus Machakos | Tiles, Sanitaryware, Paints & Delivery Support',
+    description: 'Kleihaus supports Machakos homes, rentals, commercial projects and construction sites with finishing material guidance, delivery planning and installation support.',
+    eyebrow: 'Location hub',
+    h1: 'Kleihaus support for Machakos projects',
+    intro:
+      'Machakos finishing projects may need stronger delivery planning, quantity checks and product matching before materials move to site. Kleihaus supports homes, rentals, shops and construction teams with tiles, sanitaryware, paints, adhesives, grout, tools and installation guidance.',
+    notes: [
+      'Useful for homes, rentals, retail spaces and active building sites',
+      'Delivery support is planned around quantity, route, site access and supplier stock',
+      'Installation guidance can help fundis and project teams prepare surfaces, fixing materials and handover expectations',
+    ],
+    sections: [
+      {
+        title: 'Delivery-aware planning',
+        text: 'For Machakos, it is especially useful to confirm quantity, supplier availability, offloading needs and delivery timing before the quote is finalized.',
+      },
+      {
+        title: 'Product matching',
+        text: 'Tiles, sanitaryware and paints can be matched with adhesives, grout, trims, tools and application guidance to reduce last-minute site gaps.',
+      },
+      {
+        title: 'Useful internal guides',
+        text: 'The cost, tile, bathroom, paint and adhesive guides help customers prepare a clearer request before asking for support.',
+      },
+    ],
+    images: [
+      { src: '/images/tiles-floor-2.jpg', alt: 'Tile and finishing material support for Machakos projects', label: 'Machakos support' },
+      { src: '/images/sanitary-set-1.jpg', alt: 'Sanitaryware planning for Machakos homes and rentals', label: 'Sanitaryware' },
+      { src: '/images/tiler-service.jpg', alt: 'Installation support guidance for Machakos project sites', label: 'Installation' },
+    ],
+    relatedLinks: [
+      { label: 'Tiles Machakos', href: '/tiles-machakos' },
+      { label: 'Sanitaryware Machakos', href: '/sanitaryware-machakos' },
+      { label: 'Paints Machakos', href: '/paints-machakos' },
+      { label: 'Installation Support Machakos', href: '/installation-support-machakos' },
+      { label: 'Tile buying guide', href: '/tile-buying-guide' },
+      { label: 'Cost estimation guide', href: '/cost-estimation-guide' },
+      { label: 'Bathroom renovation guide', href: '/bathroom-renovation-guide' },
+      { label: 'Paint selection guide', href: '/paint-selection-guide' },
+      { label: 'Adhesive & grout guide', href: '/adhesive-grout-guide' },
+    ],
+  },
+  {
+    path: '/locations/makueni',
+    category: 'Makueni',
+    schemaType: 'WebPage',
+    title: 'Kleihaus Makueni | Tiles, Paints, Sanitaryware & Installation Guidance',
+    description: 'Kleihaus supports Makueni home builds, renovations and project sites with finishing material advisory, logistics planning and installation support.',
+    eyebrow: 'Location hub',
+    h1: 'Kleihaus support for Makueni projects',
+    intro:
+      'Makueni projects benefit from careful product choice, quantity planning and logistics coordination before materials are dispatched. Kleihaus supports home builds, renovations and project sites with tiles, sanitaryware, paints, adhesives, grout, tools and finishing guidance.',
+    notes: [
+      'Useful for home builds, renovations and project sites where materials need careful planning',
+      'Logistics support is reviewed by order details, route planning, quantity and destination',
+      'Advisory can include durable finish selection, installation preparation and product/application training where needed',
+    ],
+    sections: [
+      {
+        title: 'Durability and logistics',
+        text: 'For Makueni requests, customers should share site location, storage conditions, expected use and delivery needs so the team can guide practical material planning.',
+      },
+      {
+        title: 'Project readiness',
+        text: 'Measurements, surface condition, budget range and product preference help reduce delays when materials, adhesives, grout and tools are being coordinated.',
+      },
+      {
+        title: 'Useful internal guides',
+        text: 'The buying and installation guides are better for broad advice, while this hub keeps location-specific logistics and planning context together.',
+      },
+    ],
+    images: [
+      { src: '/images/paint-exterior.jpg', alt: 'Paint and exterior finish support for Makueni projects', label: 'Makueni support' },
+      { src: '/images/tiles-gallery-1.jpg', alt: 'Tile planning for Makueni homes and project sites', label: 'Tiles' },
+      { src: '/images/adhesive.jpg', alt: 'Adhesive and grout planning for Makueni installation support', label: 'Adhesives' },
+    ],
+    relatedLinks: [
+      { label: 'Tiles Makueni', href: '/tiles-makueni' },
+      { label: 'Sanitaryware Makueni', href: '/sanitaryware-makueni' },
+      { label: 'Paints Makueni', href: '/paints-makueni' },
+      { label: 'Installation Support Makueni', href: '/installation-support-makueni' },
+      { label: 'Tile buying guide', href: '/tile-buying-guide' },
+      { label: 'Cost estimation guide', href: '/cost-estimation-guide' },
+      { label: 'Bathroom renovation guide', href: '/bathroom-renovation-guide' },
+      { label: 'Paint selection guide', href: '/paint-selection-guide' },
+      { label: 'Adhesive & grout guide', href: '/adhesive-grout-guide' },
+    ],
+  },
+]
+
+const seoLandingPages = [...categoryLandingPages, ...localSeoLandingPages, ...guideSeoPages, ...locationHubPages]
 
 const categoryLandingByPath = Object.fromEntries(seoLandingPages.map((page) => [page.path, page]))
 
@@ -2436,9 +2578,9 @@ function Footer({ onSupportClick }) {
     { label: 'Cost estimation guide', href: '/cost-estimation-guide' },
   ]
   const locationLinks = [
-    { label: 'Nairobi', href: '/tiles-nairobi' },
-    { label: 'Machakos', href: '/tiles-machakos' },
-    { label: 'Makueni', href: '/tiles-makueni' },
+    { label: 'Nairobi', href: '/locations/nairobi' },
+    { label: 'Machakos', href: '/locations/machakos' },
+    { label: 'Makueni', href: '/locations/makueni' },
     { label: 'Kenya', href: '/tiles-kenya' },
   ]
 
