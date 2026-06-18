@@ -122,6 +122,7 @@ Current behavior:
 - The About block positions Kleihaus as a finishing partner for materials, advisory, logistics, installation support and tailored training, with professional workflow language that avoids unsupported distributor claims.
 - Quote and support blocks keep clear CTAs while avoiding repeated trust/support copy.
 - WhatsApp/support CTAs use the same green primary-button visual system as catalogue quote actions, with white icon/text and consistent hover/focus states.
+- Reusable button components avoid default-background conflicts when custom CTA backgrounds are supplied, preventing blank white CTA blocks in the hero and other high-value actions.
 - The compactness pass does not change `/api/quote-request`, Worker Assets deployment, D1 bindings, structured data policy or communication channel routing.
 
 ## Cloudflare Runtime Requirements

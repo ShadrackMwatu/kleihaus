@@ -8,6 +8,12 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-06-11
 
+### Blank UI Block Fix
+
+- Fixed reusable button styling so custom CTA backgrounds no longer conflict with default white/black button backgrounds.
+- Resolved the hero CTA issue where a custom button could appear as a blank white rounded block beside "Browse catalogue".
+- Rechecked important CTA/card patterns for missing labels, hidden text and broken image fallback behavior.
+
 ### WhatsApp Support Behavior Audit
 
 - Restored customer-facing WhatsApp CTAs to same-tab `wa.me/254748827166?text=...` click-to-chat links because normal browser WhatsApp actions cannot send silently.

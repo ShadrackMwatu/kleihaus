@@ -483,23 +483,37 @@ const planningTips = [
   },
 ]
 
-const Button = ({ className = '', children, ...props }) => (
-  <button
-    className={`inline-flex items-center justify-center rounded-md border border-neutral-950 bg-neutral-950 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-neutral-800 ${className}`}
-    {...props}
-  >
-    {children}
-  </button>
-)
+const hasCustomBackground = (className = '') => /\bbg-/.test(className)
 
-const ButtonSecondary = ({ className = '', children, ...props }) => (
-  <button
-    className={`inline-flex items-center justify-center rounded-md border border-neutral-300 bg-white px-4 py-2.5 text-sm font-semibold text-neutral-950 shadow-sm transition hover:border-neutral-600 ${className}`}
-    {...props}
-  >
-    {children}
-  </button>
-)
+const Button = ({ className = '', children, ...props }) => {
+  const defaultVisuals = hasCustomBackground(className)
+    ? ''
+    : 'border-neutral-950 bg-neutral-950 text-white hover:bg-neutral-800'
+
+  return (
+    <button
+      className={`inline-flex items-center justify-center rounded-md border px-4 py-2.5 text-sm font-semibold shadow-sm transition ${defaultVisuals} ${className}`}
+      {...props}
+    >
+      {children}
+    </button>
+  )
+}
+
+const ButtonSecondary = ({ className = '', children, ...props }) => {
+  const defaultVisuals = hasCustomBackground(className)
+    ? ''
+    : 'border-neutral-300 bg-white text-neutral-950 hover:border-neutral-600'
+
+  return (
+    <button
+      className={`inline-flex items-center justify-center rounded-md border px-4 py-2.5 text-sm font-semibold shadow-sm transition ${defaultVisuals} ${className}`}
+      {...props}
+    >
+      {children}
+    </button>
+  )
+}
 
 const WhatsAppBrandText = ({ children = 'Need Help?', iconClassName = 'h-4 w-4' }) => (
   <>
