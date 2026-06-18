@@ -8,6 +8,13 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-06-11
 
+### SEO Metadata And Structured Data
+
+- Added route-aware SEO coverage for `/tiles` with title, description, canonical metadata, CollectionPage JSON-LD and sitemap coverage.
+- Expanded safe LocalBusiness/HomeAndConstructionBusiness structured data for finishing materials, advisory, delivery coordination, installation support, tools and training without adding Product, Offer, AggregateRating or fake review schema.
+- Updated Open Graph/Twitter image metadata, sitemap `lastmod` values, category ItemList URLs and footer product links so public category routes are more crawlable.
+- Documented the SEO audit, SPA metadata limitations and remaining Search Console validation recommendations in `docs/SEO_AUDIT.md`.
+
 ### Blank UI Block Fix
 
 - Fixed reusable button styling so custom CTA backgrounds no longer conflict with default white/black button backgrounds.

@@ -87,6 +87,7 @@ const seoTitle = 'Kleihaus Ceramics Kenya | Tiles, Sanitaryware & Paints'
 const seoDescription =
   'Kleihaus Ceramics supplies tiles, sanitaryware, paints, adhesives, grout and finishing materials with retail, wholesale and project quote support in Nairobi, Machakos and Makueni.'
 const canonicalUrl = 'https://www.kleihaus.com/'
+const defaultSeoImage = 'https://www.kleihaus.com/images/kleihaus-structure.jpg'
 
 const navItems = [
   { label: 'Home', section: 'home' },
@@ -222,6 +223,25 @@ const productGroups = [
 
 const categoryLandingPages = [
   {
+    path: '/tiles',
+    category: 'Tiles',
+    title: 'Tiles Kenya | Floor, Wall & Bathroom Tiles | Kleihaus Ceramics',
+    description: 'Explore tile quote guidance for floor tiles, wall tiles, bathroom tiles and outdoor finishes from Kleihaus Ceramics in Nairobi, Machakos, Makueni and Kenya.',
+    eyebrow: 'Tile quote support',
+    h1: 'Tiles for homes, commercial spaces and projects in Kenya',
+    intro:
+      'Kleihaus helps customers compare floor tiles, wall tiles, bathroom tiles and outdoor tile finishes for homes, shops, rentals and project sites. Share measurements, finish preference, quantity and delivery location for focused quote support.',
+    notes: ['Floor, wall, bathroom and outdoor tile planning', 'Quantity estimates and finish matching', 'Adhesives, grout, trims and installation support'],
+    images: [
+      { src: '/images/tiles-floor.jpg', alt: 'Floor tile finishes for homes and project quote planning in Kenya', label: 'Floor tiles' },
+      { src: '/images/tiles-wall.jpg', alt: 'Wall tile options for kitchens bathrooms and feature interiors', label: 'Wall tiles' },
+      { src: '/images/bathroom-blue-1.jpg', alt: 'Bathroom tile and sanitaryware coordination by Kleihaus Ceramics', label: 'Bathroom tiles' },
+      { src: '/images/tiles-floor-2.jpg', alt: 'Textured outdoor tile finishes for patios entries and wet zones', label: 'Outdoor tiles' },
+      { src: '/images/tile-tools.jpg', alt: 'Tile tools and installation essentials for professional finishing support', label: 'Tile tools' },
+      { src: '/images/grout.jpg', alt: 'Tile grout and finishing materials for clean joint finishes', label: 'Grout finishes' },
+    ],
+  },
+  {
     path: '/floor-tiles',
     category: 'Floor Tiles',
     title: 'Floor Tiles Kenya | Kleihaus Ceramics',
@@ -353,6 +373,7 @@ const categoryLandingPages = [
 const categoryLandingByPath = Object.fromEntries(categoryLandingPages.map((page) => [page.path, page]))
 
 const categoryGuideTargets = {
+  Tiles: '/tiles',
   'Floor Tiles': '/floor-tiles',
   'Wall Tiles': '/wall-tiles',
   'Outdoor Tiles': '/floor-tiles',
@@ -547,6 +568,8 @@ const getRouteSchema = (page) => {
   if (!page) return null
 
   const pageUrl = `https://www.kleihaus.com${page.path}`
+  const primaryImage = page.images?.[0]
+  const primaryImageUrl = primaryImage ? `https://www.kleihaus.com${primaryImage.src}` : defaultSeoImage
 
   return {
     '@context': 'https://schema.org',
@@ -557,6 +580,11 @@ const getRouteSchema = (page) => {
         url: pageUrl,
         name: page.h1,
         description: page.description,
+        primaryImageOfPage: {
+          '@type': 'ImageObject',
+          url: primaryImageUrl,
+          caption: primaryImage?.alt || page.h1,
+        },
         isPartOf: {
           '@type': 'WebSite',
           '@id': 'https://www.kleihaus.com/#website',
@@ -602,6 +630,8 @@ function SeoManager({ page }) {
     const title = page?.title || seoTitle
     const description = page?.description || seoDescription
     const routeCanonicalUrl = page ? `https://www.kleihaus.com${page.path}` : canonicalUrl
+    const routeImage = page?.images?.[0]?.src ? `https://www.kleihaus.com${page.images[0].src}` : defaultSeoImage
+    const routeImageAlt = page?.images?.[0]?.alt || 'Kleihaus Ceramics tiles, sanitaryware, paints and finishing materials'
 
     document.title = title
     setMetaContent('meta[name="description"]', description)
@@ -609,8 +639,12 @@ function SeoManager({ page }) {
     setMetaContent('meta[property="og:title"]', title)
     setMetaContent('meta[property="og:description"]', description)
     setMetaContent('meta[property="og:url"]', routeCanonicalUrl)
+    setMetaContent('meta[property="og:image"]', routeImage)
+    setMetaContent('meta[property="og:image:alt"]', routeImageAlt)
     setMetaContent('meta[name="twitter:title"]', title)
     setMetaContent('meta[name="twitter:description"]', description)
+    setMetaContent('meta[name="twitter:image"]', routeImage)
+    setMetaContent('meta[name="twitter:image:alt"]', routeImageAlt)
 
     const canonical = document.querySelector('link[rel="canonical"]')
     if (canonical) canonical.setAttribute('href', routeCanonicalUrl)
@@ -2079,14 +2113,28 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
 }
 
 function Footer({ onSupportClick }) {
+  const footerProductLinks = [
+    { label: 'Tiles', href: '/tiles' },
+    { label: 'Floor tiles', href: '/floor-tiles' },
+    { label: 'Wall tiles', href: '/wall-tiles' },
+    { label: 'Bathroom tiles', href: '/bathroom-tiles' },
+    { label: 'Sanitaryware', href: '/sanitaryware' },
+    { label: 'Paints', href: '/paints' },
+    { label: 'Adhesives & grout', href: '/adhesives-grout' },
+  ]
+
   return (
     <footer data-site-footer className="border-t border-white/30 bg-[linear-gradient(180deg,#8B4E1C_0%,#A65F1E_100%)] text-orange-50">
       <div className="mx-auto grid max-w-6xl gap-4 px-4 py-4 sm:gap-6 sm:py-6 lg:py-7 md:grid-cols-3 md:gap-10 lg:gap-14">
         <div className="w-full md:justify-self-start">
           <h3 className="text-sm font-semibold uppercase text-white">Products</h3>
           <ul className="mt-2 grid gap-0.5 text-xs text-orange-50/90 sm:gap-1.5 sm:text-sm">
-            {['Floor tiles', 'Wall tiles', 'Bathroom tiles', 'Sanitaryware', 'Paints', 'Adhesives & grout'].map((item) => (
-              <li key={item}>{item}</li>
+            {footerProductLinks.map((item) => (
+              <li key={item.href}>
+                <a href={item.href} className="transition hover:text-white focus:outline-none focus:ring-2 focus:ring-orange-100/70">
+                  {item.label}
+                </a>
+              </li>
             ))}
           </ul>
         </div>
