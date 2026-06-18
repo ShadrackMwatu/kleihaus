@@ -123,6 +123,7 @@ Current behavior:
 - Quote and support blocks keep clear CTAs while avoiding repeated trust/support copy.
 - WhatsApp/support CTAs use the same green primary-button visual system as catalogue quote actions, with white icon/text and consistent hover/focus states.
 - Reusable button components avoid default-background conflicts when custom CTA backgrounds are supplied, preventing blank white CTA blocks in the hero and other high-value actions.
+- Category navigation labels, guide targets and sitemap entries are aligned for the active category landing pages, including `/installation-support`.
 - The compactness pass does not change `/api/quote-request`, Worker Assets deployment, D1 bindings, structured data policy or communication channel routing.
 
 ## Cloudflare Runtime Requirements
@@ -192,7 +193,7 @@ Current SEO foundations include:
 - `public/site.webmanifest`.
 - Organization, LocalBusiness, Store, WebSite, SearchAction, ContactPoint, FAQ and catalogue `ItemList` structured data.
 - Category landing pages use safe `CollectionPage`, `BreadcrumbList` and `ItemList` JSON-LD only.
-- `public/sitemap.xml` includes the homepage and six category landing page URLs without fragment-only sitemap entries.
+- `public/sitemap.xml` includes the homepage and seven category landing page URLs without fragment-only sitemap entries.
 - Incomplete Product rich-result schema was removed for quote-based catalogue categories without fabricating price, review, rating or availability data.
 - Product and Offer schema must not be reintroduced until Kleihaus has real product pages with truthful price and current availability data.
 - One primary H1 on the homepage.

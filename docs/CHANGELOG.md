@@ -13,6 +13,7 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 - Fixed reusable button styling so custom CTA backgrounds no longer conflict with default white/black button backgrounds.
 - Resolved the hero CTA issue where a custom button could appear as a blank white rounded block beside "Browse catalogue".
 - Rechecked important CTA/card patterns for missing labels, hidden text and broken image fallback behavior.
+- Aligned the Installation Support category chip with the actual catalogue card label and added the `/installation-support` guide to the sitemap.
 
 ### WhatsApp Support Behavior Audit
 

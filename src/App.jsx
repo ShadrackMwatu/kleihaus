@@ -102,7 +102,7 @@ const panelItems = [
   { label: 'Quote', panel: 'quote' },
 ]
 
-const categoryNav = ['Floor Tiles', 'Wall Tiles', 'Bathroom Tiles', 'Sanitaryware', 'Paints', 'Adhesives & Grout', 'Installation']
+const categoryNav = ['Floor Tiles', 'Wall Tiles', 'Bathroom Tiles', 'Sanitaryware', 'Paints', 'Adhesives & Grout', 'Installation Support']
 
 const categories = [
   {
