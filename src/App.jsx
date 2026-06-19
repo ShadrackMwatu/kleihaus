@@ -847,6 +847,39 @@ const aboutSupportPoints = [
   },
 ]
 
+const companyValues = ['Integrity', 'Quality', 'Excellence', 'Innovation', 'Reliability', 'Customer Success', 'Sustainability']
+
+function VisionMissionValues({ compact = false }) {
+  return (
+    <div className={`${compact ? 'mt-5' : 'mt-7'} rounded-xl border border-emerald-100 bg-emerald-50/70 p-4 shadow-sm sm:p-5`}>
+      <div className="grid gap-4 md:grid-cols-2">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-wide text-emerald-700">Vision</p>
+          <p className={`${compact ? 'mt-1 text-sm leading-6' : 'mt-2 text-sm leading-6'} text-emerald-950`}>
+            To be the leading provider of inspiring finishing solutions in Africa.
+          </p>
+        </div>
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-wide text-emerald-700">Mission</p>
+          <p className={`${compact ? 'mt-1 text-sm leading-6' : 'mt-2 text-sm leading-6'} text-emerald-950`}>
+            To inspire living by delivering quality tiles, sanitaryware, paints, and finishing solutions backed by expert guidance, reliable service, and lasting customer relationships.
+          </p>
+        </div>
+      </div>
+      <div className="mt-4 border-t border-emerald-200 pt-4">
+        <p className="text-xs font-semibold uppercase tracking-wide text-emerald-700">Core Values</p>
+        <div className="mt-2 flex flex-wrap gap-2">
+          {companyValues.map((value) => (
+            <span key={value} className="rounded-full bg-white px-3 py-1.5 text-xs font-semibold text-emerald-800 shadow-sm">
+              {value}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 const faqItems = [
   {
     question: 'How much do tiles cost?',
@@ -1542,6 +1575,7 @@ function AboutSection() {
               </span>
             ))}
           </div>
+          <VisionMissionValues />
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2">
@@ -1578,6 +1612,7 @@ function AboutPanel() {
         <p className="mt-3 text-sm leading-7 text-neutral-600">
           Our guidance emphasizes professional installation standards, the right tools for the job, and the full workflow from preparation and cutting to fixing, grouting, cleaning and the final finish.
         </p>
+        <VisionMissionValues compact />
       </div>
       <div className="grid gap-2.5 sm:grid-cols-2 sm:gap-3">
         {aboutSupportPoints.map((point) => {

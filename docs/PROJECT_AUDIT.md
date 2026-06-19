@@ -120,6 +120,7 @@ Current behavior:
 - The visible homepage blocks are intentionally compact: tighter header/category navigation, reduced hero height, smaller trust cards, denser catalogue cards, compact project gallery, shorter FAQ cards and a reduced footer.
 - The bottom buying guidance area is reduced to four concise guide cards and a compact FAQ accordion to preserve useful customer answers with less vertical height.
 - The About block positions Kleihaus as a finishing partner for materials, advisory, logistics, installation support and tailored training, with professional workflow language that avoids unsupported distributor claims.
+- The About/Company section also includes Kleihaus Ceramics' Vision, Mission and Core Values in a compact customer-facing brand block.
 - Quote and support blocks keep clear CTAs while avoiding repeated trust/support copy.
 - WhatsApp/support CTAs use the same green primary-button visual system as catalogue quote actions, with white icon/text and consistent hover/focus states.
 - Reusable button components avoid default-background conflicts when custom CTA backgrounds are supplied, preventing blank white CTA blocks in the hero and other high-value actions.

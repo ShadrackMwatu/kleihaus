@@ -8,6 +8,11 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-06-11
 
+### Vision Mission And Values
+
+- Added Kleihaus Ceramics' Vision, Mission and Core Values to the customer-facing About/Company section.
+- Kept the existing About positioning intact and presented the added company content in a compact emerald brand block.
+
 ### Local SEO Content Architecture
 
 - Audited the SEO route inventory and confirmed product/service location pages and general guide pages exist, while location-specific guide pages such as `/tile-buying-guide-nairobi` do not.
