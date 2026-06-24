@@ -18,6 +18,11 @@ const allowedEventTypes = new Set([
   'contact_click',
   'phone_click',
   'email_click',
+  'navigation_click',
+  'guide_click',
+  'guide_view',
+  'location_view',
+  'cta_click',
 ])
 
 const json = (body, status = 200) =>

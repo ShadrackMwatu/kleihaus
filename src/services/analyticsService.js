@@ -5,6 +5,8 @@ const VISITOR_KEY = 'kleihaus_anonymous_visitor_v1'
 const SESSION_KEY = 'kleihaus_anonymous_session_v1'
 const MAX_EVENTS = 250
 const TRACK_ENDPOINT = '/api/track-event'
+const GA_MEASUREMENT_ID =
+  typeof import.meta !== 'undefined' ? import.meta.env?.VITE_GA_MEASUREMENT_ID : ''
 const EVENT_ALIASES = {
   search: 'search_query',
   search_submitted: 'search_query',
@@ -15,10 +17,24 @@ const EVENT_ALIASES = {
   whatsapp_cta_clicked: 'whatsapp_click',
   quote_form_submitted: 'quote_form_submit_attempt',
   contact_form_submit: 'quote_form_submit_attempt',
+  guide_topic_clicked: 'guide_click',
+}
+const GA_EVENT_NAMES = {
+  quote_form_submit_success: 'quote_submit',
+  whatsapp_click: 'whatsapp_click',
+  phone_click: 'phone_click',
+  email_click: 'email_click',
+  guide_click: 'guide_click',
+  guide_view: 'guide_view',
+  location_view: 'location_view',
+  contact_click: 'cta_click',
+  category_click: 'cta_click',
+  product_click: 'cta_click',
 }
 let memoryEvents = []
 let memoryVisitorId = null
 let memorySessionId = null
+let gaInitialized = false
 
 const canUseStorage = () => {
   try {
@@ -148,6 +164,54 @@ const sendEventToBackend = (event) => {
   })
 }
 
+const getGaMeasurementId = () => String(GA_MEASUREMENT_ID || '').trim()
+
+const initializeGa = () => {
+  const measurementId = getGaMeasurementId()
+  if (!measurementId || gaInitialized || typeof window === 'undefined' || typeof document === 'undefined') return Boolean(measurementId)
+
+  window.dataLayer = window.dataLayer || []
+  window.gtag = window.gtag || function gtag() {
+    window.dataLayer.push(arguments)
+  }
+
+  const existingScript = document.querySelector(`script[src*="${measurementId}"]`)
+  if (!existingScript) {
+    const script = document.createElement('script')
+    script.async = true
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`
+    document.head.appendChild(script)
+  }
+
+  window.gtag('js', new Date())
+  window.gtag('config', measurementId, {
+    anonymize_ip: true,
+    send_page_view: false,
+  })
+  gaInitialized = true
+  return true
+}
+
+const toGaEventName = (eventType) => GA_EVENT_NAMES[eventType] || eventType
+
+const sendEventToGa = (event) => {
+  try {
+    if (!initializeGa() || typeof window === 'undefined' || typeof window.gtag !== 'function') return
+
+    window.gtag('event', toGaEventName(event.eventType), {
+      event_category: 'kleihaus_website',
+      event_label: event.clickedElement || event.productCategory || event.productName || event.searchQuery || event.pagePath,
+      page_path: event.pagePath,
+      search_term: event.searchQuery || undefined,
+      item_category: event.productCategory || undefined,
+      item_name: event.productName || undefined,
+      traffic_source: event.utmSource || undefined,
+    })
+  } catch {
+    // GA4 is optional; analytics failures must not affect the customer journey.
+  }
+}
+
 export const analyticsService = {
   track(eventType, payload = {}) {
     const event = normalizeEvent(eventType, payload)
@@ -156,6 +220,7 @@ export const analyticsService = {
     writeEvents(events)
     whatsappAlertService.processEvent(event, events)
     sendEventToBackend(event)
+    sendEventToGa(event)
     return event
   },
 

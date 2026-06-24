@@ -8,6 +8,21 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-06-11
 
+### Phase 1 SEO And Conversion Optimization
+
+- Added optional GA4 readiness through `VITE_GA_MEASUREMENT_ID`; GA4 loads only when configured and failures do not block first-party tracking or customer actions.
+- Added conversion tracking hooks for quote submits, WhatsApp clicks, phone clicks, email clicks, guide views/clicks, location views and general CTAs.
+- Strengthened Nairobi, Machakos and Makueni location hubs with compact local FAQs, clearer location-specific CTA labels and matching FAQPage schema.
+- Added safe route-level Service schema for service-location pages without introducing Product or Offer schema.
+- Updated README and `.env.example` with GA4/Search Console configuration guidance and privacy-safe analytics notes.
+
+### Contact And WhatsApp Actions
+
+- Audited customer-facing contact links and confirmed WhatsApp click-to-chat uses the consistent same-tab `wa.me/254748827166?text=...` format.
+- Added a compact Contact action grid for Email Kleihaus, Chat on WhatsApp, Call Kleihaus and Request quote.
+- Replaced generic WhatsApp icon treatment with a lightweight WhatsApp logo component and WhatsApp green button styling across shared WhatsApp CTAs.
+- Confirmed quote submissions still post to `/api/quote-request` as the required email channel, while backend WhatsApp Business notifications remain optional and backend-only.
+
 ### Vision Mission And Values
 
 - Added Kleihaus Ceramics' Vision, Mission and Core Values to the customer-facing About/Company section.

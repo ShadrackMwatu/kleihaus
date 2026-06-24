@@ -1,5 +1,204 @@
 # Kleihaus SEO Audit
 
+## Comprehensive SEO Audit - 2026-06-24
+
+This section is the current repo-level audit for Kleihaus Ceramics. It is audit-only: no application code, Cloudflare configuration, DNS, Worker routing, secrets, deployment settings or backend endpoint paths were changed.
+
+### Phase 1 Implementation Note - 2026-06-24
+
+After this audit was written, Phase 1 repo-only improvements were implemented:
+
+- Optional GA4 readiness through `VITE_GA_MEASUREMENT_ID`.
+- Conversion hooks for quote, WhatsApp, phone, email, guide and location events.
+- Richer Nairobi, Machakos and Makueni hub content with visible local FAQs.
+- Safe route-level Service schema for service-location pages and FAQPage schema where local FAQ content is visible.
+- README and `.env.example` documentation for GA4/Search Console configuration.
+
+Product, Offer, AggregateRating and review schema remain intentionally excluded.
+
+### Executive Summary
+
+Kleihaus has a solid SEO foundation for a Vite + React single-page site. The homepage has static metadata in `index.html`; the React app adds route-aware titles, descriptions, canonicals, Open Graph/Twitter metadata and safe JSON-LD for category, guide and location routes; `robots.txt` and `sitemap.xml` are present; and Product/Offer schema is intentionally avoided because the site is quote-led rather than price-led.
+
+The biggest remaining opportunity is not basic metadata. It is depth, rendering strategy and measurement: route metadata is client-side, several local/service pages use repeatable templates that need periodic unique content expansion, GA4 conversion tracking is not implemented, and performance can still improve by pruning original heavy images from delivery paths and splitting JavaScript.
+
+### Scores
+
+| Area | Score | Rationale |
+| --- | ---: | --- |
+| Overall SEO | 82/100 | Strong route inventory, sitemap, safe schema and local coverage; limited by SPA metadata rendering and content depth variance. |
+| Technical SEO | 84/100 | Good static homepage metadata, route-aware client metadata, canonicals, sitemap and robots. Server-rendered per-route metadata is the main gap. |
+| Local SEO | 80/100 | Nairobi, Machakos and Makueni hubs plus service-location pages exist. Needs richer proof, GBP alignment and location-specific FAQs/testimonials. |
+| Content SEO | 78/100 | Core commercial and guide topics are covered. Needs deeper topical clusters, stronger E-E-A-T proof and careful expansion beyond template pages. |
+| Schema | 86/100 | Safe Organization, LocalBusiness/HomeAndConstructionBusiness, WebSite/SearchAction, FAQPage, ItemList, CollectionPage and BreadcrumbList usage. Service schema can be added carefully. |
+| Image SEO | 82/100 | Alt text is generally descriptive and responsive AVIF/WebP support exists. Some original JPG/PNG files remain large and fallback-heavy. |
+
+### Route Inventory
+
+Product/service landing pages:
+
+- `/tiles`
+- `/floor-tiles`
+- `/wall-tiles`
+- `/bathroom-tiles`
+- `/sanitaryware`
+- `/paints`
+- `/adhesives-grout`
+- `/installation-support`
+
+Location hubs:
+
+- `/locations/nairobi`
+- `/locations/machakos`
+- `/locations/makueni`
+
+Product/service plus location pages:
+
+- `/tiles-nairobi`, `/tiles-machakos`, `/tiles-makueni`, `/tiles-kenya`
+- `/sanitaryware-nairobi`, `/sanitaryware-machakos`, `/sanitaryware-makueni`, `/sanitaryware-kenya`
+- `/paints-nairobi`, `/paints-machakos`, `/paints-makueni`, `/paints-kenya`
+- `/installation-support-nairobi`, `/installation-support-machakos`, `/installation-support-makueni`, `/installation-support-kenya`
+
+Guide/content pages:
+
+- `/tile-buying-guide`
+- `/bathroom-renovation-guide`
+- `/paint-selection-guide`
+- `/adhesive-grout-guide`
+- `/installation-best-practices`
+- `/cost-estimation-guide`
+
+Location-specific guide pages such as `/tile-buying-guide-nairobi` and `/cost-estimation-guide-machakos` do not exist. That is the right choice for now because the current location hubs provide local context without producing many near-duplicate guide pages.
+
+### Technical SEO Findings
+
+| Finding | Current implementation | Gap | Priority |
+| --- | --- | --- | --- |
+| Static homepage metadata | `index.html` has title, description, canonical, robots, Open Graph, Twitter/X tags and theme color. | Strong for homepage. Keep current metadata aligned with live business positioning. | Low |
+| Route metadata | `SeoManager` updates title, description, canonical, OG/Twitter and route JSON-LD client-side. | Crawlers that do not execute JS may see only homepage metadata on deep routes. | High |
+| Canonical tags | Homepage canonical is static; route canonical is updated in React. | Same SPA rendering limitation as above. Consider Worker-side HTML metadata injection for routes. | High |
+| Robots directives | Static `index, follow, max-image-preview:large`; `robots.txt` allows all and points to sitemap. | Good baseline. Add noindex only for future admin/private routes if they become public. | Low |
+| Sitemap | `public/sitemap.xml` lists homepage, category, location, service-location and guide URLs with `lastmod`, `changefreq` and priorities. | Needs process discipline so every new route is added. | Medium |
+| Structured data | Homepage static JSON-LD plus route-level JSON-LD. No Product/Offer schema found in `index.html` or `src/App.jsx`. | Could add conservative Service schema for real services, but avoid Product/Offer. | Medium |
+| Heading hierarchy | Routes use visible H1/H2/H3 structure in `src/App.jsx`. | Because many sections live on one React component, future edits should avoid multiple competing H1s on the homepage view. | Medium |
+| Internal linking | Footer, related links and guide links connect categories, guides and location hubs. | Add contextual links inside body copy, not only footer/related chips. | Medium |
+| URL structure | Clean readable slugs for services, guides and locations. | Avoid adding dozens of near-identical location-guide permutations. | Low |
+| Breadcrumbs | Route JSON-LD includes BreadcrumbList. | No visible breadcrumb UI. Consider compact visible breadcrumbs on deep routes. | Medium |
+| Duplicate/thin content | Location-service pages are generated from shared templates with local/service variation. | Add unique examples, FAQs and local proof over time to avoid doorway-page risk. | High |
+
+### Local SEO Findings
+
+Current strengths:
+
+- Service areas are visible in top/contact messaging and schema: Nairobi, Machakos, Makueni and Kenya.
+- Dedicated location hubs exist for Nairobi, Machakos and Makueni.
+- Service-location pages cover tiles, sanitaryware, paints and installation support.
+- `public/google1e52ed9d448e7c74.html` suggests Search Console HTML verification support exists.
+
+Gaps and recommendations:
+
+| Recommendation | Expected impact | Effort | Priority | Risk |
+| --- | --- | --- | --- | --- |
+| Add stronger NAP consistency checks across homepage, footer, schema, GBP and docs. | Better local trust and GBP consistency. | Low | High | Low |
+| Add locally useful FAQs to each location hub, not every guide page. | More local intent coverage without doorway pages. | Medium | High | Low |
+| Add project/use-case proof where truthful, such as "bathroom renovation support in Machakos" examples. | Higher conversion and location relevance. | Medium | High | Medium if claims are not verified |
+| Add GBP tracking URLs for website/quote links once GA4 is ready. | Better conversion attribution from GBP. | Low | Medium | Low |
+| Avoid `/guide-location` page explosions unless each page has unique local logistics, climate, availability and advisory content. | Protects against duplicate/thin content. | Low | High | Low |
+
+### Content SEO Findings
+
+Strengths:
+
+- Homepage clearly targets tiles, sanitaryware, paints, adhesives, tools, delivery and installation support.
+- The About section now positions Kleihaus as a finishing partner, not just a retailer.
+- Installation Support content covers workflow topics: measurement, preparation, cutting, fixing, grouting, cleaning and training guidance.
+- Buying guides cover tile buying, bathroom renovation, paint selection, adhesive/grout, installation best practices and cost estimation.
+
+Content gaps:
+
+- No dedicated pages for grout colors, tile sizes, outdoor/non-slip tiles, kitchen tiles, bathroom accessories, taps/mixers, basins/toilets, roof paint, exterior paint, interior paint and fundi/installer training.
+- Limited social proof: no testimonials, project case studies, showroom photos with context, delivery examples or installer support stories.
+- FAQ depth is intentionally compact, but Search Console data may reveal specific long-tail questions worth adding.
+- No visible author/editorial policy or updated dates for guide content.
+
+Priority content opportunities:
+
+1. Add high-intent subcategory guides: kitchen tiles, outdoor tiles, bathroom accessories, taps and mixers, basins and toilets, roof paint, exterior paint, grout and adhesive selection.
+2. Add "What to send for a quote" examples per category to reduce back-and-forth.
+3. Add locally useful location hub expansions, not duplicate guide-location pages.
+4. Add project case studies when truthful photos and details are available.
+5. Add short trust proof blocks: years served, showroom/service area clarity, delivery process, installer guidance approach.
+
+### Schema Audit
+
+Current schema types detected:
+
+- Organization
+- LocalBusiness
+- Store
+- HomeAndConstructionBusiness
+- ContactPoint
+- WebSite
+- SearchAction
+- FAQPage
+- ItemList
+- CollectionPage
+- WebPage
+- BreadcrumbList
+- ImageObject
+
+Product, Offer, AggregateRating and review schema are intentionally absent from active source. This is correct because Kleihaus does not publish product-level prices, availability or verified review data.
+
+Recommended schema enhancements:
+
+- Add conservative Service schema only for real services such as finishing advisory, delivery coordination, installation support and tailored training.
+- Add `sameAs` only after official social/GBP URLs are confirmed.
+- Add visible business hours first, then mirror them in LocalBusiness schema.
+- Keep FAQ schema aligned with visible FAQ content.
+- Do not add Product/Offer schema until actual product pages display truthful price, currency, availability and offer details.
+
+### Image SEO
+
+Strengths:
+
+- Most active images in `src/App.jsx` have descriptive alt text.
+- `OptimizedImage` provides AVIF first, WebP second and original fallback.
+- Non-critical images use lazy loading and async decoding.
+- Placeholder fallback exists for failed image loads.
+
+Gaps:
+
+- Some hero and catalogue data still reference original JPG/PNG paths as fallbacks. This is okay, but the originals remain copied to `dist`.
+- Largest originals include `sink-gold-1.png` at about 1.55 MB, `kleihaus-logo.jpg` at about 547 KB, `shower-rail-1.jpg` at about 497 KB and `taps-display-1.jpg` at about 427 KB.
+- Logo file could be replaced by a smaller optimized square source for favicon/logo use.
+
+### Priority SEO Roadmap
+
+Critical:
+
+- None found in repo. The site is indexable and has active sitemap/robots/schema.
+
+High:
+
+- Add Worker-side route metadata injection or a prerender/static route generation strategy for deep URL metadata.
+- Expand location hubs with unique local proof and FAQs while avoiding duplicate location-guide pages.
+- Add GA4/Search Console conversion measurement so SEO decisions are based on data.
+
+Medium:
+
+- Add visible breadcrumbs to category, guide and location pages.
+- Add Service schema for verified services.
+- Add more body-copy internal links between related category, guide and location pages.
+- Reduce delivered original image weight and prune unused originals from the deploy artifact if safe.
+
+Low:
+
+- Add updated/reviewed dates for guide pages.
+- Add more social preview-specific images.
+- Add a lightweight editorial/contact policy page if content publishing grows.
+
+---
+
 Date: 2026-06-18
 
 This audit covers repo-level SEO implementation for the active Kleihaus architecture:

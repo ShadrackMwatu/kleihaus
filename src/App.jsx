@@ -9,7 +9,6 @@ import {
   Mail,
   MapPin,
   Menu,
-  MessageCircle,
   PaintBucket,
   Phone,
   Search,
@@ -452,6 +451,8 @@ const buildLocalSeoLandingPage = (service, location) => ({
   path: `/${service.slug}-${location.slug}`,
   category: `${service.label} ${location.label}`,
   schemaType: 'CollectionPage',
+  serviceType: service.titleLabel,
+  areaServed: location.label,
   title: `${service.titleLabel} ${location.label} | Kleihaus Ceramics Kenya`,
   description: `${service.titleLabel} support for ${location.label}: ${service.focus}. Kleihaus helps with advisory, quantity guidance, delivery coordination and installation support.`,
   eyebrow: `${service.titleLabel} in ${location.label}`,
@@ -689,6 +690,21 @@ const locationHubPages = [
         text: 'Use the buying and cost guides to prepare measurements, budget range, installation requirements and delivery expectations before requesting a quote.',
       },
     ],
+    localFaqs: [
+      {
+        question: 'Does Kleihaus support Nairobi apartment and retail projects?',
+        answer: 'Yes. Kleihaus supports Nairobi homes, apartments, shops, offices and renovation requests with tiles, sanitaryware, paints, adhesives, tools, delivery coordination and installation guidance.',
+      },
+      {
+        question: 'What should Nairobi customers share before requesting a quote?',
+        answer: 'Share measurements, photos, floor level or access notes, preferred delivery timing, product type and budget range so quote guidance can account for urban logistics.',
+      },
+      {
+        question: 'Can Kleihaus help with installation planning in Nairobi?',
+        answer: 'Yes. Kleihaus can advise on surface preparation, cutting, drilling, fixing materials, grouting, cleaning and technical support for fundis or project teams.',
+      },
+    ],
+    ctaLabel: 'Request Nairobi support',
     images: [
       { src: '/images/kleihaus-structure.jpg', alt: 'Kleihaus Ceramics support for Nairobi finishing material projects', label: 'Nairobi support' },
       { src: '/images/tiles-floor.jpg', alt: 'Tile planning for Nairobi homes apartments and retail spaces', label: 'Tiles' },
@@ -735,6 +751,21 @@ const locationHubPages = [
         text: 'The cost, tile, bathroom, paint and adhesive guides help customers prepare a clearer request before asking for support.',
       },
     ],
+    localFaqs: [
+      {
+        question: 'Does Kleihaus coordinate delivery support for Machakos?',
+        answer: 'Yes. Delivery support is planned around quantity, route, site access, supplier stock and project timing so materials can be coordinated more reliably.',
+      },
+      {
+        question: 'What Machakos project details help the quote team respond faster?',
+        answer: 'Share the site area, product category, approximate quantity, access notes, delivery timing and whether installation guidance or product matching is needed.',
+      },
+      {
+        question: 'Can Kleihaus support fundis and contractors in Machakos?',
+        answer: 'Yes. Kleihaus can guide product matching, adhesives, grout, tools, trims, surface preparation and tailored technical guidance where practical.',
+      },
+    ],
+    ctaLabel: 'Request Machakos support',
     images: [
       { src: '/images/tiles-floor-2.jpg', alt: 'Tile and finishing material support for Machakos projects', label: 'Machakos support' },
       { src: '/images/sanitary-set-1.jpg', alt: 'Sanitaryware planning for Machakos homes and rentals', label: 'Sanitaryware' },
@@ -781,6 +812,21 @@ const locationHubPages = [
         text: 'The buying and installation guides are better for broad advice, while this hub keeps location-specific logistics and planning context together.',
       },
     ],
+    localFaqs: [
+      {
+        question: 'Does Kleihaus support Makueni home builds and renovations?',
+        answer: 'Yes. Kleihaus supports Makueni projects with tiles, paints, sanitaryware, adhesives, grout, tools, finishing advisory and logistics planning where practical.',
+      },
+      {
+        question: 'What should Makueni customers consider before ordering finishing materials?',
+        answer: 'Confirm measurements, expected use, storage conditions, delivery route, site readiness, quantity and whether installation or application guidance is needed.',
+      },
+      {
+        question: 'Can Kleihaus advise on durable finishes for Makueni projects?',
+        answer: 'Yes. Kleihaus can help customers think through surface exposure, product matching, adhesives, grout, paint preparation and technical support for the final finish.',
+      },
+    ],
+    ctaLabel: 'Request Makueni support',
     images: [
       { src: '/images/paint-exterior.jpg', alt: 'Paint and exterior finish support for Makueni projects', label: 'Makueni support' },
       { src: '/images/tiles-gallery-1.jpg', alt: 'Tile planning for Makueni homes and project sites', label: 'Tiles' },
@@ -1001,15 +1047,21 @@ const ButtonSecondary = ({ className = '', children, ...props }) => {
   )
 }
 
-const WhatsAppBrandText = ({ children = 'Need Help?', iconClassName = 'h-4 w-4' }) => (
+const WhatsAppLogo = ({ className = 'h-4 w-4' }) => (
+  <svg className={className} viewBox="0 0 32 32" aria-hidden="true" focusable="false" fill="currentColor">
+    <path d="M16.04 3.2A12.75 12.75 0 0 0 5.16 22.6L3.6 28.8l6.34-1.48A12.76 12.76 0 1 0 16.04 3.2Zm0 2.35a10.4 10.4 0 1 1-5.3 19.36l-.38-.22-3.55.83.86-3.42-.25-.4a10.4 10.4 0 0 1 8.62-16.15Zm-4.3 5.54c-.22-.5-.45-.52-.66-.53h-.56c-.2 0-.52.07-.8.36-.27.3-1.05 1.03-1.05 2.5s1.08 2.9 1.23 3.1c.15.2 2.1 3.36 5.2 4.57 2.58 1.02 3.1.82 3.66.77.56-.05 1.8-.74 2.06-1.45.26-.72.26-1.33.18-1.45-.08-.13-.28-.2-.59-.35-.3-.15-1.8-.9-2.08-1-.28-.1-.48-.15-.68.15-.2.3-.78 1-.96 1.2-.18.2-.35.22-.66.07-.3-.15-1.28-.47-2.44-1.5-.9-.8-1.51-1.8-1.69-2.1-.18-.3-.02-.47.13-.62.14-.13.3-.35.46-.53.15-.18.2-.3.3-.5.1-.2.05-.38-.03-.53-.08-.15-.68-1.67-.98-2.27Z" />
+  </svg>
+)
+
+const WhatsAppBrandText = ({ children = 'Chat on WhatsApp', iconClassName = 'h-4 w-4' }) => (
   <>
-    <MessageCircle className={`${iconClassName} text-white transition group-hover:text-white`} />
+    <WhatsAppLogo className={`${iconClassName} shrink-0 text-white transition group-hover:text-white`} />
     <span className="text-white transition group-hover:text-white">{children}</span>
   </>
 )
 
 const whatsappCtaClass =
-  'group gap-1.5 border-emerald-700 bg-emerald-700 text-white shadow-sm shadow-emerald-900/10 hover:border-emerald-800 hover:bg-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-200'
+  'group gap-1.5 border-[#128C7E] bg-[#128C7E] text-white shadow-sm shadow-emerald-900/10 hover:border-[#075E54] hover:bg-[#075E54] focus:outline-none focus:ring-2 focus:ring-[#25D366]/40'
 
 const KLEIHAUS_WHATSAPP_PHONE = '254748827166'
 const DEFAULT_WHATSAPP_MESSAGE =
@@ -1035,58 +1087,93 @@ const getRouteSchema = (page) => {
   const pageUrl = `https://www.kleihaus.com${page.path}`
   const primaryImage = page.images?.[0]
   const primaryImageUrl = primaryImage ? `https://www.kleihaus.com${primaryImage.src}` : defaultSeoImage
+  const graph = [
+    {
+      '@type': page.schemaType || 'CollectionPage',
+      '@id': `${pageUrl}#collection`,
+      url: pageUrl,
+      name: page.h1,
+      description: page.description,
+      primaryImageOfPage: {
+        '@type': 'ImageObject',
+        url: primaryImageUrl,
+        caption: primaryImage?.alt || page.h1,
+      },
+      isPartOf: {
+        '@type': 'WebSite',
+        '@id': 'https://www.kleihaus.com/#website',
+        name: 'Kleihaus Ceramics',
+        url: 'https://www.kleihaus.com/',
+      },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${pageUrl}#breadcrumb`,
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: 'https://www.kleihaus.com/',
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: page.category,
+          item: pageUrl,
+        },
+      ],
+    },
+    {
+      '@type': 'ItemList',
+      '@id': `${pageUrl}#gallery`,
+      name: `${page.category} quote planning gallery`,
+      itemListElement: page.images.map((image, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: image.label,
+        url: `${pageUrl}#gallery`,
+      })),
+    },
+  ]
+
+  if (page.serviceType) {
+    graph.push({
+      '@type': 'Service',
+      '@id': `${pageUrl}#service`,
+      name: `${page.serviceType} support in ${page.areaServed || 'Kenya'}`,
+      serviceType: page.serviceType,
+      provider: {
+        '@type': 'LocalBusiness',
+        '@id': 'https://www.kleihaus.com/#store',
+        name: 'Kleihaus Ceramics',
+      },
+      areaServed: {
+        '@type': page.areaServed === 'Kenya' ? 'Country' : 'AdministrativeArea',
+        name: page.areaServed || 'Kenya',
+      },
+      description: page.description,
+    })
+  }
+
+  if (page.localFaqs?.length) {
+    graph.push({
+      '@type': 'FAQPage',
+      '@id': `${pageUrl}#faq`,
+      mainEntity: page.localFaqs.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: item.answer,
+        },
+      })),
+    })
+  }
 
   return {
     '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': page.schemaType || 'CollectionPage',
-        '@id': `${pageUrl}#collection`,
-        url: pageUrl,
-        name: page.h1,
-        description: page.description,
-        primaryImageOfPage: {
-          '@type': 'ImageObject',
-          url: primaryImageUrl,
-          caption: primaryImage?.alt || page.h1,
-        },
-        isPartOf: {
-          '@type': 'WebSite',
-          '@id': 'https://www.kleihaus.com/#website',
-          name: 'Kleihaus Ceramics',
-          url: 'https://www.kleihaus.com/',
-        },
-      },
-      {
-        '@type': 'BreadcrumbList',
-        '@id': `${pageUrl}#breadcrumb`,
-        itemListElement: [
-          {
-            '@type': 'ListItem',
-            position: 1,
-            name: 'Home',
-            item: 'https://www.kleihaus.com/',
-          },
-          {
-            '@type': 'ListItem',
-            position: 2,
-            name: page.category,
-            item: pageUrl,
-          },
-        ],
-      },
-      {
-        '@type': 'ItemList',
-        '@id': `${pageUrl}#gallery`,
-        name: `${page.category} quote planning gallery`,
-        itemListElement: page.images.map((image, index) => ({
-          '@type': 'ListItem',
-          position: index + 1,
-          name: image.label,
-          url: `${pageUrl}#gallery`,
-        })),
-      },
-    ],
+    '@graph': graph,
   }
 }
 
@@ -1336,7 +1423,7 @@ function Header({ projectType, searchQuery, setSearchQuery, onSearch, activeSect
 
         <div className="hidden items-center justify-end lg:flex">
           <Button type="button" onClick={() => onSupportClick('header_whatsapp')} className={`${whatsappCtaClass} px-3.5 py-2.5 text-sm`}>
-            <WhatsAppBrandText>WhatsApp</WhatsAppBrandText>
+            <WhatsAppBrandText>WhatsApp Kleihaus</WhatsAppBrandText>
           </Button>
         </div>
 
@@ -1496,7 +1583,7 @@ function Hero({ onSupportClick, onQuoteClick, onSectionChange }) {
                 onClick={() => onSupportClick('hero_whatsapp')}
                 className={`${whatsappCtaClass} px-2.5 py-1.5 text-xs sm:px-4 sm:py-2.5 sm:text-sm`}
               >
-                <WhatsAppBrandText>WhatsApp</WhatsAppBrandText>
+                <WhatsAppBrandText>WhatsApp inquiry</WhatsAppBrandText>
               </ButtonSecondary>
             </div>
           </div>
@@ -2159,6 +2246,37 @@ function Contact({ onSupportFormClick, compact = false }) {
     setIsQuoteSubmitting(false)
   }
 
+  const scrollToQuoteForm = () => {
+    quoteFormRef.current?.scrollIntoView({
+      behavior: window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+      block: 'start',
+    })
+  }
+
+  const contactActions = [
+    {
+      label: 'Email Kleihaus',
+      href: 'mailto:sales@kleihaus.com',
+      icon: Mail,
+      className: 'border-white/15 bg-white/10 text-white hover:bg-white/15',
+      onClick: () => analyticsService.track('email_click', { clickedElement: 'contact_action_email' }),
+    },
+    {
+      label: 'Chat on WhatsApp',
+      href: buildWhatsAppUrl('Hello Kleihaus, I would like help with a quote, products, delivery or installation support.'),
+      icon: WhatsAppLogo,
+      className: 'border-[#128C7E] bg-[#128C7E] text-white hover:border-[#075E54] hover:bg-[#075E54]',
+      onClick: () => analyticsService.track('whatsapp_click', { clickedElement: 'contact_action_whatsapp' }),
+    },
+    {
+      label: 'Call Kleihaus',
+      href: 'tel:+254748827166',
+      icon: Phone,
+      className: 'border-white/15 bg-white/10 text-white hover:bg-white/15',
+      onClick: () => analyticsService.track('phone_click', { clickedElement: 'contact_action_phone' }),
+    },
+  ]
+
   return (
     <section id="contact" className={compact ? 'rounded-xl bg-neutral-950 text-white' : 'bg-neutral-950 text-white'}>
       <div className={`${compact ? 'grid gap-4 p-4 sm:p-5' : 'mx-auto grid max-w-7xl gap-8 px-4 py-10'} lg:grid-cols-[0.9fr_1.1fr]`}>
@@ -2168,6 +2286,34 @@ function Contact({ onSupportFormClick, compact = false }) {
           <p className="mt-3 leading-6 text-neutral-300">
             Share product type, quantity, location and budget range for a faster response.
           </p>
+
+          <div className="mt-5 grid gap-2 sm:grid-cols-2">
+            {contactActions.map((action) => {
+              const Icon = action.icon
+              return (
+                <a
+                  key={action.label}
+                  href={action.href}
+                  className={`inline-flex items-center justify-center gap-2 rounded-md border px-3 py-2.5 text-sm font-semibold transition focus:outline-none focus:ring-2 focus:ring-white/30 ${action.className}`}
+                  onClick={action.onClick}
+                >
+                  <Icon className="h-4 w-4 shrink-0" />
+                  {action.label}
+                </a>
+              )
+            })}
+            <button
+              type="button"
+              onClick={() => {
+                analyticsService.track('contact_click', { clickedElement: 'contact_action_quote' })
+                scrollToQuoteForm()
+              }}
+              className="inline-flex items-center justify-center gap-2 rounded-md border border-emerald-500 bg-[#16A34A] px-3 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200"
+            >
+              <ArrowRight className="h-4 w-4 shrink-0" />
+              Request quote
+            </button>
+          </div>
 
           <div className="mt-5 space-y-2 text-sm text-neutral-200">
             <a href="tel:+254748827166" className="flex items-center gap-3 hover:text-white" onClick={() => analyticsService.track('phone_click', { clickedElement: 'contact_phone' })}>
@@ -2252,7 +2398,7 @@ function Contact({ onSupportFormClick, compact = false }) {
               {isQuoteSubmitting ? 'Sending...' : 'Send request'}
             </Button>
             <ButtonSecondary type="button" onClick={() => onSupportFormClick('contact_form')} className={`${whatsappCtaClass} px-4 py-2.5 text-sm`}>
-              <WhatsAppBrandText>Open support form</WhatsAppBrandText>
+              <WhatsAppBrandText>WhatsApp support</WhatsAppBrandText>
             </ButtonSecondary>
           </div>
         </form>
@@ -2467,13 +2613,13 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
                 onClick={() => {
                   onQuoteClick(`category_quote_${page.path}`)
                   onSectionChange('contact')
-                }}
-              >
-                Request quote
+              }}
+            >
+                {page.ctaLabel || 'Request quote'}
                 <ArrowRight className="h-4 w-4" />
               </Button>
               <ButtonSecondary type="button" onClick={() => onSupportClick(`category_page_${page.path}`, `I would like a quote for ${page.category}. Please share availability, price guidance and delivery details.`)} className={`${whatsappCtaClass} px-3 py-2 text-xs sm:px-4 sm:py-2.5 sm:text-sm`}>
-                <WhatsAppBrandText>Support inquiry</WhatsAppBrandText>
+                <WhatsAppBrandText>WhatsApp support</WhatsAppBrandText>
               </ButtonSecondary>
             </div>
           </div>
@@ -2549,6 +2695,23 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
         </section>
       )}
 
+      {page.localFaqs?.length > 0 && (
+        <section className="mx-auto max-w-7xl px-4 py-4 sm:py-6">
+          <div className="rounded-xl border border-emerald-100 bg-emerald-50/70 p-4 sm:p-5">
+            <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Local FAQs</p>
+            <h2 className="mt-2 text-xl font-semibold text-neutral-950 sm:text-2xl">Planning support for {page.category}</h2>
+            <div className="mt-4 grid gap-3 md:grid-cols-3">
+              {page.localFaqs.map((item) => (
+                <article key={item.question} className="rounded-lg border border-emerald-100 bg-white p-3 shadow-sm">
+                  <h3 className="text-sm font-semibold leading-5 text-neutral-950">{item.question}</h3>
+                  <p className="mt-2 text-sm leading-6 text-neutral-600">{item.answer}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       <section className="mx-auto max-w-7xl px-4 py-6 sm:py-8">
         <div className="mb-4 rounded-xl border border-neutral-200 bg-white p-3 shadow-sm sm:p-4">
           <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Explore related pages</p>
@@ -2581,7 +2744,7 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
               Browse catalogue
             </a>
             <ButtonSecondary type="button" onClick={() => onSupportClick(`category_page_bottom_${page.path}`, `I would like a quote for ${page.category}. Please share availability, price guidance and delivery details.`)} className={`${whatsappCtaClass} px-3 py-2 text-xs sm:text-sm`}>
-              <WhatsAppBrandText>Need help?</WhatsAppBrandText>
+              <WhatsAppBrandText>WhatsApp help</WhatsAppBrandText>
             </ButtonSecondary>
           </div>
         </div>
@@ -2648,7 +2811,7 @@ function Footer({ onSupportClick }) {
           <h3 className="text-sm font-semibold uppercase text-white">Contact</h3>
           <div className="mt-2 grid gap-1.5 text-xs text-orange-50/90 sm:gap-2 sm:text-sm">
             <button type="button" onClick={() => onSupportClick?.('footer_whatsapp')} className={`${whatsappCtaClass} inline-flex w-fit items-center justify-center rounded-md px-3 py-2 text-left text-xs sm:text-sm`}>
-              <WhatsAppBrandText>WhatsApp</WhatsAppBrandText>
+              <WhatsAppBrandText>WhatsApp Kleihaus</WhatsAppBrandText>
             </button>
             <a href="mailto:sales@kleihaus.com" className="inline-flex items-center gap-2 hover:text-white">
               <Mail className="h-4 w-4 text-orange-100" />
@@ -2691,7 +2854,7 @@ function Footer({ onSupportClick }) {
           onClick={() => onSupportClick?.('footer_mobile_support')}
           className={`${whatsappCtaClass} mx-auto flex max-w-sm items-center justify-center rounded-md px-4 py-2 text-xs font-semibold`}
         >
-          <WhatsAppBrandText>Need Help?</WhatsAppBrandText>
+          <WhatsAppBrandText>WhatsApp help</WhatsAppBrandText>
         </button>
       </div>
       <div className="border-t border-white/20 bg-[#16A34A]">
@@ -2793,8 +2956,37 @@ export default function App() {
   const refreshSignals = () => setEventRevision((revision) => revision + 1)
 
   useEffect(() => {
-    analyticsService.track('page_view', { clickedElement: 'app_mount' })
-  }, [])
+    const pageType = currentPath.startsWith('/locations/')
+      ? 'location'
+      : activeCategoryPage?.category?.toLowerCase().includes('guide')
+        ? 'guide'
+        : activeCategoryPage
+          ? 'seo_route'
+          : 'home'
+
+    analyticsService.track('page_view', {
+      clickedElement: `route_${currentPath}`,
+      pagePath: currentPath,
+      pageType,
+      productCategory: activeCategoryPage?.category || 'Homepage',
+    })
+
+    if (pageType === 'location') {
+      analyticsService.track('location_view', {
+        clickedElement: `location_${activeCategoryPage?.category || currentPath}`,
+        pagePath: currentPath,
+        location: activeCategoryPage?.category || '',
+      })
+    }
+
+    if (pageType === 'guide') {
+      analyticsService.track('guide_view', {
+        clickedElement: `guide_${activeCategoryPage?.category || currentPath}`,
+        pagePath: currentPath,
+        guide: activeCategoryPage?.category || '',
+      })
+    }
+  }, [activeCategoryPage, currentPath])
 
   useEffect(() => {
     const syncPath = () => setCurrentPath(normalizePath(window.location.pathname))

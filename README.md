@@ -134,9 +134,14 @@ RESEND_API_KEY=
 
 WHATSAPP_ACCESS_TOKEN=
 WHATSAPP_PHONE_NUMBER_ID=
+VITE_GA_MEASUREMENT_ID=
 ```
 
 `WHATSAPP_ACCESS_TOKEN`, `WHATSAPP_PHONE_NUMBER_ID`, and `WHATSAPP_TO_PHONE` are optional for WhatsApp Business API notifications. If absent, the backend skips WhatsApp notification gracefully while preserving quote submission and email delivery.
+
+`VITE_GA_MEASUREMENT_ID` is optional frontend analytics configuration. When it is blank, the website continues to use the existing first-party anonymous journey tracking and does not load Google Analytics. When an official GA4 property is ready, set it to the public measurement ID issued by Google Analytics in the build environment.
+
+Search Console verification should use the existing HTML verification file if it matches the active property. If a meta-tag verification method is preferred later, place the verification meta tag in `index.html` only after the real code is issued by Google Search Console. Do not commit placeholder or fake verification IDs.
 
 ## Quote and WhatsApp Flow
 
@@ -144,16 +149,47 @@ The public quote form validates customer details and posts to `/api/quote-reques
 
 The separate "Chat on WhatsApp" button remains available as a manual fallback.
 
+## Analytics And Conversion Events
+
+The site has two analytics layers:
+
+- First-party anonymous journey tracking through `/api/track-event`.
+- Optional GA4 tracking when `VITE_GA_MEASUREMENT_ID` is configured.
+
+Supported conversion/event hooks include:
+
+- `quote_submit`
+- `whatsapp_click`
+- `phone_click`
+- `email_click`
+- `guide_click`
+- `guide_view`
+- `location_view`
+- `cta_click`
+
+Analytics must remain privacy-safe: do not send names, phone numbers, email addresses or free-form quote messages to GA4.
+
 ## Public SEO Routes
 
-The site includes lightweight frontend category landing pages for quote-focused search visibility:
+The site includes lightweight frontend category, guide and location landing pages for quote-focused search visibility:
 
+- `/tiles`
 - `/floor-tiles`
 - `/wall-tiles`
 - `/bathroom-tiles`
 - `/sanitaryware`
 - `/paints`
 - `/adhesives-grout`
+- `/installation-support`
+- `/locations/nairobi`
+- `/locations/machakos`
+- `/locations/makueni`
+- `/tile-buying-guide`
+- `/bathroom-renovation-guide`
+- `/paint-selection-guide`
+- `/adhesive-grout-guide`
+- `/installation-best-practices`
+- `/cost-estimation-guide`
 
 These pages are catalogue and quote-planning pages. They must not use Product or Offer structured data unless Kleihaus later publishes real product pages with truthful prices and current availability.
 
