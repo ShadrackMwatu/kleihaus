@@ -135,13 +135,18 @@ RESEND_API_KEY=
 WHATSAPP_ACCESS_TOKEN=
 WHATSAPP_PHONE_NUMBER_ID=
 VITE_GA_MEASUREMENT_ID=
+VITE_ANALYTICS_DEBUG=
 ```
 
 `WHATSAPP_ACCESS_TOKEN`, `WHATSAPP_PHONE_NUMBER_ID`, and `WHATSAPP_TO_PHONE` are optional for WhatsApp Business API notifications. If absent, the backend skips WhatsApp notification gracefully while preserving quote submission and email delivery.
 
 `VITE_GA_MEASUREMENT_ID` is optional frontend analytics configuration. When it is blank, the website continues to use the existing first-party anonymous journey tracking and does not load Google Analytics. When an official GA4 property is ready, set it to the public measurement ID issued by Google Analytics in the build environment.
 
+`VITE_ANALYTICS_DEBUG=true` can be used temporarily in local or test builds to log non-sensitive analytics event names and metadata. Keep it blank or false for production unless actively debugging.
+
 Search Console verification should use the existing HTML verification file if it matches the active property. If a meta-tag verification method is preferred later, place the verification meta tag in `index.html` only after the real code is issued by Google Search Console. Do not commit placeholder or fake verification IDs.
+
+Detailed GA4 and Search Console setup steps are documented in `docs/ANALYTICS_AND_SEARCH_CONSOLE_SETUP.md`.
 
 ## Quote and WhatsApp Flow
 
@@ -221,6 +226,7 @@ Primary documentation:
 - `docs/AI_BACKEND_ARCHITECTURE.md`
 - `docs/SEO_STRATEGY.md`
 - `docs/VISIBILITY_AND_GROWTH_ROADMAP.md`
+- `docs/ANALYTICS_AND_SEARCH_CONSOLE_SETUP.md`
 - `docs/QUOTE_FORM_SUBMISSION.md`
 - `docs/QUOTE_BACKEND_AUTOMATION.md`
 

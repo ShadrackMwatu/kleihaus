@@ -7,6 +7,8 @@ const MAX_EVENTS = 250
 const TRACK_ENDPOINT = '/api/track-event'
 const GA_MEASUREMENT_ID =
   typeof import.meta !== 'undefined' ? import.meta.env?.VITE_GA_MEASUREMENT_ID : ''
+const ANALYTICS_DEBUG =
+  typeof import.meta !== 'undefined' && import.meta.env?.VITE_ANALYTICS_DEBUG === 'true'
 const EVENT_ALIASES = {
   search: 'search_query',
   search_submitted: 'search_query',
@@ -194,9 +196,27 @@ const initializeGa = () => {
 
 const toGaEventName = (eventType) => GA_EVENT_NAMES[eventType] || eventType
 
+const logAnalyticsDebug = (event, status) => {
+  if (!ANALYTICS_DEBUG || typeof console === 'undefined') return
+
+  console.info('KLEIHAUS_ANALYTICS_DEBUG', {
+    eventType: event.eventType,
+    gaEventName: toGaEventName(event.eventType),
+    status,
+    pagePath: event.pagePath,
+    clickedElement: event.clickedElement,
+    productCategory: event.productCategory,
+    productName: event.productName,
+    utmSource: event.utmSource,
+  })
+}
+
 const sendEventToGa = (event) => {
   try {
-    if (!initializeGa() || typeof window === 'undefined' || typeof window.gtag !== 'function') return
+    if (!initializeGa() || typeof window === 'undefined' || typeof window.gtag !== 'function') {
+      logAnalyticsDebug(event, 'ga_not_configured')
+      return
+    }
 
     window.gtag('event', toGaEventName(event.eventType), {
       event_category: 'kleihaus_website',
@@ -207,7 +227,9 @@ const sendEventToGa = (event) => {
       item_name: event.productName || undefined,
       traffic_source: event.utmSource || undefined,
     })
+    logAnalyticsDebug(event, 'ga_event_sent')
   } catch {
+    logAnalyticsDebug(event, 'ga_event_failed')
     // GA4 is optional; analytics failures must not affect the customer journey.
   }
 }

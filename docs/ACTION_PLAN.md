@@ -24,13 +24,13 @@ No Cloudflare configuration, DNS, Worker routing, secrets, deployment settings o
 
 Highest ROI improvements requiring minimal engineering effort.
 
-Implementation status on 2026-06-24: GA4 readiness, conversion event hooks, richer local hub FAQs, safe route-level Service/FAQ schema additions, README setup notes and `.env.example` analytics configuration were completed. Privacy policy, anti-spam controls, visible breadcrumbs and deeper performance pruning remain open.
+Implementation status on 2026-06-24 and 2026-06-25: GA4 readiness, conversion event hooks, richer local hub FAQs, safe route-level Service/FAQ schema additions, README setup notes, `.env.example` analytics configuration, optional non-sensitive analytics debug logging, and the Analytics/Search Console setup guide were completed. Privacy policy, anti-spam controls, visible breadcrumbs and deeper performance pruning remain open.
 
 | Recommendation | Expected impact | Effort | Priority | Risk |
 | --- | --- | --- | --- | --- |
 | Add a concise privacy policy page explaining quote form data, anonymous journey events and contact channels. | Improves trust, privacy transparency and future analytics readiness. | Low | High | Low |
 | Add GA4 event plan documentation before implementation: quote success, support success, WhatsApp click, phone click, email click, guide click and location CTA click. | Gives clean measurement taxonomy before tags are added. | Low | Complete | Low |
-| Configure GA4/Search Console only after official account access is confirmed. | Enables conversion and organic traffic reporting. | Low | Partially complete: repo supports `VITE_GA_MEASUREMENT_ID`; account setup remains external. | Medium due to account/access dependency |
+| Configure GA4/Search Console only after official account access is confirmed. | Enables conversion and organic traffic reporting. | Low | Partially complete: repo supports `VITE_GA_MEASUREMENT_ID` and documents Cloudflare Workers Builds setup; account setup remains external. | Medium due to account/access dependency |
 | Add UTM standards for Google Business Profile, social posts and campaigns. | Improves attribution for local SEO and GBP conversions. | Low | High | Low |
 | Add visible business hours or response expectation if accurate. | Improves LocalBusiness trust and reduces customer uncertainty. | Low | Medium | Low |
 | Add a form honeypot field and server-side rejection. | Reduces spam with low user friction. | Low | High | Low |

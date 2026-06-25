@@ -16,6 +16,16 @@ After this audit was written, Phase 1 repo-only improvements were implemented:
 
 Product, Offer, AggregateRating and review schema remain intentionally excluded.
 
+### Analytics And Search Console Setup Note - 2026-06-25
+
+The remaining post-Phase 1 setup is documented in `docs/ANALYTICS_AND_SEARCH_CONSOLE_SETUP.md`.
+
+- `VITE_GA_MEASUREMENT_ID` must be added to the Cloudflare Workers Builds environment before the production build runs.
+- `VITE_ANALYTICS_DEBUG=true` is available for temporary non-sensitive analytics debugging and is disabled by default.
+- Search Console should verify `https://www.kleihaus.com/` and submit `https://www.kleihaus.com/sitemap.xml`.
+- The existing HTML verification file should only be treated as active if it matches the verification file issued by Google for the current property.
+- No fake GA4 ID, fake Search Console verification code, Product schema or Offer schema should be committed.
+
 ### Executive Summary
 
 Kleihaus has a solid SEO foundation for a Vite + React single-page site. The homepage has static metadata in `index.html`; the React app adds route-aware titles, descriptions, canonicals, Open Graph/Twitter metadata and safe JSON-LD for category, guide and location routes; `robots.txt` and `sitemap.xml` are present; and Product/Offer schema is intentionally avoided because the site is quote-led rather than price-led.

@@ -8,6 +8,13 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-06-11
 
+### Analytics And Search Console Setup Documentation
+
+- Added `docs/ANALYTICS_AND_SEARCH_CONSOLE_SETUP.md` with GA4 environment setup, DebugView/Realtime checks, Search Console verification, sitemap submission and URL inspection steps.
+- Added optional `VITE_ANALYTICS_DEBUG` support for non-sensitive analytics event debugging; it is disabled by default.
+- Clarified that `VITE_GA_MEASUREMENT_ID` must be configured in the Cloudflare Workers Builds environment and must not be hardcoded in tracked code.
+- Confirmed Search Console setup should use the existing verification file only if Google issues the matching code, and fake verification tags must not be committed.
+
 ### Phase 1 SEO And Conversion Optimization
 
 - Added optional GA4 readiness through `VITE_GA_MEASUREMENT_ID`; GA4 loads only when configured and failures do not block first-party tracking or customer actions.

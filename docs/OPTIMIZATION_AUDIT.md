@@ -13,10 +13,11 @@ Kleihaus has moved from a simple catalogue site toward a practical lead-generati
 Implemented after this audit:
 
 - Optional GA4 loading through `VITE_GA_MEASUREMENT_ID`, with no-op behavior when not configured.
+- Optional `VITE_ANALYTICS_DEBUG=true` support for non-sensitive local/test analytics event logging.
 - GA4-compatible conversion event names for quote success, WhatsApp clicks, phone clicks, email clicks, guide views/clicks, location views and CTAs.
 - Extended `/api/track-event` allowlist for guide, location and CTA events.
 - Added richer local FAQ content to Nairobi, Machakos and Makueni hubs.
-- Added documentation for GA4 and Search Console setup without committing real IDs.
+- Added `docs/ANALYTICS_AND_SEARCH_CONSOLE_SETUP.md` for GA4 and Search Console setup without committing real IDs.
 
 ## Performance Findings
 
@@ -148,7 +149,7 @@ Current implementation:
 
 Missing measurement capabilities:
 
-- GA4 support exists through optional `VITE_GA_MEASUREMENT_ID`, but no real measurement ID is committed or configured in the repo.
+- GA4 support exists through optional `VITE_GA_MEASUREMENT_ID`, but no real measurement ID is committed or configured in the repo. The production value must be configured in Cloudflare Workers Builds.
 - No Google Ads/GBP conversion tracking found.
 - No dashboard that reconciles D1 quote records with GA4/Search Console data.
 - No funnel report for CTA position -> modal/form start -> backend success -> sales follow-up.
