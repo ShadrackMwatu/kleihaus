@@ -6,6 +6,18 @@ Rule: Every future meaningful change must update `docs/CHANGELOG.md` and, where 
 
 Current deployment note: production now uses GitHub `main` -> Cloudflare Workers Builds -> Worker Assets -> Worker `kleihaus` -> `kleihaus.com` and `www.kleihaus.com`. The active quote endpoint is `/api/quote-request`. Older entries that mention Cloudflare Pages or `https://api.kleihaus.com/quote-request` are historical and describe earlier deployment states, not the current production path.
 
+## 2026-07-07
+
+### Google Business Profile Conversion Path
+
+- Audited the June 2026 Google Business Profile signal showing 62 profile views but 0 calls, chat clicks, website visits and overall interactions.
+- Added a compact homepage conversion section for Google/local visitors that clarifies Kleihaus Ceramics sells tiles, sanitaryware, paints, adhesives and tools across Nairobi, Machakos and Makueni.
+- Added call, WhatsApp, quote and location-hub actions to the homepage support section, with phone and WhatsApp click tracking preserved.
+- Strengthened route-page conversion paths with direct call actions and a local support block linking users to Nairobi, Machakos and Makueni hubs.
+- Extended GA4 event parameters to include captured UTM medium and campaign values while preserving the existing first-party UTM tracking and GA4 configuration model.
+- Documented the recommended Google Business Profile website URL: `https://www.kleihaus.com/?utm_source=google&utm_medium=organic&utm_campaign=gbp`.
+- Added a manual reminder that the Google Business Profile website link must be updated outside the repository by the profile owner or manager.
+
 ## 2026-06-11
 
 ### Analytics And Search Console Setup Documentation

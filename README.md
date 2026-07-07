@@ -174,6 +174,24 @@ Supported conversion/event hooks include:
 
 Analytics must remain privacy-safe: do not send names, phone numbers, email addresses or free-form quote messages to GA4.
 
+## Google Business Profile Tracking
+
+The June 2026 Google Business Profile report showed 62 profile views but 0 calls, 0 chat clicks, 0 website visits and 0 total interactions. Use a tracked Google Business Profile website URL so future GBP visits and conversions can be separated in GA4 and first-party analytics:
+
+```text
+https://www.kleihaus.com/?utm_source=google&utm_medium=organic&utm_campaign=gbp
+```
+
+Optional location links:
+
+```text
+https://www.kleihaus.com/locations/nairobi?utm_source=google&utm_medium=organic&utm_campaign=gbp_nairobi
+https://www.kleihaus.com/locations/machakos?utm_source=google&utm_medium=organic&utm_campaign=gbp_machakos
+https://www.kleihaus.com/locations/makueni?utm_source=google&utm_medium=organic&utm_campaign=gbp_makueni
+```
+
+Manual action after deployment: update the website link inside Google Business Profile. This is an external profile-management step and should not be simulated with repo redirects.
+
 ## Public SEO Routes
 
 The site includes lightweight frontend category, guide and location landing pages for quote-focused search visibility:

@@ -226,6 +226,8 @@ const sendEventToGa = (event) => {
       item_category: event.productCategory || undefined,
       item_name: event.productName || undefined,
       traffic_source: event.utmSource || undefined,
+      traffic_medium: event.utmMedium || undefined,
+      campaign: event.utmCampaign || undefined,
     })
     logAnalyticsDebug(event, 'ga_event_sent')
   } catch {

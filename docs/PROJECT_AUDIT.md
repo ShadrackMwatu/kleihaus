@@ -14,6 +14,23 @@ Rule: Every future meaningful change must update `docs/CHANGELOG.md` and, where 
 - Locations: Nairobi | Machakos | Makueni
 - Product focus: tiles, sanitaryware, paints, adhesives, grout and finishing materials for homes and projects in Kenya.
 
+## Google Business Profile Conversion Note
+
+The latest Google Business Profile performance signal reviewed on 2026-07-07 covered June 2026 and showed 62 profile views with 0 calls, 0 chat clicks, 0 website visits and 0 total interactions. Repo-only improvements now support visitors arriving from GBP with:
+
+- A compact homepage local conversion section for tiles, sanitaryware, paints, adhesives, tools, delivery support, installation guidance, project quote planning and training/technical support.
+- Direct call, WhatsApp and quote actions from the homepage support section and route-page local support blocks.
+- Clear service-area links for Nairobi, Machakos and Makueni.
+- UTM capture through existing first-party analytics, plus GA4 event parameters for source, medium and campaign when GA4 is configured.
+
+Recommended Google Business Profile website URL:
+
+```text
+https://www.kleihaus.com/?utm_source=google&utm_medium=organic&utm_campaign=gbp
+```
+
+Manual follow-up outside the repo: update the Google Business Profile website link in the Google profile manager after deployment.
+
 ## Tech Stack
 
 - React 18

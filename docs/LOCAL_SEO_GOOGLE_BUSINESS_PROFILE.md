@@ -7,10 +7,30 @@ This guide is for the Kleihaus Ceramics business owner or authorized manager. Do
 - Business name: Kleihaus Ceramics
 - Recommended primary category: Tile store
 - Useful secondary categories: Bathroom supply store, Paint store, Building materials supplier, Home improvement store
-- Website: https://www.kleihaus.com/
+- Website: https://www.kleihaus.com/?utm_source=google&utm_medium=organic&utm_campaign=gbp
 - Phone: +254 748 827 166
 - Email: sales@kleihaus.com
 - Service areas: Nairobi, Machakos, Makueni and wider Kenya where practical
+
+## June 2026 Performance Signal
+
+The June 2026 Google Business Profile report showed 62 profile views but 0 calls, 0 chat clicks, 0 website visits and 0 interactions. Treat this as a conversion-path signal: the profile should send visitors to a tracked website URL, and the site should make calling, WhatsApp, quote requests and local service-area navigation easy from the first page view.
+
+Recommended website URL:
+
+```text
+https://www.kleihaus.com/?utm_source=google&utm_medium=organic&utm_campaign=gbp
+```
+
+Optional location campaign links:
+
+```text
+https://www.kleihaus.com/locations/nairobi?utm_source=google&utm_medium=organic&utm_campaign=gbp_nairobi
+https://www.kleihaus.com/locations/machakos?utm_source=google&utm_medium=organic&utm_campaign=gbp_machakos
+https://www.kleihaus.com/locations/makueni?utm_source=google&utm_medium=organic&utm_campaign=gbp_makueni
+```
+
+Manual reminder: update the Google Business Profile website link in the Google profile dashboard after deployment. This cannot be completed from the repository.
 
 ## Suggested Description
 

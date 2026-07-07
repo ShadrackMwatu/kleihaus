@@ -870,6 +870,21 @@ const heroTrustBadges = [
   { label: 'Nairobi | Machakos | Makueni', icon: MapPin },
 ]
 
+const serviceAreaLinks = [
+  { label: 'Nairobi', href: '/locations/nairobi' },
+  { label: 'Machakos', href: '/locations/machakos' },
+  { label: 'Makueni', href: '/locations/makueni' },
+]
+
+const gbpProductSignals = ['Tiles', 'Sanitaryware', 'Paints', 'Adhesives', 'Tools']
+
+const gbpSupportSignals = [
+  'Delivery support',
+  'Installation guidance',
+  'Project quote planning',
+  'Training and technical support',
+]
+
 const aboutSupportPoints = [
   {
     title: 'Finishing advisory',
@@ -1639,6 +1654,79 @@ function Hero({ onSupportClick, onQuoteClick, onSectionChange }) {
   )
 }
 
+function GoogleBusinessProfileSupport({ onSupportClick, onQuoteClick, onSectionChange }) {
+  return (
+    <section className="border-y border-emerald-100 bg-white">
+      <div className="mx-auto grid max-w-7xl gap-4 px-4 py-4 sm:py-5 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+        <div>
+          <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Need finishing materials?</p>
+          <h2 className="mt-1.5 text-xl font-semibold leading-snug text-neutral-950 sm:text-2xl">
+            Kleihaus Ceramics supports tile, sanitaryware and paint projects across Nairobi, Machakos and Makueni.
+          </h2>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {gbpProductSignals.map((item) => (
+              <span key={item} className="rounded-md border border-neutral-200 bg-neutral-50 px-3 py-1.5 text-xs font-semibold text-neutral-700">
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
+        <div className="rounded-lg border border-neutral-200 bg-neutral-50 p-3 sm:p-4">
+          <div className="grid gap-2 text-sm text-neutral-700 sm:grid-cols-2">
+            {gbpSupportSignals.map((item) => (
+              <div key={item} className="flex items-center gap-2">
+                <ShieldCheck className="h-4 w-4 shrink-0 text-emerald-700" />
+                <span>{item}</span>
+              </div>
+            ))}
+          </div>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <a
+              href="tel:+254748827166"
+              aria-label="Call Kleihaus Ceramics"
+              onClick={() => analyticsService.track('phone_click', { clickedElement: 'gbp_home_call' })}
+              className="inline-flex items-center justify-center gap-2 rounded-md border border-neutral-300 bg-white px-3 py-2 text-xs font-semibold text-neutral-900 transition hover:border-emerald-700 hover:text-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:text-sm"
+            >
+              <Phone className="h-4 w-4" />
+              Call Kleihaus
+            </a>
+            <button
+              type="button"
+              onClick={() => onSupportClick('gbp_home_whatsapp', 'Hello Kleihaus, I found you on Google and need help with tiles, sanitaryware, paints, delivery or installation support.')}
+              className={`${whatsappCtaClass} inline-flex items-center justify-center rounded-md px-3 py-2 text-xs font-semibold sm:text-sm`}
+            >
+              <WhatsAppBrandText>WhatsApp help</WhatsAppBrandText>
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                onQuoteClick('gbp_home_quote')
+                onSectionChange('contact')
+              }}
+              className="inline-flex items-center justify-center gap-2 rounded-md border border-emerald-700 bg-[#16A34A] px-3 py-2 text-xs font-semibold text-white transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:text-sm"
+            >
+              Request quote
+              <ArrowRight className="h-4 w-4" />
+            </button>
+          </div>
+          <div className="mt-3 flex flex-wrap gap-2 border-t border-neutral-200 pt-3">
+            {serviceAreaLinks.map((location) => (
+              <a
+                key={location.href}
+                href={location.href}
+                className="inline-flex items-center gap-1 rounded-md px-2.5 py-1.5 text-xs font-semibold text-emerald-800 transition hover:bg-emerald-50 focus:outline-none focus:ring-2 focus:ring-emerald-200"
+              >
+                <MapPin className="h-3.5 w-3.5" />
+                {location.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function AboutSection() {
   return (
     <section id="about" className="bg-white">
@@ -2256,6 +2344,7 @@ function Contact({ onSupportFormClick, compact = false }) {
   const contactActions = [
     {
       label: 'Email Kleihaus',
+      ariaLabel: 'Email Kleihaus Ceramics',
       href: 'mailto:sales@kleihaus.com',
       icon: Mail,
       className: 'border-white/15 bg-white/10 text-white hover:bg-white/15',
@@ -2263,6 +2352,7 @@ function Contact({ onSupportFormClick, compact = false }) {
     },
     {
       label: 'Chat on WhatsApp',
+      ariaLabel: 'Chat with Kleihaus Ceramics on WhatsApp',
       href: buildWhatsAppUrl('Hello Kleihaus, I would like help with a quote, products, delivery or installation support.'),
       icon: WhatsAppLogo,
       className: 'border-[#128C7E] bg-[#128C7E] text-white hover:border-[#075E54] hover:bg-[#075E54]',
@@ -2270,6 +2360,7 @@ function Contact({ onSupportFormClick, compact = false }) {
     },
     {
       label: 'Call Kleihaus',
+      ariaLabel: 'Call Kleihaus Ceramics',
       href: 'tel:+254748827166',
       icon: Phone,
       className: 'border-white/15 bg-white/10 text-white hover:bg-white/15',
@@ -2294,6 +2385,7 @@ function Contact({ onSupportFormClick, compact = false }) {
                 <a
                   key={action.label}
                   href={action.href}
+                  aria-label={action.ariaLabel}
                   className={`inline-flex items-center justify-center gap-2 rounded-md border px-3 py-2.5 text-sm font-semibold transition focus:outline-none focus:ring-2 focus:ring-white/30 ${action.className}`}
                   onClick={action.onClick}
                 >
@@ -2621,6 +2713,15 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
               <ButtonSecondary type="button" onClick={() => onSupportClick(`category_page_${page.path}`, `I would like a quote for ${page.category}. Please share availability, price guidance and delivery details.`)} className={`${whatsappCtaClass} px-3 py-2 text-xs sm:px-4 sm:py-2.5 sm:text-sm`}>
                 <WhatsAppBrandText>WhatsApp support</WhatsAppBrandText>
               </ButtonSecondary>
+              <a
+                href="tel:+254748827166"
+                aria-label={`Call Kleihaus Ceramics about ${page.category}`}
+                onClick={() => analyticsService.track('phone_click', { clickedElement: `category_call_${page.path}`, productCategory: page.category })}
+                className="inline-flex items-center justify-center gap-1.5 rounded-md border border-neutral-300 bg-white px-3 py-2 text-xs font-semibold text-neutral-900 shadow-sm transition hover:border-emerald-700 hover:text-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:px-4 sm:py-2.5 sm:text-sm"
+              >
+                <Phone className="h-4 w-4" />
+                Call Kleihaus
+              </a>
             </div>
           </div>
           <div className="grid grid-cols-3 gap-2 sm:gap-3">
@@ -2711,6 +2812,55 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
           </div>
         </section>
       )}
+
+      <section className="mx-auto max-w-7xl px-4 py-4 sm:py-6">
+        <div className="grid gap-3 rounded-xl border border-neutral-200 bg-neutral-50 p-4 sm:p-5 lg:grid-cols-[1fr_auto] lg:items-center">
+          <div>
+            <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Local support</p>
+            <h2 className="mt-1.5 text-lg font-semibold text-neutral-950 sm:text-xl">Plan with Kleihaus in Nairobi, Machakos or Makueni.</h2>
+            <p className="mt-2 text-sm leading-6 text-neutral-600">
+              Choose a location hub for delivery context, project guidance and related tiles, sanitaryware, paints and installation support pages.
+            </p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {serviceAreaLinks.map((location) => (
+                <a
+                  key={location.href}
+                  href={location.href}
+                  className="inline-flex items-center gap-1 rounded-md border border-neutral-200 bg-white px-3 py-2 text-xs font-semibold text-neutral-700 transition hover:border-emerald-700 hover:bg-emerald-50 hover:text-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-200"
+                >
+                  <MapPin className="h-3.5 w-3.5" />
+                  {location.label}
+                </a>
+              ))}
+            </div>
+          </div>
+          <div className="flex flex-wrap gap-2 lg:justify-end">
+            <a
+              href="tel:+254748827166"
+              aria-label="Call Kleihaus Ceramics"
+              onClick={() => analyticsService.track('phone_click', { clickedElement: `local_support_call_${page.path}`, productCategory: page.category })}
+              className="inline-flex items-center justify-center gap-2 rounded-md border border-neutral-300 bg-white px-3 py-2 text-xs font-semibold text-neutral-900 transition hover:border-emerald-700 hover:text-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:text-sm"
+            >
+              <Phone className="h-4 w-4" />
+              Call
+            </a>
+            <ButtonSecondary type="button" onClick={() => onSupportClick(`local_support_whatsapp_${page.path}`, `Hello Kleihaus, I need local support for ${page.category}. Please help with product guidance, delivery and quote details.`)} className={`${whatsappCtaClass} px-3 py-2 text-xs sm:text-sm`}>
+              <WhatsAppBrandText>WhatsApp</WhatsAppBrandText>
+            </ButtonSecondary>
+            <button
+              type="button"
+              onClick={() => {
+                onQuoteClick(`local_support_quote_${page.path}`)
+                onSectionChange('contact')
+              }}
+              className="inline-flex items-center justify-center gap-2 rounded-md border border-emerald-700 bg-[#16A34A] px-3 py-2 text-xs font-semibold text-white transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:text-sm"
+            >
+              Quote
+              <ArrowRight className="h-4 w-4" />
+            </button>
+          </div>
+        </div>
+      </section>
 
       <section className="mx-auto max-w-7xl px-4 py-6 sm:py-8">
         <div className="mb-4 rounded-xl border border-neutral-200 bg-white p-3 shadow-sm sm:p-4">
@@ -3138,6 +3288,7 @@ export default function App() {
       ) : (
         <>
           <Hero onSupportClick={handleSupportClick} onQuoteClick={handleQuoteClick} onSectionChange={handleSectionChange} />
+          <GoogleBusinessProfileSupport onSupportClick={handleSupportClick} onQuoteClick={handleQuoteClick} onSectionChange={handleSectionChange} />
           <CompactContentArea
             activePanel={activePanel}
             onPanelChange={handlePanelChange}

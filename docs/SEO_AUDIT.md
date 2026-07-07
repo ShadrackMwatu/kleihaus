@@ -26,6 +26,16 @@ The remaining post-Phase 1 setup is documented in `docs/ANALYTICS_AND_SEARCH_CON
 - The existing HTML verification file should only be treated as active if it matches the verification file issued by Google for the current property.
 - No fake GA4 ID, fake Search Console verification code, Product schema or Offer schema should be committed.
 
+### Google Business Profile Conversion Note - 2026-07-07
+
+The June 2026 Google Business Profile report showed 62 profile views and 0 interactions. The recommended GBP website URL is:
+
+```text
+https://www.kleihaus.com/?utm_source=google&utm_medium=organic&utm_campaign=gbp
+```
+
+The site now gives GBP/local visitors clearer first-screen support for what Kleihaus sells, where Kleihaus serves and what action to take next. The homepage and route pages reinforce call, WhatsApp, quote request and location-hub pathways without adding Product schema, Offer schema, fake reviews, fake ratings, fake prices or duplicate thin pages.
+
 ### Executive Summary
 
 Kleihaus has a solid SEO foundation for a Vite + React single-page site. The homepage has static metadata in `index.html`; the React app adds route-aware titles, descriptions, canonicals, Open Graph/Twitter metadata and safe JSON-LD for category, guide and location routes; `robots.txt` and `sitemap.xml` are present; and Product/Offer schema is intentionally avoided because the site is quote-led rather than price-led.

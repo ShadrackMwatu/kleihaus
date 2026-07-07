@@ -103,6 +103,34 @@ Troubleshooting:
 - Confirm the browser console has no `KLEIHAUS_ANALYTICS_DEBUG` errors if debug mode is enabled.
 - Confirm first-party `/api/track-event` responses return success so local journey tracking still works.
 
+## Google Business Profile UTM Tracking
+
+The June 2026 Google Business Profile report showed 62 profile views but 0 calls, 0 chat clicks, 0 website visits and 0 interactions. Use a tracked website URL in Google Business Profile so future profile-to-site visits can be separated from broader organic traffic.
+
+Recommended primary Google Business Profile website URL:
+
+```text
+https://www.kleihaus.com/?utm_source=google&utm_medium=organic&utm_campaign=gbp
+```
+
+Optional location-specific profile or campaign links:
+
+```text
+https://www.kleihaus.com/locations/nairobi?utm_source=google&utm_medium=organic&utm_campaign=gbp_nairobi
+https://www.kleihaus.com/locations/machakos?utm_source=google&utm_medium=organic&utm_campaign=gbp_machakos
+https://www.kleihaus.com/locations/makueni?utm_source=google&utm_medium=organic&utm_campaign=gbp_makueni
+```
+
+Manual action outside this repo: update the Google Business Profile website link to the tracked URL after the site changes deploy. Do not add redirects for this; GA4 and the first-party journey tracker already preserve the UTM parameters on landing.
+
+To verify GBP traffic in GA4:
+
+1. Open GA4 Realtime after clicking the tracked GBP URL.
+2. Confirm the landing page is `/` or the selected `/locations/...` route.
+3. Confirm source/medium shows `google / organic` where GA4 attribution is available.
+4. Review campaign values for `gbp`, `gbp_nairobi`, `gbp_machakos` or `gbp_makueni`.
+5. Test quote, WhatsApp, phone and email actions from that same session.
+
 ## Google Search Console Setup
 
 Recommended property:

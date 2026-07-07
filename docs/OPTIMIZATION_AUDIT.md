@@ -19,6 +19,16 @@ Implemented after this audit:
 - Added richer local FAQ content to Nairobi, Machakos and Makueni hubs.
 - Added `docs/ANALYTICS_AND_SEARCH_CONSOLE_SETUP.md` for GA4 and Search Console setup without committing real IDs.
 
+## Google Business Profile Conversion Update - 2026-07-07
+
+The June 2026 Google Business Profile signal showed 62 profile views but 0 calls, 0 chat clicks, 0 website visits and 0 interactions. Repo-only CRO updates now add:
+
+- A compact homepage local conversion section for visitors who need finishing materials from Kleihaus Ceramics.
+- Clear call, WhatsApp, quote and Nairobi/Machakos/Makueni location pathways close to the top of the homepage.
+- Direct call actions and a local support block on route pages, including product/service-location pages and location hubs.
+- GA4 event parameters for UTM medium and campaign, preserving the existing optional GA4 setup and first-party tracking.
+- Documentation for the tracked GBP URL: `https://www.kleihaus.com/?utm_source=google&utm_medium=organic&utm_campaign=gbp`.
+
 ## Performance Findings
 
 | Area | Current state | Finding | Priority |
