@@ -220,6 +220,16 @@ These pages are catalogue and quote-planning pages. They must not use Product or
 
 Local Google Business Profile setup guidance is documented in `docs/LOCAL_SEO_GOOGLE_BUSINESS_PROFILE.md`. Profile creation and verification must be completed manually by the business owner.
 
+## Sanitaryware Image Assets
+
+Uploaded sanitaryware showroom images are stored in:
+
+```text
+public/images/sanitaryware/
+```
+
+The July 2026 upload was optimized from `sanitaryware.zip`: 21 JPG files were inspected, 11 unique images were retained, and exact duplicates were excluded. The retained images use descriptive filenames and the existing Kleihaus responsive pattern: JPG fallback plus WebP and AVIF variants. They appear in the homepage carousel, Sanitaryware catalogue block, `/sanitaryware` gallery and sanitaryware location-service page imagery.
+
 ## Legacy Files
 
 `wrangler.api.toml` and `src/api-worker.js` are retained for historical/legacy API-worker context. They are not referenced by the current `wrangler.toml` Worker Assets deployment path and are safe candidates to archive or remove later after explicit approval.

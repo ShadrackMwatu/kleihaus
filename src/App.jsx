@@ -45,6 +45,16 @@ const heroSlides = [
     label: 'Bathroom sets',
   },
   {
+    image: '/images/sanitaryware/sanitaryware-shower-display-02.jpg',
+    alt: 'Sanitaryware shower and tap display at Kleihaus Ceramics',
+    label: 'Sanitaryware displays',
+  },
+  {
+    image: '/images/sanitaryware/sanitaryware-gold-shower-display-01.jpg',
+    alt: 'Gold shower and bathroom accessory display at Kleihaus Ceramics',
+    label: 'Shower fittings',
+  },
+  {
     image: '/images/paint-interior.jpg',
     alt: 'Interior paint options for Kleihaus finishing projects',
     label: 'Paint finishes',
@@ -53,6 +63,64 @@ const heroSlides = [
     image: '/images/adhesive.jpg',
     alt: 'Tile adhesive and installation materials supplied by Kleihaus Ceramics',
     label: 'Installation essentials',
+  },
+]
+
+const sanitarywareShowroomImages = [
+  {
+    src: '/images/sanitaryware/sanitaryware-shower-display-01.jpg',
+    alt: 'Chrome shower systems and bathroom accessory display at Kleihaus Ceramics',
+    label: 'Chrome shower systems',
+  },
+  {
+    src: '/images/sanitaryware/sanitaryware-tap-rail-display-01.jpg',
+    alt: 'Tap mixers rails and shower fittings displayed at Kleihaus Ceramics',
+    label: 'Taps, rails and fittings',
+  },
+  {
+    src: '/images/sanitaryware/sanitaryware-shower-mixer-01.jpg',
+    alt: 'Shower mixer and bathroom fixture display for Kleihaus quote planning',
+    label: 'Shower mixers',
+  },
+  {
+    src: '/images/sanitaryware/sanitaryware-shower-display-02.jpg',
+    alt: 'Bathroom shower system and tap display at Kleihaus Ceramics',
+    label: 'Shower and tap display',
+  },
+  {
+    src: '/images/sanitaryware/sanitaryware-shower-display-03.jpg',
+    alt: 'Sanitaryware shower fixtures and bathroom fittings display',
+    label: 'Bathroom fittings',
+  },
+  {
+    src: '/images/sanitaryware/sanitaryware-gold-shower-display-01.jpg',
+    alt: 'Gold shower set and coordinated bathroom accessories display',
+    label: 'Gold shower fittings',
+  },
+  {
+    src: '/images/sanitaryware/sanitaryware-black-shower-display-01.jpg',
+    alt: 'Black shower systems and tap fittings displayed by Kleihaus Ceramics',
+    label: 'Black shower systems',
+  },
+  {
+    src: '/images/sanitaryware/sanitaryware-black-shower-display-02.jpg',
+    alt: 'Matte black shower fixtures and bathroom accessory display',
+    label: 'Matte black fixtures',
+  },
+  {
+    src: '/images/sanitaryware/sanitaryware-black-tap-display-01.jpg',
+    alt: 'Black tap mixers and shower rail display for bathroom projects',
+    label: 'Black taps and mixers',
+  },
+  {
+    src: '/images/sanitaryware/sanitaryware-glass-shower-display-01.jpg',
+    alt: 'Glass shower display with chrome fittings and towel rails',
+    label: 'Glass shower display',
+  },
+  {
+    src: '/images/sanitaryware/sanitaryware-shower-accessories-01.jpg',
+    alt: 'Shower accessories taps and towel rail display at Kleihaus Ceramics',
+    label: 'Shower accessories',
   },
 ]
 
@@ -137,7 +205,7 @@ const categories = [
     name: 'Sanitaryware',
     blurb: 'Basins, toilets, taps, showers and accessories.',
     use: 'Complete bathroom fittings and upgrades',
-    img: '/images/sanitary-set-1.jpg',
+    img: '/images/sanitaryware/sanitaryware-shower-display-02.jpg',
     icon: ShowerHead,
   },
   {
@@ -195,9 +263,9 @@ const productGroups = [
     title: 'Sanitaryware',
     note: 'Bathroom fixtures and fittings for retail and project orders.',
     items: [
-      { name: 'Basins', detail: 'Countertop and wall options', img: '/images/sanitary-basins.jpg' },
-      { name: 'Toilets', detail: 'Modern bathroom suites', img: '/images/sanitary-toilets.jpg' },
-      { name: 'Taps & mixers', detail: 'Coordinated metal finishes', img: '/images/taps-display-1.jpg' },
+      { name: 'Shower systems', detail: 'Chrome, black and gold finishes', img: '/images/sanitaryware/sanitaryware-shower-display-01.jpg' },
+      { name: 'Taps & mixers', detail: 'Coordinated bathroom fittings', img: '/images/sanitaryware/sanitaryware-black-tap-display-01.jpg' },
+      { name: 'Rails & accessories', detail: 'Complete the bathroom setup', img: '/images/sanitaryware/sanitaryware-shower-accessories-01.jpg' },
     ],
   },
   {
@@ -302,6 +370,7 @@ const categoryLandingPages = [
       'Kleihaus supports sanitaryware inquiries for basins, toilets, baths, showers, taps, mixers and bathroom accessories. Share the room style, quantity and location for useful quote guidance.',
     notes: ['Basins and toilets', 'Taps, mixers and showers', 'Bathroom accessories'],
     images: [
+      ...sanitarywareShowroomImages,
       { src: '/images/sanitary-set-1.jpg', alt: 'Sanitaryware set for bathroom quote planning in Kenya', label: 'Bathroom sets' },
       { src: '/images/sanitary-basins.jpg', alt: 'Bathroom basins available for sanitaryware quote inquiries', label: 'Basins' },
       { src: '/images/sanitary-toilets.jpg', alt: 'Modern toilet options for bathroom projects and renovations', label: 'Toilets' },
@@ -415,7 +484,12 @@ const localSeoServiceTargets = [
     titleLabel: 'Sanitaryware',
     basePath: '/sanitaryware',
     guidePath: '/bathroom-renovation-guide',
-    imageSet: ['/images/sanitary-set-1.jpg', '/images/sanitary-basins.jpg', '/images/sanitary-toilets.jpg', '/images/taps-display-1.jpg'],
+    imageSet: [
+      '/images/sanitaryware/sanitaryware-shower-display-02.jpg',
+      '/images/sanitaryware/sanitaryware-black-tap-display-01.jpg',
+      '/images/sanitaryware/sanitaryware-gold-shower-display-01.jpg',
+      '/images/sanitaryware/sanitaryware-shower-accessories-01.jpg',
+    ],
     focus:
       'basins, toilets, taps, mixers, showers and bathroom accessories matched with bathroom tile plans',
     planning:
@@ -1264,6 +1338,17 @@ const responsiveImageWidths = {
   '/images/sanitary-showers.jpg': [480, 768],
   '/images/sanitary-taps.jpg': [480],
   '/images/sanitary-toilets.jpg': [480],
+  '/images/sanitaryware/sanitaryware-black-shower-display-01.jpg': [480, 768],
+  '/images/sanitaryware/sanitaryware-black-shower-display-02.jpg': [480, 768],
+  '/images/sanitaryware/sanitaryware-black-tap-display-01.jpg': [480, 768],
+  '/images/sanitaryware/sanitaryware-glass-shower-display-01.jpg': [480, 768],
+  '/images/sanitaryware/sanitaryware-gold-shower-display-01.jpg': [480, 768],
+  '/images/sanitaryware/sanitaryware-shower-accessories-01.jpg': [480, 768],
+  '/images/sanitaryware/sanitaryware-shower-display-01.jpg': [480, 768],
+  '/images/sanitaryware/sanitaryware-shower-display-02.jpg': [480, 768],
+  '/images/sanitaryware/sanitaryware-shower-display-03.jpg': [480, 768],
+  '/images/sanitaryware/sanitaryware-shower-mixer-01.jpg': [480, 768],
+  '/images/sanitaryware/sanitaryware-tap-rail-display-01.jpg': [480, 768],
   '/images/shower-rail-1.jpg': [480, 768, 1024, 1440],
   '/images/sink-accessories.jpg': [480, 768, 1024, 1440],
   '/images/sink-gold-1.png': [480, 768, 1024],

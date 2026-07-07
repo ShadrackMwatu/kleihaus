@@ -31,6 +31,31 @@ https://www.kleihaus.com/?utm_source=google&utm_medium=organic&utm_campaign=gbp
 
 Manual follow-up outside the repo: update the Google Business Profile website link in the Google profile manager after deployment.
 
+## Sanitaryware Image Assets
+
+On 2026-07-07, `sanitaryware.zip` was extracted and reviewed. It contained 21 JPG files at 1071x1428; 10 were exact duplicates, leaving 11 unique sanitaryware showroom images.
+
+Optimized image storage:
+
+```text
+public/images/sanitaryware/
+```
+
+This folder is inside the local Kleihaus project path:
+
+```text
+C:\Users\smwatu\OneDrive - Kenya Institute for Public Policy Research and Analysis\Documents\Kleihaus\public\images\sanitaryware\
+```
+
+The site uses these images in:
+
+- Homepage hero carousel/moving image block.
+- Homepage Sanitaryware catalogue card and product group.
+- `/sanitaryware` category route gallery.
+- Sanitaryware service-location page image sets.
+
+The duplicate ZIP entries and raw upload filenames were not committed. Optimized descriptive filenames were used instead, with JPG fallbacks plus WebP and AVIF variants matching the existing site image delivery pattern.
+
 ## Tech Stack
 
 - React 18

@@ -18,6 +18,15 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 - Documented the recommended Google Business Profile website URL: `https://www.kleihaus.com/?utm_source=google&utm_medium=organic&utm_campaign=gbp`.
 - Added a manual reminder that the Google Business Profile website link must be updated outside the repository by the profile owner or manager.
 
+### Sanitaryware Image Upload
+
+- Extracted `sanitaryware.zip`, inspected 21 JPG uploads and identified 11 unique showroom sanitaryware images after exact-duplicate removal.
+- Optimized the unique images into the existing responsive image pattern with JPG fallbacks plus WebP and AVIF variants.
+- Added the optimized files under `public/images/sanitaryware/` in the local Kleihaus project folder.
+- Updated the homepage carousel with new sanitaryware shower/display imagery while preserving existing tile, paint, installation and showroom slides.
+- Updated the Sanitaryware catalogue block, `/sanitaryware` route gallery and sanitaryware service-location image set to use the new uploaded images with descriptive alt text.
+- Excluded duplicate ZIP entries from the repo to avoid committing repeated raw files.
+
 ## 2026-06-11
 
 ### Analytics And Search Console Setup Documentation
