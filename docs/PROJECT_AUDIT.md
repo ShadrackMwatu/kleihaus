@@ -56,6 +56,24 @@ The site uses these images in:
 
 The duplicate ZIP entries and raw upload filenames were not committed. Optimized descriptive filenames were used instead, with JPG fallbacks plus WebP and AVIF variants matching the existing site image delivery pattern.
 
+## SEO Effectiveness Audit
+
+On 2026-07-08, the dedicated post-update SEO effectiveness audit was added at `docs/SEO_EFFECTIVENESS_AUDIT.md`.
+
+Current score summary:
+
+- Overall SEO effectiveness: 86/100
+- Technical SEO: 85/100
+- Local SEO: 89/100
+- Content SEO: 83/100
+- Image SEO: 88/100
+- Schema SEO: 88/100
+- Analytics/measurement readiness: 87/100
+- Performance SEO: 80/100
+- UX/accessibility SEO: 86/100
+
+The audit confirms that Kleihaus has a strong quote-led local SEO foundation after the Phase 1, GBP, analytics/Search Console and sanitaryware image updates. The biggest remaining constraints are client-side route metadata/schema rendering, stale sitemap `lastmod` values, limited real-world proof signals, template similarity risk on service-location pages and unverified live GA4/Search Console reporting.
+
 ## Tech Stack
 
 - React 18

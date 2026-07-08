@@ -24,7 +24,7 @@ No Cloudflare configuration, DNS, Worker routing, secrets, deployment settings o
 
 Highest ROI improvements requiring minimal engineering effort.
 
-Implementation status on 2026-06-24, 2026-06-25 and 2026-07-07: GA4 readiness, conversion event hooks, richer local hub FAQs, safe route-level Service/FAQ schema additions, README setup notes, `.env.example` analytics configuration, optional non-sensitive analytics debug logging, the Analytics/Search Console setup guide, GBP UTM documentation and GBP-to-site conversion CTAs were completed. Privacy policy, anti-spam controls, visible breadcrumbs and deeper performance pruning remain open.
+Implementation status on 2026-06-24, 2026-06-25, 2026-07-07 and 2026-07-08: GA4 readiness, conversion event hooks, richer local hub FAQs, safe route-level Service/FAQ schema additions, README setup notes, `.env.example` analytics configuration, optional non-sensitive analytics debug logging, the Analytics/Search Console setup guide, GBP UTM documentation, GBP-to-site conversion CTAs, sanitaryware image improvements and the SEO effectiveness audit were completed. Privacy policy, anti-spam controls, visible breadcrumbs, sitemap automation/lastmod freshness, verified GA4/Search Console setup and deeper performance pruning remain open.
 
 | Recommendation | Expected impact | Effort | Priority | Risk |
 | --- | --- | --- | --- | --- |
@@ -37,6 +37,9 @@ Implementation status on 2026-06-24, 2026-06-25 and 2026-07-07: GA4 readiness, c
 | Add a release checklist covering build, sitemap, schema, quote endpoint and Workers Builds. | Reduces deployment and SEO regression risk. | Low | High | Low |
 | Add visible breadcrumbs on category, guide and location pages. | Improves UX, internal linking and alignment with BreadcrumbList schema. | Low/Medium | Medium | Low |
 | Review `public/images/kleihaus-logo.jpg` and replace runtime logo usage with a smaller optimized source if visual quality holds. | Reduces repeated logo payload. | Low | Medium | Low |
+| Refresh sitemap `lastmod` values after meaningful content/image updates. | Helps Search Console understand freshness and reduces manual audit drift. | Low | High | Low |
+| Verify the new GBP UTM URL, GA4 events and Search Console sitemap submission after deployment. | Turns repo readiness into measurable SEO performance data. | Low | High | Low |
+| Add a visible breadcrumb UI to route pages. | Aligns visible UX with BreadcrumbList schema and improves deep-route navigation. | Low/Medium | High | Low |
 
 Phase 1 success metrics:
 
@@ -45,6 +48,7 @@ Phase 1 success metrics:
 - Honeypot/rate-limit plan implemented or queued.
 - Sitemap/schema/release checklist documented.
 - Quote and support conversion reporting has a clear event taxonomy.
+- SEO effectiveness audit maintained after major SEO, content, image or measurement changes.
 
 ## Phase 2 - Medium Impact
 

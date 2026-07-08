@@ -6,6 +6,15 @@ Rule: Every future meaningful change must update `docs/CHANGELOG.md` and, where 
 
 Current deployment note: production now uses GitHub `main` -> Cloudflare Workers Builds -> Worker Assets -> Worker `kleihaus` -> `kleihaus.com` and `www.kleihaus.com`. The active quote endpoint is `/api/quote-request`. Older entries that mention Cloudflare Pages or `https://api.kleihaus.com/quote-request` are historical and describe earlier deployment states, not the current production path.
 
+## 2026-07-08
+
+### SEO Effectiveness Audit
+
+- Added `docs/SEO_EFFECTIVENESS_AUDIT.md` after the Phase 1, Google Business Profile, analytics/Search Console and sanitaryware image updates.
+- Rated overall SEO effectiveness at 86/100 with category scores for technical SEO, local SEO, content SEO, image SEO, schema SEO, measurement readiness, performance SEO and UX/accessibility SEO.
+- Documented current strengths, weaknesses, risks, route/schema/image/measurement evidence and prioritized quick-win, medium-term and long-term recommendations.
+- Confirmed the audit remains documentation-only and does not introduce Product schema, Offer schema, fake ratings, fake reviews or fake prices.
+
 ## 2026-07-07
 
 ### Google Business Profile Conversion Path
