@@ -8,6 +8,17 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-07-08
 
+### SEO Authority And Measurement Roadmap
+
+- Added `docs/GOOGLE_BUSINESS_PROFILE_OPTIMIZATION.md` with tracked GBP URLs, manual category/service-area review guidance, photo/post planning, genuine review workflow and monthly GBP monitoring.
+- Added `docs/SEO_CONTENT_ROADMAP.md` with a six-month topical authority plan covering tile quantity, adhesive calculation, sanitaryware selection, paint selection, installation mistakes, commercial flooring, local service needs and future genuine case studies.
+- Added `docs/CASE_STUDY_TEMPLATE.md` for future real Kleihaus project case studies without inventing projects, reviews, prices or ratings.
+- Added `docs/BACKLINK_OUTREACH_PLAN.md` with ethical outreach targets for suppliers, architects, designers, contractors, directories, associations and local networks.
+- Added `docs/MONTHLY_SEO_REPORT_TEMPLATE.md` for Search Console, GA4, first-party conversions, Google Business Profile and backlink/referral reporting.
+- Expanded `docs/ANALYTICS_AND_SEARCH_CONSOLE_SETUP.md` with a production setup checklist for GA4, Search Console, sitemap submission, conversion verification and monthly monitoring.
+- Added compact guide-page project planning CTAs and strengthened internal links from guide pages to relevant service-location and location hub pages.
+- Preserved existing routes, metadata, schema, sitemap generation, breadcrumbs, quote form, WhatsApp same-tab behavior, GA4 configuration model and Cloudflare Workers architecture.
+
 ### Advanced SEO Metadata, Sitemap And Breadcrumbs
 
 - Added a shared SEO route manifest in `src/seoManifest.js` for canonical route titles, descriptions, Open Graph/Twitter metadata, safe JSON-LD, breadcrumbs and sitemap entries.

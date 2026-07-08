@@ -24,7 +24,7 @@ No Cloudflare configuration, DNS, Worker routing, secrets, deployment settings o
 
 Highest ROI improvements requiring minimal engineering effort.
 
-Implementation status on 2026-06-24, 2026-06-25, 2026-07-07 and 2026-07-08: GA4 readiness, conversion event hooks, richer local hub FAQs, safe route-level Service/FAQ schema additions, README setup notes, `.env.example` analytics configuration, optional non-sensitive analytics debug logging, the Analytics/Search Console setup guide, GBP UTM documentation, GBP-to-site conversion CTAs, sanitaryware image improvements, the SEO effectiveness audit, Worker-side route metadata injection, sitemap automation/lastmod freshness, visible breadcrumbs and deeper service-location content were completed. Privacy policy, anti-spam controls, verified GA4/Search Console setup and deeper performance pruning remain open.
+Implementation status on 2026-06-24, 2026-06-25, 2026-07-07 and 2026-07-08: GA4 readiness, conversion event hooks, richer local hub FAQs, safe route-level Service/FAQ schema additions, README setup notes, `.env.example` analytics configuration, optional non-sensitive analytics debug logging, the Analytics/Search Console setup guide, GBP UTM documentation, GBP-to-site conversion CTAs, sanitaryware image improvements, the SEO effectiveness audit, Worker-side route metadata injection, sitemap automation/lastmod freshness, visible breadcrumbs, deeper service-location content, GBP optimization guidance, topical authority roadmap, case study framework, backlink outreach plan and monthly SEO report template were completed. Privacy policy, anti-spam controls, verified GA4/Search Console setup and deeper performance pruning remain open.
 
 | Recommendation | Expected impact | Effort | Priority | Risk |
 | --- | --- | --- | --- | --- |
@@ -40,6 +40,7 @@ Implementation status on 2026-06-24, 2026-06-25, 2026-07-07 and 2026-07-08: GA4 
 | Refresh sitemap `lastmod` values after meaningful content/image updates. | Helps Search Console understand freshness and reduces manual audit drift. | Low | Complete: `npm run build` regenerates `public/sitemap.xml` from `src/seoManifest.js`. | Low |
 | Verify the new GBP UTM URL, GA4 events and Search Console sitemap submission after deployment. | Turns repo readiness into measurable SEO performance data. | Low | High | Low |
 | Add a visible breadcrumb UI to route pages. | Aligns visible UX with BreadcrumbList schema and improves deep-route navigation. | Low/Medium | Complete | Low |
+| Use the GBP optimization guide for profile photos, posts, genuine review requests and monthly performance tracking. | Converts repo readiness into local search authority and measurable profile actions. | Low/Medium | High | Low |
 
 Phase 1 success metrics:
 
@@ -66,6 +67,8 @@ Moderate effort, meaningful gains.
 | Refactor route/content arrays from `src/App.jsx` into data modules. | Reduces regression risk and makes SEO/content updates safer. | Medium | High | Medium |
 | Generate sitemap from route data. | Prevents route/sitemap drift. | Medium | Complete | Low |
 | Prune unused or oversized original images from runtime delivery paths where AVIF/WebP variants already cover usage. | Improves payload size and cache efficiency. | Medium | Medium | Low/Medium |
+| Start the six-month topical authority roadmap, beginning with quote checklist, tile quantity and adhesive calculation guidance. | Expands useful long-tail reach without doorway pages. | Medium | High | Low/Medium |
+| Run ethical backlink outreach to real suppliers, local directories, contractors and project partners. | Builds authority signals without fake links or claims. | Medium | High | Medium |
 
 Phase 2 success metrics:
 
@@ -74,6 +77,8 @@ Phase 2 success metrics:
 - Location hubs have meaningfully unique content.
 - Quote endpoint has anti-spam protection.
 - Route data and sitemap are less manual.
+- Monthly SEO reporting has a repeatable template.
+- GBP and backlink work is tracked with real, verifiable actions.
 
 ## Phase 3 - Strategic Enhancements
 
@@ -128,6 +133,7 @@ Trust content:
 - Delivery coordination process
 - Installation preparation checklist
 - Product matching checklist
+- Genuine project case studies using `docs/CASE_STUDY_TEMPLATE.md`
 
 ## Measurement Roadmap
 
@@ -153,6 +159,8 @@ Recommended report views:
 - Product/category interest
 - Search-to-lead patterns
 - Failed submissions and validation friction
+- Google Business Profile profile views, calls, chat clicks and website visits
+- Backlink/referral sources and referral conversions
 
 ## Guardrails
 

@@ -87,6 +87,20 @@ The current SEO implementation now includes:
 
 Schema boundaries remain conservative: Organization/HomeAndConstructionBusiness, WebSite, ContactPoint, WebPage/CollectionPage, BreadcrumbList, ItemList, Service and FAQPage are allowed where backed by visible content. Product schema, Offer schema, fake ratings, fake reviews and fake prices remain excluded.
 
+## SEO Authority And Measurement Roadmap
+
+On 2026-07-08, the repository added operational SEO authority and measurement documentation to support a move from an 89/100 repo-level SEO score toward the 93-95/100 range after production setup and real-world proof signals are completed.
+
+New docs:
+
+- `docs/GOOGLE_BUSINESS_PROFILE_OPTIMIZATION.md` - tracked GBP URLs, category/service-area review, photo plan, post ideas, genuine review workflow and monthly GBP monitoring.
+- `docs/SEO_CONTENT_ROADMAP.md` - six-month content roadmap for tile quantity, adhesive calculation, sanitaryware, paints, installation mistakes, commercial flooring, local service needs and future genuine case studies.
+- `docs/CASE_STUDY_TEMPLATE.md` - reusable framework for approved real project case studies.
+- `docs/BACKLINK_OUTREACH_PLAN.md` - ethical outreach plan for suppliers, architects, designers, contractors, directories, associations and local networks.
+- `docs/MONTHLY_SEO_REPORT_TEMPLATE.md` - monthly Search Console, GA4, first-party conversion, GBP and referral reporting template.
+
+The live site also received a small, safe content improvement: guide routes now include a compact project-planning CTA block and stronger internal links to relevant local service pages and location hubs. No Cloudflare configuration, DNS, routes, bindings, secrets or deployment settings were changed.
+
 ## Tech Stack
 
 - React 18

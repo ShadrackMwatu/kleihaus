@@ -10,7 +10,7 @@ Kleihaus has moved from a simple catalogue website into a stronger local lead-ge
 
 Overall SEO effectiveness is now **89/100**.
 
-The main strength is coverage: tiles, sanitaryware, paints, adhesives/grout, installation support, location hubs, location-service pages and practical buying guides all exist and are internally linked. The 2026-07-08 implementation reduced the biggest technical gaps by adding Worker-side initial HTML metadata injection, generated sitemap output, visible breadcrumbs and deeper service-location content. Kleihaus still needs more real-world trust evidence over time: verified project photos, business hours if accurate, real customer review acquisition through GBP, and Search Console/GA4 performance data.
+The main strength is coverage: tiles, sanitaryware, paints, adhesives/grout, installation support, location hubs, location-service pages and practical buying guides all exist and are internally linked. The 2026-07-08 implementation reduced the biggest technical gaps by adding Worker-side initial HTML metadata injection, generated sitemap output, visible breadcrumbs and deeper service-location content. A follow-up authority roadmap now documents Google Business Profile optimization, topical content, ethical backlink outreach, future genuine case studies and monthly reporting. Kleihaus still needs more real-world trust evidence over time: verified project photos, business hours if accurate, real customer review acquisition through GBP, and Search Console/GA4 performance data.
 
 ## Current SEO Scorecard
 
@@ -25,6 +25,20 @@ The main strength is coverage: tiles, sanitaryware, paints, adhesives/grout, ins
 | Analytics/measurement readiness | 87/100 | Optional GA4 via `VITE_GA_MEASUREMENT_ID`; debug mode documented; first-party events capture UTM source/medium/campaign; GBP UTM docs exist. | GA4/Search Console setup is still external; no confirmed property IDs or live reporting evidence in repo; no automated monthly report yet. | Configure official GA4/Search Console, verify events, submit sitemap, connect monthly SEO/lead reporting. |
 | Performance SEO | 82/100 | Vite build is moderate for a React marketing site; default lazy loading and responsive image helper are in place; Cloudflare Worker Assets delivery is solid. | Single app bundle serves all routes; sanitaryware images add about 4.26 MB to public assets; older heavy originals remain; carousel can affect LCP. | Route/code splitting, heavy image pruning, immutable asset caching review, LCP image preload after field measurement. |
 | UX/accessibility SEO | 89/100 | Semantic sections, accessible CTA labels, labelled quote fields, mobile sticky CTAs, visible breadcrumbs, clear call/WhatsApp/quote pathways and readable content are present. | Long route pages and galleries can be dense; modal/focus behavior should be periodically checked with axe/Lighthouse. | Run formal axe/Lighthouse checks, strengthen focus management and add compact response-expectation copy. |
+
+## Authority And Measurement Roadmap Addendum
+
+The repository now includes a practical roadmap for the work most likely to move Kleihaus from a strong technical SEO foundation toward a 93-95/100 effectiveness level after external setup and real-world signals are completed.
+
+New authority and measurement files:
+
+- `docs/GOOGLE_BUSINESS_PROFILE_OPTIMIZATION.md`
+- `docs/SEO_CONTENT_ROADMAP.md`
+- `docs/CASE_STUDY_TEMPLATE.md`
+- `docs/BACKLINK_OUTREACH_PLAN.md`
+- `docs/MONTHLY_SEO_REPORT_TEMPLATE.md`
+
+These documents address the remaining non-code SEO constraints: GBP profile quality, genuine review workflow, recurring photo/post updates, long-tail topical authority, ethical backlinks, future customer-approved case studies and monthly measurement. They intentionally avoid fake reviews, fake projects, fake backlinks, fake ratings, fake prices and Product/Offer/AggregateRating/Review schema.
 
 ## Evidence-Based Findings From The Repo
 
@@ -108,6 +122,8 @@ Measurement evidence:
 6. Add visible breadcrumbs to category, guide, location and service-location pages.
 7. Add a concise response expectation near the quote form if operationally accurate.
 8. Audit large legacy images and replace runtime usage with optimized variants where safe.
+9. Use the monthly SEO report template to record Search Console, GA4, first-party conversion, GBP and referral metrics.
+10. Begin ethical outreach to real suppliers, directories and project partners using the backlink plan.
 
 ### Medium-Term Improvements
 

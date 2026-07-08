@@ -22,6 +22,49 @@ Active API endpoint:
 
 Do not commit real Google Analytics or Search Console verification secrets to the repository.
 
+## Production Setup Checklist
+
+Use this checklist after each major SEO deployment and after any analytics environment change.
+
+### GA4 Configuration
+
+- Confirm the official Kleihaus GA4 property exists.
+- Add the real `VITE_GA_MEASUREMENT_ID` only in Cloudflare Workers Builds environment variables.
+- Do not hardcode the real ID in source files, docs, `.env.example` or screenshots committed to the repo.
+- Trigger a fresh production build after the environment variable is saved.
+- Confirm the live site loads GA4 only after the build that includes the variable.
+
+### GA4 Event Verification
+
+- Open GA4 DebugView or Realtime.
+- Visit the homepage and one guide route.
+- Submit a successful quote request using test-safe details agreed by the business.
+- Click a WhatsApp CTA and confirm same-tab navigation still works.
+- Click phone and email CTAs.
+- Click guide cards and related guide links.
+- Visit `/locations/nairobi`, `/locations/machakos` and `/locations/makueni`.
+- Confirm events appear for quote requests, WhatsApp clicks, phone clicks, email clicks, guide interactions and location views.
+
+### Search Console Verification
+
+- Verify ownership for `https://www.kleihaus.com/`.
+- Use the existing verification file only if it exactly matches the file Google issued for the active property.
+- Do not commit fake verification files or placeholder meta tags.
+- Submit `https://www.kleihaus.com/sitemap.xml`.
+- Confirm the sitemap fetch succeeds and submitted URL count matches the generated sitemap.
+- Inspect the homepage, core category pages, location hubs, service-location pages and guide pages.
+- Confirm each inspected page is indexable and shows the expected canonical URL.
+
+### Monthly Monitoring
+
+- Review Search Console queries, clicks, impressions, CTR and average position.
+- Review top landing pages and pages with high impressions but low CTR.
+- Review indexing, sitemap and enhancement reports.
+- Review GA4 sessions, engaged sessions and conversion events.
+- Review quote submissions, WhatsApp clicks, phone clicks, email clicks, guide interactions and location page views.
+- Review Google Business Profile profile views, calls, chat clicks and website visits.
+- Record findings in `docs/MONTHLY_SEO_REPORT_TEMPLATE.md`.
+
 ## GA4 Readiness
 
 The frontend supports optional Google Analytics 4 through this Vite build-time environment variable:
