@@ -60,19 +60,32 @@ The duplicate ZIP entries and raw upload filenames were not committed. Optimized
 
 On 2026-07-08, the dedicated post-update SEO effectiveness audit was added at `docs/SEO_EFFECTIVENESS_AUDIT.md`.
 
-Current score summary:
+After the advanced SEO implementation on 2026-07-08, current repo-level score summary:
 
-- Overall SEO effectiveness: 86/100
-- Technical SEO: 85/100
-- Local SEO: 89/100
-- Content SEO: 83/100
-- Image SEO: 88/100
-- Schema SEO: 88/100
+- Overall SEO effectiveness: 89/100
+- Technical SEO: 91/100
+- Local SEO: 91/100
+- Content SEO: 86/100
+- Image SEO: 89/100
+- Schema SEO: 91/100
 - Analytics/measurement readiness: 87/100
-- Performance SEO: 80/100
-- UX/accessibility SEO: 86/100
+- Performance SEO: 82/100
+- UX/accessibility SEO: 89/100
 
-The audit confirms that Kleihaus has a strong quote-led local SEO foundation after the Phase 1, GBP, analytics/Search Console and sanitaryware image updates. The biggest remaining constraints are client-side route metadata/schema rendering, stale sitemap `lastmod` values, limited real-world proof signals, template similarity risk on service-location pages and unverified live GA4/Search Console reporting.
+The audit confirms that Kleihaus has a strong quote-led local SEO foundation after the Phase 1, GBP, analytics/Search Console and sanitaryware image updates. The 2026-07-08 implementation reduced the biggest repo-level constraints by adding Worker-side route metadata injection, sitemap generation from a shared route manifest, visible breadcrumbs with matching BreadcrumbList schema and deeper service-location content. Remaining constraints are mostly external or strategic: verified GA4/Search Console reporting, GBP profile updates, real-world proof signals, accurate business hours if available and ongoing performance monitoring.
+
+## Advanced SEO Implementation
+
+The current SEO implementation now includes:
+
+- `src/seoManifest.js` as the shared route source for Worker metadata injection and sitemap generation.
+- Worker-served `/sitemap.xml` from the manifest, plus checked-in `public/sitemap.xml` regenerated during `npm run build`.
+- Route-specific initial HTML title, meta description, canonical, Open Graph, Twitter/X and safe JSON-LD injection in `src/worker.js`.
+- Visible breadcrumbs on category, guide, location and service-location pages.
+- Matching BreadcrumbList JSON-LD generated from the same breadcrumb model used by the visible UI.
+- Deeper local service-location page copy covering project types, customer needs, delivery support, selection guidance and local FAQs.
+
+Schema boundaries remain conservative: Organization/HomeAndConstructionBusiness, WebSite, ContactPoint, WebPage/CollectionPage, BreadcrumbList, ItemList, Service and FAQPage are allowed where backed by visible content. Product schema, Offer schema, fake ratings, fake reviews and fake prices remain excluded.
 
 ## Tech Stack
 

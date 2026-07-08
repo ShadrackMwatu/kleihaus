@@ -54,7 +54,13 @@ http://localhost:5173
 npm run build
 ```
 
-The static production output is generated in `dist/`. The Worker uses `env.ASSETS` to serve the Vite build and routes API requests before assets.
+The build first regenerates `public/sitemap.xml` from `src/seoManifest.js`, then generates the static production output in `dist/`. The Worker uses `env.ASSETS` to serve the Vite build and routes API requests before assets.
+
+```bash
+npm run generate:sitemap
+```
+
+Use the sitemap script directly only when refreshing the checked-in sitemap without a full production build.
 
 ## Deployment Runbook
 
@@ -116,9 +122,15 @@ Active Worker config is in `wrangler.toml`:
 - Assets directory: `./dist`
 - Assets binding: `ASSETS`
 - API routes run first for `/api/*`
+- `/sitemap.xml` is served from `src/seoManifest.js`
+- Known SPA routes receive Worker-side initial HTML title, meta description, canonical, Open Graph, Twitter/X and safe JSON-LD injection
 - D1 binding: `DB`
 
 Do not move production to Cloudflare Pages unless the deployment strategy is intentionally changed.
+
+## SEO Route Manifest
+
+`src/seoManifest.js` is the shared source for Worker route metadata and generated sitemap entries. Keep it aligned with route content in `src/App.jsx` whenever adding or renaming public SEO routes. The schema strategy remains conservative: do not add Product schema, Offer schema, fake ratings, fake reviews or fake prices.
 
 ## Environment Variables
 

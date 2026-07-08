@@ -8,6 +8,16 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-07-08
 
+### Advanced SEO Metadata, Sitemap And Breadcrumbs
+
+- Added a shared SEO route manifest in `src/seoManifest.js` for canonical route titles, descriptions, Open Graph/Twitter metadata, safe JSON-LD, breadcrumbs and sitemap entries.
+- Updated the Cloudflare Worker entrypoint to serve generated `/sitemap.xml` and inject route-specific initial HTML metadata for known SPA routes before falling back to Worker Assets.
+- Added `scripts/generate-sitemap.mjs` and wired `npm run build` to regenerate `public/sitemap.xml` from the SEO manifest with refreshed `2026-07-08` `lastmod` values.
+- Added visible breadcrumb navigation to category, guide, location and service-location pages, with route JSON-LD BreadcrumbList output aligned to the visible crumbs.
+- Deepened generated service-location pages with location-specific project types, customer needs, delivery considerations, selection guidance and local FAQs.
+- Added a low-risk image performance improvement so non-critical `OptimizedImage` usage defaults to lazy loading and async decoding unless explicitly overridden.
+- Preserved quote, WhatsApp, GA4, Search Console documentation, Cloudflare deployment configuration and safe schema boundaries; no Product schema or Offer schema was introduced.
+
 ### SEO Effectiveness Audit
 
 - Added `docs/SEO_EFFECTIVENESS_AUDIT.md` after the Phase 1, Google Business Profile, analytics/Search Console and sanitaryware image updates.

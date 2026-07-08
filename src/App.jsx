@@ -444,24 +444,36 @@ const locationSeoTargets = [
     label: 'Nairobi',
     phrase: 'homes, apartments, retail spaces and project sites in Nairobi',
     logistics: 'delivery coordination within Nairobi depends on order size, site access and timing',
+    projectTypes: 'apartment renovations, retail fit-outs, offices, rental units and compact residential upgrades',
+    customerNeeds: 'quick stock guidance, tight delivery windows, building access planning and coordinated material choices',
+    siteConsiderations: 'lift access, parking, traffic windows and secure offloading can affect delivery timing',
   },
   {
     slug: 'machakos',
     label: 'Machakos',
     phrase: 'homes, rentals, commercial spaces and construction projects in Machakos',
     logistics: 'delivery support to Machakos is planned around quantity, supplier availability and site requirements',
+    projectTypes: 'new homes, rental units, shop spaces, institutional projects and phased construction sites',
+    customerNeeds: 'clear quantities, dependable finishing materials and delivery planning that suits project stages',
+    siteConsiderations: 'site distance, road access, storage space and installation readiness shape the support plan',
   },
   {
     slug: 'makueni',
     label: 'Makueni',
     phrase: 'home builds, renovations and project sites in Makueni',
     logistics: 'Makueni delivery coordination is available where practical based on order details and route planning',
+    projectTypes: 'home builds, upgrades, rural project sites, rental finishing and community facility improvements',
+    customerNeeds: 'durable finishes, practical substitutions, transport-aware quantities and installer guidance',
+    siteConsiderations: 'route planning, material consolidation and site readiness matter more where trips are longer',
   },
   {
     slug: 'kenya',
     label: 'Kenya',
     phrase: 'retail customers, contractors, fundis, developers and project teams across Kenya',
     logistics: 'wider Kenya logistics support is reviewed case by case based on product mix, quantity and destination',
+    projectTypes: 'residential, commercial, contractor, retail and multi-location finishing projects',
+    customerNeeds: 'remote quote preparation, clear product references, quantity estimates and practical delivery review',
+    siteConsiderations: 'destination, carrier options, order volume and material fragility guide wider Kenya support',
   },
 ]
 
@@ -477,6 +489,10 @@ const localSeoServiceTargets = [
       'floor tiles, wall tiles, bathroom tiles and outdoor tile finishes with adhesive, grout and trim guidance',
     planning:
       'Share room measurements, tile size preference, finish, quantity estimate and delivery location so Kleihaus can guide suitable options.',
+    selectionGuidance:
+      'Tile advice should balance room use, slip risk, cleaning needs, grout color, cuts, wastage allowance and the surface receiving the tile.',
+    installationRelevance:
+      'Confirm adhesive, grout, trims and installer workflow early so selected tiles perform well after handover.',
   },
   {
     slug: 'sanitaryware',
@@ -494,6 +510,10 @@ const localSeoServiceTargets = [
       'basins, toilets, taps, mixers, showers and bathroom accessories matched with bathroom tile plans',
     planning:
       'Share bathroom layout, preferred finish, fixture list, quantity and location so Kleihaus can support coordinated sanitaryware planning.',
+    selectionGuidance:
+      'Sanitaryware planning works best when fixture finish, plumbing points, wall tile color, cleaning needs and accessory placement are reviewed together.',
+    installationRelevance:
+      'Confirm mixer type, mounting points, drainage, accessories and tile drilling requirements before materials reach site.',
   },
   {
     slug: 'paints',
@@ -506,6 +526,10 @@ const localSeoServiceTargets = [
       'interior paints, exterior paints, roof paints and floor coatings selected around surface condition and finish goals',
     planning:
       'Share room or surface area, interior or exterior use, preferred finish, location and project timing for practical paint guidance.',
+    selectionGuidance:
+      'Paint guidance should consider surface condition, weather exposure, washability, sheen, color consistency and preparation requirements.',
+    installationRelevance:
+      'Plan filling, sanding, priming, drying time and application tools before buying paint for larger surfaces.',
   },
   {
     slug: 'installation-support',
@@ -518,6 +542,10 @@ const localSeoServiceTargets = [
       'site measurement, product matching, surface preparation, cutting, drilling, fixing, grouting, cleaning and handover support',
     planning:
       'Share site photos, measurements, tile or finish type, substrate condition and location so Kleihaus can advise on the installation workflow.',
+    selectionGuidance:
+      'Installation support should connect measurements, substrate condition, material choice, cutting needs, tools and the skill level available on site.',
+    installationRelevance:
+      'Discuss the sequence from preparation to handover before installation starts so materials, tools and expectations are aligned.',
   },
 ]
 
@@ -534,21 +562,35 @@ const buildLocalSeoLandingPage = (service, location) => ({
   intro: `Kleihaus supports ${location.phrase} with ${service.focus}. The team helps customers move from product choice to quantity planning, logistics, delivery coordination and installation support without claiming a separate branch in every service area.`,
   notes: [
     service.planning,
-    `Kleihaus can help compare product fit, budget expectations, installation needs and finishing materials for ${location.label}.`,
-    `For logistics, ${location.logistics}.`,
+    `${location.label} requests often involve ${location.customerNeeds}.`,
+    `${service.installationRelevance} For logistics, ${location.logistics}.`,
   ],
   sections: [
     {
-      title: `Planning ${service.titleLabel.toLowerCase()} for ${location.label}`,
-      text: `${service.planning} This keeps the first quote conversation focused and helps the team recommend realistic next steps.`,
+      title: `${location.label} project context`,
+      text: `Common ${location.label} needs include ${location.projectTypes}. ${location.customerNeeds} help shape the first quote conversation and reduce back-and-forth before purchase decisions.`,
     },
     {
-      title: 'Advisory and matching support',
-      text: `Kleihaus can guide product matching, complementary materials, right-tool selection and technical considerations for fundis, homeowners, contractors and project teams.`,
+      title: `${service.titleLabel} selection guidance`,
+      text: `${service.selectionGuidance} Kleihaus can help compare product fit, complementary materials, budget expectations and technical considerations for homeowners, contractors, fundis and project teams.`,
     },
     {
       title: 'Delivery and installation coordination',
-      text: `${location.logistics}. Installation support, tailored training and application guidance can be discussed where the project needs more than material supply.`,
+      text: `${location.logistics}. ${location.siteConsiderations}. Installation support, tailored training and application guidance can be discussed where the project needs more than material supply.`,
+    },
+  ],
+  localFaqs: [
+    {
+      question: `Can Kleihaus help with ${service.titleLabel.toLowerCase()} planning in ${location.label}?`,
+      answer: `Yes. Share the project type, measurements, preferred finish, quantity and location. Kleihaus can help compare ${service.focus} for ${location.phrase}.`,
+    },
+    {
+      question: `What affects delivery support for ${service.titleLabel.toLowerCase()} in ${location.label}?`,
+      answer: `${location.logistics}. Order size, product fragility, access, timing and site readiness can all affect the practical delivery plan.`,
+    },
+    {
+      question: `What should I send before requesting a ${service.titleLabel.toLowerCase()} quote?`,
+      answer: `${service.planning} Photos, inspiration references and a budget range also help the team recommend more relevant next steps.`,
     },
   ],
   images: service.imageSet.map((src, index) => ({
@@ -1170,12 +1212,59 @@ const setMetaContent = (selector, content) => {
   if (tag) tag.setAttribute('content', content)
 }
 
+const pageUrlForPath = (path = '/') => `https://www.kleihaus.com${path === '/' ? '/' : path}`
+
+const getServiceRoute = (page) =>
+  page?.serviceType ? localSeoServiceTargets.find((service) => service.titleLabel === page.serviceType) : null
+
+const getLocationHubPath = (areaServed) => {
+  const location = locationSeoTargets.find((item) => item.label === areaServed)
+  if (!location || location.slug === 'kenya') return '/#contact'
+  return `/locations/${location.slug}`
+}
+
+const getPageBreadcrumbs = (page) => {
+  if (!page) return [{ name: 'Home', href: '/' }]
+
+  const serviceRoute = getServiceRoute(page)
+  if (serviceRoute) {
+    return [
+      { name: 'Home', href: '/' },
+      { name: serviceRoute.label, href: serviceRoute.basePath },
+      { name: page.areaServed || 'Kenya', href: getLocationHubPath(page.areaServed) },
+      { name: page.category, href: page.path },
+    ]
+  }
+
+  if (page.path?.startsWith('/locations/')) {
+    return [
+      { name: 'Home', href: '/' },
+      { name: 'Locations served', href: '/#contact' },
+      { name: page.category, href: page.path },
+    ]
+  }
+
+  if (page.eyebrow === 'Project guide') {
+    return [
+      { name: 'Home', href: '/' },
+      { name: 'Project guides', href: '/#faq' },
+      { name: page.category, href: page.path },
+    ]
+  }
+
+  return [
+    { name: 'Home', href: '/' },
+    { name: page.category, href: page.path },
+  ]
+}
+
 const getRouteSchema = (page) => {
   if (!page) return null
 
-  const pageUrl = `https://www.kleihaus.com${page.path}`
+  const pageUrl = pageUrlForPath(page.path)
   const primaryImage = page.images?.[0]
   const primaryImageUrl = primaryImage ? `https://www.kleihaus.com${primaryImage.src}` : defaultSeoImage
+  const breadcrumbs = getPageBreadcrumbs(page)
   const graph = [
     {
       '@type': page.schemaType || 'CollectionPage',
@@ -1198,20 +1287,12 @@ const getRouteSchema = (page) => {
     {
       '@type': 'BreadcrumbList',
       '@id': `${pageUrl}#breadcrumb`,
-      itemListElement: [
-        {
-          '@type': 'ListItem',
-          position: 1,
-          name: 'Home',
-          item: 'https://www.kleihaus.com/',
-        },
-        {
-          '@type': 'ListItem',
-          position: 2,
-          name: page.category,
-          item: pageUrl,
-        },
-      ],
+      itemListElement: breadcrumbs.map((item, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: item.name,
+        item: pageUrlForPath(item.href || page.path),
+      })),
     },
     {
       '@type': 'ItemList',
@@ -1374,11 +1455,17 @@ const imageSrcSet = (src, extension) => {
 }
 
 function OptimizedImage({ src, alt, className = '', pictureClassName = 'contents', sizes = '100vw', ...props }) {
+  const imageProps = {
+    loading: 'lazy',
+    decoding: 'async',
+    ...props,
+  }
+
   return (
     <picture className={pictureClassName}>
       <source srcSet={imageSrcSet(src, 'avif')} sizes={sizes} type="image/avif" />
       <source srcSet={imageSrcSet(src, 'webp')} sizes={sizes} type="image/webp" />
-      <img src={src} alt={alt} className={className} {...props} />
+      <img src={src} alt={alt} className={className} {...imageProps} />
     </picture>
   )
 }
@@ -2767,9 +2854,38 @@ function SupportModal({ open, source, initialMessage = '', onClose }) {
   )
 }
 
+function Breadcrumbs({ page }) {
+  const breadcrumbs = getPageBreadcrumbs(page)
+
+  return (
+    <nav aria-label="Breadcrumb" className="border-b border-neutral-100 bg-white">
+      <ol className="mx-auto flex max-w-7xl items-center gap-1 overflow-x-auto px-4 py-2.5 text-xs font-medium text-neutral-500">
+        {breadcrumbs.map((item, index) => {
+          const isCurrent = index === breadcrumbs.length - 1
+          return (
+            <li key={`${item.href}-${item.name}`} className="flex shrink-0 items-center gap-1">
+              {index > 0 && <ChevronRight className="h-3.5 w-3.5 text-neutral-300" aria-hidden="true" />}
+              {isCurrent ? (
+                <span aria-current="page" className="max-w-[14rem] truncate text-neutral-800 sm:max-w-none">
+                  {item.name}
+                </span>
+              ) : (
+                <a href={item.href} className="rounded-sm transition hover:text-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-200">
+                  {item.name}
+                </a>
+              )}
+            </li>
+          )
+        })}
+      </ol>
+    </nav>
+  )
+}
+
 function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteClick }) {
   return (
     <main className="bg-white">
+      <Breadcrumbs page={page} />
       <section className="border-b border-emerald-100 bg-stone-50">
         <div className="mx-auto grid max-w-7xl gap-5 px-4 py-6 sm:py-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <div>

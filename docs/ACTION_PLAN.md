@@ -24,7 +24,7 @@ No Cloudflare configuration, DNS, Worker routing, secrets, deployment settings o
 
 Highest ROI improvements requiring minimal engineering effort.
 
-Implementation status on 2026-06-24, 2026-06-25, 2026-07-07 and 2026-07-08: GA4 readiness, conversion event hooks, richer local hub FAQs, safe route-level Service/FAQ schema additions, README setup notes, `.env.example` analytics configuration, optional non-sensitive analytics debug logging, the Analytics/Search Console setup guide, GBP UTM documentation, GBP-to-site conversion CTAs, sanitaryware image improvements and the SEO effectiveness audit were completed. Privacy policy, anti-spam controls, visible breadcrumbs, sitemap automation/lastmod freshness, verified GA4/Search Console setup and deeper performance pruning remain open.
+Implementation status on 2026-06-24, 2026-06-25, 2026-07-07 and 2026-07-08: GA4 readiness, conversion event hooks, richer local hub FAQs, safe route-level Service/FAQ schema additions, README setup notes, `.env.example` analytics configuration, optional non-sensitive analytics debug logging, the Analytics/Search Console setup guide, GBP UTM documentation, GBP-to-site conversion CTAs, sanitaryware image improvements, the SEO effectiveness audit, Worker-side route metadata injection, sitemap automation/lastmod freshness, visible breadcrumbs and deeper service-location content were completed. Privacy policy, anti-spam controls, verified GA4/Search Console setup and deeper performance pruning remain open.
 
 | Recommendation | Expected impact | Effort | Priority | Risk |
 | --- | --- | --- | --- | --- |
@@ -35,11 +35,11 @@ Implementation status on 2026-06-24, 2026-06-25, 2026-07-07 and 2026-07-08: GA4 
 | Add visible business hours or response expectation if accurate. | Improves LocalBusiness trust and reduces customer uncertainty. | Low | Medium | Low |
 | Add a form honeypot field and server-side rejection. | Reduces spam with low user friction. | Low | High | Low |
 | Add a release checklist covering build, sitemap, schema, quote endpoint and Workers Builds. | Reduces deployment and SEO regression risk. | Low | High | Low |
-| Add visible breadcrumbs on category, guide and location pages. | Improves UX, internal linking and alignment with BreadcrumbList schema. | Low/Medium | Medium | Low |
+| Add visible breadcrumbs on category, guide and location pages. | Improves UX, internal linking and alignment with BreadcrumbList schema. | Low/Medium | Complete | Low |
 | Review `public/images/kleihaus-logo.jpg` and replace runtime logo usage with a smaller optimized source if visual quality holds. | Reduces repeated logo payload. | Low | Medium | Low |
-| Refresh sitemap `lastmod` values after meaningful content/image updates. | Helps Search Console understand freshness and reduces manual audit drift. | Low | High | Low |
+| Refresh sitemap `lastmod` values after meaningful content/image updates. | Helps Search Console understand freshness and reduces manual audit drift. | Low | Complete: `npm run build` regenerates `public/sitemap.xml` from `src/seoManifest.js`. | Low |
 | Verify the new GBP UTM URL, GA4 events and Search Console sitemap submission after deployment. | Turns repo readiness into measurable SEO performance data. | Low | High | Low |
-| Add a visible breadcrumb UI to route pages. | Aligns visible UX with BreadcrumbList schema and improves deep-route navigation. | Low/Medium | High | Low |
+| Add a visible breadcrumb UI to route pages. | Aligns visible UX with BreadcrumbList schema and improves deep-route navigation. | Low/Medium | Complete | Low |
 
 Phase 1 success metrics:
 
@@ -56,15 +56,15 @@ Moderate effort, meaningful gains.
 
 | Recommendation | Expected impact | Effort | Priority | Risk |
 | --- | --- | --- | --- | --- |
-| Implement GA4 conversion events with privacy-safe payloads. | Provides measurable quote, WhatsApp, phone and email conversion data. | Medium | High | Medium |
+| Implement GA4 conversion events with privacy-safe payloads. | Provides measurable quote, WhatsApp, phone and email conversion data. | Medium | Repo-ready; external GA4 property verification remains | Medium |
 | Build a monthly SEO + lead report combining Search Console queries, D1 quote records and CTA events. | Guides content and CRO decisions with actual demand signals. | Medium | High | Medium |
-| Add Worker-side route metadata injection or a prerender strategy for deep routes. | Improves crawler/social preview reliability for non-homepage URLs. | Medium/High | High | Medium |
-| Expand location hubs with unique local FAQs, logistics notes and project examples. | Improves local search relevance without doorway-page risk. | Medium | High | Low/Medium |
+| Add Worker-side route metadata injection or a prerender strategy for deep routes. | Improves crawler/social preview reliability for non-homepage URLs. | Medium/High | Complete: Worker injects route head metadata and safe JSON-LD before asset response. | Medium |
+| Expand location hubs with unique local FAQs, logistics notes and project examples. | Improves local search relevance without doorway-page risk. | Medium | Partially complete: service-location pages now include deeper local copy; verified project examples remain strategic work. | Low/Medium |
 | Add Service schema for verified services: finishing advisory, delivery coordination, installation support and training. | Strengthens structured understanding without Product/Offer risk. | Medium | Medium | Low |
 | Add focus trapping and escape-key behavior to the support modal. | Improves accessibility and keyboard usability. | Medium | High | Low |
 | Add basic rate limiting using Cloudflare-native tools or Worker logic. | Protects quote endpoint from spam/abuse. | Medium | High | Medium |
 | Refactor route/content arrays from `src/App.jsx` into data modules. | Reduces regression risk and makes SEO/content updates safer. | Medium | High | Medium |
-| Generate sitemap from route data. | Prevents route/sitemap drift. | Medium | Medium | Low |
+| Generate sitemap from route data. | Prevents route/sitemap drift. | Medium | Complete | Low |
 | Prune unused or oversized original images from runtime delivery paths where AVIF/WebP variants already cover usage. | Improves payload size and cache efficiency. | Medium | Medium | Low/Medium |
 
 Phase 2 success metrics:
