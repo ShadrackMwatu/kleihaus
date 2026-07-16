@@ -14,6 +14,30 @@ Rule: Every future meaningful change must update `docs/CHANGELOG.md` and, where 
 - Locations: Nairobi | Machakos | Makueni
 - Product focus: tiles, sanitaryware, paints, adhesives, grout and finishing materials for homes and projects in Kenya.
 
+## Full Website Conversion Audit
+
+On 2026-07-16, a comprehensive commercial conversion audit was added at `docs/KLEIHAUS_FULL_WEBSITE_CONVERSION_AUDIT.md`.
+
+Current commercial score summary:
+
+- Overall commercial effectiveness: 86/100
+- Conversion readiness: 88/100
+- Mobile conversion: 89/100
+- Trust and credibility: 76/100
+- Product discovery: 82/100
+- Local SEO/customer acquisition: 88/100
+- Measurement readiness: 88/100
+
+Repo-supported improvements implemented with the audit:
+
+- Quote form guidance now asks for measurements, location, product needs, timing, finish and budget details.
+- Quote and support success/error messages now give clearer follow-up actions.
+- Support modal copy now better guides customers toward product, quote, delivery and installation questions.
+- Product, route and guide CTA labels are more commercially specific.
+- Analytics event payloads now preserve page type, CTA label, CTA position, contact method, enquiry intent, guide name, form name, form step, form status, lead source and device type.
+
+The audit identifies owner-input requirements before stronger trust claims can be added: confirmed location details, business hours, delivery areas, response-time commitment, payment methods, product brands, availability, price ranges, warranties, returns guidance, showroom photos, project photos, testimonials and Google Business Profile links.
+
 ## Google Business Profile Conversion Note
 
 The latest Google Business Profile performance signal reviewed on 2026-07-07 covered June 2026 and showed 62 profile views with 0 calls, 0 chat clicks, 0 website visits and 0 total interactions. Repo-only improvements now support visitors arriving from GBP with:

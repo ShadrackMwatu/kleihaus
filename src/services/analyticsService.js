@@ -105,10 +105,12 @@ const getUrlContext = () => {
       utmSource: '',
       utmMedium: '',
       utmCampaign: '',
+      deviceType: '',
     }
   }
 
   const params = new URLSearchParams(window.location.search)
+  const width = window.innerWidth || 0
 
   return {
     pagePath: `${window.location.pathname}${window.location.search}`,
@@ -116,6 +118,7 @@ const getUrlContext = () => {
     utmSource: params.get('utm_source') || '',
     utmMedium: params.get('utm_medium') || '',
     utmCampaign: params.get('utm_campaign') || '',
+    deviceType: width < 768 ? 'mobile' : width < 1024 ? 'tablet' : 'desktop',
   }
 }
 
@@ -140,6 +143,17 @@ const normalizeEvent = (eventType, payload = {}) => {
     utmSource: safePayload.utmSource || safePayload.utm_source || urlContext.utmSource,
     utmMedium: safePayload.utmMedium || safePayload.utm_medium || urlContext.utmMedium,
     utmCampaign: safePayload.utmCampaign || safePayload.utm_campaign || urlContext.utmCampaign,
+    pageType: safePayload.pageType || '',
+    ctaLabel: safePayload.ctaLabel || '',
+    ctaPosition: safePayload.ctaPosition || safePayload.clickedElement || '',
+    contactMethod: safePayload.contactMethod || '',
+    enquiryIntent: safePayload.enquiryIntent || safePayload.intent || '',
+    guideName: safePayload.guideName || safePayload.guide || '',
+    formName: safePayload.formName || '',
+    formStep: safePayload.formStep || '',
+    formStatus: safePayload.formStatus || '',
+    leadSource: safePayload.leadSource || safePayload.source || urlContext.utmSource || '',
+    deviceType: safePayload.deviceType || urlContext.deviceType,
     searchQuery: safePayload.searchQuery || safePayload.query || '',
     clickedElement: safePayload.clickedElement || safePayload.source || safePayload.element || '',
     productCategory: safePayload.productCategory || safePayload.category || '',
@@ -228,6 +242,17 @@ const sendEventToGa = (event) => {
       traffic_source: event.utmSource || undefined,
       traffic_medium: event.utmMedium || undefined,
       campaign: event.utmCampaign || undefined,
+      page_type: event.pageType || undefined,
+      cta_label: event.ctaLabel || undefined,
+      cta_position: event.ctaPosition || undefined,
+      contact_method: event.contactMethod || undefined,
+      enquiry_intent: event.enquiryIntent || undefined,
+      guide_name: event.guideName || undefined,
+      form_name: event.formName || undefined,
+      form_step: event.formStep || undefined,
+      form_status: event.formStatus || undefined,
+      lead_source: event.leadSource || undefined,
+      device_type: event.deviceType || undefined,
     })
     logAnalyticsDebug(event, 'ga_event_sent')
   } catch {

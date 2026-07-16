@@ -83,7 +83,7 @@ export const quoteRequestService = {
       if (!response.ok || !data.success) {
         return {
           ok: false,
-          message: data.message || 'We could not submit your request. Please try again or call Kleihaus.',
+          message: data.message || 'We could not submit your request. Please try again, call +254 748 827 166, or use WhatsApp for immediate help.',
           data,
         }
       }
@@ -96,7 +96,7 @@ export const quoteRequestService = {
 
         return {
           ok: false,
-          message: 'Your request was saved, but email delivery was not confirmed. Please call Kleihaus so our team can respond quickly.',
+          message: 'Your request was saved, but email delivery was not confirmed. Please call +254 748 827 166 or use WhatsApp so the Kleihaus team can respond quickly.',
           data,
         }
       }
@@ -104,7 +104,7 @@ export const quoteRequestService = {
       if (payload.channel === 'whatsapp' && !data.whatsapp?.sent) {
         return {
           ok: true,
-          message: data.message || 'Support request received. Our team will contact you shortly.',
+          message: data.message || 'Support request received. The Kleihaus team will follow up using the contact details you shared.',
           data,
         }
       }
@@ -114,14 +114,14 @@ export const quoteRequestService = {
         message:
           data.message ||
           (payload.channel === 'whatsapp'
-            ? 'Support request received. Our team will contact you shortly.'
-            : 'Request sent successfully. Our team will respond by email or phone.'),
+            ? 'Support request received. The Kleihaus team will follow up using the contact details you shared.'
+            : 'Request sent successfully. The Kleihaus team will review your details and respond by phone or email.'),
         data,
       }
     } catch (error) {
       return {
         ok: false,
-        message: 'We could not submit your request. Please try again or call Kleihaus.',
+        message: 'We could not submit your request. Please try again, call +254 748 827 166, or use WhatsApp for immediate help.',
       }
     }
   },

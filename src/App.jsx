@@ -2475,6 +2475,14 @@ function Contact({ onSupportFormClick, compact = false }) {
       location: preparedRequest.payload.location || 'not_provided',
       hasEmail: Boolean(preparedRequest.payload.email),
       hasPhone: Boolean(preparedRequest.payload.phone),
+      pageType: compact ? 'homepage_panel' : 'contact_section',
+      ctaLabel: 'Send request',
+      ctaPosition: 'quote_form_submit',
+      contactMethod: 'quote_form',
+      enquiryIntent: 'quote',
+      formName: 'quote_request',
+      formStep: 'submit',
+      formStatus: 'attempt',
     })
 
     const backendResult = await quoteRequestService.submitBackend(preparedRequest.payload)
@@ -2485,6 +2493,14 @@ function Contact({ onSupportFormClick, compact = false }) {
         clickedElement: 'contact_form',
         leadReference: backendResult.data?.leadReference,
         requestId: backendResult.data?.requestId,
+        pageType: compact ? 'homepage_panel' : 'contact_section',
+        ctaLabel: 'Send request',
+        ctaPosition: 'quote_form_submit',
+        contactMethod: 'quote_form',
+        enquiryIntent: 'quote',
+        formName: 'quote_request',
+        formStep: 'submit',
+        formStatus: 'success',
       })
       if (quoteStatusTimeoutRef.current) window.clearTimeout(quoteStatusTimeoutRef.current)
       debugLog('QUOTE_FRONTEND_SUCCESS_CLEARING_FORM', {
@@ -2514,6 +2530,14 @@ function Contact({ onSupportFormClick, compact = false }) {
       clickedElement: 'contact_form',
       status: backendResult.data?.status,
       reason: backendResult.data?.error || backendResult.message,
+      pageType: compact ? 'homepage_panel' : 'contact_section',
+      ctaLabel: 'Send request',
+      ctaPosition: 'quote_form_submit',
+      contactMethod: 'quote_form',
+      enquiryIntent: 'quote',
+      formName: 'quote_request',
+      formStep: 'submit',
+      formStatus: 'error',
     })
     if (backendResult.data?.success && !backendResult.data?.email?.sent) {
       debugLog('QUOTE_FRONTEND_EMAIL_NOT_SENT', {
@@ -2538,7 +2562,7 @@ function Contact({ onSupportFormClick, compact = false }) {
       href: 'mailto:sales@kleihaus.com',
       icon: Mail,
       className: 'border-white/15 bg-white/10 text-white hover:bg-white/15',
-      onClick: () => analyticsService.track('email_click', { clickedElement: 'contact_action_email' }),
+      onClick: () => analyticsService.track('email_click', { clickedElement: 'contact_action_email', ctaLabel: 'Email Kleihaus', ctaPosition: 'contact_actions', contactMethod: 'email', enquiryIntent: 'contact' }),
     },
     {
       label: 'Chat on WhatsApp',
@@ -2546,7 +2570,7 @@ function Contact({ onSupportFormClick, compact = false }) {
       href: buildWhatsAppUrl('Hello Kleihaus, I would like help with a quote, products, delivery or installation support.'),
       icon: WhatsAppLogo,
       className: 'border-[#128C7E] bg-[#128C7E] text-white hover:border-[#075E54] hover:bg-[#075E54]',
-      onClick: () => analyticsService.track('whatsapp_click', { clickedElement: 'contact_action_whatsapp' }),
+      onClick: () => analyticsService.track('whatsapp_click', { clickedElement: 'contact_action_whatsapp', ctaLabel: 'Chat on WhatsApp', ctaPosition: 'contact_actions', contactMethod: 'whatsapp', enquiryIntent: 'quote_support' }),
     },
     {
       label: 'Call Kleihaus',
@@ -2554,7 +2578,7 @@ function Contact({ onSupportFormClick, compact = false }) {
       href: 'tel:+254748827166',
       icon: Phone,
       className: 'border-white/15 bg-white/10 text-white hover:bg-white/15',
-      onClick: () => analyticsService.track('phone_click', { clickedElement: 'contact_action_phone' }),
+      onClick: () => analyticsService.track('phone_click', { clickedElement: 'contact_action_phone', ctaLabel: 'Call Kleihaus', ctaPosition: 'contact_actions', contactMethod: 'phone', enquiryIntent: 'contact' }),
     },
   ]
 
@@ -2563,9 +2587,9 @@ function Contact({ onSupportFormClick, compact = false }) {
       <div className={`${compact ? 'grid gap-4 p-4 sm:p-5' : 'mx-auto grid max-w-7xl gap-8 px-4 py-10'} lg:grid-cols-[0.9fr_1.1fr]`}>
         <div>
           <p className="text-sm font-semibold uppercase text-emerald-300">Contact Kleihaus</p>
-          <h2 className="mt-1.5 text-2xl font-semibold sm:text-3xl">Request a quote.</h2>
+          <h2 className="mt-1.5 text-2xl font-semibold sm:text-3xl">Request a quotation or talk to Kleihaus now.</h2>
           <p className="mt-3 leading-6 text-neutral-300">
-            Share product type, quantity, location and budget range for a faster response.
+            Share product type, measurements, quantity, location and budget range. Kleihaus uses those details to confirm availability, delivery options and the right next step.
           </p>
 
           <div className="mt-5 grid gap-2 sm:grid-cols-2">
@@ -2587,7 +2611,7 @@ function Contact({ onSupportFormClick, compact = false }) {
             <button
               type="button"
               onClick={() => {
-                analyticsService.track('contact_click', { clickedElement: 'contact_action_quote' })
+                analyticsService.track('contact_click', { clickedElement: 'contact_action_quote', ctaLabel: 'Request quote', ctaPosition: 'contact_actions', contactMethod: 'quote_form', enquiryIntent: 'quote' })
                 scrollToQuoteForm()
               }}
               className="inline-flex items-center justify-center gap-2 rounded-md border border-emerald-500 bg-[#16A34A] px-3 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200"
@@ -2623,7 +2647,10 @@ function Contact({ onSupportFormClick, compact = false }) {
         >
           <div className="mb-4">
             <h3 className="text-lg font-semibold">Tell us what you need</h3>
-            <p className="mt-1 text-sm leading-5 text-neutral-600">Quote requests are emailed to Kleihaus only; we respond by email or phone.</p>
+            <p className="mt-1 text-sm leading-5 text-neutral-600">Send your measurements, location and product needs. Kleihaus will review the request and respond by phone or email.</p>
+          </div>
+          <div className="mb-4 rounded-md border border-emerald-100 bg-emerald-50 px-3 py-2 text-xs leading-5 text-emerald-950 sm:text-sm">
+            For a faster quotation, include room size or bill of quantities, preferred finish, delivery location, timing and whether you need installation guidance.
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
             <label className="grid gap-2 text-sm font-medium text-neutral-700">
@@ -2677,7 +2704,7 @@ function Contact({ onSupportFormClick, compact = false }) {
           )}
           <div className="mt-4 flex flex-wrap gap-2.5">
             <Button disabled={isQuoteSubmitting} className="border-emerald-700 bg-[#16A34A] px-4 py-2.5 text-sm shadow-md shadow-emerald-900/10 hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-70">
-              {isQuoteSubmitting ? 'Sending...' : 'Send request'}
+              {isQuoteSubmitting ? 'Sending...' : 'Send quotation request'}
             </Button>
             <ButtonSecondary type="button" onClick={() => onSupportFormClick('contact_form')} className={`${whatsappCtaClass} px-4 py-2.5 text-sm`}>
               <WhatsAppBrandText>WhatsApp support</WhatsAppBrandText>
@@ -2760,6 +2787,14 @@ function SupportModal({ open, source, initialMessage = '', onClose }) {
       productCategory: 'Support request',
       hasEmail: Boolean(preparedRequest.payload.email),
       hasPhone: Boolean(preparedRequest.payload.phone),
+      pageType: 'support_modal',
+      ctaLabel: 'Send request',
+      ctaPosition: source || 'support_modal',
+      contactMethod: 'support_form',
+      enquiryIntent: 'support',
+      formName: 'support_request',
+      formStep: 'submit',
+      formStatus: 'attempt',
     })
 
     const backendResult = await quoteRequestService.submitBackend({
@@ -2777,6 +2812,14 @@ function SupportModal({ open, source, initialMessage = '', onClose }) {
         clickedElement: source || 'support_modal',
         leadReference: backendResult.data?.leadReference,
         requestId: backendResult.data?.requestId,
+        pageType: 'support_modal',
+        ctaLabel: 'Send request',
+        ctaPosition: source || 'support_modal',
+        contactMethod: 'support_form',
+        enquiryIntent: 'support',
+        formName: 'support_request',
+        formStep: 'submit',
+        formStatus: 'success',
       })
       setForm({ name: '', phone: '', email: '', message: '' })
       setSubmitting(false)
@@ -2786,6 +2829,14 @@ function SupportModal({ open, source, initialMessage = '', onClose }) {
     analyticsService.track('quote_form_submit_error', {
       clickedElement: source || 'support_modal',
       reason: backendResult.data?.error || backendResult.message,
+      pageType: 'support_modal',
+      ctaLabel: 'Send request',
+      ctaPosition: source || 'support_modal',
+      contactMethod: 'support_form',
+      enquiryIntent: 'support',
+      formName: 'support_request',
+      formStep: 'submit',
+      formStatus: 'error',
     })
     setSubmitting(false)
   }
@@ -2796,9 +2847,9 @@ function SupportModal({ open, source, initialMessage = '', onClose }) {
         <div className="flex items-start justify-between gap-3 border-b border-neutral-200 px-4 py-3 sm:gap-4 sm:px-5 sm:py-4">
           <div>
             <p className="text-xs font-semibold uppercase tracking-wide text-emerald-700">Kleihaus support</p>
-            <h2 id="support-modal-title" className="mt-1 text-lg font-semibold sm:text-xl">Need Help?</h2>
+            <h2 id="support-modal-title" className="mt-1 text-lg font-semibold sm:text-xl">Get product or quote help</h2>
             <p className="mt-1 text-xs leading-5 text-neutral-600 sm:text-sm sm:leading-6">
-              Send your support request here, or open WhatsApp chat for a direct conversation.
+              Share measurements, product category, location and timing, or open WhatsApp for a direct conversation.
             </p>
             <p className="mt-1 text-xs leading-5 text-neutral-500">
               Prefer calling?{' '}
@@ -2832,7 +2883,7 @@ function SupportModal({ open, source, initialMessage = '', onClose }) {
             <Textarea
               name="support-message"
               autoComplete="off"
-              placeholder="Tell us what you need help with..."
+              placeholder="Example: Need bathroom tiles and shower fittings for a Nairobi apartment. I can share photos and measurements..."
               rows={3}
               value={form.message}
               onChange={updateField('message')}
@@ -2857,13 +2908,22 @@ function SupportModal({ open, source, initialMessage = '', onClose }) {
             <ButtonSecondary type="button" onClick={onClose} className="px-4 py-2 text-sm">Close</ButtonSecondary>
             <button
               type="button"
-              onClick={() => openWhatsAppChat(form.message || initialMessage || DEFAULT_WHATSAPP_MESSAGE)}
+              onClick={() => {
+                analyticsService.track('whatsapp_click', {
+                  clickedElement: source || 'support_modal_chat',
+                  ctaLabel: 'Chat on WhatsApp',
+                  ctaPosition: 'support_modal',
+                  contactMethod: 'whatsapp',
+                  enquiryIntent: 'support',
+                })
+                openWhatsAppChat(form.message || initialMessage || DEFAULT_WHATSAPP_MESSAGE)
+              }}
               className={`${whatsappCtaClass} inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-semibold`}
             >
               <WhatsAppBrandText>Chat on WhatsApp</WhatsAppBrandText>
             </button>
             <Button type="submit" disabled={submitting} className="border-emerald-700 bg-[#16A34A] px-4 py-2 text-sm shadow-sm shadow-emerald-900/10 hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-70">
-              {submitting ? 'Sending...' : 'Send request'}
+              {submitting ? 'Sending...' : 'Send support request'}
             </Button>
           </div>
         </form>
@@ -2926,11 +2986,11 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
                   onSectionChange('contact')
               }}
             >
-                {page.ctaLabel || 'Request quote'}
+                {page.ctaLabel || 'Request quotation'}
                 <ArrowRight className="h-4 w-4" />
               </Button>
               <ButtonSecondary type="button" onClick={() => onSupportClick(`category_page_${page.path}`, `I would like a quote for ${page.category}. Please share availability, price guidance and delivery details.`)} className={`${whatsappCtaClass} px-3 py-2 text-xs sm:px-4 sm:py-2.5 sm:text-sm`}>
-                <WhatsAppBrandText>WhatsApp support</WhatsAppBrandText>
+                <WhatsAppBrandText>Ask on WhatsApp</WhatsAppBrandText>
               </ButtonSecondary>
               <a
                 href="tel:+254748827166"
@@ -2939,7 +2999,7 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
                 className="inline-flex items-center justify-center gap-1.5 rounded-md border border-neutral-300 bg-white px-3 py-2 text-xs font-semibold text-neutral-900 shadow-sm transition hover:border-emerald-700 hover:text-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:px-4 sm:py-2.5 sm:text-sm"
               >
                 <Phone className="h-4 w-4" />
-                Call Kleihaus
+                Call adviser
               </a>
             </div>
           </div>
@@ -3039,7 +3099,7 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
             </div>
             <div className="flex flex-wrap gap-2 lg:justify-end">
               <ButtonSecondary type="button" onClick={() => onSupportClick(`guide_project_support_${page.path}`, `Hello Kleihaus, I read the ${page.category}. Please help me plan products, quantities, delivery and quote details.`)} className={`${whatsappCtaClass} px-3 py-2 text-xs sm:text-sm`}>
-                <WhatsAppBrandText>WhatsApp guide help</WhatsAppBrandText>
+                <WhatsAppBrandText>Ask guide question</WhatsAppBrandText>
               </ButtonSecondary>
               <button
                 type="button"
@@ -3049,7 +3109,7 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
                 }}
                 className="inline-flex items-center justify-center gap-2 rounded-md border border-emerald-700 bg-[#16A34A] px-3 py-2 text-xs font-semibold text-white transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:text-sm"
               >
-                Request quote
+                Request guide-based quote
                 <ArrowRight className="h-4 w-4" />
               </button>
             </div>
@@ -3103,10 +3163,10 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
               className="inline-flex items-center justify-center gap-2 rounded-md border border-neutral-300 bg-white px-3 py-2 text-xs font-semibold text-neutral-900 transition hover:border-emerald-700 hover:text-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:text-sm"
             >
               <Phone className="h-4 w-4" />
-              Call
+              Call adviser
             </a>
             <ButtonSecondary type="button" onClick={() => onSupportClick(`local_support_whatsapp_${page.path}`, `Hello Kleihaus, I need local support for ${page.category}. Please help with product guidance, delivery and quote details.`)} className={`${whatsappCtaClass} px-3 py-2 text-xs sm:text-sm`}>
-              <WhatsAppBrandText>WhatsApp</WhatsAppBrandText>
+              <WhatsAppBrandText>Ask local question</WhatsAppBrandText>
             </ButtonSecondary>
             <button
               type="button"
@@ -3116,7 +3176,7 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
               }}
               className="inline-flex items-center justify-center gap-2 rounded-md border border-emerald-700 bg-[#16A34A] px-3 py-2 text-xs font-semibold text-white transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:text-sm"
             >
-              Quote
+              Request local quote
               <ArrowRight className="h-4 w-4" />
             </button>
           </div>
@@ -3142,9 +3202,9 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
         </div>
         <div className="flex flex-col gap-3 rounded-xl bg-neutral-950 p-4 text-white sm:p-5 md:flex-row md:items-center md:justify-between">
           <div>
-            <h2 className="text-xl font-semibold sm:text-2xl">Ready to plan a {page.category.toLowerCase()} quote?</h2>
+            <h2 className="text-xl font-semibold sm:text-2xl">Ready to plan a {page.category.toLowerCase()} quotation?</h2>
             <p className="mt-2 text-sm leading-6 text-neutral-300">
-              Send the basics now, then the Kleihaus team guides availability, matching options and next steps.
+              Send measurements, quantity, location and timing so the Kleihaus team can guide availability, matching options and next steps.
             </p>
           </div>
           <div className="flex shrink-0 flex-wrap gap-2">
@@ -3155,7 +3215,7 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
               Browse catalogue
             </a>
             <ButtonSecondary type="button" onClick={() => onSupportClick(`category_page_bottom_${page.path}`, `I would like a quote for ${page.category}. Please share availability, price guidance and delivery details.`)} className={`${whatsappCtaClass} px-3 py-2 text-xs sm:text-sm`}>
-              <WhatsAppBrandText>WhatsApp help</WhatsAppBrandText>
+              <WhatsAppBrandText>WhatsApp quotation help</WhatsAppBrandText>
             </ButtonSecondary>
           </div>
         </div>
@@ -3387,6 +3447,7 @@ export default function App() {
         clickedElement: `location_${activeCategoryPage?.category || currentPath}`,
         pagePath: currentPath,
         location: activeCategoryPage?.category || '',
+        pageType: 'location',
       })
     }
 
@@ -3395,6 +3456,8 @@ export default function App() {
         clickedElement: `guide_${activeCategoryPage?.category || currentPath}`,
         pagePath: currentPath,
         guide: activeCategoryPage?.category || '',
+        guideName: activeCategoryPage?.category || '',
+        pageType: 'guide',
       })
     }
   }, [activeCategoryPage, currentPath])
@@ -3489,13 +3552,29 @@ export default function App() {
   }
 
   const handleSupportClick = (source, message = '') => {
-    analyticsService.track('whatsapp_click', { clickedElement: source, projectType, productCategory: selectedCategory })
+    analyticsService.track('whatsapp_click', {
+      clickedElement: source,
+      projectType,
+      productCategory: selectedCategory,
+      ctaLabel: 'WhatsApp',
+      ctaPosition: source,
+      contactMethod: 'whatsapp',
+      enquiryIntent: 'quote_support',
+    })
     openWhatsAppChat(message || DEFAULT_WHATSAPP_MESSAGE)
     refreshSignals()
   }
 
   const handleSupportFormClick = (source, message = '') => {
-    analyticsService.track('whatsapp_click', { clickedElement: source, projectType, productCategory: selectedCategory })
+    analyticsService.track('whatsapp_click', {
+      clickedElement: source,
+      projectType,
+      productCategory: selectedCategory,
+      ctaLabel: 'WhatsApp support form',
+      ctaPosition: source,
+      contactMethod: 'support_form',
+      enquiryIntent: 'quote_support',
+    })
     setSupportModal({
       open: true,
       source,
@@ -3505,7 +3584,15 @@ export default function App() {
   }
 
   const handleQuoteClick = (source) => {
-    analyticsService.track('contact_click', { clickedElement: source, projectType, productCategory: selectedCategory })
+    analyticsService.track('contact_click', {
+      clickedElement: source,
+      projectType,
+      productCategory: selectedCategory,
+      ctaLabel: 'Request quotation',
+      ctaPosition: source,
+      contactMethod: 'quote_form',
+      enquiryIntent: 'quote',
+    })
     refreshSignals()
   }
 
@@ -3515,12 +3602,27 @@ export default function App() {
   }
 
   const handleContactClick = (eventType, source) => {
-    analyticsService.track(eventType, { clickedElement: source, projectType, productCategory: selectedCategory })
+    const contactMethod = eventType === 'phone_click' ? 'phone' : eventType === 'email_click' ? 'email' : ''
+    analyticsService.track(eventType, {
+      clickedElement: source,
+      projectType,
+      productCategory: selectedCategory,
+      ctaPosition: source,
+      contactMethod,
+      enquiryIntent: 'contact',
+    })
     refreshSignals()
   }
 
   const handleGuideClick = (topic) => {
-    analyticsService.track('guide_topic_clicked', { topic, projectType })
+    analyticsService.track('guide_topic_clicked', {
+      topic,
+      guideName: topic,
+      projectType,
+      ctaLabel: topic,
+      ctaPosition: 'helpful_guides',
+      enquiryIntent: 'research',
+    })
     refreshSignals()
   }
 

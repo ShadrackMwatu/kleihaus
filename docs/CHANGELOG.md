@@ -6,6 +6,18 @@ Rule: Every future meaningful change must update `docs/CHANGELOG.md` and, where 
 
 Current deployment note: production now uses GitHub `main` -> Cloudflare Workers Builds -> Worker Assets -> Worker `kleihaus` -> `kleihaus.com` and `www.kleihaus.com`. The active quote endpoint is `/api/quote-request`. Older entries that mention Cloudflare Pages or `https://api.kleihaus.com/quote-request` are historical and describe earlier deployment states, not the current production path.
 
+## 2026-07-16
+
+### Full Website Conversion Audit
+
+- Added `docs/KLEIHAUS_FULL_WEBSITE_CONVERSION_AUDIT.md` with a page-by-page and block-by-block commercial audit of the Kleihaus website.
+- Scored commercial effectiveness, conversion readiness, mobile conversion, trust, product discovery, local SEO and measurement readiness.
+- Documented customer journey analysis for homeowners, contractors, property developers, institutional buyers, resellers and installation-support customers.
+- Added prioritized recommendations, quick wins, owner-input requirements, revised page structures, copy rewrites, analytics plan and implementation roadmap.
+- Improved quote form guidance, support modal copy, CTA labels and success/error messages to reduce enquiry friction.
+- Enriched analytics payloads with page type, CTA label, CTA position, contact method, enquiry intent, guide name, form name, form step, form status, lead source and device type.
+- Preserved existing routes, design direction, metadata, sitemap generation, breadcrumbs, quote workflow, WhatsApp same-tab behavior, GA4 configuration model and Cloudflare Workers architecture.
+
 ## 2026-07-08
 
 ### SEO Authority And Measurement Roadmap
