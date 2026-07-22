@@ -980,9 +980,105 @@ const locationHubPages = [
   },
 ]
 
+const projectImageItems = [
+  {
+    src: '/images/projects/project-kitchen-sink-window-01.jpg',
+    alt: 'Kitchen sink and countertop beside a wide window',
+    label: 'Kitchen sink and countertop',
+    group: 'Kitchen finishing',
+    width: 1400,
+    height: 990,
+  },
+  {
+    src: '/images/projects/project-kitchen-cabinet-finish-01.jpg',
+    alt: 'Kitchen cabinet, countertop and backsplash finishing view',
+    label: 'Kitchen cabinet finish',
+    group: 'Kitchen finishing',
+    width: 1200,
+    height: 1200,
+  },
+  {
+    src: '/images/projects/project-kitchen-black-sink-01.jpg',
+    alt: 'Black kitchen sink and countertop below a wide window',
+    label: 'Black kitchen sink',
+    group: 'Kitchen finishing',
+    width: 1400,
+    height: 990,
+  },
+  {
+    src: '/images/projects/project-kitchen-overview-01.jpg',
+    alt: 'Kitchen cabinets, countertop and appliance layout',
+    label: 'Kitchen overview',
+    group: 'Kitchen finishing',
+    width: 1200,
+    height: 1200,
+  },
+  {
+    src: '/images/projects/project-kitchen-tile-backsplash-01.jpg',
+    alt: 'Kitchen counter with textured white backsplash tiles and black sink',
+    label: 'Textured backsplash',
+    group: 'Kitchen finishing',
+    width: 1400,
+    height: 990,
+  },
+  {
+    src: '/images/projects/project-kitchen-overview-02.jpg',
+    alt: 'Kitchen cabinet and countertop layout beside a balcony door',
+    label: 'Kitchen layout',
+    group: 'Kitchen finishing',
+    width: 1200,
+    height: 1200,
+  },
+  {
+    src: '/images/projects/project-kitchen-grey-sink-01.jpg',
+    alt: 'Grey double kitchen sink with marble-look countertop and textured backsplash',
+    label: 'Grey double sink',
+    group: 'Kitchen finishing',
+    width: 1400,
+    height: 990,
+  },
+  {
+    src: '/images/projects/project-kitchen-grey-sink-02.jpg',
+    alt: 'Grey kitchen sink and countertop with decorative backsplash tiles',
+    label: 'Grey kitchen sink',
+    group: 'Kitchen finishing',
+    width: 1400,
+    height: 990,
+  },
+  {
+    src: '/images/projects/project-kitchen-black-sink-02.jpg',
+    alt: 'Black kitchen sink with marble-look countertop and white backsplash tiles',
+    label: 'Black sink detail',
+    group: 'Kitchen finishing',
+    width: 1400,
+    height: 990,
+  },
+]
+
 const seoLandingPages = [...categoryLandingPages, ...localSeoLandingPages, ...guideSeoPages, ...locationHubPages]
 
-const categoryLandingByPath = Object.fromEntries(seoLandingPages.map((page) => [page.path, page]))
+const projectsPage = {
+  path: '/projects',
+  title: 'Kleihaus Projects | Kitchen Finishing Gallery',
+  description: 'Explore selected kitchen finishing project images featuring tiles, sinks, countertops and finishing solutions supplied or supported by Kleihaus.',
+  eyebrow: 'Projects',
+  h1: 'Selected kitchen finishing project gallery',
+  intro:
+    'Explore selected projects featuring tiles, sanitaryware, paints and finishing solutions supplied or supported by Kleihaus. The gallery is based only on the supplied project photographs and avoids unsupported claims about installation, dates, locations or customers.',
+  category: 'Projects',
+  schemaType: 'CollectionPage',
+  ctaLabel: 'Request a similar quote',
+  images: projectImageItems,
+  relatedLinks: [
+    { label: 'Tiles', href: '/tiles' },
+    { label: 'Sanitaryware', href: '/sanitaryware' },
+    { label: 'Paints', href: '/paints' },
+    { label: 'Cost estimation guide', href: '/cost-estimation-guide' },
+  ],
+  pageType: 'projects',
+}
+
+const categoryLandingByPath = Object.fromEntries([...seoLandingPages, projectsPage].map((page) => [page.path, page]))
 
 const categoryGuideTargets = {
   Tiles: '/tiles',
@@ -1506,6 +1602,15 @@ const responsiveImageWidths = {
   '/images/paint-interior.jpg': [480, 768],
   '/images/paint-roof.jpg': [480, 768],
   '/images/placeholder.jpg': [480],
+  '/images/projects/project-kitchen-black-sink-01.jpg': [480, 768],
+  '/images/projects/project-kitchen-black-sink-02.jpg': [480, 768],
+  '/images/projects/project-kitchen-cabinet-finish-01.jpg': [480, 768],
+  '/images/projects/project-kitchen-grey-sink-01.jpg': [480, 768],
+  '/images/projects/project-kitchen-grey-sink-02.jpg': [480, 768],
+  '/images/projects/project-kitchen-overview-01.jpg': [480, 768],
+  '/images/projects/project-kitchen-overview-02.jpg': [480, 768],
+  '/images/projects/project-kitchen-sink-window-01.jpg': [480, 768],
+  '/images/projects/project-kitchen-tile-backsplash-01.jpg': [480, 768],
   '/images/sanitary-accessories.jpg': [480, 768],
   '/images/sanitary-basins.jpg': [480],
   '/images/sanitary-baths.jpg': [480, 768],
@@ -3304,6 +3409,234 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
   )
 }
 
+function ProjectsPage({ page, onSectionChange, onSupportClick, onQuoteClick }) {
+  const [activeImageIndex, setActiveImageIndex] = useState(null)
+  const activeImage = activeImageIndex === null ? null : page.images[activeImageIndex]
+
+  useEffect(() => {
+    if (!activeImage) return undefined
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setActiveImageIndex(null)
+        analyticsService.track('project_gallery_close', { clickedElement: 'projects_lightbox_escape', ctaPosition: 'projects_lightbox' })
+      }
+      if (event.key === 'ArrowRight') {
+        setActiveImageIndex((current) => {
+          const next = current === null ? 0 : (current + 1) % page.images.length
+          analyticsService.track('project_gallery_next', { clickedElement: 'projects_lightbox_next_keyboard', ctaPosition: 'projects_lightbox', galleryIndex: next + 1 })
+          return next
+        })
+      }
+      if (event.key === 'ArrowLeft') {
+        setActiveImageIndex((current) => {
+          const next = current === null ? 0 : (current - 1 + page.images.length) % page.images.length
+          analyticsService.track('project_gallery_previous', { clickedElement: 'projects_lightbox_previous_keyboard', ctaPosition: 'projects_lightbox', galleryIndex: next + 1 })
+          return next
+        })
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [activeImage, page.images.length])
+
+  const openImage = (index) => {
+    setActiveImageIndex(index)
+    analyticsService.track('project_gallery_open', {
+      clickedElement: 'projects_gallery_image',
+      ctaPosition: 'projects_gallery',
+      galleryIndex: index + 1,
+      projectCategory: page.images[index].group,
+    })
+  }
+
+  const showImage = (direction) => {
+    setActiveImageIndex((current) => {
+      const next = current === null ? 0 : (current + direction + page.images.length) % page.images.length
+      analyticsService.track(direction > 0 ? 'project_gallery_next' : 'project_gallery_previous', {
+        clickedElement: direction > 0 ? 'projects_lightbox_next' : 'projects_lightbox_previous',
+        ctaPosition: 'projects_lightbox',
+        galleryIndex: next + 1,
+      })
+      return next
+    })
+  }
+
+  const closeImage = () => {
+    setActiveImageIndex(null)
+    analyticsService.track('project_gallery_close', { clickedElement: 'projects_lightbox_close', ctaPosition: 'projects_lightbox' })
+  }
+
+  return (
+    <main className="bg-white">
+      <Breadcrumbs page={page} />
+      <section className="border-b border-emerald-100 bg-stone-50">
+        <div className="mx-auto grid max-w-7xl gap-6 px-4 py-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <div>
+            <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">{page.eyebrow}</p>
+            <h1 className="mt-2 max-w-3xl text-[clamp(1.875rem,7vw,2.75rem)] font-semibold leading-tight text-neutral-950">
+              {page.h1}
+            </h1>
+            <p className="mt-3 max-w-2xl text-sm leading-6 text-neutral-700 sm:text-base">
+              {page.intro}
+            </p>
+            <div className="mt-5 flex flex-wrap gap-2">
+              <button
+                type="button"
+                onClick={() => {
+                  analyticsService.track('project_click', { clickedElement: 'projects_hero_quote', ctaLabel: 'Request a similar quote', ctaPosition: 'projects_hero', enquiryIntent: 'quote' })
+                  onQuoteClick('projects_hero_quote')
+                  onSectionChange('contact')
+                }}
+                className="inline-flex items-center justify-center gap-2 rounded-md border border-emerald-700 bg-[#16A34A] px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200"
+              >
+                Request a Similar Quote
+                <ArrowRight className="h-4 w-4" />
+              </button>
+              <ButtonSecondary
+                type="button"
+                onClick={() => onSupportClick('projects_whatsapp_support', 'Hello Kleihaus, I viewed the projects gallery. Please help me plan a similar kitchen finishing quote.')}
+                className={`${whatsappCtaClass} px-4 py-2.5 text-sm`}
+              >
+                <WhatsAppBrandText>Ask on WhatsApp</WhatsAppBrandText>
+              </ButtonSecondary>
+            </div>
+          </div>
+          <div className="grid grid-cols-3 gap-2 sm:gap-3" aria-label="Featured project images">
+            {page.images.slice(0, 3).map((image, index) => (
+              <button
+                key={image.src}
+                type="button"
+                onClick={() => openImage(index)}
+                className={`group overflow-hidden rounded-lg border border-white bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-emerald-300 ${index === 0 ? 'col-span-2 row-span-2' : ''}`}
+                aria-label={`Open project image: ${image.label}`}
+              >
+                <OptimizedImage
+                  src={image.src}
+                  alt={image.alt}
+                  sizes={index === 0 ? '(max-width: 640px) 66vw, 45vw' : '(max-width: 640px) 33vw, 22vw'}
+                  loading={index === 0 ? 'eager' : 'lazy'}
+                  decoding="async"
+                  width={image.width}
+                  height={image.height}
+                  className={`w-full object-cover transition duration-300 group-hover:scale-[1.03] ${index === 0 ? 'aspect-[4/3]' : 'aspect-square'}`}
+                />
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="kitchen-projects" className="mx-auto max-w-7xl px-4 py-8 sm:py-10">
+        <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Kitchen projects</p>
+            <h2 className="mt-1 text-2xl font-semibold text-neutral-950 sm:text-3xl">Kitchen finishing details from supplied project photos.</h2>
+          </div>
+          <p className="max-w-xl text-sm leading-6 text-neutral-600">
+            Photos show kitchen cabinets, worktops, sinks, textured backsplashes and finishing materials. They are presented as visual project references only.
+          </p>
+        </div>
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {page.images.map((image, index) => (
+            <figure key={image.src} className="overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-sm">
+              <button
+                type="button"
+                onClick={() => openImage(index)}
+                className="group block w-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-emerald-300"
+                aria-label={`Open larger view of ${image.label}`}
+              >
+                <OptimizedImage
+                  src={image.src}
+                  alt={image.alt}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  loading={index < 2 ? 'eager' : 'lazy'}
+                  decoding="async"
+                  width={image.width}
+                  height={image.height}
+                  className="aspect-[4/3] w-full object-cover transition duration-300 group-hover:scale-[1.03]"
+                />
+              </button>
+              <figcaption className="flex items-center justify-between gap-3 px-3 py-2 text-xs font-semibold text-neutral-700">
+                <span>{image.label}</span>
+                <span className="shrink-0 rounded-full bg-emerald-50 px-2 py-1 text-[0.68rem] uppercase text-emerald-800">{image.group}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 pb-10">
+        <div className="grid gap-4 rounded-xl bg-neutral-950 p-4 text-white sm:p-5 lg:grid-cols-[1fr_auto] lg:items-center">
+          <div>
+            <p className="text-xs font-semibold uppercase text-emerald-300 sm:text-sm">Plan a similar finish</p>
+            <h2 className="mt-1.5 text-xl font-semibold sm:text-2xl">Send measurements, photos and finish preferences for quote support.</h2>
+            <p className="mt-2 max-w-3xl text-sm leading-6 text-neutral-300">
+              Kleihaus can help compare tiles, sanitaryware, paints, adhesives, grout and finishing materials around your room, quantity, location and timing.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-2 lg:justify-end">
+            <ButtonSecondary
+              type="button"
+              onClick={() => onSupportClick('projects_bottom_whatsapp', 'Hello Kleihaus, I would like help planning a similar kitchen finishing project.')}
+              className={`${whatsappCtaClass} px-3 py-2 text-xs sm:text-sm`}
+            >
+              <WhatsAppBrandText>WhatsApp project help</WhatsAppBrandText>
+            </ButtonSecondary>
+            <button
+              type="button"
+              onClick={() => {
+                analyticsService.track('project_click', { clickedElement: 'projects_bottom_quote', ctaLabel: 'Request a similar quote', ctaPosition: 'projects_bottom', enquiryIntent: 'quote' })
+                onQuoteClick('projects_bottom_quote')
+                onSectionChange('contact')
+              }}
+              className="inline-flex items-center justify-center gap-2 rounded-md border border-emerald-700 bg-[#16A34A] px-3 py-2 text-xs font-semibold text-white transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:text-sm"
+            >
+              Request a Similar Quote
+              <ArrowRight className="h-4 w-4" />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {activeImage && (
+        <div className="fixed inset-0 z-50 grid place-items-center bg-neutral-950/85 px-3 py-5 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="project-lightbox-title">
+          <div className="relative w-full max-w-5xl rounded-lg bg-white p-2 shadow-2xl">
+            <div className="flex items-center justify-between gap-3 px-2 py-2">
+              <div>
+                <h2 id="project-lightbox-title" className="text-sm font-semibold text-neutral-950">{activeImage.label}</h2>
+                <p className="text-xs text-neutral-500">{activeImage.group}</p>
+              </div>
+              <button type="button" onClick={closeImage} className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-neutral-200 text-neutral-700 transition hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-emerald-300" aria-label="Close project image viewer">
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+            <div className="relative">
+              <OptimizedImage
+                src={activeImage.src}
+                alt={activeImage.alt}
+                sizes="(max-width: 1024px) 94vw, 960px"
+                loading="eager"
+                decoding="async"
+                width={activeImage.width}
+                height={activeImage.height}
+                className="max-h-[75vh] w-full rounded-md object-contain"
+              />
+              <button type="button" onClick={() => showImage(-1)} className="absolute left-2 top-1/2 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-neutral-900 shadow-md transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-300" aria-label="Show previous project image">
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+              <button type="button" onClick={() => showImage(1)} className="absolute right-2 top-1/2 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-neutral-900 shadow-md transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-300" aria-label="Show next project image">
+                <ChevronRight className="h-5 w-5" />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </main>
+  )
+}
+
 function Footer({ onSupportClick }) {
   const footerProductLinks = [
     { label: 'Tiles', href: '/tiles' },
@@ -3326,6 +3659,10 @@ function Footer({ onSupportClick }) {
     { label: 'Paint selection guide', href: '/paint-selection-guide' },
     { label: 'Cost estimation guide', href: '/cost-estimation-guide' },
   ]
+  const footerProjectLinks = [
+    { label: 'View All Projects', href: '/projects' },
+    { label: 'Kitchen Projects', href: '/projects#kitchen-projects' },
+  ]
   const locationLinks = [
     { label: 'Nairobi', href: '/locations/nairobi' },
     { label: 'Machakos', href: '/locations/machakos' },
@@ -3335,7 +3672,7 @@ function Footer({ onSupportClick }) {
 
   return (
     <footer data-site-footer className="border-t border-white/30 bg-[linear-gradient(180deg,#8B4E1C_0%,#A65F1E_100%)] text-orange-50">
-      <div className="mx-auto grid max-w-6xl gap-4 px-4 py-4 sm:gap-6 sm:py-6 lg:py-7 md:grid-cols-3 md:gap-10 lg:gap-14">
+      <div className="mx-auto grid max-w-6xl gap-4 px-4 py-4 sm:grid-cols-2 sm:gap-6 sm:py-6 lg:grid-cols-4 lg:gap-10 lg:py-7">
         <div className="w-full md:justify-self-start">
           <h3 className="text-sm font-semibold uppercase text-white">Products</h3>
           <ul className="mt-2 grid gap-0.5 text-xs text-orange-50/90 sm:gap-1.5 sm:text-sm">
@@ -3349,7 +3686,7 @@ function Footer({ onSupportClick }) {
           </ul>
         </div>
 
-        <div className="w-full md:max-w-max md:justify-self-center">
+        <div className="w-full lg:max-w-max lg:justify-self-center">
           <h3 className="text-sm font-semibold uppercase text-white">Services</h3>
           <ul className="mt-2 grid gap-0.5 text-xs text-orange-50/90 sm:gap-1.5 sm:text-sm">
             {['Finishing Advisory', 'Delivery', 'Installation'].map((item) => (
@@ -3358,7 +3695,24 @@ function Footer({ onSupportClick }) {
           </ul>
         </div>
 
-        <div className="w-full md:max-w-max md:justify-self-end">
+        <div className="w-full lg:max-w-max lg:justify-self-center">
+          <h3 className="text-sm font-semibold uppercase text-white">Projects</h3>
+          <ul className="mt-2 grid gap-1 text-xs text-orange-50/90 sm:gap-1.5 sm:text-sm">
+            {footerProjectLinks.map((item) => (
+              <li key={item.href}>
+                <a
+                  href={item.href}
+                  onClick={() => analyticsService.track('project_click', { clickedElement: `footer_project_${item.label.toLowerCase().replace(/\s+/g, '_')}`, ctaLabel: item.label, ctaPosition: 'footer_projects', enquiryIntent: 'project_gallery' })}
+                  className="inline-flex min-h-8 items-center transition hover:text-white focus:outline-none focus:ring-2 focus:ring-orange-100/70"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="w-full lg:max-w-max lg:justify-self-end">
           <h3 className="text-sm font-semibold uppercase text-white">Contact</h3>
           <div className="mt-2 grid gap-1.5 text-xs text-orange-50/90 sm:gap-2 sm:text-sm">
             <button type="button" onClick={() => onSupportClick?.('footer_whatsapp')} className={`${whatsappCtaClass} inline-flex w-fit items-center justify-center rounded-md px-3 py-2 text-left text-xs sm:text-sm`}>
@@ -3513,6 +3867,8 @@ export default function App() {
   useEffect(() => {
     const pageType = currentPath.startsWith('/locations/')
       ? 'location'
+      : activeCategoryPage?.pageType === 'projects'
+        ? 'projects'
       : activeCategoryPage?.category?.toLowerCase().includes('guide')
         ? 'guide'
         : activeCategoryPage
@@ -3726,12 +4082,21 @@ export default function App() {
         onContactClick={handleContactClick}
       />
       {activeCategoryPage ? (
-        <CategoryLandingPage
-          page={activeCategoryPage}
-          onSectionChange={handleSectionChange}
-          onSupportClick={handleSupportClick}
-          onQuoteClick={handleQuoteClick}
-        />
+        activeCategoryPage.pageType === 'projects' ? (
+          <ProjectsPage
+            page={activeCategoryPage}
+            onSectionChange={handleSectionChange}
+            onSupportClick={handleSupportClick}
+            onQuoteClick={handleQuoteClick}
+          />
+        ) : (
+          <CategoryLandingPage
+            page={activeCategoryPage}
+            onSectionChange={handleSectionChange}
+            onSupportClick={handleSupportClick}
+            onQuoteClick={handleQuoteClick}
+          />
+        )
       ) : (
         <>
           <Hero onSupportClick={handleSupportClick} onQuoteClick={handleQuoteClick} onSectionChange={handleSectionChange} />

@@ -34,6 +34,31 @@ Implementation notes:
 - Organization and LocalBusiness/HomeAndConstructionBusiness JSON-LD include the same URLs through `sameAs`.
 - No Product schema, Offer schema, fake ratings, fake reviews or fake prices were introduced.
 
+## Projects Gallery Assets
+
+On 2026-07-22, `Projects.zip` was extracted and reviewed. It contained 9 JPG files in a `Projects` folder.
+
+Image inspection result:
+
+- 9 readable JPG images.
+- Dimensions: six landscape images at 1600x1131 and three square images at 1280x1280.
+- Orientation: 6 landscape, 3 square.
+- File size range: 127,393 to 174,946 bytes.
+- Metadata: only two source property IDs were detected by the local image reader; no GPS coordinates were identified.
+- Duplicates: none by exact SHA-256 hash or same-size grouping.
+- Corrupted/unrelated files: none found.
+
+Storage:
+
+```text
+assets/originals/projects/
+public/images/projects/
+```
+
+The original JPG uploads are preserved in `assets/originals/projects/` for auditability. Website-ready copies are stored in `public/images/projects/` with descriptive filenames, stripped metadata, JPG fallbacks and AVIF/WebP variants. Published project imagery supports kitchen finishing content only, so the footer includes `View All Projects` and `Kitchen Projects` links, not unsupported bathroom or broad installation categories.
+
+The `/projects` page uses neutral wording: selected projects feature tiles, sanitaryware, paints and finishing solutions supplied or supported by Kleihaus. It does not claim Kleihaus completed installation, name customers, provide project dates, publish precise locations or invent outcomes.
+
 ## Full Website Conversion Audit
 
 On 2026-07-16, a comprehensive commercial conversion audit was added at `docs/KLEIHAUS_FULL_WEBSITE_CONVERSION_AUDIT.md`.
@@ -147,6 +172,7 @@ The current SEO implementation now includes:
 - `src/seoManifest.js` as the shared route source for route metadata, sitemap generation, build-time route HTML and Worker metadata injection.
 - Checked-in `public/sitemap.xml` regenerated during `npm run build`, plus Worker sitemap support when the Worker handles `/sitemap.xml`.
 - Route-specific initial HTML title, meta description, canonical, Open Graph, Twitter/X and safe JSON-LD generated as extensionless static route assets during `npm run build`.
+- `/projects` route metadata, breadcrumb, generated route HTML and sitemap coverage backed by genuine project images.
 - Shared metadata injection in `src/seoHtml.js`, reused by `src/worker.js` and `scripts/generate-route-html.mjs`.
 - Visible breadcrumbs on category, guide, location and service-location pages.
 - Matching BreadcrumbList JSON-LD generated from the same breadcrumb model used by the visible UI.

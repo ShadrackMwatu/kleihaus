@@ -8,12 +8,21 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-07-22
 
+### Projects Footer Column And Gallery
+
+- Extracted `Projects.zip`, inspected 9 JPG project images and found no corrupted, duplicate or unrelated files.
+- Preserved the original uploads under `assets/originals/projects/` and published stripped website-ready copies under `public/images/projects/`.
+- Added JPG fallbacks plus full, 480w and 768w AVIF/WebP variants for the project images; website copies contain no EXIF, IPTC or XMP metadata.
+- Added a dedicated `/projects` page with a responsive kitchen finishing gallery, accessible image lightbox and restrained "Request a Similar Quote" CTA using the existing enquiry flow.
+- Added a new footer navigation column in the requested order: Products, Services, Projects, Contact. Project footer links are limited to genuine supported content: View All Projects and Kitchen Projects.
+- Added `/projects` route metadata, breadcrumb support, sitemap coverage, route HTML generation and privacy-safe project/gallery analytics events without adding Product, Offer, Review or AggregateRating schema.
+
 ### Evidence-Based SEO Audit And Route Metadata Hardening
 
 - Re-audited the current repository and live website for crawlability, indexation, page metadata, local SEO, schema, images, performance, accessibility, analytics and Worker rendering behavior.
 - Confirmed live `robots.txt`, sitemap and representative public routes return 200, and `http://www.kleihaus.com/...` redirects to HTTPS.
 - Found live deep routes such as `/sanitaryware` still returned homepage initial title/canonical metadata because the Worker is only configured to run first for `/api/*`.
-- Added `scripts/generate-route-html.mjs` and the `npm run generate:route-html` build step to create extensionless route-specific HTML assets for all 33 non-homepage SEO routes without changing Cloudflare DNS, routes, bindings, secrets or deployment settings.
+- Added `scripts/generate-route-html.mjs` and the `npm run generate:route-html` build step to create extensionless route-specific HTML assets for public non-homepage SEO routes without changing Cloudflare DNS, routes, bindings, secrets or deployment settings.
 - Moved route metadata injection into shared `src/seoHtml.js` so build-time route HTML and Worker injection use the same escaping, canonical, Open Graph, Twitter/X and safe JSON-LD behavior.
 - Refreshed generated sitemap `lastmod` values to `2026-07-22` from the shared SEO manifest.
 - Documented remaining owner/ops constraints: apex HTTPS currently serves 200 instead of redirecting to `www`, and unknown non-route URLs still return 200 under the current SPA asset fallback unless Cloudflare asset routing is explicitly changed later.

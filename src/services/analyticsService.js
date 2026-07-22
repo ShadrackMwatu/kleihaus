@@ -31,8 +31,13 @@ const GA_EVENT_NAMES = {
   guide_view: 'guide_view',
   location_view: 'location_view',
   contact_click: 'cta_click',
+  project_click: 'cta_click',
   category_click: 'cta_click',
   product_click: 'cta_click',
+  project_gallery_open: 'select_content',
+  project_gallery_next: 'select_content',
+  project_gallery_previous: 'select_content',
+  project_gallery_close: 'select_content',
 }
 let memoryEvents = []
 let memoryVisitorId = null

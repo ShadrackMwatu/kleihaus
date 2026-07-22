@@ -88,6 +88,17 @@ const coreRoutes = [
     imageAlt: 'Tile installer preparing installation support for Kleihaus customers',
     category: 'Installation Support',
   },
+  {
+    path: '/projects',
+    title: 'Kleihaus Projects | Kitchen Finishing Gallery',
+    description:
+      'Explore selected kitchen finishing project images featuring tiles, sinks, countertops and finishing solutions supplied or supported by Kleihaus.',
+    image: '/images/projects/project-kitchen-sink-window-01.jpg',
+    imageAlt: 'Kitchen sink and countertop beside a wide window',
+    category: 'Projects',
+    changefreq: 'monthly',
+    priority: '0.75',
+  },
 ]
 
 const guideRoutes = [

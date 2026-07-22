@@ -248,6 +248,8 @@ public/images/sanitaryware/
 
 The July 2026 upload was optimized from `sanitaryware.zip`: 21 JPG files were inspected, 11 unique images were retained, and exact duplicates were excluded. The retained images use descriptive filenames and the existing Kleihaus responsive pattern: JPG fallback plus WebP and AVIF variants. They appear in the homepage carousel, Sanitaryware catalogue block, `/sanitaryware` gallery and sanitaryware location-service page imagery.
 
+The July 2026 project upload was optimized from `Projects.zip`: 9 JPG files were inspected, preserved under `assets/originals/projects/`, and published as stripped website-ready copies under `public/images/projects/`. The `/projects` page uses only the genuine kitchen finishing content visible in those photographs and avoids unsupported installation, customer, date, location, price, rating or review claims.
+
 ## Legacy Files
 
 `wrangler.api.toml` and `src/api-worker.js` are retained for historical/legacy API-worker context. They are not referenced by the current `wrangler.toml` Worker Assets deployment path and are safe candidates to archive or remove later after explicit approval.

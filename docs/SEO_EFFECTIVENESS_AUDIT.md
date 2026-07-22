@@ -8,6 +8,18 @@ This audit reviews the current Kleihaus SEO implementation after the Phase 1 SEO
 
 This update re-audited the current repository and the live website after the social profile update at commit `c4c17ac`. The audit checked source files, generated sitemap output, Worker behavior, live HTTP responses, route metadata, schema boundaries, analytics events, image delivery patterns and production build output.
 
+### Projects Gallery Addendum
+
+Later on 2026-07-22, `Projects.zip` was added and implemented as a supported project-gallery update:
+
+- 9 genuine JPG project images were extracted, inspected and preserved under `assets/originals/projects/`.
+- 9 images were published under `public/images/projects/` with stripped JPG fallbacks plus full, 480w and 768w AVIF/WebP variants.
+- The photos visibly support kitchen finishing references: cabinets, countertops, sinks and backsplash tiles. They do not support bathroom-specific project categories, so the footer uses only `View All Projects` and `Kitchen Projects`.
+- `/projects` was added to route metadata, breadcrumb logic, generated route HTML and sitemap output.
+- The page uses neutral wording: Kleihaus supplied or supported finishing solutions. It does not invent installation completion, customer names, dates, locations, testimonials, brands, prices, ratings or project outcomes.
+- Project footer clicks, project CTAs and lightbox/gallery interactions are tracked through the existing privacy-safe analytics service.
+- No Product, Offer, Review or AggregateRating schema was introduced.
+
 ### Methodology
 
 - Reviewed `index.html`, `src/App.jsx`, `src/seoManifest.js`, `src/seoHtml.js`, `src/worker.js`, `public/robots.txt`, `public/sitemap.xml`, `package.json`, README and previous SEO/audit documents.
@@ -32,7 +44,7 @@ This update re-audited the current repository and the live website after the soc
 ### Improvements Implemented
 
 - Added `src/seoHtml.js` so route metadata injection is reusable by the Worker and build scripts.
-- Added `scripts/generate-route-html.mjs`, which writes 33 route-specific extensionless HTML assets after Vite builds `dist/index.html`.
+- Added `scripts/generate-route-html.mjs`, which writes route-specific extensionless HTML assets after Vite builds `dist/index.html`.
 - Updated `npm run build` to run sitemap generation, Vite build and route HTML generation in sequence.
 - Updated `src/worker.js` to use the shared injection helper while preserving API routing and existing Worker behavior.
 - Updated `SEO_LASTMOD` to `2026-07-22` and regenerated `public/sitemap.xml`.
@@ -43,7 +55,7 @@ This update re-audited the current repository and the live website after the soc
 | Area | Baseline score | Post-change score | Evidence |
 | --- | ---: | ---: | --- |
 | Overall SEO effectiveness | 86/100 | 90/100 | Deep-route metadata delivery and sitemap freshness improved; remaining duplicate-host and soft-404 issues require Cloudflare routing decisions. |
-| Technical SEO | 84/100 | 90/100 | Route-specific static HTML now exists for all 33 non-homepage SEO routes; route manifest has 34 unique routes and 34 matching sitemap URLs. |
+| Technical SEO | 84/100 | 90/100 | Route-specific static HTML now exists for public non-homepage SEO routes; after the Projects update the route manifest has 35 unique routes and 35 matching sitemap URLs. |
 | Local SEO | 91/100 | 92/100 | Nairobi, Machakos and Makueni coverage remains strong; route metadata now better supports location pages in initial HTML. |
 | Content SEO | 86/100 | 87/100 | No speculative content was added; existing page metadata and sitemap freshness now better reflect current content. |
 | Image SEO | 89/100 | 89/100 | Sanitaryware and responsive image work remain intact; no new image payload was added. |
