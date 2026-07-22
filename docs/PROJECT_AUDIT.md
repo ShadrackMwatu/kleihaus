@@ -14,6 +14,26 @@ Rule: Every future meaningful change must update `docs/CHANGELOG.md` and, where 
 - Locations: Nairobi | Machakos | Makueni
 - Product focus: tiles, sanitaryware, paints, adhesives, grout and finishing materials for homes and projects in Kenya.
 
+## Official Social Profiles
+
+On 2026-07-22, official social-media links were added to the footer Contact column and the main Contact block.
+
+Public profile URLs used:
+
+```text
+Facebook: https://www.facebook.com/profile.php?id=61579324481913
+LinkedIn: https://www.linkedin.com/company/108657250/
+Instagram: https://www.instagram.com/kleihausceramics
+```
+
+Implementation notes:
+
+- Links open in a new tab with `rel="noopener noreferrer"`.
+- Each link has an accessible label and a visible platform label beside a recognizable brand-colour icon.
+- Social profile clicks are tracked as `social_click` through the existing analytics service.
+- Organization and LocalBusiness/HomeAndConstructionBusiness JSON-LD include the same URLs through `sameAs`.
+- No Product schema, Offer schema, fake ratings, fake reviews or fake prices were introduced.
+
 ## Full Website Conversion Audit
 
 On 2026-07-16, a comprehensive commercial conversion audit was added at `docs/KLEIHAUS_FULL_WEBSITE_CONVERSION_AUDIT.md`.

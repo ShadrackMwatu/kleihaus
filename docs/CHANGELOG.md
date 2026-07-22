@@ -6,6 +6,16 @@ Rule: Every future meaningful change must update `docs/CHANGELOG.md` and, where 
 
 Current deployment note: production now uses GitHub `main` -> Cloudflare Workers Builds -> Worker Assets -> Worker `kleihaus` -> `kleihaus.com` and `www.kleihaus.com`. The active quote endpoint is `/api/quote-request`. Older entries that mention Cloudflare Pages or `https://api.kleihaus.com/quote-request` are historical and describe earlier deployment states, not the current production path.
 
+## 2026-07-22
+
+### Official Social Profile Links
+
+- Added official Facebook, LinkedIn and Instagram profile links to the footer contact column and Contact block with accessible labels, recognizable brand-colour icons, keyboard focus states and new-tab security attributes.
+- Used the clean Instagram profile URL and the public LinkedIn company URL pattern for company ID `108657250`: `https://www.linkedin.com/company/108657250/`.
+- Added the same social profiles to Organization and LocalBusiness/HomeAndConstructionBusiness JSON-LD through `sameAs` without adding Product, Offer, rating, review or price schema.
+- Added `social_click` analytics mapping so social profile clicks follow the existing first-party and GA4-ready event flow.
+- Preserved enquiry flows, WhatsApp behavior, quote endpoint, SEO metadata, sitemap generation and Cloudflare Worker configuration.
+
 ## 2026-07-16
 
 ### Full Website Conversion Audit

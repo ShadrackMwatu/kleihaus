@@ -26,6 +26,7 @@ const GA_EVENT_NAMES = {
   whatsapp_click: 'whatsapp_click',
   phone_click: 'phone_click',
   email_click: 'email_click',
+  social_click: 'social_click',
   guide_click: 'guide_click',
   guide_view: 'guide_view',
   location_view: 'location_view',
