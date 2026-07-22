@@ -20,6 +20,16 @@ Later on 2026-07-22, `Projects.zip` was added and implemented as a supported pro
 - Project footer clicks, project CTAs and lightbox/gallery interactions are tracked through the existing privacy-safe analytics service.
 - No Product, Offer, Review or AggregateRating schema was introduced.
 
+### Additional Sanitaryware Image Addendum
+
+Later on 2026-07-22, an additional `Sanitaryware.zip` upload was added to the Sanitaryware visual set:
+
+- 9 readable JPG images were extracted, inspected and preserved under `assets/originals/sanitaryware-kitchen-sinks/`.
+- 9 images were published under `public/images/sanitaryware/` with stripped JPG fallbacks plus full, 480w and 768w AVIF/WebP variants.
+- The photos visibly support kitchen sink, mixer, countertop and backsplash content, so copy is framed around sink and mixer finishing rather than unsupported bathroom or installation claims.
+- The Sanitaryware catalogue block now includes a `Kitchen sinks & mixers` card, and `/sanitaryware` includes the new images with short visible-content-only story copy.
+- No Product, Offer, Review or AggregateRating schema was introduced.
+
 ### Methodology
 
 - Reviewed `index.html`, `src/App.jsx`, `src/seoManifest.js`, `src/seoHtml.js`, `src/worker.js`, `public/robots.txt`, `public/sitemap.xml`, `package.json`, README and previous SEO/audit documents.

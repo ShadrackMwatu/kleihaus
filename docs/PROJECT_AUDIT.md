@@ -126,9 +126,21 @@ Manual follow-up outside the repo: update the Google Business Profile website li
 
 On 2026-07-07, `sanitaryware.zip` was extracted and reviewed. It contained 21 JPG files at 1071x1428; 10 were exact duplicates, leaving 11 unique sanitaryware showroom images.
 
+On 2026-07-22, the additional `Sanitaryware.zip` from `C:\Users\smwatu\Downloads\Regulations EPR\` was extracted and reviewed. It contained 9 readable JPG images showing kitchen sink, mixer, countertop and backsplash scenes.
+
+Additional image inspection result:
+
+- Dimensions: six landscape images at 1600x1131 and three square images at 1280x1280.
+- Orientation: 6 landscape, 3 square.
+- File size range: 127,393 to 174,946 bytes.
+- Metadata: Sharp reported no EXIF, IPTC or XMP metadata in the uploaded files.
+- Duplicates: no exact duplicates inside the uploaded ZIP; the visible content matches the recent kitchen project image set, so copy and usage remain neutral.
+- Corrupted/unrelated files: none found.
+
 Optimized image storage:
 
 ```text
+assets/originals/sanitaryware-kitchen-sinks/
 public/images/sanitaryware/
 ```
 
@@ -145,7 +157,7 @@ The site uses these images in:
 - `/sanitaryware` category route gallery.
 - Sanitaryware service-location page image sets.
 
-The duplicate ZIP entries and raw upload filenames were not committed. Optimized descriptive filenames were used instead, with JPG fallbacks plus WebP and AVIF variants matching the existing site image delivery pattern.
+The duplicate ZIP entries and raw upload filenames from the first upload were not committed. The additional 2026-07-22 sink and mixer upload is preserved under `assets/originals/sanitaryware-kitchen-sinks/` and published with descriptive `sanitaryware-kitchen-*` filenames. Website-ready copies use JPG fallbacks plus WebP and AVIF variants matching the existing site image delivery pattern. The new `/sanitaryware` gallery stories are limited to visible sink, mixer, countertop and backsplash details and do not invent brands, prices, reviews, precise locations, dates or installation outcomes.
 
 ## SEO Effectiveness Audit
 

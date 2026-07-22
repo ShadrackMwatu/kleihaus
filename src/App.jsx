@@ -124,6 +124,63 @@ const sanitarywareShowroomImages = [
   },
 ]
 
+const sanitarywareKitchenImages = [
+  {
+    src: '/images/sanitaryware/sanitaryware-kitchen-sink-window-01.jpg',
+    alt: 'Inset kitchen sink and mixer beside a window with a dark countertop',
+    label: 'Window-side sink set',
+    story: 'A polished sink zone framed by natural light, made for customers who want daily utility to feel calm, clean and considered.',
+  },
+  {
+    src: '/images/sanitaryware/sanitaryware-kitchen-mixer-display-01.jpg',
+    alt: 'Bright kitchen with coordinated cabinets countertop sink and mixer',
+    label: 'Coordinated kitchen mixer',
+    story: 'Soft cabinetry, clean lines and a practical mixer show how sanitaryware details can quietly complete a premium kitchen finish.',
+  },
+  {
+    src: '/images/sanitaryware/sanitaryware-kitchen-black-sink-01.jpg',
+    alt: 'Black kitchen sink and mixer set into a dark countertop',
+    label: 'Black sink and mixer',
+    story: 'A dark sink and mixer combination gives the worktop a confident modern edge while keeping the preparation area simple to maintain.',
+  },
+  {
+    src: '/images/sanitaryware/sanitaryware-kitchen-overview-01.jpg',
+    alt: 'Open kitchen view with countertop sink mixer cabinets and tile backsplash',
+    label: 'Kitchen finishing view',
+    story: 'This full kitchen view shows why sinks, mixers, tiles and surfaces should be selected together for a balanced finishing palette.',
+  },
+  {
+    src: '/images/sanitaryware/sanitaryware-kitchen-sink-backsplash-01.jpg',
+    alt: 'Kitchen sink with black mixer and textured white backsplash tile',
+    label: 'Sink with feature backsplash',
+    story: 'A sculpted white backsplash turns the sink wall into a focal point, pairing practical washing space with a boutique visual accent.',
+  },
+  {
+    src: '/images/sanitaryware/sanitaryware-kitchen-overview-02.jpg',
+    alt: 'Kitchen with sink mixer countertop tile backsplash and white cabinets',
+    label: 'Countertop and sink pairing',
+    story: 'The sink, mixer and worktop sit inside a restrained kitchen palette, useful for clients planning a neat, premium everyday space.',
+  },
+  {
+    src: '/images/sanitaryware/sanitaryware-kitchen-double-sink-01.jpg',
+    alt: 'Double-bowl kitchen sink with black mixer and marble-look countertop',
+    label: 'Double-bowl sink',
+    story: 'A double-bowl sink supports busy food preparation and cleanup while the dark mixer adds definition against the marble-look counter.',
+  },
+  {
+    src: '/images/sanitaryware/sanitaryware-kitchen-drainer-sink-01.jpg',
+    alt: 'Kitchen sink with integrated drainer black mixer and textured backsplash',
+    label: 'Sink and drainer set',
+    story: 'The integrated drainer keeps the wet area orderly, a practical sanitaryware choice for compact kitchens and daily family use.',
+  },
+  {
+    src: '/images/sanitaryware/sanitaryware-kitchen-black-sink-02.jpg',
+    alt: 'Black kitchen sink with mixer and textured white backsplash',
+    label: 'Black sink feature',
+    story: 'A black sink anchors the counter with a crisp designer note, especially effective against light textured wall finishes.',
+  },
+]
+
 const isDevelopment = () => typeof import.meta !== 'undefined' && Boolean(import.meta.env?.DEV)
 
 const debugLog = (event, details) => {
@@ -266,6 +323,7 @@ const productGroups = [
       { name: 'Shower systems', detail: 'Chrome, black and gold finishes', img: '/images/sanitaryware/sanitaryware-shower-display-01.jpg' },
       { name: 'Taps & mixers', detail: 'Coordinated bathroom fittings', img: '/images/sanitaryware/sanitaryware-black-tap-display-01.jpg' },
       { name: 'Rails & accessories', detail: 'Complete the bathroom setup', img: '/images/sanitaryware/sanitaryware-shower-accessories-01.jpg' },
+      { name: 'Kitchen sinks & mixers', detail: 'Premium sink zones for coordinated kitchen finishes', img: '/images/sanitaryware/sanitaryware-kitchen-sink-backsplash-01.jpg' },
     ],
   },
   {
@@ -371,6 +429,7 @@ const categoryLandingPages = [
     notes: ['Basins and toilets', 'Taps, mixers and showers', 'Bathroom accessories'],
     images: [
       ...sanitarywareShowroomImages,
+      ...sanitarywareKitchenImages,
       { src: '/images/sanitary-set-1.jpg', alt: 'Sanitaryware set for bathroom quote planning in Kenya', label: 'Bathroom sets' },
       { src: '/images/sanitary-basins.jpg', alt: 'Bathroom basins available for sanitaryware quote inquiries', label: 'Basins' },
       { src: '/images/sanitary-toilets.jpg', alt: 'Modern toilet options for bathroom projects and renovations', label: 'Toilets' },
@@ -1622,6 +1681,15 @@ const responsiveImageWidths = {
   '/images/sanitaryware/sanitaryware-black-tap-display-01.jpg': [480, 768],
   '/images/sanitaryware/sanitaryware-glass-shower-display-01.jpg': [480, 768],
   '/images/sanitaryware/sanitaryware-gold-shower-display-01.jpg': [480, 768],
+  '/images/sanitaryware/sanitaryware-kitchen-black-sink-01.jpg': [480, 768],
+  '/images/sanitaryware/sanitaryware-kitchen-black-sink-02.jpg': [480, 768],
+  '/images/sanitaryware/sanitaryware-kitchen-double-sink-01.jpg': [480, 768],
+  '/images/sanitaryware/sanitaryware-kitchen-drainer-sink-01.jpg': [480, 768],
+  '/images/sanitaryware/sanitaryware-kitchen-mixer-display-01.jpg': [480, 768],
+  '/images/sanitaryware/sanitaryware-kitchen-overview-01.jpg': [480, 768],
+  '/images/sanitaryware/sanitaryware-kitchen-overview-02.jpg': [480, 768],
+  '/images/sanitaryware/sanitaryware-kitchen-sink-backsplash-01.jpg': [480, 768],
+  '/images/sanitaryware/sanitaryware-kitchen-sink-window-01.jpg': [480, 768],
   '/images/sanitaryware/sanitaryware-shower-accessories-01.jpg': [480, 768],
   '/images/sanitaryware/sanitaryware-shower-display-01.jpg': [480, 768],
   '/images/sanitaryware/sanitaryware-shower-display-02.jpg': [480, 768],
@@ -3240,7 +3308,10 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
                     event.currentTarget.src = '/images/placeholder.jpg'
                   }}
                 />
-                <figcaption className="px-3 py-2 text-xs font-semibold text-neutral-700">{image.label}</figcaption>
+                <figcaption className="px-3 py-2">
+                  <span className="block text-xs font-semibold text-neutral-800">{image.label}</span>
+                  {image.story && <span className="mt-1 block text-xs font-medium leading-5 text-neutral-600">{image.story}</span>}
+                </figcaption>
               </figure>
             ))}
           </div>

@@ -8,6 +8,14 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-07-22
 
+### Additional Sanitaryware Sink And Mixer Images
+
+- Extracted `Sanitaryware.zip` from `C:\Users\smwatu\Downloads\Regulations EPR\` and inspected 9 JPG uploads showing kitchen sink, mixer, worktop and backsplash scenes.
+- Preserved the uploaded originals under `assets/originals/sanitaryware-kitchen-sinks/` and published stripped website-ready copies under `public/images/sanitaryware/`.
+- Added descriptive sanitaryware sink/mixer filenames with JPG fallbacks plus full, 480w and 768w AVIF/WebP variants.
+- Updated the Sanitaryware catalogue block with a new `Kitchen sinks & mixers` card and added all 9 images to the `/sanitaryware` gallery.
+- Added short premium story text for each new gallery image, limited to visible sink, mixer, counter and backsplash details without inventing brands, prices, reviews, locations, dates or installation claims.
+
 ### Projects Footer Column And Gallery
 
 - Extracted `Projects.zip`, inspected 9 JPG project images and found no corrupted, duplicate or unrelated files.

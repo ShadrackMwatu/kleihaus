@@ -248,6 +248,8 @@ public/images/sanitaryware/
 
 The July 2026 upload was optimized from `sanitaryware.zip`: 21 JPG files were inspected, 11 unique images were retained, and exact duplicates were excluded. The retained images use descriptive filenames and the existing Kleihaus responsive pattern: JPG fallback plus WebP and AVIF variants. They appear in the homepage carousel, Sanitaryware catalogue block, `/sanitaryware` gallery and sanitaryware location-service page imagery.
 
+The additional July 2026 `Sanitaryware.zip` from `C:\Users\smwatu\Downloads\Regulations EPR\` added 9 kitchen sink and mixer images. Originals are preserved under `assets/originals/sanitaryware-kitchen-sinks/`; optimized website copies are in `public/images/sanitaryware/` as JPG fallbacks plus WebP and AVIF variants. These images appear in the Sanitaryware catalogue block and `/sanitaryware` gallery with visible-content-only story copy.
+
 The July 2026 project upload was optimized from `Projects.zip`: 9 JPG files were inspected, preserved under `assets/originals/projects/`, and published as stripped website-ready copies under `public/images/projects/`. The `/projects` page uses only the genuine kitchen finishing content visible in those photographs and avoids unsupported installation, customer, date, location, price, rating or review claims.
 
 ## Legacy Files
