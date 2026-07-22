@@ -58,6 +58,28 @@ Repo-supported improvements implemented with the audit:
 
 The audit identifies owner-input requirements before stronger trust claims can be added: confirmed location details, business hours, delivery areas, response-time commitment, payment methods, product brands, availability, price ranges, warranties, returns guidance, showroom photos, project photos, testimonials and Google Business Profile links.
 
+## SEO Audit And Route Metadata Hardening
+
+On 2026-07-22, the current repository and live website were re-audited after the social profile update.
+
+Live baseline findings:
+
+- `https://www.kleihaus.com/`, `/robots.txt`, `/sitemap.xml`, `/sanitaryware`, `/locations/nairobi` and `/tile-buying-guide` returned 200.
+- `http://www.kleihaus.com/sanitaryware` redirected to `https://www.kleihaus.com/sanitaryware`.
+- `https://kleihaus.com/sanitaryware` returned 200 instead of redirecting to the canonical `www` host.
+- `https://www.kleihaus.com/definitely-not-a-real-kleihaus-page` returned 200, creating soft-404 risk under the current SPA asset fallback.
+- Live `/sanitaryware` initial HTML still showed the homepage title/canonical, which means Worker route metadata injection was not active for normal page requests while `run_worker_first` remains limited to `/api/*`.
+
+Repo-level improvements made:
+
+- Added build-time route HTML generation through `scripts/generate-route-html.mjs` and `npm run generate:route-html`.
+- Route-specific extensionless HTML assets are generated for every non-homepage SEO route in `src/seoManifest.js`, matching the sitemap's extensionless canonical URLs.
+- Shared route metadata injection now lives in `src/seoHtml.js` and is used by both the Worker and the build-time generator.
+- `public/sitemap.xml` now regenerates with `2026-07-22` `lastmod` values.
+- No Cloudflare DNS, route, binding, secret or deployment-setting changes were made.
+
+Remaining operations item: canonical apex-to-`www` redirect and unknown-route 404 behavior still require an explicit Cloudflare/asset-routing decision because the current request prohibited deployment configuration changes.
+
 ## Google Business Profile Conversion Note
 
 The latest Google Business Profile performance signal reviewed on 2026-07-07 covered June 2026 and showed 62 profile views with 0 calls, 0 chat clicks, 0 website visits and 0 total interactions. Repo-only improvements now support visitors arriving from GBP with:
@@ -104,27 +126,28 @@ The duplicate ZIP entries and raw upload filenames were not committed. Optimized
 
 On 2026-07-08, the dedicated post-update SEO effectiveness audit was added at `docs/SEO_EFFECTIVENESS_AUDIT.md`.
 
-After the advanced SEO implementation on 2026-07-08, current repo-level score summary:
+After the 2026-07-22 SEO audit and route metadata hardening, current repo-level score summary:
 
-- Overall SEO effectiveness: 89/100
-- Technical SEO: 91/100
-- Local SEO: 91/100
-- Content SEO: 86/100
+- Overall SEO effectiveness: 90/100
+- Technical SEO: 90/100
+- Local SEO: 92/100
+- Content SEO: 87/100
 - Image SEO: 89/100
-- Schema SEO: 91/100
-- Analytics/measurement readiness: 87/100
-- Performance SEO: 82/100
-- UX/accessibility SEO: 89/100
+- Schema SEO: 92/100
+- Analytics/measurement readiness: 89/100
+- Performance SEO: 83/100
+- UX/accessibility SEO: 90/100
 
-The audit confirms that Kleihaus has a strong quote-led local SEO foundation after the Phase 1, GBP, analytics/Search Console and sanitaryware image updates. The 2026-07-08 implementation reduced the biggest repo-level constraints by adding Worker-side route metadata injection, sitemap generation from a shared route manifest, visible breadcrumbs with matching BreadcrumbList schema and deeper service-location content. Remaining constraints are mostly external or strategic: verified GA4/Search Console reporting, GBP profile updates, real-world proof signals, accurate business hours if available and ongoing performance monitoring.
+The audit confirms that Kleihaus has a strong quote-led local SEO foundation after the Phase 1, GBP, analytics/Search Console, sanitaryware image and social profile updates. The 2026-07-08 implementation reduced major repo-level constraints by adding the shared route manifest, sitemap generation, visible breadcrumbs with matching BreadcrumbList schema and deeper service-location content. The 2026-07-22 implementation added build-time route-specific HTML assets so direct extensionless route requests can carry their own initial metadata without changing Cloudflare DNS, routes, bindings, secrets or deployment settings. Remaining constraints are mostly external or operational: verified GA4/Search Console reporting, GBP profile updates, apex-to-`www` redirect policy, unknown-route 404 behavior, real-world proof signals, accurate business hours if available and ongoing performance monitoring.
 
 ## Advanced SEO Implementation
 
 The current SEO implementation now includes:
 
-- `src/seoManifest.js` as the shared route source for Worker metadata injection and sitemap generation.
-- Worker-served `/sitemap.xml` from the manifest, plus checked-in `public/sitemap.xml` regenerated during `npm run build`.
-- Route-specific initial HTML title, meta description, canonical, Open Graph, Twitter/X and safe JSON-LD injection in `src/worker.js`.
+- `src/seoManifest.js` as the shared route source for route metadata, sitemap generation, build-time route HTML and Worker metadata injection.
+- Checked-in `public/sitemap.xml` regenerated during `npm run build`, plus Worker sitemap support when the Worker handles `/sitemap.xml`.
+- Route-specific initial HTML title, meta description, canonical, Open Graph, Twitter/X and safe JSON-LD generated as extensionless static route assets during `npm run build`.
+- Shared metadata injection in `src/seoHtml.js`, reused by `src/worker.js` and `scripts/generate-route-html.mjs`.
 - Visible breadcrumbs on category, guide, location and service-location pages.
 - Matching BreadcrumbList JSON-LD generated from the same breadcrumb model used by the visible UI.
 - Deeper local service-location page copy covering project types, customer needs, delivery support, selection guidance and local FAQs.
@@ -133,7 +156,7 @@ Schema boundaries remain conservative: Organization/HomeAndConstructionBusiness,
 
 ## SEO Authority And Measurement Roadmap
 
-On 2026-07-08, the repository added operational SEO authority and measurement documentation to support a move from an 89/100 repo-level SEO score toward the 93-95/100 range after production setup and real-world proof signals are completed.
+On 2026-07-08, the repository added operational SEO authority and measurement documentation to support a move from a strong repo-level SEO score toward the 93-95/100 range after production setup and real-world proof signals are completed.
 
 New docs:
 

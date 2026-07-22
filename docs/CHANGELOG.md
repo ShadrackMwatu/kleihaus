@@ -8,6 +8,16 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-07-22
 
+### Evidence-Based SEO Audit And Route Metadata Hardening
+
+- Re-audited the current repository and live website for crawlability, indexation, page metadata, local SEO, schema, images, performance, accessibility, analytics and Worker rendering behavior.
+- Confirmed live `robots.txt`, sitemap and representative public routes return 200, and `http://www.kleihaus.com/...` redirects to HTTPS.
+- Found live deep routes such as `/sanitaryware` still returned homepage initial title/canonical metadata because the Worker is only configured to run first for `/api/*`.
+- Added `scripts/generate-route-html.mjs` and the `npm run generate:route-html` build step to create extensionless route-specific HTML assets for all 33 non-homepage SEO routes without changing Cloudflare DNS, routes, bindings, secrets or deployment settings.
+- Moved route metadata injection into shared `src/seoHtml.js` so build-time route HTML and Worker injection use the same escaping, canonical, Open Graph, Twitter/X and safe JSON-LD behavior.
+- Refreshed generated sitemap `lastmod` values to `2026-07-22` from the shared SEO manifest.
+- Documented remaining owner/ops constraints: apex HTTPS currently serves 200 instead of redirecting to `www`, and unknown non-route URLs still return 200 under the current SPA asset fallback unless Cloudflare asset routing is explicitly changed later.
+
 ### Official Social Profile Links
 
 - Added official Facebook, LinkedIn and Instagram profile links to the footer contact column and Contact block with accessible labels, recognizable brand-colour icons, keyboard focus states and new-tab security attributes.

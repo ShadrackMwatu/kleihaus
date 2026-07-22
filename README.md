@@ -54,13 +54,19 @@ http://localhost:5173
 npm run build
 ```
 
-The build first regenerates `public/sitemap.xml` from `src/seoManifest.js`, then generates the static production output in `dist/`. The Worker uses `env.ASSETS` to serve the Vite build and routes API requests before assets.
+The build first regenerates `public/sitemap.xml` from `src/seoManifest.js`, then generates the static production output in `dist/`, then writes route-specific extensionless HTML assets for every public SEO route. Those route assets give direct requests such as `/sanitaryware` and `/locations/nairobi` their own initial title, description, canonical, social metadata and JSON-LD without changing Cloudflare routes or bindings.
 
 ```bash
 npm run generate:sitemap
 ```
 
 Use the sitemap script directly only when refreshing the checked-in sitemap without a full production build.
+
+```bash
+npm run generate:route-html
+```
+
+Use the route HTML script only after `vite build` has created `dist/index.html`.
 
 ## Deployment Runbook
 
@@ -122,15 +128,15 @@ Active Worker config is in `wrangler.toml`:
 - Assets directory: `./dist`
 - Assets binding: `ASSETS`
 - API routes run first for `/api/*`
-- `/sitemap.xml` is served from `src/seoManifest.js`
-- Known SPA routes receive Worker-side initial HTML title, meta description, canonical, Open Graph, Twitter/X and safe JSON-LD injection
+- `/sitemap.xml` is generated from `src/seoManifest.js` during build and can also be served by the Worker when the Worker handles the request
+- Known SPA routes receive route-specific initial HTML title, meta description, canonical, Open Graph, Twitter/X and safe JSON-LD through build-time route HTML assets; the Worker keeps the same injection helper available when a request is routed through it
 - D1 binding: `DB`
 
 Do not move production to Cloudflare Pages unless the deployment strategy is intentionally changed.
 
 ## SEO Route Manifest
 
-`src/seoManifest.js` is the shared source for Worker route metadata and generated sitemap entries. Keep it aligned with route content in `src/App.jsx` whenever adding or renaming public SEO routes. The schema strategy remains conservative: do not add Product schema, Offer schema, fake ratings, fake reviews or fake prices.
+`src/seoManifest.js` is the shared source for route metadata, generated sitemap entries, route-specific static HTML and Worker metadata injection. Keep it aligned with route content in `src/App.jsx` whenever adding or renaming public SEO routes. The schema strategy remains conservative: do not add Product schema, Offer schema, fake ratings, fake reviews or fake prices.
 
 ## Environment Variables
 

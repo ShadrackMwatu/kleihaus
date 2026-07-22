@@ -1,5 +1,5 @@
 export const SITE_ORIGIN = 'https://www.kleihaus.com'
-export const SEO_LASTMOD = '2026-07-08'
+export const SEO_LASTMOD = '2026-07-22'
 
 const defaultImage = '/images/kleihaus-structure.jpg'
 
