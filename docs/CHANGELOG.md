@@ -6,6 +6,18 @@ Rule: Every future meaningful change must update `docs/CHANGELOG.md` and, where 
 
 Current deployment note: production now uses GitHub `main` -> Cloudflare Workers Builds -> Worker Assets -> Worker `kleihaus` -> `kleihaus.com` and `www.kleihaus.com`. The active quote endpoint is `/api/quote-request`. Older entries that mention Cloudflare Pages or `https://api.kleihaus.com/quote-request` are historical and describe earlier deployment states, not the current production path.
 
+## 2026-07-30
+
+### Homepage Contact Prompt Simplification
+
+- Simplified the homepage and shared layout so repeated WhatsApp, quotation and `Nairobi | Machakos | Makueni` prompts no longer appear in the header, hero, intermediate homepage blocks, homepage locations strip, footer or mobile sticky controls.
+- Preserved the discovery-led homepage sequence: Hero, Products, Applications/Inspiration, Projects, Solutions, Why Kleihaus, Guides and final Contact.
+- Kept homepage conversion actions together in the final Contact section with `Chat on WhatsApp`, `Call Kleihaus`, `Email Kleihaus` and `Request a Quotation`.
+- Moved the visible Nairobi, Machakos and Makueni homepage location links into the Contact section only, while preserving the primary `Locations` navigation item and all dedicated location routes.
+- Updated footer links to avoid repeating a full contact/location cluster after the Contact section while retaining customary email, phone and social profile links.
+- Removed the persistent mobile WhatsApp/quote bar to match the owner-approved Contact-only homepage conversion experience.
+- Preserved `/api/quote-request`, same-tab WhatsApp behavior, quote form validation, phone/email links, analytics architecture, route metadata, canonicals, breadcrumbs, sitemap generation, structured data safeguards and Cloudflare configuration.
+
 ## 2026-07-29
 
 ### Navigation Order And Homepage Deduplication

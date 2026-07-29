@@ -4,6 +4,20 @@ Kleihaus Ceramics is a customer-facing ceramics and finishing materials website 
 
 Live website: https://www.kleihaus.com/
 
+## Homepage Conversion Pattern
+
+The homepage is intentionally discovery-led. Header, hero, product, project, solution, guide, footer and mobile shared controls should avoid repeating WhatsApp, quotation or `Nairobi | Machakos | Makueni` prompts.
+
+Keep homepage conversion actions together in the final Contact section:
+
+- Chat on WhatsApp
+- Call Kleihaus
+- Email Kleihaus
+- Request a Quotation
+- Nairobi, Machakos and Makueni location links
+
+Dedicated location routes, product-location routes, metadata, breadcrumbs, sitemap entries and structured data may continue to use local content where it is accurate and necessary for search intent.
+
 ## Current Production Architecture
 
 Production currently runs through Cloudflare Worker Assets, not Cloudflare Pages:

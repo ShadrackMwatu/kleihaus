@@ -14,6 +14,25 @@ Rule: Every future meaningful change must update `docs/CHANGELOG.md` and, where 
 - Locations: Nairobi | Machakos | Makueni
 - Product focus: tiles, sanitaryware, paints, adhesives, grout and finishing materials for homes and projects in Kenya.
 
+## Homepage Contact Prompt Simplification
+
+On 2026-07-30, the homepage and shared layout were reviewed after the information-architecture and commercial-positioning updates. The owner-approved direction was to stop repeating WhatsApp, quotation and the three service-area names across the homepage, while preserving the local SEO architecture and final Contact conversion path.
+
+Implemented repo changes:
+
+- Removed the highlighted `Request a Quotation` header action and mobile-menu quote button, leaving the header as navigation and search.
+- Removed the shared top contact strip, hero WhatsApp/quote actions, homepage Locations strip, audience-card quote/WhatsApp buttons, footer WhatsApp/location cluster and persistent mobile WhatsApp/quote bar.
+- Kept intermediate homepage CTAs as discovery actions, including `Explore Products`, `Browse Projects`, `View Solutions` and guide/category links.
+- Kept the final Contact section as the single homepage conversion area with `Chat on WhatsApp`, `Call Kleihaus`, `Email Kleihaus` and `Request a Quotation`.
+- Presented Nairobi, Machakos and Makueni together only inside the homepage Contact section, with links to the existing location hubs.
+- Retained customary footer email, phone and social links without repeating the full WhatsApp/quotation/location conversion cluster after Contact.
+
+Preserved safeguards:
+
+- Dedicated routes such as `/locations`, `/locations/nairobi`, `/locations/machakos`, `/locations/makueni` and product-location pages still contain necessary local content, metadata, breadcrumbs, canonicals and sitemap coverage.
+- `/api/quote-request`, quote validation, same-tab WhatsApp behavior, phone/email links, social links, analytics event architecture, generated route HTML, sitemap generation and structured data remain intact.
+- No Cloudflare DNS, routes, bindings, secrets, Worker deployment settings, Product schema, Offer schema, Review schema, AggregateRating schema, fake ratings, fake reviews or fake prices were introduced.
+
 ## Navigation Order And Content Deduplication
 
 On 2026-07-29, the latest repository and live website were reviewed after the information-architecture upgrade. The live site served the new parent routes, including `/products`, `/guides`, `/trade-projects` and `/locations` via a folder-backed route redirect to `/locations/`.
@@ -21,7 +40,7 @@ On 2026-07-29, the latest repository and live website were reviewed after the in
 Implemented repo changes:
 
 - Primary navigation now reads `About | Products | Solutions | Projects | Guides | Locations | Contact` on desktop and mobile.
-- `Request a Quotation` remains visually distinct in the header and mobile menu rather than becoming a primary navigation category.
+- `Request a Quotation` was originally retained as a visually distinct header/mobile-menu action in this phase, then removed from shared header surfaces on 2026-07-30 so homepage conversion actions occur in the final Contact section.
 - The homepage now follows a sequential journey instead of the previous tabbed content area:
   - Hero: concise supply and benefit statement.
   - Products: product categories and product-discovery links.
@@ -56,7 +75,7 @@ On 2026-07-29, the repository, production route responses and supplied strategic
 Implemented repo changes:
 
 - Public primary navigation now follows `Products | Solutions | Projects | Guides | Locations | About | Contact`.
-- `Request a Quotation` remains a visually distinct header action, not a top-level information category.
+- `Request a Quotation` was kept out of the primary navigation taxonomy; as of 2026-07-30, it is no longer a shared header action and lives in the final Contact section.
 - `/products` was added as the parent commercial hub for tiles, sanitaryware, kitchen sinks and mixers, paints, adhesives, grout, tools and finishing support.
 - `/guides` was added as a resource-centre hub linking the existing buying, renovation, paint, adhesive/grout, installation and cost-estimation guides.
 - `/locations` was added as the parent local hub for Nairobi, Machakos and Makueni, with product-location pages remaining subordinate to those hubs.
@@ -77,7 +96,7 @@ On 2026-07-29, the homepage was refined after a repository and live-production h
 Implemented repo changes:
 
 - Reframed the hero around product discovery and project support: `Tiles, sanitaryware and paints for every stage of your project`.
-- Set the homepage CTA hierarchy to `Explore Products`, `Discuss Your Project` and supporting `Request a Quotation`.
+- This phase set the homepage CTA hierarchy to `Explore Products`, `Discuss Your Project` and supporting `Request a Quotation`; the later 2026-07-30 simplification removed the hero WhatsApp/quotation actions so the hero now leads with product discovery only.
 - Changed category and featured-product actions toward exploration and product discussion before quoting.
 - Promoted genuine project/gallery content through `Browse the Gallery`.
 - Converted homepage buying-guide cards into functional links to existing guidance routes.

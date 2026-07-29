@@ -4,9 +4,11 @@ Date: 2026-07-08
 
 This audit reviews the current Kleihaus SEO implementation after the Phase 1 SEO/conversion work, Google Business Profile conversion update, analytics/Search Console documentation, sanitaryware image update and the 2026-07-08 advanced SEO implementation. The original audit was documentation-only; the follow-up implementation added repo-level SEO improvements without changing DNS, Cloudflare bindings, secrets, routes or deployment settings.
 
-2026-07-29 IA update: Kleihaus now has parent hubs for `/products`, `/guides` and `/locations`, while preserving `/trade-projects` as the Solutions/audience hub and `/projects` as the project-gallery destination. The primary navigation now follows `About | Products | Solutions | Projects | Guides | Locations | Contact`, with `Request a Quotation` retained as a highlighted conversion action rather than a primary content category.
+2026-07-29 IA update: Kleihaus now has parent hubs for `/products`, `/guides` and `/locations`, while preserving `/trade-projects` as the Solutions/audience hub and `/projects` as the project-gallery destination. The primary navigation now follows `About | Products | Solutions | Projects | Guides | Locations | Contact`; quotation submission remains a conversion action rather than a primary content category.
 
 2026-07-29 deduplication update: the homepage now uses distinct block ownership for Hero, Products, Applications/Inspiration, Projects, Solutions, Why Kleihaus, Guides, Locations and Contact. Repeated product-range, service-area and contact-action summaries were consolidated into their authoritative blocks without removing important product, guide, project, location, quotation or WhatsApp pathways.
+
+2026-07-30 homepage conversion simplification update: visible homepage WhatsApp, quotation and `Nairobi | Machakos | Makueni` repetition was reduced further so the final Contact section owns those conversion and service-area cues. The primary `Locations` nav item and dedicated location routes remain intact for local SEO, while the header, hero, audience cards, footer and mobile controls now keep visitors in discovery mode until Contact.
 
 ## 2026-07-22 Current Audit And Implementation Update
 
@@ -32,7 +34,7 @@ A later 2026-07-29 homepage update corrected a quotation-heavy first impression.
 SEO and conversion impact:
 
 - Homepage title, description, Open Graph/Twitter descriptions and safe JSON-LD now emphasize tiles, sanitaryware, kitchen sinks, paints, adhesives, grout, tools, product selection guidance and project support.
-- Hero CTA hierarchy now starts with `Explore Products`, then `Discuss Your Project`, with `Request a Quotation` retained as a supporting action.
+- This phase initially set the hero CTA hierarchy to `Explore Products`, `Discuss Your Project` and a supporting quotation action; the 2026-07-30 simplification later removed hero WhatsApp/quotation prompts so the hero now leads with product discovery only.
 - Category cards, featured products, project inspiration and buying-guide cards now encourage product exploration, product discussion, gallery browsing and guide navigation before quote submission.
 - Existing quote form, WhatsApp same-tab behavior, phone/email links, mobile sticky quote action, social links, `/api/quote-request`, six audience pathways and Cloudflare Worker architecture were preserved.
 - No Product, Offer, Review or AggregateRating schema was introduced.

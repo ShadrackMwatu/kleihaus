@@ -1382,7 +1382,6 @@ const heroTrustBadges = [
   { label: 'Sourcing Support', icon: ShieldCheck },
   { label: 'Delivery Support', icon: Truck },
   { label: 'Professional Guidance', icon: Wrench },
-  { label: 'Nairobi | Machakos | Makueni', icon: MapPin },
 ]
 
 const serviceAreaLinks = [
@@ -1399,7 +1398,7 @@ const aboutSupportPoints = [
   },
   {
     title: 'Logistics and delivery',
-    text: 'Practical coordination for material movement across Nairobi, Machakos, Makueni and wider Kenya service requests.',
+    text: 'Practical coordination for material movement, site access, timing and wider Kenya service requests.',
     icon: Truck,
   },
   {
@@ -1953,29 +1952,6 @@ function Logo({ compact = false }) {
   )
 }
 
-function TopStrip({ onContactClick }) {
-  return (
-    <div className="hidden bg-[#16A34A] text-white sm:block">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-1.5 text-[11px]">
-        <div className="inline-flex items-center gap-1.5 text-white/90">
-          <MapPin className="h-3.5 w-3.5" />
-          Nairobi | Machakos | Makueni
-        </div>
-        <div className="flex items-center gap-5 text-white/90">
-          <a href="mailto:sales@kleihaus.com" className="inline-flex items-center gap-1.5 transition hover:text-white" onClick={() => onContactClick('email_click', 'top_strip_email')}>
-            <Mail className="h-3.5 w-3.5" />
-            sales@kleihaus.com
-          </a>
-          <a href="tel:+254748827166" className="inline-flex items-center gap-1.5 transition hover:text-white" onClick={() => onContactClick('phone_click', 'top_strip_phone')}>
-            <Phone className="h-3.5 w-3.5" />
-            +254 748 827 166
-          </a>
-        </div>
-      </div>
-    </div>
-  )
-}
-
 function SearchAutocomplete({ value, onChange, projectType, onSearch }) {
   const [active, setActive] = useState(false)
   const suggestions = recommendationService.getSearchSuggestions(value, projectType)
@@ -2034,7 +2010,7 @@ function SearchAutocomplete({ value, onChange, projectType, onSearch }) {
   )
 }
 
-function Header({ projectType, searchQuery, setSearchQuery, onSearch, activeSection, selectedCategory, onSectionChange, onCategoryClick, onSupportClick, onContactClick, onRouteNavigate, onQuoteClick }) {
+function Header({ projectType, searchQuery, setSearchQuery, onSearch, activeSection, selectedCategory, onSectionChange, onCategoryClick, onRouteNavigate }) {
   const [menuOpen, setMenuOpen] = useState(false)
 
   const handleNavClick = (section) => {
@@ -2062,8 +2038,7 @@ function Header({ projectType, searchQuery, setSearchQuery, onSearch, activeSect
 
   return (
     <header className="sticky top-0 z-50 border-b border-neutral-200 bg-white/95 backdrop-blur">
-      <TopStrip onContactClick={onContactClick} />
-      <div className="mx-auto grid max-w-7xl grid-cols-[1fr_auto_auto] items-center gap-2.5 px-4 py-2.5 lg:grid-cols-[auto_minmax(240px,420px)_1fr_auto] lg:gap-5">
+      <div className="mx-auto grid max-w-7xl grid-cols-[1fr_auto] items-center gap-2.5 px-4 py-2.5 lg:grid-cols-[auto_minmax(240px,420px)_1fr] lg:gap-5">
         <button type="button" aria-label="Kleihaus Ceramics home" className="min-w-0 text-left" onClick={() => handleNavClick('home')}>
           <Logo compact />
         </button>
@@ -2089,25 +2064,6 @@ function Header({ projectType, searchQuery, setSearchQuery, onSearch, activeSect
             </a>
           ))}
         </nav>
-
-        <div className="hidden items-center justify-end lg:flex">
-          <Button
-            type="button"
-            onClick={() => {
-              onQuoteClick('header_request_quotation')
-              onSectionChange('contact')
-            }}
-            className="gap-1.5 border-emerald-700 bg-[#16A34A] px-3.5 py-2.5 text-sm text-white hover:bg-emerald-700"
-          >
-            Request a Quotation
-            <ArrowRight className="h-4 w-4" />
-          </Button>
-        </div>
-
-        <Button type="button" aria-label="WhatsApp Kleihaus" onClick={() => onSupportClick('mobile_header_whatsapp')} className={`${whatsappCtaClass} hidden px-3 py-2 text-xs sm:inline-flex lg:hidden`}>
-          <WhatsAppLogo className="h-4 w-4 shrink-0 text-white" />
-          <span className="hidden sm:inline">WhatsApp</span>
-        </Button>
 
         <button
           className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-neutral-300 lg:hidden"
@@ -2161,18 +2117,6 @@ function Header({ projectType, searchQuery, setSearchQuery, onSearch, activeSect
                 {item.label}
               </a>
             ))}
-            <button
-              type="button"
-              onClick={() => {
-                setMenuOpen(false)
-                onQuoteClick('mobile_menu_request_quotation')
-                onSectionChange('contact')
-              }}
-              className="mt-1 inline-flex min-h-10 items-center justify-center gap-2 rounded-md border border-emerald-700 bg-[#16A34A] px-3 py-2 text-sm font-semibold text-white focus:outline-none focus:ring-2 focus:ring-emerald-200"
-            >
-              Request a Quotation
-              <ArrowRight className="h-4 w-4" />
-            </button>
           </nav>
         </div>
       )}
@@ -2198,7 +2142,7 @@ function usePrefersReducedMotion() {
   return prefersReducedMotion
 }
 
-function Hero({ onSupportClick, onQuoteClick, onSectionChange }) {
+function Hero({ onSectionChange }) {
   const [activeSlide, setActiveSlide] = useState(0)
   const [hasInteracted, setHasInteracted] = useState(false)
   const prefersReducedMotion = usePrefersReducedMotion()
@@ -2246,7 +2190,7 @@ function Hero({ onSupportClick, onQuoteClick, onSectionChange }) {
           <div className="absolute inset-0 bg-gradient-to-r from-neutral-950/75 via-neutral-950/35 to-white/5" />
           <div className="absolute inset-0 bg-gradient-to-br from-emerald-950/20 via-transparent to-white/10" />
           <div className="relative flex h-full w-full min-w-0 max-w-3xl flex-col justify-center px-5 py-6 pb-12 sm:px-9 sm:py-10 lg:px-10">
-            <p className="max-w-[18rem] text-xs font-semibold uppercase tracking-wide text-emerald-200 sm:max-w-none">Tiles. Sanitaryware. Paints. | Nairobi | Machakos | Makueni</p>
+            <p className="max-w-[18rem] text-xs font-semibold uppercase tracking-wide text-emerald-200 sm:max-w-none">Tiles. Sanitaryware. Paints.</p>
             <h1 className="mt-2 max-w-[calc(100vw-4rem)] break-words text-[clamp(1.55rem,7.6vw,2.5rem)] font-semibold leading-[1.08] text-white sm:mt-3 sm:max-w-2xl sm:text-5xl sm:leading-tight lg:text-5xl">
               Tiles, sanitaryware and paints for every stage of your project
             </h1>
@@ -2265,23 +2209,6 @@ function Hero({ onSupportClick, onQuoteClick, onSectionChange }) {
                 Explore Products
                 <ArrowRight className="h-4 w-4" />
               </Button>
-              <ButtonSecondary
-                type="button"
-                onClick={() => onSupportClick('hero_discuss_project', 'Hello Kleihaus, I would like to discuss products and practical support for my project.')}
-                className={`${whatsappCtaClass} px-2.5 py-1.5 text-xs sm:px-4 sm:py-2.5 sm:text-sm`}
-              >
-                <WhatsAppBrandText>Discuss Your Project</WhatsAppBrandText>
-              </ButtonSecondary>
-              <button
-                type="button"
-                onClick={() => {
-                  onQuoteClick('hero_request_quotation_link')
-                  onSectionChange('contact')
-                }}
-                className="inline-flex min-h-10 items-center rounded-md px-2.5 py-1.5 text-xs font-semibold text-white underline decoration-white/40 underline-offset-4 transition hover:text-emerald-100 hover:decoration-white focus:outline-none focus:ring-2 focus:ring-white/70 sm:px-3 sm:py-2 sm:text-sm"
-              >
-                Request a Quotation
-              </button>
             </div>
           </div>
           <div className="absolute bottom-3 left-5 right-5 flex items-center justify-between gap-4 sm:bottom-4 sm:left-10 sm:right-10 lg:left-10 lg:right-10">
@@ -2330,49 +2257,6 @@ function Hero({ onSupportClick, onQuoteClick, onSectionChange }) {
               </div>
             )
           })}
-        </div>
-      </div>
-    </section>
-  )
-}
-
-function GoogleBusinessProfileSupport({ onSupportClick, onQuoteClick, onSectionChange }) {
-  return (
-    <section id="locations" className="border-y border-emerald-100 bg-white">
-      <div className="mx-auto grid max-w-7xl gap-4 px-4 py-4 sm:py-5 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-        <div>
-          <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Locations</p>
-          <h2 className="mt-1.5 text-xl font-semibold leading-snug text-neutral-950 sm:text-2xl">
-            Find the right Kleihaus pathway for Nairobi, Machakos or Makueni.
-          </h2>
-          <p className="mt-2 max-w-2xl text-sm leading-6 text-neutral-600">
-            Location hubs keep local delivery context, planning notes and related product-location pages together without repeating the full catalogue.
-          </p>
-        </div>
-        <div className="rounded-lg border border-neutral-200 bg-neutral-50 p-3 sm:p-4">
-          <div className="grid gap-2 text-sm text-neutral-700 sm:grid-cols-3">
-            {serviceAreaLinks.map((location) => (
-              <a
-                key={location.href}
-                href={location.href}
-                onClick={() => analyticsService.track('location_view', { clickedElement: `homepage_location_${location.label.toLowerCase()}`, ctaLabel: location.label, ctaPosition: 'homepage_locations', location: location.label, pageType: 'home' })}
-                className="inline-flex min-h-10 items-center gap-2 rounded-md border border-neutral-200 bg-white px-3 py-2 font-semibold text-emerald-900 transition hover:border-emerald-700 hover:bg-emerald-50 focus:outline-none focus:ring-2 focus:ring-emerald-200"
-              >
-                <MapPin className="h-4 w-4 shrink-0 text-emerald-700" />
-                {location.label}
-              </a>
-            ))}
-          </div>
-          <div className="mt-3 flex flex-wrap gap-2">
-            <a
-              href="/locations"
-              onClick={() => analyticsService.track('hub_click', { clickedElement: 'homepage_locations_hub', ctaLabel: 'Find a Location', ctaPosition: 'homepage_locations', pageType: 'locations', enquiryIntent: 'local_support' })}
-              className="inline-flex items-center justify-center gap-2 rounded-md border border-emerald-700 bg-[#16A34A] px-3 py-2 text-xs font-semibold text-white transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:text-sm"
-            >
-              Find a Location
-              <ArrowRight className="h-4 w-4" />
-            </a>
-          </div>
         </div>
       </div>
     </section>
@@ -2791,7 +2675,7 @@ function ProjectsEvidence() {
   )
 }
 
-function AudiencePathways({ onSupportClick, onQuoteClick, onSectionChange }) {
+function AudiencePathways() {
   return (
     <section className="border-y border-emerald-100 bg-white">
       <div className="mx-auto max-w-7xl px-4 py-6 sm:py-8">
@@ -2800,7 +2684,7 @@ function AudiencePathways({ onSupportClick, onQuoteClick, onSectionChange }) {
             <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Who Kleihaus supports</p>
             <h2 className="mt-1.5 text-xl font-semibold text-neutral-950 sm:text-2xl">Product and project pathways for every customer</h2>
             <p className="mt-1.5 text-sm leading-6 text-neutral-600">
-              Choose the path closest to your work to see relevant products, project needs, selection guidance and support options before moving to a quotation.
+              Choose the path closest to your work to see relevant products, project needs and selection guidance.
             </p>
           </div>
           <a
@@ -2808,7 +2692,7 @@ function AudiencePathways({ onSupportClick, onQuoteClick, onSectionChange }) {
             onClick={() => analyticsService.track('audience_pathway_click', { clickedElement: 'homepage_trade_projects_all', ctaLabel: 'View trade and project support', ctaPosition: 'homepage_audience_pathways', enquiryIntent: 'trade_project' })}
             className="inline-flex w-fit items-center gap-1.5 rounded-md border border-emerald-700 px-3 py-2 text-xs font-semibold text-emerald-800 transition hover:bg-emerald-50 focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:text-sm"
           >
-            Explore support pathways
+            View Solutions
             <ArrowRight className="h-4 w-4" />
           </a>
         </div>
@@ -2830,26 +2714,8 @@ function AudiencePathways({ onSupportClick, onQuoteClick, onSectionChange }) {
                   onClick={() => analyticsService.track('audience_pathway_click', { clickedElement: `homepage_audience_${segment.slug}`, ctaLabel: segment.name, ctaPosition: 'homepage_audience_card', enquiryIntent: segment.intent, audienceSegment: segment.name })}
                   className="inline-flex min-h-10 items-center rounded-md border border-neutral-300 bg-white px-3 py-2 text-xs font-semibold text-neutral-900 transition hover:border-emerald-700 hover:text-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-200"
                 >
-                  View products & support
+                  View Solutions
                 </a>
-                <button
-                  type="button"
-                  onClick={() => {
-                    analyticsService.track('audience_pathway_click', { clickedElement: `homepage_audience_quote_${segment.slug}`, ctaLabel: segment.ctaLabel, ctaPosition: 'homepage_audience_card', enquiryIntent: segment.intent, audienceSegment: segment.name })
-                    onQuoteClick(`audience_quote_${segment.slug}`)
-                    onSectionChange('contact')
-                  }}
-                  className="inline-flex min-h-10 items-center rounded-md bg-emerald-700 px-3 py-2 text-xs font-semibold text-white transition hover:bg-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-200"
-                >
-                  {segment.ctaLabel}
-                </button>
-                <button
-                  type="button"
-                  onClick={() => onSupportClick(`audience_whatsapp_${segment.slug}`, `Hello Kleihaus, I am enquiring as a ${segment.name.toLowerCase()}. Please help me with products, quantities, quote details and delivery or support options.`)}
-                  className={`${whatsappCtaClass} inline-flex min-h-10 items-center rounded-md px-3 py-2 text-xs font-semibold`}
-                >
-                  <WhatsAppBrandText>WhatsApp</WhatsAppBrandText>
-                </button>
               </div>
             </article>
           ))}
@@ -3212,14 +3078,6 @@ function Contact({ onSupportFormClick, compact = false }) {
 
   const contactActions = [
     {
-      label: 'Email Kleihaus',
-      ariaLabel: 'Email Kleihaus Ceramics',
-      href: 'mailto:sales@kleihaus.com',
-      icon: Mail,
-      className: 'border-white/15 bg-white/10 text-white hover:bg-white/15',
-      onClick: () => analyticsService.track('email_click', { clickedElement: 'contact_action_email', ctaLabel: 'Email Kleihaus', ctaPosition: 'contact_actions', contactMethod: 'email', enquiryIntent: 'contact' }),
-    },
-    {
       label: 'Chat on WhatsApp',
       ariaLabel: 'Chat with Kleihaus Ceramics on WhatsApp',
       href: buildWhatsAppUrl('Hello Kleihaus, I would like help with a quote, products, delivery or installation support.'),
@@ -3234,6 +3092,14 @@ function Contact({ onSupportFormClick, compact = false }) {
       icon: Phone,
       className: 'border-white/15 bg-white/10 text-white hover:bg-white/15',
       onClick: () => analyticsService.track('phone_click', { clickedElement: 'contact_action_phone', ctaLabel: 'Call Kleihaus', ctaPosition: 'contact_actions', contactMethod: 'phone', enquiryIntent: 'contact' }),
+    },
+    {
+      label: 'Email Kleihaus',
+      ariaLabel: 'Email Kleihaus Ceramics',
+      href: 'mailto:sales@kleihaus.com',
+      icon: Mail,
+      className: 'border-white/15 bg-white/10 text-white hover:bg-white/15',
+      onClick: () => analyticsService.track('email_click', { clickedElement: 'contact_action_email', ctaLabel: 'Email Kleihaus', ctaPosition: 'contact_actions', contactMethod: 'email', enquiryIntent: 'contact' }),
     },
   ]
 
@@ -3266,13 +3132,13 @@ function Contact({ onSupportFormClick, compact = false }) {
             <button
               type="button"
               onClick={() => {
-                analyticsService.track('contact_click', { clickedElement: 'contact_action_quote', ctaLabel: 'Request quote', ctaPosition: 'contact_actions', contactMethod: 'quote_form', enquiryIntent: 'quote' })
+                analyticsService.track('contact_click', { clickedElement: 'contact_action_quote', ctaLabel: 'Request a Quotation', ctaPosition: 'contact_actions', contactMethod: 'quote_form', enquiryIntent: 'quote' })
                 scrollToQuoteForm()
               }}
               className="inline-flex items-center justify-center gap-2 rounded-md border border-emerald-500 bg-[#16A34A] px-3 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200"
             >
               <ArrowRight className="h-4 w-4 shrink-0" />
-              Request quote
+              Request a Quotation
             </button>
           </div>
 
@@ -3285,9 +3151,20 @@ function Contact({ onSupportFormClick, compact = false }) {
               <Mail className="h-4 w-4 text-emerald-300" />
               sales@kleihaus.com
             </a>
-            <div className="flex items-center gap-3">
-              <MapPin className="h-4 w-4 text-emerald-300" />
-              Nairobi | Machakos | Makueni
+            <div className="flex items-start gap-3">
+              <MapPin className="mt-1 h-4 w-4 text-emerald-300" />
+              <div className="flex flex-wrap gap-2">
+                {serviceAreaLinks.map((location) => (
+                  <a
+                    key={location.href}
+                    href={location.href}
+                    onClick={() => analyticsService.track('location_view', { clickedElement: `contact_location_${location.label.toLowerCase()}`, ctaLabel: location.label, ctaPosition: 'contact_locations', location: location.label, pageType: 'home' })}
+                    className="rounded-md border border-white/15 px-2.5 py-1 text-xs font-semibold text-neutral-100 transition hover:border-emerald-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white/30"
+                  >
+                    {location.label}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -4232,7 +4109,7 @@ function ProjectsPage({ page, onSectionChange, onSupportClick, onQuoteClick }) {
   )
 }
 
-function Footer({ onSupportClick }) {
+function Footer() {
   const footerProductLinks = [
     { label: 'All products', href: '/products' },
     { label: 'Tiles', href: '/tiles' },
@@ -4245,10 +4122,10 @@ function Footer({ onSupportClick }) {
     { label: 'Adhesives & grout', href: '/adhesives-grout' },
   ]
   const popularSearchLinks = [
-    { label: 'Tiles Nairobi', href: '/tiles-nairobi' },
-    { label: 'Tiles Machakos', href: '/tiles-machakos' },
-    { label: 'Sanitaryware Kenya', href: '/sanitaryware-kenya' },
-    { label: 'Paints Makueni', href: '/paints-makueni' },
+    { label: 'Floor tiles', href: '/floor-tiles' },
+    { label: 'Bathroom tiles', href: '/bathroom-tiles' },
+    { label: 'Sanitaryware', href: '/sanitaryware' },
+    { label: 'Paints', href: '/paints' },
   ]
   const projectGuideLinks = [
     { label: 'Guides hub', href: '/guides' },
@@ -4261,14 +4138,6 @@ function Footer({ onSupportClick }) {
     { label: 'View All Projects', href: '/projects' },
     { label: 'Kitchen Projects', href: '/projects#kitchen-projects' },
   ]
-  const locationLinks = [
-    { label: 'All locations', href: '/locations' },
-    { label: 'Nairobi', href: '/locations/nairobi' },
-    { label: 'Machakos', href: '/locations/machakos' },
-    { label: 'Makueni', href: '/locations/makueni' },
-    { label: 'Kenya', href: '/tiles-kenya' },
-  ]
-
   return (
     <footer data-site-footer className="border-t border-white/30 bg-[linear-gradient(180deg,#8B4E1C_0%,#A65F1E_100%)] text-orange-50">
       <div className="mx-auto grid max-w-6xl gap-4 px-4 py-4 sm:grid-cols-2 sm:gap-6 sm:py-6 lg:grid-cols-4 lg:gap-10 lg:py-7">
@@ -4314,9 +4183,6 @@ function Footer({ onSupportClick }) {
         <div className="w-full lg:max-w-max lg:justify-self-end">
           <h3 className="text-sm font-semibold uppercase text-white">Contact</h3>
           <div className="mt-2 grid gap-1.5 text-xs text-orange-50/90 sm:gap-2 sm:text-sm">
-            <button type="button" onClick={() => onSupportClick?.('footer_whatsapp')} className={`${whatsappCtaClass} inline-flex w-fit items-center justify-center rounded-md px-3 py-2 text-left text-xs sm:text-sm`}>
-              <WhatsAppBrandText>WhatsApp Kleihaus</WhatsAppBrandText>
-            </button>
             <a href="mailto:sales@kleihaus.com" className="inline-flex items-center gap-2 hover:text-white">
               <Mail className="h-4 w-4 text-orange-100" />
               sales@kleihaus.com
@@ -4325,10 +4191,6 @@ function Footer({ onSupportClick }) {
               <Phone className="h-4 w-4 text-orange-100" />
               +254 748 827 166
             </a>
-            <div className="inline-flex items-start gap-2">
-              <MapPin className="mt-0.5 h-4 w-4 text-orange-100" />
-              <span>Nairobi | Machakos | Makueni</span>
-            </div>
             <div className="pt-1">
               <p className="text-xs font-semibold uppercase text-white">Follow Kleihaus</p>
               <SocialLinks placement="footer" className="mt-2" />
@@ -4339,9 +4201,9 @@ function Footer({ onSupportClick }) {
       <div className="border-t border-white/15 px-4 py-4">
         <div className="mx-auto grid max-w-6xl gap-4 text-xs text-orange-50/90 sm:grid-cols-3 sm:text-sm">
           {[
-            ['Popular searches', popularSearchLinks],
+            ['Popular products', popularSearchLinks],
             ['Guides', projectGuideLinks],
-            ['Locations served', locationLinks],
+            ['Project evidence', footerProjectLinks],
           ].map(([title, links]) => (
             <div key={title}>
               <h3 className="text-xs font-semibold uppercase text-white">{title}</h3>
@@ -4356,15 +4218,6 @@ function Footer({ onSupportClick }) {
           ))}
         </div>
       </div>
-      <div className="border-t border-white/20 px-4 py-2.5 md:hidden">
-        <button
-          type="button"
-          onClick={() => onSupportClick?.('footer_mobile_support')}
-          className={`${whatsappCtaClass} mx-auto flex max-w-sm items-center justify-center rounded-md px-4 py-2 text-xs font-semibold`}
-        >
-          <WhatsAppBrandText>WhatsApp help</WhatsAppBrandText>
-        </button>
-      </div>
       <div className="border-t border-white/20 bg-[#16A34A]">
         <div className="footer-brand-strip mx-auto flex max-w-7xl items-center justify-center px-4 py-2.5 text-center text-white sm:py-5">
           <p className="text-xs font-medium">
@@ -4374,30 +4227,6 @@ function Footer({ onSupportClick }) {
         </div>
       </div>
     </footer>
-  )
-}
-
-function MobileStickyActions({ onWhatsAppClick, onQuoteClick }) {
-  return (
-    <div className="mobile-conversion-bar fixed inset-x-0 bottom-0 z-40 border-t border-white/15 bg-neutral-950/95 px-3 py-2 shadow-2xl shadow-neutral-950/30 backdrop-blur md:hidden">
-      <div className="mx-auto grid max-w-md grid-cols-2 gap-2">
-        <button
-          type="button"
-          onClick={onWhatsAppClick}
-          className={`${whatsappCtaClass} inline-flex min-h-11 items-center justify-center rounded-md px-3 py-2 text-xs font-semibold`}
-        >
-          <WhatsAppBrandText>WhatsApp</WhatsAppBrandText>
-        </button>
-        <button
-          type="button"
-          onClick={onQuoteClick}
-          className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-[#16A34A] px-3 py-2 text-xs font-semibold text-white shadow-sm transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200"
-        >
-          Quote
-          <ArrowRight className="h-4 w-4" />
-        </button>
-      </div>
-    </div>
   )
 }
 
@@ -4609,24 +4438,6 @@ export default function App() {
     refreshSignals()
   }
 
-  const handleMobileQuoteClick = () => {
-    handleQuoteClick('mobile_sticky_quote')
-    handleSectionChange('contact')
-  }
-
-  const handleContactClick = (eventType, source) => {
-    const contactMethod = eventType === 'phone_click' ? 'phone' : eventType === 'email_click' ? 'email' : ''
-    analyticsService.track(eventType, {
-      clickedElement: source,
-      projectType,
-      productCategory: selectedCategory,
-      ctaPosition: source,
-      contactMethod,
-      enquiryIntent: 'contact',
-    })
-    refreshSignals()
-  }
-
   const handleGuideClick = (topic) => {
     analyticsService.track('guide_topic_clicked', {
       topic,
@@ -4651,10 +4462,7 @@ export default function App() {
         selectedCategory={selectedCategory}
         onSectionChange={handleSectionChange}
         onCategoryClick={handleCategoryClick}
-        onSupportClick={handleSupportClick}
-        onContactClick={handleContactClick}
         onRouteNavigate={handleRouteNavigate}
-        onQuoteClick={handleQuoteClick}
       />
       {activeCategoryPage ? (
         activeCategoryPage.pageType === 'projects' ? (
@@ -4688,7 +4496,7 @@ export default function App() {
         )
       ) : (
         <>
-          <Hero onSupportClick={handleSupportClick} onQuoteClick={handleQuoteClick} onSectionChange={handleSectionChange} />
+          <Hero onSectionChange={handleSectionChange} />
           <ShopByCategory
             selectedCategory={selectedCategory}
             onCategoryClick={handleCategoryClick}
@@ -4697,18 +4505,13 @@ export default function App() {
           />
           <CustomerProjectGallery />
           <ProjectsEvidence />
-          <AudiencePathways onSupportClick={handleSupportClick} onQuoteClick={handleQuoteClick} onSectionChange={handleSectionChange} />
+          <AudiencePathways />
           <AboutSection />
           <HelpfulGuides onGuideClick={handleGuideClick} />
-          <GoogleBusinessProfileSupport onSupportClick={handleSupportClick} onQuoteClick={handleQuoteClick} onSectionChange={handleSectionChange} />
           <Contact onSupportFormClick={handleSupportFormClick} />
         </>
       )}
-      <MobileStickyActions
-        onWhatsAppClick={() => handleSupportClick('mobile_sticky_whatsapp', 'I would like WhatsApp support from Kleihaus. Please help me with products, pricing, delivery or installation guidance.')}
-        onQuoteClick={handleMobileQuoteClick}
-      />
-      <Footer onSupportClick={handleSupportClick} />
+      <Footer />
       <SupportModal
         open={supportModal.open}
         source={supportModal.source}
