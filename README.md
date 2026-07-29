@@ -138,6 +138,14 @@ Do not move production to Cloudflare Pages unless the deployment strategy is int
 
 `src/seoManifest.js` is the shared source for route metadata, generated sitemap entries, route-specific static HTML and Worker metadata injection. Keep it aligned with route content in `src/App.jsx` whenever adding or renaming public SEO routes. The schema strategy remains conservative: do not add Product schema, Offer schema, fake ratings, fake reviews or fake prices.
 
+The public information architecture is product-led:
+
+```text
+Products | Solutions | Projects | Guides | Locations | About | Contact
+```
+
+`/products`, `/guides` and `/locations` are lightweight parent hubs that organize existing content. `/trade-projects` remains the canonical Solutions/audience hub, `/projects` remains the genuine project-gallery destination, and quotation remains a highlighted action rather than a primary information category. Parent routes with child routes, such as `/locations`, are generated as folder `index.html` route assets so `/locations/nairobi` and related child pages continue to work.
+
 ## Environment Variables
 
 The repository includes placeholders in `.env.example`.
@@ -223,6 +231,9 @@ The site includes lightweight frontend category, guide and location landing page
 - `/adhesives-grout`
 - `/installation-support`
 - `/trade-projects`
+- `/products`
+- `/guides`
+- `/locations`
 - `/locations/nairobi`
 - `/locations/machakos`
 - `/locations/makueni`

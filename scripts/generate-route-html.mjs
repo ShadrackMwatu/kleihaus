@@ -10,13 +10,16 @@ const indexPath = resolve(distPath, 'index.html')
 const baseHtml = await readFile(indexPath, 'utf8')
 
 const pageRoutes = seoRoutes.filter((route) => route.path !== '/')
+const routePaths = new Set(pageRoutes.map((route) => route.path))
+const hasChildRoute = (path) => [...routePaths].some((routePath) => routePath.startsWith(`${path}/`))
 
 await Promise.all(
   pageRoutes.map(async (route) => {
-    const routeAssetPath = resolve(distPath, route.path.replace(/^\/+/, ''))
+    const relativeRoutePath = route.path.replace(/^\/+/, '')
+    const routeAssetPath = resolve(distPath, hasChildRoute(route.path) ? `${relativeRoutePath}/index.html` : relativeRoutePath)
     await mkdir(dirname(routeAssetPath), { recursive: true })
     await writeFile(routeAssetPath, injectRouteMetadata(baseHtml, route), 'utf8')
   }),
 )
 
-console.log(`Generated ${pageRoutes.length} route-specific extensionless HTML files in ${distPath}`)
+console.log(`Generated ${pageRoutes.length} route-specific HTML files in ${distPath}`)

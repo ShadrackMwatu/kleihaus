@@ -8,6 +8,18 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-07-29
 
+### Information Architecture Upgrade
+
+- Reviewed the current repository, live production route responses and the supplied Kleihaus structure diagram before editing.
+- Updated the public header navigation to the long-term hierarchy: Products, Solutions, Projects, Guides, Locations, About and Contact.
+- Kept `Request a Quotation` as a highlighted header action instead of treating quotation submission as a primary information category.
+- Added lightweight parent hubs for `/products`, `/guides` and `/locations`, reusing existing product, guide and location content without deleting or renaming established URLs.
+- Preserved `/trade-projects` as the canonical Solutions/audience hub for the six existing customer pathways.
+- Strengthened Kitchen Sinks & Mixers visibility inside product discovery while keeping it tied to verified sanitaryware content and images.
+- Updated route metadata, breadcrumbs, sitemap generation and route-specific HTML generation for the new parent/child route structure.
+- Adjusted homepage order so product discovery appears before audience pathways, with genuine projects, guides and local support still visible.
+- Preserved quote, WhatsApp, phone, email, social, analytics, schema safeguards, Cloudflare Worker configuration and API behavior.
+
 ### Homepage Commercial Positioning
 
 - Repositioned the homepage from a quotation-led first impression to a product-discovery and project-support journey.

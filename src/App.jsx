@@ -6,6 +6,7 @@ import {
   ClipboardList,
   ChevronLeft,
   ChevronRight,
+  Droplets,
   Mail,
   MapPin,
   Menu,
@@ -214,10 +215,13 @@ const canonicalUrl = 'https://www.kleihaus.com/'
 const defaultSeoImage = 'https://www.kleihaus.com/images/kleihaus-structure.jpg'
 
 const navItems = [
-  { label: 'Home', section: 'home' },
-  { label: 'About', section: 'about' },
-  { label: 'Catalogue', section: 'catalogue' },
-  { label: 'Contact', section: 'contact' },
+  { label: 'Products', href: '/products', type: 'route' },
+  { label: 'Solutions', href: '/trade-projects', type: 'route' },
+  { label: 'Projects', href: '/projects', type: 'route' },
+  { label: 'Guides', href: '/guides', type: 'route' },
+  { label: 'Locations', href: '/locations', type: 'route' },
+  { label: 'About', section: 'about', href: '/#about', type: 'section' },
+  { label: 'Contact', section: 'contact', href: '/#contact', type: 'section' },
 ]
 
 const panelItems = [
@@ -227,7 +231,7 @@ const panelItems = [
   { label: 'Quotation', panel: 'quote' },
 ]
 
-const categoryNav = ['Floor Tiles', 'Wall Tiles', 'Bathroom Tiles', 'Sanitaryware', 'Paints', 'Adhesives & Grout', 'Installation Support']
+const categoryNav = ['Floor Tiles', 'Wall Tiles', 'Bathroom Tiles', 'Sanitaryware', 'Kitchen Sinks & Mixers', 'Paints', 'Adhesives & Grout', 'Installation Support']
 
 const categories = [
   {
@@ -264,6 +268,13 @@ const categories = [
     use: 'Complete bathroom fittings and upgrades',
     img: '/images/sanitaryware/sanitaryware-shower-display-02.jpg',
     icon: ShowerHead,
+  },
+  {
+    name: 'Kitchen Sinks & Mixers',
+    blurb: 'Sink and mixer options for coordinated kitchen finishing.',
+    use: 'Kitchen sink zones, mixers and countertops',
+    img: '/images/sanitaryware/sanitaryware-kitchen-sink-backsplash-01.jpg',
+    icon: Droplets,
   },
   {
     name: 'Paints',
@@ -1241,7 +1252,124 @@ const tradeProjectsPage = {
   images: projectImageItems.slice(0, 3),
 }
 
-const categoryLandingByPath = Object.fromEntries([...seoLandingPages, projectsPage, tradeProjectsPage].map((page) => [page.path, page]))
+const productsHubPage = {
+  path: '/products',
+  title: 'Kleihaus Products | Tiles, Sanitaryware, Paints & Finishing Materials',
+  description:
+    'Explore Kleihaus product categories: tiles, sanitaryware, kitchen sinks and mixers, paints, adhesives, grout, tools and finishing support.',
+  eyebrow: 'Products',
+  h1: 'Explore Kleihaus products by category',
+  intro:
+    'Start with the finishing category that matches your project, then move into product pages, guides, projects and quotation support when the requirements are clearer.',
+  category: 'Products',
+  schemaType: 'CollectionPage',
+  pageType: 'products',
+  ctaLabel: 'Request product guidance',
+  images: [
+    { src: '/images/tiles-floor.jpg', alt: 'Floor tile products supplied by Kleihaus Ceramics', label: 'Tiles' },
+    { src: '/images/sanitaryware/sanitaryware-shower-display-02.jpg', alt: 'Sanitaryware products supplied by Kleihaus Ceramics', label: 'Sanitaryware' },
+    { src: '/images/sanitaryware/sanitaryware-kitchen-sink-backsplash-01.jpg', alt: 'Kitchen sink and mixer finishing options from Kleihaus Ceramics', label: 'Sinks and mixers' },
+  ],
+  hubGroups: [
+    {
+      title: 'Product categories',
+      text: 'Compare the core commercial categories before requesting a quote.',
+      links: [
+        { label: 'Tiles', href: '/tiles', detail: 'Floor, wall, bathroom and outdoor tile options' },
+        { label: 'Sanitaryware', href: '/sanitaryware', detail: 'Basins, toilets, showers, taps and bathroom accessories' },
+        { label: 'Kitchen sinks and mixers', href: '/sanitaryware', detail: 'Sink zones, kitchen mixers and coordinated finishing references' },
+        { label: 'Paints', href: '/paints', detail: 'Interior, exterior, roof and floor paint planning' },
+        { label: 'Adhesives and grout', href: '/adhesives-grout', detail: 'Tile fixing materials, grout, trims and spacers' },
+        { label: 'Finishing tools and support', href: '/installation-support', detail: 'Tools, workflow guidance, training and installation support' },
+      ],
+    },
+    {
+      title: 'Plan by next step',
+      text: 'Use projects, guides and local hubs to refine product choices before enquiry.',
+      links: [
+        { label: 'View projects', href: '/projects', detail: 'Genuine project inspiration and finishing references' },
+        { label: 'Get selection guidance', href: '/guides', detail: 'Buying, planning, installation and estimation guides' },
+        { label: 'Find your location', href: '/locations', detail: 'Nairobi, Machakos and Makueni support hubs' },
+      ],
+    },
+  ],
+}
+
+const guidesHubPage = {
+  path: '/guides',
+  title: 'Kleihaus Guides | Buying, Planning & Installation Help',
+  description:
+    'Use Kleihaus guides for tile buying, bathroom renovation, paint selection, adhesive and grout planning, installation practices and cost estimation.',
+  eyebrow: 'Guides',
+  h1: 'Buying and planning guides',
+  intro:
+    'Use the resource centre to choose products, plan quantities, prepare for installation and structure a clearer quote request without relying on unsupported prices or claims.',
+  category: 'Guides',
+  schemaType: 'CollectionPage',
+  pageType: 'guides',
+  ctaLabel: 'Request guide-based support',
+  images: [
+    { src: '/images/tiles-floor.jpg', alt: 'Tile buying guide support from Kleihaus Ceramics', label: 'Tile buying' },
+    { src: '/images/bathroom-blue-1.jpg', alt: 'Bathroom renovation planning guidance from Kleihaus Ceramics', label: 'Bathroom planning' },
+    { src: '/images/adhesive.jpg', alt: 'Adhesive and grout guide support from Kleihaus Ceramics', label: 'Installation materials' },
+  ],
+  hubGroups: [
+    {
+      title: 'Resource centre',
+      text: 'Pick the guide that matches the practical decision in front of you.',
+      links: guideSeoPages.map((guide) => ({
+        label: guide.category,
+        href: guide.path,
+        detail: guide.description,
+      })),
+    },
+  ],
+}
+
+const locationsIndexPage = {
+  path: '/locations',
+  title: 'Kleihaus Locations | Nairobi, Machakos & Makueni Support',
+  description:
+    'Find Kleihaus location hubs for Nairobi, Machakos and Makueni, with links to relevant product-location pages and quotation support.',
+  eyebrow: 'Locations',
+  h1: 'Kleihaus support by location',
+  intro:
+    'Use the main location hub to move into Nairobi, Machakos or Makueni support pages, then review relevant product-location pages for local planning context.',
+  category: 'Locations',
+  schemaType: 'CollectionPage',
+  pageType: 'locations',
+  ctaLabel: 'Request local support',
+  images: [
+    { src: '/images/kleihaus-structure.jpg', alt: 'Kleihaus Ceramics local finishing material support', label: 'Location support' },
+    { src: '/images/tiles-gallery-1.jpg', alt: 'Tile planning for local Kleihaus projects', label: 'Tile planning' },
+    { src: '/images/paint-exterior.jpg', alt: 'Paint and exterior finish planning for local projects', label: 'Paint planning' },
+  ],
+  hubGroups: [
+    {
+      title: 'Principal location hubs',
+      text: 'Start with the county or service-area hub, then move to product-specific pages where useful.',
+      links: [
+        { label: 'Nairobi', href: '/locations/nairobi', detail: 'Support for apartments, retail spaces, offices, renovations and project sites' },
+        { label: 'Machakos', href: '/locations/machakos', detail: 'Support for new homes, rentals, shops, institutions and construction sites' },
+        { label: 'Makueni', href: '/locations/makueni', detail: 'Support for home builds, renovations and route-aware material planning' },
+      ],
+    },
+    {
+      title: 'Product-location pages',
+      text: 'Use these only when the product and location are both relevant to your enquiry.',
+      links: [
+        { label: 'Tiles Nairobi', href: '/tiles-nairobi', detail: 'Tile planning and quote context for Nairobi' },
+        { label: 'Sanitaryware Machakos', href: '/sanitaryware-machakos', detail: 'Bathroom fixture planning and support for Machakos' },
+        { label: 'Paints Makueni', href: '/paints-makueni', detail: 'Paint and finishing guidance for Makueni projects' },
+        { label: 'Installation support Nairobi', href: '/installation-support-nairobi', detail: 'Installation workflow support for Nairobi sites' },
+      ],
+    },
+  ],
+}
+
+const hubPages = [productsHubPage, guidesHubPage, locationsIndexPage]
+
+const categoryLandingByPath = Object.fromEntries([...hubPages, ...seoLandingPages, projectsPage, tradeProjectsPage].map((page) => [page.path, page]))
 
 const categoryGuideTargets = {
   Tiles: '/tiles',
@@ -1250,6 +1378,7 @@ const categoryGuideTargets = {
   'Outdoor Tiles': '/floor-tiles',
   'Bathroom Tiles': '/bathroom-tiles',
   Sanitaryware: '/sanitaryware',
+  'Kitchen Sinks & Mixers': '/sanitaryware',
   Paints: '/paints',
   'Adhesives & Grout': '/adhesives-grout',
   'Installation Support': '/installation-support',
@@ -1595,7 +1724,7 @@ const getPageBreadcrumbs = (page) => {
   if (page.path?.startsWith('/locations/')) {
     return [
       { name: 'Home', href: '/' },
-      { name: 'Locations served', href: '/#contact' },
+      { name: 'Locations', href: '/locations' },
       { name: page.category, href: page.path },
     ]
   }
@@ -1603,7 +1732,7 @@ const getPageBreadcrumbs = (page) => {
   if (page.eyebrow === 'Project guide') {
     return [
       { name: 'Home', href: '/' },
-      { name: 'Project guides', href: '/#faq' },
+      { name: 'Guides', href: '/guides' },
       { name: page.category, href: page.path },
     ]
   }
@@ -1944,12 +2073,30 @@ function SearchAutocomplete({ value, onChange, projectType, onSearch }) {
   )
 }
 
-function Header({ projectType, searchQuery, setSearchQuery, onSearch, activeSection, selectedCategory, onSectionChange, onCategoryClick, onSupportClick, onContactClick }) {
+function Header({ projectType, searchQuery, setSearchQuery, onSearch, activeSection, selectedCategory, onSectionChange, onCategoryClick, onSupportClick, onContactClick, onRouteNavigate, onQuoteClick }) {
   const [menuOpen, setMenuOpen] = useState(false)
 
   const handleNavClick = (section) => {
     onSectionChange(section)
     setMenuOpen(false)
+  }
+
+  const handlePrimaryNavClick = (event, item) => {
+    setMenuOpen(false)
+    if (item.type === 'section') {
+      event.preventDefault()
+      handleNavClick(item.section)
+      return
+    }
+
+    analyticsService.track('navigation_click', {
+      clickedElement: `primary_nav_${item.label.toLowerCase().replace(/[^a-z0-9]+/g, '_')}`,
+      ctaLabel: item.label,
+      ctaPosition: 'header_primary_nav',
+      pageType: 'navigation',
+      enquiryIntent: item.label === 'Products' ? 'product_discovery' : item.label === 'Guides' ? 'research' : item.label === 'Locations' ? 'local_support' : 'site_navigation',
+    })
+    onRouteNavigate(event, item.href)
   }
 
   return (
@@ -1964,13 +2111,13 @@ function Header({ projectType, searchQuery, setSearchQuery, onSearch, activeSect
           <SearchAutocomplete value={searchQuery} onChange={setSearchQuery} projectType={projectType} onSearch={onSearch} />
         </div>
 
-        <nav className="hidden items-center justify-end gap-5 xl:flex">
+        <nav className="hidden items-center justify-end gap-2 xl:flex">
           {navItems.map((item) => (
-            <button
-              key={item.section}
-              type="button"
+            <a
+              key={item.label}
+              href={item.href}
               aria-current={activeSection === item.section ? 'page' : undefined}
-              onClick={() => handleNavClick(item.section)}
+              onClick={(event) => handlePrimaryNavClick(event, item)}
               className={`rounded-md px-2 py-1.5 text-sm font-medium transition focus:outline-none focus:ring-2 focus:ring-emerald-200 ${
                 activeSection === item.section
                   ? 'bg-emerald-50 text-emerald-800'
@@ -1978,13 +2125,21 @@ function Header({ projectType, searchQuery, setSearchQuery, onSearch, activeSect
               }`}
             >
               {item.label}
-            </button>
+            </a>
           ))}
         </nav>
 
         <div className="hidden items-center justify-end lg:flex">
-          <Button type="button" onClick={() => onSupportClick('header_whatsapp')} className={`${whatsappCtaClass} px-3.5 py-2.5 text-sm`}>
-            <WhatsAppBrandText>WhatsApp Kleihaus</WhatsAppBrandText>
+          <Button
+            type="button"
+            onClick={() => {
+              onQuoteClick('header_request_quotation')
+              onSectionChange('contact')
+            }}
+            className="gap-1.5 border-emerald-700 bg-[#16A34A] px-3.5 py-2.5 text-sm text-white hover:bg-emerald-700"
+          >
+            Request a Quotation
+            <ArrowRight className="h-4 w-4" />
           </Button>
         </div>
 
@@ -2033,18 +2188,30 @@ function Header({ projectType, searchQuery, setSearchQuery, onSearch, activeSect
           </div>
           <nav className="grid gap-2">
             {navItems.map((item) => (
-              <button
-                key={item.section}
-                type="button"
+              <a
+                key={item.label}
+                href={item.href}
                 aria-current={activeSection === item.section ? 'page' : undefined}
                 className={`rounded-md px-2 py-2 text-left text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-200 ${
                   activeSection === item.section ? 'bg-emerald-50 text-emerald-800' : 'text-neutral-800 hover:bg-neutral-50'
                 }`}
-                onClick={() => handleNavClick(item.section)}
+                onClick={(event) => handlePrimaryNavClick(event, item)}
               >
                 {item.label}
-              </button>
+              </a>
             ))}
+            <button
+              type="button"
+              onClick={() => {
+                setMenuOpen(false)
+                onQuoteClick('mobile_menu_request_quotation')
+                onSectionChange('contact')
+              }}
+              className="mt-1 inline-flex min-h-10 items-center justify-center gap-2 rounded-md border border-emerald-700 bg-[#16A34A] px-3 py-2 text-sm font-semibold text-white focus:outline-none focus:ring-2 focus:ring-emerald-200"
+            >
+              Request a Quotation
+              <ArrowRight className="h-4 w-4" />
+            </button>
           </nav>
         </div>
       )}
@@ -2117,12 +2284,12 @@ function Hero({ onSupportClick, onQuoteClick, onSectionChange }) {
           </div>
           <div className="absolute inset-0 bg-gradient-to-r from-neutral-950/75 via-neutral-950/35 to-white/5" />
           <div className="absolute inset-0 bg-gradient-to-br from-emerald-950/20 via-transparent to-white/10" />
-          <div className="relative flex h-full max-w-3xl flex-col justify-center px-5 py-6 pb-12 sm:px-9 sm:py-10 lg:px-10">
+          <div className="relative flex h-full w-full min-w-0 max-w-3xl flex-col justify-center px-5 py-6 pb-12 sm:px-9 sm:py-10 lg:px-10">
             <p className="max-w-[18rem] text-xs font-semibold uppercase tracking-wide text-emerald-200 sm:max-w-none">Tiles. Sanitaryware. Paints. | Nairobi | Machakos | Makueni</p>
             <h1 className="mt-2 max-w-[calc(100vw-4rem)] break-words text-[clamp(1.55rem,7.6vw,2.5rem)] font-semibold leading-[1.08] text-white sm:mt-3 sm:max-w-2xl sm:text-5xl sm:leading-tight lg:text-5xl">
               Tiles, sanitaryware and paints for every stage of your project
             </h1>
-            <p className="mt-3 max-w-xl text-sm leading-5 text-neutral-100 sm:mt-4 sm:text-base sm:leading-7">
+            <p className="mt-3 max-w-[18.5rem] break-words text-sm leading-5 text-neutral-100 sm:mt-4 sm:max-w-xl sm:text-base sm:leading-7">
               Explore practical finishing solutions for homes, renovations and commercial developments, with guidance on product selection, quantities, delivery and installation support.
             </p>
             <div className="mt-4 flex flex-wrap items-center gap-2 max-sm:[&>*]:w-full max-sm:[&>*]:justify-center sm:mt-6 sm:gap-3">
@@ -2407,6 +2574,17 @@ function ShopByCategory({ selectedCategory, onCategoryClick, onGuideClick, onSup
           const Icon = category.icon
           const landingPage = categoryLandingPages.find((page) => page.category === category.name)
           const guideTarget = landingPage?.path || categoryGuideTargets[category.name] || '/#catalogue'
+          const destinationLabel = guideTarget.includes('guide')
+            ? 'Read the Guide'
+            : category.name === 'Sanitaryware'
+              ? 'Explore Sanitaryware'
+              : category.name === 'Kitchen Sinks & Mixers'
+                ? 'View Sinks and Mixers'
+                : category.name === 'Paints'
+                  ? 'Discover Paints'
+                  : category.name === 'Adhesives & Grout' || category.name === 'Installation Support'
+                    ? 'View Finishing Materials'
+                    : `View ${category.name}`
           return (
             <article
               key={category.name}
@@ -2447,7 +2625,7 @@ function ShopByCategory({ selectedCategory, onCategoryClick, onGuideClick, onSup
                 </div>
                 <a
                   href={guideTarget}
-                  aria-label={`View ${category.name} guide`}
+                  aria-label={`${destinationLabel} for ${category.name}`}
                   className="group/link mt-1.5 inline-flex w-fit items-center gap-1 text-[10px] font-semibold uppercase tracking-wide text-emerald-700 underline decoration-emerald-200 underline-offset-4 transition hover:text-emerald-900 hover:decoration-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:text-xs"
                   onClick={(event) => {
                     analyticsService.track('category_click', {
@@ -2457,7 +2635,7 @@ function ShopByCategory({ selectedCategory, onCategoryClick, onGuideClick, onSup
                     onGuideClick(event, guideTarget, category.name)
                   }}
                 >
-                  View guide
+                  {destinationLabel}
                   <ArrowRight className="h-3 w-3 transition group-hover/link:translate-x-0.5" />
                 </a>
                 {selectedCategory === category.name && (
@@ -2465,15 +2643,22 @@ function ShopByCategory({ selectedCategory, onCategoryClick, onGuideClick, onSup
                     Recommended for you
                   </span>
                 )}
-                <button
-                  type="button"
-                  onClick={() => {
-                    onCategoryClick(category.name)
+                <a
+                  href={guideTarget}
+                  onClick={(event) => {
+                    analyticsService.track('category_click', {
+                      productCategory: category.name,
+                      clickedElement: `category_cta_${guideTarget}`,
+                      ctaLabel: destinationLabel,
+                      ctaPosition: 'category_card',
+                      enquiryIntent: guideTarget.includes('guide') ? 'research' : 'product_discovery',
+                    })
+                    onGuideClick(event, guideTarget, category.name)
                   }}
-                  className="mt-auto inline-flex items-center justify-center gap-1.5 rounded-md bg-emerald-700 px-2.5 py-1.5 text-xs font-semibold text-white hover:bg-emerald-800 sm:px-3 sm:py-2 sm:text-sm"
+                  className="mt-auto inline-flex items-center justify-center gap-1.5 rounded-md bg-emerald-700 px-2.5 py-1.5 text-xs font-semibold text-white hover:bg-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:px-3 sm:py-2 sm:text-sm"
                 >
-                  {category.name === 'Sanitaryware' ? 'Explore Sanitaryware' : category.name === 'Paints' ? 'Discover Paints' : category.name === 'Adhesives & Grout' || category.name === 'Installation Support' ? 'View Finishing Materials' : `View ${category.name}`}
-                </button>
+                  {destinationLabel}
+                </a>
               </div>
             </article>
           )
@@ -3524,6 +3709,123 @@ function Breadcrumbs({ page }) {
   )
 }
 
+function HubPage({ page, onSectionChange, onSupportClick, onQuoteClick }) {
+  return (
+    <main className="bg-white">
+      <Breadcrumbs page={page} />
+      <section className="border-b border-emerald-100 bg-stone-50">
+        <div className="mx-auto grid max-w-7xl gap-5 px-4 py-6 sm:py-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+          <div>
+            <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">{page.eyebrow}</p>
+            <h1 className="mt-2 max-w-3xl text-[clamp(1.75rem,6vw,2.5rem)] font-semibold leading-tight text-neutral-950 sm:text-4xl">
+              {page.h1}
+            </h1>
+            <p className="mt-3 max-w-2xl text-sm leading-6 text-neutral-700 sm:text-base sm:leading-6">{page.intro}</p>
+            <div className="mt-4 flex flex-wrap gap-2 max-sm:[&>*]:w-full max-sm:[&>*]:justify-center">
+              <Button
+                type="button"
+                className="gap-1.5 px-3 py-2 text-xs sm:px-4 sm:py-2.5 sm:text-sm"
+                onClick={() => {
+                  analyticsService.track('hub_click', { clickedElement: `${page.pageType}_hero_quote`, ctaLabel: page.ctaLabel, ctaPosition: `${page.pageType}_hero`, pageType: page.pageType, enquiryIntent: 'quote' })
+                  onQuoteClick(`${page.pageType}_hero_quote`)
+                  onSectionChange('contact')
+                }}
+              >
+                {page.ctaLabel}
+                <ArrowRight className="h-4 w-4" />
+              </Button>
+              <ButtonSecondary
+                type="button"
+                onClick={() => onSupportClick(`${page.pageType}_hero_whatsapp`, `Hello Kleihaus, I am exploring ${page.category.toLowerCase()} and would like help choosing the right next step.`)}
+                className={`${whatsappCtaClass} px-3 py-2 text-xs sm:px-4 sm:py-2.5 sm:text-sm`}
+              >
+                <WhatsAppBrandText>Ask on WhatsApp</WhatsAppBrandText>
+              </ButtonSecondary>
+            </div>
+          </div>
+          <div className="grid grid-cols-3 gap-2 sm:gap-3">
+            {page.images.slice(0, 3).map((image, index) => (
+              <OptimizedImage
+                key={image.src}
+                src={image.src}
+                alt={image.alt}
+                sizes={index === 0 ? '(max-width: 640px) 66vw, 45vw' : '(max-width: 640px) 33vw, 22vw'}
+                loading={index === 0 ? 'eager' : 'lazy'}
+                decoding="async"
+                className={`h-full min-h-28 w-full rounded-lg object-cover shadow-sm ${index === 0 ? 'col-span-2 row-span-2 aspect-[4/3]' : 'aspect-square'}`}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 py-6 sm:py-8">
+        <div className="grid gap-4 lg:grid-cols-2">
+          {page.hubGroups.map((group) => (
+            <article key={group.title} className="rounded-xl border border-neutral-200 bg-white p-4 shadow-sm sm:p-5">
+              <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">{group.title}</p>
+              <p className="mt-2 text-sm leading-6 text-neutral-600">{group.text}</p>
+              <div className="mt-4 grid gap-2">
+                {group.links.map((link) => (
+                  <a
+                    key={`${group.title}-${link.href}-${link.label}`}
+                    href={link.href}
+                    onClick={() =>
+                      analyticsService.track('hub_click', {
+                        clickedElement: `${page.pageType}_hub_${link.label.toLowerCase().replace(/[^a-z0-9]+/g, '_')}`,
+                        ctaLabel: link.label,
+                        ctaPosition: `${page.pageType}_hub`,
+                        pageType: page.pageType,
+                        enquiryIntent: page.pageType === 'products' ? 'product_discovery' : page.pageType === 'guides' ? 'research' : 'local_support',
+                      })
+                    }
+                    className="group rounded-lg border border-neutral-200 bg-neutral-50 p-3 transition hover:border-emerald-700 hover:bg-emerald-50 focus:outline-none focus:ring-2 focus:ring-emerald-200"
+                  >
+                    <span className="flex items-center justify-between gap-3">
+                      <span className="text-sm font-semibold text-neutral-950">{link.label}</span>
+                      <ArrowRight className="h-4 w-4 shrink-0 text-neutral-400 transition group-hover:text-emerald-700" />
+                    </span>
+                    <span className="mt-1 block text-xs leading-5 text-neutral-600 sm:text-sm">{link.detail}</span>
+                  </a>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 pb-8 sm:pb-10">
+        <div className="grid gap-3 rounded-xl bg-neutral-950 p-4 text-white sm:p-5 lg:grid-cols-[1fr_auto] lg:items-center">
+          <div>
+            <p className="text-xs font-semibold uppercase text-emerald-300 sm:text-sm">Next step</p>
+            <h2 className="mt-1.5 text-xl font-semibold sm:text-2xl">Ready to turn this into a clearer Kleihaus enquiry?</h2>
+            <p className="mt-2 max-w-3xl text-sm leading-6 text-neutral-300">
+              Share product category, measurements, location, quantity and timing so the team can guide the most relevant support path.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-2 lg:justify-end">
+            <ButtonSecondary type="button" onClick={() => onSupportClick(`${page.pageType}_bottom_whatsapp`)} className={`${whatsappCtaClass} px-3 py-2 text-xs sm:text-sm`}>
+              <WhatsAppBrandText>WhatsApp help</WhatsAppBrandText>
+            </ButtonSecondary>
+            <button
+              type="button"
+              onClick={() => {
+                analyticsService.track('hub_click', { clickedElement: `${page.pageType}_bottom_quote`, ctaLabel: 'Request a quotation', ctaPosition: `${page.pageType}_bottom`, pageType: page.pageType, enquiryIntent: 'quote' })
+                onQuoteClick(`${page.pageType}_bottom_quote`)
+                onSectionChange('contact')
+              }}
+              className="inline-flex items-center justify-center gap-2 rounded-md border border-emerald-700 bg-[#16A34A] px-3 py-2 text-xs font-semibold text-white transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:text-sm"
+            >
+              Request a Quotation
+              <ArrowRight className="h-4 w-4" />
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+  )
+}
+
 function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteClick }) {
   return (
     <main className="bg-white">
@@ -4021,11 +4323,13 @@ function ProjectsPage({ page, onSectionChange, onSupportClick, onQuoteClick }) {
 
 function Footer({ onSupportClick }) {
   const footerProductLinks = [
+    { label: 'All products', href: '/products' },
     { label: 'Tiles', href: '/tiles' },
     { label: 'Floor tiles', href: '/floor-tiles' },
     { label: 'Wall tiles', href: '/wall-tiles' },
     { label: 'Bathroom tiles', href: '/bathroom-tiles' },
     { label: 'Sanitaryware', href: '/sanitaryware' },
+    { label: 'Kitchen sinks & mixers', href: '/sanitaryware' },
     { label: 'Paints', href: '/paints' },
     { label: 'Adhesives & grout', href: '/adhesives-grout' },
   ]
@@ -4036,7 +4340,7 @@ function Footer({ onSupportClick }) {
     { label: 'Paints Makueni', href: '/paints-makueni' },
   ]
   const projectGuideLinks = [
-    { label: 'Trade & project support', href: '/trade-projects' },
+    { label: 'Guides hub', href: '/guides' },
     { label: 'Tile buying guide', href: '/tile-buying-guide' },
     { label: 'Bathroom renovation guide', href: '/bathroom-renovation-guide' },
     { label: 'Paint selection guide', href: '/paint-selection-guide' },
@@ -4047,6 +4351,7 @@ function Footer({ onSupportClick }) {
     { label: 'Kitchen Projects', href: '/projects#kitchen-projects' },
   ]
   const locationLinks = [
+    { label: 'All locations', href: '/locations' },
     { label: 'Nairobi', href: '/locations/nairobi' },
     { label: 'Machakos', href: '/locations/machakos' },
     { label: 'Makueni', href: '/locations/makueni' },
@@ -4124,7 +4429,7 @@ function Footer({ onSupportClick }) {
         <div className="mx-auto grid max-w-6xl gap-4 text-xs text-orange-50/90 sm:grid-cols-3 sm:text-sm">
           {[
             ['Popular searches', popularSearchLinks],
-            ['Project guides', projectGuideLinks],
+            ['Guides', projectGuideLinks],
             ['Locations served', locationLinks],
           ].map(([title, links]) => (
             <div key={title}>
@@ -4254,6 +4559,8 @@ export default function App() {
         ? 'projects'
         : activeCategoryPage?.pageType === 'trade'
           ? 'trade_projects'
+      : activeCategoryPage?.hubGroups
+        ? activeCategoryPage.pageType || 'hub'
       : activeCategoryPage?.category?.toLowerCase().includes('guide')
         ? 'guide'
         : activeCategoryPage
@@ -4328,6 +4635,30 @@ export default function App() {
           behavior: window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
         })
       })
+    })
+  }
+
+  const handleRouteNavigate = (event, href) => {
+    if (!href || !href.startsWith('/')) return
+    if (event?.metaKey || event?.ctrlKey || event?.shiftKey || event?.altKey || event?.button !== 0) return
+
+    event.preventDefault()
+    const target = normalizePath(href)
+    if (target !== currentPath) {
+      window.history.pushState({}, '', target)
+      setCurrentPath(target)
+    }
+    setActiveSection('home')
+    setActivePanel('catalogue')
+    analyticsService.track('navigation_click', {
+      clickedElement: `route_nav_${target}`,
+      pagePath: target,
+      ctaPosition: 'route_navigation',
+    })
+    refreshSignals()
+    window.scrollTo({
+      top: 0,
+      behavior: window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
     })
   }
 
@@ -4467,6 +4798,8 @@ export default function App() {
         onCategoryClick={handleCategoryClick}
         onSupportClick={handleSupportClick}
         onContactClick={handleContactClick}
+        onRouteNavigate={handleRouteNavigate}
+        onQuoteClick={handleQuoteClick}
       />
       {activeCategoryPage ? (
         activeCategoryPage.pageType === 'projects' ? (
@@ -4483,6 +4816,13 @@ export default function App() {
             onSupportClick={handleSupportClick}
             onQuoteClick={handleQuoteClick}
           />
+        ) : activeCategoryPage.hubGroups ? (
+          <HubPage
+            page={activeCategoryPage}
+            onSectionChange={handleSectionChange}
+            onSupportClick={handleSupportClick}
+            onQuoteClick={handleQuoteClick}
+          />
         ) : (
           <CategoryLandingPage
             page={activeCategoryPage}
@@ -4494,8 +4834,6 @@ export default function App() {
       ) : (
         <>
           <Hero onSupportClick={handleSupportClick} onQuoteClick={handleQuoteClick} onSectionChange={handleSectionChange} />
-          <GoogleBusinessProfileSupport onSupportClick={handleSupportClick} onQuoteClick={handleQuoteClick} onSectionChange={handleSectionChange} />
-          <AudiencePathways onSupportClick={handleSupportClick} onQuoteClick={handleQuoteClick} onSectionChange={handleSectionChange} />
           <CompactContentArea
             activePanel={activePanel}
             onPanelChange={handlePanelChange}
@@ -4507,7 +4845,9 @@ export default function App() {
             contentRef={contentAreaRef}
           />
           <CustomerProjectGallery />
+          <AudiencePathways onSupportClick={handleSupportClick} onQuoteClick={handleQuoteClick} onSectionChange={handleSectionChange} />
           <HelpfulGuides onGuideClick={handleGuideClick} />
+          <GoogleBusinessProfileSupport onSupportClick={handleSupportClick} onQuoteClick={handleQuoteClick} onSectionChange={handleSectionChange} />
         </>
       )}
       <MobileStickyActions

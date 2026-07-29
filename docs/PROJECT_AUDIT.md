@@ -14,6 +14,27 @@ Rule: Every future meaningful change must update `docs/CHANGELOG.md` and, where 
 - Locations: Nairobi | Machakos | Makueni
 - Product focus: tiles, sanitaryware, paints, adhesives, grout and finishing materials for homes and projects in Kenya.
 
+## Information Architecture
+
+On 2026-07-29, the repository, production route responses and supplied strategic structure diagram were reviewed before implementing a focused information-architecture upgrade.
+
+Implemented repo changes:
+
+- Public primary navigation now follows `Products | Solutions | Projects | Guides | Locations | About | Contact`.
+- `Request a Quotation` remains a visually distinct header action, not a top-level information category.
+- `/products` was added as the parent commercial hub for tiles, sanitaryware, kitchen sinks and mixers, paints, adhesives, grout, tools and finishing support.
+- `/guides` was added as a resource-centre hub linking the existing buying, renovation, paint, adhesive/grout, installation and cost-estimation guides.
+- `/locations` was added as the parent local hub for Nairobi, Machakos and Makueni, with product-location pages remaining subordinate to those hubs.
+- `/trade-projects` remains the canonical Solutions/audience hub for Homeowners, Home Builders, Contractors, Property Developers, Design Professionals, and Dealers & Institutional Buyers.
+- `/projects` remains the distinct genuine project-gallery destination.
+- The homepage sequence now places product discovery before audience pathways while preserving project inspiration, guide links, local support and final contact/quotation options.
+
+Technical notes:
+
+- Route metadata, canonicals, Open Graph/Twitter descriptions, breadcrumbs, sitemap entries and route-specific generated HTML were updated for the new hubs.
+- `scripts/generate-route-html.mjs` now writes parent routes with child routes, such as `/locations`, as folder `index.html` assets to avoid file/directory conflicts.
+- No Cloudflare DNS, routes, bindings, secrets, Worker deployment settings, quote endpoints, Product schema, Offer schema, Review schema, AggregateRating schema, fake ratings, fake reviews or fake prices were introduced.
+
 ## Homepage Commercial Positioning
 
 On 2026-07-29, the homepage was refined after a repository and live-production homepage review showed the first journey was still dominated by quotation prompts: the hero led with `Request quote`, the catalogue cards repeated quote actions, the project-inspiration block asked for a project quote, and homepage metadata described the business around quote support and quote requests.

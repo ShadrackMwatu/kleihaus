@@ -17,6 +17,18 @@ const coreRoutes = [
     breadcrumbs: [{ name: 'Home', href: '/' }],
   },
   {
+    path: '/products',
+    title: 'Kleihaus Products | Tiles, Sanitaryware, Paints & Finishing Materials',
+    description:
+      'Explore Kleihaus product categories: tiles, sanitaryware, kitchen sinks and mixers, paints, adhesives, grout, tools and finishing support.',
+    image: '/images/tiles-floor.jpg',
+    imageAlt: 'Kleihaus Ceramics product categories for finishing projects',
+    category: 'Products',
+    schemaType: 'CollectionPage',
+    changefreq: 'weekly',
+    priority: '0.9',
+  },
+  {
     path: '/tiles',
     title: 'Tiles Kenya | Floor, Wall & Bathroom Tiles | Kleihaus Ceramics',
     description:
@@ -89,6 +101,38 @@ const coreRoutes = [
     category: 'Installation Support',
   },
   {
+    path: '/guides',
+    title: 'Kleihaus Guides | Buying, Planning & Installation Help',
+    description:
+      'Use Kleihaus guides for tile buying, bathroom renovation, paint selection, adhesive and grout planning, installation practices and cost estimation.',
+    image: '/images/tiles-floor.jpg',
+    imageAlt: 'Kleihaus Ceramics buying and planning guides',
+    category: 'Guides',
+    schemaType: 'CollectionPage',
+    changefreq: 'monthly',
+    priority: '0.76',
+    breadcrumbs: [
+      { name: 'Home', href: '/' },
+      { name: 'Guides', href: '/guides' },
+    ],
+  },
+  {
+    path: '/locations',
+    title: 'Kleihaus Locations | Nairobi, Machakos & Makueni Support',
+    description:
+      'Find Kleihaus location hubs for Nairobi, Machakos and Makueni, with links to relevant product-location pages and quotation support.',
+    image: defaultImage,
+    imageAlt: 'Kleihaus Ceramics local finishing material support',
+    category: 'Locations',
+    schemaType: 'CollectionPage',
+    changefreq: 'monthly',
+    priority: '0.76',
+    breadcrumbs: [
+      { name: 'Home', href: '/' },
+      { name: 'Locations', href: '/locations' },
+    ],
+  },
+  {
     path: '/projects',
     title: 'Kleihaus Projects | Kitchen Finishing Gallery',
     description:
@@ -112,7 +156,7 @@ const coreRoutes = [
     priority: '0.78',
     breadcrumbs: [
       { name: 'Home', href: '/' },
-      { name: 'Trade & Projects', href: '/trade-projects' },
+      { name: 'Solutions', href: '/trade-projects' },
     ],
   },
 ]
@@ -136,7 +180,7 @@ const guideRoutes = [
   priority: '0.7',
   breadcrumbs: [
     { name: 'Home', href: '/' },
-    { name: 'Project guides', href: '/#faq' },
+    { name: 'Guides', href: '/guides' },
     { name: category, href: path },
   ],
 }))
@@ -189,7 +233,7 @@ const locationHubRoutes = locations
     priority: '0.75',
     breadcrumbs: [
       { name: 'Home', href: '/' },
-      { name: 'Locations served', href: '/#contact' },
+      { name: 'Locations', href: '/locations' },
       { name: location.label, href: `/locations/${location.slug}` },
     ],
   }))

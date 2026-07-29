@@ -4,6 +4,8 @@ Date: 2026-07-08
 
 This audit reviews the current Kleihaus SEO implementation after the Phase 1 SEO/conversion work, Google Business Profile conversion update, analytics/Search Console documentation, sanitaryware image update and the 2026-07-08 advanced SEO implementation. The original audit was documentation-only; the follow-up implementation added repo-level SEO improvements without changing DNS, Cloudflare bindings, secrets, routes or deployment settings.
 
+2026-07-29 IA update: Kleihaus now has parent hubs for `/products`, `/guides` and `/locations`, while preserving `/trade-projects` as the Solutions/audience hub and `/projects` as the project-gallery destination. The primary navigation now follows `Products | Solutions | Projects | Guides | Locations | About | Contact`, with `Request a Quotation` retained as a highlighted conversion action rather than a primary content category.
+
 ## 2026-07-22 Current Audit And Implementation Update
 
 This update re-audited the current repository and the live website after the social profile update at commit `c4c17ac`. The audit checked source files, generated sitemap output, Worker behavior, live HTTP responses, route metadata, schema boundaries, analytics events, image delivery patterns and production build output.
@@ -16,6 +18,7 @@ SEO impact:
 
 - The route fills a genuine information-architecture gap around trade/project intent without creating repetitive audience/location doorway pages.
 - `/trade-projects` is included in `src/seoManifest.js`, `public/sitemap.xml`, breadcrumb output and generated route HTML.
+- `/products`, `/guides` and `/locations` are included in `src/seoManifest.js`, `public/sitemap.xml`, breadcrumb output and generated route HTML.
 - The page uses safe WebPage/Breadcrumb/ItemList schema only; Product, Offer, Review and AggregateRating schema remain absent.
 - `audience_pathway_click` extends measurement of high-intent audience CTAs while preserving the privacy-safe analytics model and now carries clearer pathway-specific CTA labels.
 - Current score impact: content SEO and conversion-readiness improve modestly; larger gains depend on owner-confirmed business proof, Search Console data and external campaign execution.
