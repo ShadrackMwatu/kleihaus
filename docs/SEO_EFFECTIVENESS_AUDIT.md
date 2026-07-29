@@ -20,6 +20,18 @@ SEO impact:
 - `audience_pathway_click` extends measurement of high-intent audience CTAs while preserving the privacy-safe analytics model and now carries clearer pathway-specific CTA labels.
 - Current score impact: content SEO and conversion-readiness improve modestly; larger gains depend on owner-confirmed business proof, Search Console data and external campaign execution.
 
+### 2026-07-29 Homepage Commercial Positioning Addendum
+
+A later 2026-07-29 homepage update corrected a quotation-heavy first impression. Before the change, the live homepage hero led with `Request quote`, homepage metadata emphasized quote support, category cards repeated quote actions, and the project-inspiration CTA asked for a project quote. The revised homepage leads with product discovery, selection guidance, genuine project inspiration and practical support while keeping quotation available for ready buyers.
+
+SEO and conversion impact:
+
+- Homepage title, description, Open Graph/Twitter descriptions and safe JSON-LD now emphasize tiles, sanitaryware, kitchen sinks, paints, adhesives, grout, tools, product selection guidance and project support.
+- Hero CTA hierarchy now starts with `Explore Products`, then `Discuss Your Project`, with `Request a Quotation` retained as a supporting action.
+- Category cards, featured products, project inspiration and buying-guide cards now encourage product exploration, product discussion, gallery browsing and guide navigation before quote submission.
+- Existing quote form, WhatsApp same-tab behavior, phone/email links, mobile sticky quote action, social links, `/api/quote-request`, six audience pathways and Cloudflare Worker architecture were preserved.
+- No Product, Offer, Review or AggregateRating schema was introduced.
+
 ### Projects Gallery Addendum
 
 Later on 2026-07-22, `Projects.zip` was added and implemented as a supported project-gallery update:

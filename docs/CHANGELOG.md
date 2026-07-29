@@ -8,6 +8,14 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-07-29
 
+### Homepage Commercial Positioning
+
+- Repositioned the homepage from a quotation-led first impression to a product-discovery and project-support journey.
+- Updated the hero heading, supporting copy and CTA hierarchy to lead with `Explore Products`, then `Discuss Your Project`, while retaining `Request a Quotation` as a visible supporting action.
+- Strengthened homepage product, project and guidance actions with labels such as `Explore products`, `Explore products by category`, `Discuss this product`, `Browse the Gallery`, `Selection Guidance` and `Installation Support`.
+- Reduced repeated homepage `Request quote` prompts outside buying/contact contexts while preserving the quote form, WhatsApp same-tab behavior, phone/email links, mobile sticky quote action and final contact conversion path.
+- Updated homepage metadata and safe JSON-LD descriptions so product discovery, selection guidance and project support lead the message without adding Product, Offer, Review or AggregateRating schema.
+
 ### SEO And Digital Marketing Campaign
 
 - Added `docs/SEO_DIGITAL_MARKETING_CAMPAIGN.md` with a repository/live-site baseline audit, keyword-to-page map, audience and messaging matrix, competitor benchmark, 90-day campaign plan, content calendar, paid-media structure, Google Business Profile checklist and analytics measurement plan.

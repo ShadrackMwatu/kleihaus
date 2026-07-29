@@ -1,6 +1,6 @@
 # Kleihaus Ceramics Website
 
-Kleihaus Ceramics is a customer-facing ceramics and finishing materials catalogue for tiles, sanitaryware, paints, adhesives, grout and project quotation support in Kenya.
+Kleihaus Ceramics is a customer-facing ceramics and finishing materials website for discovering, selecting and sourcing tiles, sanitaryware, kitchen sinks and mixers, paints, adhesives, grout, tools and project support in Kenya.
 
 Live website: https://www.kleihaus.com/
 
@@ -212,7 +212,7 @@ Manual action after deployment: update the website link inside Google Business P
 
 ## Public SEO Routes
 
-The site includes lightweight frontend category, guide and location landing pages for quote-focused search visibility:
+The site includes lightweight frontend category, guide and location landing pages for product discovery, selection guidance, local relevance and quote-ready search visibility:
 
 - `/tiles`
 - `/floor-tiles`
@@ -236,6 +236,8 @@ The site includes lightweight frontend category, guide and location landing page
 These pages are catalogue and quote-planning pages. They must not use Product or Offer structured data unless Kleihaus later publishes real product pages with truthful prices and current availability.
 
 `/trade-projects` is the consolidated audience hub for Homeowners, Home Builders, Contractors, Property Developers, Design Professionals, and Dealers & Institutional Buyers. Keep future audience SEO work anchored there unless real demand and content justify a separate substantial route.
+
+The homepage should lead with product discovery, genuine project inspiration and practical support guidance. Quotation remains prominent for purchase-ready visitors through the hero supporting link, contact panel, mobile sticky action, product/project support paths and `/api/quote-request`, but it should not become the website's dominant identity.
 
 `public/sitemap.xml` includes these URLs, and `public/robots.txt` references the sitemap.
 

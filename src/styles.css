@@ -13,6 +13,8 @@ html,
 body,
 #root {
   height: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 html {
@@ -178,7 +180,17 @@ footer {
   }
 
   section[id='top'] h1 {
-    font-size: clamp(2rem, 6.4vw, 2.5rem);
+    max-width: min(18rem, calc(100vw - 4rem));
+    font-size: clamp(1.55rem, 7vw, 2.15rem);
+    text-wrap: wrap;
+  }
+
+  section h2,
+  section h3,
+  section p {
+    max-width: min(22rem, 100%);
+    overflow-wrap: anywhere;
+    text-wrap: wrap;
   }
 
   section[id='top'] button,

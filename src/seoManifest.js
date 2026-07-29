@@ -6,9 +6,9 @@ const defaultImage = '/images/kleihaus-structure.jpg'
 const coreRoutes = [
   {
     path: '/',
-    title: 'Kleihaus Ceramics Kenya | Tiles, Sanitaryware & Paints',
+    title: 'Kleihaus Ceramics Kenya | Tiles, Sanitaryware, Paints & Project Support',
     description:
-      'Kleihaus Ceramics supplies tiles, sanitaryware, paints, adhesives, grout and finishing materials with retail, wholesale and project quote support in Nairobi, Machakos and Makueni.',
+      'Discover tiles, sanitaryware, kitchen sinks, paints, adhesives, grout, tools and project support from Kleihaus Ceramics in Nairobi, Machakos and Makueni.',
     image: defaultImage,
     imageAlt: 'Kleihaus Ceramics showroom structure for tiles and finishing materials',
     changefreq: 'weekly',

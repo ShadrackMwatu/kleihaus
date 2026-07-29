@@ -14,6 +14,22 @@ Rule: Every future meaningful change must update `docs/CHANGELOG.md` and, where 
 - Locations: Nairobi | Machakos | Makueni
 - Product focus: tiles, sanitaryware, paints, adhesives, grout and finishing materials for homes and projects in Kenya.
 
+## Homepage Commercial Positioning
+
+On 2026-07-29, the homepage was refined after a repository and live-production homepage review showed the first journey was still dominated by quotation prompts: the hero led with `Request quote`, the catalogue cards repeated quote actions, the project-inspiration block asked for a project quote, and homepage metadata described the business around quote support and quote requests.
+
+Implemented repo changes:
+
+- Reframed the hero around product discovery and project support: `Tiles, sanitaryware and paints for every stage of your project`.
+- Set the homepage CTA hierarchy to `Explore Products`, `Discuss Your Project` and supporting `Request a Quotation`.
+- Changed category and featured-product actions toward exploration and product discussion before quoting.
+- Promoted genuine project/gallery content through `Browse the Gallery`.
+- Converted homepage buying-guide cards into functional links to existing guidance routes.
+- Kept the quote form, mobile quote action, WhatsApp, telephone, email, `/api/quote-request`, social links, product/project galleries, six audience pathways and `/trade-projects` intact.
+- Updated homepage title, meta description, Open Graph/Twitter descriptions and safe JSON-LD wording to lead with product discovery, selection guidance and project support.
+
+Deferred recommendations: do not add prices, stock, checkout, product schema, offer schema, fake reviews, fake ratings, unverified brands, fake project claims or new duplicate routes until owner-verified evidence and operational data are available.
+
 ## SEO And Audience Marketing Campaign
 
 On 2026-07-29, `docs/SEO_DIGITAL_MARKETING_CAMPAIGN.md` was added after a repository, production-route and competitor/source review.

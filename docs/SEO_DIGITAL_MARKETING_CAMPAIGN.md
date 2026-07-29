@@ -18,6 +18,13 @@ Implemented in this pass:
 - Updated route metadata, generated sitemap/route HTML inputs and documentation while preserving the existing quote, WhatsApp, social, API, SEO and Cloudflare architecture.
 - Kept schema conservative: no Product, Offer, Review or AggregateRating schema.
 
+Later same-day homepage positioning update:
+
+- Shifted the homepage first impression from quotation-led to product-discovery-led.
+- Changed the hero CTA hierarchy from `Request quote`, `Browse catalogue`, `WhatsApp inquiry` to `Explore Products`, `Discuss Your Project`, `Request a Quotation`.
+- Replaced repeated homepage quote prompts in category, featured-product and project-inspiration areas with exploration, product-discussion and gallery actions.
+- Retained quotation as a purchase-ready conversion path through the hero supporting link, contact panel, mobile sticky action, final conversion areas and existing quote backend.
+
 ## Baseline Audit
 
 ### Evidence Reviewed
@@ -292,6 +299,7 @@ Recommended reports:
 - Landing page conversion by `/trade-projects`, `/projects`, product pages, guides and location pages.
 - Audience pathway click-to-lead comparison.
 - Product category interest versus quote submissions.
+- Homepage product exploration and guide clicks before quote starts.
 - GBP organic traffic and conversion path.
 
 ## Recommendations Intentionally Rejected Or Deferred
