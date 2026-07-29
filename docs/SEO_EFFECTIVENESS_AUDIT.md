@@ -8,6 +8,18 @@ This audit reviews the current Kleihaus SEO implementation after the Phase 1 SEO
 
 This update re-audited the current repository and the live website after the social profile update at commit `c4c17ac`. The audit checked source files, generated sitemap output, Worker behavior, live HTTP responses, route metadata, schema boundaries, analytics events, image delivery patterns and production build output.
 
+### 2026-07-29 Audience And Campaign Addendum
+
+The 2026-07-29 implementation added `docs/SEO_DIGITAL_MARKETING_CAMPAIGN.md`, a `/trade-projects` audience hub and homepage audience pathways for home builders, property developers, renovation contractors, interior designers, hardware dealers and homeowners.
+
+SEO impact:
+
+- The route fills a genuine information-architecture gap around trade/project intent without creating repetitive audience/location doorway pages.
+- `/trade-projects` is included in `src/seoManifest.js`, `public/sitemap.xml`, breadcrumb output and generated route HTML.
+- The page uses safe WebPage/Breadcrumb/ItemList schema only; Product, Offer, Review and AggregateRating schema remain absent.
+- `audience_pathway_click` extends measurement of high-intent audience CTAs while preserving the privacy-safe analytics model.
+- Current score impact: content SEO and conversion-readiness improve modestly; larger gains depend on owner-confirmed business proof, Search Console data and external campaign execution.
+
 ### Projects Gallery Addendum
 
 Later on 2026-07-22, `Projects.zip` was added and implemented as a supported project-gallery update:

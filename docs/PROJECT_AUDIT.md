@@ -14,6 +14,22 @@ Rule: Every future meaningful change must update `docs/CHANGELOG.md` and, where 
 - Locations: Nairobi | Machakos | Makueni
 - Product focus: tiles, sanitaryware, paints, adhesives, grout and finishing materials for homes and projects in Kenya.
 
+## SEO And Audience Marketing Campaign
+
+On 2026-07-29, `docs/SEO_DIGITAL_MARKETING_CAMPAIGN.md` was added after a repository, production-route and competitor/source review.
+
+Implemented repo changes:
+
+- Added `/trade-projects` as one substantial audience hub instead of creating repetitive audience/location doorway pages.
+- Added homepage audience pathways for home builders, property developers, renovation contractors, interior designers, hardware dealers and homeowners.
+- Added audience-specific quote and WhatsApp paths using the existing enquiry flows and same Kleihaus WhatsApp number.
+- Added `/trade-projects` metadata, breadcrumb support, generated route HTML and sitemap inclusion through the existing SEO manifest.
+- Added `audience_pathway_click` to the privacy-safe analytics flow.
+
+The campaign document includes the keyword-to-page map, audience messaging matrix, competitor benchmark, 90-day campaign plan, content calendar, paid-media structure, Google Business Profile checklist, analytics measurement plan, external actions and owner-input requirements.
+
+Safeguards preserved: no Cloudflare DNS, routes, bindings, secrets or deployment settings were changed. Product, Offer, Review and AggregateRating schema remain excluded.
+
 ## Official Social Profiles
 
 On 2026-07-22, official social-media links were added to the footer Contact column and the main Contact block.

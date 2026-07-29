@@ -222,6 +222,7 @@ The site includes lightweight frontend category, guide and location landing page
 - `/paints`
 - `/adhesives-grout`
 - `/installation-support`
+- `/trade-projects`
 - `/locations/nairobi`
 - `/locations/machakos`
 - `/locations/makueni`
@@ -275,6 +276,7 @@ Primary documentation:
 - `docs/DEVELOPMENT_WORKFLOW.md`
 - `docs/AI_BACKEND_ARCHITECTURE.md`
 - `docs/SEO_STRATEGY.md`
+- `docs/SEO_DIGITAL_MARKETING_CAMPAIGN.md`
 - `docs/VISIBILITY_AND_GROWTH_ROADMAP.md`
 - `docs/ANALYTICS_AND_SEARCH_CONSOLE_SETUP.md`
 - `docs/QUOTE_FORM_SUBMISSION.md`

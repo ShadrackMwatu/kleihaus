@@ -32,6 +32,7 @@ const GA_EVENT_NAMES = {
   location_view: 'location_view',
   contact_click: 'cta_click',
   project_click: 'cta_click',
+  audience_pathway_click: 'cta_click',
   category_click: 'cta_click',
   product_click: 'cta_click',
   project_gallery_open: 'select_content',

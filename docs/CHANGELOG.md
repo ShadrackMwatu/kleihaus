@@ -6,6 +6,17 @@ Rule: Every future meaningful change must update `docs/CHANGELOG.md` and, where 
 
 Current deployment note: production now uses GitHub `main` -> Cloudflare Workers Builds -> Worker Assets -> Worker `kleihaus` -> `kleihaus.com` and `www.kleihaus.com`. The active quote endpoint is `/api/quote-request`. Older entries that mention Cloudflare Pages or `https://api.kleihaus.com/quote-request` are historical and describe earlier deployment states, not the current production path.
 
+## 2026-07-29
+
+### SEO And Digital Marketing Campaign
+
+- Added `docs/SEO_DIGITAL_MARKETING_CAMPAIGN.md` with a repository/live-site baseline audit, keyword-to-page map, audience and messaging matrix, competitor benchmark, 90-day campaign plan, content calendar, paid-media structure, Google Business Profile checklist and analytics measurement plan.
+- Added a new `/trade-projects` audience hub for home builders, property developers, renovation contractors, interior designers, hardware dealers and homeowners.
+- Added a homepage audience-pathway section that routes the six customer groups to quote, WhatsApp and `/trade-projects` pathways without creating repetitive doorway pages.
+- Added `/trade-projects` route metadata, breadcrumb support, sitemap coverage and route-specific HTML generation through the existing SEO manifest workflow.
+- Added `audience_pathway_click` analytics mapping to the existing privacy-safe CTA tracking flow.
+- Preserved quote/WhatsApp/contact flows, project and product galleries, social links, API endpoints, Cloudflare Worker architecture and the no Product/Offer/Review/AggregateRating schema policy.
+
 ## 2026-07-22
 
 ### Additional Sanitaryware Sink And Mixer Images

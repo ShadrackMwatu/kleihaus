@@ -24,7 +24,7 @@ No Cloudflare configuration, DNS, Worker routing, secrets, deployment settings o
 
 Highest ROI improvements requiring minimal engineering effort.
 
-Implementation status on 2026-06-24, 2026-06-25, 2026-07-07 and 2026-07-08: GA4 readiness, conversion event hooks, richer local hub FAQs, safe route-level Service/FAQ schema additions, README setup notes, `.env.example` analytics configuration, optional non-sensitive analytics debug logging, the Analytics/Search Console setup guide, GBP UTM documentation, GBP-to-site conversion CTAs, sanitaryware image improvements, the SEO effectiveness audit, Worker-side route metadata injection, sitemap automation/lastmod freshness, visible breadcrumbs, deeper service-location content, GBP optimization guidance, topical authority roadmap, case study framework, backlink outreach plan and monthly SEO report template were completed. Privacy policy, anti-spam controls, verified GA4/Search Console setup and deeper performance pruning remain open.
+Implementation status on 2026-06-24, 2026-06-25, 2026-07-07, 2026-07-08 and 2026-07-29: GA4 readiness, conversion event hooks, richer local hub FAQs, safe route-level Service/FAQ schema additions, README setup notes, `.env.example` analytics configuration, optional non-sensitive analytics debug logging, the Analytics/Search Console setup guide, GBP UTM documentation, GBP-to-site conversion CTAs, sanitaryware image improvements, the SEO effectiveness audit, Worker-side route metadata injection, sitemap automation/lastmod freshness, visible breadcrumbs, deeper service-location content, GBP optimization guidance, topical authority roadmap, case study framework, backlink outreach plan, monthly SEO report template, the `/trade-projects` audience hub, homepage audience pathways and a 90-day SEO/digital campaign plan were completed. Privacy policy, anti-spam controls, verified GA4/Search Console setup and deeper performance pruning remain open.
 
 | Recommendation | Expected impact | Effort | Priority | Risk |
 | --- | --- | --- | --- | --- |
@@ -41,6 +41,7 @@ Implementation status on 2026-06-24, 2026-06-25, 2026-07-07 and 2026-07-08: GA4 
 | Verify the new GBP UTM URL, GA4 events and Search Console sitemap submission after deployment. | Turns repo readiness into measurable SEO performance data. | Low | High | Low |
 | Add a visible breadcrumb UI to route pages. | Aligns visible UX with BreadcrumbList schema and improves deep-route navigation. | Low/Medium | Complete | Low |
 | Use the GBP optimization guide for profile photos, posts, genuine review requests and monthly performance tracking. | Converts repo readiness into local search authority and measurable profile actions. | Low/Medium | High | Low |
+| Use the 90-day SEO and digital marketing campaign plan to launch audience-specific organic posts, GBP activity and owner-approved paid tests. | Converts the new `/trade-projects` pathway into measurable enquiry demand. | Medium | High | Medium due to owner/account access dependency |
 
 Phase 1 success metrics:
 
@@ -69,6 +70,7 @@ Moderate effort, meaningful gains.
 | Prune unused or oversized original images from runtime delivery paths where AVIF/WebP variants already cover usage. | Improves payload size and cache efficiency. | Medium | Medium | Low/Medium |
 | Start the six-month topical authority roadmap, beginning with quote checklist, tile quantity and adhesive calculation guidance. | Expands useful long-tail reach without doorway pages. | Medium | High | Low/Medium |
 | Run ethical backlink outreach to real suppliers, local directories, contractors and project partners. | Builds authority signals without fake links or claims. | Medium | High | Medium |
+| Build a contractor/project quote checklist only after enquiries or Search Console queries confirm sustained trade demand. | Adds a useful long-tail page without thin audience doorway content. | Medium | Medium/High | Low |
 
 Phase 2 success metrics:
 

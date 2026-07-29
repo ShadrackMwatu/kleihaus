@@ -1,5 +1,5 @@
 export const SITE_ORIGIN = 'https://www.kleihaus.com'
-export const SEO_LASTMOD = '2026-07-22'
+export const SEO_LASTMOD = '2026-07-29'
 
 const defaultImage = '/images/kleihaus-structure.jpg'
 
@@ -98,6 +98,22 @@ const coreRoutes = [
     category: 'Projects',
     changefreq: 'monthly',
     priority: '0.75',
+  },
+  {
+    path: '/trade-projects',
+    title: 'Trade & Project Supply Kenya | Kleihaus Ceramics',
+    description:
+      'Trade and project quote support for home builders, developers, renovation contractors, interior designers, hardware dealers and homeowners in Nairobi, Machakos, Makueni and Kenya.',
+    image: '/images/projects/project-kitchen-overview-01.jpg',
+    imageAlt: 'Kitchen finishing project image for trade and project quote support',
+    category: 'Trade & Projects',
+    schemaType: 'WebPage',
+    changefreq: 'monthly',
+    priority: '0.78',
+    breadcrumbs: [
+      { name: 'Home', href: '/' },
+      { name: 'Trade & Projects', href: '/trade-projects' },
+    ],
   },
 ]
 

@@ -1137,7 +1137,105 @@ const projectsPage = {
   pageType: 'projects',
 }
 
-const categoryLandingByPath = Object.fromEntries([...seoLandingPages, projectsPage].map((page) => [page.path, page]))
+const audienceSegments = [
+  {
+    slug: 'home-builders',
+    name: 'Home builders',
+    need: 'Product selection, quantities, durable finishes and coordinated delivery planning.',
+    help: 'Kleihaus helps compare tiles, sanitaryware, sinks, mixers, paints, adhesives, grout and tools before a quote request is prepared.',
+    products: ['Floor and wall tiles', 'Sanitaryware and sinks', 'Adhesives, grout and tools'],
+    links: [
+      { label: 'Tile buying guide', href: '/tile-buying-guide' },
+      { label: 'Cost estimation guide', href: '/cost-estimation-guide' },
+      { label: 'Projects', href: '/projects' },
+    ],
+    intent: 'home_build',
+  },
+  {
+    slug: 'property-developers',
+    name: 'Property developers',
+    need: 'Volume supply conversations, consistent finishes, specifications and project quotation support.',
+    help: 'Kleihaus supports quote planning around product ranges, quantities, site logistics, installation support and repeatable finish selections.',
+    products: ['Bulk tile planning', 'Sanitaryware coordination', 'Delivery and logistics support'],
+    links: [
+      { label: 'Installation support', href: '/installation-support' },
+      { label: 'Projects', href: '/projects' },
+      { label: 'Tiles Kenya', href: '/tiles-kenya' },
+    ],
+    intent: 'developer_project',
+  },
+  {
+    slug: 'renovation-contractors',
+    name: 'Renovation contractors',
+    need: 'Suitable materials, fast quote details, installation accessories and practical site guidance.',
+    help: 'Kleihaus helps contractors clarify room use, measurements, accessory needs, delivery details and client-facing finish options.',
+    products: ['Bathroom tiles', 'Kitchen sinks and mixers', 'Adhesives, grout and trims'],
+    links: [
+      { label: 'Bathroom renovation guide', href: '/bathroom-renovation-guide' },
+      { label: 'Adhesive and grout guide', href: '/adhesive-grout-guide' },
+      { label: 'Sanitaryware', href: '/sanitaryware' },
+    ],
+    intent: 'contractor_renovation',
+  },
+  {
+    slug: 'interior-designers',
+    name: 'Interior designers',
+    need: 'Finish coordination, colour direction, visual inspiration and specification-friendly product conversations.',
+    help: 'Kleihaus helps designers connect tiles, sinks, mixers, sanitaryware and paints into coherent palettes for client review.',
+    products: ['Wall and feature tiles', 'Kitchen sink finishes', 'Paint selection support'],
+    links: [
+      { label: 'Projects', href: '/projects' },
+      { label: 'Paint selection guide', href: '/paint-selection-guide' },
+      { label: 'Wall tiles', href: '/wall-tiles' },
+    ],
+    intent: 'designer_specification',
+  },
+  {
+    slug: 'hardware-dealers',
+    name: 'Hardware dealers',
+    need: 'Trade supply discussions, repeatable product range, distribution conversations and support for customer enquiries.',
+    help: 'Kleihaus can receive trade enquiries for tiles, sanitaryware, paints, adhesives, grout, tools and coordinated finishing materials.',
+    products: ['Tiles and finishing materials', 'Adhesives and grout', 'Building and finishing tools'],
+    links: [
+      { label: 'Adhesives and grout', href: '/adhesives-grout' },
+      { label: 'Tiles', href: '/tiles' },
+      { label: 'Contact', href: '/#contact' },
+    ],
+    intent: 'hardware_trade',
+  },
+  {
+    slug: 'homeowners',
+    name: 'Homeowners',
+    need: 'Simple guidance, trusted product choices, measurement help and clear enquiry steps.',
+    help: 'Kleihaus keeps the process practical: share room details, preferred look, quantities and location, then request quote guidance.',
+    products: ['Bathroom and kitchen tiles', 'Sanitaryware, sinks and mixers', 'Paints and finishing support'],
+    links: [
+      { label: 'Bathroom renovation guide', href: '/bathroom-renovation-guide' },
+      { label: 'Sanitaryware', href: '/sanitaryware' },
+      { label: 'Locations served', href: '/locations/nairobi' },
+    ],
+    intent: 'homeowner_guidance',
+  },
+]
+
+const tradeProjectsPage = {
+  path: '/trade-projects',
+  title: 'Trade & Project Supply Kenya | Kleihaus Ceramics',
+  description:
+    'Trade and project quote support for home builders, developers, renovation contractors, interior designers, hardware dealers and homeowners in Nairobi, Machakos, Makueni and Kenya.',
+  eyebrow: 'Trade and project support',
+  h1: 'Trade and project support',
+  intro:
+    'Kleihaus supports quote-led enquiries for tiles, sanitaryware, kitchen sinks and mixers, paints, adhesives, grout, tools, delivery coordination, installation support and tailored product training. The pathway below helps each audience share the right details without relying on unsupported claims about stock, prices, brands or delivery timelines.',
+  category: 'Trade & Projects',
+  schemaType: 'WebPage',
+  pageType: 'trade',
+  ctaLabel: 'Request trade or project quote',
+  audiences: audienceSegments,
+  images: projectImageItems.slice(0, 3),
+}
+
+const categoryLandingByPath = Object.fromEntries([...seoLandingPages, projectsPage, tradeProjectsPage].map((page) => [page.path, page]))
 
 const categoryGuideTargets = {
   Tiles: '/tiles',
@@ -2580,6 +2678,200 @@ function CustomerProjectGallery({ onQuoteClick }) {
   )
 }
 
+function AudiencePathways({ onSupportClick, onQuoteClick, onSectionChange }) {
+  return (
+    <section className="border-y border-emerald-100 bg-white">
+      <div className="mx-auto max-w-7xl px-4 py-6 sm:py-8">
+        <div className="mb-4 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+          <div className="max-w-3xl">
+            <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Who Kleihaus supports</p>
+            <h2 className="mt-1.5 text-xl font-semibold text-neutral-950 sm:text-2xl">Quote pathways for homes, trade and projects</h2>
+            <p className="mt-1.5 text-sm leading-6 text-neutral-600">
+              Choose the path closest to your work so the team can respond with product, quantity, delivery and support guidance that fits the enquiry.
+            </p>
+          </div>
+          <a
+            href="/trade-projects"
+            onClick={() => analyticsService.track('audience_pathway_click', { clickedElement: 'homepage_trade_projects_all', ctaLabel: 'View trade and project support', ctaPosition: 'homepage_audience_pathways', enquiryIntent: 'trade_project' })}
+            className="inline-flex w-fit items-center gap-1.5 rounded-md border border-emerald-700 px-3 py-2 text-xs font-semibold text-emerald-800 transition hover:bg-emerald-50 focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:text-sm"
+          >
+            View trade and project support
+            <ArrowRight className="h-4 w-4" />
+          </a>
+        </div>
+        <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+          {audienceSegments.map((segment) => (
+            <article key={segment.slug} className="flex h-full flex-col rounded-lg border border-neutral-200 bg-neutral-50 p-4 shadow-sm">
+              <h3 className="text-base font-semibold text-neutral-950">{segment.name}</h3>
+              <p className="mt-2 text-sm leading-6 text-neutral-600">{segment.need}</p>
+              <div className="mt-3 flex flex-wrap gap-1.5">
+                {segment.products.slice(0, 3).map((item) => (
+                  <span key={item} className="rounded-md bg-white px-2.5 py-1 text-xs font-semibold text-emerald-900 ring-1 ring-emerald-100">
+                    {item}
+                  </span>
+                ))}
+              </div>
+              <div className="mt-4 flex flex-wrap gap-2">
+                <a
+                  href={`/trade-projects#${segment.slug}`}
+                  onClick={() => analyticsService.track('audience_pathway_click', { clickedElement: `homepage_audience_${segment.slug}`, ctaLabel: segment.name, ctaPosition: 'homepage_audience_card', enquiryIntent: segment.intent, audienceSegment: segment.name })}
+                  className="inline-flex min-h-10 items-center rounded-md border border-neutral-300 bg-white px-3 py-2 text-xs font-semibold text-neutral-900 transition hover:border-emerald-700 hover:text-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-200"
+                >
+                  View pathway
+                </a>
+                <button
+                  type="button"
+                  onClick={() => {
+                    analyticsService.track('audience_pathway_click', { clickedElement: `homepage_audience_quote_${segment.slug}`, ctaLabel: `Quote for ${segment.name}`, ctaPosition: 'homepage_audience_card', enquiryIntent: segment.intent, audienceSegment: segment.name })
+                    onQuoteClick(`audience_quote_${segment.slug}`)
+                    onSectionChange('contact')
+                  }}
+                  className="inline-flex min-h-10 items-center rounded-md bg-emerald-700 px-3 py-2 text-xs font-semibold text-white transition hover:bg-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-200"
+                >
+                  Request quote
+                </button>
+                <button
+                  type="button"
+                  onClick={() => onSupportClick(`audience_whatsapp_${segment.slug}`, `Hello Kleihaus, I am enquiring as a ${segment.name.toLowerCase()}. Please help me with products, quantities, quote details and delivery or support options.`)}
+                  className={`${whatsappCtaClass} inline-flex min-h-10 items-center rounded-md px-3 py-2 text-xs font-semibold`}
+                >
+                  <WhatsAppBrandText>WhatsApp</WhatsAppBrandText>
+                </button>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function TradeProjectsPage({ page, onSectionChange, onSupportClick, onQuoteClick }) {
+  return (
+    <main className="bg-white">
+      <Breadcrumbs page={page} />
+      <section className="border-b border-emerald-100 bg-stone-50">
+        <div className="mx-auto grid max-w-7xl min-w-0 gap-5 px-4 py-6 sm:py-8 lg:grid-cols-[1fr_0.9fr] lg:items-center">
+          <div className="min-w-0" style={{ maxWidth: 'calc(100vw - 2rem)' }}>
+            <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">{page.eyebrow}</p>
+            <h1 className="mt-2 w-full max-w-[calc(100vw-2rem)] break-words text-[clamp(1.75rem,6vw,2.5rem)] font-semibold leading-tight text-neutral-950 sm:max-w-3xl sm:text-4xl" style={{ textWrap: 'wrap' }}>
+              {page.h1}
+            </h1>
+            <p className="mt-3 w-full max-w-[calc(100vw-2rem)] break-words text-sm leading-6 text-neutral-700 sm:max-w-2xl sm:text-base sm:leading-6">{page.intro}</p>
+            <div className="mt-4 flex w-full max-w-[calc(100vw-2rem)] flex-wrap gap-2 max-sm:[&>*]:w-full max-sm:[&>*]:justify-center sm:max-w-2xl">
+              <Button
+                type="button"
+                className="gap-1.5 px-3 py-2 text-xs sm:px-4 sm:py-2.5 sm:text-sm"
+                onClick={() => {
+                  analyticsService.track('audience_pathway_click', { clickedElement: 'trade_projects_hero_quote', ctaLabel: page.ctaLabel, ctaPosition: 'trade_projects_hero', enquiryIntent: 'trade_project' })
+                  onQuoteClick('trade_projects_hero_quote')
+                  onSectionChange('contact')
+                }}
+              >
+                {page.ctaLabel}
+                <ArrowRight className="h-4 w-4" />
+              </Button>
+              <ButtonSecondary
+                type="button"
+                onClick={() => onSupportClick('trade_projects_hero_whatsapp', 'Hello Kleihaus, I need trade or project support for tiles, sanitaryware, sinks, mixers, paints, adhesives, grout, tools, delivery or installation planning.')}
+                className={`${whatsappCtaClass} px-3 py-2 text-xs sm:px-4 sm:py-2.5 sm:text-sm`}
+              >
+                <WhatsAppBrandText>Ask on WhatsApp</WhatsAppBrandText>
+              </ButtonSecondary>
+            </div>
+          </div>
+          <div className="grid min-w-0 grid-cols-3 gap-2 sm:gap-3">
+            {page.images.map((image, index) => (
+              <OptimizedImage
+                key={image.src}
+                src={image.src}
+                alt={image.alt}
+                sizes={index === 0 ? '(max-width: 640px) 66vw, 42vw' : '(max-width: 640px) 33vw, 20vw'}
+                loading={index === 0 ? 'eager' : 'lazy'}
+                decoding="async"
+                className={`h-full min-h-28 w-full rounded-lg object-cover shadow-sm ${index === 0 ? 'col-span-2 row-span-2 aspect-[4/3]' : 'aspect-square'}`}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 py-6 sm:py-8">
+        <div className="mb-4 max-w-3xl">
+          <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Audience pathways</p>
+          <h2 className="mt-2 text-xl font-semibold text-neutral-950 sm:text-2xl">What each customer group should share</h2>
+          <p className="mt-2 text-sm leading-6 text-neutral-600">
+            These pathways reduce back-and-forth by matching each enquiry to product categories, planning details and the most useful next action.
+          </p>
+        </div>
+        <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+          {page.audiences.map((segment) => (
+            <article id={segment.slug} key={segment.slug} className="scroll-mt-28 rounded-lg border border-neutral-200 bg-white p-4 shadow-sm">
+              <h3 className="text-base font-semibold text-neutral-950">{segment.name}</h3>
+              <p className="mt-2 text-sm leading-6 text-neutral-600">{segment.help}</p>
+              <ul className="mt-3 grid gap-1.5 text-sm text-neutral-700">
+                {segment.products.map((item) => (
+                  <li key={item} className="flex items-start gap-2">
+                    <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-emerald-700" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {segment.links.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => analyticsService.track('audience_pathway_click', { clickedElement: `trade_projects_link_${segment.slug}_${link.label.toLowerCase().replace(/\s+/g, '_')}`, ctaLabel: link.label, ctaPosition: 'trade_projects_audience_links', enquiryIntent: segment.intent, audienceSegment: segment.name })}
+                    className="inline-flex min-h-9 items-center rounded-md border border-emerald-100 bg-emerald-50 px-2.5 py-1.5 text-xs font-semibold text-emerald-900 transition hover:border-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+              <div className="mt-4 flex flex-wrap gap-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    analyticsService.track('audience_pathway_click', { clickedElement: `trade_projects_quote_${segment.slug}`, ctaLabel: `Request ${segment.name} quote`, ctaPosition: 'trade_projects_audience_card', enquiryIntent: segment.intent, audienceSegment: segment.name })
+                    onQuoteClick(`trade_projects_quote_${segment.slug}`)
+                    onSectionChange('contact')
+                  }}
+                  className="inline-flex min-h-10 items-center justify-center rounded-md bg-emerald-700 px-3 py-2 text-xs font-semibold text-white transition hover:bg-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-200"
+                >
+                  Request {segment.name} quote
+                </button>
+                <button
+                  type="button"
+                  onClick={() => onSupportClick(`trade_projects_whatsapp_${segment.slug}`, `Hello Kleihaus, I am enquiring as a ${segment.name.toLowerCase()}. Please help me plan products, quantities, quote details and next steps.`)}
+                  className={`${whatsappCtaClass} inline-flex min-h-10 items-center rounded-md px-3 py-2 text-xs font-semibold`}
+                >
+                  <WhatsAppBrandText>WhatsApp support</WhatsAppBrandText>
+                </button>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="border-y border-neutral-200 bg-neutral-50">
+        <div className="mx-auto grid max-w-7xl gap-4 px-4 py-6 sm:py-8 lg:grid-cols-3">
+          {[
+            ['Products to mention', 'Tiles, sanitaryware, kitchen sinks and mixers, paints, adhesives, grout, tools and any finish inspiration images.'],
+            ['Project details to share', 'Room measurements, quantities, preferred finishes, location, timing, site access and whether installation support or product training is needed.'],
+            ['What remains owner-confirmed', 'Current stock, brands, prices, delivery timing, warranties, returns and trade terms should be confirmed by the Kleihaus team before quoting.'],
+          ].map(([title, text]) => (
+            <article key={title} className="rounded-lg border border-neutral-200 bg-white p-4 shadow-sm">
+              <h2 className="text-base font-semibold text-neutral-950">{title}</h2>
+              <p className="mt-2 text-sm leading-6 text-neutral-600">{text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+    </main>
+  )
+}
+
 function HelpfulGuides({ onGuideClick }) {
   const [openFaq, setOpenFaq] = useState(faqItems[0]?.question || '')
 
@@ -3221,7 +3513,7 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
         <div className="mx-auto grid max-w-7xl gap-5 px-4 py-6 sm:py-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <div>
             <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">{page.eyebrow}</p>
-            <h1 className="mt-2 max-w-3xl text-[clamp(1.875rem,7vw,2.5rem)] font-semibold leading-tight text-neutral-950 sm:text-4xl">
+            <h1 className="mt-2 max-w-3xl text-[clamp(1.75rem,6vw,2.5rem)] font-semibold leading-tight text-neutral-950 sm:text-4xl">
               {page.h1}
             </h1>
             <p className="mt-3 max-w-2xl text-sm leading-6 text-neutral-700 sm:text-base sm:leading-6">
@@ -3230,7 +3522,7 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
             <p className="mt-2 max-w-2xl text-xs leading-5 text-neutral-600 sm:text-sm sm:leading-5">
               Quotes depend on current availability, quantity, delivery location and project details. Share measurements, finish preference and budget range so the Kleihaus team responds with useful guidance.
             </p>
-            <div className="mt-4 flex flex-wrap gap-2">
+            <div className="mt-4 flex flex-wrap gap-2 max-sm:[&>*]:w-full max-sm:[&>*]:justify-center">
               <Button
                 type="button"
                 className="gap-1.5 px-3 py-2 text-xs sm:px-4 sm:py-2.5 sm:text-sm"
@@ -3725,6 +4017,7 @@ function Footer({ onSupportClick }) {
     { label: 'Paints Makueni', href: '/paints-makueni' },
   ]
   const projectGuideLinks = [
+    { label: 'Trade & project support', href: '/trade-projects' },
     { label: 'Tile buying guide', href: '/tile-buying-guide' },
     { label: 'Bathroom renovation guide', href: '/bathroom-renovation-guide' },
     { label: 'Paint selection guide', href: '/paint-selection-guide' },
@@ -3940,6 +4233,8 @@ export default function App() {
       ? 'location'
       : activeCategoryPage?.pageType === 'projects'
         ? 'projects'
+        : activeCategoryPage?.pageType === 'trade'
+          ? 'trade_projects'
       : activeCategoryPage?.category?.toLowerCase().includes('guide')
         ? 'guide'
         : activeCategoryPage
@@ -4160,6 +4455,13 @@ export default function App() {
             onSupportClick={handleSupportClick}
             onQuoteClick={handleQuoteClick}
           />
+        ) : activeCategoryPage.pageType === 'trade' ? (
+          <TradeProjectsPage
+            page={activeCategoryPage}
+            onSectionChange={handleSectionChange}
+            onSupportClick={handleSupportClick}
+            onQuoteClick={handleQuoteClick}
+          />
         ) : (
           <CategoryLandingPage
             page={activeCategoryPage}
@@ -4172,6 +4474,7 @@ export default function App() {
         <>
           <Hero onSupportClick={handleSupportClick} onQuoteClick={handleQuoteClick} onSectionChange={handleSectionChange} />
           <GoogleBusinessProfileSupport onSupportClick={handleSupportClick} onQuoteClick={handleQuoteClick} onSectionChange={handleSectionChange} />
+          <AudiencePathways onSupportClick={handleSupportClick} onQuoteClick={handleQuoteClick} onSectionChange={handleSectionChange} />
           <CompactContentArea
             activePanel={activePanel}
             onPanelChange={handlePanelChange}
