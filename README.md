@@ -235,6 +235,8 @@ The site includes lightweight frontend category, guide and location landing page
 
 These pages are catalogue and quote-planning pages. They must not use Product or Offer structured data unless Kleihaus later publishes real product pages with truthful prices and current availability.
 
+`/trade-projects` is the consolidated audience hub for Homeowners, Home Builders, Contractors, Property Developers, Design Professionals, and Dealers & Institutional Buyers. Keep future audience SEO work anchored there unless real demand and content justify a separate substantial route.
+
 `public/sitemap.xml` includes these URLs, and `public/robots.txt` references the sitemap.
 
 Local Google Business Profile setup guidance is documented in `docs/LOCAL_SEO_GOOGLE_BUSINESS_PROFILE.md`. Profile creation and verification must be completed manually by the business owner.

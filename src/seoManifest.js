@@ -103,7 +103,7 @@ const coreRoutes = [
     path: '/trade-projects',
     title: 'Trade & Project Supply Kenya | Kleihaus Ceramics',
     description:
-      'Trade and project quote support for home builders, developers, renovation contractors, interior designers, hardware dealers and homeowners in Nairobi, Machakos, Makueni and Kenya.',
+      'Trade and project quote support for homeowners, home builders, contractors, property developers, design professionals, dealers and institutional buyers in Kenya.',
     image: '/images/projects/project-kitchen-overview-01.jpg',
     imageAlt: 'Kitchen finishing project image for trade and project quote support',
     category: 'Trade & Projects',

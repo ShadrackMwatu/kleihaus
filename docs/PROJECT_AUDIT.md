@@ -21,12 +21,12 @@ On 2026-07-29, `docs/SEO_DIGITAL_MARKETING_CAMPAIGN.md` was added after a reposi
 Implemented repo changes:
 
 - Added `/trade-projects` as one substantial audience hub instead of creating repetitive audience/location doorway pages.
-- Added homepage audience pathways for home builders, property developers, renovation contractors, interior designers, hardware dealers and homeowners.
+- Refined the hub and homepage pathway block around six consolidated audiences: Homeowners, Home Builders, Contractors, Property Developers, Design Professionals, and Dealers & Institutional Buyers.
 - Added audience-specific quote and WhatsApp paths using the existing enquiry flows and same Kleihaus WhatsApp number.
 - Added `/trade-projects` metadata, breadcrumb support, generated route HTML and sitemap inclusion through the existing SEO manifest.
 - Added `audience_pathway_click` to the privacy-safe analytics flow.
 
-The campaign document includes the keyword-to-page map, audience messaging matrix, competitor benchmark, 90-day campaign plan, content calendar, paid-media structure, Google Business Profile checklist, analytics measurement plan, external actions and owner-input requirements.
+The campaign document includes the keyword-to-page map, six-audience messaging matrix, competitor benchmark, 90-day campaign plan, content calendar, paid-media structure, referral/partnership plan, Google Business Profile checklist, analytics measurement plan, intentionally deferred recommendations, external actions and owner-input requirements.
 
 Safeguards preserved: no Cloudflare DNS, routes, bindings, secrets or deployment settings were changed. Product, Offer, Review and AggregateRating schema remain excluded.
 

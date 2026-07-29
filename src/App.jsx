@@ -1139,82 +1139,88 @@ const projectsPage = {
 
 const audienceSegments = [
   {
+    slug: 'homeowners',
+    name: 'Homeowners',
+    need: 'Simple guidance for renovations, replacements, apartment upgrades, rental units, first homes and diaspora-supported projects.',
+    help: 'Kleihaus helps homeowners clarify room use, measurements, preferred finishes, quantities, location and support needs before a quote request is prepared.',
+    products: ['Bathroom, kitchen, floor and wall tiles', 'Sanitaryware, sinks, mixers and accessories', 'Paints and finishing support'],
+    ctaLabel: 'Request homeowner quote',
+    links: [
+      { label: 'Bathroom renovation guide', href: '/bathroom-renovation-guide' },
+      { label: 'Sanitaryware', href: '/sanitaryware' },
+      { label: 'Cost estimation guide', href: '/cost-estimation-guide' },
+    ],
+    intent: 'homeowner_product_enquiry',
+  },
+  {
     slug: 'home-builders',
-    name: 'Home builders',
-    need: 'Product selection, quantities, durable finishes and coordinated delivery planning.',
-    help: 'Kleihaus helps compare tiles, sanitaryware, sinks, mixers, paints, adhesives, grout and tools before a quote request is prepared.',
-    products: ['Floor and wall tiles', 'Sanitaryware and sinks', 'Adhesives, grout and tools'],
+    name: 'Home Builders',
+    need: 'Coordinated material planning for new homes, rental units, retirement homes, self-builds, gated-community homes and housing-cooperative projects.',
+    help: 'Kleihaus supports new-home planning across tiles, sanitaryware, kitchen sinks, mixers, paints, adhesives, grout, tools and delivery coordination before quoting.',
+    products: ['New-home tile and finish planning', 'Sanitaryware, sinks and mixers', 'Adhesives, grout, tools and delivery coordination'],
+    ctaLabel: 'Request new-home materials quote',
     links: [
       { label: 'Tile buying guide', href: '/tile-buying-guide' },
       { label: 'Cost estimation guide', href: '/cost-estimation-guide' },
       { label: 'Projects', href: '/projects' },
     ],
-    intent: 'home_build',
+    intent: 'new_home_materials',
+  },
+  {
+    slug: 'contractors',
+    name: 'Contractors',
+    need: 'Practical quote support for builders, renovation contractors, tilers, plumbers, painters, installers, fundis, foremen, supervisors and maintenance teams.',
+    help: 'Kleihaus helps contractors prepare product lists, measurements, accessories, site context and client-facing finish options for renovation, fit-out and maintenance enquiries.',
+    products: ['Tiles, sanitaryware, sinks and mixers', 'Adhesives, grout, trims and tools', 'Paints, installation support and product-use guidance'],
+    ctaLabel: 'Request contractor support',
+    links: [
+      { label: 'Bathroom renovation guide', href: '/bathroom-renovation-guide' },
+      { label: 'Adhesive and grout guide', href: '/adhesive-grout-guide' },
+      { label: 'Installation support', href: '/installation-support' },
+    ],
+    intent: 'contractor_trade_enquiry',
   },
   {
     slug: 'property-developers',
-    name: 'Property developers',
-    need: 'Volume supply conversations, consistent finishes, specifications and project quotation support.',
-    help: 'Kleihaus supports quote planning around product ranges, quantities, site logistics, installation support and repeatable finish selections.',
-    products: ['Bulk tile planning', 'Sanitaryware coordination', 'Delivery and logistics support'],
+    name: 'Property Developers',
+    need: 'Multi-unit and commercial quotation planning for residential, mixed-use, rental, student housing, build-to-rent, industrial and institutional premises.',
+    help: 'Kleihaus supports developer enquiries with category coordination, repeatable finish selections, quantity planning and phased quote conversations without unsupported stock, price or delivery promises.',
+    products: ['Bulk tile and finish planning', 'Sanitaryware coordination for multi-unit needs', 'Project quotation and logistics discussion'],
+    ctaLabel: 'Request developer quote',
     links: [
       { label: 'Installation support', href: '/installation-support' },
       { label: 'Projects', href: '/projects' },
       { label: 'Tiles Kenya', href: '/tiles-kenya' },
     ],
-    intent: 'developer_project',
+    intent: 'developer_multi_unit_quote',
   },
   {
-    slug: 'renovation-contractors',
-    name: 'Renovation contractors',
-    need: 'Suitable materials, fast quote details, installation accessories and practical site guidance.',
-    help: 'Kleihaus helps contractors clarify room use, measurements, accessory needs, delivery details and client-facing finish options.',
-    products: ['Bathroom tiles', 'Kitchen sinks and mixers', 'Adhesives, grout and trims'],
-    links: [
-      { label: 'Bathroom renovation guide', href: '/bathroom-renovation-guide' },
-      { label: 'Adhesive and grout guide', href: '/adhesive-grout-guide' },
-      { label: 'Sanitaryware', href: '/sanitaryware' },
-    ],
-    intent: 'contractor_renovation',
-  },
-  {
-    slug: 'interior-designers',
-    name: 'Interior designers',
-    need: 'Finish coordination, colour direction, visual inspiration and specification-friendly product conversations.',
-    help: 'Kleihaus helps designers connect tiles, sinks, mixers, sanitaryware and paints into coherent palettes for client review.',
-    products: ['Wall and feature tiles', 'Kitchen sink finishes', 'Paint selection support'],
+    slug: 'design-professionals',
+    name: 'Design Professionals',
+    need: 'Specification-friendly conversations for architects, interior designers, decorators, kitchen and bathroom designers, quantity surveyors, project managers and consultants.',
+    help: 'Kleihaus helps design teams connect tiles, sinks, mixers, sanitaryware, paints and finishing accessories into clear options for client review and quote preparation.',
+    products: ['Wall, feature, floor and bathroom tiles', 'Kitchen and bathroom finish coordination', 'Paint selection and specification support'],
+    ctaLabel: 'Discuss specifications',
     links: [
       { label: 'Projects', href: '/projects' },
       { label: 'Paint selection guide', href: '/paint-selection-guide' },
       { label: 'Wall tiles', href: '/wall-tiles' },
     ],
-    intent: 'designer_specification',
+    intent: 'design_specification_enquiry',
   },
   {
-    slug: 'hardware-dealers',
-    name: 'Hardware dealers',
-    need: 'Trade supply discussions, repeatable product range, distribution conversations and support for customer enquiries.',
-    help: 'Kleihaus can receive trade enquiries for tiles, sanitaryware, paints, adhesives, grout, tools and coordinated finishing materials.',
-    products: ['Tiles and finishing materials', 'Adhesives and grout', 'Building and finishing tools'],
+    slug: 'dealers-institutional-buyers',
+    name: 'Dealers & Institutional Buyers',
+    need: 'Trade, resale, institutional and facilities enquiries for hardware dealers, retailers, hotels, offices, schools, hospitals, NGOs, public-sector suppliers and recurring maintenance teams.',
+    help: 'Kleihaus can receive dealer, reseller, bulk, facilities and institutional enquiries for tiles, sanitaryware, paints, adhesives, grout, tools and coordinated finishing categories.',
+    products: ['Dealer or resale discussions', 'Bulk and institutional quote planning', 'Repair, refurbishment and recurring maintenance needs'],
+    ctaLabel: 'Start trade or institutional enquiry',
     links: [
       { label: 'Adhesives and grout', href: '/adhesives-grout' },
       { label: 'Tiles', href: '/tiles' },
       { label: 'Contact', href: '/#contact' },
     ],
-    intent: 'hardware_trade',
-  },
-  {
-    slug: 'homeowners',
-    name: 'Homeowners',
-    need: 'Simple guidance, trusted product choices, measurement help and clear enquiry steps.',
-    help: 'Kleihaus keeps the process practical: share room details, preferred look, quantities and location, then request quote guidance.',
-    products: ['Bathroom and kitchen tiles', 'Sanitaryware, sinks and mixers', 'Paints and finishing support'],
-    links: [
-      { label: 'Bathroom renovation guide', href: '/bathroom-renovation-guide' },
-      { label: 'Sanitaryware', href: '/sanitaryware' },
-      { label: 'Locations served', href: '/locations/nairobi' },
-    ],
-    intent: 'homeowner_guidance',
+    intent: 'dealer_institutional_enquiry',
   },
 ]
 
@@ -1222,11 +1228,11 @@ const tradeProjectsPage = {
   path: '/trade-projects',
   title: 'Trade & Project Supply Kenya | Kleihaus Ceramics',
   description:
-    'Trade and project quote support for home builders, developers, renovation contractors, interior designers, hardware dealers and homeowners in Nairobi, Machakos, Makueni and Kenya.',
+    'Trade and project quote support for homeowners, home builders, contractors, property developers, design professionals, dealers and institutional buyers in Kenya.',
   eyebrow: 'Trade and project support',
   h1: 'Trade and project support',
   intro:
-    'Kleihaus supports quote-led enquiries for tiles, sanitaryware, kitchen sinks and mixers, paints, adhesives, grout, tools, delivery coordination, installation support and tailored product training. The pathway below helps each audience share the right details without relying on unsupported claims about stock, prices, brands or delivery timelines.',
+    'Kleihaus supports quote-led enquiries for tiles, sanitaryware, kitchen sinks and mixers, paints, adhesives, grout, tools, delivery coordination, installation support and tailored product training. The six pathways below help homeowners, home builders, contractors, property developers, design professionals, dealers and institutional buyers share the right details without relying on unsupported claims about stock, prices, brands or delivery timelines.',
   category: 'Trade & Projects',
   schemaType: 'WebPage',
   pageType: 'trade',
@@ -2722,7 +2728,7 @@ function AudiencePathways({ onSupportClick, onQuoteClick, onSectionChange }) {
                 <button
                   type="button"
                   onClick={() => {
-                    analyticsService.track('audience_pathway_click', { clickedElement: `homepage_audience_quote_${segment.slug}`, ctaLabel: `Quote for ${segment.name}`, ctaPosition: 'homepage_audience_card', enquiryIntent: segment.intent, audienceSegment: segment.name })
+                    analyticsService.track('audience_pathway_click', { clickedElement: `homepage_audience_quote_${segment.slug}`, ctaLabel: segment.ctaLabel, ctaPosition: 'homepage_audience_card', enquiryIntent: segment.intent, audienceSegment: segment.name })
                     onQuoteClick(`audience_quote_${segment.slug}`)
                     onSectionChange('contact')
                   }}
@@ -2833,13 +2839,13 @@ function TradeProjectsPage({ page, onSectionChange, onSupportClick, onQuoteClick
                 <button
                   type="button"
                   onClick={() => {
-                    analyticsService.track('audience_pathway_click', { clickedElement: `trade_projects_quote_${segment.slug}`, ctaLabel: `Request ${segment.name} quote`, ctaPosition: 'trade_projects_audience_card', enquiryIntent: segment.intent, audienceSegment: segment.name })
+                    analyticsService.track('audience_pathway_click', { clickedElement: `trade_projects_quote_${segment.slug}`, ctaLabel: segment.ctaLabel, ctaPosition: 'trade_projects_audience_card', enquiryIntent: segment.intent, audienceSegment: segment.name })
                     onQuoteClick(`trade_projects_quote_${segment.slug}`)
                     onSectionChange('contact')
                   }}
                   className="inline-flex min-h-10 items-center justify-center rounded-md bg-emerald-700 px-3 py-2 text-xs font-semibold text-white transition hover:bg-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-200"
                 >
-                  Request {segment.name} quote
+                  {segment.ctaLabel}
                 </button>
                 <button
                   type="button"
