@@ -4,7 +4,9 @@ Date: 2026-07-08
 
 This audit reviews the current Kleihaus SEO implementation after the Phase 1 SEO/conversion work, Google Business Profile conversion update, analytics/Search Console documentation, sanitaryware image update and the 2026-07-08 advanced SEO implementation. The original audit was documentation-only; the follow-up implementation added repo-level SEO improvements without changing DNS, Cloudflare bindings, secrets, routes or deployment settings.
 
-2026-07-29 IA update: Kleihaus now has parent hubs for `/products`, `/guides` and `/locations`, while preserving `/trade-projects` as the Solutions/audience hub and `/projects` as the project-gallery destination. The primary navigation now follows `Products | Solutions | Projects | Guides | Locations | About | Contact`, with `Request a Quotation` retained as a highlighted conversion action rather than a primary content category.
+2026-07-29 IA update: Kleihaus now has parent hubs for `/products`, `/guides` and `/locations`, while preserving `/trade-projects` as the Solutions/audience hub and `/projects` as the project-gallery destination. The primary navigation now follows `About | Products | Solutions | Projects | Guides | Locations | Contact`, with `Request a Quotation` retained as a highlighted conversion action rather than a primary content category.
+
+2026-07-29 deduplication update: the homepage now uses distinct block ownership for Hero, Products, Applications/Inspiration, Projects, Solutions, Why Kleihaus, Guides, Locations and Contact. Repeated product-range, service-area and contact-action summaries were consolidated into their authoritative blocks without removing important product, guide, project, location, quotation or WhatsApp pathways.
 
 ## 2026-07-22 Current Audit And Implementation Update
 

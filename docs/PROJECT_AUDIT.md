@@ -14,6 +14,41 @@ Rule: Every future meaningful change must update `docs/CHANGELOG.md` and, where 
 - Locations: Nairobi | Machakos | Makueni
 - Product focus: tiles, sanitaryware, paints, adhesives, grout and finishing materials for homes and projects in Kenya.
 
+## Navigation Order And Content Deduplication
+
+On 2026-07-29, the latest repository and live website were reviewed after the information-architecture upgrade. The live site served the new parent routes, including `/products`, `/guides`, `/trade-projects` and `/locations` via a folder-backed route redirect to `/locations/`.
+
+Implemented repo changes:
+
+- Primary navigation now reads `About | Products | Solutions | Projects | Guides | Locations | Contact` on desktop and mobile.
+- `Request a Quotation` remains visually distinct in the header and mobile menu rather than becoming a primary navigation category.
+- The homepage now follows a sequential journey instead of the previous tabbed content area:
+  - Hero: concise supply and benefit statement.
+  - Products: product categories and product-discovery links.
+  - Applications/Inspiration: rooms, surfaces and uses.
+  - Projects: genuine supplied project photographs and gallery access.
+  - Solutions/Who We Serve: six customer pathways and needs.
+  - Why Kleihaus: identity, mission, values and verified differentiators.
+  - Guides: buying, quantity and installation resources.
+  - Locations: Nairobi, Machakos and Makueni pathways.
+  - Contact: WhatsApp, telephone, email and quotation options.
+
+Duplication inventory and consolidation:
+
+- The old homepage tab area repeated Products, About, Guidance and Quotation in one container even though those now have dedicated sections or hubs. It was removed from the main homepage flow and replaced with distinct blocks.
+- The former local/GBP block repeated the product range, support services and contact actions. It was rewritten as a Locations block with links to Nairobi, Machakos, Makueni and `/locations`.
+- The About block previously repeated the product range, service areas and installation/support services. It now owns business positioning, mission, vision, values and concise differentiators.
+- The project-inspiration block previously mixed generic applications with project proof. It now owns room/surface inspiration, while a separate Projects block owns genuine supplied project evidence and `/projects` access.
+- Essential repetition was preserved where useful: navigation labels, contact details, route metadata, product names on product pages, location names on location pages, quote CTAs in buying/contact contexts and accessibility labels.
+
+Preserved safeguards:
+
+- No useful verified product, project, guide, location, contact or customer-pathway information was deleted.
+- Kitchen sinks and mixers remain visible in product discovery.
+- The six customer pathways remain consolidated under `/trade-projects`.
+- Existing guide routes, location hubs, project gallery, quote form, WhatsApp, phone, email, social links, analytics architecture, sitemap, structured data and route HTML generation remain intact.
+- No Cloudflare DNS, routes, bindings, secrets, Worker configuration, API endpoints, Product schema, Offer schema, Review schema, AggregateRating schema, fake ratings, fake reviews or fake prices were introduced.
+
 ## Information Architecture
 
 On 2026-07-29, the repository, production route responses and supplied strategic structure diagram were reviewed before implementing a focused information-architecture upgrade.

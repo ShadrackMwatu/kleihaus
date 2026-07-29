@@ -138,13 +138,15 @@ Do not move production to Cloudflare Pages unless the deployment strategy is int
 
 `src/seoManifest.js` is the shared source for route metadata, generated sitemap entries, route-specific static HTML and Worker metadata injection. Keep it aligned with route content in `src/App.jsx` whenever adding or renaming public SEO routes. The schema strategy remains conservative: do not add Product schema, Offer schema, fake ratings, fake reviews or fake prices.
 
-The public information architecture is product-led:
+The public information architecture starts with business context and then moves into commercial discovery:
 
 ```text
-Products | Solutions | Projects | Guides | Locations | About | Contact
+About | Products | Solutions | Projects | Guides | Locations | Contact
 ```
 
 `/products`, `/guides` and `/locations` are lightweight parent hubs that organize existing content. `/trade-projects` remains the canonical Solutions/audience hub, `/projects` remains the genuine project-gallery destination, and quotation remains a highlighted action rather than a primary information category. Parent routes with child routes, such as `/locations`, are generated as folder `index.html` route assets so `/locations/nairobi` and related child pages continue to work.
+
+Homepage block ownership is intentionally distinct: Hero summarizes the business, Products owns category discovery, Applications/Inspiration owns room and surface use cases, Projects owns genuine project proof, Solutions owns customer pathways, About/Why Kleihaus owns mission and values, Guides owns educational resources, Locations owns service-area pathways, and Contact owns WhatsApp, phone, email and quotation methods.
 
 ## Environment Variables
 

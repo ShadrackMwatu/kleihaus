@@ -8,6 +8,16 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-07-29
 
+### Navigation Order And Homepage Deduplication
+
+- Reordered the primary desktop and mobile navigation from `Products | Solutions | Projects | Guides | Locations | About | Contact` to `About | Products | Solutions | Projects | Guides | Locations | Contact`.
+- Preserved `Request a Quotation` as the visually distinct header action and kept all existing URLs, route metadata, sitemap entries and route HTML generation intact.
+- Replaced the homepage tabbed content sequence with distinct blocks for Products, Applications/Inspiration, Projects, Solutions/Who We Serve, Why Kleihaus, Guides, Locations and Contact.
+- Consolidated repeated product/service/location messaging so the full catalogue lives under Products, customer groups live under Solutions, genuine project proof lives under Projects, local pathways live under Locations and contact methods live under Contact.
+- Split homepage inspiration from genuine project evidence: Applications/Inspiration now covers room and surface use cases, while the Projects block links to verified supplied project photographs.
+- Rewrote the homepage Locations block so it no longer repeats the full product range or contact actions; it now routes visitors to Nairobi, Machakos, Makueni and the `/locations` hub.
+- Preserved product-discovery positioning, kitchen sinks and mixers visibility, six customer pathways, project gallery, guides, location hubs, quote form, WhatsApp same-tab behavior, analytics tracking and Cloudflare/API configuration.
+
 ### Information Architecture Upgrade
 
 - Reviewed the current repository, live production route responses and the supplied Kleihaus structure diagram before editing.

@@ -215,20 +215,13 @@ const canonicalUrl = 'https://www.kleihaus.com/'
 const defaultSeoImage = 'https://www.kleihaus.com/images/kleihaus-structure.jpg'
 
 const navItems = [
+  { label: 'About', section: 'about', href: '/#about', type: 'section' },
   { label: 'Products', href: '/products', type: 'route' },
   { label: 'Solutions', href: '/trade-projects', type: 'route' },
   { label: 'Projects', href: '/projects', type: 'route' },
   { label: 'Guides', href: '/guides', type: 'route' },
   { label: 'Locations', href: '/locations', type: 'route' },
-  { label: 'About', section: 'about', href: '/#about', type: 'section' },
   { label: 'Contact', section: 'contact', href: '/#contact', type: 'section' },
-]
-
-const panelItems = [
-  { label: 'Products', panel: 'catalogue' },
-  { label: 'About', panel: 'about' },
-  { label: 'Guidance', panel: 'guidance' },
-  { label: 'Quotation', panel: 'quote' },
 ]
 
 const categoryNav = ['Floor Tiles', 'Wall Tiles', 'Bathroom Tiles', 'Sanitaryware', 'Kitchen Sinks & Mixers', 'Paints', 'Adhesives & Grout', 'Installation Support']
@@ -1398,15 +1391,6 @@ const serviceAreaLinks = [
   { label: 'Makueni', href: '/locations/makueni' },
 ]
 
-const gbpProductSignals = ['Tiles', 'Sanitaryware', 'Paints', 'Adhesives', 'Tools']
-
-const gbpSupportSignals = [
-  'Delivery support',
-  'Installation guidance',
-  'Project quote planning',
-  'Training and technical support',
-]
-
 const aboutSupportPoints = [
   {
     title: 'Finishing advisory',
@@ -1530,29 +1514,6 @@ const projectGalleryItems = [
     image: '/images/paint-interior.jpg',
     alt: 'Interior paint and finishing materials support by Kleihaus Ceramics',
     label: 'Paints',
-  },
-]
-
-const planningTips = [
-  {
-    title: 'Choose by room use',
-    text: 'Match the finish to moisture, cleaning needs, foot traffic and the look you want.',
-    icon: Store,
-  },
-  {
-    title: 'Confirm tile size and quantity',
-    text: 'Share room measurements, preferred tile size and an allowance for cuts or breakage.',
-    icon: Ruler,
-  },
-  {
-    title: 'Match adhesive and grout',
-    text: 'Use fixing materials that suit the tile type, surface and wet or dry area.',
-    icon: Brush,
-  },
-  {
-    title: 'Plan support needs',
-    text: 'Add location, timing and site details when you are ready to discuss sourcing or support.',
-    icon: MapPin,
   },
 ]
 
@@ -2377,70 +2338,40 @@ function Hero({ onSupportClick, onQuoteClick, onSectionChange }) {
 
 function GoogleBusinessProfileSupport({ onSupportClick, onQuoteClick, onSectionChange }) {
   return (
-    <section className="border-y border-emerald-100 bg-white">
+    <section id="locations" className="border-y border-emerald-100 bg-white">
       <div className="mx-auto grid max-w-7xl gap-4 px-4 py-4 sm:py-5 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
         <div>
-          <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Need finishing materials?</p>
+          <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Locations</p>
           <h2 className="mt-1.5 text-xl font-semibold leading-snug text-neutral-950 sm:text-2xl">
-            Kleihaus Ceramics supports tile, sanitaryware and paint projects across Nairobi, Machakos and Makueni.
+            Find the right Kleihaus pathway for Nairobi, Machakos or Makueni.
           </h2>
-          <div className="mt-3 flex flex-wrap gap-2 max-sm:[&>*]:w-full">
-            {gbpProductSignals.map((item) => (
-              <span key={item} className="rounded-md border border-neutral-200 bg-neutral-50 px-3 py-1.5 text-xs font-semibold text-neutral-700">
-                {item}
-              </span>
-            ))}
-          </div>
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-neutral-600">
+            Location hubs keep local delivery context, planning notes and related product-location pages together without repeating the full catalogue.
+          </p>
         </div>
         <div className="rounded-lg border border-neutral-200 bg-neutral-50 p-3 sm:p-4">
-          <div className="grid gap-2 text-sm text-neutral-700 sm:grid-cols-2">
-            {gbpSupportSignals.map((item) => (
-              <div key={item} className="flex items-center gap-2">
-                <ShieldCheck className="h-4 w-4 shrink-0 text-emerald-700" />
-                <span>{item}</span>
-              </div>
-            ))}
-          </div>
-          <div className="mt-3 flex flex-wrap gap-2">
-            <a
-              href="tel:+254748827166"
-              aria-label="Call Kleihaus Ceramics"
-              onClick={() => analyticsService.track('phone_click', { clickedElement: 'gbp_home_call' })}
-              className="inline-flex items-center justify-center gap-2 rounded-md border border-neutral-300 bg-white px-3 py-2 text-xs font-semibold text-neutral-900 transition hover:border-emerald-700 hover:text-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:text-sm"
-            >
-              <Phone className="h-4 w-4" />
-              Call Kleihaus
-            </a>
-            <button
-              type="button"
-              onClick={() => onSupportClick('gbp_home_whatsapp', 'Hello Kleihaus, I found you on Google and need help with tiles, sanitaryware, paints, delivery or installation support.')}
-              className={`${whatsappCtaClass} inline-flex items-center justify-center rounded-md px-3 py-2 text-xs font-semibold sm:text-sm`}
-            >
-              <WhatsAppBrandText>WhatsApp help</WhatsAppBrandText>
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                analyticsService.track('category_click', { clickedElement: 'gbp_home_explore_products', ctaLabel: 'Explore Products', ctaPosition: 'gbp_home_support', productCategory: 'All products', enquiryIntent: 'product_discovery' })
-                onSectionChange('catalogue')
-              }}
-              className="inline-flex items-center justify-center gap-2 rounded-md border border-emerald-700 bg-[#16A34A] px-3 py-2 text-xs font-semibold text-white transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:text-sm"
-            >
-              Explore products
-              <ArrowRight className="h-4 w-4" />
-            </button>
-          </div>
-          <div className="mt-3 flex flex-wrap gap-2 border-t border-neutral-200 pt-3">
+          <div className="grid gap-2 text-sm text-neutral-700 sm:grid-cols-3">
             {serviceAreaLinks.map((location) => (
               <a
                 key={location.href}
                 href={location.href}
-                className="inline-flex items-center gap-1 rounded-md px-2.5 py-1.5 text-xs font-semibold text-emerald-800 transition hover:bg-emerald-50 focus:outline-none focus:ring-2 focus:ring-emerald-200"
+                onClick={() => analyticsService.track('location_view', { clickedElement: `homepage_location_${location.label.toLowerCase()}`, ctaLabel: location.label, ctaPosition: 'homepage_locations', location: location.label, pageType: 'home' })}
+                className="inline-flex min-h-10 items-center gap-2 rounded-md border border-neutral-200 bg-white px-3 py-2 font-semibold text-emerald-900 transition hover:border-emerald-700 hover:bg-emerald-50 focus:outline-none focus:ring-2 focus:ring-emerald-200"
               >
-                <MapPin className="h-3.5 w-3.5" />
+                <MapPin className="h-4 w-4 shrink-0 text-emerald-700" />
                 {location.label}
               </a>
             ))}
+          </div>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <a
+              href="/locations"
+              onClick={() => analyticsService.track('hub_click', { clickedElement: 'homepage_locations_hub', ctaLabel: 'Find a Location', ctaPosition: 'homepage_locations', pageType: 'locations', enquiryIntent: 'local_support' })}
+              className="inline-flex items-center justify-center gap-2 rounded-md border border-emerald-700 bg-[#16A34A] px-3 py-2 text-xs font-semibold text-white transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:text-sm"
+            >
+              Find a Location
+              <ArrowRight className="h-4 w-4" />
+            </a>
           </div>
         </div>
       </div>
@@ -2454,18 +2385,15 @@ function AboutSection() {
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
         <div>
           <p className="text-sm font-semibold uppercase text-emerald-700">About Kleihaus</p>
-          <h2 className="mt-2 text-3xl font-semibold text-neutral-950">A finishing partner from product choice to final finish.</h2>
+          <h2 className="mt-2 text-3xl font-semibold text-neutral-950">Why choose Kleihaus</h2>
           <p className="mt-4 text-sm leading-7 text-neutral-600">
-            Kleihaus Ceramics supplies tiles, sanitaryware, paints, adhesives, tools and finishing materials for homes, commercial spaces and construction projects.
+            Kleihaus Ceramics is positioned as a practical finishing partner for homes, renovations, contractors and project teams.
           </p>
           <p className="mt-3 text-sm leading-7 text-neutral-600">
-            Beyond supply, the team helps homeowners, contractors, developers, fundis and project teams choose the right products, estimate quantities, coordinate logistics and follow professional installation standards from preparation and cutting to fixing, grouting, cleaning and handover.
-          </p>
-          <p className="mt-3 text-sm leading-7 text-neutral-600">
-            Kleihaus also supports actual installation services, right-tool recommendations and tailored product/application trainings across Nairobi, Machakos, Makueni and wider Kenya service areas.
+            This section keeps the business identity, mission, values and service philosophy in one place. Product range, customer pathways, projects, guides and locations are handled in their dedicated sections.
           </p>
           <div className="mt-6 flex flex-wrap gap-2 text-xs font-semibold text-emerald-800">
-            {['Tiles', 'Sanitaryware', 'Paints', 'Adhesives', 'Tools', 'Training'].map((item) => (
+            {['Finishing advisory', 'Reliable guidance', 'Professional workflow', 'Customer success'].map((item) => (
               <span key={item} className="rounded-full bg-emerald-50 px-3 py-1.5">
                 {item}
               </span>
@@ -2493,69 +2421,6 @@ function AboutSection() {
   )
 }
 
-function AboutPanel() {
-  return (
-    <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-      <div>
-        <p className="text-sm font-semibold uppercase text-emerald-700">About Kleihaus</p>
-        <h2 className="mt-2 text-2xl font-semibold text-neutral-950 sm:text-3xl">Finishing partner for homes, fundis, contractors and projects.</h2>
-        <p className="mt-3 text-sm leading-7 text-neutral-600">
-          Kleihaus supplies tiles, sanitaryware, paints, adhesives, tools and other finishing materials while helping customers choose the right products for their spaces, budgets and installation needs.
-        </p>
-        <p className="mt-3 text-sm leading-7 text-neutral-600">
-          The team supports finishing advisory, quantity estimation, logistics and delivery, actual installation services, and tailored product/application trainings across Nairobi, Machakos, Makueni and wider Kenya where practical.
-        </p>
-        <p className="mt-3 text-sm leading-7 text-neutral-600">
-          Our guidance emphasizes professional installation standards, the right tools for the job, and the full workflow from preparation and cutting to fixing, grouting, cleaning and the final finish.
-        </p>
-        <VisionMissionValues compact />
-      </div>
-      <div className="grid gap-2.5 sm:grid-cols-2 sm:gap-3">
-        {aboutSupportPoints.map((point) => {
-          const Icon = point.icon
-          return (
-            <article key={point.title} className="rounded-lg border border-neutral-200 bg-white p-3 shadow-sm sm:p-4">
-              <div className="inline-flex h-9 w-9 items-center justify-center rounded-md bg-emerald-50 text-emerald-800 sm:h-10 sm:w-10">
-                <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
-              </div>
-              <h3 className="mt-2 text-sm font-semibold leading-snug text-neutral-950 sm:mt-3">{point.title}</h3>
-              <p className="mt-1 text-xs leading-5 text-neutral-600 sm:text-sm sm:leading-6">{point.text}</p>
-            </article>
-          )
-        })}
-      </div>
-    </div>
-  )
-}
-
-function GuidancePanel() {
-  return (
-    <div>
-      <div className="max-w-3xl">
-        <p className="text-sm font-semibold uppercase text-emerald-700">Planning guidance</p>
-        <h2 className="mt-2 text-2xl font-semibold text-neutral-950 sm:text-3xl">Plan product choices before you proceed.</h2>
-        <p className="mt-2 text-sm leading-6 text-neutral-600">
-          Start with room use, finish preference, quantity, installation needs and location, then contact Kleihaus when you are ready for practical support.
-        </p>
-      </div>
-      <div className="mt-4 grid gap-2.5 sm:mt-5 sm:grid-cols-2 sm:gap-3 lg:grid-cols-4">
-        {planningTips.map((tip) => {
-          const Icon = tip.icon
-          return (
-            <article key={tip.title} className="rounded-lg border border-neutral-200 bg-white p-3 shadow-sm sm:p-4">
-              <div className="inline-flex h-9 w-9 items-center justify-center rounded-md bg-emerald-50 text-emerald-800 sm:h-10 sm:w-10">
-                <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
-              </div>
-              <h3 className="mt-2 text-sm font-semibold leading-snug text-neutral-950 sm:mt-3">{tip.title}</h3>
-              <p className="mt-1 text-xs leading-5 text-neutral-600 sm:text-sm sm:leading-6">{tip.text}</p>
-            </article>
-          )
-        })}
-      </div>
-    </div>
-  )
-}
-
 function ShopByCategory({ selectedCategory, onCategoryClick, onGuideClick, onSupportClick, compact = false }) {
   return (
     <section id="catalogue" className={compact ? '' : 'mx-auto max-w-7xl px-4 py-10'}>
@@ -2569,7 +2434,7 @@ function ShopByCategory({ selectedCategory, onCategoryClick, onGuideClick, onSup
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-2.5 sm:gap-3 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 sm:gap-3 lg:grid-cols-4">
         {categories.map((category) => {
           const Icon = category.icon
           const landingPage = categoryLandingPages.find((page) => page.category === category.name)
@@ -2837,18 +2702,18 @@ function CustomerProjectGallery() {
       <div className="mx-auto max-w-7xl px-4 py-6 sm:py-8">
         <div className="mb-4 flex flex-col gap-2 sm:mb-5 md:flex-row md:items-end md:justify-between">
           <div className="max-w-3xl">
-            <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Project inspiration</p>
-            <h2 className="mt-1.5 text-xl font-semibold text-neutral-950 sm:text-2xl">Project inspiration</h2>
+            <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Applications and inspiration</p>
+            <h2 className="mt-1.5 text-xl font-semibold text-neutral-950 sm:text-2xl">Choose finishes by room, surface and use.</h2>
             <p className="mt-1.5 text-sm leading-6 text-neutral-600">
-              Genuine product and project references for kitchens, bathrooms, floors, walls, renovations and commercial finishing ideas.
+              Use this block to think through where each finish will live before comparing the detailed product categories.
             </p>
           </div>
           <a
-            href="/projects"
-            onClick={() => analyticsService.track('project_click', { clickedElement: 'homepage_browse_gallery', ctaLabel: 'Browse the Gallery', ctaPosition: 'homepage_project_inspiration', enquiryIntent: 'project_gallery' })}
+            href="/products"
+            onClick={() => analyticsService.track('hub_click', { clickedElement: 'homepage_applications_products', ctaLabel: 'Explore Products', ctaPosition: 'homepage_applications', pageType: 'products', enquiryIntent: 'product_discovery' })}
             className="inline-flex w-fit items-center gap-1.5 rounded-md border border-emerald-700 px-3 py-2 text-xs font-semibold text-emerald-800 transition hover:bg-emerald-50 focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:text-sm"
           >
-            Browse the Gallery
+            Explore Products
             <ArrowRight className="h-4 w-4" />
           </a>
         </div>
@@ -2871,6 +2736,52 @@ function CustomerProjectGallery() {
                 <p className="text-[11px] font-semibold uppercase tracking-wide text-emerald-700">{item.label}</p>
                 <h3 className="mt-1 text-sm font-semibold text-neutral-950 sm:text-base">{item.title}</h3>
                 <p className="mt-1 text-xs leading-5 text-neutral-600 sm:text-sm sm:leading-5">{item.text}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function ProjectsEvidence() {
+  return (
+    <section className="bg-white">
+      <div className="mx-auto max-w-7xl px-4 py-6 sm:py-8">
+        <div className="mb-4 flex flex-col gap-2 sm:mb-5 md:flex-row md:items-end md:justify-between">
+          <div className="max-w-3xl">
+            <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Projects</p>
+            <h2 className="mt-1.5 text-xl font-semibold text-neutral-950 sm:text-2xl">Genuine project images for practical reference.</h2>
+            <p className="mt-1.5 text-sm leading-6 text-neutral-600">
+              View selected supplied project photographs as inspiration for kitchen finishes, sinks, counters and tile details without unsupported installation or customer claims.
+            </p>
+          </div>
+          <a
+            href="/projects"
+            onClick={() => analyticsService.track('project_click', { clickedElement: 'homepage_projects_gallery', ctaLabel: 'Browse Projects', ctaPosition: 'homepage_projects', enquiryIntent: 'project_gallery' })}
+            className="inline-flex w-fit items-center gap-1.5 rounded-md border border-emerald-700 px-3 py-2 text-xs font-semibold text-emerald-800 transition hover:bg-emerald-50 focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:text-sm"
+          >
+            Browse Projects
+            <ArrowRight className="h-4 w-4" />
+          </a>
+        </div>
+        <div className="grid gap-2.5 sm:grid-cols-3 sm:gap-3">
+          {projectImageItems.slice(0, 3).map((item) => (
+            <article key={item.src} className="overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-sm">
+              <OptimizedImage
+                src={item.src}
+                alt={item.alt}
+                sizes="(max-width: 640px) 100vw, 33vw"
+                loading="lazy"
+                decoding="async"
+                width={item.width}
+                height={item.height}
+                className="aspect-[16/9] w-full object-cover"
+              />
+              <div className="p-3">
+                <p className="text-[11px] font-semibold uppercase tracking-wide text-emerald-700">{item.group}</p>
+                <h3 className="mt-1 text-sm font-semibold text-neutral-950 sm:text-base">{item.label}</h3>
               </div>
             </article>
           ))}
@@ -4490,45 +4401,6 @@ function MobileStickyActions({ onWhatsAppClick, onQuoteClick }) {
   )
 }
 
-function CompactContentArea({ activePanel, onPanelChange, selectedCategory, onCategoryClick, onGuideClick, onSupportClick, onSupportFormClick, contentRef }) {
-  return (
-    <section ref={contentRef} className="bg-white">
-      <div className="mx-auto max-w-7xl px-4 py-3 sm:py-5 lg:py-6">
-        <div className="rounded-xl border border-neutral-200 bg-neutral-50 p-2 shadow-sm sm:p-3">
-          <div className="mb-2 flex gap-1.5 overflow-x-auto pb-1 sm:mb-3 sm:gap-2 sm:pb-0" role="tablist" aria-label="Kleihaus homepage content">
-            {panelItems.map((item) => (
-              <button
-                key={item.panel}
-                type="button"
-                role="tab"
-                aria-selected={activePanel === item.panel}
-                aria-controls={`panel-${item.panel}`}
-                onClick={() => onPanelChange(item.panel)}
-                className={`shrink-0 rounded-md px-2.5 py-1.5 text-xs font-semibold transition focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:px-4 sm:py-2 sm:text-sm ${
-                  activePanel === item.panel
-                    ? 'bg-neutral-950 text-white shadow-sm'
-                    : 'bg-white text-neutral-700 hover:bg-emerald-50 hover:text-emerald-800'
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
-
-          <div id={`panel-${activePanel}`} role="tabpanel" className="rounded-lg bg-white p-2.5 sm:p-4">
-            {activePanel === 'catalogue' && (
-              <ShopByCategory compact selectedCategory={selectedCategory} onCategoryClick={onCategoryClick} onGuideClick={onGuideClick} onSupportClick={onSupportClick} />
-            )}
-            {activePanel === 'about' && <AboutPanel />}
-            {activePanel === 'guidance' && <GuidancePanel />}
-            {activePanel === 'quote' && <Contact compact onSupportFormClick={onSupportFormClick} />}
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
-
 const normalizePath = (path) => {
   if (!path || path === '/') return '/'
   return path.replace(/\/+$/, '')
@@ -4538,7 +4410,6 @@ export default function App() {
   const [projectType] = useState('Homeowner')
   const [currentPath, setCurrentPath] = useState(() => (typeof window === 'undefined' ? '/' : normalizePath(window.location.pathname)))
   const [activeSection, setActiveSection] = useState('home')
-  const [activePanel, setActivePanel] = useState('catalogue')
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('Floor Tiles')
   const [eventRevision, setEventRevision] = useState(0)
@@ -4547,7 +4418,6 @@ export default function App() {
     source: 'support_button',
     message: '',
   })
-  const contentAreaRef = useRef(null)
   const activeCategoryPage = categoryLandingByPath[currentPath]
 
   const refreshSignals = () => setEventRevision((revision) => revision + 1)
@@ -4611,24 +4481,20 @@ export default function App() {
     analyticsService.track('search_query', { searchQuery: query.toLowerCase(), projectType })
     setSearchQuery(query)
     setActiveSection('catalogue')
-    setActivePanel('catalogue')
     refreshSignals()
   }
 
   const handleSectionChange = (section) => {
     navigateHome()
     setActiveSection(section)
-    if (section === 'home') setActivePanel('catalogue')
-    if (section === 'about') setActivePanel('about')
-    if (section === 'catalogue') setActivePanel('catalogue')
-    if (section === 'contact') setActivePanel('quote')
     analyticsService.track('navigation_click', { clickedElement: `nav_${section}`, projectType, productCategory: selectedCategory })
     refreshSignals()
     window.requestAnimationFrame(() => {
       window.requestAnimationFrame(() => {
+        const targetElement = section === 'home' ? null : document.getElementById(section)
         const targetTop = section === 'home'
           ? 0
-          : Math.max((contentAreaRef.current?.getBoundingClientRect().top || 0) + window.scrollY - 96, 0)
+          : Math.max((targetElement?.getBoundingClientRect().top || 0) + window.scrollY - 96, 0)
 
         window.scrollTo({
           top: targetTop,
@@ -4649,7 +4515,6 @@ export default function App() {
       setCurrentPath(target)
     }
     setActiveSection('home')
-    setActivePanel('catalogue')
     analyticsService.track('navigation_click', {
       clickedElement: `route_nav_${target}`,
       pagePath: target,
@@ -4667,7 +4532,6 @@ export default function App() {
     analyticsService.track('category_click', { productCategory: category, clickedElement: 'category_navigation', projectType })
     setSelectedCategory(category)
     setActiveSection('catalogue')
-    setActivePanel('catalogue')
     refreshSignals()
   }
 
@@ -4685,20 +4549,11 @@ export default function App() {
     window.history.pushState({}, '', guideTarget)
     setCurrentPath(normalizePath(guideTarget))
     setActiveSection('catalogue')
-    setActivePanel('catalogue')
     refreshSignals()
     window.scrollTo({
       top: 0,
       behavior: window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
     })
-  }
-
-  const handlePanelChange = (panel) => {
-    navigateHome()
-    setActivePanel(panel)
-    setActiveSection(panel === 'quote' ? 'contact' : panel === 'guidance' ? 'home' : panel)
-    analyticsService.track('navigation_click', { clickedElement: `panel_${panel}`, projectType, productCategory: selectedCategory })
-    refreshSignals()
   }
 
   const handleProductInterest = (product, category) => {
@@ -4834,20 +4689,19 @@ export default function App() {
       ) : (
         <>
           <Hero onSupportClick={handleSupportClick} onQuoteClick={handleQuoteClick} onSectionChange={handleSectionChange} />
-          <CompactContentArea
-            activePanel={activePanel}
-            onPanelChange={handlePanelChange}
+          <ShopByCategory
             selectedCategory={selectedCategory}
             onCategoryClick={handleCategoryClick}
             onGuideClick={handleCategoryGuideClick}
             onSupportClick={handleSupportClick}
-            onSupportFormClick={handleSupportFormClick}
-            contentRef={contentAreaRef}
           />
           <CustomerProjectGallery />
+          <ProjectsEvidence />
           <AudiencePathways onSupportClick={handleSupportClick} onQuoteClick={handleQuoteClick} onSectionChange={handleSectionChange} />
+          <AboutSection />
           <HelpfulGuides onGuideClick={handleGuideClick} />
           <GoogleBusinessProfileSupport onSupportClick={handleSupportClick} onQuoteClick={handleQuoteClick} onSectionChange={handleSectionChange} />
+          <Contact onSupportFormClick={handleSupportFormClick} />
         </>
       )}
       <MobileStickyActions
