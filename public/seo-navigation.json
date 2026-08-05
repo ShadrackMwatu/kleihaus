@@ -1,0 +1,43 @@
+{
+  "primary": [
+    {
+      "label": "About",
+      "section": "about",
+      "href": "/#about",
+      "type": "section"
+    },
+    {
+      "label": "Products",
+      "href": "/products",
+      "type": "route"
+    },
+    {
+      "label": "Solutions",
+      "href": "/trade-projects",
+      "type": "route"
+    },
+    {
+      "label": "Projects",
+      "href": "/projects",
+      "type": "route"
+    },
+    {
+      "label": "Guides",
+      "href": "/guides",
+      "type": "route"
+    },
+    {
+      "label": "Locations",
+      "href": "/locations",
+      "type": "route"
+    },
+    {
+      "label": "Contact",
+      "section": "contact",
+      "href": "/#contact",
+      "type": "section"
+    }
+  ],
+  "generatedAt": "2026-08-05",
+  "routeCount": 39
+}

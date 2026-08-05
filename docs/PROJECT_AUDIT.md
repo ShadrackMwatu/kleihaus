@@ -14,6 +14,25 @@ Rule: Every future meaningful change must update `docs/CHANGELOG.md` and, where 
 - Locations: Nairobi | Machakos | Makueni
 - Product focus: tiles, sanitaryware, paints, adhesives, grout and finishing materials for homes and projects in Kenya.
 
+## SEO Automation Engine
+
+On 2026-08-05, the repository gained a build-time SEO automation engine designed to produce higher return than isolated manual SEO tweaks.
+
+Implemented repo changes:
+
+- `src/seoManifest.js` now exports normalized route SEO config objects with slug/path, title, description, keywords, image, schema, breadcrumbs, canonical URL and last-modified data.
+- `scripts/seo-engine.mjs` generates sitemap, robots, navigation, internal-link, image-manifest and SEO-report assets from the same central SEO source.
+- `npm run build` now runs `npm run seo:generate`, `vite build`, route HTML generation and `npm run seo:audit`.
+- `src/App.jsx` uses the generated `primaryNavigation` export for the public header order.
+- Generated outputs include `public/seo-navigation.json`, `public/seo-internal-links.json`, `public/seo-dashboard.json`, `public/images/image-manifest.json`, `docs/SEO_REPORT.md`, `docs/SEO_CONTENT_SUGGESTIONS.md` and `docs/GBP_SOCIAL_DRAFTS.md`.
+- `docs/SEO_AUTOMATION_ENGINE.md` documents active build layers and the long-term content intelligence, GBP/social, dashboard and AI SEO agent roadmap.
+
+Preserved safeguards:
+
+- Route-specific metadata injection, generated route HTML, sitemap coverage, structured data generation and local SEO routes remain intact.
+- The automation blocks unsupported Product, Offer, Review and AggregateRating schema.
+- No Cloudflare DNS, routes, bindings, secrets, Worker deployment settings, quote endpoint, fake ratings, fake reviews, fake prices or automatic publishing behavior were introduced.
+
 ## Homepage Contact Prompt Simplification
 
 On 2026-07-30, the homepage and shared layout were reviewed after the information-architecture and commercial-positioning updates. The owner-approved direction was to stop repeating WhatsApp, quotation and the three service-area names across the homepage, while preserving the local SEO architecture and final Contact conversion path.

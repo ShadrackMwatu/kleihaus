@@ -5,9 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "seo:generate": "node scripts/seo-engine.mjs",
+    "seo:audit": "node scripts/seo-engine.mjs --audit-only",
     "generate:sitemap": "node scripts/generate-sitemap.mjs",
     "generate:route-html": "node scripts/generate-route-html.mjs",
-    "build": "npm run generate:sitemap && vite build && npm run generate:route-html",
+    "build": "npm run seo:generate && vite build && npm run generate:route-html && npm run seo:audit",
     "preview": "vite preview"
   },
   "dependencies": {

@@ -28,6 +28,7 @@ import {
 import { analyticsService } from './services/analyticsService'
 import { recommendationService } from './services/recommendationService'
 import { quoteRequestService } from './services/quoteRequestService'
+import { primaryNavigation } from './seoManifest'
 
 const heroSlides = [
   {
@@ -214,15 +215,7 @@ const seoDescription =
 const canonicalUrl = 'https://www.kleihaus.com/'
 const defaultSeoImage = 'https://www.kleihaus.com/images/kleihaus-structure.jpg'
 
-const navItems = [
-  { label: 'About', section: 'about', href: '/#about', type: 'section' },
-  { label: 'Products', href: '/products', type: 'route' },
-  { label: 'Solutions', href: '/trade-projects', type: 'route' },
-  { label: 'Projects', href: '/projects', type: 'route' },
-  { label: 'Guides', href: '/guides', type: 'route' },
-  { label: 'Locations', href: '/locations', type: 'route' },
-  { label: 'Contact', section: 'contact', href: '/#contact', type: 'section' },
-]
+const navItems = primaryNavigation
 
 const categoryNav = ['Floor Tiles', 'Wall Tiles', 'Bathroom Tiles', 'Sanitaryware', 'Kitchen Sinks & Mixers', 'Paints', 'Adhesives & Grout', 'Installation Support']
 

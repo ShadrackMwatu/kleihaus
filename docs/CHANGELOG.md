@@ -6,6 +6,18 @@ Rule: Every future meaningful change must update `docs/CHANGELOG.md` and, where 
 
 Current deployment note: production now uses GitHub `main` -> Cloudflare Workers Builds -> Worker Assets -> Worker `kleihaus` -> `kleihaus.com` and `www.kleihaus.com`. The active quote endpoint is `/api/quote-request`. Older entries that mention Cloudflare Pages or `https://api.kleihaus.com/quote-request` are historical and describe earlier deployment states, not the current production path.
 
+## 2026-08-05
+
+### SEO Automation Engine
+
+- Added `scripts/seo-engine.mjs` as a build-time SEO automation layer that generates sitemap, robots, navigation, internal-link, image-manifest and SEO-report outputs from the central route metadata.
+- Extended `src/seoManifest.js` with normalized SEO config, route keywords, canonical URLs, generated schema objects, breadcrumb data, primary navigation, robots generation and navigation manifest helpers.
+- Updated the site header navigation to use the generated primary navigation export instead of a separate hardcoded navigation array.
+- Added `npm run seo:generate` and `npm run seo:audit`; `npm run build` now runs SEO generation before Vite and an SEO audit after route HTML generation.
+- Added `public/seo-navigation.json`, `public/seo-internal-links.json`, `public/seo-dashboard.json`, `public/images/image-manifest.json`, `docs/SEO_REPORT.md`, `docs/SEO_CONTENT_SUGGESTIONS.md` and `docs/GBP_SOCIAL_DRAFTS.md` as generated SEO automation outputs.
+- Added `docs/SEO_AUTOMATION_ENGINE.md` documenting the active layers and the long-term GA4, Search Console, GBP, dashboard and AI SEO agent roadmap.
+- Preserved Cloudflare DNS/routes/bindings/secrets, quote API behavior, existing route metadata, sitemap coverage, schema safeguards and the no Product/Offer/Review/AggregateRating schema rule.
+
 ## 2026-07-30
 
 ### Homepage Contact Prompt Simplification

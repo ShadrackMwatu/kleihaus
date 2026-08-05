@@ -68,7 +68,19 @@ http://localhost:5173
 npm run build
 ```
 
-The build first regenerates `public/sitemap.xml` from `src/seoManifest.js`, then generates the static production output in `dist/`, then writes route-specific extensionless HTML assets for every public SEO route. Those route assets give direct requests such as `/sanitaryware` and `/locations/nairobi` their own initial title, description, canonical, social metadata and JSON-LD without changing Cloudflare routes or bindings.
+The build first runs the Kleihaus SEO Automation Engine, then generates the static production output in `dist/`, writes route-specific extensionless HTML assets for every public SEO route and runs the automated SEO audit. Those route assets give direct requests such as `/sanitaryware` and `/locations/nairobi` their own initial title, description, canonical, social metadata and JSON-LD without changing Cloudflare routes or bindings.
+
+```bash
+npm run seo:generate
+```
+
+Runs the central SEO engine directly. It generates `public/sitemap.xml`, `public/robots.txt`, `public/seo-navigation.json`, `public/seo-internal-links.json`, `public/seo-dashboard.json`, `public/images/image-manifest.json`, `docs/SEO_REPORT.md`, `docs/SEO_CONTENT_SUGGESTIONS.md` and `docs/GBP_SOCIAL_DRAFTS.md` from `src/seoManifest.js`.
+
+```bash
+npm run seo:audit
+```
+
+Runs the automated SEO audit without rewriting the public generated assets. Use this after route HTML generation or when reviewing SEO changes.
 
 ```bash
 npm run generate:sitemap

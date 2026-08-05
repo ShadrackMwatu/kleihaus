@@ -1,0 +1,221 @@
+{
+  "generatedAt": "2026-08-05T17:33:51.954Z",
+  "seoScore": 91,
+  "status": "pass",
+  "organicTraffic": null,
+  "ctr": null,
+  "averagePosition": null,
+  "whatsappLeads": null,
+  "quoteRequests": null,
+  "phoneCalls": null,
+  "emailLeads": null,
+  "gbpViews": null,
+  "gbpClicks": null,
+  "websiteSpeed": {
+    "buildMeasured": true,
+    "oversizedAssetWarnings": []
+  },
+  "routeCount": 39,
+  "imageGroupCount": 62,
+  "brokenLinks": [],
+  "missingSeoItems": [],
+  "metadataWarnings": [
+    "Long title (71) for /",
+    "Long title (69) for /products",
+    "Long description (168) for /installation-support",
+    "Long title (69) for /locations/nairobi",
+    "Long title (70) for /locations/machakos",
+    "Long description (172) for /locations/machakos",
+    "Long title (69) for /locations/makueni",
+    "Long description (229) for /tiles-nairobi",
+    "Long description (230) for /tiles-machakos",
+    "Long description (229) for /tiles-makueni",
+    "Long description (227) for /tiles-kenya",
+    "Long description (228) for /sanitaryware-nairobi",
+    "Long description (229) for /sanitaryware-machakos",
+    "Long description (228) for /sanitaryware-makueni",
+    "Long description (226) for /sanitaryware-kenya",
+    "Long description (241) for /paints-nairobi",
+    "Long description (242) for /paints-machakos",
+    "Long description (241) for /paints-makueni",
+    "Long description (239) for /paints-kenya",
+    "Long description (244) for /installation-support-nairobi",
+    "Long description (245) for /installation-support-machakos",
+    "Long description (244) for /installation-support-makueni",
+    "Long description (242) for /installation-support-kenya"
+  ],
+  "topKeywords": [
+    {
+      "keyword": "home",
+      "routeCount": 39
+    },
+    {
+      "keyword": "cost estimation guide",
+      "routeCount": 17
+    },
+    {
+      "keyword": "guides",
+      "routeCount": 7
+    },
+    {
+      "keyword": "installation support",
+      "routeCount": 5
+    },
+    {
+      "keyword": "machakos",
+      "routeCount": 5
+    },
+    {
+      "keyword": "makueni",
+      "routeCount": 5
+    },
+    {
+      "keyword": "nairobi",
+      "routeCount": 5
+    },
+    {
+      "keyword": "paints",
+      "routeCount": 5
+    },
+    {
+      "keyword": "sanitaryware",
+      "routeCount": 5
+    },
+    {
+      "keyword": "tiles",
+      "routeCount": 5
+    },
+    {
+      "keyword": "installation support guide",
+      "routeCount": 4
+    },
+    {
+      "keyword": "kenya",
+      "routeCount": 4
+    },
+    {
+      "keyword": "locations",
+      "routeCount": 4
+    },
+    {
+      "keyword": "paints guide",
+      "routeCount": 4
+    },
+    {
+      "keyword": "sanitaryware guide",
+      "routeCount": 4
+    },
+    {
+      "keyword": "tiles guide",
+      "routeCount": 4
+    },
+    {
+      "keyword": "adhesive & grout guide",
+      "routeCount": 1
+    },
+    {
+      "keyword": "adhesives & grout",
+      "routeCount": 1
+    },
+    {
+      "keyword": "bathroom renovation guide",
+      "routeCount": 1
+    },
+    {
+      "keyword": "bathroom tiles",
+      "routeCount": 1
+    }
+  ],
+  "topPages": [
+    {
+      "path": "/",
+      "title": "Kleihaus Ceramics Kenya | Tiles, Sanitaryware, Paints & Project Support",
+      "priority": "1.0",
+      "changefreq": "weekly"
+    },
+    {
+      "path": "/products",
+      "title": "Kleihaus Products | Tiles, Sanitaryware, Paints & Finishing Materials",
+      "priority": "0.9",
+      "changefreq": "weekly"
+    },
+    {
+      "path": "/tiles",
+      "title": "Tiles Kenya | Floor, Wall & Bathroom Tiles | Kleihaus Ceramics",
+      "priority": "0.8",
+      "changefreq": "weekly"
+    },
+    {
+      "path": "/floor-tiles",
+      "title": "Floor Tiles Kenya | Kleihaus Ceramics",
+      "priority": "0.8",
+      "changefreq": "weekly"
+    },
+    {
+      "path": "/wall-tiles",
+      "title": "Wall Tiles Kenya | Kitchen & Interior Wall Tiles | Kleihaus",
+      "priority": "0.8",
+      "changefreq": "weekly"
+    },
+    {
+      "path": "/bathroom-tiles",
+      "title": "Bathroom Tiles Kenya | Shower & Wet Area Tiles | Kleihaus",
+      "priority": "0.8",
+      "changefreq": "weekly"
+    },
+    {
+      "path": "/sanitaryware",
+      "title": "Sanitaryware Kenya | Basins, Toilets, Taps & Showers | Kleihaus",
+      "priority": "0.8",
+      "changefreq": "weekly"
+    },
+    {
+      "path": "/paints",
+      "title": "Paints Kenya | Interior, Exterior, Roof & Floor Paints | Kleihaus",
+      "priority": "0.8",
+      "changefreq": "weekly"
+    },
+    {
+      "path": "/adhesives-grout",
+      "title": "Tile Adhesives & Grout Kenya | Kleihaus Ceramics",
+      "priority": "0.8",
+      "changefreq": "weekly"
+    },
+    {
+      "path": "/installation-support",
+      "title": "Installation Support Kenya | Kleihaus Ceramics",
+      "priority": "0.8",
+      "changefreq": "weekly"
+    },
+    {
+      "path": "/guides",
+      "title": "Kleihaus Guides | Buying, Planning & Installation Help",
+      "priority": "0.76",
+      "changefreq": "monthly"
+    },
+    {
+      "path": "/locations",
+      "title": "Kleihaus Locations | Nairobi, Machakos & Makueni Support",
+      "priority": "0.76",
+      "changefreq": "monthly"
+    }
+  ],
+  "internalLinkSets": 39,
+  "imageReadiness": {
+    "withWebp": 62,
+    "withAvif": 62,
+    "withFallback": 62
+  },
+  "dataConnectionsNeeded": [
+    "Google Search Console",
+    "GA4",
+    "Google Business Profile performance",
+    "quote request records"
+  ],
+  "backlinkOpportunities": [
+    "supplier profiles",
+    "contractor partner pages",
+    "local business directories",
+    "project partner mentions"
+  ]
+}

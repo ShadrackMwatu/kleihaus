@@ -1,0 +1,4140 @@
+[
+  {
+    "key": "/images/adhesive",
+    "baseName": "adhesive",
+    "directory": "/images",
+    "altPlaceholder": "Adhesive",
+    "files": [
+      {
+        "path": "/images/adhesive-480.avif",
+        "format": "avif",
+        "sizeBytes": 18013,
+        "width": 480
+      },
+      {
+        "path": "/images/adhesive-480.webp",
+        "format": "webp",
+        "sizeBytes": 28972,
+        "width": 480
+      },
+      {
+        "path": "/images/adhesive-768.avif",
+        "format": "avif",
+        "sizeBytes": 53463,
+        "width": 768
+      },
+      {
+        "path": "/images/adhesive-768.webp",
+        "format": "webp",
+        "sizeBytes": 90220,
+        "width": 768
+      },
+      {
+        "path": "/images/adhesive.avif",
+        "format": "avif",
+        "sizeBytes": 116026,
+        "width": null
+      },
+      {
+        "path": "/images/adhesive.jpg",
+        "format": "jpg",
+        "sizeBytes": 310922,
+        "width": null
+      },
+      {
+        "path": "/images/adhesive.webp",
+        "format": "webp",
+        "sizeBytes": 181202,
+        "width": null
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      480,
+      768
+    ],
+    "fallback": "/images/adhesive.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/adhesive-480.avif 480w, /images/adhesive-768.avif 768w",
+      "webp": "/images/adhesive-480.webp 480w, /images/adhesive-768.webp 768w"
+    },
+    "totalBytes": 798818
+  },
+  {
+    "key": "/images/bathroom-blue-1",
+    "baseName": "bathroom-blue-1",
+    "directory": "/images",
+    "altPlaceholder": "Bathroom Blue",
+    "files": [
+      {
+        "path": "/images/bathroom-blue-1-1024.avif",
+        "format": "avif",
+        "sizeBytes": 31574,
+        "width": 1024
+      },
+      {
+        "path": "/images/bathroom-blue-1-1024.webp",
+        "format": "webp",
+        "sizeBytes": 52484,
+        "width": 1024
+      },
+      {
+        "path": "/images/bathroom-blue-1-480.avif",
+        "format": "avif",
+        "sizeBytes": 11979,
+        "width": 480
+      },
+      {
+        "path": "/images/bathroom-blue-1-480.webp",
+        "format": "webp",
+        "sizeBytes": 18632,
+        "width": 480
+      },
+      {
+        "path": "/images/bathroom-blue-1-768.avif",
+        "format": "avif",
+        "sizeBytes": 22303,
+        "width": 768
+      },
+      {
+        "path": "/images/bathroom-blue-1-768.webp",
+        "format": "webp",
+        "sizeBytes": 35954,
+        "width": 768
+      },
+      {
+        "path": "/images/bathroom-blue-1.avif",
+        "format": "avif",
+        "sizeBytes": 40496,
+        "width": null
+      },
+      {
+        "path": "/images/bathroom-blue-1.jpg",
+        "format": "jpg",
+        "sizeBytes": 231989,
+        "width": null
+      },
+      {
+        "path": "/images/bathroom-blue-1.webp",
+        "format": "webp",
+        "sizeBytes": 71288,
+        "width": null
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      480,
+      768,
+      1024
+    ],
+    "fallback": "/images/bathroom-blue-1.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/bathroom-blue-1-480.avif 480w, /images/bathroom-blue-1-768.avif 768w, /images/bathroom-blue-1-1024.avif 1024w",
+      "webp": "/images/bathroom-blue-1-480.webp 480w, /images/bathroom-blue-1-768.webp 768w, /images/bathroom-blue-1-1024.webp 1024w"
+    },
+    "totalBytes": 516699
+  },
+  {
+    "key": "/images/grout",
+    "baseName": "grout",
+    "directory": "/images",
+    "altPlaceholder": "Grout",
+    "files": [
+      {
+        "path": "/images/grout-480.avif",
+        "format": "avif",
+        "sizeBytes": 17505,
+        "width": 480
+      },
+      {
+        "path": "/images/grout-480.webp",
+        "format": "webp",
+        "sizeBytes": 29748,
+        "width": 480
+      },
+      {
+        "path": "/images/grout-768.avif",
+        "format": "avif",
+        "sizeBytes": 38324,
+        "width": 768
+      },
+      {
+        "path": "/images/grout-768.webp",
+        "format": "webp",
+        "sizeBytes": 68492,
+        "width": 768
+      },
+      {
+        "path": "/images/grout.avif",
+        "format": "avif",
+        "sizeBytes": 70546,
+        "width": null
+      },
+      {
+        "path": "/images/grout.jpg",
+        "format": "jpg",
+        "sizeBytes": 253303,
+        "width": null
+      },
+      {
+        "path": "/images/grout.webp",
+        "format": "webp",
+        "sizeBytes": 122668,
+        "width": null
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      480,
+      768
+    ],
+    "fallback": "/images/grout.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/grout-480.avif 480w, /images/grout-768.avif 768w",
+      "webp": "/images/grout-480.webp 480w, /images/grout-768.webp 768w"
+    },
+    "totalBytes": 600586
+  },
+  {
+    "key": "/images/kitchen",
+    "baseName": "kitchen",
+    "directory": "/images",
+    "altPlaceholder": "Kitchen",
+    "files": [
+      {
+        "path": "/images/kitchen-480.avif",
+        "format": "avif",
+        "sizeBytes": 9013,
+        "width": 480
+      },
+      {
+        "path": "/images/kitchen-480.webp",
+        "format": "webp",
+        "sizeBytes": 13766,
+        "width": 480
+      },
+      {
+        "path": "/images/kitchen-768.avif",
+        "format": "avif",
+        "sizeBytes": 19692,
+        "width": 768
+      },
+      {
+        "path": "/images/kitchen-768.webp",
+        "format": "webp",
+        "sizeBytes": 30170,
+        "width": 768
+      },
+      {
+        "path": "/images/kitchen.avif",
+        "format": "avif",
+        "sizeBytes": 33360,
+        "width": null
+      },
+      {
+        "path": "/images/kitchen.jpg",
+        "format": "jpg",
+        "sizeBytes": 176949,
+        "width": null
+      },
+      {
+        "path": "/images/kitchen.webp",
+        "format": "webp",
+        "sizeBytes": 51194,
+        "width": null
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      480,
+      768
+    ],
+    "fallback": "/images/kitchen.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/kitchen-480.avif 480w, /images/kitchen-768.avif 768w",
+      "webp": "/images/kitchen-480.webp 480w, /images/kitchen-768.webp 768w"
+    },
+    "totalBytes": 334144
+  },
+  {
+    "key": "/images/kleihaus-logo",
+    "baseName": "kleihaus-logo",
+    "directory": "/images",
+    "altPlaceholder": "Kleihaus Logo",
+    "files": [
+      {
+        "path": "/images/kleihaus-logo-192.avif",
+        "format": "avif",
+        "sizeBytes": 2236,
+        "width": 192
+      },
+      {
+        "path": "/images/kleihaus-logo-192.webp",
+        "format": "webp",
+        "sizeBytes": 3180,
+        "width": 192
+      },
+      {
+        "path": "/images/kleihaus-logo-96.avif",
+        "format": "avif",
+        "sizeBytes": 1008,
+        "width": 96
+      },
+      {
+        "path": "/images/kleihaus-logo-96.webp",
+        "format": "webp",
+        "sizeBytes": 1136,
+        "width": 96
+      },
+      {
+        "path": "/images/kleihaus-logo.avif",
+        "format": "avif",
+        "sizeBytes": 249785,
+        "width": null
+      },
+      {
+        "path": "/images/kleihaus-logo.jpg",
+        "format": "jpg",
+        "sizeBytes": 546702,
+        "width": null
+      },
+      {
+        "path": "/images/kleihaus-logo.webp",
+        "format": "webp",
+        "sizeBytes": 374552,
+        "width": null
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      96,
+      192
+    ],
+    "fallback": "/images/kleihaus-logo.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/kleihaus-logo-96.avif 96w, /images/kleihaus-logo-192.avif 192w",
+      "webp": "/images/kleihaus-logo-96.webp 96w, /images/kleihaus-logo-192.webp 192w"
+    },
+    "totalBytes": 1178599
+  },
+  {
+    "key": "/images/kleihaus-structure",
+    "baseName": "kleihaus-structure",
+    "directory": "/images",
+    "altPlaceholder": "Kleihaus Structure",
+    "files": [
+      {
+        "path": "/images/kleihaus-structure-1024.avif",
+        "format": "avif",
+        "sizeBytes": 40801,
+        "width": 1024
+      },
+      {
+        "path": "/images/kleihaus-structure-1024.webp",
+        "format": "webp",
+        "sizeBytes": 67824,
+        "width": 1024
+      },
+      {
+        "path": "/images/kleihaus-structure-1440.avif",
+        "format": "avif",
+        "sizeBytes": 83161,
+        "width": 1440
+      },
+      {
+        "path": "/images/kleihaus-structure-1440.webp",
+        "format": "webp",
+        "sizeBytes": 142234,
+        "width": 1440
+      },
+      {
+        "path": "/images/kleihaus-structure-480.avif",
+        "format": "avif",
+        "sizeBytes": 11732,
+        "width": 480
+      },
+      {
+        "path": "/images/kleihaus-structure-480.webp",
+        "format": "webp",
+        "sizeBytes": 17840,
+        "width": 480
+      },
+      {
+        "path": "/images/kleihaus-structure-768.avif",
+        "format": "avif",
+        "sizeBytes": 24304,
+        "width": 768
+      },
+      {
+        "path": "/images/kleihaus-structure-768.webp",
+        "format": "webp",
+        "sizeBytes": 38258,
+        "width": 768
+      },
+      {
+        "path": "/images/kleihaus-structure.avif",
+        "format": "avif",
+        "sizeBytes": 112058,
+        "width": null
+      },
+      {
+        "path": "/images/kleihaus-structure.jpg",
+        "format": "jpg",
+        "sizeBytes": 372069,
+        "width": null
+      },
+      {
+        "path": "/images/kleihaus-structure.webp",
+        "format": "webp",
+        "sizeBytes": 174898,
+        "width": null
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      480,
+      768,
+      1024,
+      1440
+    ],
+    "fallback": "/images/kleihaus-structure.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/kleihaus-structure-480.avif 480w, /images/kleihaus-structure-768.avif 768w, /images/kleihaus-structure-1024.avif 1024w, /images/kleihaus-structure-1440.avif 1440w",
+      "webp": "/images/kleihaus-structure-480.webp 480w, /images/kleihaus-structure-768.webp 768w, /images/kleihaus-structure-1024.webp 1024w, /images/kleihaus-structure-1440.webp 1440w"
+    },
+    "totalBytes": 1085179
+  },
+  {
+    "key": "/images/paint-exterior",
+    "baseName": "paint-exterior",
+    "directory": "/images",
+    "altPlaceholder": "Paint Exterior",
+    "files": [
+      {
+        "path": "/images/paint-exterior-480.avif",
+        "format": "avif",
+        "sizeBytes": 15697,
+        "width": 480
+      },
+      {
+        "path": "/images/paint-exterior-480.webp",
+        "format": "webp",
+        "sizeBytes": 29338,
+        "width": 480
+      },
+      {
+        "path": "/images/paint-exterior-768.avif",
+        "format": "avif",
+        "sizeBytes": 38537,
+        "width": 768
+      },
+      {
+        "path": "/images/paint-exterior-768.webp",
+        "format": "webp",
+        "sizeBytes": 68240,
+        "width": 768
+      },
+      {
+        "path": "/images/paint-exterior.avif",
+        "format": "avif",
+        "sizeBytes": 67407,
+        "width": null
+      },
+      {
+        "path": "/images/paint-exterior.jpg",
+        "format": "jpg",
+        "sizeBytes": 235344,
+        "width": null
+      },
+      {
+        "path": "/images/paint-exterior.webp",
+        "format": "webp",
+        "sizeBytes": 114922,
+        "width": null
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      480,
+      768
+    ],
+    "fallback": "/images/paint-exterior.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/paint-exterior-480.avif 480w, /images/paint-exterior-768.avif 768w",
+      "webp": "/images/paint-exterior-480.webp 480w, /images/paint-exterior-768.webp 768w"
+    },
+    "totalBytes": 569485
+  },
+  {
+    "key": "/images/paint-floor",
+    "baseName": "paint-floor",
+    "directory": "/images",
+    "altPlaceholder": "Paint Floor",
+    "files": [
+      {
+        "path": "/images/paint-floor-480.avif",
+        "format": "avif",
+        "sizeBytes": 14384,
+        "width": 480
+      },
+      {
+        "path": "/images/paint-floor-480.webp",
+        "format": "webp",
+        "sizeBytes": 23900,
+        "width": 480
+      },
+      {
+        "path": "/images/paint-floor-768.avif",
+        "format": "avif",
+        "sizeBytes": 33813,
+        "width": 768
+      },
+      {
+        "path": "/images/paint-floor-768.webp",
+        "format": "webp",
+        "sizeBytes": 54368,
+        "width": 768
+      },
+      {
+        "path": "/images/paint-floor.avif",
+        "format": "avif",
+        "sizeBytes": 55963,
+        "width": null
+      },
+      {
+        "path": "/images/paint-floor.jpg",
+        "format": "jpg",
+        "sizeBytes": 190741,
+        "width": null
+      },
+      {
+        "path": "/images/paint-floor.webp",
+        "format": "webp",
+        "sizeBytes": 88408,
+        "width": null
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      480,
+      768
+    ],
+    "fallback": "/images/paint-floor.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/paint-floor-480.avif 480w, /images/paint-floor-768.avif 768w",
+      "webp": "/images/paint-floor-480.webp 480w, /images/paint-floor-768.webp 768w"
+    },
+    "totalBytes": 461577
+  },
+  {
+    "key": "/images/paint-interior",
+    "baseName": "paint-interior",
+    "directory": "/images",
+    "altPlaceholder": "Paint Interior",
+    "files": [
+      {
+        "path": "/images/paint-interior-480.avif",
+        "format": "avif",
+        "sizeBytes": 13522,
+        "width": 480
+      },
+      {
+        "path": "/images/paint-interior-480.webp",
+        "format": "webp",
+        "sizeBytes": 21622,
+        "width": 480
+      },
+      {
+        "path": "/images/paint-interior-768.avif",
+        "format": "avif",
+        "sizeBytes": 25938,
+        "width": 768
+      },
+      {
+        "path": "/images/paint-interior-768.webp",
+        "format": "webp",
+        "sizeBytes": 44652,
+        "width": 768
+      },
+      {
+        "path": "/images/paint-interior.avif",
+        "format": "avif",
+        "sizeBytes": 39376,
+        "width": null
+      },
+      {
+        "path": "/images/paint-interior.jpg",
+        "format": "jpg",
+        "sizeBytes": 186194,
+        "width": null
+      },
+      {
+        "path": "/images/paint-interior.webp",
+        "format": "webp",
+        "sizeBytes": 70416,
+        "width": null
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      480,
+      768
+    ],
+    "fallback": "/images/paint-interior.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/paint-interior-480.avif 480w, /images/paint-interior-768.avif 768w",
+      "webp": "/images/paint-interior-480.webp 480w, /images/paint-interior-768.webp 768w"
+    },
+    "totalBytes": 401720
+  },
+  {
+    "key": "/images/paint-roof",
+    "baseName": "paint-roof",
+    "directory": "/images",
+    "altPlaceholder": "Paint Roof",
+    "files": [
+      {
+        "path": "/images/paint-roof-480.avif",
+        "format": "avif",
+        "sizeBytes": 16328,
+        "width": 480
+      },
+      {
+        "path": "/images/paint-roof-480.webp",
+        "format": "webp",
+        "sizeBytes": 26804,
+        "width": 480
+      },
+      {
+        "path": "/images/paint-roof-768.avif",
+        "format": "avif",
+        "sizeBytes": 30634,
+        "width": 768
+      },
+      {
+        "path": "/images/paint-roof-768.webp",
+        "format": "webp",
+        "sizeBytes": 52988,
+        "width": 768
+      },
+      {
+        "path": "/images/paint-roof.avif",
+        "format": "avif",
+        "sizeBytes": 49991,
+        "width": null
+      },
+      {
+        "path": "/images/paint-roof.jpg",
+        "format": "jpg",
+        "sizeBytes": 228947,
+        "width": null
+      },
+      {
+        "path": "/images/paint-roof.webp",
+        "format": "webp",
+        "sizeBytes": 89408,
+        "width": null
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      480,
+      768
+    ],
+    "fallback": "/images/paint-roof.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/paint-roof-480.avif 480w, /images/paint-roof-768.avif 768w",
+      "webp": "/images/paint-roof-480.webp 480w, /images/paint-roof-768.webp 768w"
+    },
+    "totalBytes": 495100
+  },
+  {
+    "key": "/images/placeholder",
+    "baseName": "placeholder",
+    "directory": "/images",
+    "altPlaceholder": "Placeholder",
+    "files": [
+      {
+        "path": "/images/placeholder-480.avif",
+        "format": "avif",
+        "sizeBytes": 22103,
+        "width": 480
+      },
+      {
+        "path": "/images/placeholder-480.webp",
+        "format": "webp",
+        "sizeBytes": 28614,
+        "width": 480
+      },
+      {
+        "path": "/images/placeholder.avif",
+        "format": "avif",
+        "sizeBytes": 41175,
+        "width": null
+      },
+      {
+        "path": "/images/placeholder.jpg",
+        "format": "jpg",
+        "sizeBytes": 88917,
+        "width": null
+      },
+      {
+        "path": "/images/placeholder.webp",
+        "format": "webp",
+        "sizeBytes": 57254,
+        "width": null
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      480
+    ],
+    "fallback": "/images/placeholder.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/placeholder-480.avif 480w",
+      "webp": "/images/placeholder-480.webp 480w"
+    },
+    "totalBytes": 238063
+  },
+  {
+    "key": "/images/projects/project-kitchen-black-sink-01",
+    "baseName": "project-kitchen-black-sink-01",
+    "directory": "/images/projects",
+    "altPlaceholder": "Project Kitchen Black Sink",
+    "files": [
+      {
+        "path": "/images/projects/project-kitchen-black-sink-01-480.avif",
+        "format": "avif",
+        "sizeBytes": 13396,
+        "width": 480
+      },
+      {
+        "path": "/images/projects/project-kitchen-black-sink-01-480.webp",
+        "format": "webp",
+        "sizeBytes": 21334,
+        "width": 480
+      },
+      {
+        "path": "/images/projects/project-kitchen-black-sink-01-768.avif",
+        "format": "avif",
+        "sizeBytes": 23944,
+        "width": 768
+      },
+      {
+        "path": "/images/projects/project-kitchen-black-sink-01-768.webp",
+        "format": "webp",
+        "sizeBytes": 41488,
+        "width": 768
+      },
+      {
+        "path": "/images/projects/project-kitchen-black-sink-01.avif",
+        "format": "avif",
+        "sizeBytes": 52263,
+        "width": 1
+      },
+      {
+        "path": "/images/projects/project-kitchen-black-sink-01.jpg",
+        "format": "jpg",
+        "sizeBytes": 144083,
+        "width": 1
+      },
+      {
+        "path": "/images/projects/project-kitchen-black-sink-01.webp",
+        "format": "webp",
+        "sizeBytes": 96380,
+        "width": 1
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      1,
+      480,
+      768
+    ],
+    "fallback": "/images/projects/project-kitchen-black-sink-01.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/projects/project-kitchen-black-sink-01.avif 1w, /images/projects/project-kitchen-black-sink-01-480.avif 480w, /images/projects/project-kitchen-black-sink-01-768.avif 768w",
+      "webp": "/images/projects/project-kitchen-black-sink-01.webp 1w, /images/projects/project-kitchen-black-sink-01-480.webp 480w, /images/projects/project-kitchen-black-sink-01-768.webp 768w"
+    },
+    "totalBytes": 392888
+  },
+  {
+    "key": "/images/projects/project-kitchen-black-sink-02",
+    "baseName": "project-kitchen-black-sink-02",
+    "directory": "/images/projects",
+    "altPlaceholder": "Project Kitchen Black Sink",
+    "files": [
+      {
+        "path": "/images/projects/project-kitchen-black-sink-02-480.avif",
+        "format": "avif",
+        "sizeBytes": 9188,
+        "width": 480
+      },
+      {
+        "path": "/images/projects/project-kitchen-black-sink-02-480.webp",
+        "format": "webp",
+        "sizeBytes": 16704,
+        "width": 480
+      },
+      {
+        "path": "/images/projects/project-kitchen-black-sink-02-768.avif",
+        "format": "avif",
+        "sizeBytes": 17024,
+        "width": 768
+      },
+      {
+        "path": "/images/projects/project-kitchen-black-sink-02-768.webp",
+        "format": "webp",
+        "sizeBytes": 33246,
+        "width": 768
+      },
+      {
+        "path": "/images/projects/project-kitchen-black-sink-02.avif",
+        "format": "avif",
+        "sizeBytes": 38375,
+        "width": 2
+      },
+      {
+        "path": "/images/projects/project-kitchen-black-sink-02.jpg",
+        "format": "jpg",
+        "sizeBytes": 130872,
+        "width": 2
+      },
+      {
+        "path": "/images/projects/project-kitchen-black-sink-02.webp",
+        "format": "webp",
+        "sizeBytes": 80292,
+        "width": 2
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      2,
+      480,
+      768
+    ],
+    "fallback": "/images/projects/project-kitchen-black-sink-02.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/projects/project-kitchen-black-sink-02.avif 2w, /images/projects/project-kitchen-black-sink-02-480.avif 480w, /images/projects/project-kitchen-black-sink-02-768.avif 768w",
+      "webp": "/images/projects/project-kitchen-black-sink-02.webp 2w, /images/projects/project-kitchen-black-sink-02-480.webp 480w, /images/projects/project-kitchen-black-sink-02-768.webp 768w"
+    },
+    "totalBytes": 325701
+  },
+  {
+    "key": "/images/projects/project-kitchen-cabinet-finish-01",
+    "baseName": "project-kitchen-cabinet-finish-01",
+    "directory": "/images/projects",
+    "altPlaceholder": "Project Kitchen Cabinet Finish",
+    "files": [
+      {
+        "path": "/images/projects/project-kitchen-cabinet-finish-01-480.avif",
+        "format": "avif",
+        "sizeBytes": 8826,
+        "width": 480
+      },
+      {
+        "path": "/images/projects/project-kitchen-cabinet-finish-01-480.webp",
+        "format": "webp",
+        "sizeBytes": 19470,
+        "width": 480
+      },
+      {
+        "path": "/images/projects/project-kitchen-cabinet-finish-01-768.avif",
+        "format": "avif",
+        "sizeBytes": 18898,
+        "width": 768
+      },
+      {
+        "path": "/images/projects/project-kitchen-cabinet-finish-01-768.webp",
+        "format": "webp",
+        "sizeBytes": 43422,
+        "width": 768
+      },
+      {
+        "path": "/images/projects/project-kitchen-cabinet-finish-01.avif",
+        "format": "avif",
+        "sizeBytes": 41768,
+        "width": 1
+      },
+      {
+        "path": "/images/projects/project-kitchen-cabinet-finish-01.jpg",
+        "format": "jpg",
+        "sizeBytes": 132146,
+        "width": 1
+      },
+      {
+        "path": "/images/projects/project-kitchen-cabinet-finish-01.webp",
+        "format": "webp",
+        "sizeBytes": 92016,
+        "width": 1
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      1,
+      480,
+      768
+    ],
+    "fallback": "/images/projects/project-kitchen-cabinet-finish-01.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/projects/project-kitchen-cabinet-finish-01.avif 1w, /images/projects/project-kitchen-cabinet-finish-01-480.avif 480w, /images/projects/project-kitchen-cabinet-finish-01-768.avif 768w",
+      "webp": "/images/projects/project-kitchen-cabinet-finish-01.webp 1w, /images/projects/project-kitchen-cabinet-finish-01-480.webp 480w, /images/projects/project-kitchen-cabinet-finish-01-768.webp 768w"
+    },
+    "totalBytes": 356546
+  },
+  {
+    "key": "/images/projects/project-kitchen-grey-sink-01",
+    "baseName": "project-kitchen-grey-sink-01",
+    "directory": "/images/projects",
+    "altPlaceholder": "Project Kitchen Grey Sink",
+    "files": [
+      {
+        "path": "/images/projects/project-kitchen-grey-sink-01-480.avif",
+        "format": "avif",
+        "sizeBytes": 9133,
+        "width": 480
+      },
+      {
+        "path": "/images/projects/project-kitchen-grey-sink-01-480.webp",
+        "format": "webp",
+        "sizeBytes": 16110,
+        "width": 480
+      },
+      {
+        "path": "/images/projects/project-kitchen-grey-sink-01-768.avif",
+        "format": "avif",
+        "sizeBytes": 15911,
+        "width": 768
+      },
+      {
+        "path": "/images/projects/project-kitchen-grey-sink-01-768.webp",
+        "format": "webp",
+        "sizeBytes": 30422,
+        "width": 768
+      },
+      {
+        "path": "/images/projects/project-kitchen-grey-sink-01.avif",
+        "format": "avif",
+        "sizeBytes": 34566,
+        "width": 1
+      },
+      {
+        "path": "/images/projects/project-kitchen-grey-sink-01.jpg",
+        "format": "jpg",
+        "sizeBytes": 120711,
+        "width": 1
+      },
+      {
+        "path": "/images/projects/project-kitchen-grey-sink-01.webp",
+        "format": "webp",
+        "sizeBytes": 70850,
+        "width": 1
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      1,
+      480,
+      768
+    ],
+    "fallback": "/images/projects/project-kitchen-grey-sink-01.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/projects/project-kitchen-grey-sink-01.avif 1w, /images/projects/project-kitchen-grey-sink-01-480.avif 480w, /images/projects/project-kitchen-grey-sink-01-768.avif 768w",
+      "webp": "/images/projects/project-kitchen-grey-sink-01.webp 1w, /images/projects/project-kitchen-grey-sink-01-480.webp 480w, /images/projects/project-kitchen-grey-sink-01-768.webp 768w"
+    },
+    "totalBytes": 297703
+  },
+  {
+    "key": "/images/projects/project-kitchen-grey-sink-02",
+    "baseName": "project-kitchen-grey-sink-02",
+    "directory": "/images/projects",
+    "altPlaceholder": "Project Kitchen Grey Sink",
+    "files": [
+      {
+        "path": "/images/projects/project-kitchen-grey-sink-02-480.avif",
+        "format": "avif",
+        "sizeBytes": 10374,
+        "width": 480
+      },
+      {
+        "path": "/images/projects/project-kitchen-grey-sink-02-480.webp",
+        "format": "webp",
+        "sizeBytes": 18406,
+        "width": 480
+      },
+      {
+        "path": "/images/projects/project-kitchen-grey-sink-02-768.avif",
+        "format": "avif",
+        "sizeBytes": 18402,
+        "width": 768
+      },
+      {
+        "path": "/images/projects/project-kitchen-grey-sink-02-768.webp",
+        "format": "webp",
+        "sizeBytes": 34608,
+        "width": 768
+      },
+      {
+        "path": "/images/projects/project-kitchen-grey-sink-02.avif",
+        "format": "avif",
+        "sizeBytes": 39768,
+        "width": 2
+      },
+      {
+        "path": "/images/projects/project-kitchen-grey-sink-02.jpg",
+        "format": "jpg",
+        "sizeBytes": 131804,
+        "width": 2
+      },
+      {
+        "path": "/images/projects/project-kitchen-grey-sink-02.webp",
+        "format": "webp",
+        "sizeBytes": 81068,
+        "width": 2
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      2,
+      480,
+      768
+    ],
+    "fallback": "/images/projects/project-kitchen-grey-sink-02.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/projects/project-kitchen-grey-sink-02.avif 2w, /images/projects/project-kitchen-grey-sink-02-480.avif 480w, /images/projects/project-kitchen-grey-sink-02-768.avif 768w",
+      "webp": "/images/projects/project-kitchen-grey-sink-02.webp 2w, /images/projects/project-kitchen-grey-sink-02-480.webp 480w, /images/projects/project-kitchen-grey-sink-02-768.webp 768w"
+    },
+    "totalBytes": 334430
+  },
+  {
+    "key": "/images/projects/project-kitchen-overview-01",
+    "baseName": "project-kitchen-overview-01",
+    "directory": "/images/projects",
+    "altPlaceholder": "Project Kitchen Overview",
+    "files": [
+      {
+        "path": "/images/projects/project-kitchen-overview-01-480.avif",
+        "format": "avif",
+        "sizeBytes": 7562,
+        "width": 480
+      },
+      {
+        "path": "/images/projects/project-kitchen-overview-01-480.webp",
+        "format": "webp",
+        "sizeBytes": 15894,
+        "width": 480
+      },
+      {
+        "path": "/images/projects/project-kitchen-overview-01-768.avif",
+        "format": "avif",
+        "sizeBytes": 14191,
+        "width": 768
+      },
+      {
+        "path": "/images/projects/project-kitchen-overview-01-768.webp",
+        "format": "webp",
+        "sizeBytes": 31488,
+        "width": 768
+      },
+      {
+        "path": "/images/projects/project-kitchen-overview-01.avif",
+        "format": "avif",
+        "sizeBytes": 28734,
+        "width": 1
+      },
+      {
+        "path": "/images/projects/project-kitchen-overview-01.jpg",
+        "format": "jpg",
+        "sizeBytes": 111466,
+        "width": 1
+      },
+      {
+        "path": "/images/projects/project-kitchen-overview-01.webp",
+        "format": "webp",
+        "sizeBytes": 64918,
+        "width": 1
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      1,
+      480,
+      768
+    ],
+    "fallback": "/images/projects/project-kitchen-overview-01.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/projects/project-kitchen-overview-01.avif 1w, /images/projects/project-kitchen-overview-01-480.avif 480w, /images/projects/project-kitchen-overview-01-768.avif 768w",
+      "webp": "/images/projects/project-kitchen-overview-01.webp 1w, /images/projects/project-kitchen-overview-01-480.webp 480w, /images/projects/project-kitchen-overview-01-768.webp 768w"
+    },
+    "totalBytes": 274253
+  },
+  {
+    "key": "/images/projects/project-kitchen-overview-02",
+    "baseName": "project-kitchen-overview-02",
+    "directory": "/images/projects",
+    "altPlaceholder": "Project Kitchen Overview",
+    "files": [
+      {
+        "path": "/images/projects/project-kitchen-overview-02-480.avif",
+        "format": "avif",
+        "sizeBytes": 9291,
+        "width": 480
+      },
+      {
+        "path": "/images/projects/project-kitchen-overview-02-480.webp",
+        "format": "webp",
+        "sizeBytes": 19742,
+        "width": 480
+      },
+      {
+        "path": "/images/projects/project-kitchen-overview-02-768.avif",
+        "format": "avif",
+        "sizeBytes": 19093,
+        "width": 768
+      },
+      {
+        "path": "/images/projects/project-kitchen-overview-02-768.webp",
+        "format": "webp",
+        "sizeBytes": 41270,
+        "width": 768
+      },
+      {
+        "path": "/images/projects/project-kitchen-overview-02.avif",
+        "format": "avif",
+        "sizeBytes": 39534,
+        "width": 2
+      },
+      {
+        "path": "/images/projects/project-kitchen-overview-02.jpg",
+        "format": "jpg",
+        "sizeBytes": 136829,
+        "width": 2
+      },
+      {
+        "path": "/images/projects/project-kitchen-overview-02.webp",
+        "format": "webp",
+        "sizeBytes": 85092,
+        "width": 2
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      2,
+      480,
+      768
+    ],
+    "fallback": "/images/projects/project-kitchen-overview-02.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/projects/project-kitchen-overview-02.avif 2w, /images/projects/project-kitchen-overview-02-480.avif 480w, /images/projects/project-kitchen-overview-02-768.avif 768w",
+      "webp": "/images/projects/project-kitchen-overview-02.webp 2w, /images/projects/project-kitchen-overview-02-480.webp 480w, /images/projects/project-kitchen-overview-02-768.webp 768w"
+    },
+    "totalBytes": 350851
+  },
+  {
+    "key": "/images/projects/project-kitchen-sink-window-01",
+    "baseName": "project-kitchen-sink-window-01",
+    "directory": "/images/projects",
+    "altPlaceholder": "Project Kitchen Sink Window",
+    "files": [
+      {
+        "path": "/images/projects/project-kitchen-sink-window-01-480.avif",
+        "format": "avif",
+        "sizeBytes": 13317,
+        "width": 480
+      },
+      {
+        "path": "/images/projects/project-kitchen-sink-window-01-480.webp",
+        "format": "webp",
+        "sizeBytes": 21030,
+        "width": 480
+      },
+      {
+        "path": "/images/projects/project-kitchen-sink-window-01-768.avif",
+        "format": "avif",
+        "sizeBytes": 23977,
+        "width": 768
+      },
+      {
+        "path": "/images/projects/project-kitchen-sink-window-01-768.webp",
+        "format": "webp",
+        "sizeBytes": 41518,
+        "width": 768
+      },
+      {
+        "path": "/images/projects/project-kitchen-sink-window-01.avif",
+        "format": "avif",
+        "sizeBytes": 51595,
+        "width": 1
+      },
+      {
+        "path": "/images/projects/project-kitchen-sink-window-01.jpg",
+        "format": "jpg",
+        "sizeBytes": 144360,
+        "width": 1
+      },
+      {
+        "path": "/images/projects/project-kitchen-sink-window-01.webp",
+        "format": "webp",
+        "sizeBytes": 95160,
+        "width": 1
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      1,
+      480,
+      768
+    ],
+    "fallback": "/images/projects/project-kitchen-sink-window-01.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/projects/project-kitchen-sink-window-01.avif 1w, /images/projects/project-kitchen-sink-window-01-480.avif 480w, /images/projects/project-kitchen-sink-window-01-768.avif 768w",
+      "webp": "/images/projects/project-kitchen-sink-window-01.webp 1w, /images/projects/project-kitchen-sink-window-01-480.webp 480w, /images/projects/project-kitchen-sink-window-01-768.webp 768w"
+    },
+    "totalBytes": 390957
+  },
+  {
+    "key": "/images/projects/project-kitchen-tile-backsplash-01",
+    "baseName": "project-kitchen-tile-backsplash-01",
+    "directory": "/images/projects",
+    "altPlaceholder": "Project Kitchen Tile Backsplash",
+    "files": [
+      {
+        "path": "/images/projects/project-kitchen-tile-backsplash-01-480.avif",
+        "format": "avif",
+        "sizeBytes": 7798,
+        "width": 480
+      },
+      {
+        "path": "/images/projects/project-kitchen-tile-backsplash-01-480.webp",
+        "format": "webp",
+        "sizeBytes": 15014,
+        "width": 480
+      },
+      {
+        "path": "/images/projects/project-kitchen-tile-backsplash-01-768.avif",
+        "format": "avif",
+        "sizeBytes": 13792,
+        "width": 768
+      },
+      {
+        "path": "/images/projects/project-kitchen-tile-backsplash-01-768.webp",
+        "format": "webp",
+        "sizeBytes": 28246,
+        "width": 768
+      },
+      {
+        "path": "/images/projects/project-kitchen-tile-backsplash-01.avif",
+        "format": "avif",
+        "sizeBytes": 29400,
+        "width": 1
+      },
+      {
+        "path": "/images/projects/project-kitchen-tile-backsplash-01.jpg",
+        "format": "jpg",
+        "sizeBytes": 112771,
+        "width": 1
+      },
+      {
+        "path": "/images/projects/project-kitchen-tile-backsplash-01.webp",
+        "format": "webp",
+        "sizeBytes": 64466,
+        "width": 1
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      1,
+      480,
+      768
+    ],
+    "fallback": "/images/projects/project-kitchen-tile-backsplash-01.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/projects/project-kitchen-tile-backsplash-01.avif 1w, /images/projects/project-kitchen-tile-backsplash-01-480.avif 480w, /images/projects/project-kitchen-tile-backsplash-01-768.avif 768w",
+      "webp": "/images/projects/project-kitchen-tile-backsplash-01.webp 1w, /images/projects/project-kitchen-tile-backsplash-01-480.webp 480w, /images/projects/project-kitchen-tile-backsplash-01-768.webp 768w"
+    },
+    "totalBytes": 271487
+  },
+  {
+    "key": "/images/sanitary-accessories",
+    "baseName": "sanitary-accessories",
+    "directory": "/images",
+    "altPlaceholder": "Sanitary Accessories",
+    "files": [
+      {
+        "path": "/images/sanitary-accessories-480.avif",
+        "format": "avif",
+        "sizeBytes": 10932,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitary-accessories-480.webp",
+        "format": "webp",
+        "sizeBytes": 18706,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitary-accessories-768.avif",
+        "format": "avif",
+        "sizeBytes": 33138,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitary-accessories-768.webp",
+        "format": "webp",
+        "sizeBytes": 76634,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitary-accessories.avif",
+        "format": "avif",
+        "sizeBytes": 116042,
+        "width": null
+      },
+      {
+        "path": "/images/sanitary-accessories.jpg",
+        "format": "jpg",
+        "sizeBytes": 391863,
+        "width": null
+      },
+      {
+        "path": "/images/sanitary-accessories.webp",
+        "format": "webp",
+        "sizeBytes": 218940,
+        "width": null
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      480,
+      768
+    ],
+    "fallback": "/images/sanitary-accessories.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/sanitary-accessories-480.avif 480w, /images/sanitary-accessories-768.avif 768w",
+      "webp": "/images/sanitary-accessories-480.webp 480w, /images/sanitary-accessories-768.webp 768w"
+    },
+    "totalBytes": 866255
+  },
+  {
+    "key": "/images/sanitary-basins",
+    "baseName": "sanitary-basins",
+    "directory": "/images",
+    "altPlaceholder": "Sanitary Basins",
+    "files": [
+      {
+        "path": "/images/sanitary-basins-480.avif",
+        "format": "avif",
+        "sizeBytes": 21820,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitary-basins-480.webp",
+        "format": "webp",
+        "sizeBytes": 31200,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitary-basins.avif",
+        "format": "avif",
+        "sizeBytes": 42984,
+        "width": null
+      },
+      {
+        "path": "/images/sanitary-basins.jpg",
+        "format": "jpg",
+        "sizeBytes": 87149,
+        "width": null
+      },
+      {
+        "path": "/images/sanitary-basins.webp",
+        "format": "webp",
+        "sizeBytes": 63498,
+        "width": null
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      480
+    ],
+    "fallback": "/images/sanitary-basins.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/sanitary-basins-480.avif 480w",
+      "webp": "/images/sanitary-basins-480.webp 480w"
+    },
+    "totalBytes": 246651
+  },
+  {
+    "key": "/images/sanitary-baths",
+    "baseName": "sanitary-baths",
+    "directory": "/images",
+    "altPlaceholder": "Sanitary Baths",
+    "files": [
+      {
+        "path": "/images/sanitary-baths-480.avif",
+        "format": "avif",
+        "sizeBytes": 3189,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitary-baths-480.webp",
+        "format": "webp",
+        "sizeBytes": 5450,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitary-baths-768.avif",
+        "format": "avif",
+        "sizeBytes": 6389,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitary-baths-768.webp",
+        "format": "webp",
+        "sizeBytes": 11746,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitary-baths.avif",
+        "format": "avif",
+        "sizeBytes": 12784,
+        "width": null
+      },
+      {
+        "path": "/images/sanitary-baths.jpg",
+        "format": "jpg",
+        "sizeBytes": 176260,
+        "width": null
+      },
+      {
+        "path": "/images/sanitary-baths.webp",
+        "format": "webp",
+        "sizeBytes": 40702,
+        "width": null
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      480,
+      768
+    ],
+    "fallback": "/images/sanitary-baths.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/sanitary-baths-480.avif 480w, /images/sanitary-baths-768.avif 768w",
+      "webp": "/images/sanitary-baths-480.webp 480w, /images/sanitary-baths-768.webp 768w"
+    },
+    "totalBytes": 256520
+  },
+  {
+    "key": "/images/sanitary-set-1",
+    "baseName": "sanitary-set-1",
+    "directory": "/images",
+    "altPlaceholder": "Sanitary Set",
+    "files": [
+      {
+        "path": "/images/sanitary-set-1.avif",
+        "format": "avif",
+        "sizeBytes": 3531,
+        "width": null
+      },
+      {
+        "path": "/images/sanitary-set-1.jpg",
+        "format": "jpg",
+        "sizeBytes": 12765,
+        "width": null
+      },
+      {
+        "path": "/images/sanitary-set-1.webp",
+        "format": "webp",
+        "sizeBytes": 5696,
+        "width": null
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [],
+    "fallback": "/images/sanitary-set-1.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "",
+      "webp": ""
+    },
+    "totalBytes": 21992
+  },
+  {
+    "key": "/images/sanitary-showers",
+    "baseName": "sanitary-showers",
+    "directory": "/images",
+    "altPlaceholder": "Sanitary Showers",
+    "files": [
+      {
+        "path": "/images/sanitary-showers-480.avif",
+        "format": "avif",
+        "sizeBytes": 11350,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitary-showers-480.webp",
+        "format": "webp",
+        "sizeBytes": 18008,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitary-showers-768.avif",
+        "format": "avif",
+        "sizeBytes": 25630,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitary-showers-768.webp",
+        "format": "webp",
+        "sizeBytes": 44186,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitary-showers.avif",
+        "format": "avif",
+        "sizeBytes": 47990,
+        "width": null
+      },
+      {
+        "path": "/images/sanitary-showers.jpg",
+        "format": "jpg",
+        "sizeBytes": 279372,
+        "width": null
+      },
+      {
+        "path": "/images/sanitary-showers.webp",
+        "format": "webp",
+        "sizeBytes": 86786,
+        "width": null
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      480,
+      768
+    ],
+    "fallback": "/images/sanitary-showers.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/sanitary-showers-480.avif 480w, /images/sanitary-showers-768.avif 768w",
+      "webp": "/images/sanitary-showers-480.webp 480w, /images/sanitary-showers-768.webp 768w"
+    },
+    "totalBytes": 513322
+  },
+  {
+    "key": "/images/sanitary-taps",
+    "baseName": "sanitary-taps",
+    "directory": "/images",
+    "altPlaceholder": "Sanitary Taps",
+    "files": [
+      {
+        "path": "/images/sanitary-taps-480.avif",
+        "format": "avif",
+        "sizeBytes": 6827,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitary-taps-480.webp",
+        "format": "webp",
+        "sizeBytes": 12164,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitary-taps.avif",
+        "format": "avif",
+        "sizeBytes": 11285,
+        "width": null
+      },
+      {
+        "path": "/images/sanitary-taps.jpg",
+        "format": "jpg",
+        "sizeBytes": 43067,
+        "width": null
+      },
+      {
+        "path": "/images/sanitary-taps.webp",
+        "format": "webp",
+        "sizeBytes": 22380,
+        "width": null
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      480
+    ],
+    "fallback": "/images/sanitary-taps.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/sanitary-taps-480.avif 480w",
+      "webp": "/images/sanitary-taps-480.webp 480w"
+    },
+    "totalBytes": 95723
+  },
+  {
+    "key": "/images/sanitary-toilets",
+    "baseName": "sanitary-toilets",
+    "directory": "/images",
+    "altPlaceholder": "Sanitary Toilets",
+    "files": [
+      {
+        "path": "/images/sanitary-toilets-480.avif",
+        "format": "avif",
+        "sizeBytes": 3756,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitary-toilets-480.webp",
+        "format": "webp",
+        "sizeBytes": 6200,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitary-toilets.avif",
+        "format": "avif",
+        "sizeBytes": 6240,
+        "width": null
+      },
+      {
+        "path": "/images/sanitary-toilets.jpg",
+        "format": "jpg",
+        "sizeBytes": 34134,
+        "width": null
+      },
+      {
+        "path": "/images/sanitary-toilets.webp",
+        "format": "webp",
+        "sizeBytes": 11028,
+        "width": null
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      480
+    ],
+    "fallback": "/images/sanitary-toilets.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/sanitary-toilets-480.avif 480w",
+      "webp": "/images/sanitary-toilets-480.webp 480w"
+    },
+    "totalBytes": 61358
+  },
+  {
+    "key": "/images/sanitaryware/sanitaryware-black-shower-display-01",
+    "baseName": "sanitaryware-black-shower-display-01",
+    "directory": "/images/sanitaryware",
+    "altPlaceholder": "Sanitaryware Black Shower Display",
+    "files": [
+      {
+        "path": "/images/sanitaryware/sanitaryware-black-shower-display-01-480.avif",
+        "format": "avif",
+        "sizeBytes": 16898,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-black-shower-display-01-480.webp",
+        "format": "webp",
+        "sizeBytes": 21558,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-black-shower-display-01-768.avif",
+        "format": "avif",
+        "sizeBytes": 31073,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-black-shower-display-01-768.webp",
+        "format": "webp",
+        "sizeBytes": 38912,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-black-shower-display-01.avif",
+        "format": "avif",
+        "sizeBytes": 48478,
+        "width": 1
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-black-shower-display-01.jpg",
+        "format": "jpg",
+        "sizeBytes": 127701,
+        "width": 1
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-black-shower-display-01.webp",
+        "format": "webp",
+        "sizeBytes": 57460,
+        "width": 1
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      1,
+      480,
+      768
+    ],
+    "fallback": "/images/sanitaryware/sanitaryware-black-shower-display-01.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/sanitaryware/sanitaryware-black-shower-display-01.avif 1w, /images/sanitaryware/sanitaryware-black-shower-display-01-480.avif 480w, /images/sanitaryware/sanitaryware-black-shower-display-01-768.avif 768w",
+      "webp": "/images/sanitaryware/sanitaryware-black-shower-display-01.webp 1w, /images/sanitaryware/sanitaryware-black-shower-display-01-480.webp 480w, /images/sanitaryware/sanitaryware-black-shower-display-01-768.webp 768w"
+    },
+    "totalBytes": 342080
+  },
+  {
+    "key": "/images/sanitaryware/sanitaryware-black-shower-display-02",
+    "baseName": "sanitaryware-black-shower-display-02",
+    "directory": "/images/sanitaryware",
+    "altPlaceholder": "Sanitaryware Black Shower Display",
+    "files": [
+      {
+        "path": "/images/sanitaryware/sanitaryware-black-shower-display-02-480.avif",
+        "format": "avif",
+        "sizeBytes": 17507,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-black-shower-display-02-480.webp",
+        "format": "webp",
+        "sizeBytes": 22552,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-black-shower-display-02-768.avif",
+        "format": "avif",
+        "sizeBytes": 32541,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-black-shower-display-02-768.webp",
+        "format": "webp",
+        "sizeBytes": 40882,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-black-shower-display-02.avif",
+        "format": "avif",
+        "sizeBytes": 50520,
+        "width": 2
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-black-shower-display-02.jpg",
+        "format": "jpg",
+        "sizeBytes": 131789,
+        "width": 2
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-black-shower-display-02.webp",
+        "format": "webp",
+        "sizeBytes": 61670,
+        "width": 2
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      2,
+      480,
+      768
+    ],
+    "fallback": "/images/sanitaryware/sanitaryware-black-shower-display-02.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/sanitaryware/sanitaryware-black-shower-display-02.avif 2w, /images/sanitaryware/sanitaryware-black-shower-display-02-480.avif 480w, /images/sanitaryware/sanitaryware-black-shower-display-02-768.avif 768w",
+      "webp": "/images/sanitaryware/sanitaryware-black-shower-display-02.webp 2w, /images/sanitaryware/sanitaryware-black-shower-display-02-480.webp 480w, /images/sanitaryware/sanitaryware-black-shower-display-02-768.webp 768w"
+    },
+    "totalBytes": 357461
+  },
+  {
+    "key": "/images/sanitaryware/sanitaryware-black-tap-display-01",
+    "baseName": "sanitaryware-black-tap-display-01",
+    "directory": "/images/sanitaryware",
+    "altPlaceholder": "Sanitaryware Black Tap Display",
+    "files": [
+      {
+        "path": "/images/sanitaryware/sanitaryware-black-tap-display-01-480.avif",
+        "format": "avif",
+        "sizeBytes": 15812,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-black-tap-display-01-480.webp",
+        "format": "webp",
+        "sizeBytes": 20138,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-black-tap-display-01-768.avif",
+        "format": "avif",
+        "sizeBytes": 29214,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-black-tap-display-01-768.webp",
+        "format": "webp",
+        "sizeBytes": 36210,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-black-tap-display-01.avif",
+        "format": "avif",
+        "sizeBytes": 45283,
+        "width": 1
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-black-tap-display-01.jpg",
+        "format": "jpg",
+        "sizeBytes": 122670,
+        "width": 1
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-black-tap-display-01.webp",
+        "format": "webp",
+        "sizeBytes": 54072,
+        "width": 1
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      1,
+      480,
+      768
+    ],
+    "fallback": "/images/sanitaryware/sanitaryware-black-tap-display-01.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/sanitaryware/sanitaryware-black-tap-display-01.avif 1w, /images/sanitaryware/sanitaryware-black-tap-display-01-480.avif 480w, /images/sanitaryware/sanitaryware-black-tap-display-01-768.avif 768w",
+      "webp": "/images/sanitaryware/sanitaryware-black-tap-display-01.webp 1w, /images/sanitaryware/sanitaryware-black-tap-display-01-480.webp 480w, /images/sanitaryware/sanitaryware-black-tap-display-01-768.webp 768w"
+    },
+    "totalBytes": 323399
+  },
+  {
+    "key": "/images/sanitaryware/sanitaryware-glass-shower-display-01",
+    "baseName": "sanitaryware-glass-shower-display-01",
+    "directory": "/images/sanitaryware",
+    "altPlaceholder": "Sanitaryware Glass Shower Display",
+    "files": [
+      {
+        "path": "/images/sanitaryware/sanitaryware-glass-shower-display-01-480.avif",
+        "format": "avif",
+        "sizeBytes": 22849,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-glass-shower-display-01-480.webp",
+        "format": "webp",
+        "sizeBytes": 30488,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-glass-shower-display-01-768.avif",
+        "format": "avif",
+        "sizeBytes": 47011,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-glass-shower-display-01-768.webp",
+        "format": "webp",
+        "sizeBytes": 60462,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-glass-shower-display-01.avif",
+        "format": "avif",
+        "sizeBytes": 77554,
+        "width": 1
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-glass-shower-display-01.jpg",
+        "format": "jpg",
+        "sizeBytes": 171742,
+        "width": 1
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-glass-shower-display-01.webp",
+        "format": "webp",
+        "sizeBytes": 96036,
+        "width": 1
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      1,
+      480,
+      768
+    ],
+    "fallback": "/images/sanitaryware/sanitaryware-glass-shower-display-01.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/sanitaryware/sanitaryware-glass-shower-display-01.avif 1w, /images/sanitaryware/sanitaryware-glass-shower-display-01-480.avif 480w, /images/sanitaryware/sanitaryware-glass-shower-display-01-768.avif 768w",
+      "webp": "/images/sanitaryware/sanitaryware-glass-shower-display-01.webp 1w, /images/sanitaryware/sanitaryware-glass-shower-display-01-480.webp 480w, /images/sanitaryware/sanitaryware-glass-shower-display-01-768.webp 768w"
+    },
+    "totalBytes": 506142
+  },
+  {
+    "key": "/images/sanitaryware/sanitaryware-gold-shower-display-01",
+    "baseName": "sanitaryware-gold-shower-display-01",
+    "directory": "/images/sanitaryware",
+    "altPlaceholder": "Sanitaryware Gold Shower Display",
+    "files": [
+      {
+        "path": "/images/sanitaryware/sanitaryware-gold-shower-display-01-480.avif",
+        "format": "avif",
+        "sizeBytes": 19694,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-gold-shower-display-01-480.webp",
+        "format": "webp",
+        "sizeBytes": 26672,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-gold-shower-display-01-768.avif",
+        "format": "avif",
+        "sizeBytes": 37495,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-gold-shower-display-01-768.webp",
+        "format": "webp",
+        "sizeBytes": 50624,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-gold-shower-display-01.avif",
+        "format": "avif",
+        "sizeBytes": 63278,
+        "width": 1
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-gold-shower-display-01.jpg",
+        "format": "jpg",
+        "sizeBytes": 149755,
+        "width": 1
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-gold-shower-display-01.webp",
+        "format": "webp",
+        "sizeBytes": 78396,
+        "width": 1
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      1,
+      480,
+      768
+    ],
+    "fallback": "/images/sanitaryware/sanitaryware-gold-shower-display-01.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/sanitaryware/sanitaryware-gold-shower-display-01.avif 1w, /images/sanitaryware/sanitaryware-gold-shower-display-01-480.avif 480w, /images/sanitaryware/sanitaryware-gold-shower-display-01-768.avif 768w",
+      "webp": "/images/sanitaryware/sanitaryware-gold-shower-display-01.webp 1w, /images/sanitaryware/sanitaryware-gold-shower-display-01-480.webp 480w, /images/sanitaryware/sanitaryware-gold-shower-display-01-768.webp 768w"
+    },
+    "totalBytes": 425914
+  },
+  {
+    "key": "/images/sanitaryware/sanitaryware-kitchen-black-sink-01",
+    "baseName": "sanitaryware-kitchen-black-sink-01",
+    "directory": "/images/sanitaryware",
+    "altPlaceholder": "Sanitaryware Kitchen Black Sink",
+    "files": [
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-black-sink-01-480.avif",
+        "format": "avif",
+        "sizeBytes": 18021,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-black-sink-01-480.webp",
+        "format": "webp",
+        "sizeBytes": 22498,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-black-sink-01-768.avif",
+        "format": "avif",
+        "sizeBytes": 33230,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-black-sink-01-768.webp",
+        "format": "webp",
+        "sizeBytes": 45422,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-black-sink-01.avif",
+        "format": "avif",
+        "sizeBytes": 63050,
+        "width": 1
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-black-sink-01.jpg",
+        "format": "jpg",
+        "sizeBytes": 144083,
+        "width": 1
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-black-sink-01.webp",
+        "format": "webp",
+        "sizeBytes": 96380,
+        "width": 1
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      1,
+      480,
+      768
+    ],
+    "fallback": "/images/sanitaryware/sanitaryware-kitchen-black-sink-01.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/sanitaryware/sanitaryware-kitchen-black-sink-01.avif 1w, /images/sanitaryware/sanitaryware-kitchen-black-sink-01-480.avif 480w, /images/sanitaryware/sanitaryware-kitchen-black-sink-01-768.avif 768w",
+      "webp": "/images/sanitaryware/sanitaryware-kitchen-black-sink-01.webp 1w, /images/sanitaryware/sanitaryware-kitchen-black-sink-01-480.webp 480w, /images/sanitaryware/sanitaryware-kitchen-black-sink-01-768.webp 768w"
+    },
+    "totalBytes": 422684
+  },
+  {
+    "key": "/images/sanitaryware/sanitaryware-kitchen-black-sink-02",
+    "baseName": "sanitaryware-kitchen-black-sink-02",
+    "directory": "/images/sanitaryware",
+    "altPlaceholder": "Sanitaryware Kitchen Black Sink",
+    "files": [
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-black-sink-02-480.avif",
+        "format": "avif",
+        "sizeBytes": 12473,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-black-sink-02-480.webp",
+        "format": "webp",
+        "sizeBytes": 17750,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-black-sink-02-768.avif",
+        "format": "avif",
+        "sizeBytes": 23984,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-black-sink-02-768.webp",
+        "format": "webp",
+        "sizeBytes": 36220,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-black-sink-02.avif",
+        "format": "avif",
+        "sizeBytes": 47396,
+        "width": 2
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-black-sink-02.jpg",
+        "format": "jpg",
+        "sizeBytes": 130872,
+        "width": 2
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-black-sink-02.webp",
+        "format": "webp",
+        "sizeBytes": 80292,
+        "width": 2
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      2,
+      480,
+      768
+    ],
+    "fallback": "/images/sanitaryware/sanitaryware-kitchen-black-sink-02.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/sanitaryware/sanitaryware-kitchen-black-sink-02.avif 2w, /images/sanitaryware/sanitaryware-kitchen-black-sink-02-480.avif 480w, /images/sanitaryware/sanitaryware-kitchen-black-sink-02-768.avif 768w",
+      "webp": "/images/sanitaryware/sanitaryware-kitchen-black-sink-02.webp 2w, /images/sanitaryware/sanitaryware-kitchen-black-sink-02-480.webp 480w, /images/sanitaryware/sanitaryware-kitchen-black-sink-02-768.webp 768w"
+    },
+    "totalBytes": 348987
+  },
+  {
+    "key": "/images/sanitaryware/sanitaryware-kitchen-double-sink-01",
+    "baseName": "sanitaryware-kitchen-double-sink-01",
+    "directory": "/images/sanitaryware",
+    "altPlaceholder": "Sanitaryware Kitchen Double Sink",
+    "files": [
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-double-sink-01-480.avif",
+        "format": "avif",
+        "sizeBytes": 12287,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-double-sink-01-480.webp",
+        "format": "webp",
+        "sizeBytes": 17312,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-double-sink-01-768.avif",
+        "format": "avif",
+        "sizeBytes": 22204,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-double-sink-01-768.webp",
+        "format": "webp",
+        "sizeBytes": 33416,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-double-sink-01.avif",
+        "format": "avif",
+        "sizeBytes": 41890,
+        "width": 1
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-double-sink-01.jpg",
+        "format": "jpg",
+        "sizeBytes": 120711,
+        "width": 1
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-double-sink-01.webp",
+        "format": "webp",
+        "sizeBytes": 70850,
+        "width": 1
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      1,
+      480,
+      768
+    ],
+    "fallback": "/images/sanitaryware/sanitaryware-kitchen-double-sink-01.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/sanitaryware/sanitaryware-kitchen-double-sink-01.avif 1w, /images/sanitaryware/sanitaryware-kitchen-double-sink-01-480.avif 480w, /images/sanitaryware/sanitaryware-kitchen-double-sink-01-768.avif 768w",
+      "webp": "/images/sanitaryware/sanitaryware-kitchen-double-sink-01.webp 1w, /images/sanitaryware/sanitaryware-kitchen-double-sink-01-480.webp 480w, /images/sanitaryware/sanitaryware-kitchen-double-sink-01-768.webp 768w"
+    },
+    "totalBytes": 318670
+  },
+  {
+    "key": "/images/sanitaryware/sanitaryware-kitchen-drainer-sink-01",
+    "baseName": "sanitaryware-kitchen-drainer-sink-01",
+    "directory": "/images/sanitaryware",
+    "altPlaceholder": "Sanitaryware Kitchen Drainer Sink",
+    "files": [
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-drainer-sink-01-480.avif",
+        "format": "avif",
+        "sizeBytes": 13953,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-drainer-sink-01-480.webp",
+        "format": "webp",
+        "sizeBytes": 19378,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-drainer-sink-01-768.avif",
+        "format": "avif",
+        "sizeBytes": 25505,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-drainer-sink-01-768.webp",
+        "format": "webp",
+        "sizeBytes": 37774,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-drainer-sink-01.avif",
+        "format": "avif",
+        "sizeBytes": 48323,
+        "width": 1
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-drainer-sink-01.jpg",
+        "format": "jpg",
+        "sizeBytes": 131804,
+        "width": 1
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-drainer-sink-01.webp",
+        "format": "webp",
+        "sizeBytes": 81068,
+        "width": 1
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      1,
+      480,
+      768
+    ],
+    "fallback": "/images/sanitaryware/sanitaryware-kitchen-drainer-sink-01.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/sanitaryware/sanitaryware-kitchen-drainer-sink-01.avif 1w, /images/sanitaryware/sanitaryware-kitchen-drainer-sink-01-480.avif 480w, /images/sanitaryware/sanitaryware-kitchen-drainer-sink-01-768.avif 768w",
+      "webp": "/images/sanitaryware/sanitaryware-kitchen-drainer-sink-01.webp 1w, /images/sanitaryware/sanitaryware-kitchen-drainer-sink-01-480.webp 480w, /images/sanitaryware/sanitaryware-kitchen-drainer-sink-01-768.webp 768w"
+    },
+    "totalBytes": 357805
+  },
+  {
+    "key": "/images/sanitaryware/sanitaryware-kitchen-mixer-display-01",
+    "baseName": "sanitaryware-kitchen-mixer-display-01",
+    "directory": "/images/sanitaryware",
+    "altPlaceholder": "Sanitaryware Kitchen Mixer Display",
+    "files": [
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-mixer-display-01-480.avif",
+        "format": "avif",
+        "sizeBytes": 12490,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-mixer-display-01-480.webp",
+        "format": "webp",
+        "sizeBytes": 21378,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-mixer-display-01-768.avif",
+        "format": "avif",
+        "sizeBytes": 27533,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-mixer-display-01-768.webp",
+        "format": "webp",
+        "sizeBytes": 47396,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-mixer-display-01.avif",
+        "format": "avif",
+        "sizeBytes": 51743,
+        "width": 1
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-mixer-display-01.jpg",
+        "format": "jpg",
+        "sizeBytes": 132146,
+        "width": 1
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-mixer-display-01.webp",
+        "format": "webp",
+        "sizeBytes": 92016,
+        "width": 1
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      1,
+      480,
+      768
+    ],
+    "fallback": "/images/sanitaryware/sanitaryware-kitchen-mixer-display-01.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/sanitaryware/sanitaryware-kitchen-mixer-display-01.avif 1w, /images/sanitaryware/sanitaryware-kitchen-mixer-display-01-480.avif 480w, /images/sanitaryware/sanitaryware-kitchen-mixer-display-01-768.avif 768w",
+      "webp": "/images/sanitaryware/sanitaryware-kitchen-mixer-display-01.webp 1w, /images/sanitaryware/sanitaryware-kitchen-mixer-display-01-480.webp 480w, /images/sanitaryware/sanitaryware-kitchen-mixer-display-01-768.webp 768w"
+    },
+    "totalBytes": 384702
+  },
+  {
+    "key": "/images/sanitaryware/sanitaryware-kitchen-overview-01",
+    "baseName": "sanitaryware-kitchen-overview-01",
+    "directory": "/images/sanitaryware",
+    "altPlaceholder": "Sanitaryware Kitchen Overview",
+    "files": [
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-overview-01-480.avif",
+        "format": "avif",
+        "sizeBytes": 10443,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-overview-01-480.webp",
+        "format": "webp",
+        "sizeBytes": 17402,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-overview-01-768.avif",
+        "format": "avif",
+        "sizeBytes": 20583,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-overview-01-768.webp",
+        "format": "webp",
+        "sizeBytes": 35142,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-overview-01.avif",
+        "format": "avif",
+        "sizeBytes": 36402,
+        "width": 1
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-overview-01.jpg",
+        "format": "jpg",
+        "sizeBytes": 111466,
+        "width": 1
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-overview-01.webp",
+        "format": "webp",
+        "sizeBytes": 64918,
+        "width": 1
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      1,
+      480,
+      768
+    ],
+    "fallback": "/images/sanitaryware/sanitaryware-kitchen-overview-01.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/sanitaryware/sanitaryware-kitchen-overview-01.avif 1w, /images/sanitaryware/sanitaryware-kitchen-overview-01-480.avif 480w, /images/sanitaryware/sanitaryware-kitchen-overview-01-768.avif 768w",
+      "webp": "/images/sanitaryware/sanitaryware-kitchen-overview-01.webp 1w, /images/sanitaryware/sanitaryware-kitchen-overview-01-480.webp 480w, /images/sanitaryware/sanitaryware-kitchen-overview-01-768.webp 768w"
+    },
+    "totalBytes": 296356
+  },
+  {
+    "key": "/images/sanitaryware/sanitaryware-kitchen-overview-02",
+    "baseName": "sanitaryware-kitchen-overview-02",
+    "directory": "/images/sanitaryware",
+    "altPlaceholder": "Sanitaryware Kitchen Overview",
+    "files": [
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-overview-02-480.avif",
+        "format": "avif",
+        "sizeBytes": 13145,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-overview-02-480.webp",
+        "format": "webp",
+        "sizeBytes": 20988,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-overview-02-768.avif",
+        "format": "avif",
+        "sizeBytes": 27769,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-overview-02-768.webp",
+        "format": "webp",
+        "sizeBytes": 45884,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-overview-02.avif",
+        "format": "avif",
+        "sizeBytes": 49830,
+        "width": 2
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-overview-02.jpg",
+        "format": "jpg",
+        "sizeBytes": 136829,
+        "width": 2
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-overview-02.webp",
+        "format": "webp",
+        "sizeBytes": 85092,
+        "width": 2
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      2,
+      480,
+      768
+    ],
+    "fallback": "/images/sanitaryware/sanitaryware-kitchen-overview-02.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/sanitaryware/sanitaryware-kitchen-overview-02.avif 2w, /images/sanitaryware/sanitaryware-kitchen-overview-02-480.avif 480w, /images/sanitaryware/sanitaryware-kitchen-overview-02-768.avif 768w",
+      "webp": "/images/sanitaryware/sanitaryware-kitchen-overview-02.webp 2w, /images/sanitaryware/sanitaryware-kitchen-overview-02-480.webp 480w, /images/sanitaryware/sanitaryware-kitchen-overview-02-768.webp 768w"
+    },
+    "totalBytes": 379537
+  },
+  {
+    "key": "/images/sanitaryware/sanitaryware-kitchen-sink-backsplash-01",
+    "baseName": "sanitaryware-kitchen-sink-backsplash-01",
+    "directory": "/images/sanitaryware",
+    "altPlaceholder": "Sanitaryware Kitchen Sink Backsplash",
+    "files": [
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-sink-backsplash-01-480.avif",
+        "format": "avif",
+        "sizeBytes": 10562,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-sink-backsplash-01-480.webp",
+        "format": "webp",
+        "sizeBytes": 16090,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-sink-backsplash-01-768.avif",
+        "format": "avif",
+        "sizeBytes": 19049,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-sink-backsplash-01-768.webp",
+        "format": "webp",
+        "sizeBytes": 31134,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-sink-backsplash-01.avif",
+        "format": "avif",
+        "sizeBytes": 36150,
+        "width": 1
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-sink-backsplash-01.jpg",
+        "format": "jpg",
+        "sizeBytes": 112771,
+        "width": 1
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-sink-backsplash-01.webp",
+        "format": "webp",
+        "sizeBytes": 64466,
+        "width": 1
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      1,
+      480,
+      768
+    ],
+    "fallback": "/images/sanitaryware/sanitaryware-kitchen-sink-backsplash-01.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/sanitaryware/sanitaryware-kitchen-sink-backsplash-01.avif 1w, /images/sanitaryware/sanitaryware-kitchen-sink-backsplash-01-480.avif 480w, /images/sanitaryware/sanitaryware-kitchen-sink-backsplash-01-768.avif 768w",
+      "webp": "/images/sanitaryware/sanitaryware-kitchen-sink-backsplash-01.webp 1w, /images/sanitaryware/sanitaryware-kitchen-sink-backsplash-01-480.webp 480w, /images/sanitaryware/sanitaryware-kitchen-sink-backsplash-01-768.webp 768w"
+    },
+    "totalBytes": 290222
+  },
+  {
+    "key": "/images/sanitaryware/sanitaryware-kitchen-sink-window-01",
+    "baseName": "sanitaryware-kitchen-sink-window-01",
+    "directory": "/images/sanitaryware",
+    "altPlaceholder": "Sanitaryware Kitchen Sink Window",
+    "files": [
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-sink-window-01-480.avif",
+        "format": "avif",
+        "sizeBytes": 17986,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-sink-window-01-480.webp",
+        "format": "webp",
+        "sizeBytes": 22240,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-sink-window-01-768.avif",
+        "format": "avif",
+        "sizeBytes": 33359,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-sink-window-01-768.webp",
+        "format": "webp",
+        "sizeBytes": 45912,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-sink-window-01.avif",
+        "format": "avif",
+        "sizeBytes": 62166,
+        "width": 1
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-sink-window-01.jpg",
+        "format": "jpg",
+        "sizeBytes": 144360,
+        "width": 1
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-kitchen-sink-window-01.webp",
+        "format": "webp",
+        "sizeBytes": 95160,
+        "width": 1
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      1,
+      480,
+      768
+    ],
+    "fallback": "/images/sanitaryware/sanitaryware-kitchen-sink-window-01.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/sanitaryware/sanitaryware-kitchen-sink-window-01.avif 1w, /images/sanitaryware/sanitaryware-kitchen-sink-window-01-480.avif 480w, /images/sanitaryware/sanitaryware-kitchen-sink-window-01-768.avif 768w",
+      "webp": "/images/sanitaryware/sanitaryware-kitchen-sink-window-01.webp 1w, /images/sanitaryware/sanitaryware-kitchen-sink-window-01-480.webp 480w, /images/sanitaryware/sanitaryware-kitchen-sink-window-01-768.webp 768w"
+    },
+    "totalBytes": 421183
+  },
+  {
+    "key": "/images/sanitaryware/sanitaryware-shower-accessories-01",
+    "baseName": "sanitaryware-shower-accessories-01",
+    "directory": "/images/sanitaryware",
+    "altPlaceholder": "Sanitaryware Shower Accessories",
+    "files": [
+      {
+        "path": "/images/sanitaryware/sanitaryware-shower-accessories-01-480.avif",
+        "format": "avif",
+        "sizeBytes": 17266,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-shower-accessories-01-480.webp",
+        "format": "webp",
+        "sizeBytes": 21490,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-shower-accessories-01-768.avif",
+        "format": "avif",
+        "sizeBytes": 34185,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-shower-accessories-01-768.webp",
+        "format": "webp",
+        "sizeBytes": 41350,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-shower-accessories-01.avif",
+        "format": "avif",
+        "sizeBytes": 55211,
+        "width": 1
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-shower-accessories-01.jpg",
+        "format": "jpg",
+        "sizeBytes": 131865,
+        "width": 1
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-shower-accessories-01.webp",
+        "format": "webp",
+        "sizeBytes": 64678,
+        "width": 1
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      1,
+      480,
+      768
+    ],
+    "fallback": "/images/sanitaryware/sanitaryware-shower-accessories-01.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/sanitaryware/sanitaryware-shower-accessories-01.avif 1w, /images/sanitaryware/sanitaryware-shower-accessories-01-480.avif 480w, /images/sanitaryware/sanitaryware-shower-accessories-01-768.avif 768w",
+      "webp": "/images/sanitaryware/sanitaryware-shower-accessories-01.webp 1w, /images/sanitaryware/sanitaryware-shower-accessories-01-480.webp 480w, /images/sanitaryware/sanitaryware-shower-accessories-01-768.webp 768w"
+    },
+    "totalBytes": 366045
+  },
+  {
+    "key": "/images/sanitaryware/sanitaryware-shower-display-01",
+    "baseName": "sanitaryware-shower-display-01",
+    "directory": "/images/sanitaryware",
+    "altPlaceholder": "Sanitaryware Shower Display",
+    "files": [
+      {
+        "path": "/images/sanitaryware/sanitaryware-shower-display-01-480.avif",
+        "format": "avif",
+        "sizeBytes": 18104,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-shower-display-01-480.webp",
+        "format": "webp",
+        "sizeBytes": 24002,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-shower-display-01-768.avif",
+        "format": "avif",
+        "sizeBytes": 36629,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-shower-display-01-768.webp",
+        "format": "webp",
+        "sizeBytes": 46572,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-shower-display-01.avif",
+        "format": "avif",
+        "sizeBytes": 61103,
+        "width": 1
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-shower-display-01.jpg",
+        "format": "jpg",
+        "sizeBytes": 140916,
+        "width": 1
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-shower-display-01.webp",
+        "format": "webp",
+        "sizeBytes": 72274,
+        "width": 1
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      1,
+      480,
+      768
+    ],
+    "fallback": "/images/sanitaryware/sanitaryware-shower-display-01.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/sanitaryware/sanitaryware-shower-display-01.avif 1w, /images/sanitaryware/sanitaryware-shower-display-01-480.avif 480w, /images/sanitaryware/sanitaryware-shower-display-01-768.avif 768w",
+      "webp": "/images/sanitaryware/sanitaryware-shower-display-01.webp 1w, /images/sanitaryware/sanitaryware-shower-display-01-480.webp 480w, /images/sanitaryware/sanitaryware-shower-display-01-768.webp 768w"
+    },
+    "totalBytes": 399600
+  },
+  {
+    "key": "/images/sanitaryware/sanitaryware-shower-display-02",
+    "baseName": "sanitaryware-shower-display-02",
+    "directory": "/images/sanitaryware",
+    "altPlaceholder": "Sanitaryware Shower Display",
+    "files": [
+      {
+        "path": "/images/sanitaryware/sanitaryware-shower-display-02-480.avif",
+        "format": "avif",
+        "sizeBytes": 18226,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-shower-display-02-480.webp",
+        "format": "webp",
+        "sizeBytes": 22848,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-shower-display-02-768.avif",
+        "format": "avif",
+        "sizeBytes": 36261,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-shower-display-02-768.webp",
+        "format": "webp",
+        "sizeBytes": 45774,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-shower-display-02.avif",
+        "format": "avif",
+        "sizeBytes": 57946,
+        "width": 2
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-shower-display-02.jpg",
+        "format": "jpg",
+        "sizeBytes": 134437,
+        "width": 2
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-shower-display-02.webp",
+        "format": "webp",
+        "sizeBytes": 72322,
+        "width": 2
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      2,
+      480,
+      768
+    ],
+    "fallback": "/images/sanitaryware/sanitaryware-shower-display-02.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/sanitaryware/sanitaryware-shower-display-02.avif 2w, /images/sanitaryware/sanitaryware-shower-display-02-480.avif 480w, /images/sanitaryware/sanitaryware-shower-display-02-768.avif 768w",
+      "webp": "/images/sanitaryware/sanitaryware-shower-display-02.webp 2w, /images/sanitaryware/sanitaryware-shower-display-02-480.webp 480w, /images/sanitaryware/sanitaryware-shower-display-02-768.webp 768w"
+    },
+    "totalBytes": 387814
+  },
+  {
+    "key": "/images/sanitaryware/sanitaryware-shower-display-03",
+    "baseName": "sanitaryware-shower-display-03",
+    "directory": "/images/sanitaryware",
+    "altPlaceholder": "Sanitaryware Shower Display",
+    "files": [
+      {
+        "path": "/images/sanitaryware/sanitaryware-shower-display-03-480.avif",
+        "format": "avif",
+        "sizeBytes": 22729,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-shower-display-03-480.webp",
+        "format": "webp",
+        "sizeBytes": 30146,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-shower-display-03-768.avif",
+        "format": "avif",
+        "sizeBytes": 45843,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-shower-display-03-768.webp",
+        "format": "webp",
+        "sizeBytes": 61694,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-shower-display-03.avif",
+        "format": "avif",
+        "sizeBytes": 76193,
+        "width": 3
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-shower-display-03.jpg",
+        "format": "jpg",
+        "sizeBytes": 165261,
+        "width": 3
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-shower-display-03.webp",
+        "format": "webp",
+        "sizeBytes": 97318,
+        "width": 3
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      3,
+      480,
+      768
+    ],
+    "fallback": "/images/sanitaryware/sanitaryware-shower-display-03.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/sanitaryware/sanitaryware-shower-display-03.avif 3w, /images/sanitaryware/sanitaryware-shower-display-03-480.avif 480w, /images/sanitaryware/sanitaryware-shower-display-03-768.avif 768w",
+      "webp": "/images/sanitaryware/sanitaryware-shower-display-03.webp 3w, /images/sanitaryware/sanitaryware-shower-display-03-480.webp 480w, /images/sanitaryware/sanitaryware-shower-display-03-768.webp 768w"
+    },
+    "totalBytes": 499184
+  },
+  {
+    "key": "/images/sanitaryware/sanitaryware-shower-mixer-01",
+    "baseName": "sanitaryware-shower-mixer-01",
+    "directory": "/images/sanitaryware",
+    "altPlaceholder": "Sanitaryware Shower Mixer",
+    "files": [
+      {
+        "path": "/images/sanitaryware/sanitaryware-shower-mixer-01-480.avif",
+        "format": "avif",
+        "sizeBytes": 15513,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-shower-mixer-01-480.webp",
+        "format": "webp",
+        "sizeBytes": 18154,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-shower-mixer-01-768.avif",
+        "format": "avif",
+        "sizeBytes": 31344,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-shower-mixer-01-768.webp",
+        "format": "webp",
+        "sizeBytes": 39216,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-shower-mixer-01.avif",
+        "format": "avif",
+        "sizeBytes": 50433,
+        "width": 1
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-shower-mixer-01.jpg",
+        "format": "jpg",
+        "sizeBytes": 119365,
+        "width": 1
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-shower-mixer-01.webp",
+        "format": "webp",
+        "sizeBytes": 64016,
+        "width": 1
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      1,
+      480,
+      768
+    ],
+    "fallback": "/images/sanitaryware/sanitaryware-shower-mixer-01.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/sanitaryware/sanitaryware-shower-mixer-01.avif 1w, /images/sanitaryware/sanitaryware-shower-mixer-01-480.avif 480w, /images/sanitaryware/sanitaryware-shower-mixer-01-768.avif 768w",
+      "webp": "/images/sanitaryware/sanitaryware-shower-mixer-01.webp 1w, /images/sanitaryware/sanitaryware-shower-mixer-01-480.webp 480w, /images/sanitaryware/sanitaryware-shower-mixer-01-768.webp 768w"
+    },
+    "totalBytes": 338041
+  },
+  {
+    "key": "/images/sanitaryware/sanitaryware-tap-rail-display-01",
+    "baseName": "sanitaryware-tap-rail-display-01",
+    "directory": "/images/sanitaryware",
+    "altPlaceholder": "Sanitaryware Tap Rail Display",
+    "files": [
+      {
+        "path": "/images/sanitaryware/sanitaryware-tap-rail-display-01-480.avif",
+        "format": "avif",
+        "sizeBytes": 14471,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-tap-rail-display-01-480.webp",
+        "format": "webp",
+        "sizeBytes": 18044,
+        "width": 480
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-tap-rail-display-01-768.avif",
+        "format": "avif",
+        "sizeBytes": 28538,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-tap-rail-display-01-768.webp",
+        "format": "webp",
+        "sizeBytes": 35738,
+        "width": 768
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-tap-rail-display-01.avif",
+        "format": "avif",
+        "sizeBytes": 46707,
+        "width": 1
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-tap-rail-display-01.jpg",
+        "format": "jpg",
+        "sizeBytes": 111597,
+        "width": 1
+      },
+      {
+        "path": "/images/sanitaryware/sanitaryware-tap-rail-display-01.webp",
+        "format": "webp",
+        "sizeBytes": 55922,
+        "width": 1
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      1,
+      480,
+      768
+    ],
+    "fallback": "/images/sanitaryware/sanitaryware-tap-rail-display-01.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/sanitaryware/sanitaryware-tap-rail-display-01.avif 1w, /images/sanitaryware/sanitaryware-tap-rail-display-01-480.avif 480w, /images/sanitaryware/sanitaryware-tap-rail-display-01-768.avif 768w",
+      "webp": "/images/sanitaryware/sanitaryware-tap-rail-display-01.webp 1w, /images/sanitaryware/sanitaryware-tap-rail-display-01-480.webp 480w, /images/sanitaryware/sanitaryware-tap-rail-display-01-768.webp 768w"
+    },
+    "totalBytes": 311017
+  },
+  {
+    "key": "/images/shower-rail-1",
+    "baseName": "shower-rail-1",
+    "directory": "/images",
+    "altPlaceholder": "Shower Rail",
+    "files": [
+      {
+        "path": "/images/shower-rail-1-1024.avif",
+        "format": "avif",
+        "sizeBytes": 38419,
+        "width": 1024
+      },
+      {
+        "path": "/images/shower-rail-1-1024.webp",
+        "format": "webp",
+        "sizeBytes": 65614,
+        "width": 1024
+      },
+      {
+        "path": "/images/shower-rail-1-1440.avif",
+        "format": "avif",
+        "sizeBytes": 59605,
+        "width": 1440
+      },
+      {
+        "path": "/images/shower-rail-1-1440.webp",
+        "format": "webp",
+        "sizeBytes": 108172,
+        "width": 1440
+      },
+      {
+        "path": "/images/shower-rail-1-480.avif",
+        "format": "avif",
+        "sizeBytes": 13085,
+        "width": 480
+      },
+      {
+        "path": "/images/shower-rail-1-480.webp",
+        "format": "webp",
+        "sizeBytes": 19988,
+        "width": 480
+      },
+      {
+        "path": "/images/shower-rail-1-768.avif",
+        "format": "avif",
+        "sizeBytes": 26023,
+        "width": 768
+      },
+      {
+        "path": "/images/shower-rail-1-768.webp",
+        "format": "webp",
+        "sizeBytes": 42608,
+        "width": 768
+      },
+      {
+        "path": "/images/shower-rail-1.avif",
+        "format": "avif",
+        "sizeBytes": 68234,
+        "width": null
+      },
+      {
+        "path": "/images/shower-rail-1.jpg",
+        "format": "jpg",
+        "sizeBytes": 496947,
+        "width": null
+      },
+      {
+        "path": "/images/shower-rail-1.webp",
+        "format": "webp",
+        "sizeBytes": 125832,
+        "width": null
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      480,
+      768,
+      1024,
+      1440
+    ],
+    "fallback": "/images/shower-rail-1.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/shower-rail-1-480.avif 480w, /images/shower-rail-1-768.avif 768w, /images/shower-rail-1-1024.avif 1024w, /images/shower-rail-1-1440.avif 1440w",
+      "webp": "/images/shower-rail-1-480.webp 480w, /images/shower-rail-1-768.webp 768w, /images/shower-rail-1-1024.webp 1024w, /images/shower-rail-1-1440.webp 1440w"
+    },
+    "totalBytes": 1064527
+  },
+  {
+    "key": "/images/sink-accessories",
+    "baseName": "sink-accessories",
+    "directory": "/images",
+    "altPlaceholder": "Sink Accessories",
+    "files": [
+      {
+        "path": "/images/sink-accessories-1024.avif",
+        "format": "avif",
+        "sizeBytes": 59504,
+        "width": 1024
+      },
+      {
+        "path": "/images/sink-accessories-1024.webp",
+        "format": "webp",
+        "sizeBytes": 97976,
+        "width": 1024
+      },
+      {
+        "path": "/images/sink-accessories-1440.avif",
+        "format": "avif",
+        "sizeBytes": 110701,
+        "width": 1440
+      },
+      {
+        "path": "/images/sink-accessories-1440.webp",
+        "format": "webp",
+        "sizeBytes": 177908,
+        "width": 1440
+      },
+      {
+        "path": "/images/sink-accessories-480.avif",
+        "format": "avif",
+        "sizeBytes": 15390,
+        "width": 480
+      },
+      {
+        "path": "/images/sink-accessories-480.webp",
+        "format": "webp",
+        "sizeBytes": 24310,
+        "width": 480
+      },
+      {
+        "path": "/images/sink-accessories-768.avif",
+        "format": "avif",
+        "sizeBytes": 34107,
+        "width": 768
+      },
+      {
+        "path": "/images/sink-accessories-768.webp",
+        "format": "webp",
+        "sizeBytes": 55924,
+        "width": 768
+      },
+      {
+        "path": "/images/sink-accessories.avif",
+        "format": "avif",
+        "sizeBytes": 138225,
+        "width": null
+      },
+      {
+        "path": "/images/sink-accessories.jpg",
+        "format": "jpg",
+        "sizeBytes": 409800,
+        "width": null
+      },
+      {
+        "path": "/images/sink-accessories.webp",
+        "format": "webp",
+        "sizeBytes": 208820,
+        "width": null
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      480,
+      768,
+      1024,
+      1440
+    ],
+    "fallback": "/images/sink-accessories.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/sink-accessories-480.avif 480w, /images/sink-accessories-768.avif 768w, /images/sink-accessories-1024.avif 1024w, /images/sink-accessories-1440.avif 1440w",
+      "webp": "/images/sink-accessories-480.webp 480w, /images/sink-accessories-768.webp 768w, /images/sink-accessories-1024.webp 1024w, /images/sink-accessories-1440.webp 1440w"
+    },
+    "totalBytes": 1332665
+  },
+  {
+    "key": "/images/sink-gold-1",
+    "baseName": "sink-gold-1",
+    "directory": "/images",
+    "altPlaceholder": "Sink Gold",
+    "files": [
+      {
+        "path": "/images/sink-gold-1-1024.avif",
+        "format": "avif",
+        "sizeBytes": 29069,
+        "width": 1024
+      },
+      {
+        "path": "/images/sink-gold-1-1024.webp",
+        "format": "webp",
+        "sizeBytes": 59944,
+        "width": 1024
+      },
+      {
+        "path": "/images/sink-gold-1-480.avif",
+        "format": "avif",
+        "sizeBytes": 10445,
+        "width": 480
+      },
+      {
+        "path": "/images/sink-gold-1-480.webp",
+        "format": "webp",
+        "sizeBytes": 19118,
+        "width": 480
+      },
+      {
+        "path": "/images/sink-gold-1-768.avif",
+        "format": "avif",
+        "sizeBytes": 19333,
+        "width": 768
+      },
+      {
+        "path": "/images/sink-gold-1-768.webp",
+        "format": "webp",
+        "sizeBytes": 37966,
+        "width": 768
+      },
+      {
+        "path": "/images/sink-gold-1.avif",
+        "format": "avif",
+        "sizeBytes": 33359,
+        "width": null
+      },
+      {
+        "path": "/images/sink-gold-1.png",
+        "format": "png",
+        "sizeBytes": 1547345,
+        "width": null
+      },
+      {
+        "path": "/images/sink-gold-1.webp",
+        "format": "webp",
+        "sizeBytes": 68554,
+        "width": null
+      }
+    ],
+    "formats": [
+      "avif",
+      "png",
+      "webp"
+    ],
+    "responsiveWidths": [
+      480,
+      768,
+      1024
+    ],
+    "fallback": "/images/sink-gold-1.png",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/sink-gold-1-480.avif 480w, /images/sink-gold-1-768.avif 768w, /images/sink-gold-1-1024.avif 1024w",
+      "webp": "/images/sink-gold-1-480.webp 480w, /images/sink-gold-1-768.webp 768w, /images/sink-gold-1-1024.webp 1024w"
+    },
+    "totalBytes": 1825133
+  },
+  {
+    "key": "/images/sink-mixer-1",
+    "baseName": "sink-mixer-1",
+    "directory": "/images",
+    "altPlaceholder": "Sink Mixer",
+    "files": [
+      {
+        "path": "/images/sink-mixer-1.avif",
+        "format": "avif",
+        "sizeBytes": 3801,
+        "width": null
+      },
+      {
+        "path": "/images/sink-mixer-1.png",
+        "format": "png",
+        "sizeBytes": 50397,
+        "width": null
+      },
+      {
+        "path": "/images/sink-mixer-1.webp",
+        "format": "webp",
+        "sizeBytes": 5342,
+        "width": null
+      }
+    ],
+    "formats": [
+      "avif",
+      "png",
+      "webp"
+    ],
+    "responsiveWidths": [],
+    "fallback": "/images/sink-mixer-1.png",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "",
+      "webp": ""
+    },
+    "totalBytes": 59540
+  },
+  {
+    "key": "/images/sinks",
+    "baseName": "sinks",
+    "directory": "/images",
+    "altPlaceholder": "Sinks",
+    "files": [
+      {
+        "path": "/images/sinks-480.avif",
+        "format": "avif",
+        "sizeBytes": 5998,
+        "width": 480
+      },
+      {
+        "path": "/images/sinks-480.webp",
+        "format": "webp",
+        "sizeBytes": 9784,
+        "width": 480
+      },
+      {
+        "path": "/images/sinks.avif",
+        "format": "avif",
+        "sizeBytes": 10193,
+        "width": null
+      },
+      {
+        "path": "/images/sinks.jpg",
+        "format": "jpg",
+        "sizeBytes": 47757,
+        "width": null
+      },
+      {
+        "path": "/images/sinks.webp",
+        "format": "webp",
+        "sizeBytes": 17130,
+        "width": null
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      480
+    ],
+    "fallback": "/images/sinks.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/sinks-480.avif 480w",
+      "webp": "/images/sinks-480.webp 480w"
+    },
+    "totalBytes": 90862
+  },
+  {
+    "key": "/images/taps-display-1",
+    "baseName": "taps-display-1",
+    "directory": "/images",
+    "altPlaceholder": "Taps Display",
+    "files": [
+      {
+        "path": "/images/taps-display-1-480.avif",
+        "format": "avif",
+        "sizeBytes": 18808,
+        "width": 480
+      },
+      {
+        "path": "/images/taps-display-1-480.webp",
+        "format": "webp",
+        "sizeBytes": 31030,
+        "width": 480
+      },
+      {
+        "path": "/images/taps-display-1-768.avif",
+        "format": "avif",
+        "sizeBytes": 37761,
+        "width": 768
+      },
+      {
+        "path": "/images/taps-display-1-768.webp",
+        "format": "webp",
+        "sizeBytes": 63398,
+        "width": 768
+      },
+      {
+        "path": "/images/taps-display-1.avif",
+        "format": "avif",
+        "sizeBytes": 52144,
+        "width": null
+      },
+      {
+        "path": "/images/taps-display-1.jpg",
+        "format": "jpg",
+        "sizeBytes": 427021,
+        "width": null
+      },
+      {
+        "path": "/images/taps-display-1.webp",
+        "format": "webp",
+        "sizeBytes": 87490,
+        "width": null
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      480,
+      768
+    ],
+    "fallback": "/images/taps-display-1.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/taps-display-1-480.avif 480w, /images/taps-display-1-768.avif 768w",
+      "webp": "/images/taps-display-1-480.webp 480w, /images/taps-display-1-768.webp 768w"
+    },
+    "totalBytes": 717652
+  },
+  {
+    "key": "/images/tile-fittings",
+    "baseName": "tile-fittings",
+    "directory": "/images",
+    "altPlaceholder": "Tile Fittings",
+    "files": [
+      {
+        "path": "/images/tile-fittings-480.avif",
+        "format": "avif",
+        "sizeBytes": 22053,
+        "width": 480
+      },
+      {
+        "path": "/images/tile-fittings-480.webp",
+        "format": "webp",
+        "sizeBytes": 36634,
+        "width": 480
+      },
+      {
+        "path": "/images/tile-fittings-768.avif",
+        "format": "avif",
+        "sizeBytes": 45120,
+        "width": 768
+      },
+      {
+        "path": "/images/tile-fittings-768.webp",
+        "format": "webp",
+        "sizeBytes": 78308,
+        "width": 768
+      },
+      {
+        "path": "/images/tile-fittings.avif",
+        "format": "avif",
+        "sizeBytes": 80756,
+        "width": null
+      },
+      {
+        "path": "/images/tile-fittings.jpg",
+        "format": "jpg",
+        "sizeBytes": 270792,
+        "width": null
+      },
+      {
+        "path": "/images/tile-fittings.webp",
+        "format": "webp",
+        "sizeBytes": 132940,
+        "width": null
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      480,
+      768
+    ],
+    "fallback": "/images/tile-fittings.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/tile-fittings-480.avif 480w, /images/tile-fittings-768.avif 768w",
+      "webp": "/images/tile-fittings-480.webp 480w, /images/tile-fittings-768.webp 768w"
+    },
+    "totalBytes": 666603
+  },
+  {
+    "key": "/images/tile-tools",
+    "baseName": "tile-tools",
+    "directory": "/images",
+    "altPlaceholder": "Tile Tools",
+    "files": [
+      {
+        "path": "/images/tile-tools-480.avif",
+        "format": "avif",
+        "sizeBytes": 15201,
+        "width": 480
+      },
+      {
+        "path": "/images/tile-tools-480.webp",
+        "format": "webp",
+        "sizeBytes": 26118,
+        "width": 480
+      },
+      {
+        "path": "/images/tile-tools-768.avif",
+        "format": "avif",
+        "sizeBytes": 45397,
+        "width": 768
+      },
+      {
+        "path": "/images/tile-tools-768.webp",
+        "format": "webp",
+        "sizeBytes": 84006,
+        "width": 768
+      },
+      {
+        "path": "/images/tile-tools.avif",
+        "format": "avif",
+        "sizeBytes": 107757,
+        "width": null
+      },
+      {
+        "path": "/images/tile-tools.jpg",
+        "format": "jpg",
+        "sizeBytes": 309245,
+        "width": null
+      },
+      {
+        "path": "/images/tile-tools.webp",
+        "format": "webp",
+        "sizeBytes": 168964,
+        "width": null
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      480,
+      768
+    ],
+    "fallback": "/images/tile-tools.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/tile-tools-480.avif 480w, /images/tile-tools-768.avif 768w",
+      "webp": "/images/tile-tools-480.webp 480w, /images/tile-tools-768.webp 768w"
+    },
+    "totalBytes": 756688
+  },
+  {
+    "key": "/images/tiler-service",
+    "baseName": "tiler-service",
+    "directory": "/images",
+    "altPlaceholder": "Tiler Service",
+    "files": [
+      {
+        "path": "/images/tiler-service-480.avif",
+        "format": "avif",
+        "sizeBytes": 20768,
+        "width": 480
+      },
+      {
+        "path": "/images/tiler-service-480.webp",
+        "format": "webp",
+        "sizeBytes": 34404,
+        "width": 480
+      },
+      {
+        "path": "/images/tiler-service-768.avif",
+        "format": "avif",
+        "sizeBytes": 53260,
+        "width": 768
+      },
+      {
+        "path": "/images/tiler-service-768.webp",
+        "format": "webp",
+        "sizeBytes": 94486,
+        "width": 768
+      },
+      {
+        "path": "/images/tiler-service.avif",
+        "format": "avif",
+        "sizeBytes": 109502,
+        "width": null
+      },
+      {
+        "path": "/images/tiler-service.jpg",
+        "format": "jpg",
+        "sizeBytes": 364139,
+        "width": null
+      },
+      {
+        "path": "/images/tiler-service.webp",
+        "format": "webp",
+        "sizeBytes": 179334,
+        "width": null
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      480,
+      768
+    ],
+    "fallback": "/images/tiler-service.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/tiler-service-480.avif 480w, /images/tiler-service-768.avif 768w",
+      "webp": "/images/tiler-service-480.webp 480w, /images/tiler-service-768.webp 768w"
+    },
+    "totalBytes": 855893
+  },
+  {
+    "key": "/images/tiles-decor",
+    "baseName": "tiles-decor",
+    "directory": "/images",
+    "altPlaceholder": "Tiles Decor",
+    "files": [
+      {
+        "path": "/images/tiles-decor.avif",
+        "format": "avif",
+        "sizeBytes": 11670,
+        "width": null
+      },
+      {
+        "path": "/images/tiles-decor.jpg",
+        "format": "jpg",
+        "sizeBytes": 31622,
+        "width": null
+      },
+      {
+        "path": "/images/tiles-decor.webp",
+        "format": "webp",
+        "sizeBytes": 19012,
+        "width": null
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [],
+    "fallback": "/images/tiles-decor.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "",
+      "webp": ""
+    },
+    "totalBytes": 62304
+  },
+  {
+    "key": "/images/tiles-floor",
+    "baseName": "tiles-floor",
+    "directory": "/images",
+    "altPlaceholder": "Tiles Floor",
+    "files": [
+      {
+        "path": "/images/tiles-floor-480.avif",
+        "format": "avif",
+        "sizeBytes": 5023,
+        "width": 480
+      },
+      {
+        "path": "/images/tiles-floor-480.webp",
+        "format": "webp",
+        "sizeBytes": 9774,
+        "width": 480
+      },
+      {
+        "path": "/images/tiles-floor.avif",
+        "format": "avif",
+        "sizeBytes": 9761,
+        "width": null
+      },
+      {
+        "path": "/images/tiles-floor.jpg",
+        "format": "jpg",
+        "sizeBytes": 43872,
+        "width": null
+      },
+      {
+        "path": "/images/tiles-floor.webp",
+        "format": "webp",
+        "sizeBytes": 20344,
+        "width": null
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      480
+    ],
+    "fallback": "/images/tiles-floor.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/tiles-floor-480.avif 480w",
+      "webp": "/images/tiles-floor-480.webp 480w"
+    },
+    "totalBytes": 88774
+  },
+  {
+    "key": "/images/tiles-floor-2",
+    "baseName": "tiles-floor-2",
+    "directory": "/images",
+    "altPlaceholder": "Tiles Floor",
+    "files": [
+      {
+        "path": "/images/tiles-floor-2-480.avif",
+        "format": "avif",
+        "sizeBytes": 9724,
+        "width": 480
+      },
+      {
+        "path": "/images/tiles-floor-2-480.webp",
+        "format": "webp",
+        "sizeBytes": 17238,
+        "width": 480
+      },
+      {
+        "path": "/images/tiles-floor-2.avif",
+        "format": "avif",
+        "sizeBytes": 19773,
+        "width": null
+      },
+      {
+        "path": "/images/tiles-floor-2.jpg",
+        "format": "jpg",
+        "sizeBytes": 65424,
+        "width": null
+      },
+      {
+        "path": "/images/tiles-floor-2.webp",
+        "format": "webp",
+        "sizeBytes": 36322,
+        "width": null
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      480
+    ],
+    "fallback": "/images/tiles-floor-2.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/tiles-floor-2-480.avif 480w",
+      "webp": "/images/tiles-floor-2-480.webp 480w"
+    },
+    "totalBytes": 148481
+  },
+  {
+    "key": "/images/tiles-gallery-1",
+    "baseName": "tiles-gallery-1",
+    "directory": "/images",
+    "altPlaceholder": "Tiles Gallery",
+    "files": [
+      {
+        "path": "/images/tiles-gallery-1-480.avif",
+        "format": "avif",
+        "sizeBytes": 16345,
+        "width": 480
+      },
+      {
+        "path": "/images/tiles-gallery-1-480.webp",
+        "format": "webp",
+        "sizeBytes": 25516,
+        "width": 480
+      },
+      {
+        "path": "/images/tiles-gallery-1.avif",
+        "format": "avif",
+        "sizeBytes": 30284,
+        "width": null
+      },
+      {
+        "path": "/images/tiles-gallery-1.jpg",
+        "format": "jpg",
+        "sizeBytes": 74858,
+        "width": null
+      },
+      {
+        "path": "/images/tiles-gallery-1.webp",
+        "format": "webp",
+        "sizeBytes": 47982,
+        "width": null
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      480
+    ],
+    "fallback": "/images/tiles-gallery-1.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/tiles-gallery-1-480.avif 480w",
+      "webp": "/images/tiles-gallery-1-480.webp 480w"
+    },
+    "totalBytes": 194985
+  },
+  {
+    "key": "/images/tiles-wall",
+    "baseName": "tiles-wall",
+    "directory": "/images",
+    "altPlaceholder": "Tiles Wall",
+    "files": [
+      {
+        "path": "/images/tiles-wall-480.avif",
+        "format": "avif",
+        "sizeBytes": 22103,
+        "width": 480
+      },
+      {
+        "path": "/images/tiles-wall-480.webp",
+        "format": "webp",
+        "sizeBytes": 28614,
+        "width": 480
+      },
+      {
+        "path": "/images/tiles-wall.avif",
+        "format": "avif",
+        "sizeBytes": 41175,
+        "width": null
+      },
+      {
+        "path": "/images/tiles-wall.jpg",
+        "format": "jpg",
+        "sizeBytes": 88917,
+        "width": null
+      },
+      {
+        "path": "/images/tiles-wall.webp",
+        "format": "webp",
+        "sizeBytes": 57254,
+        "width": null
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      480
+    ],
+    "fallback": "/images/tiles-wall.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/tiles-wall-480.avif 480w",
+      "webp": "/images/tiles-wall-480.webp 480w"
+    },
+    "totalBytes": 238063
+  },
+  {
+    "key": "/images/tiles-wall-2",
+    "baseName": "tiles-wall-2",
+    "directory": "/images",
+    "altPlaceholder": "Tiles Wall",
+    "files": [
+      {
+        "path": "/images/tiles-wall-2-480.avif",
+        "format": "avif",
+        "sizeBytes": 17193,
+        "width": 480
+      },
+      {
+        "path": "/images/tiles-wall-2-480.webp",
+        "format": "webp",
+        "sizeBytes": 30554,
+        "width": 480
+      },
+      {
+        "path": "/images/tiles-wall-2.avif",
+        "format": "avif",
+        "sizeBytes": 31532,
+        "width": null
+      },
+      {
+        "path": "/images/tiles-wall-2.jpg",
+        "format": "jpg",
+        "sizeBytes": 89004,
+        "width": null
+      },
+      {
+        "path": "/images/tiles-wall-2.webp",
+        "format": "webp",
+        "sizeBytes": 56610,
+        "width": null
+      }
+    ],
+    "formats": [
+      "avif",
+      "jpg",
+      "webp"
+    ],
+    "responsiveWidths": [
+      480
+    ],
+    "fallback": "/images/tiles-wall-2.jpg",
+    "hasWebp": true,
+    "hasAvif": true,
+    "hasFallback": true,
+    "srcset": {
+      "avif": "/images/tiles-wall-2-480.avif 480w",
+      "webp": "/images/tiles-wall-2-480.webp 480w"
+    },
+    "totalBytes": 224893
+  }
+]

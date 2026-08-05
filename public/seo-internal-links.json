@@ -1,0 +1,584 @@
+{
+  "/": [],
+  "/products": [],
+  "/tiles": [],
+  "/floor-tiles": [],
+  "/wall-tiles": [],
+  "/bathroom-tiles": [
+    {
+      "label": "Bathroom Renovation Guide",
+      "href": "/bathroom-renovation-guide",
+      "reason": "guide match"
+    }
+  ],
+  "/sanitaryware": [
+    {
+      "label": "Cost Estimation Guide",
+      "href": "/cost-estimation-guide",
+      "reason": "guide match"
+    }
+  ],
+  "/paints": [
+    {
+      "label": "Paint Selection Guide",
+      "href": "/paint-selection-guide",
+      "reason": "guide match"
+    }
+  ],
+  "/adhesives-grout": [],
+  "/installation-support": [
+    {
+      "label": "Guides",
+      "href": "/guides",
+      "reason": "guide match"
+    }
+  ],
+  "/guides": [],
+  "/locations": [],
+  "/projects": [],
+  "/trade-projects": [],
+  "/locations/nairobi": [],
+  "/locations/machakos": [],
+  "/locations/makueni": [],
+  "/tiles-nairobi": [
+    {
+      "label": "Tiles",
+      "href": "/tiles",
+      "reason": "declared"
+    },
+    {
+      "label": "Tiles guide",
+      "href": "/tile-buying-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Cost estimation guide",
+      "href": "/cost-estimation-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Tiles Machakos",
+      "href": "/tiles-machakos",
+      "reason": "same service"
+    },
+    {
+      "label": "Tiles Makueni",
+      "href": "/tiles-makueni",
+      "reason": "same service"
+    },
+    {
+      "label": "Tiles Kenya",
+      "href": "/tiles-kenya",
+      "reason": "same service"
+    }
+  ],
+  "/tiles-machakos": [
+    {
+      "label": "Tiles",
+      "href": "/tiles",
+      "reason": "declared"
+    },
+    {
+      "label": "Tiles guide",
+      "href": "/tile-buying-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Cost estimation guide",
+      "href": "/cost-estimation-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Tiles Nairobi",
+      "href": "/tiles-nairobi",
+      "reason": "same service"
+    },
+    {
+      "label": "Tiles Makueni",
+      "href": "/tiles-makueni",
+      "reason": "same service"
+    },
+    {
+      "label": "Tiles Kenya",
+      "href": "/tiles-kenya",
+      "reason": "same service"
+    }
+  ],
+  "/tiles-makueni": [
+    {
+      "label": "Tiles",
+      "href": "/tiles",
+      "reason": "declared"
+    },
+    {
+      "label": "Tiles guide",
+      "href": "/tile-buying-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Cost estimation guide",
+      "href": "/cost-estimation-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Tiles Nairobi",
+      "href": "/tiles-nairobi",
+      "reason": "same service"
+    },
+    {
+      "label": "Tiles Machakos",
+      "href": "/tiles-machakos",
+      "reason": "same service"
+    },
+    {
+      "label": "Tiles Kenya",
+      "href": "/tiles-kenya",
+      "reason": "same service"
+    }
+  ],
+  "/tiles-kenya": [
+    {
+      "label": "Tiles",
+      "href": "/tiles",
+      "reason": "declared"
+    },
+    {
+      "label": "Tiles guide",
+      "href": "/tile-buying-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Cost estimation guide",
+      "href": "/cost-estimation-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Tiles Nairobi",
+      "href": "/tiles-nairobi",
+      "reason": "same service"
+    },
+    {
+      "label": "Tiles Machakos",
+      "href": "/tiles-machakos",
+      "reason": "same service"
+    },
+    {
+      "label": "Tiles Makueni",
+      "href": "/tiles-makueni",
+      "reason": "same service"
+    }
+  ],
+  "/sanitaryware-nairobi": [
+    {
+      "label": "Sanitaryware",
+      "href": "/sanitaryware",
+      "reason": "declared"
+    },
+    {
+      "label": "Sanitaryware guide",
+      "href": "/bathroom-renovation-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Cost estimation guide",
+      "href": "/cost-estimation-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Tiles Nairobi",
+      "href": "/tiles-nairobi",
+      "reason": "same location"
+    },
+    {
+      "label": "Sanitaryware Machakos",
+      "href": "/sanitaryware-machakos",
+      "reason": "same service"
+    },
+    {
+      "label": "Sanitaryware Makueni",
+      "href": "/sanitaryware-makueni",
+      "reason": "same service"
+    }
+  ],
+  "/sanitaryware-machakos": [
+    {
+      "label": "Sanitaryware",
+      "href": "/sanitaryware",
+      "reason": "declared"
+    },
+    {
+      "label": "Sanitaryware guide",
+      "href": "/bathroom-renovation-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Cost estimation guide",
+      "href": "/cost-estimation-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Tiles Machakos",
+      "href": "/tiles-machakos",
+      "reason": "same location"
+    },
+    {
+      "label": "Sanitaryware Nairobi",
+      "href": "/sanitaryware-nairobi",
+      "reason": "same service"
+    },
+    {
+      "label": "Sanitaryware Makueni",
+      "href": "/sanitaryware-makueni",
+      "reason": "same service"
+    }
+  ],
+  "/sanitaryware-makueni": [
+    {
+      "label": "Sanitaryware",
+      "href": "/sanitaryware",
+      "reason": "declared"
+    },
+    {
+      "label": "Sanitaryware guide",
+      "href": "/bathroom-renovation-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Cost estimation guide",
+      "href": "/cost-estimation-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Tiles Makueni",
+      "href": "/tiles-makueni",
+      "reason": "same location"
+    },
+    {
+      "label": "Sanitaryware Nairobi",
+      "href": "/sanitaryware-nairobi",
+      "reason": "same service"
+    },
+    {
+      "label": "Sanitaryware Machakos",
+      "href": "/sanitaryware-machakos",
+      "reason": "same service"
+    }
+  ],
+  "/sanitaryware-kenya": [
+    {
+      "label": "Sanitaryware",
+      "href": "/sanitaryware",
+      "reason": "declared"
+    },
+    {
+      "label": "Sanitaryware guide",
+      "href": "/bathroom-renovation-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Cost estimation guide",
+      "href": "/cost-estimation-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Tiles Kenya",
+      "href": "/tiles-kenya",
+      "reason": "same location"
+    },
+    {
+      "label": "Sanitaryware Nairobi",
+      "href": "/sanitaryware-nairobi",
+      "reason": "same service"
+    },
+    {
+      "label": "Sanitaryware Machakos",
+      "href": "/sanitaryware-machakos",
+      "reason": "same service"
+    }
+  ],
+  "/paints-nairobi": [
+    {
+      "label": "Paints",
+      "href": "/paints",
+      "reason": "declared"
+    },
+    {
+      "label": "Paints guide",
+      "href": "/paint-selection-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Cost estimation guide",
+      "href": "/cost-estimation-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Tiles Nairobi",
+      "href": "/tiles-nairobi",
+      "reason": "same location"
+    },
+    {
+      "label": "Sanitaryware Nairobi",
+      "href": "/sanitaryware-nairobi",
+      "reason": "same location"
+    },
+    {
+      "label": "Paints Machakos",
+      "href": "/paints-machakos",
+      "reason": "same service"
+    }
+  ],
+  "/paints-machakos": [
+    {
+      "label": "Paints",
+      "href": "/paints",
+      "reason": "declared"
+    },
+    {
+      "label": "Paints guide",
+      "href": "/paint-selection-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Cost estimation guide",
+      "href": "/cost-estimation-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Tiles Machakos",
+      "href": "/tiles-machakos",
+      "reason": "same location"
+    },
+    {
+      "label": "Sanitaryware Machakos",
+      "href": "/sanitaryware-machakos",
+      "reason": "same location"
+    },
+    {
+      "label": "Paints Nairobi",
+      "href": "/paints-nairobi",
+      "reason": "same service"
+    }
+  ],
+  "/paints-makueni": [
+    {
+      "label": "Paints",
+      "href": "/paints",
+      "reason": "declared"
+    },
+    {
+      "label": "Paints guide",
+      "href": "/paint-selection-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Cost estimation guide",
+      "href": "/cost-estimation-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Tiles Makueni",
+      "href": "/tiles-makueni",
+      "reason": "same location"
+    },
+    {
+      "label": "Sanitaryware Makueni",
+      "href": "/sanitaryware-makueni",
+      "reason": "same location"
+    },
+    {
+      "label": "Paints Nairobi",
+      "href": "/paints-nairobi",
+      "reason": "same service"
+    }
+  ],
+  "/paints-kenya": [
+    {
+      "label": "Paints",
+      "href": "/paints",
+      "reason": "declared"
+    },
+    {
+      "label": "Paints guide",
+      "href": "/paint-selection-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Cost estimation guide",
+      "href": "/cost-estimation-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Tiles Kenya",
+      "href": "/tiles-kenya",
+      "reason": "same location"
+    },
+    {
+      "label": "Sanitaryware Kenya",
+      "href": "/sanitaryware-kenya",
+      "reason": "same location"
+    },
+    {
+      "label": "Paints Nairobi",
+      "href": "/paints-nairobi",
+      "reason": "same service"
+    }
+  ],
+  "/installation-support-nairobi": [
+    {
+      "label": "Installation Support",
+      "href": "/installation-support",
+      "reason": "declared"
+    },
+    {
+      "label": "Installation Support guide",
+      "href": "/installation-best-practices",
+      "reason": "declared"
+    },
+    {
+      "label": "Cost estimation guide",
+      "href": "/cost-estimation-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Guides",
+      "href": "/guides",
+      "reason": "guide match"
+    },
+    {
+      "label": "Tiles Nairobi",
+      "href": "/tiles-nairobi",
+      "reason": "same location"
+    },
+    {
+      "label": "Sanitaryware Nairobi",
+      "href": "/sanitaryware-nairobi",
+      "reason": "same location"
+    }
+  ],
+  "/installation-support-machakos": [
+    {
+      "label": "Installation Support",
+      "href": "/installation-support",
+      "reason": "declared"
+    },
+    {
+      "label": "Installation Support guide",
+      "href": "/installation-best-practices",
+      "reason": "declared"
+    },
+    {
+      "label": "Cost estimation guide",
+      "href": "/cost-estimation-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Guides",
+      "href": "/guides",
+      "reason": "guide match"
+    },
+    {
+      "label": "Tiles Machakos",
+      "href": "/tiles-machakos",
+      "reason": "same location"
+    },
+    {
+      "label": "Sanitaryware Machakos",
+      "href": "/sanitaryware-machakos",
+      "reason": "same location"
+    }
+  ],
+  "/installation-support-makueni": [
+    {
+      "label": "Installation Support",
+      "href": "/installation-support",
+      "reason": "declared"
+    },
+    {
+      "label": "Installation Support guide",
+      "href": "/installation-best-practices",
+      "reason": "declared"
+    },
+    {
+      "label": "Cost estimation guide",
+      "href": "/cost-estimation-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Guides",
+      "href": "/guides",
+      "reason": "guide match"
+    },
+    {
+      "label": "Tiles Makueni",
+      "href": "/tiles-makueni",
+      "reason": "same location"
+    },
+    {
+      "label": "Sanitaryware Makueni",
+      "href": "/sanitaryware-makueni",
+      "reason": "same location"
+    }
+  ],
+  "/installation-support-kenya": [
+    {
+      "label": "Installation Support",
+      "href": "/installation-support",
+      "reason": "declared"
+    },
+    {
+      "label": "Installation Support guide",
+      "href": "/installation-best-practices",
+      "reason": "declared"
+    },
+    {
+      "label": "Cost estimation guide",
+      "href": "/cost-estimation-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Guides",
+      "href": "/guides",
+      "reason": "guide match"
+    },
+    {
+      "label": "Tiles Kenya",
+      "href": "/tiles-kenya",
+      "reason": "same location"
+    },
+    {
+      "label": "Sanitaryware Kenya",
+      "href": "/sanitaryware-kenya",
+      "reason": "same location"
+    }
+  ],
+  "/tile-buying-guide": [
+    {
+      "label": "Adhesive & Grout Guide",
+      "href": "/adhesive-grout-guide",
+      "reason": "guide match"
+    },
+    {
+      "label": "Cost Estimation Guide",
+      "href": "/cost-estimation-guide",
+      "reason": "guide match"
+    }
+  ],
+  "/bathroom-renovation-guide": [],
+  "/paint-selection-guide": [
+    {
+      "label": "Cost Estimation Guide",
+      "href": "/cost-estimation-guide",
+      "reason": "guide match"
+    }
+  ],
+  "/adhesive-grout-guide": [],
+  "/installation-best-practices": [
+    {
+      "label": "Guides",
+      "href": "/guides",
+      "reason": "guide match"
+    }
+  ],
+  "/cost-estimation-guide": []
+}

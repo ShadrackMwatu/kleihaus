@@ -1,5 +1,5 @@
 export const SITE_ORIGIN = 'https://www.kleihaus.com'
-export const SEO_LASTMOD = '2026-07-29'
+export const SEO_LASTMOD = '2026-08-05'
 
 const defaultImage = '/images/kleihaus-structure.jpg'
 
@@ -391,6 +391,76 @@ export const buildRouteJsonLd = (route) => {
   }
 }
 
+const deriveKeywords = (route) => {
+  const values = [
+    route.category,
+    route.serviceType,
+    route.areaServed,
+    ...(route.relatedLinks || []).map((link) => link.label),
+    ...(route.breadcrumbs || []).map((item) => item.name),
+  ]
+
+  return [...new Set(values.filter(Boolean).map((value) => String(value).trim()).filter(Boolean))]
+}
+
+export const normalizeSeoRoute = (route) => {
+  const breadcrumbs = route.breadcrumbs || [
+    { name: 'Home', href: '/' },
+    { name: route.category || 'Page', href: route.path },
+  ]
+  const lastModified = route.lastModified || route.lastmod || SEO_LASTMOD
+
+  return {
+    slug: route.path,
+    path: route.path,
+    title: route.title,
+    description: route.description,
+    keywords: route.keywords || deriveKeywords(route),
+    image: route.image || defaultImage,
+    imageAlt: route.imageAlt || route.title,
+    schemaType: route.schemaType || 'WebPage',
+    schema: buildRouteJsonLd(route),
+    breadcrumb: breadcrumbs,
+    breadcrumbs,
+    canonical: toAbsoluteUrl(route.path),
+    lastModified,
+    lastmod: lastModified,
+    changefreq: route.changefreq || 'monthly',
+    priority: route.priority || '0.7',
+    category: route.category || '',
+    serviceType: route.serviceType || '',
+    areaServed: route.areaServed || '',
+    relatedLinks: route.relatedLinks || [],
+    faqs: route.faqs || [],
+  }
+}
+
+export const seoConfig = seoRoutes.map(normalizeSeoRoute)
+
+export const seoConfigBySlug = Object.fromEntries(seoConfig.map((route) => [route.slug, route]))
+
+export const primaryNavigation = [
+  { label: 'About', section: 'about', href: '/#about', type: 'section' },
+  { label: 'Products', href: '/products', type: 'route' },
+  { label: 'Solutions', href: '/trade-projects', type: 'route' },
+  { label: 'Projects', href: '/projects', type: 'route' },
+  { label: 'Guides', href: '/guides', type: 'route' },
+  { label: 'Locations', href: '/locations', type: 'route' },
+  { label: 'Contact', section: 'contact', href: '/#contact', type: 'section' },
+]
+
+export const buildRobotsTxt = () => `User-agent: *
+Allow: /
+
+Sitemap: ${SITE_ORIGIN}/sitemap.xml
+`
+
+export const buildNavigationManifest = () => ({
+  primary: primaryNavigation,
+  generatedAt: SEO_LASTMOD,
+  routeCount: seoRoutes.length,
+})
+
 const escapeXml = (value) =>
   String(value)
     .replace(/&/g, '&amp;')
@@ -401,10 +471,11 @@ const escapeXml = (value) =>
 
 export const buildSitemapXml = (routes = seoRoutes) => {
   const urls = routes
+    .map(normalizeSeoRoute)
     .map(
       (route) => `  <url>
     <loc>${escapeXml(toAbsoluteUrl(route.path))}</loc>
-    <lastmod>${route.lastmod || SEO_LASTMOD}</lastmod>
+    <lastmod>${route.lastModified}</lastmod>
     <changefreq>${route.changefreq || 'monthly'}</changefreq>
     <priority>${route.priority || '0.7'}</priority>
   </url>`,
