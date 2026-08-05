@@ -50,6 +50,8 @@ Implementation status on 2026-06-24, 2026-06-25, 2026-07-07, 2026-07-08, 2026-07
 | Review the first scheduled SEO Production Monitor run and document whether scheduling is proven. | Moves continuous monitoring from configured to verified. | Low | High: push monitoring is proven; scheduled execution was not yet observed during the 2026-08-05 continuity audit. | Low |
 | Validate failure-alert issue creation through a safe non-production method or wait for a real blocking failure. | Confirms alerting works without intentionally breaking production. | Low/Medium | Medium: issue logic is implemented but unproven. | Medium if tested against production, low if tested safely |
 | Fill `docs/SEO_GA4_4_WEEK_MONITORING_TEMPLATE.md` weekly for four weeks after deployment. | Turns Search Console, GA4, GBP and lead behavior into practical follow-up actions. | Low | High | Medium due to account access dependency |
+| Add `npm run analytics:verify` to continuous integration or a pre-deploy gate. | Prevents future GA4 custom-event regressions from shipping unnoticed. | Low | High: the script exists and passes, but is not yet part of `npm run build` or the production monitor workflow. | Low |
+| Connect GA4 and Search Console APIs after approved credentials are available. | Turns technical SEO health into automated business-performance measurement. | Medium | High: current dashboard values remain null because private analytics/search data ingestion is not implemented. | Medium due to credential and privacy controls |
 
 Phase 1 success metrics:
 

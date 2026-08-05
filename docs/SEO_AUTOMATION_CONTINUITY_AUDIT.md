@@ -4,7 +4,7 @@ Audit date: 2026-08-05
 
 Production site audited: https://www.kleihaus.com
 
-Final classification: **Functional but partially continuous**
+Final classification: **Functional and mostly continuous**
 
 ## Executive Summary
 
@@ -12,9 +12,9 @@ The Kleihaus automated SEO optimization system is functional. The build-time SEO
 
 Production verification is also functional. A full-route production run on 2026-08-05 checked 39 of 39 manifest routes and 7 public SEO endpoints with 0 blocking failures and 0 warnings.
 
-Continuous monitoring is implemented and has run once after a push to `main`. GitHub Actions evidence shows workflow run `31034416832` completed successfully for commit `39f76aebf93c84f4b144d4f07772651034445b0f`, uploaded artifact `kleihaus-seo-production-report-1`, wrote the workflow summary step, and skipped alerting because the run passed.
+Continuous monitoring is implemented and has now run successfully after three pushes to `main`. GitHub Actions evidence shows runs `31034416832`, `31041467345` and `31042443280` completed successfully, each uploaded one `kleihaus-seo-production-report-*` artifact, wrote the workflow summary step and skipped alerting because the run passed.
 
-The system is not yet fully continuous and verified because the scheduled trigger has not had enough time to produce a daily run, failure alerting has not fired against a real blocking production failure, and GA4/Search Console API integrations remain documented but not active.
+The system is continuous for push-triggered production checks, but the daily scheduled trigger remains configured rather than proven because no scheduled run was visible in the available run history. Failure alerting has not fired against a real blocking production failure, and GA4/Search Console API integrations remain documented but not active.
 
 ## Repository Status
 
