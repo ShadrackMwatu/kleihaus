@@ -9,6 +9,7 @@
     "seo:audit": "node scripts/seo-engine.mjs --audit-only",
     "seo:verify-production": "node scripts/verify-production-seo.mjs",
     "seo:verify-production:all": "node scripts/verify-production-seo.mjs --all-routes",
+    "analytics:verify": "node scripts/verify-analytics-events.mjs",
     "generate:sitemap": "node scripts/generate-sitemap.mjs",
     "generate:route-html": "node scripts/generate-route-html.mjs",
     "build": "npm run seo:generate && vite build && npm run generate:route-html && npm run seo:audit",

@@ -48,6 +48,8 @@ Use this checklist after each major SEO deployment and after any analytics envir
 
 ### GA4 Event Verification
 
+- Run `npm run analytics:verify` before deployment when analytics code changes.
+- Use `docs/GA4_CUSTOM_EVENT_VERIFICATION.md` as the current event-wiring audit trail.
 - Open GA4 DebugView or Realtime.
 - Visit the homepage and one guide route.
 - Submit a successful quote request using test-safe details agreed by the business.

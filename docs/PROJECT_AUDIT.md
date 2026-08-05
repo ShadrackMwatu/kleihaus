@@ -50,6 +50,13 @@ Follow-up page-view hardening:
 - The implementation keeps `send_page_view: false` in the GA config call to avoid duplicate automatic and manual page views.
 - Browser-level collect-request capture was limited by local headless browser DevTools instability during this verification; the remaining external verification step is to confirm the event in GA4 Realtime or DebugView after the fresh deployment.
 
+Follow-up custom-event verification:
+
+- `docs/GA4_CUSTOM_EVENT_VERIFICATION.md` records the custom-event audit for `quote_submit`, `whatsapp_click`, `phone_click`, `email_click`, `guide_click`, `guide_view`, `location_view` and `cta_click`.
+- `npm run analytics:verify` now provides a deterministic repo-level check for required GA4 event mappings, source wiring, single-loader behavior, manual `page_view` support and sensitive-field filtering.
+- Analytics debug mode now records the event timestamp and `gtag` availability without exposing real Measurement IDs or customer contact/message data.
+- The final classification remains `Local wiring correct; production browser verification incomplete` until the property owner confirms every event in GA4 Realtime or DebugView from a normal browser session without blocking extensions.
+
 ## SEO Automation Engine
 
 On 2026-08-05, the repository gained a build-time SEO automation engine designed to produce higher return than isolated manual SEO tweaks.

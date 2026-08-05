@@ -236,6 +236,8 @@ const logAnalyticsDebug = (event, status) => {
     eventType: event.eventType,
     gaEventName: toGaEventName(event.eventType),
     status,
+    timestamp: event.timestamp,
+    gtagAvailable: typeof window !== 'undefined' && typeof window.gtag === 'function',
     pagePath: event.pagePath,
     clickedElement: event.clickedElement,
     productCategory: event.productCategory,

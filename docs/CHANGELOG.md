@@ -8,6 +8,13 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-08-05
 
+### GA4 Custom Event Delivery Verification
+
+- Added `scripts/verify-analytics-events.mjs` and `npm run analytics:verify` to regression-check the eight expected GA4 custom events: `quote_submit`, `whatsapp_click`, `phone_click`, `email_click`, `guide_click`, `guide_view`, `location_view` and `cta_click`.
+- Documented the production custom-event verification in `docs/GA4_CUSTOM_EVENT_VERIFICATION.md`, including event wiring, privacy safeguards, live tag evidence and the remaining GA4 Realtime/DebugView confirmation step.
+- Hardened analytics debug output so debug mode reports the event timestamp and whether `window.gtag` is available, while continuing to exclude customer names, email addresses, phone numbers and free-form messages.
+- Preserved the single optional GA4 implementation, `VITE_GA_MEASUREMENT_ID` injection path, quote workflow, WhatsApp behavior, SEO automation and Cloudflare Workers architecture.
+
 ### GA4 Page View Event Hardening
 
 - Verified the live production bundle contains one redacted GA4 Measurement ID, one Google tag loader reference and one GA4 config call from the existing `VITE_GA_MEASUREMENT_ID` path.
