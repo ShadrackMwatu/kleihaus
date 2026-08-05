@@ -83,6 +83,12 @@ npm run seo:audit
 Runs the automated SEO audit without rewriting the public generated assets. Use this after route HTML generation or when reviewing SEO changes.
 
 ```bash
+npm run seo:verify-production
+```
+
+Checks the deployed site at `https://www.kleihaus.com` for critical SEO endpoints, route-specific initial HTML metadata, sitemap/robots consistency, JSON endpoint validity and forbidden schema. The command writes a timestamped local report under `reports/seo-production/` and exits non-zero only for blocking production mismatches.
+
+```bash
 npm run generate:sitemap
 ```
 
@@ -109,6 +115,7 @@ git status
 ```bash
 npm install
 npm run build
+npm run seo:verify-production
 ```
 
 4. Commit and push to `main`:

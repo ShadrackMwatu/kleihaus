@@ -1,6 +1,6 @@
 # Kleihaus Automated SEO Report
 
-Generated: 2026-08-05T17:33:51.954Z
+Generated: 2026-08-05T17:43:57.052Z
 
 Status: PASS
 
@@ -54,6 +54,10 @@ Score: 91/100
 - docs/SEO_REPORT.md
 - docs/SEO_CONTENT_SUGGESTIONS.md
 - docs/GBP_SOCIAL_DRAFTS.md
+
+## Production Verification
+
+Run `npm run seo:verify-production` after deployment to confirm Cloudflare is serving these generated outputs and route-specific metadata from the public site.
 
 ## Content Suggestions For Review
 

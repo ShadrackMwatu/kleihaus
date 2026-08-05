@@ -8,6 +8,11 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const distPath = resolve(__dirname, '../dist')
 const indexPath = resolve(distPath, 'index.html')
 const baseHtml = await readFile(indexPath, 'utf8')
+const homeRoute = seoRoutes.find((route) => route.path === '/')
+
+if (homeRoute) {
+  await writeFile(indexPath, injectRouteMetadata(baseHtml, homeRoute), 'utf8')
+}
 
 const pageRoutes = seoRoutes.filter((route) => route.path !== '/')
 const routePaths = new Set(pageRoutes.map((route) => route.path))

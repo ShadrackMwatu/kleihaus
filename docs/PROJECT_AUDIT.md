@@ -33,6 +33,29 @@ Preserved safeguards:
 - The automation blocks unsupported Product, Offer, Review and AggregateRating schema.
 - No Cloudflare DNS, routes, bindings, secrets, Worker deployment settings, quote endpoint, fake ratings, fake reviews, fake prices or automatic publishing behavior were introduced.
 
+## Production SEO Verification And Monitoring
+
+On 2026-08-05, production verification was added after the SEO Automation Engine deployment.
+
+Implemented repo changes:
+
+- Added `scripts/verify-production-seo.mjs` for repeatable public verification of production SEO endpoints, generated JSON files, sitemap/robots consistency and route-specific initial HTML metadata.
+- Added `npm run seo:verify-production`.
+- Added `docs/SEO_PRODUCTION_VERIFICATION.md` and `docs/SEO_GA4_4_WEEK_MONITORING_TEMPLATE.md`.
+- Updated route HTML generation so the homepage `dist/index.html` is injected from the central SEO manifest before deployment.
+
+Production finding:
+
+- The deployed generated endpoints returned HTTP 200 and valid content.
+- Representative deep routes returned route-specific initial metadata.
+- The homepage had a Twitter/X description mismatch before the fix because base `index.html` was not being reinjected with the central home route metadata.
+
+Preserved safeguards:
+
+- No Cloudflare DNS, routes, bindings, secrets or hosting architecture changed.
+- No Search Console credentials, GA4 Measurement ID, verification token or fabricated analytics values were committed.
+- No Product, Offer, Review or AggregateRating schema was introduced.
+
 ## Homepage Contact Prompt Simplification
 
 On 2026-07-30, the homepage and shared layout were reviewed after the information-architecture and commercial-positioning updates. The owner-approved direction was to stop repeating WhatsApp, quotation and the three service-area names across the homepage, while preserving the local SEO architecture and final Contact conversion path.

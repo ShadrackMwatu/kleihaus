@@ -26,6 +26,15 @@ Do not commit real Google Analytics or Search Console verification secrets to th
 
 Use this checklist after each major SEO deployment and after any analytics environment change.
 
+### Production SEO Verification
+
+- Run `npm run seo:verify-production` after each deployment to `main`.
+- Confirm the command passes for `https://www.kleihaus.com`.
+- Confirm `/sitemap.xml`, `/robots.txt`, `/seo-navigation.json`, `/seo-internal-links.json`, `/seo-dashboard.json` and `/images/image-manifest.json` return HTTP 200.
+- Confirm representative route HTML contains route-specific title, description, canonical, Open Graph, Twitter/X metadata and JSON-LD in the initial server response.
+- Treat failures as deployment blockers unless the report clearly identifies a temporary CDN/deployment propagation delay.
+- Keep timestamped local reports under `reports/seo-production/` for review; do not store private analytics exports there.
+
 ### GA4 Configuration
 
 - Confirm the official Kleihaus GA4 property exists.
@@ -145,6 +154,29 @@ Troubleshooting:
 - Confirm browser extensions are not blocking GA.
 - Confirm the browser console has no `KLEIHAUS_ANALYTICS_DEBUG` errors if debug mode is enabled.
 - Confirm first-party `/api/track-event` responses return success so local journey tracking still works.
+
+## Four-Week Monitoring Cycle
+
+Use `docs/SEO_GA4_4_WEEK_MONITORING_TEMPLATE.md` for the first four weeks after major SEO deployments.
+
+Search Console weekly checks:
+
+- Indexed pages and excluded pages.
+- Sitemap processing status and submitted URL count.
+- Crawl errors and page indexing issues.
+- Impressions, clicks, CTR and average position.
+- Top queries, top pages, location-related queries and guide-related queries.
+
+GA4 weekly checks:
+
+- Organic sessions, engaged sessions, engagement rate and average engagement time.
+- Landing pages and source/medium.
+- GBP UTM traffic from the recommended profile URLs.
+- `quote_submit`, `whatsapp_click`, `phone_click`, `email_click`, `guide_click`, `guide_view`, `location_view` and `cta_click`.
+
+Manual rule:
+
+- Do not fill missing metrics with estimates. Use `TBD`, `not configured` or `not available` until the official account data is accessible.
 
 ## Google Business Profile UTM Tracking
 

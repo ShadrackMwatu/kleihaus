@@ -8,6 +8,15 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-08-05
 
+### Production SEO Verification And Monitoring
+
+- Added `scripts/verify-production-seo.mjs` and `npm run seo:verify-production` to verify deployed SEO endpoints, sitemap/robots consistency, generated JSON validity and route-specific initial HTML metadata from the public production site.
+- Added `docs/SEO_PRODUCTION_VERIFICATION.md` with the production verification results, route coverage summary, limitations and manual follow-up.
+- Added `docs/SEO_GA4_4_WEEK_MONITORING_TEMPLATE.md` for four weeks of Search Console, GA4, Google Business Profile and lead-event monitoring without fabricating data.
+- Fixed route HTML generation so the homepage `dist/index.html` receives metadata from the central SEO manifest, matching non-homepage route HTML generation.
+- Documented the deployed mismatch found before the fix: the homepage Twitter/X description was still using the static base HTML description while route pages used generated metadata.
+- Preserved Cloudflare DNS/routes/bindings/secrets, quote API behavior, WhatsApp same-tab behavior, sitemap generation, analytics architecture and the no Product/Offer/Review/AggregateRating schema rule.
+
 ### SEO Automation Engine
 
 - Added `scripts/seo-engine.mjs` as a build-time SEO automation layer that generates sitemap, robots, navigation, internal-link, image-manifest and SEO-report outputs from the central route metadata.

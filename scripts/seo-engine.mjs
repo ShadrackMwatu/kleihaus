@@ -185,7 +185,7 @@ const extractInternalReferences = async () => {
     let match
     while ((match = pattern.exec(content))) {
       const value = match[1] || match[2]
-    if (!value || value.includes('${') || value.startsWith('/api/') || value.startsWith('/images/') || value.startsWith('/src/')) continue
+      if (!value || value.includes('${') || value.startsWith('/api/') || value.startsWith('/images/') || value.startsWith('/src/')) continue
       references.push({ file: toPosix(relative(root, file)), path: normalizePathname(value) })
     }
   }
@@ -311,6 +311,10 @@ ${topWarnings.length ? topWarnings.map((warning) => `- ${warning}`).join('\n') :
 - docs/SEO_REPORT.md
 - docs/SEO_CONTENT_SUGGESTIONS.md
 - docs/GBP_SOCIAL_DRAFTS.md
+
+## Production Verification
+
+Run \`npm run seo:verify-production\` after deployment to confirm Cloudflare is serving these generated outputs and route-specific metadata from the public site.
 
 ## Content Suggestions For Review
 
