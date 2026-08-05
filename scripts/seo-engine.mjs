@@ -316,6 +316,8 @@ ${topWarnings.length ? topWarnings.map((warning) => `- ${warning}`).join('\n') :
 
 Run \`npm run seo:verify-production\` after deployment to confirm Cloudflare is serving these generated outputs and route-specific metadata from the public site.
 
+Continuous monitoring runs \`npm run seo:verify-production -- --all-routes\` from GitHub Actions after relevant pushes to \`main\`, daily at 04:00 UTC and on manual dispatch. Reports are uploaded as GitHub Actions artifacts rather than committed as daily timestamped files.
+
 ## Content Suggestions For Review
 
 ${suggestedPages || '- No suggestions generated.'}

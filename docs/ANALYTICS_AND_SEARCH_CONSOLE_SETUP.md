@@ -29,6 +29,9 @@ Use this checklist after each major SEO deployment and after any analytics envir
 ### Production SEO Verification
 
 - Run `npm run seo:verify-production` after each deployment to `main`.
+- Use `npm run seo:verify-production:all` when checking every indexable route in the SEO manifest.
+- The GitHub Actions `SEO Production Monitor` workflow runs full-route verification after relevant pushes to `main`, daily at `04:00 UTC` and by manual dispatch.
+- Workflow reports are uploaded as GitHub Actions artifacts for 60 days; local timestamped reports remain ignored under `reports/seo-production/`.
 - Confirm the command passes for `https://www.kleihaus.com`.
 - Confirm `/sitemap.xml`, `/robots.txt`, `/seo-navigation.json`, `/seo-internal-links.json`, `/seo-dashboard.json` and `/images/image-manifest.json` return HTTP 200.
 - Confirm representative route HTML contains route-specific title, description, canonical, Open Graph, Twitter/X metadata and JSON-LD in the initial server response.
@@ -158,6 +161,16 @@ Troubleshooting:
 ## Four-Week Monitoring Cycle
 
 Use `docs/SEO_GA4_4_WEEK_MONITORING_TEMPLATE.md` for the first four weeks after major SEO deployments.
+
+## Future API-Based Monitoring
+
+The continuous SEO production monitor does not connect to GA4 or Search Console yet because approved credentials have not been provided and should not be committed to the repository.
+
+Future GA4 automation can be added only after the official Kleihaus property ID and approved Google Analytics Data API credentials are available through GitHub secrets. Candidate metrics include organic sessions, landing pages, engagement, `quote_submit`, `whatsapp_click`, `phone_click`, `email_click`, `guide_click`, `guide_view`, `location_view` and `cta_click`.
+
+Future Search Console automation can be added only after the production property is verified and approved API access is available through GitHub secrets. Candidate metrics include clicks, impressions, CTR, average position, top queries, top pages, sitemap status and index coverage where supported.
+
+Do not add fake zeroes, placeholder service-account JSON, verification tokens or dummy property IDs to simulate these integrations.
 
 Search Console weekly checks:
 

@@ -89,6 +89,12 @@ npm run seo:verify-production
 Checks the deployed site at `https://www.kleihaus.com` for critical SEO endpoints, route-specific initial HTML metadata, sitemap/robots consistency, JSON endpoint validity and forbidden schema. The command writes a timestamped local report under `reports/seo-production/` and exits non-zero only for blocking production mismatches.
 
 ```bash
+npm run seo:verify-production:all
+```
+
+Runs the same production verifier against every indexable route in the central SEO manifest. GitHub Actions uses this full-route mode for continuous monitoring.
+
+```bash
 npm run generate:sitemap
 ```
 
@@ -115,7 +121,7 @@ git status
 ```bash
 npm install
 npm run build
-npm run seo:verify-production
+npm run seo:verify-production:all
 ```
 
 4. Commit and push to `main`:
@@ -133,7 +139,9 @@ Workers Builds: kleihaus
 conclusion: success
 ```
 
-6. Verify production:
+6. Confirm the `SEO Production Monitor` workflow passes. It runs after relevant pushes to `main`, waits for Cloudflare deployment propagation, retries transient production mismatches and uploads Markdown/JSON reports as GitHub Actions artifacts.
+
+7. Verify production:
 
 ```bash
 GET https://www.kleihaus.com
@@ -323,6 +331,9 @@ Primary documentation:
 
 - `docs/CHANGELOG.md`
 - `docs/PROJECT_AUDIT.md`
+- `docs/SEO_AUTOMATION_ENGINE.md`
+- `docs/SEO_CONTINUOUS_MONITORING.md`
+- `docs/SEO_PRODUCTION_VERIFICATION.md`
 - `docs/DEVELOPMENT_WORKFLOW.md`
 - `docs/AI_BACKEND_ARCHITECTURE.md`
 - `docs/SEO_STRATEGY.md`

@@ -1,6 +1,6 @@
 # Kleihaus SEO Content Suggestions
 
-Generated: 2026-08-05T17:43:57.052Z
+Generated: 2026-08-05T18:17:20.179Z
 
 These are review-ready suggestions from the automated SEO engine. They do not publish content and they do not invent facts.
 

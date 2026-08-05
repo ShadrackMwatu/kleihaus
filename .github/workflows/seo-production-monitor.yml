@@ -1,0 +1,229 @@
+name: SEO Production Monitor
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/seo-production-monitor.yml"
+      - "index.html"
+      - "package.json"
+      - "package-lock.json"
+      - "public/**"
+      - "scripts/**"
+      - "src/**"
+  schedule:
+    - cron: "0 4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: kleihaus-seo-production-monitor
+  cancel-in-progress: false
+
+jobs:
+  verify-production-seo:
+    name: Verify production SEO
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Wait for Cloudflare deployment propagation
+        if: github.event_name == 'push'
+        run: sleep 180
+
+      - name: Run full-route production SEO verification
+        id: seo_verify
+        shell: bash
+        run: |
+          set +e
+          mkdir -p reports/seo-production
+          attempts=3
+          delay_seconds=90
+          final_exit=1
+
+          for attempt in $(seq 1 "$attempts"); do
+            markdown_report="reports/seo-production/seo-production-${GITHUB_RUN_NUMBER}-attempt-${attempt}.md"
+            json_report="reports/seo-production/seo-production-${GITHUB_RUN_NUMBER}-attempt-${attempt}.json"
+
+            echo "Running production SEO verification attempt ${attempt}/${attempts}"
+            npm run seo:verify-production -- --all-routes --report "$markdown_report" --json-report "$json_report"
+            exit_code=$?
+
+            echo "FINAL_MARKDOWN_REPORT=$markdown_report" >> "$GITHUB_ENV"
+            echo "FINAL_JSON_REPORT=$json_report" >> "$GITHUB_ENV"
+            final_exit=$exit_code
+
+            if [ "$exit_code" -eq 0 ]; then
+              break
+            fi
+
+            if [ "$attempt" -lt "$attempts" ]; then
+              echo "Verification failed; waiting ${delay_seconds}s before retry."
+              sleep "$delay_seconds"
+            fi
+          done
+
+          exit "$final_exit"
+
+      - name: Upload SEO verification reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kleihaus-seo-production-report-${{ github.run_number }}
+          path: reports/seo-production/
+          retention-days: 60
+          if-no-files-found: warn
+
+      - name: Write workflow summary
+        if: always()
+        shell: bash
+        run: |
+          node --input-type=module <<'NODE'
+          import { readFileSync, existsSync } from 'node:fs'
+
+          const reportPath = process.env.FINAL_JSON_REPORT
+          const summaryPath = process.env.GITHUB_STEP_SUMMARY
+
+          if (!reportPath || !existsSync(reportPath)) {
+            await import('node:fs/promises').then(({ appendFile }) =>
+              appendFile(summaryPath, [
+                '# Kleihaus SEO Production Monitor',
+                '',
+                'No JSON report was produced. Check the verification step logs.',
+                '',
+              ].join('\n')),
+            )
+            process.exit(0)
+          }
+
+          const report = JSON.parse(readFileSync(reportPath, 'utf8'))
+          const lines = [
+            '# Kleihaus SEO Production Monitor',
+            '',
+            `Status: ${report.result === 'pass' ? 'PASS' : 'ACTION REQUIRED'}`,
+            `Base URL: ${report.baseUrl}`,
+            `Verification time: ${report.generatedAt}`,
+            `Routes checked: ${report.routesChecked}/${report.manifestRouteCount}`,
+            `Endpoints checked: ${report.endpointsChecked}`,
+            `Average response time: ${report.averageResponseMs}ms`,
+            `Warning count: ${report.warnings.length}`,
+            `Failure count: ${report.failures.length}`,
+            `Sitemap/manifest consistency: ${report.sitemapUrlsMissingFromManifest.length === 0 && report.manifestRoutesMissingFromSitemap.length === 0 ? 'pass' : 'action required'}`,
+            '',
+            '## Slowest Responses',
+            ...(report.slowestResponses.length ? report.slowestResponses.map((item) => `- ${item.path}: ${item.durationMs}ms`) : ['- None recorded.']),
+            '',
+            '## Blocking Failures',
+            ...(report.failures.length ? report.failures.slice(0, 20).map((failure) => `- ${failure}`) : ['- None.']),
+            '',
+          ]
+
+          await import('node:fs/promises').then(({ appendFile }) => appendFile(summaryPath, lines.join('\n')))
+          NODE
+
+      - name: Alert through GitHub issue
+        if: failure()
+        uses: actions/github-script@v7
+        env:
+          FINAL_JSON_REPORT: ${{ env.FINAL_JSON_REPORT }}
+        with:
+          script: |
+            const fs = require('fs')
+
+            const owner = context.repo.owner
+            const repo = context.repo.repo
+            const title = 'SEO production verification failure'
+            const labels = ['seo-monitoring', 'production', 'automated']
+            const runUrl = `${context.serverUrl}/${owner}/${repo}/actions/runs/${context.runId}`
+            const reportPath = process.env.FINAL_JSON_REPORT
+
+            let report = null
+            if (reportPath && fs.existsSync(reportPath)) {
+              report = JSON.parse(fs.readFileSync(reportPath, 'utf8'))
+            }
+
+            for (const label of labels) {
+              try {
+                await github.rest.issues.getLabel({ owner, repo, name: label })
+              } catch (error) {
+                if (error.status === 404) {
+                  await github.rest.issues.createLabel({ owner, repo, name: label, color: '8a5a44' })
+                } else {
+                  throw error
+                }
+              }
+            }
+
+            const failures = report?.failures?.length
+              ? report.failures.slice(0, 30).map((failure) => `- ${failure}`).join('\n')
+              : '- Verification failed before a structured failure list was available.'
+
+            const failedPaths = report
+              ? [
+                  ...(report.endpointResults || []).filter((item) => item.failures?.length || item.status >= 400 || item.status === 0).map((item) => item.path),
+                  ...(report.routeResults || []).filter((item) => item.failures?.length || item.status >= 400 || item.status === 0).map((item) => item.path),
+                ]
+              : []
+
+            const body = [
+              'The continuous production SEO monitor detected blocking failures after all retries.',
+              '',
+              `Workflow run: ${runUrl}`,
+              `Commit SHA: ${context.sha}`,
+              `Verification time: ${report?.generatedAt || new Date().toISOString()}`,
+              `Report artifact: kleihaus-seo-production-report-${context.runNumber}`,
+              '',
+              '## Failed routes/endpoints',
+              failedPaths.length ? [...new Set(failedPaths)].map((path) => `- ${path}`).join('\n') : '- See the uploaded report artifact and workflow logs.',
+              '',
+              '## Blocking failures',
+              failures,
+              '',
+              '## First investigation steps',
+              '- Open the uploaded Markdown and JSON report artifacts.',
+              '- Confirm Cloudflare Workers Builds completed for the commit above.',
+              '- Re-run the workflow manually if the failure may be deployment propagation.',
+              '- Inspect changed route metadata, sitemap generation, robots output and route HTML generation.',
+            ].join('\n')
+
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner,
+              repo,
+              state: 'open',
+              labels: 'seo-monitoring',
+              per_page: 50,
+            })
+            const existing = issues.find((issue) => issue.title === title)
+
+            if (existing) {
+              await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number: existing.number,
+                body,
+              })
+            } else {
+              await github.rest.issues.create({
+                owner,
+                repo,
+                title,
+                body,
+                labels,
+              })
+            }

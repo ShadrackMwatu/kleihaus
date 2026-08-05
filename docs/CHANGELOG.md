@@ -8,6 +8,16 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-08-05
 
+### Continuous SEO Production Monitoring
+
+- Added `.github/workflows/seo-production-monitor.yml` to run full-route production SEO verification after relevant pushes to `main`, on a daily `04:00 UTC` schedule and through manual workflow dispatch.
+- Added deployment-propagation handling for push-triggered checks: a 180-second initial wait, up to three verification attempts and 90-second retry delays before failing persistent production issues.
+- Enhanced `scripts/verify-production-seo.mjs` to write both Markdown and JSON reports with route/endpoint response times, average response timing, slowest responses, metadata validity and sitemap/manifest consistency.
+- Added `npm run seo:verify-production:all` for full-route production checks across every indexable route in the central SEO manifest.
+- Added `docs/SEO_CONTINUOUS_MONITORING.md` documenting workflow triggers, artifacts, GitHub Issue alerts, manual runs, troubleshooting and future GA4/Search Console credential requirements.
+- Configured monitoring reports to remain under ignored `reports/seo-production/` locally while GitHub Actions preserves workflow reports as 60-day artifacts.
+- Preserved Cloudflare Workers Builds, DNS/routes/bindings/secrets, quote/WhatsApp/email/phone flows, analytics behavior and the no Product/Offer/Review/AggregateRating schema rule.
+
 ### Production SEO Verification And Monitoring
 
 - Added `scripts/verify-production-seo.mjs` and `npm run seo:verify-production` to verify deployed SEO endpoints, sitemap/robots consistency, generated JSON validity and route-specific initial HTML metadata from the public production site.

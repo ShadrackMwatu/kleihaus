@@ -1,5 +1,5 @@
 import { mkdir, writeFile } from 'node:fs/promises'
-import { dirname, resolve } from 'node:path'
+import { basename, dirname, extname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import {
   SITE_ORIGIN,
@@ -40,11 +40,15 @@ const parseArgs = () => {
   const args = process.argv.slice(2)
   const baseIndex = args.findIndex((arg) => arg === '--base-url' || arg === '--base')
   const reportIndex = args.findIndex((arg) => arg === '--report')
+  const jsonReportIndex = args.findIndex((arg) => arg === '--json-report')
+  const reportDirIndex = args.findIndex((arg) => arg === '--report-dir')
   const allRoutes = args.includes('--all-routes')
 
   return {
     baseUrl: (baseIndex >= 0 && args[baseIndex + 1] ? args[baseIndex + 1] : SITE_ORIGIN).replace(/\/+$/, ''),
     reportPath: reportIndex >= 0 && args[reportIndex + 1] ? resolve(root, args[reportIndex + 1]) : null,
+    jsonReportPath: jsonReportIndex >= 0 && args[jsonReportIndex + 1] ? resolve(root, args[jsonReportIndex + 1]) : null,
+    reportDir: reportDirIndex >= 0 && args[reportDirIndex + 1] ? resolve(root, args[reportDirIndex + 1]) : reportsDir,
     allRoutes,
   }
 }
@@ -190,6 +194,37 @@ const validateJsonEndpoint = (result) => {
 
 const parseSitemapUrls = (xml) => [...xml.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1])
 
+const responseStats = (items) => {
+  const measured = items.filter((item) => Number.isFinite(item.durationMs) && item.durationMs > 0)
+  const totalMs = measured.reduce((total, item) => total + item.durationMs, 0)
+
+  return {
+    averageMs: measured.length ? Math.round(totalMs / measured.length) : 0,
+    slowest: [...measured]
+      .sort((a, b) => b.durationMs - a.durationMs)
+      .slice(0, 5)
+      .map((item) => ({
+        path: item.path,
+        status: item.status,
+        durationMs: item.durationMs,
+      })),
+  }
+}
+
+const reportPathsFor = (options, generatedAt) => {
+  const timestamp = generatedAt.replace(/[:.]/g, '-')
+  const markdownPath = options.reportPath || resolve(options.reportDir, `seo-production-${timestamp}.md`)
+  const parsedExt = extname(markdownPath)
+  const jsonPath =
+    options.jsonReportPath ||
+    resolve(dirname(markdownPath), `${basename(markdownPath, parsedExt || '.md')}.json`)
+
+  return {
+    markdownPath,
+    jsonPath,
+  }
+}
+
 const buildMarkdownReport = (summary) => `# Kleihaus Production SEO Verification
 
 Verification date: ${summary.generatedAt}
@@ -198,13 +233,15 @@ Production base URL: ${summary.baseUrl}
 
 Status: ${summary.failures.length === 0 ? 'PASS' : 'ACTION REQUIRED'}
 
+Mode: ${summary.allRoutes ? 'Full-route production verification' : 'Representative production verification'}
+
 ## Endpoints Tested
 
-${summary.endpointResults.map((item) => `- ${item.path}: HTTP ${item.status}${item.validJson === undefined ? '' : item.validJson ? ', valid JSON' : ', invalid JSON'}`).join('\n')}
+${summary.endpointResults.map((item) => `- ${item.path}: HTTP ${item.status}, ${item.durationMs}ms${item.validJson === undefined ? '' : item.validJson ? ', valid JSON' : ', invalid JSON'}`).join('\n')}
 
 ## Routes Tested
 
-${summary.routeResults.map((item) => `- ${item.path}: HTTP ${item.status}, title ${item.title ? 'present' : 'missing'}, canonical ${item.canonical ? 'present' : 'missing'}, JSON-LD blocks ${item.jsonLdBlocks}`).join('\n')}
+${summary.routeResults.map((item) => `- ${item.path}: HTTP ${item.status}, ${item.durationMs}ms, title ${item.title ? 'present' : 'missing'}, canonical ${item.canonical ? 'present' : 'missing'}, JSON-LD blocks ${item.jsonLdBlocks}, metadata ${item.metadataValid ? 'valid' : 'needs review'}`).join('\n')}
 
 ## Route HTML Coverage
 
@@ -213,10 +250,24 @@ ${summary.routeResults.map((item) => `- ${item.path}: HTTP ${item.status}, title
 - Routes checked in production: ${summary.routeResults.length}
 - Sitemap URLs missing from manifest: ${summary.sitemapUrlsMissingFromManifest.length}
 - Manifest routes missing from sitemap: ${summary.manifestRoutesMissingFromSitemap.length}
+- Full manifest route coverage: ${summary.routeResults.length === summary.manifestRouteCount ? 'yes' : 'no'}
+
+## Response Times
+
+- Average response time: ${summary.averageResponseMs}ms
+- Slowest responses:
+${summary.slowestResponses.length ? summary.slowestResponses.map((item) => `  - ${item.path}: HTTP ${item.status}, ${item.durationMs}ms`).join('\n') : '  - None recorded.'}
 
 ## Generated JSON Endpoints
 
-${summary.jsonResults.map((item) => `- ${item.path}: HTTP ${item.status}, ${item.validJson ? 'valid JSON' : 'invalid JSON'}`).join('\n')}
+${summary.jsonResults.map((item) => `- ${item.path}: HTTP ${item.status}, ${item.durationMs}ms, ${item.validJson ? 'valid JSON' : 'invalid JSON'}`).join('\n')}
+
+## Metadata Validation
+
+- Routes with valid metadata: ${summary.metadata.validRoutes}
+- Routes with blocking metadata failures: ${summary.metadata.invalidRoutes}
+- JSON endpoint validity: ${summary.jsonResults.every((item) => item.validJson && item.failures.length === 0) ? 'pass' : 'action required'}
+- Sitemap/manifest consistency: ${summary.sitemapUrlsMissingFromManifest.length === 0 && summary.manifestRoutesMissingFromSitemap.length === 0 ? 'pass' : 'action required'}
 
 ## Findings
 
@@ -234,13 +285,15 @@ ${summary.warnings.length ? summary.warnings.map((warning) => `- ${warning}`).jo
 
 ## Manual Follow-Up
 
+- Review the GitHub Actions SEO Production Monitor after pushes and scheduled runs.
+- Download Markdown/JSON report artifacts when a workflow warning or failure needs investigation.
 - Review Google Search Console sitemap processing, indexed pages, excluded pages and crawl errors weekly for four weeks.
 - Review GA4 Realtime and DebugView for quote, WhatsApp, phone, email, guide and location events.
-- Compare production SEO verification after every deployment.
 `
 
 const run = async () => {
   const options = parseArgs()
+  const generatedAt = new Date().toISOString()
   const endpointResults = []
   const routeResults = []
   const failures = []
@@ -289,6 +342,7 @@ const run = async () => {
     try {
       const result = await fetchText(options.baseUrl, path)
       const routeResult = validateRouteMetadata(route, result, options.baseUrl)
+      routeResult.metadataValid = routeResult.failures.length === 0
       routeResults.push(routeResult)
       failures.push(...routeResult.failures.map((failure) => `${path}: ${failure}`))
       warnings.push(...routeResult.warnings.map((warning) => `${path}: ${warning}`))
@@ -297,11 +351,22 @@ const run = async () => {
     }
   }
 
+  const responseSummary = responseStats([...endpointResults, ...routeResults])
   const summary = {
-    generatedAt: new Date().toISOString(),
+    generatedAt,
     baseUrl: options.baseUrl,
+    allRoutes: options.allRoutes,
+    result: failures.length === 0 ? 'pass' : 'fail',
     manifestRouteCount: seoConfig.length,
     sitemapUrlCount: sitemapUrls.length,
+    endpointsChecked: endpointResults.length,
+    routesChecked: routeResults.length,
+    averageResponseMs: responseSummary.averageMs,
+    slowestResponses: responseSummary.slowest,
+    metadata: {
+      validRoutes: routeResults.filter((item) => item.metadataValid).length,
+      invalidRoutes: routeResults.filter((item) => !item.metadataValid).length,
+    },
     endpointResults: endpointResults.map((item) => ({
       path: item.path,
       status: item.status,
@@ -317,14 +382,18 @@ const run = async () => {
     warnings: unique(warnings),
   }
 
-  const reportPath = options.reportPath || resolve(reportsDir, `seo-production-${summary.generatedAt.replace(/[:.]/g, '-')}.md`)
-  await mkdir(dirname(reportPath), { recursive: true })
-  await writeFile(reportPath, buildMarkdownReport(summary), 'utf8')
+  const { markdownPath, jsonPath } = reportPathsFor(options, generatedAt)
+  await mkdir(dirname(markdownPath), { recursive: true })
+  await mkdir(dirname(jsonPath), { recursive: true })
+  await writeFile(markdownPath, buildMarkdownReport(summary), 'utf8')
+  await writeFile(jsonPath, `${JSON.stringify(summary, null, 2)}\n`, 'utf8')
 
   console.log(`Production SEO verification ${summary.failures.length ? 'failed' : 'passed'} for ${options.baseUrl}`)
-  console.log(`Endpoints checked: ${criticalEndpoints.length}`)
+  console.log(`Endpoints checked: ${endpointResults.length}`)
   console.log(`Routes checked: ${routeResults.length}`)
-  console.log(`Report: ${reportPath}`)
+  console.log(`Average response time: ${summary.averageResponseMs}ms`)
+  console.log(`Markdown report: ${markdownPath}`)
+  console.log(`JSON report: ${jsonPath}`)
 
   if (summary.failures.length) {
     console.error(summary.failures.map((failure) => `- ${failure}`).join('\n'))

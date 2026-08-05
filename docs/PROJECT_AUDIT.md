@@ -56,6 +56,28 @@ Preserved safeguards:
 - No Search Console credentials, GA4 Measurement ID, verification token or fabricated analytics values were committed.
 - No Product, Offer, Review or AggregateRating schema was introduced.
 
+## Continuous SEO Production Monitoring
+
+On 2026-08-05, production verification was converted from a manual-only command into continuous monitoring.
+
+Implemented repo changes:
+
+- Added `.github/workflows/seo-production-monitor.yml`.
+- The workflow runs after relevant pushes to `main`, every day at `04:00 UTC` and through manual `workflow_dispatch`.
+- Push-triggered runs wait 180 seconds for Cloudflare Workers Builds propagation before checking production.
+- All monitoring runs execute full-route verification with `npm run seo:verify-production -- --all-routes`.
+- The verifier writes both Markdown and JSON reports, including endpoints checked, routes checked, manifest route count, sitemap URL count, failures, warnings, route and endpoint response times, average response time, slowest responses, metadata validation, sitemap/manifest differences and JSON endpoint validity.
+- GitHub Actions uploads reports from `reports/seo-production/` as `kleihaus-seo-production-report-<run-number>` artifacts retained for 60 days.
+- Persistent blocking failures after three attempts create or update a single GitHub issue titled `SEO production verification failure` using only the default `GITHUB_TOKEN`.
+- Added `docs/SEO_CONTINUOUS_MONITORING.md` for workflow operations, manual runs, troubleshooting and future GA4/Search Console integration prerequisites.
+
+Preserved safeguards:
+
+- The monitoring workflow does not deploy, call Wrangler, modify Cloudflare configuration or change DNS, routes, bindings, secrets, account IDs or production settings.
+- No GA4, Search Console, Google service-account or personal access credentials were committed.
+- No fake analytics, indexing, rating, review, price, Product schema, Offer schema, Review schema or AggregateRating schema data was introduced.
+- Quote form, WhatsApp, phone, email, first-party analytics and existing Cloudflare Workers Builds behavior remain unchanged.
+
 ## Homepage Contact Prompt Simplification
 
 On 2026-07-30, the homepage and shared layout were reviewed after the information-architecture and commercial-positioning updates. The owner-approved direction was to stop repeating WhatsApp, quotation and the three service-area names across the homepage, while preserving the local SEO architecture and final Contact conversion path.
