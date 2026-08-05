@@ -95,6 +95,19 @@ Current behavior:
 - GA4 failures do not block quote submission, WhatsApp links, phone links, email links or first-party journey tracking.
 - First-party anonymous journey events still go to `/api/track-event`.
 
+### 2026-08-05 Production Verification Note
+
+After the official GA4 Web Data Stream was created and the Cloudflare Workers Builds variable was reportedly added, the repo-level integration was verified with a temporary local build value only. The local production build embedded the temporary value once, loaded the Google tag path once and included one GA4 config call.
+
+Live production at that moment still served JavaScript with the optional GA4 loader code path but without a concrete Measurement ID, so a fresh Workers Build was required after the Cloudflare build-time variable configuration. Do not add the manual Google tag snippet to `index.html`; the existing `VITE_GA_MEASUREMENT_ID` integration is the intended path.
+
+After the fresh deployment completes, verify:
+
+- The live JavaScript contains one redacted `G-...` Measurement ID.
+- `googletagmanager.com/gtag/js` is requested once.
+- One `gtag("config", ...)` call is present.
+- GA4 Realtime or DebugView receives a page visit and then receives test clicks for quote, WhatsApp, phone, email, guide, location and CTA events.
+
 ## Configure GA4 In Cloudflare Workers Builds
 
 Add the real GA4 Measurement ID in the Cloudflare project/build environment that runs the GitHub connected Worker build.

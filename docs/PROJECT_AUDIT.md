@@ -14,6 +14,32 @@ Rule: Every future meaningful change must update `docs/CHANGELOG.md` and, where 
 - Locations: Nairobi | Machakos | Makueni
 - Product focus: tiles, sanitaryware, paints, adhesives, grout and finishing materials for homes and projects in Kenya.
 
+## GA4 Production Deployment Verification
+
+On 2026-08-05, the live site was checked after the official GA4 Web Data Stream was created and `VITE_GA_MEASUREMENT_ID` was reportedly added in Cloudflare Workers Builds.
+
+Evidence:
+
+- Local and remote `main` were synchronized at commit `44788c3` before verification.
+- GitHub check runs for `44788c3` showed the active `Workers Builds: kleihaus` check succeeded with Build ID `664317bb-d4f5-4d07-bebe-3c8d6273c61c` and Worker Version ID `8de01bf9-e0a5-490f-a4c2-99247a992818`.
+- The separate `Cloudflare Pages` check failed for the same commit, matching the known stale Pages integration rather than the active Worker Assets deployment.
+- A local production build using a temporary non-real test value confirmed Vite injects one Measurement ID, one Google tag loader path and one config call into the built JavaScript.
+- Live production served `/assets/index-BdgDefVE.js`, which contained the optional GA4 loader/config code path but no concrete `G-...` Measurement ID. Initial HTML did not contain a manual Google tag snippet.
+- The source repository did not contain a real GA4 Measurement ID, fake committed ID, duplicate GA4 loader or hardcoded Google tag snippet.
+- Live full-route SEO verification still passed with 39 routes, 7 endpoints, 0 failures and 0 warnings.
+
+Conclusion at the time of this check:
+
+- Repo-level GA4 build-time injection is functional.
+- Production deployment is healthy for the active Worker path.
+- Live GA4 was not yet active in the served frontend because the production build had not embedded the configured Measurement ID.
+- A documentation-only commit was used as the safe deployment trigger so Cloudflare Workers Builds could rebuild after the variable was configured.
+
+Preserved safeguards:
+
+- No application code, Cloudflare configuration, DNS, routes, bindings, secrets, quote flow, WhatsApp behavior, phone/email links, API behavior, schema generation or SEO automation was changed.
+- No real GA4 Measurement ID was committed or documented.
+
 ## SEO Automation Engine
 
 On 2026-08-05, the repository gained a build-time SEO automation engine designed to produce higher return than isolated manual SEO tweaks.

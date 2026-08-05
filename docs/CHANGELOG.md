@@ -8,6 +8,13 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-08-05
 
+### GA4 Production Deployment Verification
+
+- Verified the current optional GA4 implementation reads `VITE_GA_MEASUREMENT_ID` through Vite build-time environment variables and does not require a manual Google tag snippet in `index.html`.
+- Confirmed a local production build with a temporary non-real test value injects one GA4 Measurement ID, one Google tag loader path and one GA4 config call into the built JavaScript.
+- Checked live production after commit `44788c3` and found the GA4 loader code path present but no concrete Measurement ID embedded in the served JavaScript, indicating the live build had not yet picked up the configured Cloudflare Workers Builds variable or the variable remained unavailable to the build.
+- Added a documentation-only deployment trigger note to force a fresh Cloudflare Workers Build after the build-time variable configuration, without changing application code, Cloudflare configuration, DNS, routes, bindings, secrets, quote flow or WhatsApp behavior.
+
 ### SEO Automation Continuity Audit
 
 - Added `docs/SEO_AUTOMATION_CONTINUITY_AUDIT.md` to assess whether the automated SEO system is functional and working continuously after the build-time engine, production verifier and GitHub Actions monitor were added.
