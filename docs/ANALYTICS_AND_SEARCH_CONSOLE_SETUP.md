@@ -101,6 +101,8 @@ After the official GA4 Web Data Stream was created and the Cloudflare Workers Bu
 
 Live production at that moment still served JavaScript with the optional GA4 loader code path but without a concrete Measurement ID, so a fresh Workers Build was required after the Cloudflare build-time variable configuration. Do not add the manual Google tag snippet to `index.html`; the existing `VITE_GA_MEASUREMENT_ID` integration is the intended path.
 
+After a documentation-only deployment trigger, the active Workers Build for commit `4461590` completed successfully and live production served a new JavaScript asset containing one redacted Measurement ID, one Google tag loader reference and one GA4 config call. No duplicate loader or manual initial-HTML snippet was detected.
+
 After the fresh deployment completes, verify:
 
 - The live JavaScript contains one redacted `G-...` Measurement ID.
