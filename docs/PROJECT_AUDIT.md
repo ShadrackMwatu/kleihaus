@@ -42,6 +42,14 @@ Preserved safeguards:
 - No application code, Cloudflare configuration, DNS, routes, bindings, secrets, quote flow, WhatsApp behavior, phone/email links, API behavior, schema generation or SEO automation was changed.
 - No real GA4 Measurement ID was committed or documented.
 
+Follow-up page-view hardening:
+
+- A later end-to-end verification confirmed the live bundle still exposed one redacted GA4 Measurement ID, one Google tag loader reference and one GA4 config call from the environment-variable path.
+- The existing React route-load effect already calls `analyticsService.track('page_view', ...)` after page load and route changes.
+- `src/services/analyticsService.js` now explicitly maps `page_view` to GA4 `page_view` and sends standard `page_location` and `page_title` parameters with GA events.
+- The implementation keeps `send_page_view: false` in the GA config call to avoid duplicate automatic and manual page views.
+- Browser-level collect-request capture was limited by local headless browser DevTools instability during this verification; the remaining external verification step is to confirm the event in GA4 Realtime or DebugView after the fresh deployment.
+
 ## SEO Automation Engine
 
 On 2026-08-05, the repository gained a build-time SEO automation engine designed to produce higher return than isolated manual SEO tweaks.

@@ -22,6 +22,7 @@ const EVENT_ALIASES = {
   guide_topic_clicked: 'guide_click',
 }
 const GA_EVENT_NAMES = {
+  page_view: 'page_view',
   quote_form_submit_success: 'quote_submit',
   whatsapp_click: 'whatsapp_click',
   phone_click: 'phone_click',
@@ -218,6 +219,16 @@ const initializeGa = () => {
 
 const toGaEventName = (eventType) => GA_EVENT_NAMES[eventType] || eventType
 
+const getGaPageLocation = (pagePath) => {
+  if (typeof window === 'undefined') return undefined
+
+  try {
+    return new URL(pagePath || window.location.pathname || '/', window.location.origin).href
+  } catch {
+    return window.location.href
+  }
+}
+
 const logAnalyticsDebug = (event, status) => {
   if (!ANALYTICS_DEBUG || typeof console === 'undefined') return
 
@@ -244,6 +255,8 @@ const sendEventToGa = (event) => {
       event_category: 'kleihaus_website',
       event_label: event.clickedElement || event.productCategory || event.productName || event.searchQuery || event.pagePath,
       page_path: event.pagePath,
+      page_location: getGaPageLocation(event.pagePath),
+      page_title: typeof document !== 'undefined' ? document.title : undefined,
       search_term: event.searchQuery || undefined,
       item_category: event.productCategory || undefined,
       item_name: event.productName || undefined,

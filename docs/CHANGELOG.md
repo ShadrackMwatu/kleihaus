@@ -8,6 +8,12 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-08-05
 
+### GA4 Page View Event Hardening
+
+- Verified the live production bundle contains one redacted GA4 Measurement ID, one Google tag loader reference and one GA4 config call from the existing `VITE_GA_MEASUREMENT_ID` path.
+- Hardened `src/services/analyticsService.js` so the existing route-load `page_view` event is explicitly mapped to GA4 `page_view` and includes `page_location` plus `page_title`.
+- Preserved the single optional GA4 implementation, environment-variable injection, `send_page_view: false` duplicate-prevention behavior, first-party analytics, quote workflow, WhatsApp same-tab behavior, SEO automation and Cloudflare Workers architecture.
+
 ### GA4 Production Deployment Verification
 
 - Verified the current optional GA4 implementation reads `VITE_GA_MEASUREMENT_ID` through Vite build-time environment variables and does not require a manual Google tag snippet in `index.html`.
