@@ -55,6 +55,7 @@ It then performs safe user interactions and checks that each expected event name
 - The same live run captured the site's anonymous backend `/api/track-event` request for `whatsapp_click`, but did not capture a matching GA4 `whatsapp_click` collect request.
 - Verified defect: outbound/contact events could be recorded by first-party analytics while missing from GA4 collection.
 - Fix applied in `src/services/analyticsService.js`: existing GA4 events now include `send_to` for the configured Measurement ID, `transport_type: 'beacon'` and compact non-empty GA4 parameters for safer outbound-event delivery.
+- Fix applied in `src/App.jsx`: the primary contact WhatsApp action now waits 350 ms after tracking before same-tab WhatsApp navigation so the custom GA4 event can flush.
 - Local preview could not prove GA4 delivery because the real Measurement ID is injected through production deployment, not committed into the repository.
 
 ## Events Confirmed Before Fix

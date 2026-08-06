@@ -3069,6 +3069,14 @@ function Contact({ onSupportFormClick, compact = false }) {
     })
   }
 
+  const handleTrackedWhatsAppClick = (event, href, trackClick) => {
+    event.preventDefault()
+    trackClick()
+    window.setTimeout(() => {
+      window.location.href = href
+    }, 350)
+  }
+
   const contactActions = [
     {
       label: 'Chat on WhatsApp',
@@ -3076,7 +3084,16 @@ function Contact({ onSupportFormClick, compact = false }) {
       href: buildWhatsAppUrl('Hello Kleihaus, I would like help with a quote, products, delivery or installation support.'),
       icon: WhatsAppLogo,
       className: 'border-[#128C7E] bg-[#128C7E] text-white hover:border-[#075E54] hover:bg-[#075E54]',
-      onClick: () => analyticsService.track('whatsapp_click', { clickedElement: 'contact_action_whatsapp', ctaLabel: 'Chat on WhatsApp', ctaPosition: 'contact_actions', contactMethod: 'whatsapp', enquiryIntent: 'quote_support' }),
+      onClick: (event, href) =>
+        handleTrackedWhatsAppClick(event, href, () =>
+          analyticsService.track('whatsapp_click', {
+            clickedElement: 'contact_action_whatsapp',
+            ctaLabel: 'Chat on WhatsApp',
+            ctaPosition: 'contact_actions',
+            contactMethod: 'whatsapp',
+            enquiryIntent: 'quote_support',
+          }),
+        ),
     },
     {
       label: 'Call Kleihaus',
@@ -3115,7 +3132,7 @@ function Contact({ onSupportFormClick, compact = false }) {
                   href={action.href}
                   aria-label={action.ariaLabel}
                   className={`inline-flex items-center justify-center gap-2 rounded-md border px-3 py-2.5 text-sm font-semibold transition focus:outline-none focus:ring-2 focus:ring-white/30 ${action.className}`}
-                  onClick={action.onClick}
+                  onClick={(event) => action.onClick(event, action.href)}
                 >
                   <Icon className="h-4 w-4 shrink-0" />
                   {action.label}

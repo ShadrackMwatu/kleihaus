@@ -25,6 +25,7 @@ Implemented:
 - Added `docs/GA4_PLAYWRIGHT_VERIFICATION.md` documenting tested events, privacy safeguards, environment limits and the verified production defect.
 - Added `test-results/` to `.gitignore` so Playwright traces and screenshots are kept out of commits.
 - Updated `src/services/analyticsService.js` so the existing GA4 sender uses the configured Measurement ID with `send_to`, beacon transport and compact non-empty GA4 parameters for more reliable outbound/contact event delivery.
+- Added a 350 ms same-tab WhatsApp handoff delay on the primary contact action after analytics tracking so GA4 can flush the custom event before external navigation.
 
 Evidence:
 

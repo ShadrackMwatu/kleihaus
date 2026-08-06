@@ -15,6 +15,7 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 - Documented the process in `docs/GA4_PLAYWRIGHT_VERIFICATION.md`, including privacy safeguards, sandbox limitations and the pre-fix production evidence.
 - Verified a live defect where first-party backend tracking captured `whatsapp_click` but GA4 did not emit the matching collect request.
 - Hardened the existing GA4 event sender to include `send_to`, beacon transport and compact non-empty GA4 parameters for safer outbound/contact event delivery while preserving the single GA4 implementation, Cloudflare architecture, quote workflow, WhatsApp same-tab behavior and SEO automation.
+- Added a short same-tab WhatsApp navigation delay on the primary contact action so the custom GA4 event has time to flush before the external WhatsApp handoff.
 
 ### Automated SEO Optimization Refresh
 
