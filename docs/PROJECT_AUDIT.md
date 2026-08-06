@@ -14,6 +14,27 @@ Rule: Every future meaningful change must update `docs/CHANGELOG.md` and, where 
 - Locations: Nairobi | Machakos | Makueni
 - Product focus: tiles, sanitaryware, paints, adhesives, grout and finishing materials for homes and projects in Kenya.
 
+## Playwright GA4 Production Verification
+
+On 2026-08-06, the repository gained a focused Playwright production verification for GA4 event delivery.
+
+Implemented:
+
+- Added `@playwright/test`, `playwright.config.js` and `npm run analytics:e2e`.
+- Added `tests/ga4-production.spec.js` to open the live site, capture Google tag and GA4 collect requests, confirm one initial loader, intercept unsafe outbound navigation and prevent real quote submission.
+- Added `docs/GA4_PLAYWRIGHT_VERIFICATION.md` documenting tested events, privacy safeguards, environment limits and the verified production defect.
+- Added `test-results/` to `.gitignore` so Playwright traces and screenshots are kept out of commits.
+- Updated `src/services/analyticsService.js` so the existing GA4 sender uses the configured Measurement ID with `send_to` and beacon transport for more reliable outbound/contact event delivery.
+
+Evidence:
+
+- `npm run analytics:verify` passed for the existing required GA4 custom-event mappings.
+- An escalated Chromium run against live production captured GA4 `page_view` and `cta_click` collect requests.
+- The same live run captured first-party backend tracking for `whatsapp_click` but no corresponding GA4 collect request before the fix, confirming a real delivery gap rather than a missing click handler.
+- Local preview could not prove GA4 delivery because the real Measurement ID remains deployment-injected and is not committed to the repository.
+
+Safeguards preserved: no second GA4 loader, no hardcoded Measurement ID, no Cloudflare configuration changes, no quote workflow changes, no WhatsApp behavior changes, no Product/Offer/Review/AggregateRating schema and no personal contact/message data in test logs.
+
 ## Automated SEO Optimization Refresh
 
 On 2026-08-06, the SEO Automation Engine was run in full optimization mode.

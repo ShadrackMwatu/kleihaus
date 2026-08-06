@@ -10,6 +10,7 @@
     "seo:verify-production": "node scripts/verify-production-seo.mjs",
     "seo:verify-production:all": "node scripts/verify-production-seo.mjs --all-routes",
     "analytics:verify": "node scripts/verify-analytics-events.mjs",
+    "analytics:e2e": "playwright test tests/ga4-production.spec.js",
     "generate:sitemap": "node scripts/generate-sitemap.mjs",
     "generate:route-html": "node scripts/generate-route-html.mjs",
     "build": "npm run seo:generate && vite build && npm run generate:route-html && npm run seo:audit",
@@ -22,6 +23,7 @@
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "@playwright/test": "^1.62.1",
     "@vitejs/plugin-react": "^4.2.0",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.44",

@@ -8,6 +8,14 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 
 ## 2026-08-06
 
+### Playwright GA4 Production Verification
+
+- Added `@playwright/test`, Chromium-only Playwright configuration and `npm run analytics:e2e` for live GA4 production network verification.
+- Added `tests/ga4-production.spec.js` to capture `googletagmanager.com/gtag/js` and GA4 `g/collect` requests for safe interactions without exposing the full Measurement ID or submitting a real quote.
+- Documented the process in `docs/GA4_PLAYWRIGHT_VERIFICATION.md`, including privacy safeguards, sandbox limitations and the pre-fix production evidence.
+- Verified a live defect where first-party backend tracking captured `whatsapp_click` but GA4 did not emit the matching collect request.
+- Hardened the existing GA4 event sender to include `send_to` and beacon transport for safer outbound/contact event delivery while preserving the single GA4 implementation, Cloudflare architecture, quote workflow, WhatsApp same-tab behavior and SEO automation.
+
 ### Automated SEO Optimization Refresh
 
 - Ran the Kleihaus SEO Automation Engine in full optimization mode and tightened route metadata so the generated SEO audit now reports `100/100` across 39 routes and 62 image groups with no metadata warnings.

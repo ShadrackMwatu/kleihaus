@@ -248,12 +248,15 @@ const logAnalyticsDebug = (event, status) => {
 
 const sendEventToGa = (event) => {
   try {
+    const measurementId = getGaMeasurementId()
     if (!initializeGa() || typeof window === 'undefined' || typeof window.gtag !== 'function') {
       logAnalyticsDebug(event, 'ga_not_configured')
       return
     }
 
     window.gtag('event', toGaEventName(event.eventType), {
+      send_to: measurementId,
+      transport_type: 'beacon',
       event_category: 'kleihaus_website',
       event_label: event.clickedElement || event.productCategory || event.productName || event.searchQuery || event.pagePath,
       page_path: event.pagePath,
