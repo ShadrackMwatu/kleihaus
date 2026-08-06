@@ -14,7 +14,7 @@ Current deployment note: production now uses GitHub `main` -> Cloudflare Workers
 - Added `tests/ga4-production.spec.js` to capture `googletagmanager.com/gtag/js` and GA4 `g/collect` requests for safe interactions without exposing the full Measurement ID or submitting a real quote.
 - Documented the process in `docs/GA4_PLAYWRIGHT_VERIFICATION.md`, including privacy safeguards, sandbox limitations and the pre-fix production evidence.
 - Verified a live defect where first-party backend tracking captured `whatsapp_click` but GA4 did not emit the matching collect request.
-- Hardened the existing GA4 event sender to include `send_to` and beacon transport for safer outbound/contact event delivery while preserving the single GA4 implementation, Cloudflare architecture, quote workflow, WhatsApp same-tab behavior and SEO automation.
+- Hardened the existing GA4 event sender to include `send_to`, beacon transport and compact non-empty GA4 parameters for safer outbound/contact event delivery while preserving the single GA4 implementation, Cloudflare architecture, quote workflow, WhatsApp same-tab behavior and SEO automation.
 
 ### Automated SEO Optimization Refresh
 

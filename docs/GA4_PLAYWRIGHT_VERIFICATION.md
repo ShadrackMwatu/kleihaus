@@ -54,7 +54,7 @@ It then performs safe user interactions and checks that each expected event name
 - Live production GA4 evidence before the repo fix captured `page_view`, `scroll`, `cta_click` and `quote_form_view` GA4 collect requests.
 - The same live run captured the site's anonymous backend `/api/track-event` request for `whatsapp_click`, but did not capture a matching GA4 `whatsapp_click` collect request.
 - Verified defect: outbound/contact events could be recorded by first-party analytics while missing from GA4 collection.
-- Fix applied in `src/services/analyticsService.js`: existing GA4 events now include `send_to` for the configured Measurement ID and `transport_type: 'beacon'` for safer outbound-event delivery.
+- Fix applied in `src/services/analyticsService.js`: existing GA4 events now include `send_to` for the configured Measurement ID, `transport_type: 'beacon'` and compact non-empty GA4 parameters for safer outbound-event delivery.
 - Local preview could not prove GA4 delivery because the real Measurement ID is injected through production deployment, not committed into the repository.
 
 ## Events Confirmed Before Fix

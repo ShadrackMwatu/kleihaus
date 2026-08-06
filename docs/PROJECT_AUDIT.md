@@ -24,7 +24,7 @@ Implemented:
 - Added `tests/ga4-production.spec.js` to open the live site, capture Google tag and GA4 collect requests, confirm one initial loader, intercept unsafe outbound navigation and prevent real quote submission.
 - Added `docs/GA4_PLAYWRIGHT_VERIFICATION.md` documenting tested events, privacy safeguards, environment limits and the verified production defect.
 - Added `test-results/` to `.gitignore` so Playwright traces and screenshots are kept out of commits.
-- Updated `src/services/analyticsService.js` so the existing GA4 sender uses the configured Measurement ID with `send_to` and beacon transport for more reliable outbound/contact event delivery.
+- Updated `src/services/analyticsService.js` so the existing GA4 sender uses the configured Measurement ID with `send_to`, beacon transport and compact non-empty GA4 parameters for more reliable outbound/contact event delivery.
 
 Evidence:
 

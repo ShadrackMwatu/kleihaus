@@ -229,6 +229,9 @@ const getGaPageLocation = (pagePath) => {
   }
 }
 
+const compactGaParams = (params) =>
+  Object.fromEntries(Object.entries(params).filter(([, value]) => value !== undefined && value !== null && value !== ''))
+
 const logAnalyticsDebug = (event, status) => {
   if (!ANALYTICS_DEBUG || typeof console === 'undefined') return
 
@@ -254,7 +257,7 @@ const sendEventToGa = (event) => {
       return
     }
 
-    window.gtag('event', toGaEventName(event.eventType), {
+    window.gtag('event', toGaEventName(event.eventType), compactGaParams({
       send_to: measurementId,
       transport_type: 'beacon',
       event_category: 'kleihaus_website',
@@ -279,7 +282,7 @@ const sendEventToGa = (event) => {
       form_status: event.formStatus || undefined,
       lead_source: event.leadSource || undefined,
       device_type: event.deviceType || undefined,
-    })
+    }))
     logAnalyticsDebug(event, 'ga_event_sent')
   } catch {
     logAnalyticsDebug(event, 'ga_event_failed')
