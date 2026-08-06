@@ -1,10 +1,10 @@
 # Kleihaus Automated SEO Report
 
-Generated: 2026-08-05T20:14:31.067Z
+Generated: 2026-08-06T05:09:09.908Z
 
 Status: PASS
 
-Score: 91/100
+Score: 100/100
 
 ## Coverage
 
@@ -12,6 +12,15 @@ Score: 91/100
 - Image groups audited: 62
 - Primary navigation items generated: 7
 - Internal-link recommendation sets: 39
+- Internal-link recommendations generated: 104
+
+## Score Breakdown
+
+- Technical SEO score: 100/100
+- Content score: 100/100
+- Local SEO score: 94/100
+- Schema score: 96/100
+- Monitoring score: 88/100
 
 ## Blocking Issues
 
@@ -19,29 +28,7 @@ Score: 91/100
 
 ## Warnings
 
-- Long title (71) for /
-- Long title (69) for /products
-- Long description (168) for /installation-support
-- Long title (69) for /locations/nairobi
-- Long title (70) for /locations/machakos
-- Long description (172) for /locations/machakos
-- Long title (69) for /locations/makueni
-- Long description (229) for /tiles-nairobi
-- Long description (230) for /tiles-machakos
-- Long description (229) for /tiles-makueni
-- Long description (227) for /tiles-kenya
-- Long description (228) for /sanitaryware-nairobi
-- Long description (229) for /sanitaryware-machakos
-- Long description (228) for /sanitaryware-makueni
-- Long description (226) for /sanitaryware-kenya
-- Long description (241) for /paints-nairobi
-- Long description (242) for /paints-machakos
-- Long description (241) for /paints-makueni
-- Long description (239) for /paints-kenya
-- Long description (244) for /installation-support-nairobi
-- Long description (245) for /installation-support-machakos
-- Long description (244) for /installation-support-makueni
-- Long description (242) for /installation-support-kenya
+- None detected.
 
 ## Automation Outputs
 
@@ -54,6 +41,7 @@ Score: 91/100
 - docs/SEO_REPORT.md
 - docs/SEO_CONTENT_SUGGESTIONS.md
 - docs/GBP_SOCIAL_DRAFTS.md
+- docs/SEO_EXECUTIVE_REPORT.md
 
 ## Production Verification
 
@@ -65,12 +53,25 @@ Continuous monitoring runs `npm run seo:verify-production -- --all-routes` from 
 
 - Expand Kleihaus Guides | Buying, Planning & Installation Help with owner-confirmed FAQs, visible project proof and stronger related links.
 - Expand Kleihaus Locations | Nairobi, Machakos & Makueni Support with owner-confirmed FAQs, visible project proof and stronger related links.
-- Expand Kleihaus Nairobi | Tiles, Sanitaryware, Paints & Installation Support with owner-confirmed FAQs, visible project proof and stronger related links.
-- Expand Kleihaus Machakos | Tiles, Sanitaryware, Paints & Installation Support with owner-confirmed FAQs, visible project proof and stronger related links.
-- Expand Kleihaus Makueni | Tiles, Sanitaryware, Paints & Installation Support with owner-confirmed FAQs, visible project proof and stronger related links.
+- Expand Kleihaus Nairobi | Tiles, Sanitaryware & Paints with owner-confirmed FAQs, visible project proof and stronger related links.
+- Expand Kleihaus Machakos | Tiles, Sanitaryware & Paints with owner-confirmed FAQs, visible project proof and stronger related links.
+- Expand Kleihaus Makueni | Tiles, Sanitaryware & Paints with owner-confirmed FAQs, visible project proof and stronger related links.
 - Expand Tile Buying Guide Kenya | Kleihaus Ceramics with owner-confirmed FAQs, visible project proof and stronger related links.
 - Expand Bathroom Renovation Guide Kenya | Kleihaus Ceramics with owner-confirmed FAQs, visible project proof and stronger related links.
 - Expand Paint Selection Guide Kenya | Interior, Exterior & Roof Paints with owner-confirmed FAQs, visible project proof and stronger related links.
+
+## High-Intent Content Opportunities
+
+- P1: Tile Quantity Calculator (Very high) -> Captures homeowners, contractors and builders who are close to requesting tile quantities and quotes.
+- P2: Adhesive Calculator (Very high) -> Connects tile size, substrate and area planning to adhesive, grout and accessory quote enquiries.
+- P3: Bathroom Renovation Cost Guide (Very high) -> Targets bathroom planners comparing tiles, sanitaryware, taps, showers and installation support.
+- P4: Sanitaryware Buying Guide (High) -> Supports basin, toilet, mixer, shower and accessory enquiries without unsupported price or stock claims.
+- P5: Kitchen Renovation Guide (High) -> Links project-gallery interest to tiles, sinks, mixers, counters and quote-ready kitchen planning.
+- P6: Tile Installation Guide (High) -> Builds trust with DIY planners, fundis and contractors while routing them to installation support.
+- P7: Tile Layout Guide (Medium high) -> Helps customers choose layouts before asking about tile sizes, trims, wastage and quantities.
+- P8: Commercial Tile Guide (Medium high) -> Serves shops, offices, rentals and institutional buyers with durability and maintenance planning.
+- P9: Warehouse Flooring Guide (Medium) -> Captures heavier-duty floor planning while keeping claims subject to site and product verification.
+- P10: Paint Selection Guide Expansion (Medium) -> Expands existing paint advice around surface condition, coverage planning and interior/exterior use cases.
 
 ## Monthly Draft Workflow
 

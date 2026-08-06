@@ -1,12 +1,12 @@
 export const SITE_ORIGIN = 'https://www.kleihaus.com'
-export const SEO_LASTMOD = '2026-08-05'
+export const SEO_LASTMOD = '2026-08-06'
 
 const defaultImage = '/images/kleihaus-structure.jpg'
 
 const coreRoutes = [
   {
     path: '/',
-    title: 'Kleihaus Ceramics Kenya | Tiles, Sanitaryware, Paints & Project Support',
+    title: 'Kleihaus Ceramics Kenya | Tiles, Sanitaryware & Paints',
     description:
       'Discover tiles, sanitaryware, kitchen sinks, paints, adhesives, grout, tools and project support from Kleihaus Ceramics in Nairobi, Machakos and Makueni.',
     image: defaultImage,
@@ -18,7 +18,7 @@ const coreRoutes = [
   },
   {
     path: '/products',
-    title: 'Kleihaus Products | Tiles, Sanitaryware, Paints & Finishing Materials',
+    title: 'Kleihaus Products | Tiles, Sanitaryware & Paints',
     description:
       'Explore Kleihaus product categories: tiles, sanitaryware, kitchen sinks and mixers, paints, adhesives, grout, tools and finishing support.',
     image: '/images/tiles-floor.jpg',
@@ -95,7 +95,7 @@ const coreRoutes = [
     path: '/installation-support',
     title: 'Installation Support Kenya | Kleihaus Ceramics',
     description:
-      'Plan tile and finishing installation support with Kleihaus, including site measurements, product matching, surface preparation, fixing, grouting, cleaning and training.',
+      'Plan tile and finishing installation support with Kleihaus, including measurement, product matching, fixing, grouting, cleaning and training.',
     image: '/images/tiler-service.jpg',
     imageAlt: 'Tile installer preparing installation support for Kleihaus customers',
     category: 'Installation Support',
@@ -213,18 +213,18 @@ const locations = [
 ]
 
 const services = [
-  ['tiles', 'Tiles', '/tiles', '/tile-buying-guide', '/images/tiles-floor.jpg', 'floor tiles, wall tiles, bathroom tiles and outdoor tile finishes with adhesive, grout and trim guidance'],
-  ['sanitaryware', 'Sanitaryware', '/sanitaryware', '/bathroom-renovation-guide', '/images/sanitaryware/sanitaryware-shower-display-02.jpg', 'basins, toilets, taps, mixers, showers and bathroom accessories matched with bathroom tile plans'],
-  ['paints', 'Paints', '/paints', '/paint-selection-guide', '/images/paint-interior.jpg', 'interior paints, exterior paints, roof paints and floor coatings selected around surface condition and finish goals'],
-  ['installation-support', 'Installation Support', '/installation-support', '/installation-best-practices', '/images/tiler-service.jpg', 'site measurement, product matching, surface preparation, fixing, grouting, cleaning and handover support'],
+  ['tiles', 'Tiles', '/tiles', '/tile-buying-guide', '/images/tiles-floor.jpg', 'floor, wall, bathroom and outdoor tiles'],
+  ['sanitaryware', 'Sanitaryware', '/sanitaryware', '/bathroom-renovation-guide', '/images/sanitaryware/sanitaryware-shower-display-02.jpg', 'basins, toilets, taps, mixers and showers'],
+  ['paints', 'Paints', '/paints', '/paint-selection-guide', '/images/paint-interior.jpg', 'interior, exterior, roof and floor paints for planned finishes'],
+  ['installation-support', 'Installation Support', '/installation-support', '/installation-best-practices', '/images/tiler-service.jpg', 'measurement, matching, fixing and handover guidance'],
 ]
 
 const locationHubRoutes = locations
   .filter((location) => location.slug !== 'kenya')
   .map((location) => ({
     path: `/locations/${location.slug}`,
-    title: `Kleihaus ${location.label} | Tiles, Sanitaryware, Paints & Installation Support`,
-    description: `Kleihaus supports ${location.phrase} with tiles, sanitaryware, paints, delivery coordination and installation guidance.`,
+    title: `Kleihaus ${location.label} | Tiles, Sanitaryware & Paints`,
+    description: `Kleihaus ${location.label} support for tiles, sanitaryware, paints, delivery coordination and installation guidance.`,
     image: defaultImage,
     imageAlt: `Kleihaus Ceramics support for ${location.label} projects`,
     category: location.label,
@@ -242,7 +242,7 @@ const serviceLocationRoutes = services.flatMap(([slug, label, basePath, guidePat
   locations.map((location) => ({
     path: `/${slug}-${location.slug}`,
     title: `${label} ${location.label} | Kleihaus Ceramics Kenya`,
-    description: `${label} support for ${location.label}: ${focus}. Kleihaus helps with advisory, quantity guidance, delivery coordination and installation support.`,
+    description: `${label} ${location.label}: ${focus}. Request quantity, availability, delivery and installation support.`,
     image,
     imageAlt: `${label} planning and quote support for ${location.label} by Kleihaus Ceramics`,
     category: `${label} ${location.label}`,

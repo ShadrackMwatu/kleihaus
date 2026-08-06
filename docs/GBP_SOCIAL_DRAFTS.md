@@ -1,6 +1,6 @@
 # Kleihaus GBP And Social Drafts
 
-Generated: 2026-08-05T20:14:31.067Z
+Generated: 2026-08-06T05:09:09.908Z
 
 These drafts are for human review only. Nothing is posted automatically.
 
@@ -101,3 +101,31 @@ Kleihaus Ceramics supports practical finishing-material planning through Project
 
 Instagram caption:
 Finishing inspiration from Kleihaus Ceramics. Explore Projects and save the idea for your next project. https://www.kleihaus.com/projects
+
+## Weekly Google Business Profile Post Ideas
+
+- Week 1: Tile planning checklist for homeowners comparing floor, wall and bathroom tiles.
+- Week 2: Sanitaryware feature covering basins, toilets, taps, mixers and showers for bathroom planning.
+- Week 3: Paint selection education for interior, exterior, roof and floor finish decisions.
+- Week 4: Project-planning reminder linking measurements, photos, location and quote details.
+
+## Seasonal And Campaign Ideas
+
+- Back-to-school or rental-refresh post: durable tiles and easy-clean paint planning for busy homes.
+- Rain-season preparation post: exterior paint, roof paint and wet-area tile planning.
+- Year-end renovation post: bathroom, kitchen and floor finish planning before contractor schedules fill.
+- New-build planning post: tile, sanitaryware, paint, adhesive and grout quote checklist for builders.
+
+## Showroom And Project Highlights
+
+- Showroom highlight: invite customers to compare tile, sanitaryware and paint finishes before requesting a quote.
+- New project announcement: share owner-approved project images only when Kleihaus involvement is verified.
+- Kitchen finishing highlight: link project-gallery photos to kitchen tiles, sinks, mixers and quote planning.
+- Bathroom feature: pair bathroom tiles with sanitaryware planning and installation support.
+
+## Customer Education Topics
+
+- What measurements to share before requesting a tile quote.
+- How adhesive, grout and trims affect tile project planning.
+- How to compare sanitaryware choices without relying on unsupported stock or price claims.
+- Why surface condition matters before choosing interior or exterior paint.

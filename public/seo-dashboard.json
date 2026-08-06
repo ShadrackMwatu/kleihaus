@@ -1,7 +1,23 @@
 {
-  "generatedAt": "2026-08-05T20:14:31.067Z",
-  "seoScore": 91,
+  "generatedAt": "2026-08-06T05:09:09.908Z",
+  "seoScore": 100,
+  "scores": {
+    "technicalSeoScore": 100,
+    "contentScore": 100,
+    "localSeoScore": 94,
+    "imageSeoScore": 100,
+    "schemaScore": 96,
+    "monitoringScore": 88,
+    "internalLinkScore": 100
+  },
   "status": "pass",
+  "monitoringStatus": {
+    "buildAutomation": "active",
+    "productionVerification": "active",
+    "githubActionsMonitor": "active",
+    "scheduledContinuity": "configured_not_yet_longitudinally_proven",
+    "failureAlerting": "implemented_not_yet_observed"
+  },
   "organicTraffic": null,
   "ctr": null,
   "averagePosition": null,
@@ -16,33 +32,21 @@
     "oversizedAssetWarnings": []
   },
   "routeCount": 39,
+  "sitemapCoverage": {
+    "manifestRoutes": 39,
+    "generatedFromManifest": true
+  },
   "imageGroupCount": 62,
   "brokenLinks": [],
   "missingSeoItems": [],
-  "metadataWarnings": [
-    "Long title (71) for /",
-    "Long title (69) for /products",
-    "Long description (168) for /installation-support",
-    "Long title (69) for /locations/nairobi",
-    "Long title (70) for /locations/machakos",
-    "Long description (172) for /locations/machakos",
-    "Long title (69) for /locations/makueni",
-    "Long description (229) for /tiles-nairobi",
-    "Long description (230) for /tiles-machakos",
-    "Long description (229) for /tiles-makueni",
-    "Long description (227) for /tiles-kenya",
-    "Long description (228) for /sanitaryware-nairobi",
-    "Long description (229) for /sanitaryware-machakos",
-    "Long description (228) for /sanitaryware-makueni",
-    "Long description (226) for /sanitaryware-kenya",
-    "Long description (241) for /paints-nairobi",
-    "Long description (242) for /paints-machakos",
-    "Long description (241) for /paints-makueni",
-    "Long description (239) for /paints-kenya",
-    "Long description (244) for /installation-support-nairobi",
-    "Long description (245) for /installation-support-machakos",
-    "Long description (244) for /installation-support-makueni",
-    "Long description (242) for /installation-support-kenya"
+  "metadataWarnings": [],
+  "outstandingRecommendations": [
+    "Create or expand Tile Quantity Calculator after owner review.",
+    "Create or expand Adhesive Calculator after owner review.",
+    "Create or expand Bathroom Renovation Cost Guide after owner review.",
+    "Create or expand Sanitaryware Buying Guide after owner review.",
+    "Create or expand Kitchen Renovation Guide after owner review.",
+    "Connect Google Search Console and GA4 APIs with approved credentials for live performance reporting."
   ],
   "topKeywords": [
     {
@@ -129,13 +133,13 @@
   "topPages": [
     {
       "path": "/",
-      "title": "Kleihaus Ceramics Kenya | Tiles, Sanitaryware, Paints & Project Support",
+      "title": "Kleihaus Ceramics Kenya | Tiles, Sanitaryware & Paints",
       "priority": "1.0",
       "changefreq": "weekly"
     },
     {
       "path": "/products",
-      "title": "Kleihaus Products | Tiles, Sanitaryware, Paints & Finishing Materials",
+      "title": "Kleihaus Products | Tiles, Sanitaryware & Paints",
       "priority": "0.9",
       "changefreq": "weekly"
     },
@@ -201,10 +205,135 @@
     }
   ],
   "internalLinkSets": 39,
+  "internalLinkRecommendations": 104,
+  "highIntentContentOpportunities": [
+    {
+      "title": "Tile Quantity Calculator",
+      "targetRoute": "/tile-quantity-calculator",
+      "commercialValue": "Very high",
+      "priority": 1,
+      "rationale": "Captures homeowners, contractors and builders who are close to requesting tile quantities and quotes.",
+      "relatedRoutes": [
+        "/tiles",
+        "/tile-buying-guide",
+        "/cost-estimation-guide"
+      ]
+    },
+    {
+      "title": "Adhesive Calculator",
+      "targetRoute": "/adhesive-calculator",
+      "commercialValue": "Very high",
+      "priority": 2,
+      "rationale": "Connects tile size, substrate and area planning to adhesive, grout and accessory quote enquiries.",
+      "relatedRoutes": [
+        "/adhesives-grout",
+        "/adhesive-grout-guide",
+        "/installation-support"
+      ]
+    },
+    {
+      "title": "Bathroom Renovation Cost Guide",
+      "targetRoute": "/bathroom-renovation-cost-guide",
+      "commercialValue": "Very high",
+      "priority": 3,
+      "rationale": "Targets bathroom planners comparing tiles, sanitaryware, taps, showers and installation support.",
+      "relatedRoutes": [
+        "/bathroom-renovation-guide",
+        "/sanitaryware",
+        "/bathroom-tiles"
+      ]
+    },
+    {
+      "title": "Sanitaryware Buying Guide",
+      "targetRoute": "/sanitaryware-buying-guide",
+      "commercialValue": "High",
+      "priority": 4,
+      "rationale": "Supports basin, toilet, mixer, shower and accessory enquiries without unsupported price or stock claims.",
+      "relatedRoutes": [
+        "/sanitaryware",
+        "/bathroom-renovation-guide",
+        "/sanitaryware-kenya"
+      ]
+    },
+    {
+      "title": "Kitchen Renovation Guide",
+      "targetRoute": "/kitchen-renovation-guide",
+      "commercialValue": "High",
+      "priority": 5,
+      "rationale": "Links project-gallery interest to tiles, sinks, mixers, counters and quote-ready kitchen planning.",
+      "relatedRoutes": [
+        "/projects",
+        "/products",
+        "/tiles"
+      ]
+    },
+    {
+      "title": "Tile Installation Guide",
+      "targetRoute": "/tile-installation-guide",
+      "commercialValue": "High",
+      "priority": 6,
+      "rationale": "Builds trust with DIY planners, fundis and contractors while routing them to installation support.",
+      "relatedRoutes": [
+        "/installation-support",
+        "/installation-best-practices",
+        "/adhesives-grout"
+      ]
+    },
+    {
+      "title": "Tile Layout Guide",
+      "targetRoute": "/tile-layout-guide",
+      "commercialValue": "Medium high",
+      "priority": 7,
+      "rationale": "Helps customers choose layouts before asking about tile sizes, trims, wastage and quantities.",
+      "relatedRoutes": [
+        "/tiles",
+        "/floor-tiles",
+        "/wall-tiles"
+      ]
+    },
+    {
+      "title": "Commercial Tile Guide",
+      "targetRoute": "/commercial-tile-guide",
+      "commercialValue": "Medium high",
+      "priority": 8,
+      "rationale": "Serves shops, offices, rentals and institutional buyers with durability and maintenance planning.",
+      "relatedRoutes": [
+        "/trade-projects",
+        "/tiles-kenya",
+        "/installation-support-kenya"
+      ]
+    },
+    {
+      "title": "Warehouse Flooring Guide",
+      "targetRoute": "/warehouse-flooring-guide",
+      "commercialValue": "Medium",
+      "priority": 9,
+      "rationale": "Captures heavier-duty floor planning while keeping claims subject to site and product verification.",
+      "relatedRoutes": [
+        "/floor-tiles",
+        "/paints-kenya",
+        "/installation-support"
+      ]
+    },
+    {
+      "title": "Paint Selection Guide Expansion",
+      "targetRoute": "/paint-selection-guide",
+      "commercialValue": "Medium",
+      "priority": 10,
+      "rationale": "Expands existing paint advice around surface condition, coverage planning and interior/exterior use cases.",
+      "relatedRoutes": [
+        "/paints",
+        "/paints-kenya",
+        "/cost-estimation-guide"
+      ]
+    }
+  ],
   "imageReadiness": {
     "withWebp": 62,
     "withAvif": 62,
-    "withFallback": 62
+    "withFallback": 62,
+    "missingAltPlaceholders": 0,
+    "oversizedGroups": []
   },
   "dataConnectionsNeeded": [
     "Google Search Console",

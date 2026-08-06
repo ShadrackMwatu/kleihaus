@@ -6,6 +6,15 @@ Rule: Every future meaningful change must update `docs/CHANGELOG.md` and, where 
 
 Current deployment note: production now uses GitHub `main` -> Cloudflare Workers Builds -> Worker Assets -> Worker `kleihaus` -> `kleihaus.com` and `www.kleihaus.com`. The active quote endpoint is `/api/quote-request`. Older entries that mention Cloudflare Pages or `https://api.kleihaus.com/quote-request` are historical and describe earlier deployment states, not the current production path.
 
+## 2026-08-06
+
+### Automated SEO Optimization Refresh
+
+- Ran the Kleihaus SEO Automation Engine in full optimization mode and tightened route metadata so the generated SEO audit now reports `100/100` across 39 routes and 62 image groups with no metadata warnings.
+- Expanded `scripts/seo-engine.mjs` so generated outputs now include richer SEO dashboard subscores, monitoring status, image readiness details, ranked high-intent content opportunities, refreshed GBP/social draft themes and `docs/SEO_EXECUTIVE_REPORT.md`.
+- Refreshed sitemap `lastmod` values to `2026-08-06` through the central SEO manifest and regenerated sitemap, robots, navigation, internal links, image manifest, SEO report, content suggestions, GBP drafts and dashboard outputs.
+- Preserved Cloudflare architecture, quote and WhatsApp workflows, GA4 environment-variable integration and the no Product/Offer/Review/AggregateRating schema guardrail.
+
 ## 2026-08-05
 
 ### Full SEO Automation Functionality And Performance Audit
