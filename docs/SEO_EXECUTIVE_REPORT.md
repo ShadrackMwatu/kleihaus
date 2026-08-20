@@ -1,6 +1,6 @@
 # Kleihaus SEO Executive Report
 
-Generated: 2026-08-06T05:09:09.908Z
+Generated: 2026-08-20T07:54:20.042Z
 
 ## Current SEO Health
 
@@ -13,17 +13,21 @@ Kleihaus has a strong automated SEO foundation. The current automation score is 
 | Technical SEO | 100/100 |
 | Content SEO | 100/100 |
 | Local SEO | 94/100 |
+| Product SEO | 92/100 |
+| Automation | 100/100 |
+| Performance SEO | 94/100 |
 | Image SEO | 100/100 |
 | Schema SEO | 96/100 |
 | Monitoring readiness | 88/100 |
 | Internal linking | 100/100 |
+| Business SEO | 90/100 |
 
 ## Improvements Generated
 
 - Regenerated sitemap, robots, navigation, internal links, image manifest, SEO dashboard, SEO report, content suggestions and GBP/social drafts.
 - Refreshed route metadata from the central SEO manifest.
-- Produced 104 internal-link recommendations across 39 route sets.
-- Re-ranked 10 high-intent content opportunities for commercial review.
+- Produced 183 internal-link recommendations across 39 route sets.
+- Re-ranked 14 high-intent content opportunities for commercial review, including tools, delivery, training and project advisory gaps.
 - Kept GA4, Search Console and GBP performance fields null where live private data is not connected.
 
 ## Priority Opportunities

@@ -1,42 +1,447 @@
 {
-  "/": [],
-  "/products": [],
-  "/tiles": [],
-  "/floor-tiles": [],
-  "/wall-tiles": [],
+  "/": [
+    {
+      "label": "Products",
+      "href": "/products",
+      "reason": "declared"
+    },
+    {
+      "label": "Projects",
+      "href": "/projects",
+      "reason": "declared"
+    },
+    {
+      "label": "Guides",
+      "href": "/guides",
+      "reason": "declared"
+    },
+    {
+      "label": "Locations",
+      "href": "/locations",
+      "reason": "declared"
+    },
+    {
+      "label": "Trade and project support",
+      "href": "/trade-projects",
+      "reason": "declared"
+    }
+  ],
+  "/products": [
+    {
+      "label": "Tiles",
+      "href": "/tiles",
+      "reason": "declared"
+    },
+    {
+      "label": "Sanitaryware",
+      "href": "/sanitaryware",
+      "reason": "declared"
+    },
+    {
+      "label": "Paints",
+      "href": "/paints",
+      "reason": "declared"
+    },
+    {
+      "label": "Adhesives and grout",
+      "href": "/adhesives-grout",
+      "reason": "declared"
+    },
+    {
+      "label": "Installation support",
+      "href": "/installation-support",
+      "reason": "declared"
+    },
+    {
+      "label": "Projects",
+      "href": "/projects",
+      "reason": "declared"
+    }
+  ],
+  "/tiles": [
+    {
+      "label": "Floor tiles",
+      "href": "/floor-tiles",
+      "reason": "declared"
+    },
+    {
+      "label": "Wall tiles",
+      "href": "/wall-tiles",
+      "reason": "declared"
+    },
+    {
+      "label": "Bathroom tiles",
+      "href": "/bathroom-tiles",
+      "reason": "declared"
+    },
+    {
+      "label": "Tile buying guide",
+      "href": "/tile-buying-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Tile adhesive and grout",
+      "href": "/adhesives-grout",
+      "reason": "declared"
+    },
+    {
+      "label": "Tiles Nairobi",
+      "href": "/tiles-nairobi",
+      "reason": "declared"
+    }
+  ],
+  "/floor-tiles": [
+    {
+      "label": "Tiles",
+      "href": "/tiles",
+      "reason": "declared"
+    },
+    {
+      "label": "Tile buying guide",
+      "href": "/tile-buying-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Cost estimation guide",
+      "href": "/cost-estimation-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Adhesives and grout",
+      "href": "/adhesives-grout",
+      "reason": "declared"
+    },
+    {
+      "label": "Installation support",
+      "href": "/installation-support",
+      "reason": "declared"
+    },
+    {
+      "label": "Floor tiles Nairobi",
+      "href": "/tiles-nairobi",
+      "reason": "declared"
+    }
+  ],
+  "/wall-tiles": [
+    {
+      "label": "Tiles",
+      "href": "/tiles",
+      "reason": "declared"
+    },
+    {
+      "label": "Kitchen projects",
+      "href": "/projects",
+      "reason": "declared"
+    },
+    {
+      "label": "Tile buying guide",
+      "href": "/tile-buying-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Adhesives and grout",
+      "href": "/adhesives-grout",
+      "reason": "declared"
+    },
+    {
+      "label": "Installation support",
+      "href": "/installation-support",
+      "reason": "declared"
+    },
+    {
+      "label": "Wall tiles Nairobi",
+      "href": "/tiles-nairobi",
+      "reason": "declared"
+    }
+  ],
   "/bathroom-tiles": [
     {
-      "label": "Bathroom Renovation Guide",
+      "label": "Sanitaryware",
+      "href": "/sanitaryware",
+      "reason": "declared"
+    },
+    {
+      "label": "Bathroom renovation guide",
       "href": "/bathroom-renovation-guide",
-      "reason": "guide match"
+      "reason": "declared"
+    },
+    {
+      "label": "Tile buying guide",
+      "href": "/tile-buying-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Adhesives and grout",
+      "href": "/adhesives-grout",
+      "reason": "declared"
+    },
+    {
+      "label": "Installation support",
+      "href": "/installation-support",
+      "reason": "declared"
+    },
+    {
+      "label": "Bathroom tiles Nairobi",
+      "href": "/tiles-nairobi",
+      "reason": "declared"
     }
   ],
   "/sanitaryware": [
     {
-      "label": "Cost Estimation Guide",
+      "label": "Bathroom tiles",
+      "href": "/bathroom-tiles",
+      "reason": "declared"
+    },
+    {
+      "label": "Bathroom renovation guide",
+      "href": "/bathroom-renovation-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Cost estimation guide",
       "href": "/cost-estimation-guide",
-      "reason": "guide match"
+      "reason": "declared"
+    },
+    {
+      "label": "Sanitaryware Nairobi",
+      "href": "/sanitaryware-nairobi",
+      "reason": "declared"
+    },
+    {
+      "label": "Projects",
+      "href": "/projects",
+      "reason": "declared"
+    },
+    {
+      "label": "Installation support",
+      "href": "/installation-support",
+      "reason": "declared"
     }
   ],
   "/paints": [
     {
-      "label": "Paint Selection Guide",
+      "label": "Paint selection guide",
       "href": "/paint-selection-guide",
-      "reason": "guide match"
+      "reason": "declared"
+    },
+    {
+      "label": "Cost estimation guide",
+      "href": "/cost-estimation-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Paints Nairobi",
+      "href": "/paints-nairobi",
+      "reason": "declared"
+    },
+    {
+      "label": "Installation support",
+      "href": "/installation-support",
+      "reason": "declared"
+    },
+    {
+      "label": "Trade and project support",
+      "href": "/trade-projects",
+      "reason": "declared"
+    },
+    {
+      "label": "Products",
+      "href": "/products",
+      "reason": "declared"
     }
   ],
-  "/adhesives-grout": [],
+  "/adhesives-grout": [
+    {
+      "label": "Adhesive and grout guide",
+      "href": "/adhesive-grout-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Installation best practices",
+      "href": "/installation-best-practices",
+      "reason": "declared"
+    },
+    {
+      "label": "Tile buying guide",
+      "href": "/tile-buying-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Tiles",
+      "href": "/tiles",
+      "reason": "declared"
+    },
+    {
+      "label": "Cost estimation guide",
+      "href": "/cost-estimation-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Installation support",
+      "href": "/installation-support",
+      "reason": "declared"
+    }
+  ],
   "/installation-support": [
     {
-      "label": "Guides",
-      "href": "/guides",
-      "reason": "guide match"
+      "label": "Installation best practices",
+      "href": "/installation-best-practices",
+      "reason": "declared"
+    },
+    {
+      "label": "Adhesives and grout",
+      "href": "/adhesives-grout",
+      "reason": "declared"
+    },
+    {
+      "label": "Tile buying guide",
+      "href": "/tile-buying-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Cost estimation guide",
+      "href": "/cost-estimation-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Installation support Nairobi",
+      "href": "/installation-support-nairobi",
+      "reason": "declared"
+    },
+    {
+      "label": "Trade and project support",
+      "href": "/trade-projects",
+      "reason": "declared"
     }
   ],
-  "/guides": [],
-  "/locations": [],
-  "/projects": [],
-  "/trade-projects": [],
+  "/guides": [
+    {
+      "label": "Tile buying guide",
+      "href": "/tile-buying-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Bathroom renovation guide",
+      "href": "/bathroom-renovation-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Paint selection guide",
+      "href": "/paint-selection-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Adhesive and grout guide",
+      "href": "/adhesive-grout-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Installation best practices",
+      "href": "/installation-best-practices",
+      "reason": "declared"
+    },
+    {
+      "label": "Cost estimation guide",
+      "href": "/cost-estimation-guide",
+      "reason": "declared"
+    }
+  ],
+  "/locations": [
+    {
+      "label": "Nairobi",
+      "href": "/locations/nairobi",
+      "reason": "declared"
+    },
+    {
+      "label": "Machakos",
+      "href": "/locations/machakos",
+      "reason": "declared"
+    },
+    {
+      "label": "Makueni",
+      "href": "/locations/makueni",
+      "reason": "declared"
+    },
+    {
+      "label": "Tiles Kenya",
+      "href": "/tiles-kenya",
+      "reason": "declared"
+    },
+    {
+      "label": "Sanitaryware Kenya",
+      "href": "/sanitaryware-kenya",
+      "reason": "declared"
+    },
+    {
+      "label": "Paints Kenya",
+      "href": "/paints-kenya",
+      "reason": "declared"
+    }
+  ],
+  "/projects": [
+    {
+      "label": "Sanitaryware",
+      "href": "/sanitaryware",
+      "reason": "declared"
+    },
+    {
+      "label": "Wall tiles",
+      "href": "/wall-tiles",
+      "reason": "declared"
+    },
+    {
+      "label": "Tile buying guide",
+      "href": "/tile-buying-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Trade and project support",
+      "href": "/trade-projects",
+      "reason": "declared"
+    },
+    {
+      "label": "Products",
+      "href": "/products",
+      "reason": "declared"
+    },
+    {
+      "label": "Cost estimation guide",
+      "href": "/cost-estimation-guide",
+      "reason": "declared"
+    }
+  ],
+  "/trade-projects": [
+    {
+      "label": "Products",
+      "href": "/products",
+      "reason": "declared"
+    },
+    {
+      "label": "Projects",
+      "href": "/projects",
+      "reason": "declared"
+    },
+    {
+      "label": "Installation support",
+      "href": "/installation-support",
+      "reason": "declared"
+    },
+    {
+      "label": "Cost estimation guide",
+      "href": "/cost-estimation-guide",
+      "reason": "declared"
+    },
+    {
+      "label": "Tiles Kenya",
+      "href": "/tiles-kenya",
+      "reason": "declared"
+    },
+    {
+      "label": "Sanitaryware Kenya",
+      "href": "/sanitaryware-kenya",
+      "reason": "declared"
+    }
+  ],
   "/locations/nairobi": [],
   "/locations/machakos": [],
   "/locations/makueni": [],

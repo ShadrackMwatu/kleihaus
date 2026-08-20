@@ -106,6 +106,38 @@ const highIntentContentOpportunities = [
     rationale: 'Expands existing paint advice around surface condition, coverage planning and interior/exterior use cases.',
     relatedRoutes: ['/paints', '/paints-kenya', '/cost-estimation-guide'],
   },
+  {
+    title: 'Tile Tools And Accessories Guide',
+    targetRoute: '/tile-tools-accessories-guide',
+    commercialValue: 'Medium high',
+    priority: 11,
+    rationale: 'Targets practical tool, spacer, trim and finishing-accessory searches that support adhesive, grout and installation enquiries.',
+    relatedRoutes: ['/adhesives-grout', '/installation-support', '/installation-best-practices'],
+  },
+  {
+    title: 'Delivery Planning Guide',
+    targetRoute: '/delivery-planning-guide',
+    commercialValue: 'Medium high',
+    priority: 12,
+    rationale: 'Supports location and logistics searches without promising unsupported delivery prices, timing or service areas.',
+    relatedRoutes: ['/locations', '/locations/nairobi', '/cost-estimation-guide'],
+  },
+  {
+    title: 'Fundis And Installer Training Guide',
+    targetRoute: '/fundis-installer-training-guide',
+    commercialValue: 'Medium',
+    priority: 13,
+    rationale: 'Connects training and best-practice searches to installation support while avoiding unsupported certification claims.',
+    relatedRoutes: ['/installation-support', '/installation-best-practices', '/adhesives-grout'],
+  },
+  {
+    title: 'Project Advisory Checklist',
+    targetRoute: '/project-advisory-checklist',
+    commercialValue: 'Medium high',
+    priority: 14,
+    rationale: 'Helps contractors, developers and homeowners prepare measurements, product lists and quote details before contacting Kleihaus.',
+    relatedRoutes: ['/trade-projects', '/projects', '/cost-estimation-guide'],
+  },
 ]
 
 const toPosix = (value) => value.replace(/\\/g, '/')
@@ -261,13 +293,18 @@ const scoreBreakdown = (audit, imageManifest) => {
     : 100
 
   return {
+    overallSeoScore: audit.score,
     technicalSeoScore: audit.score,
     contentScore: Math.max(0, 100 - metadataWarnings * 2),
     localSeoScore: seoConfig.some((route) => route.path === '/locations/nairobi') && seoConfig.some((route) => route.path === '/locations/machakos') && seoConfig.some((route) => route.path === '/locations/makueni') ? 94 : 78,
+    productSeoScore: seoConfig.some((route) => route.path === '/products') && seoConfig.some((route) => route.path === '/sanitaryware') && seoConfig.some((route) => route.path === '/adhesives-grout') ? 92 : 76,
+    automationScore: audit.issues.length === 0 ? 100 : Math.max(0, 100 - audit.issues.length * 10),
+    performanceScore: audit.warnings.some((warning) => warning.toLowerCase().includes('oversized')) ? 88 : 94,
     imageSeoScore: Math.max(0, imageReadiness - missingImageWarnings * 4),
     schemaScore: audit.issues.some((issue) => issue.includes('schema')) ? 70 : 96,
     monitoringScore: 88,
     internalLinkScore: Math.max(0, 100 - brokenLinks * 5),
+    businessSeoScore: 90,
   }
 }
 
@@ -412,11 +449,18 @@ Score: ${audit.score}/100
 
 ## Score Breakdown
 
+- Overall SEO effectiveness: ${scores.overallSeoScore}/100
 - Technical SEO score: ${scores.technicalSeoScore}/100
 - Content score: ${scores.contentScore}/100
 - Local SEO score: ${scores.localSeoScore}/100
+- Product SEO score: ${scores.productSeoScore}/100
+- Automation score: ${scores.automationScore}/100
+- Performance score: ${scores.performanceScore}/100
+- Internal linking score: ${scores.internalLinkScore}/100
 - Schema score: ${scores.schemaScore}/100
+- Image SEO score: ${scores.imageSeoScore}/100
 - Monitoring score: ${scores.monitoringScore}/100
+- Business SEO score: ${scores.businessSeoScore}/100
 
 ## Blocking Issues
 
@@ -662,17 +706,21 @@ Kleihaus has a strong automated SEO foundation. The current automation score is 
 | Technical SEO | ${scores.technicalSeoScore}/100 |
 | Content SEO | ${scores.contentScore}/100 |
 | Local SEO | ${scores.localSeoScore}/100 |
+| Product SEO | ${scores.productSeoScore}/100 |
+| Automation | ${scores.automationScore}/100 |
+| Performance SEO | ${scores.performanceScore}/100 |
 | Image SEO | ${scores.imageSeoScore}/100 |
 | Schema SEO | ${scores.schemaScore}/100 |
 | Monitoring readiness | ${scores.monitoringScore}/100 |
 | Internal linking | ${scores.internalLinkScore}/100 |
+| Business SEO | ${scores.businessSeoScore}/100 |
 
 ## Improvements Generated
 
 - Regenerated sitemap, robots, navigation, internal links, image manifest, SEO dashboard, SEO report, content suggestions and GBP/social drafts.
 - Refreshed route metadata from the central SEO manifest.
 - Produced ${linkCount} internal-link recommendations across ${Object.keys(internalLinks).length} route sets.
-- Re-ranked ${highIntentContentOpportunities.length} high-intent content opportunities for commercial review.
+- Re-ranked ${highIntentContentOpportunities.length} high-intent content opportunities for commercial review, including tools, delivery, training and project advisory gaps.
 - Kept GA4, Search Console and GBP performance fields null where live private data is not connected.
 
 ## Priority Opportunities

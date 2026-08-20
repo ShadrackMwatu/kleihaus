@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "seo": "npm run seo:generate",
     "seo:generate": "node scripts/seo-engine.mjs",
     "seo:audit": "node scripts/seo-engine.mjs --audit-only",
     "seo:verify-production": "node scripts/verify-production-seo.mjs",

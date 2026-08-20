@@ -1,5 +1,5 @@
 export const SITE_ORIGIN = 'https://www.kleihaus.com'
-export const SEO_LASTMOD = '2026-08-06'
+export const SEO_LASTMOD = '2026-08-20'
 
 const defaultImage = '/images/kleihaus-structure.jpg'
 
@@ -15,6 +15,14 @@ const coreRoutes = [
     priority: '1.0',
     schemaType: 'WebPage',
     breadcrumbs: [{ name: 'Home', href: '/' }],
+    relatedLinks: [
+      { label: 'Products', href: '/products' },
+      { label: 'Projects', href: '/projects' },
+      { label: 'Guides', href: '/guides' },
+      { label: 'Locations', href: '/locations' },
+      { label: 'Trade and project support', href: '/trade-projects' },
+      { label: 'Products', href: '/products' },
+    ],
   },
   {
     path: '/products',
@@ -27,6 +35,14 @@ const coreRoutes = [
     schemaType: 'CollectionPage',
     changefreq: 'weekly',
     priority: '0.9',
+    relatedLinks: [
+      { label: 'Tiles', href: '/tiles' },
+      { label: 'Sanitaryware', href: '/sanitaryware' },
+      { label: 'Paints', href: '/paints' },
+      { label: 'Adhesives and grout', href: '/adhesives-grout' },
+      { label: 'Installation support', href: '/installation-support' },
+      { label: 'Projects', href: '/projects' },
+    ],
   },
   {
     path: '/tiles',
@@ -36,6 +52,14 @@ const coreRoutes = [
     image: '/images/tiles-floor.jpg',
     imageAlt: 'Floor tile finishes for homes and project quote planning in Kenya',
     category: 'Tiles',
+    relatedLinks: [
+      { label: 'Floor tiles', href: '/floor-tiles' },
+      { label: 'Wall tiles', href: '/wall-tiles' },
+      { label: 'Bathroom tiles', href: '/bathroom-tiles' },
+      { label: 'Tile buying guide', href: '/tile-buying-guide' },
+      { label: 'Tile adhesive and grout', href: '/adhesives-grout' },
+      { label: 'Tiles Nairobi', href: '/tiles-nairobi' },
+    ],
   },
   {
     path: '/floor-tiles',
@@ -45,6 +69,14 @@ const coreRoutes = [
     image: '/images/tiles-floor.jpg',
     imageAlt: 'Polished floor tiles for Kenyan home and project interiors',
     category: 'Floor Tiles',
+    relatedLinks: [
+      { label: 'Tiles', href: '/tiles' },
+      { label: 'Tile buying guide', href: '/tile-buying-guide' },
+      { label: 'Cost estimation guide', href: '/cost-estimation-guide' },
+      { label: 'Adhesives and grout', href: '/adhesives-grout' },
+      { label: 'Installation support', href: '/installation-support' },
+      { label: 'Floor tiles Nairobi', href: '/tiles-nairobi' },
+    ],
   },
   {
     path: '/wall-tiles',
@@ -54,6 +86,14 @@ const coreRoutes = [
     image: '/images/tiles-wall.jpg',
     imageAlt: 'Kitchen wall tiles and splashback finishes supplied by Kleihaus',
     category: 'Wall Tiles',
+    relatedLinks: [
+      { label: 'Tiles', href: '/tiles' },
+      { label: 'Kitchen projects', href: '/projects' },
+      { label: 'Tile buying guide', href: '/tile-buying-guide' },
+      { label: 'Adhesives and grout', href: '/adhesives-grout' },
+      { label: 'Installation support', href: '/installation-support' },
+      { label: 'Wall tiles Nairobi', href: '/tiles-nairobi' },
+    ],
   },
   {
     path: '/bathroom-tiles',
@@ -63,6 +103,14 @@ const coreRoutes = [
     image: '/images/bathroom-blue-1.jpg',
     imageAlt: 'Blue bathroom tile and sanitaryware display for quote planning',
     category: 'Bathroom Tiles',
+    relatedLinks: [
+      { label: 'Sanitaryware', href: '/sanitaryware' },
+      { label: 'Bathroom renovation guide', href: '/bathroom-renovation-guide' },
+      { label: 'Tile buying guide', href: '/tile-buying-guide' },
+      { label: 'Adhesives and grout', href: '/adhesives-grout' },
+      { label: 'Installation support', href: '/installation-support' },
+      { label: 'Bathroom tiles Nairobi', href: '/tiles-nairobi' },
+    ],
   },
   {
     path: '/sanitaryware',
@@ -72,6 +120,14 @@ const coreRoutes = [
     image: '/images/sanitaryware/sanitaryware-shower-display-02.jpg',
     imageAlt: 'Bathroom shower system and tap display at Kleihaus Ceramics',
     category: 'Sanitaryware',
+    relatedLinks: [
+      { label: 'Bathroom tiles', href: '/bathroom-tiles' },
+      { label: 'Bathroom renovation guide', href: '/bathroom-renovation-guide' },
+      { label: 'Cost estimation guide', href: '/cost-estimation-guide' },
+      { label: 'Sanitaryware Nairobi', href: '/sanitaryware-nairobi' },
+      { label: 'Projects', href: '/projects' },
+      { label: 'Installation support', href: '/installation-support' },
+    ],
   },
   {
     path: '/paints',
@@ -81,6 +137,14 @@ const coreRoutes = [
     image: '/images/paint-interior.jpg',
     imageAlt: 'Interior paint finish options for Kleihaus quote planning',
     category: 'Paints',
+    relatedLinks: [
+      { label: 'Paint selection guide', href: '/paint-selection-guide' },
+      { label: 'Cost estimation guide', href: '/cost-estimation-guide' },
+      { label: 'Paints Nairobi', href: '/paints-nairobi' },
+      { label: 'Installation support', href: '/installation-support' },
+      { label: 'Trade and project support', href: '/trade-projects' },
+      { label: 'Products', href: '/products' },
+    ],
   },
   {
     path: '/adhesives-grout',
@@ -90,6 +154,14 @@ const coreRoutes = [
     image: '/images/adhesive.jpg',
     imageAlt: 'Tile adhesive for floor and wall tile installation',
     category: 'Adhesives & Grout',
+    relatedLinks: [
+      { label: 'Adhesive and grout guide', href: '/adhesive-grout-guide' },
+      { label: 'Installation best practices', href: '/installation-best-practices' },
+      { label: 'Tile buying guide', href: '/tile-buying-guide' },
+      { label: 'Tiles', href: '/tiles' },
+      { label: 'Cost estimation guide', href: '/cost-estimation-guide' },
+      { label: 'Installation support', href: '/installation-support' },
+    ],
   },
   {
     path: '/installation-support',
@@ -99,6 +171,14 @@ const coreRoutes = [
     image: '/images/tiler-service.jpg',
     imageAlt: 'Tile installer preparing installation support for Kleihaus customers',
     category: 'Installation Support',
+    relatedLinks: [
+      { label: 'Installation best practices', href: '/installation-best-practices' },
+      { label: 'Adhesives and grout', href: '/adhesives-grout' },
+      { label: 'Tile buying guide', href: '/tile-buying-guide' },
+      { label: 'Cost estimation guide', href: '/cost-estimation-guide' },
+      { label: 'Installation support Nairobi', href: '/installation-support-nairobi' },
+      { label: 'Trade and project support', href: '/trade-projects' },
+    ],
   },
   {
     path: '/guides',
@@ -114,6 +194,14 @@ const coreRoutes = [
     breadcrumbs: [
       { name: 'Home', href: '/' },
       { name: 'Guides', href: '/guides' },
+    ],
+    relatedLinks: [
+      { label: 'Tile buying guide', href: '/tile-buying-guide' },
+      { label: 'Bathroom renovation guide', href: '/bathroom-renovation-guide' },
+      { label: 'Paint selection guide', href: '/paint-selection-guide' },
+      { label: 'Adhesive and grout guide', href: '/adhesive-grout-guide' },
+      { label: 'Installation best practices', href: '/installation-best-practices' },
+      { label: 'Cost estimation guide', href: '/cost-estimation-guide' },
     ],
   },
   {
@@ -131,6 +219,14 @@ const coreRoutes = [
       { name: 'Home', href: '/' },
       { name: 'Locations', href: '/locations' },
     ],
+    relatedLinks: [
+      { label: 'Nairobi', href: '/locations/nairobi' },
+      { label: 'Machakos', href: '/locations/machakos' },
+      { label: 'Makueni', href: '/locations/makueni' },
+      { label: 'Tiles Kenya', href: '/tiles-kenya' },
+      { label: 'Sanitaryware Kenya', href: '/sanitaryware-kenya' },
+      { label: 'Paints Kenya', href: '/paints-kenya' },
+    ],
   },
   {
     path: '/projects',
@@ -142,6 +238,14 @@ const coreRoutes = [
     category: 'Projects',
     changefreq: 'monthly',
     priority: '0.75',
+    relatedLinks: [
+      { label: 'Sanitaryware', href: '/sanitaryware' },
+      { label: 'Wall tiles', href: '/wall-tiles' },
+      { label: 'Tile buying guide', href: '/tile-buying-guide' },
+      { label: 'Trade and project support', href: '/trade-projects' },
+      { label: 'Products', href: '/products' },
+      { label: 'Cost estimation guide', href: '/cost-estimation-guide' },
+    ],
   },
   {
     path: '/trade-projects',
@@ -157,6 +261,14 @@ const coreRoutes = [
     breadcrumbs: [
       { name: 'Home', href: '/' },
       { name: 'Solutions', href: '/trade-projects' },
+    ],
+    relatedLinks: [
+      { label: 'Products', href: '/products' },
+      { label: 'Projects', href: '/projects' },
+      { label: 'Installation support', href: '/installation-support' },
+      { label: 'Cost estimation guide', href: '/cost-estimation-guide' },
+      { label: 'Tiles Kenya', href: '/tiles-kenya' },
+      { label: 'Sanitaryware Kenya', href: '/sanitaryware-kenya' },
     ],
   },
 ]

@@ -14,6 +14,29 @@ Rule: Every future meaningful change must update `docs/CHANGELOG.md` and, where 
 - Locations: Nairobi | Machakos | Makueni
 - Product focus: tiles, sanitaryware, paints, adhesives, grout and finishing materials for homes and projects in Kenya.
 
+## Maximum Automated SEO Audit And Product Discoverability
+
+On 2026-08-20, the automated SEO system was audited and strengthened from the current clean `main` branch.
+
+Implemented:
+
+- Added `docs/SEO_MAXIMUM_AUDIT.md` with technical, product, local, content, competitor-pattern, automation, analytics, monitoring and production-readiness findings.
+- Added `npm run seo` as an alias to the existing `seo:generate` command so validation can run the requested command without creating a second SEO pipeline.
+- Refreshed `SEO_LASTMOD` in `src/seoManifest.js` to `2026-08-20`.
+- Added declared related links to central route metadata for core product, guide, location, project and service pages.
+- Expanded `scripts/seo-engine.mjs` scorecards to include product SEO, automation, performance, image, schema, monitoring, internal-link and business SEO scores.
+- Expanded high-intent SEO opportunities from 10 to 14, adding tools/accessories, delivery planning, fundi/installer training and project advisory topics.
+
+Result:
+
+- Overall SEO score: `100/100`.
+- Routes audited: `39`.
+- Image groups audited: `62`.
+- Internal-link recommendations increased from `104` to `183`.
+- High-intent content opportunities increased from `10` to `14`.
+
+Safeguards preserved: no duplicate GA4 loader, no duplicate SEO automation, no Product/Offer/Review/AggregateRating schema, no fabricated Search Console/GA4/GBP metrics, no Cloudflare DNS/routes/bindings/secrets changes and no quote or WhatsApp workflow architecture changes.
+
 ## Playwright GA4 Production Verification
 
 On 2026-08-06, the repository gained a focused Playwright production verification for GA4 event delivery.

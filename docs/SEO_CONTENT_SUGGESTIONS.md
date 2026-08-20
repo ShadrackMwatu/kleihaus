@@ -1,6 +1,6 @@
 # Kleihaus SEO Content Suggestions
 
-Generated: 2026-08-06T05:09:09.908Z
+Generated: 2026-08-20T07:54:20.042Z
 
 These are review-ready suggestions from the automated SEO engine. They do not publish content and they do not invent facts.
 
@@ -10,18 +10,18 @@ These are review-ready suggestions from the automated SEO engine. They do not pu
 
 ## Internal Linking Opportunities
 
-- /installation-support-kenya: add or review links to /installation-support, /installation-best-practices, /cost-estimation-guide, /guides, /tiles-kenya, /sanitaryware-kenya
-- /installation-support-machakos: add or review links to /installation-support, /installation-best-practices, /cost-estimation-guide, /guides, /tiles-machakos, /sanitaryware-machakos
-- /installation-support-makueni: add or review links to /installation-support, /installation-best-practices, /cost-estimation-guide, /guides, /tiles-makueni, /sanitaryware-makueni
-- /installation-support-nairobi: add or review links to /installation-support, /installation-best-practices, /cost-estimation-guide, /guides, /tiles-nairobi, /sanitaryware-nairobi
-- /paints-kenya: add or review links to /paints, /paint-selection-guide, /cost-estimation-guide, /tiles-kenya, /sanitaryware-kenya, /paints-nairobi
-- /paints-machakos: add or review links to /paints, /paint-selection-guide, /cost-estimation-guide, /tiles-machakos, /sanitaryware-machakos, /paints-nairobi
-- /paints-makueni: add or review links to /paints, /paint-selection-guide, /cost-estimation-guide, /tiles-makueni, /sanitaryware-makueni, /paints-nairobi
-- /paints-nairobi: add or review links to /paints, /paint-selection-guide, /cost-estimation-guide, /tiles-nairobi, /sanitaryware-nairobi, /paints-machakos
-- /sanitaryware-kenya: add or review links to /sanitaryware, /bathroom-renovation-guide, /cost-estimation-guide, /tiles-kenya, /sanitaryware-nairobi, /sanitaryware-machakos
-- /sanitaryware-machakos: add or review links to /sanitaryware, /bathroom-renovation-guide, /cost-estimation-guide, /tiles-machakos, /sanitaryware-nairobi, /sanitaryware-makueni
-- /sanitaryware-makueni: add or review links to /sanitaryware, /bathroom-renovation-guide, /cost-estimation-guide, /tiles-makueni, /sanitaryware-nairobi, /sanitaryware-machakos
-- /sanitaryware-nairobi: add or review links to /sanitaryware, /bathroom-renovation-guide, /cost-estimation-guide, /tiles-nairobi, /sanitaryware-machakos, /sanitaryware-makueni
+- /adhesives-grout: add or review links to /adhesive-grout-guide, /installation-best-practices, /tile-buying-guide, /tiles, /cost-estimation-guide, /installation-support
+- /bathroom-tiles: add or review links to /sanitaryware, /bathroom-renovation-guide, /tile-buying-guide, /adhesives-grout, /installation-support, /tiles-nairobi
+- /floor-tiles: add or review links to /tiles, /tile-buying-guide, /cost-estimation-guide, /adhesives-grout, /installation-support, /tiles-nairobi
+- /guides: add or review links to /tile-buying-guide, /bathroom-renovation-guide, /paint-selection-guide, /adhesive-grout-guide, /installation-best-practices, /cost-estimation-guide
+- /installation-support: add or review links to /installation-best-practices, /adhesives-grout, /tile-buying-guide, /cost-estimation-guide, /installation-support-nairobi, /trade-projects
+- /locations: add or review links to /locations/nairobi, /locations/machakos, /locations/makueni, /tiles-kenya, /sanitaryware-kenya, /paints-kenya
+- /paints: add or review links to /paint-selection-guide, /cost-estimation-guide, /paints-nairobi, /installation-support, /trade-projects, /products
+- /products: add or review links to /tiles, /sanitaryware, /paints, /adhesives-grout, /installation-support, /projects
+- /projects: add or review links to /sanitaryware, /wall-tiles, /tile-buying-guide, /trade-projects, /products, /cost-estimation-guide
+- /sanitaryware: add or review links to /bathroom-tiles, /bathroom-renovation-guide, /cost-estimation-guide, /sanitaryware-nairobi, /projects, /installation-support
+- /tiles: add or review links to /floor-tiles, /wall-tiles, /bathroom-tiles, /tile-buying-guide, /adhesives-grout, /tiles-nairobi
+- /trade-projects: add or review links to /products, /projects, /installation-support, /cost-estimation-guide, /tiles-kenya, /sanitaryware-kenya
 
 ## New Or Expanded Content Ideas
 
@@ -50,6 +50,10 @@ These are review-ready suggestions from the automated SEO engine. They do not pu
 | 8 | Commercial Tile Guide | Medium high | /commercial-tile-guide | /trade-projects, /tiles-kenya, /installation-support-kenya |
 | 9 | Warehouse Flooring Guide | Medium | /warehouse-flooring-guide | /floor-tiles, /paints-kenya, /installation-support |
 | 10 | Paint Selection Guide Expansion | Medium | /paint-selection-guide | /paints, /paints-kenya, /cost-estimation-guide |
+| 11 | Tile Tools And Accessories Guide | Medium high | /tile-tools-accessories-guide | /adhesives-grout, /installation-support, /installation-best-practices |
+| 12 | Delivery Planning Guide | Medium high | /delivery-planning-guide | /locations, /locations/nairobi, /cost-estimation-guide |
+| 13 | Fundis And Installer Training Guide | Medium | /fundis-installer-training-guide | /installation-support, /installation-best-practices, /adhesives-grout |
+| 14 | Project Advisory Checklist | Medium high | /project-advisory-checklist | /trade-projects, /projects, /cost-estimation-guide |
 
 ## Opportunity Rationale
 
@@ -63,6 +67,10 @@ These are review-ready suggestions from the automated SEO engine. They do not pu
 - Commercial Tile Guide: Serves shops, offices, rentals and institutional buyers with durability and maintenance planning.
 - Warehouse Flooring Guide: Captures heavier-duty floor planning while keeping claims subject to site and product verification.
 - Paint Selection Guide Expansion: Expands existing paint advice around surface condition, coverage planning and interior/exterior use cases.
+- Tile Tools And Accessories Guide: Targets practical tool, spacer, trim and finishing-accessory searches that support adhesive, grout and installation enquiries.
+- Delivery Planning Guide: Supports location and logistics searches without promising unsupported delivery prices, timing or service areas.
+- Fundis And Installer Training Guide: Connects training and best-practice searches to installation support while avoiding unsupported certification claims.
+- Project Advisory Checklist: Helps contractors, developers and homeowners prepare measurements, product lists and quote details before contacting Kleihaus.
 
 ## Data Needed For Better Suggestions
 

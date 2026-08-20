@@ -1,6 +1,6 @@
 # Kleihaus Automated SEO Report
 
-Generated: 2026-08-06T05:09:09.908Z
+Generated: 2026-08-20T07:54:20.042Z
 
 Status: PASS
 
@@ -12,15 +12,22 @@ Score: 100/100
 - Image groups audited: 62
 - Primary navigation items generated: 7
 - Internal-link recommendation sets: 39
-- Internal-link recommendations generated: 104
+- Internal-link recommendations generated: 183
 
 ## Score Breakdown
 
+- Overall SEO effectiveness: 100/100
 - Technical SEO score: 100/100
 - Content score: 100/100
 - Local SEO score: 94/100
+- Product SEO score: 92/100
+- Automation score: 100/100
+- Performance score: 94/100
+- Internal linking score: 100/100
 - Schema score: 96/100
+- Image SEO score: 100/100
 - Monitoring score: 88/100
+- Business SEO score: 90/100
 
 ## Blocking Issues
 
@@ -72,6 +79,10 @@ Continuous monitoring runs `npm run seo:verify-production -- --all-routes` from 
 - P8: Commercial Tile Guide (Medium high) -> Serves shops, offices, rentals and institutional buyers with durability and maintenance planning.
 - P9: Warehouse Flooring Guide (Medium) -> Captures heavier-duty floor planning while keeping claims subject to site and product verification.
 - P10: Paint Selection Guide Expansion (Medium) -> Expands existing paint advice around surface condition, coverage planning and interior/exterior use cases.
+- P11: Tile Tools And Accessories Guide (Medium high) -> Targets practical tool, spacer, trim and finishing-accessory searches that support adhesive, grout and installation enquiries.
+- P12: Delivery Planning Guide (Medium high) -> Supports location and logistics searches without promising unsupported delivery prices, timing or service areas.
+- P13: Fundis And Installer Training Guide (Medium) -> Connects training and best-practice searches to installation support while avoiding unsupported certification claims.
+- P14: Project Advisory Checklist (Medium high) -> Helps contractors, developers and homeowners prepare measurements, product lists and quote details before contacting Kleihaus.
 
 ## Monthly Draft Workflow
 

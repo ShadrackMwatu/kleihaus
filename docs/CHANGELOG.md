@@ -6,6 +6,16 @@ Rule: Every future meaningful change must update `docs/CHANGELOG.md` and, where 
 
 Current deployment note: production now uses GitHub `main` -> Cloudflare Workers Builds -> Worker Assets -> Worker `kleihaus` -> `kleihaus.com` and `www.kleihaus.com`. The active quote endpoint is `/api/quote-request`. Older entries that mention Cloudflare Pages or `https://api.kleihaus.com/quote-request` are historical and describe earlier deployment states, not the current production path.
 
+## 2026-08-20
+
+### Maximum Automated SEO Audit And Product Discoverability
+
+- Added `docs/SEO_MAXIMUM_AUDIT.md` with a technical, product, local, content, competitor-pattern, automation, analytics and production-readiness audit of the Kleihaus SEO system.
+- Added `npm run seo` as an alias to the existing SEO generator so validation can run the requested command without duplicate automation.
+- Refreshed the central SEO manifest `lastmod` value to `2026-08-20` and strengthened declared related links for product, guide, location, project and service routes.
+- Expanded generated SEO scorecards to include product, automation, performance, monitoring, internal-link, image, schema and business SEO scores.
+- Increased generated internal-link recommendations from 104 to 183 and expanded high-intent content opportunities from 10 to 14, adding tools/accessories, delivery planning, fundi/installer training and project advisory gaps.
+
 ## 2026-08-06
 
 ### Playwright GA4 Production Verification

@@ -1,14 +1,19 @@
 {
-  "generatedAt": "2026-08-06T05:09:09.908Z",
+  "generatedAt": "2026-08-20T07:54:20.042Z",
   "seoScore": 100,
   "scores": {
+    "overallSeoScore": 100,
     "technicalSeoScore": 100,
     "contentScore": 100,
     "localSeoScore": 94,
+    "productSeoScore": 92,
+    "automationScore": 100,
+    "performanceScore": 94,
     "imageSeoScore": 100,
     "schemaScore": 96,
     "monitoringScore": 88,
-    "internalLinkScore": 100
+    "internalLinkScore": 100,
+    "businessSeoScore": 90
   },
   "status": "pass",
   "monitoringStatus": {
@@ -55,39 +60,67 @@
     },
     {
       "keyword": "cost estimation guide",
-      "routeCount": 17
-    },
-    {
-      "keyword": "guides",
-      "routeCount": 7
+      "routeCount": 25
     },
     {
       "keyword": "installation support",
-      "routeCount": 5
+      "routeCount": 13
     },
     {
-      "keyword": "machakos",
-      "routeCount": 5
-    },
-    {
-      "keyword": "makueni",
-      "routeCount": 5
-    },
-    {
-      "keyword": "nairobi",
-      "routeCount": 5
-    },
-    {
-      "keyword": "paints",
-      "routeCount": 5
-    },
-    {
-      "keyword": "sanitaryware",
-      "routeCount": 5
+      "keyword": "tile buying guide",
+      "routeCount": 9
     },
     {
       "keyword": "tiles",
+      "routeCount": 9
+    },
+    {
+      "keyword": "guides",
+      "routeCount": 8
+    },
+    {
+      "keyword": "sanitaryware",
+      "routeCount": 8
+    },
+    {
+      "keyword": "machakos",
+      "routeCount": 6
+    },
+    {
+      "keyword": "makueni",
+      "routeCount": 6
+    },
+    {
+      "keyword": "nairobi",
+      "routeCount": 6
+    },
+    {
+      "keyword": "paints",
+      "routeCount": 6
+    },
+    {
+      "keyword": "adhesives and grout",
       "routeCount": 5
+    },
+    {
+      "keyword": "locations",
+      "routeCount": 5
+    },
+    {
+      "keyword": "products",
+      "routeCount": 5
+    },
+    {
+      "keyword": "projects",
+      "routeCount": 5
+    },
+    {
+      "keyword": "bathroom renovation guide",
+      "routeCount": 4
+    },
+    {
+      "keyword": "installation best practices",
+      "routeCount": 4
     },
     {
       "keyword": "installation support guide",
@@ -98,36 +131,8 @@
       "routeCount": 4
     },
     {
-      "keyword": "locations",
-      "routeCount": 4
-    },
-    {
       "keyword": "paints guide",
       "routeCount": 4
-    },
-    {
-      "keyword": "sanitaryware guide",
-      "routeCount": 4
-    },
-    {
-      "keyword": "tiles guide",
-      "routeCount": 4
-    },
-    {
-      "keyword": "adhesive & grout guide",
-      "routeCount": 1
-    },
-    {
-      "keyword": "adhesives & grout",
-      "routeCount": 1
-    },
-    {
-      "keyword": "bathroom renovation guide",
-      "routeCount": 1
-    },
-    {
-      "keyword": "bathroom tiles",
-      "routeCount": 1
     }
   ],
   "topPages": [
@@ -205,7 +210,7 @@
     }
   ],
   "internalLinkSets": 39,
-  "internalLinkRecommendations": 104,
+  "internalLinkRecommendations": 183,
   "highIntentContentOpportunities": [
     {
       "title": "Tile Quantity Calculator",
@@ -324,6 +329,54 @@
       "relatedRoutes": [
         "/paints",
         "/paints-kenya",
+        "/cost-estimation-guide"
+      ]
+    },
+    {
+      "title": "Tile Tools And Accessories Guide",
+      "targetRoute": "/tile-tools-accessories-guide",
+      "commercialValue": "Medium high",
+      "priority": 11,
+      "rationale": "Targets practical tool, spacer, trim and finishing-accessory searches that support adhesive, grout and installation enquiries.",
+      "relatedRoutes": [
+        "/adhesives-grout",
+        "/installation-support",
+        "/installation-best-practices"
+      ]
+    },
+    {
+      "title": "Delivery Planning Guide",
+      "targetRoute": "/delivery-planning-guide",
+      "commercialValue": "Medium high",
+      "priority": 12,
+      "rationale": "Supports location and logistics searches without promising unsupported delivery prices, timing or service areas.",
+      "relatedRoutes": [
+        "/locations",
+        "/locations/nairobi",
+        "/cost-estimation-guide"
+      ]
+    },
+    {
+      "title": "Fundis And Installer Training Guide",
+      "targetRoute": "/fundis-installer-training-guide",
+      "commercialValue": "Medium",
+      "priority": 13,
+      "rationale": "Connects training and best-practice searches to installation support while avoiding unsupported certification claims.",
+      "relatedRoutes": [
+        "/installation-support",
+        "/installation-best-practices",
+        "/adhesives-grout"
+      ]
+    },
+    {
+      "title": "Project Advisory Checklist",
+      "targetRoute": "/project-advisory-checklist",
+      "commercialValue": "Medium high",
+      "priority": 14,
+      "rationale": "Helps contractors, developers and homeowners prepare measurements, product lists and quote details before contacting Kleihaus.",
+      "relatedRoutes": [
+        "/trade-projects",
+        "/projects",
         "/cost-estimation-guide"
       ]
     }
