@@ -53,6 +53,7 @@ test('live production sends expected GA4 events for safe interactions', async ({
   const events = []
   const backendEvents = []
   let initialGoogleTagLoaderCount = 0
+  let initialConfigCallCount = 0
 
   page.on('request', (request) => {
     if (isGoogleTagLoader(request)) googleTagRequests.push({ url: request.url(), method: request.method() })
@@ -136,6 +137,8 @@ test('live production sends expected GA4 events for safe interactions', async ({
     await goHomeAndWaitForPageView()
     await expect.poll(() => googleTagRequests.length, { timeout: 20_000 }).toBe(1)
     initialGoogleTagLoaderCount = googleTagRequests.length
+    initialConfigCallCount = await page.evaluate(() => (window.dataLayer || []).filter((entry) => entry?.[0] === 'config').length)
+    expect(initialConfigCallCount).toBe(1)
 
     await waitForEvent('cta_click', async () => {
       await page.getByRole('button', { name: /explore products/i }).first().click()
@@ -196,11 +199,13 @@ test('live production sends expected GA4 events for safe interactions', async ({
   } finally {
     const confirmedEvents = [...new Set(events.filter((event) => EXPECTED_EVENTS.includes(event)))]
     const missingEvents = EXPECTED_EVENTS.filter((event) => !confirmedEvents.includes(event))
+    console.log(JSON.stringify({ initialGoogleTagLoaderCount, initialConfigCallCount, collectRequestCount: collectRequests.length, confirmedEvents, missingEvents }))
     await testInfo.attach('ga4-summary.json', {
       contentType: 'application/json',
       body: JSON.stringify(
         {
           initialGoogleTagLoaderCount,
+          initialConfigCallCount,
           totalGoogleTagLoaderRequests: googleTagRequests.length,
           collectRequestCount: collectRequests.length,
           backendTrackRequestCount: backendTrackRequests.length,
