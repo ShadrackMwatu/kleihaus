@@ -6,3 +6,5 @@ dist/
 .vscode/
 reports/seo-production/
 test-results/
+video/.render/
+video/exports/

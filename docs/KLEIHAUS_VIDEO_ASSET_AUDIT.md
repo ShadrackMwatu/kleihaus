@@ -4,6 +4,8 @@ Audit date: 2026-09-06. Scope: repository assets only. No website code or deploy
 
 ## Capability result
 
+Update: the rendering dependency has now been obtained in an isolated temporary folder (imageio-ffmpeg 0.6.0, FFmpeg 7.1). `video/render.mjs` provides a reproducible standalone renderer for silent 15/30/60-second review exports and validates decoding. See video/README.md and video/exports/render-report.json. The historical limitation below is superseded; no website dependencies or homepage video integration were added. The structure/showroom-style source was excluded from these drafts pending provenance confirmation.
+
 The environment can provide **storyboard/assets and a reproducible edit specification**. It cannot currently export MP4 because `ffmpeg`, `ffprobe`, ImageMagick and ExifTool are not installed. No video footage, voice-over audio or licensed music was found. The single capability required for final rendering is an FFmpeg-capable editing environment, followed by human review of crops, text timing and audio.
 
 AI-generated footage was not used or produced. The package uses only genuine repository assets.

@@ -1,5 +1,11 @@
 # Kleihaus Project Changelog
 
+## Standalone video rendering completion
+
+- Added a reproducible FFmpeg renderer for silent 15/30/60-second review drafts, isolated from website dependencies and assets.
+- Excluded the unverified structure/showroom-style source, retained original images, and kept generated binaries/intermediates out of Git and deployment.
+- Recorded the resolved rendering dependency and publication review requirements in video/README.md.
+
 ## Block presentation and spacing audit
 
 - Aligned main homepage section spacing and heading typography; replaced internal editorial language with concise customer-focused copy.

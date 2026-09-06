@@ -1,5 +1,7 @@
 # Pending work reconciliation
 
+Latest completion: the block presentation audit is implemented and deployed in 84c9cdb, with production SEO 39/39 routes and 7/7 endpoints and responsive browser checks passing. The FFmpeg dependency has now been obtained in an isolated temporary folder; a standalone renderer creates silent 15/30/60-second MP4 drafts, with no website integration. Historical references below to unavailable rendering capability are superseded by video/README.md and the local render report. Business evidence, account access, rights review and optional audio remain owner-dependent.
+
 Reviewed 2026-09-06 against the working tree, commit history, prior market and video instructions, acquisition tests and live verification.
 
 ## Final deployment evidence
