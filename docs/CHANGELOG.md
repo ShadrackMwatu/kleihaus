@@ -1,5 +1,11 @@
 # Kleihaus Project Changelog
 
+## 2026-09-06 - Premium experience audit
+
+- Added the full website premium, realism, UX and commercial audit with conservative before scores.
+- Added the business-content requirements register for verified showroom, delivery, catalogue, project and trust evidence.
+- Removed the decorative page-level radial background and strengthened reduced-motion handling without changing routing, enquiry flows, analytics, SEO automation or Cloudflare files.
+
 ## 2026-09-06 - Commercial acquisition audit
 
 - Added evidence-based acquisition audit and 30-day baseline/outcome plan.

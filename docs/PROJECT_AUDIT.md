@@ -1,5 +1,9 @@
 # Kleihaus Project Audit
 
+## 2026-09-06 premium experience audit
+
+The full website audit is documented in KLEIHAUS_FULL_WEBSITE_PREMIUM_AUDIT.md. Current repository evidence supports an overall website experience score of 78/100. Technical and enquiry foundations are strong; verified showroom details, delivery terms, catalogue specifications, project context and customer proof remain the main premium/realism gaps. This pass removed only the decorative page-level radial background and strengthened reduced-motion handling. No Cloudflare, SEO automation, quote, WhatsApp or analytics architecture changed.
+
 ## 2026-09-06 commercial acquisition evidence
 
 Final verification update: implementation 15dbaa1 deployed successfully through Workers Builds. Post-deployment SEO verification passed 39 routes/7 endpoints. Elevated GitHub API inspection confirmed seven successful daily scheduled monitor runs (August 30-September 5). This supersedes the initial access limitation below; GA4 WhatsApp delivery remains unconfirmed. See the dedicated acquisition audit for exact evidence.
