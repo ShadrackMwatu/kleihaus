@@ -17,6 +17,12 @@ This audit summarizes the current production architecture and repository state f
 
 Rule: Every future meaningful change must update `docs/CHANGELOG.md` and, where relevant, `docs/PROJECT_AUDIT.md`.
 
+## 2026-09-06 Kenya market and target-client SEO expansion
+
+Added a repository-derived target-client model to the acquisition engine covering nine audience segments and eight keyword clusters across homeowners, builders, trade buyers, designers, developers, resellers, hospitality, institutions and installers. Every manifest route now carries target audience, intent, product/service/location cluster, journey stage and conversion goal fields in the generated acquisition snapshot. The engine reports evidence and measurement gaps without fabricating demand, customer, revenue, brand, price, stock or location claims.
+
+Added the market/competitor analysis, target-client SEO map, retention strategy and competitive action plan in `docs/KLEIHAUS_*.md`. All current priority segments map to existing routes; no speculative public pages were added. See `docs/SEO_CLIENT_ACQUISITION_AUDIT.md` for the evidence boundary and next actions.
+
 ## Project Identity
 
 - Brand: Kleihaus Ceramics

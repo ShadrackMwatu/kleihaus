@@ -1,5 +1,11 @@
 # Kleihaus Project Changelog
 
+## 2026-09-06 - Kenya market and target-client SEO expansion
+
+- Expanded the SEO acquisition engine with nine target-client segments, eight keyword clusters, route-level audience/intent/conversion fields and evidence-backed coverage-gap reporting.
+- Added Kenya market and competitor analysis, target-client SEO map, client-retention strategy and competitive action plan documentation.
+- Preserved null values for unconnected Search Console, GA4 and business-outcome data; no speculative routes or unsupported commercial claims were added.
+
 ## 2026-09-06 - Premium experience audit
 
 - Added the full website premium, realism, UX and commercial audit with conservative before scores.

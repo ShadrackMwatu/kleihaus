@@ -12,6 +12,8 @@ Elevated read-only GitHub API access succeeded after the sandbox request failed.
 
 The live GA4 failure remains unresolved and honestly reported. No complete mobile visual audit or field CWV measurement was performed. The acquisition plan still requires approved private reporting access and owner outcome records.
 
+The market, target-client and retention expansion is documented in `docs/KLEIHAUS_KENYA_MARKET_COMPETITOR_ANALYSIS.md`, `docs/KLEIHAUS_TARGET_CLIENT_SEO_MAP.md`, `docs/KLEIHAUS_CLIENT_RETENTION_STRATEGY.md` and `docs/KLEIHAUS_COMPETITIVE_ACTION_PLAN.md`. The build-time acquisition snapshot now exposes nine target segments, eight keyword clusters and evidence-backed coverage gaps while keeping unconnected performance fields null.
+
 ## Decision
 
 Kleihaus has functioning technical automation and commercial enquiry paths. It cannot currently demonstrate continuous qualified customer acquisition, and cannot prove which organic leads become paying customers. Search Console and GA4 reporting importers and business outcome records are absent. A high internal technical score does not close those gaps.
