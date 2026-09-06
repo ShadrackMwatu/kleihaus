@@ -1,5 +1,14 @@
 # Kleihaus Project Changelog
 
+## 2026-09-06 - Commercial acquisition audit
+
+- Added evidence-based acquisition audit and 30-day baseline/outcome plan.
+- Separated unconnected search, traffic, lead and customer measurements from technical scores in the generated dashboard; added provenance and all-route commercial inventory.
+- Scored content opportunities transparently and distinguish existing-page improvement from proposed content.
+- Aligned sanitaryware copy/metadata with genuine kitchen-sink imagery; removed duplicate homepage manifest link.
+- Production SEO passed 39 routes; static analytics passed. Live Chromium captured page_view/cta_click but failed at whatsapp_click; later events unverified. No analytics architecture or enquiry workflow changed.
+
+
 This changelog records meaningful project work so the Kleihaus website can be audited from the repository.
 
 Rule: Every future meaningful change must update `docs/CHANGELOG.md` and, where relevant, `docs/PROJECT_AUDIT.md`.

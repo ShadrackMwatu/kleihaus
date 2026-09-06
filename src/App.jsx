@@ -418,12 +418,12 @@ const categoryLandingPages = [
     path: '/sanitaryware',
     category: 'Sanitaryware',
     title: 'Sanitaryware Kenya | Basins, Toilets, Taps & Showers | Kleihaus',
-    description: 'Browse sanitaryware quote support for basins, toilets, taps, mixers, showers and bathroom accessories from Kleihaus Ceramics.',
+    description: 'Compare basins, toilets, kitchen sinks, mixers and showers. Ask Kleihaus about quantities, availability and delivery to Nairobi, Machakos or Makueni.',
     eyebrow: 'Sanitaryware quotes',
-    h1: 'Sanitaryware for bathrooms, renovations and project orders',
+    h1: 'Sanitaryware and kitchen sinks for renovation and project orders',
     intro:
-      'Kleihaus supports sanitaryware inquiries for basins, toilets, baths, showers, taps, mixers and bathroom accessories. Share the room style, quantity and location for useful quote guidance.',
-    notes: ['Basins and toilets', 'Taps, mixers and showers', 'Bathroom accessories'],
+      'Compare basins, toilets, showers, kitchen sinks, taps, mixers and bathroom accessories with Kleihaus. For a focused enquiry, share quantities, room measurements, existing plumbing positions and delivery location. Confirm dimensions, fitting compatibility and availability before ordering.',
+    notes: ['Basins and toilets', 'Kitchen sinks and mixers', 'Showers and bathroom accessories'],
     images: [
       ...sanitarywareShowroomImages,
       ...sanitarywareKitchenImages,

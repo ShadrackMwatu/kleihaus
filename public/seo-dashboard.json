@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-20T07:54:20.042Z",
+  "generatedAt": "2026-09-06T01:07:54.653Z",
   "seoScore": 100,
   "scores": {
     "overallSeoScore": 100,
@@ -13,7 +13,7 @@
     "schemaScore": 96,
     "monitoringScore": 88,
     "internalLinkScore": 100,
-    "businessSeoScore": 90
+    "businessSeoScore": null
   },
   "status": "pass",
   "monitoringStatus": {
@@ -53,7 +53,9 @@
     "Create or expand Kitchen Renovation Guide after owner review.",
     "Connect Google Search Console and GA4 APIs with approved credentials for live performance reporting."
   ],
-  "topKeywords": [
+  "topKeywords": null,
+  "topPages": null,
+  "configuredKeywordFrequency": [
     {
       "keyword": "home",
       "routeCount": 39
@@ -135,7 +137,7 @@
       "routeCount": 4
     }
   ],
-  "topPages": [
+  "configuredPriorityPages": [
     {
       "path": "/",
       "title": "Kleihaus Ceramics Kenya | Tiles, Sanitaryware & Paints",
@@ -211,7 +213,1445 @@
   ],
   "internalLinkSets": 39,
   "internalLinkRecommendations": 183,
+  "acquisition": {
+    "generatedAt": "2026-09-06T01:07:54.653Z",
+    "classification": "technical_automation_with_unverified_commercial_outcomes",
+    "scoreMeaning": "Technical checks are not rankings, customers or revenue.",
+    "searchVisibility": {
+      "status": "not_connected",
+      "source": "Google Search Console API; no importer configured",
+      "observedAt": null,
+      "metrics": {
+        "impressions": null,
+        "clicks": null,
+        "ctr": null,
+        "averagePosition": null,
+        "indexedPages": null
+      }
+    },
+    "organicTraffic": {
+      "status": "not_connected",
+      "source": "GA4 Data API; no importer configured",
+      "observedAt": null,
+      "metrics": {
+        "users": null,
+        "sessions": null,
+        "engagedSessions": null
+      }
+    },
+    "engagement": {
+      "status": "not_connected",
+      "source": "GA4 Data API",
+      "observedAt": null,
+      "metrics": {
+        "guideViews": null,
+        "locationViews": null,
+        "ctaClicks": null
+      }
+    },
+    "leads": {
+      "status": "not_connected",
+      "source": "GA4 Data API and business qualification records",
+      "observedAt": null,
+      "metrics": {
+        "whatsappClicks": null,
+        "phoneClicks": null,
+        "emailClicks": null,
+        "quoteSubmissions": null,
+        "qualifiedLeads": null
+      },
+      "caveat": "Contact clicks indicate intent, not a confirmed conversation or unique lead."
+    },
+    "customers": {
+      "status": "not_connected",
+      "source": "Private business outcome register; owner input required",
+      "observedAt": null,
+      "metrics": {
+        "wonCustomers": null,
+        "organicRevenue": null
+      }
+    },
+    "attribution": {
+      "queryToCustomer": "not_available; Search Console queries are aggregate, not individual identities",
+      "statuses": [
+        "NEW",
+        "QUALIFIED",
+        "QUOTED",
+        "WON",
+        "LOST"
+      ],
+      "sources": [
+        "ORGANIC_SEARCH",
+        "GOOGLE_BUSINESS_PROFILE",
+        "DIRECT",
+        "REFERRAL",
+        "PAID",
+        "UNKNOWN"
+      ],
+      "channels": [
+        "WHATSAPP",
+        "PHONE",
+        "EMAIL",
+        "QUOTE_FORM"
+      ],
+      "primaryEvents": [
+        "quote_submit",
+        "whatsapp_click",
+        "phone_click",
+        "email_click"
+      ],
+      "secondaryEvents": [
+        "cta_click",
+        "guide_click",
+        "guide_view",
+        "location_view"
+      ],
+      "privacy": "Keep lead IDs and outcomes private; never publish customer records in this dashboard."
+    },
+    "routeCoverage": [
+      {
+        "path": "/",
+        "intent": "product_discovery",
+        "title": "Kleihaus Ceramics Kenya | Tiles, Sanitaryware & Paints",
+        "description": "Discover tiles, sanitaryware, kitchen sinks, paints, adhesives, grout, tools and project support from Kleihaus Ceramics in Nairobi, Machakos and Makueni.",
+        "canonical": "https://www.kleihaus.com/",
+        "declaredKeywords": [
+          "Products",
+          "Projects",
+          "Guides",
+          "Locations",
+          "Trade and project support",
+          "Home"
+        ],
+        "image": "/images/kleihaus-structure.jpg",
+        "imageAlt": "Kleihaus Ceramics showroom structure for tiles and finishing materials",
+        "faqCount": 0,
+        "breadcrumbCount": 1,
+        "relatedPaths": [
+          "/products",
+          "/projects",
+          "/guides",
+          "/locations",
+          "/trade-projects"
+        ],
+        "recommendedJourney": [
+          "/",
+          "/products",
+          "/projects",
+          "/#contact"
+        ],
+        "enquiries": null,
+        "qualifiedLeads": null,
+        "customers": null,
+        "source": "src/seoManifest.js; editorial intent, not measured query demand"
+      },
+      {
+        "path": "/products",
+        "intent": "product_discovery",
+        "title": "Kleihaus Products | Tiles, Sanitaryware & Paints",
+        "description": "Explore Kleihaus product categories: tiles, sanitaryware, kitchen sinks and mixers, paints, adhesives, grout, tools and finishing support.",
+        "canonical": "https://www.kleihaus.com/products",
+        "declaredKeywords": [
+          "Products",
+          "Tiles",
+          "Sanitaryware",
+          "Paints",
+          "Adhesives and grout",
+          "Installation support",
+          "Projects",
+          "Home"
+        ],
+        "image": "/images/tiles-floor.jpg",
+        "imageAlt": "Kleihaus Ceramics product categories for finishing projects",
+        "faqCount": 0,
+        "breadcrumbCount": 2,
+        "relatedPaths": [
+          "/tiles",
+          "/sanitaryware",
+          "/paints",
+          "/adhesives-grout",
+          "/installation-support",
+          "/projects"
+        ],
+        "recommendedJourney": [
+          "/products",
+          "/tiles",
+          "/projects",
+          "/#contact"
+        ],
+        "enquiries": null,
+        "qualifiedLeads": null,
+        "customers": null,
+        "source": "src/seoManifest.js; editorial intent, not measured query demand"
+      },
+      {
+        "path": "/tiles",
+        "intent": "product_discovery",
+        "title": "Tiles Kenya | Floor, Wall & Bathroom Tiles | Kleihaus Ceramics",
+        "description": "Explore tile quote guidance for floor tiles, wall tiles, bathroom tiles and outdoor finishes from Kleihaus Ceramics in Nairobi, Machakos, Makueni and Kenya.",
+        "canonical": "https://www.kleihaus.com/tiles",
+        "declaredKeywords": [
+          "Tiles",
+          "Floor tiles",
+          "Wall tiles",
+          "Bathroom tiles",
+          "Tile buying guide",
+          "Tile adhesive and grout",
+          "Tiles Nairobi",
+          "Home"
+        ],
+        "image": "/images/tiles-floor.jpg",
+        "imageAlt": "Floor tile finishes for homes and project quote planning in Kenya",
+        "faqCount": 0,
+        "breadcrumbCount": 2,
+        "relatedPaths": [
+          "/floor-tiles",
+          "/wall-tiles",
+          "/bathroom-tiles",
+          "/tile-buying-guide",
+          "/adhesives-grout",
+          "/tiles-nairobi"
+        ],
+        "recommendedJourney": [
+          "/tiles",
+          "/adhesives-grout",
+          "/projects",
+          "/#contact"
+        ],
+        "enquiries": null,
+        "qualifiedLeads": null,
+        "customers": null,
+        "source": "src/seoManifest.js; editorial intent, not measured query demand"
+      },
+      {
+        "path": "/floor-tiles",
+        "intent": "product_discovery",
+        "title": "Floor Tiles Kenya | Kleihaus Ceramics",
+        "description": "Browse floor tile ideas for homes, shops and projects in Kenya. Request a Kleihaus quote based on quantity, location and project details.",
+        "canonical": "https://www.kleihaus.com/floor-tiles",
+        "declaredKeywords": [
+          "Floor Tiles",
+          "Tiles",
+          "Tile buying guide",
+          "Cost estimation guide",
+          "Adhesives and grout",
+          "Installation support",
+          "Floor tiles Nairobi",
+          "Home"
+        ],
+        "image": "/images/tiles-floor.jpg",
+        "imageAlt": "Polished floor tiles for Kenyan home and project interiors",
+        "faqCount": 0,
+        "breadcrumbCount": 2,
+        "relatedPaths": [
+          "/tiles",
+          "/tile-buying-guide",
+          "/cost-estimation-guide",
+          "/adhesives-grout",
+          "/installation-support",
+          "/tiles-nairobi"
+        ],
+        "recommendedJourney": [
+          "/floor-tiles",
+          "/tiles",
+          "/projects",
+          "/#contact"
+        ],
+        "enquiries": null,
+        "qualifiedLeads": null,
+        "customers": null,
+        "source": "src/seoManifest.js; editorial intent, not measured query demand"
+      },
+      {
+        "path": "/wall-tiles",
+        "intent": "product_discovery",
+        "title": "Wall Tiles Kenya | Kitchen & Interior Wall Tiles | Kleihaus",
+        "description": "Explore wall tile options for kitchens, bathrooms and feature walls. Request Kleihaus quote guidance for availability, quantity and delivery details.",
+        "canonical": "https://www.kleihaus.com/wall-tiles",
+        "declaredKeywords": [
+          "Wall Tiles",
+          "Tiles",
+          "Kitchen projects",
+          "Tile buying guide",
+          "Adhesives and grout",
+          "Installation support",
+          "Wall tiles Nairobi",
+          "Home"
+        ],
+        "image": "/images/tiles-wall.jpg",
+        "imageAlt": "Kitchen wall tiles and splashback finishes supplied by Kleihaus",
+        "faqCount": 0,
+        "breadcrumbCount": 2,
+        "relatedPaths": [
+          "/tiles",
+          "/projects",
+          "/tile-buying-guide",
+          "/adhesives-grout",
+          "/installation-support",
+          "/tiles-nairobi"
+        ],
+        "recommendedJourney": [
+          "/wall-tiles",
+          "/tiles",
+          "/projects",
+          "/#contact"
+        ],
+        "enquiries": null,
+        "qualifiedLeads": null,
+        "customers": null,
+        "source": "src/seoManifest.js; editorial intent, not measured query demand"
+      },
+      {
+        "path": "/bathroom-tiles",
+        "intent": "product_discovery",
+        "title": "Bathroom Tiles Kenya | Shower & Wet Area Tiles | Kleihaus",
+        "description": "Plan bathroom tile combinations for showers, walls and floors. Request a Kleihaus quote based on room size, tile type and location.",
+        "canonical": "https://www.kleihaus.com/bathroom-tiles",
+        "declaredKeywords": [
+          "Bathroom Tiles",
+          "Sanitaryware",
+          "Bathroom renovation guide",
+          "Tile buying guide",
+          "Adhesives and grout",
+          "Installation support",
+          "Bathroom tiles Nairobi",
+          "Home"
+        ],
+        "image": "/images/bathroom-blue-1.jpg",
+        "imageAlt": "Blue bathroom tile and sanitaryware display for quote planning",
+        "faqCount": 0,
+        "breadcrumbCount": 2,
+        "relatedPaths": [
+          "/sanitaryware",
+          "/bathroom-renovation-guide",
+          "/tile-buying-guide",
+          "/adhesives-grout",
+          "/installation-support",
+          "/tiles-nairobi"
+        ],
+        "recommendedJourney": [
+          "/bathroom-tiles",
+          "/sanitaryware",
+          "/projects",
+          "/#contact"
+        ],
+        "enquiries": null,
+        "qualifiedLeads": null,
+        "customers": null,
+        "source": "src/seoManifest.js; editorial intent, not measured query demand"
+      },
+      {
+        "path": "/sanitaryware",
+        "intent": "product_discovery",
+        "title": "Sanitaryware Kenya | Basins, Toilets, Taps & Showers | Kleihaus",
+        "description": "Compare basins, toilets, kitchen sinks, mixers and showers. Ask Kleihaus about quantities, availability and delivery to Nairobi, Machakos or Makueni.",
+        "canonical": "https://www.kleihaus.com/sanitaryware",
+        "declaredKeywords": [
+          "Sanitaryware",
+          "Bathroom tiles",
+          "Bathroom renovation guide",
+          "Cost estimation guide",
+          "Sanitaryware Nairobi",
+          "Projects",
+          "Installation support",
+          "Home"
+        ],
+        "image": "/images/sanitaryware/sanitaryware-shower-display-02.jpg",
+        "imageAlt": "Bathroom shower system and tap display at Kleihaus Ceramics",
+        "faqCount": 0,
+        "breadcrumbCount": 2,
+        "relatedPaths": [
+          "/bathroom-tiles",
+          "/bathroom-renovation-guide",
+          "/cost-estimation-guide",
+          "/sanitaryware-nairobi",
+          "/projects",
+          "/installation-support"
+        ],
+        "recommendedJourney": [
+          "/sanitaryware",
+          "/installation-support",
+          "/projects",
+          "/#contact"
+        ],
+        "enquiries": null,
+        "qualifiedLeads": null,
+        "customers": null,
+        "source": "src/seoManifest.js; editorial intent, not measured query demand"
+      },
+      {
+        "path": "/paints",
+        "intent": "product_discovery",
+        "title": "Paints Kenya | Interior, Exterior, Roof & Floor Paints | Kleihaus",
+        "description": "Request Kleihaus paint quote guidance for interior, exterior, roof and floor finishes based on surface area, location and project needs.",
+        "canonical": "https://www.kleihaus.com/paints",
+        "declaredKeywords": [
+          "Paints",
+          "Paint selection guide",
+          "Cost estimation guide",
+          "Paints Nairobi",
+          "Installation support",
+          "Trade and project support",
+          "Products",
+          "Home"
+        ],
+        "image": "/images/paint-interior.jpg",
+        "imageAlt": "Interior paint finish options for Kleihaus quote planning",
+        "faqCount": 0,
+        "breadcrumbCount": 2,
+        "relatedPaths": [
+          "/paint-selection-guide",
+          "/cost-estimation-guide",
+          "/paints-nairobi",
+          "/installation-support",
+          "/trade-projects",
+          "/products"
+        ],
+        "recommendedJourney": [
+          "/paints",
+          "/installation-support",
+          "/projects",
+          "/#contact"
+        ],
+        "enquiries": null,
+        "qualifiedLeads": null,
+        "customers": null,
+        "source": "src/seoManifest.js; editorial intent, not measured query demand"
+      },
+      {
+        "path": "/adhesives-grout",
+        "intent": "product_discovery",
+        "title": "Tile Adhesives & Grout Kenya | Kleihaus Ceramics",
+        "description": "Plan tile adhesive, grout, trims, spacers and installation essentials with Kleihaus quote support for tile projects in Kenya.",
+        "canonical": "https://www.kleihaus.com/adhesives-grout",
+        "declaredKeywords": [
+          "Adhesives & Grout",
+          "Adhesive and grout guide",
+          "Installation best practices",
+          "Tile buying guide",
+          "Tiles",
+          "Cost estimation guide",
+          "Installation support",
+          "Home"
+        ],
+        "image": "/images/adhesive.jpg",
+        "imageAlt": "Tile adhesive for floor and wall tile installation",
+        "faqCount": 0,
+        "breadcrumbCount": 2,
+        "relatedPaths": [
+          "/adhesive-grout-guide",
+          "/installation-best-practices",
+          "/tile-buying-guide",
+          "/tiles",
+          "/cost-estimation-guide",
+          "/installation-support"
+        ],
+        "recommendedJourney": [
+          "/adhesives-grout",
+          "/tiles",
+          "/projects",
+          "/#contact"
+        ],
+        "enquiries": null,
+        "qualifiedLeads": null,
+        "customers": null,
+        "source": "src/seoManifest.js; editorial intent, not measured query demand"
+      },
+      {
+        "path": "/installation-support",
+        "intent": "product_discovery",
+        "title": "Installation Support Kenya | Kleihaus Ceramics",
+        "description": "Plan tile and finishing installation support with Kleihaus, including measurement, product matching, fixing, grouting, cleaning and training.",
+        "canonical": "https://www.kleihaus.com/installation-support",
+        "declaredKeywords": [
+          "Installation Support",
+          "Installation best practices",
+          "Adhesives and grout",
+          "Tile buying guide",
+          "Cost estimation guide",
+          "Installation support Nairobi",
+          "Trade and project support",
+          "Home"
+        ],
+        "image": "/images/tiler-service.jpg",
+        "imageAlt": "Tile installer preparing installation support for Kleihaus customers",
+        "faqCount": 0,
+        "breadcrumbCount": 2,
+        "relatedPaths": [
+          "/installation-best-practices",
+          "/adhesives-grout",
+          "/tile-buying-guide",
+          "/cost-estimation-guide",
+          "/installation-support-nairobi",
+          "/trade-projects"
+        ],
+        "recommendedJourney": [
+          "/installation-support",
+          "/adhesives-grout",
+          "/projects",
+          "/#contact"
+        ],
+        "enquiries": null,
+        "qualifiedLeads": null,
+        "customers": null,
+        "source": "src/seoManifest.js; editorial intent, not measured query demand"
+      },
+      {
+        "path": "/guides",
+        "intent": "commercial_investigation",
+        "title": "Kleihaus Guides | Buying, Planning & Installation Help",
+        "description": "Use Kleihaus guides for tile buying, bathroom renovation, paint selection, adhesive and grout planning, installation practices and cost estimation.",
+        "canonical": "https://www.kleihaus.com/guides",
+        "declaredKeywords": [
+          "Guides",
+          "Tile buying guide",
+          "Bathroom renovation guide",
+          "Paint selection guide",
+          "Adhesive and grout guide",
+          "Installation best practices",
+          "Cost estimation guide",
+          "Home"
+        ],
+        "image": "/images/tiles-floor.jpg",
+        "imageAlt": "Kleihaus Ceramics buying and planning guides",
+        "faqCount": 0,
+        "breadcrumbCount": 2,
+        "relatedPaths": [
+          "/tile-buying-guide",
+          "/bathroom-renovation-guide",
+          "/paint-selection-guide",
+          "/adhesive-grout-guide",
+          "/installation-best-practices",
+          "/cost-estimation-guide"
+        ],
+        "recommendedJourney": [
+          "/guides",
+          "/projects",
+          "/#contact"
+        ],
+        "enquiries": null,
+        "qualifiedLeads": null,
+        "customers": null,
+        "source": "src/seoManifest.js; editorial intent, not measured query demand"
+      },
+      {
+        "path": "/locations",
+        "intent": "product_discovery",
+        "title": "Kleihaus Locations | Nairobi, Machakos & Makueni Support",
+        "description": "Find Kleihaus location hubs for Nairobi, Machakos and Makueni, with links to relevant product-location pages and quotation support.",
+        "canonical": "https://www.kleihaus.com/locations",
+        "declaredKeywords": [
+          "Locations",
+          "Nairobi",
+          "Machakos",
+          "Makueni",
+          "Tiles Kenya",
+          "Sanitaryware Kenya",
+          "Paints Kenya",
+          "Home"
+        ],
+        "image": "/images/kleihaus-structure.jpg",
+        "imageAlt": "Kleihaus Ceramics local finishing material support",
+        "faqCount": 0,
+        "breadcrumbCount": 2,
+        "relatedPaths": [
+          "/locations/nairobi",
+          "/locations/machakos",
+          "/locations/makueni",
+          "/tiles-kenya",
+          "/sanitaryware-kenya",
+          "/paints-kenya"
+        ],
+        "recommendedJourney": [
+          "/locations",
+          "/projects",
+          "/#contact"
+        ],
+        "enquiries": null,
+        "qualifiedLeads": null,
+        "customers": null,
+        "source": "src/seoManifest.js; editorial intent, not measured query demand"
+      },
+      {
+        "path": "/projects",
+        "intent": "product_discovery",
+        "title": "Kleihaus Projects | Kitchen Finishing Gallery",
+        "description": "Explore selected kitchen finishing project images featuring tiles, sinks, countertops and finishing solutions supplied or supported by Kleihaus.",
+        "canonical": "https://www.kleihaus.com/projects",
+        "declaredKeywords": [
+          "Projects",
+          "Sanitaryware",
+          "Wall tiles",
+          "Tile buying guide",
+          "Trade and project support",
+          "Products",
+          "Cost estimation guide",
+          "Home"
+        ],
+        "image": "/images/projects/project-kitchen-sink-window-01.jpg",
+        "imageAlt": "Kitchen sink and countertop beside a wide window",
+        "faqCount": 0,
+        "breadcrumbCount": 2,
+        "relatedPaths": [
+          "/sanitaryware",
+          "/wall-tiles",
+          "/tile-buying-guide",
+          "/trade-projects",
+          "/products",
+          "/cost-estimation-guide"
+        ],
+        "recommendedJourney": [
+          "/projects",
+          "/sanitaryware",
+          "/#contact"
+        ],
+        "enquiries": null,
+        "qualifiedLeads": null,
+        "customers": null,
+        "source": "src/seoManifest.js; editorial intent, not measured query demand"
+      },
+      {
+        "path": "/trade-projects",
+        "intent": "trade_procurement",
+        "title": "Trade & Project Supply Kenya | Kleihaus Ceramics",
+        "description": "Trade and project quote support for homeowners, home builders, contractors, property developers, design professionals, dealers and institutional buyers in Kenya.",
+        "canonical": "https://www.kleihaus.com/trade-projects",
+        "declaredKeywords": [
+          "Trade & Projects",
+          "Products",
+          "Projects",
+          "Installation support",
+          "Cost estimation guide",
+          "Tiles Kenya",
+          "Sanitaryware Kenya",
+          "Home",
+          "Solutions"
+        ],
+        "image": "/images/projects/project-kitchen-overview-01.jpg",
+        "imageAlt": "Kitchen finishing project image for trade and project quote support",
+        "faqCount": 0,
+        "breadcrumbCount": 2,
+        "relatedPaths": [
+          "/products",
+          "/projects",
+          "/installation-support",
+          "/cost-estimation-guide",
+          "/tiles-kenya",
+          "/sanitaryware-kenya"
+        ],
+        "recommendedJourney": [
+          "/trade-projects",
+          "/products",
+          "/projects",
+          "/#contact"
+        ],
+        "enquiries": null,
+        "qualifiedLeads": null,
+        "customers": null,
+        "source": "src/seoManifest.js; editorial intent, not measured query demand"
+      },
+      {
+        "path": "/locations/nairobi",
+        "intent": "product_discovery",
+        "title": "Kleihaus Nairobi | Tiles, Sanitaryware & Paints",
+        "description": "Kleihaus Nairobi support for tiles, sanitaryware, paints, delivery coordination and installation guidance.",
+        "canonical": "https://www.kleihaus.com/locations/nairobi",
+        "declaredKeywords": [
+          "Nairobi",
+          "Home",
+          "Locations"
+        ],
+        "image": "/images/kleihaus-structure.jpg",
+        "imageAlt": "Kleihaus Ceramics support for Nairobi projects",
+        "faqCount": 0,
+        "breadcrumbCount": 3,
+        "relatedPaths": [],
+        "recommendedJourney": [
+          "/locations/nairobi",
+          "/projects",
+          "/#contact"
+        ],
+        "enquiries": null,
+        "qualifiedLeads": null,
+        "customers": null,
+        "source": "src/seoManifest.js; editorial intent, not measured query demand"
+      },
+      {
+        "path": "/locations/machakos",
+        "intent": "product_discovery",
+        "title": "Kleihaus Machakos | Tiles, Sanitaryware & Paints",
+        "description": "Kleihaus Machakos support for tiles, sanitaryware, paints, delivery coordination and installation guidance.",
+        "canonical": "https://www.kleihaus.com/locations/machakos",
+        "declaredKeywords": [
+          "Machakos",
+          "Home",
+          "Locations"
+        ],
+        "image": "/images/kleihaus-structure.jpg",
+        "imageAlt": "Kleihaus Ceramics support for Machakos projects",
+        "faqCount": 0,
+        "breadcrumbCount": 3,
+        "relatedPaths": [],
+        "recommendedJourney": [
+          "/locations/machakos",
+          "/projects",
+          "/#contact"
+        ],
+        "enquiries": null,
+        "qualifiedLeads": null,
+        "customers": null,
+        "source": "src/seoManifest.js; editorial intent, not measured query demand"
+      },
+      {
+        "path": "/locations/makueni",
+        "intent": "product_discovery",
+        "title": "Kleihaus Makueni | Tiles, Sanitaryware & Paints",
+        "description": "Kleihaus Makueni support for tiles, sanitaryware, paints, delivery coordination and installation guidance.",
+        "canonical": "https://www.kleihaus.com/locations/makueni",
+        "declaredKeywords": [
+          "Makueni",
+          "Home",
+          "Locations"
+        ],
+        "image": "/images/kleihaus-structure.jpg",
+        "imageAlt": "Kleihaus Ceramics support for Makueni projects",
+        "faqCount": 0,
+        "breadcrumbCount": 3,
+        "relatedPaths": [],
+        "recommendedJourney": [
+          "/locations/makueni",
+          "/projects",
+          "/#contact"
+        ],
+        "enquiries": null,
+        "qualifiedLeads": null,
+        "customers": null,
+        "source": "src/seoManifest.js; editorial intent, not measured query demand"
+      },
+      {
+        "path": "/tiles-nairobi",
+        "intent": "local_purchase",
+        "title": "Tiles Nairobi | Kleihaus Ceramics Kenya",
+        "description": "Tiles Nairobi: floor, wall, bathroom and outdoor tiles. Request quantity, availability, delivery and installation support.",
+        "canonical": "https://www.kleihaus.com/tiles-nairobi",
+        "declaredKeywords": [
+          "Tiles Nairobi",
+          "Tiles",
+          "Nairobi",
+          "Tiles guide",
+          "Cost estimation guide",
+          "Home"
+        ],
+        "image": "/images/tiles-floor.jpg",
+        "imageAlt": "Tiles planning and quote support for Nairobi by Kleihaus Ceramics",
+        "faqCount": 3,
+        "breadcrumbCount": 4,
+        "relatedPaths": [
+          "/tiles",
+          "/tile-buying-guide",
+          "/cost-estimation-guide"
+        ],
+        "recommendedJourney": [
+          "/tiles-nairobi",
+          "/tiles",
+          "/projects",
+          "/#contact"
+        ],
+        "enquiries": null,
+        "qualifiedLeads": null,
+        "customers": null,
+        "source": "src/seoManifest.js; editorial intent, not measured query demand"
+      },
+      {
+        "path": "/tiles-machakos",
+        "intent": "local_purchase",
+        "title": "Tiles Machakos | Kleihaus Ceramics Kenya",
+        "description": "Tiles Machakos: floor, wall, bathroom and outdoor tiles. Request quantity, availability, delivery and installation support.",
+        "canonical": "https://www.kleihaus.com/tiles-machakos",
+        "declaredKeywords": [
+          "Tiles Machakos",
+          "Tiles",
+          "Machakos",
+          "Tiles guide",
+          "Cost estimation guide",
+          "Home"
+        ],
+        "image": "/images/tiles-floor.jpg",
+        "imageAlt": "Tiles planning and quote support for Machakos by Kleihaus Ceramics",
+        "faqCount": 3,
+        "breadcrumbCount": 4,
+        "relatedPaths": [
+          "/tiles",
+          "/tile-buying-guide",
+          "/cost-estimation-guide"
+        ],
+        "recommendedJourney": [
+          "/tiles-machakos",
+          "/tiles",
+          "/projects",
+          "/#contact"
+        ],
+        "enquiries": null,
+        "qualifiedLeads": null,
+        "customers": null,
+        "source": "src/seoManifest.js; editorial intent, not measured query demand"
+      },
+      {
+        "path": "/tiles-makueni",
+        "intent": "local_purchase",
+        "title": "Tiles Makueni | Kleihaus Ceramics Kenya",
+        "description": "Tiles Makueni: floor, wall, bathroom and outdoor tiles. Request quantity, availability, delivery and installation support.",
+        "canonical": "https://www.kleihaus.com/tiles-makueni",
+        "declaredKeywords": [
+          "Tiles Makueni",
+          "Tiles",
+          "Makueni",
+          "Tiles guide",
+          "Cost estimation guide",
+          "Home"
+        ],
+        "image": "/images/tiles-floor.jpg",
+        "imageAlt": "Tiles planning and quote support for Makueni by Kleihaus Ceramics",
+        "faqCount": 3,
+        "breadcrumbCount": 4,
+        "relatedPaths": [
+          "/tiles",
+          "/tile-buying-guide",
+          "/cost-estimation-guide"
+        ],
+        "recommendedJourney": [
+          "/tiles-makueni",
+          "/tiles",
+          "/projects",
+          "/#contact"
+        ],
+        "enquiries": null,
+        "qualifiedLeads": null,
+        "customers": null,
+        "source": "src/seoManifest.js; editorial intent, not measured query demand"
+      },
+      {
+        "path": "/tiles-kenya",
+        "intent": "local_purchase",
+        "title": "Tiles Kenya | Kleihaus Ceramics Kenya",
+        "description": "Tiles Kenya: floor, wall, bathroom and outdoor tiles. Request quantity, availability, delivery and installation support.",
+        "canonical": "https://www.kleihaus.com/tiles-kenya",
+        "declaredKeywords": [
+          "Tiles Kenya",
+          "Tiles",
+          "Kenya",
+          "Tiles guide",
+          "Cost estimation guide",
+          "Home"
+        ],
+        "image": "/images/tiles-floor.jpg",
+        "imageAlt": "Tiles planning and quote support for Kenya by Kleihaus Ceramics",
+        "faqCount": 3,
+        "breadcrumbCount": 4,
+        "relatedPaths": [
+          "/tiles",
+          "/tile-buying-guide",
+          "/cost-estimation-guide"
+        ],
+        "recommendedJourney": [
+          "/tiles-kenya",
+          "/tiles",
+          "/projects",
+          "/#contact"
+        ],
+        "enquiries": null,
+        "qualifiedLeads": null,
+        "customers": null,
+        "source": "src/seoManifest.js; editorial intent, not measured query demand"
+      },
+      {
+        "path": "/sanitaryware-nairobi",
+        "intent": "local_purchase",
+        "title": "Sanitaryware Nairobi | Kleihaus Ceramics Kenya",
+        "description": "Sanitaryware Nairobi: basins, toilets, taps, mixers and showers. Request quantity, availability, delivery and installation support.",
+        "canonical": "https://www.kleihaus.com/sanitaryware-nairobi",
+        "declaredKeywords": [
+          "Sanitaryware Nairobi",
+          "Sanitaryware",
+          "Nairobi",
+          "Sanitaryware guide",
+          "Cost estimation guide",
+          "Home"
+        ],
+        "image": "/images/sanitaryware/sanitaryware-shower-display-02.jpg",
+        "imageAlt": "Sanitaryware planning and quote support for Nairobi by Kleihaus Ceramics",
+        "faqCount": 3,
+        "breadcrumbCount": 4,
+        "relatedPaths": [
+          "/sanitaryware",
+          "/bathroom-renovation-guide",
+          "/cost-estimation-guide"
+        ],
+        "recommendedJourney": [
+          "/sanitaryware-nairobi",
+          "/sanitaryware",
+          "/projects",
+          "/#contact"
+        ],
+        "enquiries": null,
+        "qualifiedLeads": null,
+        "customers": null,
+        "source": "src/seoManifest.js; editorial intent, not measured query demand"
+      },
+      {
+        "path": "/sanitaryware-machakos",
+        "intent": "local_purchase",
+        "title": "Sanitaryware Machakos | Kleihaus Ceramics Kenya",
+        "description": "Sanitaryware Machakos: basins, toilets, taps, mixers and showers. Request quantity, availability, delivery and installation support.",
+        "canonical": "https://www.kleihaus.com/sanitaryware-machakos",
+        "declaredKeywords": [
+          "Sanitaryware Machakos",
+          "Sanitaryware",
+          "Machakos",
+          "Sanitaryware guide",
+          "Cost estimation guide",
+          "Home"
+        ],
+        "image": "/images/sanitaryware/sanitaryware-shower-display-02.jpg",
+        "imageAlt": "Sanitaryware planning and quote support for Machakos by Kleihaus Ceramics",
+        "faqCount": 3,
+        "breadcrumbCount": 4,
+        "relatedPaths": [
+          "/sanitaryware",
+          "/bathroom-renovation-guide",
+          "/cost-estimation-guide"
+        ],
+        "recommendedJourney": [
+          "/sanitaryware-machakos",
+          "/sanitaryware",
+          "/projects",
+          "/#contact"
+        ],
+        "enquiries": null,
+        "qualifiedLeads": null,
+        "customers": null,
+        "source": "src/seoManifest.js; editorial intent, not measured query demand"
+      },
+      {
+        "path": "/sanitaryware-makueni",
+        "intent": "local_purchase",
+        "title": "Sanitaryware Makueni | Kleihaus Ceramics Kenya",
+        "description": "Sanitaryware Makueni: basins, toilets, taps, mixers and showers. Request quantity, availability, delivery and installation support.",
+        "canonical": "https://www.kleihaus.com/sanitaryware-makueni",
+        "declaredKeywords": [
+          "Sanitaryware Makueni",
+          "Sanitaryware",
+          "Makueni",
+          "Sanitaryware guide",
+          "Cost estimation guide",
+          "Home"
+        ],
+        "image": "/images/sanitaryware/sanitaryware-shower-display-02.jpg",
+        "imageAlt": "Sanitaryware planning and quote support for Makueni by Kleihaus Ceramics",
+        "faqCount": 3,
+        "breadcrumbCount": 4,
+        "relatedPaths": [
+          "/sanitaryware",
+          "/bathroom-renovation-guide",
+          "/cost-estimation-guide"
+        ],
+        "recommendedJourney": [
+          "/sanitaryware-makueni",
+          "/sanitaryware",
+          "/projects",
+          "/#contact"
+        ],
+        "enquiries": null,
+        "qualifiedLeads": null,
+        "customers": null,
+        "source": "src/seoManifest.js; editorial intent, not measured query demand"
+      },
+      {
+        "path": "/sanitaryware-kenya",
+        "intent": "local_purchase",
+        "title": "Sanitaryware Kenya | Kleihaus Ceramics Kenya",
+        "description": "Sanitaryware Kenya: basins, toilets, taps, mixers and showers. Request quantity, availability, delivery and installation support.",
+        "canonical": "https://www.kleihaus.com/sanitaryware-kenya",
+        "declaredKeywords": [
+          "Sanitaryware Kenya",
+          "Sanitaryware",
+          "Kenya",
+          "Sanitaryware guide",
+          "Cost estimation guide",
+          "Home"
+        ],
+        "image": "/images/sanitaryware/sanitaryware-shower-display-02.jpg",
+        "imageAlt": "Sanitaryware planning and quote support for Kenya by Kleihaus Ceramics",
+        "faqCount": 3,
+        "breadcrumbCount": 4,
+        "relatedPaths": [
+          "/sanitaryware",
+          "/bathroom-renovation-guide",
+          "/cost-estimation-guide"
+        ],
+        "recommendedJourney": [
+          "/sanitaryware-kenya",
+          "/sanitaryware",
+          "/projects",
+          "/#contact"
+        ],
+        "enquiries": null,
+        "qualifiedLeads": null,
+        "customers": null,
+        "source": "src/seoManifest.js; editorial intent, not measured query demand"
+      },
+      {
+        "path": "/paints-nairobi",
+        "intent": "local_purchase",
+        "title": "Paints Nairobi | Kleihaus Ceramics Kenya",
+        "description": "Paints Nairobi: interior, exterior, roof and floor paints for planned finishes. Request quantity, availability, delivery and installation support.",
+        "canonical": "https://www.kleihaus.com/paints-nairobi",
+        "declaredKeywords": [
+          "Paints Nairobi",
+          "Paints",
+          "Nairobi",
+          "Paints guide",
+          "Cost estimation guide",
+          "Home"
+        ],
+        "image": "/images/paint-interior.jpg",
+        "imageAlt": "Paints planning and quote support for Nairobi by Kleihaus Ceramics",
+        "faqCount": 3,
+        "breadcrumbCount": 4,
+        "relatedPaths": [
+          "/paints",
+          "/paint-selection-guide",
+          "/cost-estimation-guide"
+        ],
+        "recommendedJourney": [
+          "/paints-nairobi",
+          "/paints",
+          "/projects",
+          "/#contact"
+        ],
+        "enquiries": null,
+        "qualifiedLeads": null,
+        "customers": null,
+        "source": "src/seoManifest.js; editorial intent, not measured query demand"
+      },
+      {
+        "path": "/paints-machakos",
+        "intent": "local_purchase",
+        "title": "Paints Machakos | Kleihaus Ceramics Kenya",
+        "description": "Paints Machakos: interior, exterior, roof and floor paints for planned finishes. Request quantity, availability, delivery and installation support.",
+        "canonical": "https://www.kleihaus.com/paints-machakos",
+        "declaredKeywords": [
+          "Paints Machakos",
+          "Paints",
+          "Machakos",
+          "Paints guide",
+          "Cost estimation guide",
+          "Home"
+        ],
+        "image": "/images/paint-interior.jpg",
+        "imageAlt": "Paints planning and quote support for Machakos by Kleihaus Ceramics",
+        "faqCount": 3,
+        "breadcrumbCount": 4,
+        "relatedPaths": [
+          "/paints",
+          "/paint-selection-guide",
+          "/cost-estimation-guide"
+        ],
+        "recommendedJourney": [
+          "/paints-machakos",
+          "/paints",
+          "/projects",
+          "/#contact"
+        ],
+        "enquiries": null,
+        "qualifiedLeads": null,
+        "customers": null,
+        "source": "src/seoManifest.js; editorial intent, not measured query demand"
+      },
+      {
+        "path": "/paints-makueni",
+        "intent": "local_purchase",
+        "title": "Paints Makueni | Kleihaus Ceramics Kenya",
+        "description": "Paints Makueni: interior, exterior, roof and floor paints for planned finishes. Request quantity, availability, delivery and installation support.",
+        "canonical": "https://www.kleihaus.com/paints-makueni",
+        "declaredKeywords": [
+          "Paints Makueni",
+          "Paints",
+          "Makueni",
+          "Paints guide",
+          "Cost estimation guide",
+          "Home"
+        ],
+        "image": "/images/paint-interior.jpg",
+        "imageAlt": "Paints planning and quote support for Makueni by Kleihaus Ceramics",
+        "faqCount": 3,
+        "breadcrumbCount": 4,
+        "relatedPaths": [
+          "/paints",
+          "/paint-selection-guide",
+          "/cost-estimation-guide"
+        ],
+        "recommendedJourney": [
+          "/paints-makueni",
+          "/paints",
+          "/projects",
+          "/#contact"
+        ],
+        "enquiries": null,
+        "qualifiedLeads": null,
+        "customers": null,
+        "source": "src/seoManifest.js; editorial intent, not measured query demand"
+      },
+      {
+        "path": "/paints-kenya",
+        "intent": "local_purchase",
+        "title": "Paints Kenya | Kleihaus Ceramics Kenya",
+        "description": "Paints Kenya: interior, exterior, roof and floor paints for planned finishes. Request quantity, availability, delivery and installation support.",
+        "canonical": "https://www.kleihaus.com/paints-kenya",
+        "declaredKeywords": [
+          "Paints Kenya",
+          "Paints",
+          "Kenya",
+          "Paints guide",
+          "Cost estimation guide",
+          "Home"
+        ],
+        "image": "/images/paint-interior.jpg",
+        "imageAlt": "Paints planning and quote support for Kenya by Kleihaus Ceramics",
+        "faqCount": 3,
+        "breadcrumbCount": 4,
+        "relatedPaths": [
+          "/paints",
+          "/paint-selection-guide",
+          "/cost-estimation-guide"
+        ],
+        "recommendedJourney": [
+          "/paints-kenya",
+          "/paints",
+          "/projects",
+          "/#contact"
+        ],
+        "enquiries": null,
+        "qualifiedLeads": null,
+        "customers": null,
+        "source": "src/seoManifest.js; editorial intent, not measured query demand"
+      },
+      {
+        "path": "/installation-support-nairobi",
+        "intent": "local_purchase",
+        "title": "Installation Support Nairobi | Kleihaus Ceramics Kenya",
+        "description": "Installation Support Nairobi: measurement, matching, fixing and handover guidance. Request quantity, availability, delivery and installation support.",
+        "canonical": "https://www.kleihaus.com/installation-support-nairobi",
+        "declaredKeywords": [
+          "Installation Support Nairobi",
+          "Installation Support",
+          "Nairobi",
+          "Installation Support guide",
+          "Cost estimation guide",
+          "Home"
+        ],
+        "image": "/images/tiler-service.jpg",
+        "imageAlt": "Installation Support planning and quote support for Nairobi by Kleihaus Ceramics",
+        "faqCount": 3,
+        "breadcrumbCount": 4,
+        "relatedPaths": [
+          "/installation-support",
+          "/installation-best-practices",
+          "/cost-estimation-guide"
+        ],
+        "recommendedJourney": [
+          "/installation-support-nairobi",
+          "/installation-support",
+          "/projects",
+          "/#contact"
+        ],
+        "enquiries": null,
+        "qualifiedLeads": null,
+        "customers": null,
+        "source": "src/seoManifest.js; editorial intent, not measured query demand"
+      },
+      {
+        "path": "/installation-support-machakos",
+        "intent": "local_purchase",
+        "title": "Installation Support Machakos | Kleihaus Ceramics Kenya",
+        "description": "Installation Support Machakos: measurement, matching, fixing and handover guidance. Request quantity, availability, delivery and installation support.",
+        "canonical": "https://www.kleihaus.com/installation-support-machakos",
+        "declaredKeywords": [
+          "Installation Support Machakos",
+          "Installation Support",
+          "Machakos",
+          "Installation Support guide",
+          "Cost estimation guide",
+          "Home"
+        ],
+        "image": "/images/tiler-service.jpg",
+        "imageAlt": "Installation Support planning and quote support for Machakos by Kleihaus Ceramics",
+        "faqCount": 3,
+        "breadcrumbCount": 4,
+        "relatedPaths": [
+          "/installation-support",
+          "/installation-best-practices",
+          "/cost-estimation-guide"
+        ],
+        "recommendedJourney": [
+          "/installation-support-machakos",
+          "/installation-support",
+          "/projects",
+          "/#contact"
+        ],
+        "enquiries": null,
+        "qualifiedLeads": null,
+        "customers": null,
+        "source": "src/seoManifest.js; editorial intent, not measured query demand"
+      },
+      {
+        "path": "/installation-support-makueni",
+        "intent": "local_purchase",
+        "title": "Installation Support Makueni | Kleihaus Ceramics Kenya",
+        "description": "Installation Support Makueni: measurement, matching, fixing and handover guidance. Request quantity, availability, delivery and installation support.",
+        "canonical": "https://www.kleihaus.com/installation-support-makueni",
+        "declaredKeywords": [
+          "Installation Support Makueni",
+          "Installation Support",
+          "Makueni",
+          "Installation Support guide",
+          "Cost estimation guide",
+          "Home"
+        ],
+        "image": "/images/tiler-service.jpg",
+        "imageAlt": "Installation Support planning and quote support for Makueni by Kleihaus Ceramics",
+        "faqCount": 3,
+        "breadcrumbCount": 4,
+        "relatedPaths": [
+          "/installation-support",
+          "/installation-best-practices",
+          "/cost-estimation-guide"
+        ],
+        "recommendedJourney": [
+          "/installation-support-makueni",
+          "/installation-support",
+          "/projects",
+          "/#contact"
+        ],
+        "enquiries": null,
+        "qualifiedLeads": null,
+        "customers": null,
+        "source": "src/seoManifest.js; editorial intent, not measured query demand"
+      },
+      {
+        "path": "/installation-support-kenya",
+        "intent": "local_purchase",
+        "title": "Installation Support Kenya | Kleihaus Ceramics Kenya",
+        "description": "Installation Support Kenya: measurement, matching, fixing and handover guidance. Request quantity, availability, delivery and installation support.",
+        "canonical": "https://www.kleihaus.com/installation-support-kenya",
+        "declaredKeywords": [
+          "Installation Support Kenya",
+          "Installation Support",
+          "Kenya",
+          "Installation Support guide",
+          "Cost estimation guide",
+          "Home"
+        ],
+        "image": "/images/tiler-service.jpg",
+        "imageAlt": "Installation Support planning and quote support for Kenya by Kleihaus Ceramics",
+        "faqCount": 3,
+        "breadcrumbCount": 4,
+        "relatedPaths": [
+          "/installation-support",
+          "/installation-best-practices",
+          "/cost-estimation-guide"
+        ],
+        "recommendedJourney": [
+          "/installation-support-kenya",
+          "/installation-support",
+          "/projects",
+          "/#contact"
+        ],
+        "enquiries": null,
+        "qualifiedLeads": null,
+        "customers": null,
+        "source": "src/seoManifest.js; editorial intent, not measured query demand"
+      },
+      {
+        "path": "/tile-buying-guide",
+        "intent": "commercial_investigation",
+        "title": "Tile Buying Guide Kenya | Kleihaus Ceramics",
+        "description": "A practical tile buying guide for Kenya covering room use, tile finishes, quantities, adhesives, grout, delivery and installation support.",
+        "canonical": "https://www.kleihaus.com/tile-buying-guide",
+        "declaredKeywords": [
+          "Tile Buying Guide",
+          "Home",
+          "Guides"
+        ],
+        "image": "/images/tiles-floor.jpg",
+        "imageAlt": "Tile Buying Guide page image for Kleihaus Ceramics",
+        "faqCount": 0,
+        "breadcrumbCount": 3,
+        "relatedPaths": [],
+        "recommendedJourney": [
+          "/tile-buying-guide",
+          "/projects",
+          "/#contact"
+        ],
+        "enquiries": null,
+        "qualifiedLeads": null,
+        "customers": null,
+        "source": "src/seoManifest.js; editorial intent, not measured query demand"
+      },
+      {
+        "path": "/bathroom-renovation-guide",
+        "intent": "commercial_investigation",
+        "title": "Bathroom Renovation Guide Kenya | Kleihaus Ceramics",
+        "description": "Plan bathroom tiles, sanitaryware, taps, showers, accessories, delivery and installation support with Kleihaus Ceramics.",
+        "canonical": "https://www.kleihaus.com/bathroom-renovation-guide",
+        "declaredKeywords": [
+          "Bathroom Renovation Guide",
+          "Home",
+          "Guides"
+        ],
+        "image": "/images/bathroom-blue-1.jpg",
+        "imageAlt": "Bathroom Renovation Guide page image for Kleihaus Ceramics",
+        "faqCount": 0,
+        "breadcrumbCount": 3,
+        "relatedPaths": [],
+        "recommendedJourney": [
+          "/bathroom-renovation-guide",
+          "/projects",
+          "/#contact"
+        ],
+        "enquiries": null,
+        "qualifiedLeads": null,
+        "customers": null,
+        "source": "src/seoManifest.js; editorial intent, not measured query demand"
+      },
+      {
+        "path": "/paint-selection-guide",
+        "intent": "commercial_investigation",
+        "title": "Paint Selection Guide Kenya | Interior, Exterior & Roof Paints",
+        "description": "Choose interior, exterior, roof and floor paints with practical Kleihaus guidance on surface condition, finish, quantity and delivery.",
+        "canonical": "https://www.kleihaus.com/paint-selection-guide",
+        "declaredKeywords": [
+          "Paint Selection Guide",
+          "Home",
+          "Guides"
+        ],
+        "image": "/images/paint-interior.jpg",
+        "imageAlt": "Paint Selection Guide page image for Kleihaus Ceramics",
+        "faqCount": 0,
+        "breadcrumbCount": 3,
+        "relatedPaths": [],
+        "recommendedJourney": [
+          "/paint-selection-guide",
+          "/projects",
+          "/#contact"
+        ],
+        "enquiries": null,
+        "qualifiedLeads": null,
+        "customers": null,
+        "source": "src/seoManifest.js; editorial intent, not measured query demand"
+      },
+      {
+        "path": "/adhesive-grout-guide",
+        "intent": "commercial_investigation",
+        "title": "Tile Adhesive & Grout Guide Kenya | Kleihaus Ceramics",
+        "description": "Understand tile adhesive, grout, trims, spacers and installation essentials before requesting a Kleihaus project quote.",
+        "canonical": "https://www.kleihaus.com/adhesive-grout-guide",
+        "declaredKeywords": [
+          "Adhesive & Grout Guide",
+          "Home",
+          "Guides"
+        ],
+        "image": "/images/adhesive.jpg",
+        "imageAlt": "Adhesive & Grout Guide page image for Kleihaus Ceramics",
+        "faqCount": 0,
+        "breadcrumbCount": 3,
+        "relatedPaths": [],
+        "recommendedJourney": [
+          "/adhesive-grout-guide",
+          "/projects",
+          "/#contact"
+        ],
+        "enquiries": null,
+        "qualifiedLeads": null,
+        "customers": null,
+        "source": "src/seoManifest.js; editorial intent, not measured query demand"
+      },
+      {
+        "path": "/installation-best-practices",
+        "intent": "commercial_investigation",
+        "title": "Tile Installation Best Practices Kenya | Kleihaus Support",
+        "description": "Practical installation guidance for preparation, cutting, drilling, fixing, grouting, cleaning, handover and tailored training support.",
+        "canonical": "https://www.kleihaus.com/installation-best-practices",
+        "declaredKeywords": [
+          "Installation Best Practices",
+          "Home",
+          "Guides"
+        ],
+        "image": "/images/tiler-service.jpg",
+        "imageAlt": "Installation Best Practices page image for Kleihaus Ceramics",
+        "faqCount": 0,
+        "breadcrumbCount": 3,
+        "relatedPaths": [],
+        "recommendedJourney": [
+          "/installation-best-practices",
+          "/projects",
+          "/#contact"
+        ],
+        "enquiries": null,
+        "qualifiedLeads": null,
+        "customers": null,
+        "source": "src/seoManifest.js; editorial intent, not measured query demand"
+      },
+      {
+        "path": "/cost-estimation-guide",
+        "intent": "commercial_investigation",
+        "title": "Tile, Paint & Sanitaryware Cost Estimation Guide Kenya | Kleihaus",
+        "description": "Plan quote requests with general cost factors for tiles, sanitaryware, paints, delivery and installation support without unsupported price claims.",
+        "canonical": "https://www.kleihaus.com/cost-estimation-guide",
+        "declaredKeywords": [
+          "Cost Estimation Guide",
+          "Home",
+          "Guides"
+        ],
+        "image": "/images/kleihaus-structure.jpg",
+        "imageAlt": "Cost Estimation Guide page image for Kleihaus Ceramics",
+        "faqCount": 0,
+        "breadcrumbCount": 3,
+        "relatedPaths": [],
+        "recommendedJourney": [
+          "/cost-estimation-guide",
+          "/projects",
+          "/#contact"
+        ],
+        "enquiries": null,
+        "qualifiedLeads": null,
+        "customers": null,
+        "source": "src/seoManifest.js; editorial intent, not measured query demand"
+      }
+    ]
+  },
+  "scoreProvenance": "Legacy heuristic technical checks; content/local/performance scores are proxies, not measured outcomes or Core Web Vitals.",
   "highIntentContentOpportunities": [
+    {
+      "title": "Bathroom Renovation Cost Guide",
+      "targetRoute": "/bathroom-renovation-cost-guide",
+      "commercialValue": "Very high",
+      "priority": 3,
+      "rationale": "Targets bathroom planners comparing tiles, sanitaryware, taps, showers and installation support.",
+      "relatedRoutes": [
+        "/bathroom-renovation-guide",
+        "/sanitaryware",
+        "/bathroom-tiles"
+      ],
+      "status": "proposed_not_published",
+      "searchIntent": "commercial_investigation",
+      "commercialIntent": 5,
+      "localRelevance": 3,
+      "conversionPotential": 5,
+      "contentEffort": 3,
+      "priorityScore": 15,
+      "evidence": "Editorial 1-5 rubric; not search volume or predicted revenue. Local relevance provisional until query data is connected."
+    },
     {
       "title": "Tile Quantity Calculator",
       "targetRoute": "/tile-quantity-calculator",
@@ -222,7 +1662,15 @@
         "/tiles",
         "/tile-buying-guide",
         "/cost-estimation-guide"
-      ]
+      ],
+      "status": "proposed_not_published",
+      "searchIntent": "commercial_investigation",
+      "commercialIntent": 5,
+      "localRelevance": 3,
+      "conversionPotential": 5,
+      "contentEffort": 5,
+      "priorityScore": 13,
+      "evidence": "Editorial 1-5 rubric; not search volume or predicted revenue. Local relevance provisional until query data is connected."
     },
     {
       "title": "Adhesive Calculator",
@@ -234,19 +1682,15 @@
         "/adhesives-grout",
         "/adhesive-grout-guide",
         "/installation-support"
-      ]
-    },
-    {
-      "title": "Bathroom Renovation Cost Guide",
-      "targetRoute": "/bathroom-renovation-cost-guide",
-      "commercialValue": "Very high",
-      "priority": 3,
-      "rationale": "Targets bathroom planners comparing tiles, sanitaryware, taps, showers and installation support.",
-      "relatedRoutes": [
-        "/bathroom-renovation-guide",
-        "/sanitaryware",
-        "/bathroom-tiles"
-      ]
+      ],
+      "status": "proposed_not_published",
+      "searchIntent": "commercial_investigation",
+      "commercialIntent": 5,
+      "localRelevance": 3,
+      "conversionPotential": 5,
+      "contentEffort": 5,
+      "priorityScore": 13,
+      "evidence": "Editorial 1-5 rubric; not search volume or predicted revenue. Local relevance provisional until query data is connected."
     },
     {
       "title": "Sanitaryware Buying Guide",
@@ -258,7 +1702,15 @@
         "/sanitaryware",
         "/bathroom-renovation-guide",
         "/sanitaryware-kenya"
-      ]
+      ],
+      "status": "proposed_not_published",
+      "searchIntent": "commercial_investigation",
+      "commercialIntent": 4,
+      "localRelevance": 3,
+      "conversionPotential": 4,
+      "contentEffort": 3,
+      "priorityScore": 12,
+      "evidence": "Editorial 1-5 rubric; not search volume or predicted revenue. Local relevance provisional until query data is connected."
     },
     {
       "title": "Kitchen Renovation Guide",
@@ -270,7 +1722,15 @@
         "/projects",
         "/products",
         "/tiles"
-      ]
+      ],
+      "status": "proposed_not_published",
+      "searchIntent": "informational_to_commercial",
+      "commercialIntent": 4,
+      "localRelevance": 3,
+      "conversionPotential": 4,
+      "contentEffort": 3,
+      "priorityScore": 12,
+      "evidence": "Editorial 1-5 rubric; not search volume or predicted revenue. Local relevance provisional until query data is connected."
     },
     {
       "title": "Tile Installation Guide",
@@ -282,7 +1742,15 @@
         "/installation-support",
         "/installation-best-practices",
         "/adhesives-grout"
-      ]
+      ],
+      "status": "proposed_not_published",
+      "searchIntent": "informational_to_commercial",
+      "commercialIntent": 4,
+      "localRelevance": 3,
+      "conversionPotential": 4,
+      "contentEffort": 3,
+      "priorityScore": 12,
+      "evidence": "Editorial 1-5 rubric; not search volume or predicted revenue. Local relevance provisional until query data is connected."
     },
     {
       "title": "Tile Layout Guide",
@@ -294,7 +1762,15 @@
         "/tiles",
         "/floor-tiles",
         "/wall-tiles"
-      ]
+      ],
+      "status": "proposed_not_published",
+      "searchIntent": "informational_to_commercial",
+      "commercialIntent": 3,
+      "localRelevance": 3,
+      "conversionPotential": 3,
+      "contentEffort": 3,
+      "priorityScore": 9,
+      "evidence": "Editorial 1-5 rubric; not search volume or predicted revenue. Local relevance provisional until query data is connected."
     },
     {
       "title": "Commercial Tile Guide",
@@ -306,31 +1782,15 @@
         "/trade-projects",
         "/tiles-kenya",
         "/installation-support-kenya"
-      ]
-    },
-    {
-      "title": "Warehouse Flooring Guide",
-      "targetRoute": "/warehouse-flooring-guide",
-      "commercialValue": "Medium",
-      "priority": 9,
-      "rationale": "Captures heavier-duty floor planning while keeping claims subject to site and product verification.",
-      "relatedRoutes": [
-        "/floor-tiles",
-        "/paints-kenya",
-        "/installation-support"
-      ]
-    },
-    {
-      "title": "Paint Selection Guide Expansion",
-      "targetRoute": "/paint-selection-guide",
-      "commercialValue": "Medium",
-      "priority": 10,
-      "rationale": "Expands existing paint advice around surface condition, coverage planning and interior/exterior use cases.",
-      "relatedRoutes": [
-        "/paints",
-        "/paints-kenya",
-        "/cost-estimation-guide"
-      ]
+      ],
+      "status": "proposed_not_published",
+      "searchIntent": "informational_to_commercial",
+      "commercialIntent": 3,
+      "localRelevance": 3,
+      "conversionPotential": 3,
+      "contentEffort": 3,
+      "priorityScore": 9,
+      "evidence": "Editorial 1-5 rubric; not search volume or predicted revenue. Local relevance provisional until query data is connected."
     },
     {
       "title": "Tile Tools And Accessories Guide",
@@ -342,7 +1802,15 @@
         "/adhesives-grout",
         "/installation-support",
         "/installation-best-practices"
-      ]
+      ],
+      "status": "proposed_not_published",
+      "searchIntent": "informational_to_commercial",
+      "commercialIntent": 3,
+      "localRelevance": 3,
+      "conversionPotential": 3,
+      "contentEffort": 3,
+      "priorityScore": 9,
+      "evidence": "Editorial 1-5 rubric; not search volume or predicted revenue. Local relevance provisional until query data is connected."
     },
     {
       "title": "Delivery Planning Guide",
@@ -354,19 +1822,15 @@
         "/locations",
         "/locations/nairobi",
         "/cost-estimation-guide"
-      ]
-    },
-    {
-      "title": "Fundis And Installer Training Guide",
-      "targetRoute": "/fundis-installer-training-guide",
-      "commercialValue": "Medium",
-      "priority": 13,
-      "rationale": "Connects training and best-practice searches to installation support while avoiding unsupported certification claims.",
-      "relatedRoutes": [
-        "/installation-support",
-        "/installation-best-practices",
-        "/adhesives-grout"
-      ]
+      ],
+      "status": "proposed_not_published",
+      "searchIntent": "informational_to_commercial",
+      "commercialIntent": 3,
+      "localRelevance": 3,
+      "conversionPotential": 3,
+      "contentEffort": 3,
+      "priorityScore": 9,
+      "evidence": "Editorial 1-5 rubric; not search volume or predicted revenue. Local relevance provisional until query data is connected."
     },
     {
       "title": "Project Advisory Checklist",
@@ -378,7 +1842,75 @@
         "/trade-projects",
         "/projects",
         "/cost-estimation-guide"
-      ]
+      ],
+      "status": "proposed_not_published",
+      "searchIntent": "informational_to_commercial",
+      "commercialIntent": 3,
+      "localRelevance": 3,
+      "conversionPotential": 3,
+      "contentEffort": 3,
+      "priorityScore": 9,
+      "evidence": "Editorial 1-5 rubric; not search volume or predicted revenue. Local relevance provisional until query data is connected."
+    },
+    {
+      "title": "Warehouse Flooring Guide",
+      "targetRoute": "/warehouse-flooring-guide",
+      "commercialValue": "Medium",
+      "priority": 9,
+      "rationale": "Captures heavier-duty floor planning while keeping claims subject to site and product verification.",
+      "relatedRoutes": [
+        "/floor-tiles",
+        "/paints-kenya",
+        "/installation-support"
+      ],
+      "status": "proposed_not_published",
+      "searchIntent": "informational_to_commercial",
+      "commercialIntent": 2,
+      "localRelevance": 3,
+      "conversionPotential": 2,
+      "contentEffort": 3,
+      "priorityScore": 6,
+      "evidence": "Editorial 1-5 rubric; not search volume or predicted revenue. Local relevance provisional until query data is connected."
+    },
+    {
+      "title": "Paint Selection Guide Expansion",
+      "targetRoute": "/paint-selection-guide",
+      "commercialValue": "Medium",
+      "priority": 10,
+      "rationale": "Expands existing paint advice around surface condition, coverage planning and interior/exterior use cases.",
+      "relatedRoutes": [
+        "/paints",
+        "/paints-kenya",
+        "/cost-estimation-guide"
+      ],
+      "status": "improve_existing",
+      "searchIntent": "informational_to_commercial",
+      "commercialIntent": 2,
+      "localRelevance": 3,
+      "conversionPotential": 2,
+      "contentEffort": 3,
+      "priorityScore": 6,
+      "evidence": "Editorial 1-5 rubric; not search volume or predicted revenue. Local relevance provisional until query data is connected."
+    },
+    {
+      "title": "Fundis And Installer Training Guide",
+      "targetRoute": "/fundis-installer-training-guide",
+      "commercialValue": "Medium",
+      "priority": 13,
+      "rationale": "Connects training and best-practice searches to installation support while avoiding unsupported certification claims.",
+      "relatedRoutes": [
+        "/installation-support",
+        "/installation-best-practices",
+        "/adhesives-grout"
+      ],
+      "status": "proposed_not_published",
+      "searchIntent": "informational_to_commercial",
+      "commercialIntent": 2,
+      "localRelevance": 3,
+      "conversionPotential": 2,
+      "contentEffort": 3,
+      "priorityScore": 6,
+      "evidence": "Editorial 1-5 rubric; not search volume or predicted revenue. Local relevance provisional until query data is connected."
     }
   ],
   "imageReadiness": {

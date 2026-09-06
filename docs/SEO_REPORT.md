@@ -1,10 +1,12 @@
 # Kleihaus Automated SEO Report
 
-Generated: 2026-08-20T07:54:20.042Z
+Generated: 2026-09-06T01:07:54.653Z
 
 Status: PASS
 
-Score: 100/100
+Technical check score: 100/100. This is not a commercial effectiveness score.
+
+Acquisition measurement is not connected. See SEO_CLIENT_ACQUISITION_AUDIT.md and SEO_30_DAY_CLIENT_ACQUISITION_PLAN.md for evidence, limitations and business KPIs.
 
 ## Coverage
 
@@ -27,7 +29,7 @@ Score: 100/100
 - Schema score: 96/100
 - Image SEO score: 100/100
 - Monitoring score: 88/100
-- Business SEO score: 90/100
+- Business SEO score: unmeasured; private acquisition data is not connected.
 
 ## Blocking Issues
 

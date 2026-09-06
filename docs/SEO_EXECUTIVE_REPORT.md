@@ -1,8 +1,10 @@
 # Kleihaus SEO Executive Report
 
-Generated: 2026-08-20T07:54:20.042Z
+Generated: 2026-09-06T01:07:54.653Z
 
 ## Current SEO Health
+
+Commercial classification: technical automation with unverified customer outcomes. No connected Search Console, GA4 reporting or sales register is available to this generator. Contact clicks are intent signals, not confirmed leads. Existing scorecard values are legacy technical proxies, not field performance, rankings or commercial results. See SEO_CLIENT_ACQUISITION_AUDIT.md for the separate evidence-based readiness assessment and current production test limitations.
 
 Kleihaus has a strong automated SEO foundation. The current automation score is 100/100 across 39 routes and 62 image groups. The build-time engine generates route metadata, sitemap, robots, navigation, internal-link recommendations, image manifest, dashboard, reporting, content suggestions and Google Business Profile/social drafts.
 
@@ -20,7 +22,7 @@ Kleihaus has a strong automated SEO foundation. The current automation score is 
 | Schema SEO | 96/100 |
 | Monitoring readiness | 88/100 |
 | Internal linking | 100/100 |
-| Business SEO | 90/100 |
+| Business SEO | Unmeasured |
 
 ## Improvements Generated
 

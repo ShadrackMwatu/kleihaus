@@ -2,6 +2,7 @@ import { existsSync } from 'node:fs'
 import { mkdir, readFile, readdir, stat, writeFile } from 'node:fs/promises'
 import { dirname, extname, join, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { buildAcquisitionSnapshot, scoreOpportunity } from './seo-acquisition.mjs'
 import {
   SITE_ORIGIN,
   buildNavigationManifest,
@@ -304,7 +305,7 @@ const scoreBreakdown = (audit, imageManifest) => {
     schemaScore: audit.issues.some((issue) => issue.includes('schema')) ? 70 : 96,
     monitoringScore: 88,
     internalLinkScore: Math.max(0, 100 - brokenLinks * 5),
-    businessSeoScore: 90,
+    businessSeoScore: null,
   }
 }
 
@@ -437,7 +438,9 @@ Generated: ${audit.generatedAt}
 
 Status: ${status}
 
-Score: ${audit.score}/100
+Technical check score: ${audit.score}/100. This is not a commercial effectiveness score.
+
+Acquisition measurement is not connected. See SEO_CLIENT_ACQUISITION_AUDIT.md and SEO_30_DAY_CLIENT_ACQUISITION_PLAN.md for evidence, limitations and business KPIs.
 
 ## Coverage
 
@@ -460,7 +463,7 @@ Score: ${audit.score}/100
 - Schema score: ${scores.schemaScore}/100
 - Image SEO score: ${scores.imageSeoScore}/100
 - Monitoring score: ${scores.monitoringScore}/100
-- Business SEO score: ${scores.businessSeoScore}/100
+- Business SEO score: unmeasured; private acquisition data is not connected.
 
 ## Blocking Issues
 
@@ -554,6 +557,12 @@ ${guideIdeas || '- No content ideas generated.'}
 ${highIntentContentOpportunities.map((item) => `| ${item.priority} | ${item.title} | ${item.commercialValue} | ${item.targetRoute} | ${item.relatedRoutes.join(', ')} |`).join('\n')}
 
 ## Opportunity Rationale
+
+Editorial scoring uses 1-5 scales, not measured search demand. Higher effort reduces priority. Improve existing pages before proposing another URL for the same intent.
+
+| Opportunity | Search intent | Commercial intent | Local relevance | Conversion potential | Effort | Priority score | Status |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | --- |
+${highIntentContentOpportunities.map((item) => scoreOpportunity(item, seoConfig)).sort((a, b) => b.priorityScore - a.priorityScore).map((item) => `| ${item.title} | ${item.searchIntent} | ${item.commercialIntent} | ${item.localRelevance} | ${item.conversionPotential} | ${item.contentEffort} | ${item.priorityScore} | ${item.status} |`).join('\n')}
 
 ${highIntentContentOpportunities.map((item) => `- ${item.title}: ${item.rationale}`).join('\n')}
 
@@ -666,8 +675,10 @@ const buildDashboardSnapshot = (audit, internalLinks, imageManifest) => {
       ...highIntentContentOpportunities.slice(0, 5).map((item) => `Create or expand ${item.title} after owner review.`),
       'Connect Google Search Console and GA4 APIs with approved credentials for live performance reporting.',
     ],
-    topKeywords: keywordFrequency(),
-    topPages: seoConfig.slice(0, 12).map((route) => ({
+    topKeywords: null,
+    topPages: null,
+    configuredKeywordFrequency: keywordFrequency(),
+    configuredPriorityPages: seoConfig.slice(0, 12).map((route) => ({
       path: route.path,
       title: route.title,
       priority: route.priority,
@@ -675,7 +686,9 @@ const buildDashboardSnapshot = (audit, internalLinks, imageManifest) => {
     })),
     internalLinkSets: Object.keys(internalLinks).length,
     internalLinkRecommendations: countInternalLinkRecommendations(internalLinks),
-    highIntentContentOpportunities,
+    acquisition: buildAcquisitionSnapshot(seoConfig, audit.generatedAt),
+    scoreProvenance: 'Legacy heuristic technical checks; content/local/performance scores are proxies, not measured outcomes or Core Web Vitals.',
+    highIntentContentOpportunities: highIntentContentOpportunities.map((item) => scoreOpportunity(item, seoConfig)).sort((a, b) => b.priorityScore - a.priorityScore),
     imageReadiness: {
       withWebp: imageManifest.filter((image) => image.hasWebp).length,
       withAvif: imageManifest.filter((image) => image.hasAvif).length,
@@ -697,6 +710,8 @@ Generated: ${audit.generatedAt}
 
 ## Current SEO Health
 
+Commercial classification: technical automation with unverified customer outcomes. No connected Search Console, GA4 reporting or sales register is available to this generator. Contact clicks are intent signals, not confirmed leads. Existing scorecard values are legacy technical proxies, not field performance, rankings or commercial results. See SEO_CLIENT_ACQUISITION_AUDIT.md for the separate evidence-based readiness assessment and current production test limitations.
+
 Kleihaus has a strong automated SEO foundation. The current automation score is ${audit.score}/100 across ${audit.routeCount} routes and ${audit.imageGroupCount} image groups. The build-time engine generates route metadata, sitemap, robots, navigation, internal-link recommendations, image manifest, dashboard, reporting, content suggestions and Google Business Profile/social drafts.
 
 ## Scorecard
@@ -713,7 +728,7 @@ Kleihaus has a strong automated SEO foundation. The current automation score is 
 | Schema SEO | ${scores.schemaScore}/100 |
 | Monitoring readiness | ${scores.monitoringScore}/100 |
 | Internal linking | ${scores.internalLinkScore}/100 |
-| Business SEO | ${scores.businessSeoScore}/100 |
+| Business SEO | Unmeasured |
 
 ## Improvements Generated
 

@@ -21,7 +21,6 @@ const coreRoutes = [
       { label: 'Guides', href: '/guides' },
       { label: 'Locations', href: '/locations' },
       { label: 'Trade and project support', href: '/trade-projects' },
-      { label: 'Products', href: '/products' },
     ],
   },
   {
@@ -116,7 +115,8 @@ const coreRoutes = [
     path: '/sanitaryware',
     title: 'Sanitaryware Kenya | Basins, Toilets, Taps & Showers | Kleihaus',
     description:
-      'Browse sanitaryware quote support for basins, toilets, taps, mixers, showers and bathroom accessories from Kleihaus Ceramics.',
+      'Compare basins, toilets, kitchen sinks, mixers and showers. Ask Kleihaus about quantities, availability and delivery to Nairobi, Machakos or Makueni.',
+    lastModified: '2026-09-06',
     image: '/images/sanitaryware/sanitaryware-shower-display-02.jpg',
     imageAlt: 'Bathroom shower system and tap display at Kleihaus Ceramics',
     category: 'Sanitaryware',

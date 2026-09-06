@@ -1,5 +1,10 @@
 # Kleihaus Website Optimization Action Plan
 
+## Current priority: 2026-09-06
+
+Follow SEO_30_DAY_CLIENT_ACQUISITION_PLAN.md. First resolve the live WhatsApp GA4 verification gap, authorize read-only Search Console/GA4 reporting and establish baseline metrics. Assign a private outcome-register owner before claiming qualified leads or customers. Use evidence to prioritize existing commercial pages and genuine local proof. No additional location claims, bulk content publication or speculative forecasts are approved by this audit.
+
+
 Date: 2026-06-24
 
 This roadmap turns the SEO and optimization audit findings into a practical 6-12 month implementation plan. It is repo-focused and respects the current architecture:

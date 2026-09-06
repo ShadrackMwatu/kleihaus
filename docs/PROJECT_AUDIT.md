@@ -1,5 +1,12 @@
 # Kleihaus Project Audit
 
+## 2026-09-06 commercial acquisition evidence
+
+See SEO_CLIENT_ACQUISITION_AUDIT.md and SEO_30_DAY_CLIENT_ACQUISITION_PLAN.md. Technical automation works, but private Search Console/GA4 reporting and customer outcomes are not connected. Generated public metrics now preserve null values and provenance, with editorial route journeys and opportunity scoring. Business success is no longer assigned a fixed 90 score.
+
+Production SEO verification passed 39 routes and seven endpoints. Static analytics passed; elevated live Chromium failed to capture whatsapp_click after capturing page_view and cta_click. Full live event delivery, actual monitor history and active Workers Build status remain unverified. Build passed (352.39 kB JS / 92.99 kB gzip, 37.89 kB CSS / 7.53 kB gzip). These are asset sizes, not field Core Web Vitals. The two new acquisition tests pass with Node test isolation disabled because sandbox process spawning is restricted.
+
+
 This audit summarizes the current production architecture and repository state for the Kleihaus website.
 
 Rule: Every future meaningful change must update `docs/CHANGELOG.md` and, where relevant, `docs/PROJECT_AUDIT.md`.

@@ -1,6 +1,6 @@
 # Kleihaus GBP And Social Drafts
 
-Generated: 2026-08-20T07:54:20.042Z
+Generated: 2026-09-06T01:07:54.653Z
 
 These drafts are for human review only. Nothing is posted automatically.
 
@@ -35,7 +35,7 @@ Finishing inspiration from Kleihaus Ceramics. Explore Tiles and save the idea fo
 ## Draft 3: Sanitaryware
 
 GBP post:
-Browse sanitaryware quote support for basins, toilets, taps, mixers, showers and bathroom accessories from Kleihaus Ceramics. Explore the page and contact Kleihaus when you are ready to plan materials, quantities or next steps: https://www.kleihaus.com/sanitaryware
+Compare basins, toilets, kitchen sinks, mixers and showers. Ask Kleihaus about quantities, availability and delivery to Nairobi, Machakos or Makueni. Explore the page and contact Kleihaus when you are ready to plan materials, quantities or next steps: https://www.kleihaus.com/sanitaryware
 
 Facebook:
 Planning finishes for a home or project? Sanitaryware Kenya. Start here: https://www.kleihaus.com/sanitaryware
