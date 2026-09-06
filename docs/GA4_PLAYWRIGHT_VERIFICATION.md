@@ -1,5 +1,13 @@
 # Kleihaus GA4 Playwright Production Verification
 
+## 2026-09-06 reconciliation
+
+Elevated Chromium now runs. The original test missed events in batched GA4 request bodies. The corrected parser reads every event name; outbound WhatsApp requests receive an intercepted 204 response so the source document stays available. Guide view is independently verified and soft event assertions allow later checks to run after a missing event.
+
+Before the guide-navigation correction, the live run confirmed page_view, cta_click, whatsapp_click, phone_click, email_click, location_view, guide_view and quote_submit. Only guide_click was missing from GA4, although first-party tracking captured it. One initial GA4 loader was observed; config-call count was not asserted. Quote submission was intercepted with a local success response; no real enquiry was sent.
+
+Helpful guide cards now use the existing internal route navigator after tracking, avoiding immediate document unload. Their content, URLs and styling are unchanged. Post-deployment verification is required to confirm guide_click delivery. This does not establish GA4 reporting ingestion or real quote backend delivery.
+
 Verification date: 2026-08-06
 
 Production URL: https://www.kleihaus.com

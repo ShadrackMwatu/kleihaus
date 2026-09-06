@@ -23,8 +23,7 @@ const extractEventName = (request) => {
   const url = request.url()
   const body = request.postData() || ''
   const combined = `${url}&${body}`
-  const match = combined.match(/[?&\n]en=([^&\n]+)/)
-  return match ? decodeURIComponent(match[1].replace(/\+/g, ' ')) : null
+  return [...combined.matchAll(/[?&\n]en=([^&\n]+)/g)].map((match) => decodeURIComponent(match[1].replace(/\+/g, ' ')))
 }
 
 const extractBackendEventName = (request) => {
@@ -47,6 +46,7 @@ const redactedTid = (request) => {
 }
 
 test('live production sends expected GA4 events for safe interactions', async ({ page }, testInfo) => {
+  test.setTimeout(240_000)
   const googleTagRequests = []
   const collectRequests = []
   const backendTrackRequests = []
@@ -58,13 +58,13 @@ test('live production sends expected GA4 events for safe interactions', async ({
     if (isGoogleTagLoader(request)) googleTagRequests.push({ url: request.url(), method: request.method() })
 
     if (isGa4CollectRequest(request)) {
-      const eventName = extractEventName(request)
+      const eventNames = extractEventName(request)
       collectRequests.push({
-        eventName,
+        eventNames,
         method: request.method(),
         tid: redactedTid(request),
       })
-      if (eventName) events.push(eventName)
+      events.push(...eventNames)
     }
 
     if (request.url().includes('/api/track-event')) {
@@ -107,17 +107,17 @@ test('live production sends expected GA4 events for safe interactions', async ({
   })
 
   await page.route('https://wa.me/**', async (route) => {
-    await route.abort('blockedbyclient')
+    await route.fulfill({ status: 204 })
   })
 
   await page.route('https://api.whatsapp.com/**', async (route) => {
-    await route.abort('blockedbyclient')
+    await route.fulfill({ status: 204 })
   })
 
   const waitForEvent = async (eventName, action) => {
     const before = events.filter((event) => event === eventName).length
     if (action) await action()
-    await expect
+    await expect.soft
       .poll(() => events.filter((event) => event === eventName).length, {
         message: `GA4 event ${eventName} should be captured. Observed GA4 events: ${[...new Set(events)].join(', ') || 'none'}. Observed backend events: ${[...new Set(backendEvents)].join(', ') || 'none'}`,
         timeout: 30_000,
@@ -146,10 +146,7 @@ test('live production sends expected GA4 events for safe interactions', async ({
     const contact = page.locator('#contact')
     await contact.scrollIntoViewIfNeeded()
     await waitForEvent('whatsapp_click', async () => {
-      const outboundPagePromise = page.context().waitForEvent('page', { timeout: 5_000 }).catch(() => null)
-      await contact.locator('a[href*="wa.me"]').first().click({ modifiers: ['Control'] })
-      const outboundPage = await outboundPagePromise
-      if (outboundPage) await outboundPage.close()
+      await contact.locator('a[href*="wa.me"]').first().click()
     })
 
     await waitForEvent('phone_click', async () => {
@@ -171,7 +168,9 @@ test('live production sends expected GA4 events for safe interactions', async ({
     await waitForEvent('guide_click', async () => {
       await page.locator('#faq a[href="/tile-buying-guide"]').click()
     })
-    await waitForEvent('guide_view')
+    await waitForEvent('guide_view', async () => {
+      await page.goto('/tile-buying-guide', { waitUntil: 'domcontentloaded' })
+    })
 
     await goHomeAndWaitForPageView()
     await contact.scrollIntoViewIfNeeded()

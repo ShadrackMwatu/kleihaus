@@ -1,5 +1,13 @@
 # Kleihaus Project Changelog
 
+## 2026-09-06 - Pending work reconciliation
+
+- Routed helpful guide cards through the existing internal navigator after live verification isolated a missing guide_click event during full-document navigation. Preserved content, layout and link destinations.
+
+- Reviewed and retained the standalone video planning package; verified every referenced image exists. MP4 rendering remains unavailable.
+- Corrected GA4 test parsing for batched events, guide-view timing and outbound navigation isolation without changing application analytics.
+- Recorded completed work and remaining evidence/tool dependencies in PENDING_WORK_RECONCILIATION.md.
+
 ## 2026-09-06 - Kenya market and target-client SEO expansion
 
 - Expanded the SEO acquisition engine with nine target-client segments, eight keyword clusters, route-level audience/intent/conversion fields and evidence-backed coverage-gap reporting.

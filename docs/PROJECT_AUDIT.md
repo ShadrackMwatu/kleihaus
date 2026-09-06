@@ -1,5 +1,9 @@
 # Kleihaus Project Audit
 
+## Pending work reconciliation
+
+See PENDING_WORK_RECONCILIATION.md for the 2026-09-06 review of unpublished commits, SEO targeting corrections, validation and video planning assets. Website structure and visible copy remain unchanged. Helpful guide cards now use the existing internal navigator to avoid losing guide_click during document unload. Private reporting access, approved business facts and FFmpeg rendering capability remain outstanding dependencies.
+
 ## 2026-09-06 premium experience audit
 
 The full website audit is documented in KLEIHAUS_FULL_WEBSITE_PREMIUM_AUDIT.md. Current repository evidence supports an overall website experience score of 78/100. Technical and enquiry foundations are strong; verified showroom details, delivery terms, catalogue specifications, project context and customer proof remain the main premium/realism gaps. This pass removed only the decorative page-level radial background and strengthened reduced-motion handling. No Cloudflare, SEO automation, quote, WhatsApp or analytics architecture changed.

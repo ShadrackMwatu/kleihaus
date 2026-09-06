@@ -2844,7 +2844,7 @@ function TradeProjectsPage({ page, onSectionChange, onSupportClick, onQuoteClick
   )
 }
 
-function HelpfulGuides({ onGuideClick }) {
+function HelpfulGuides({ onGuideClick, onRouteNavigate }) {
   const [openFaq, setOpenFaq] = useState(faqItems[0]?.question || '')
 
   return (
@@ -2863,8 +2863,9 @@ function HelpfulGuides({ onGuideClick }) {
               <a
                 key={card.title}
                 href={card.href}
-                onClick={() => {
+                onClick={(event) => {
                   onGuideClick(card.title)
+                  onRouteNavigate(event, card.href)
                 }}
                 className="rounded-md border border-neutral-200 bg-white p-3 text-left shadow-sm transition hover:border-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200"
               >
@@ -4517,7 +4518,7 @@ export default function App() {
           <ProjectsEvidence />
           <AudiencePathways />
           <AboutSection />
-          <HelpfulGuides onGuideClick={handleGuideClick} />
+          <HelpfulGuides onGuideClick={handleGuideClick} onRouteNavigate={handleRouteNavigate} />
           <Contact onSupportFormClick={handleSupportFormClick} />
         </>
       )}
