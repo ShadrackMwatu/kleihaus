@@ -1,0 +1,28 @@
+{
+  "campaign": "Beautiful spaces begin with the right finishes",
+  "brand": "Kleihaus Ceramics",
+  "sourcePolicy": "Use genuine repository images only; preserve neutral project language.",
+  "outputs": [
+    {"name":"kleihaus-15s-social.mp4","width":1080,"height":1920,"durationSeconds":15,"fps":30,"audio":"voice-over optional; licensed music only"},
+    {"name":"kleihaus-30s-social.mp4","width":1080,"height":1920,"durationSeconds":30,"fps":30,"audio":"approved voice-over; licensed music optional"},
+    {"name":"kleihaus-52s-brand.mp4","width":1920,"height":1080,"durationSeconds":52,"fps":30,"audio":"approved voice-over; licensed music optional"}
+  ],
+  "assetRoots": ["public/images", "public/images/projects", "public/images/sanitaryware"],
+  "rendering": {
+    "requiredTool": "ffmpeg",
+    "currentEnvironment": "unavailable",
+    "transition": "crossfade",
+    "motion": "3-5 percent scale or restrained pan",
+    "videoCodec": "libx264",
+    "pixelFormat": "yuv420p",
+    "fastStart": true,
+    "captions": "burned into social exports; separate caption file recommended"
+  },
+  "music": {"status":"missing","requirement":"Use commissioned, public-domain or commercially licensed music only."},
+  "scenes": {
+    "15s": ["kleihaus-structure.jpg","tiles-floor.jpg","sanitaryware/sanitaryware-shower-display-02.jpg","sanitaryware/sanitaryware-kitchen-sink-backsplash-01.jpg","paint-interior.jpg","adhesive.jpg","kleihaus-logo.jpg"],
+    "30s": ["kleihaus-structure.jpg","tiles-floor.jpg","tiles-wall.jpg","bathroom-blue-1.jpg","sanitaryware/sanitaryware-gold-shower-display-01.jpg","sanitaryware/sanitaryware-kitchen-sink-window-01.jpg","sanitaryware/sanitaryware-kitchen-black-sink-01.jpg","paint-interior.jpg","paint-exterior.jpg","adhesive.jpg","grout.jpg","tile-tools.jpg","tiler-service.jpg","kleihaus-logo.jpg"],
+    "52s": ["kleihaus-structure.jpg","tiles-floor.jpg","tiles-wall.jpg","tiles-decor.jpg","bathroom-blue-1.jpg","sanitaryware/sanitaryware-shower-display-01.jpg","sanitaryware/sanitaryware-kitchen-sink-window-01.jpg","sanitaryware/sanitaryware-kitchen-sink-backsplash-01.jpg","paint-interior.jpg","paint-exterior.jpg","adhesive.jpg","grout.jpg","tile-tools.jpg","tiler-service.jpg","projects/project-kitchen-overview-01.jpg","projects/project-kitchen-tile-backsplash-01.jpg","kleihaus-logo.jpg"]
+  },
+  "approvalGates": ["photo usage rights", "final wording", "voice-over", "music license", "CTA URL and UTM", "crop and caption review"]
+}
