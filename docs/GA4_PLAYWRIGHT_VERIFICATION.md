@@ -2,7 +2,7 @@
 
 ## 2026-09-06 reconciliation
 
-Final production result: PASS after Workers deployment b648e36. Chromium captured 18 GA4 collection requests containing all nine expected events: page_view, cta_click, whatsapp_click, phone_click, email_click, location_view, guide_click, guide_view and quote_submit. One initial Google tag loader and one config call were asserted. No missing events. The quote response was mocked; no production enquiry was submitted. This final result supersedes the pre-deployment limitations below. Test duration: 45.9 seconds.
+Final live result reconfirmed during the block presentation audit: PASS. Chromium captured 18 GA4 collection requests containing page_view, cta_click, whatsapp_click, phone_click, email_click, location_view, guide_click, guide_view and quote_submit. One initial loader and one config call were asserted. Quote success was mocked; no real enquiry was sent. Test duration: 47.1 seconds. This supersedes the later blocked-rerun note, which incorrectly displaced the earlier recorded passing result.
 
 Elevated Chromium now runs. The original test missed events in batched GA4 request bodies. The corrected parser reads every event name; outbound WhatsApp requests receive an intercepted 204 response so the source document stays available. Guide view is independently verified and soft event assertions allow later checks to run after a missing event.
 

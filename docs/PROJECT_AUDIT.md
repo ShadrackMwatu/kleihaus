@@ -1,5 +1,9 @@
 # Kleihaus Project Audit
 
+## Block presentation audit
+
+See BLOCK_PRESENTATION_AUDIT.md for the block inventory, messaging decisions, common spacing scale, corrected photo mosaics and responsive checks. No route, metadata, image source, Cloudflare or analytics architecture changes were required. Main footer order and contact workflows remain intact.
+
 ## Pending work reconciliation
 
 See PENDING_WORK_RECONCILIATION.md for the 2026-09-06 review of unpublished commits, SEO targeting corrections, validation and video planning assets. Website structure and visible copy remain unchanged. Helpful guide cards now use the existing internal navigator to avoid losing guide_click during document unload. Private reporting access, approved business facts and FFmpeg rendering capability remain outstanding dependencies.

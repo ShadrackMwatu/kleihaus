@@ -1120,7 +1120,7 @@ const projectsPage = {
   eyebrow: 'Projects',
   h1: 'Selected kitchen finishing project gallery',
   intro:
-    'Explore selected projects featuring tiles, sanitaryware, paints and finishing solutions supplied or supported by Kleihaus. The gallery is based only on the supplied project photographs and avoids unsupported claims about installation, dates, locations or customers.',
+    'Explore selected kitchen projects featuring tiles, sinks and finishing solutions supplied or supported by Kleihaus. Compare material details for your own project.',
   category: 'Projects',
   schemaType: 'CollectionPage',
   ctaLabel: 'Request a similar quote',
@@ -2205,7 +2205,7 @@ function Hero({ onSectionChange }) {
             </div>
           </div>
           <div className="absolute bottom-3 left-5 right-5 flex items-center justify-between gap-4 sm:bottom-4 sm:left-10 sm:right-10 lg:left-10 lg:right-10">
-            <div className="flex items-center gap-2">
+            <div className="flex min-w-0 flex-1 items-center sm:max-w-xs">
               {heroSlides.map((slide, index) => (
                 <button
                   key={slide.image}
@@ -2213,8 +2213,10 @@ function Hero({ onSectionChange }) {
                   aria-label={`Show ${slide.label} hero image`}
                   aria-current={index === activeSlide ? 'true' : undefined}
                   onClick={() => goToSlide(index)}
-                  className={`h-2.5 rounded-full transition-all ${index === activeSlide ? 'w-8 bg-white' : 'w-2.5 bg-white/50 hover:bg-white/80'}`}
-                />
+                  className="flex h-11 min-w-0 flex-1 items-center justify-center rounded-md focus:outline-none focus:ring-2 focus:ring-white"
+                >
+                  <span className={`h-2 rounded-full transition-all ${index === activeSlide ? 'w-5 bg-white' : 'w-2 bg-white/50'}`} />
+                </button>
               ))}
             </div>
             <div className="hidden items-center gap-2 sm:flex">
@@ -2238,7 +2240,7 @@ function Hero({ onSectionChange }) {
             </div>
           </div>
         </div>
-        <div className="mt-2.5 grid grid-cols-1 gap-2 sm:mt-3 sm:grid-cols-2 sm:gap-2.5 md:grid-cols-3 lg:grid-cols-5">
+        <div className="mt-2.5 grid grid-cols-1 gap-2 sm:mt-3 sm:grid-cols-2 sm:gap-2.5 lg:grid-cols-4">
           {heroTrustBadges.map((badge) => {
             const Icon = badge.icon
             return (
@@ -2259,15 +2261,15 @@ function Hero({ onSectionChange }) {
 function AboutSection() {
   return (
     <section id="about" className="bg-white">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+      <div className="mx-auto grid max-w-7xl gap-6 px-4 py-6 sm:py-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
         <div>
           <p className="text-sm font-semibold uppercase text-emerald-700">About Kleihaus</p>
-          <h2 className="mt-2 text-3xl font-semibold text-neutral-950">Why choose Kleihaus</h2>
-          <p className="mt-4 text-sm leading-7 text-neutral-600">
-            Kleihaus Ceramics is positioned as a practical finishing partner for homes, renovations, contractors and project teams.
+          <h2 className="mt-2 text-xl font-semibold text-neutral-950 sm:text-2xl">Why choose Kleihaus</h2>
+          <p className="mt-3 text-sm leading-6 text-neutral-600">
+            Kleihaus Ceramics brings tiles, sanitaryware, paints and finishing essentials together for homes, renovations and project teams.
           </p>
-          <p className="mt-3 text-sm leading-7 text-neutral-600">
-            This section keeps the business identity, mission, values and service philosophy in one place. Product range, customer pathways, projects, guides and locations are handled in their dedicated sections.
+          <p className="mt-3 text-sm leading-6 text-neutral-600">
+            Discuss your preferred finishes, measurements and site requirements with us for product selection, quantity planning and delivery coordination.
           </p>
           <div className="mt-6 flex flex-wrap gap-2 text-xs font-semibold text-emerald-800">
             {['Finishing advisory', 'Reliable guidance', 'Professional workflow', 'Customer success'].map((item) => (
@@ -2300,7 +2302,7 @@ function AboutSection() {
 
 function ShopByCategory({ selectedCategory, onCategoryClick, onGuideClick, onSupportClick, compact = false }) {
   return (
-    <section id="catalogue" className={compact ? '' : 'mx-auto max-w-7xl px-4 py-10'}>
+    <section id="catalogue" className={compact ? '' : 'mx-auto max-w-7xl px-4 py-6 sm:py-8'}>
       <div className={compact ? 'mb-3 max-w-3xl sm:mb-4' : 'mb-6 max-w-3xl'}>
         <div>
           <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Product catalogue</p>
@@ -2582,7 +2584,7 @@ function CustomerProjectGallery() {
             <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Applications and inspiration</p>
             <h2 className="mt-1.5 text-xl font-semibold text-neutral-950 sm:text-2xl">Choose finishes by room, surface and use.</h2>
             <p className="mt-1.5 text-sm leading-6 text-neutral-600">
-              Use this block to think through where each finish will live before comparing the detailed product categories.
+              Compare finishes for floors, walls, bathrooms and kitchens around the needs of your space.
             </p>
           </div>
           <a
@@ -2629,9 +2631,9 @@ function ProjectsEvidence() {
         <div className="mb-4 flex flex-col gap-2 sm:mb-5 md:flex-row md:items-end md:justify-between">
           <div className="max-w-3xl">
             <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Projects</p>
-            <h2 className="mt-1.5 text-xl font-semibold text-neutral-950 sm:text-2xl">Genuine project images for practical reference.</h2>
+            <h2 className="mt-1.5 text-xl font-semibold text-neutral-950 sm:text-2xl">Kitchen finishes and material details.</h2>
             <p className="mt-1.5 text-sm leading-6 text-neutral-600">
-              View selected supplied project photographs as inspiration for kitchen finishes, sinks, counters and tile details without unsupported installation or customer claims.
+              Explore selected projects featuring materials supplied or supported by Kleihaus, from sinks and worktops to tile details.
             </p>
           </div>
           <a
@@ -2752,7 +2754,7 @@ function TradeProjectsPage({ page, onSectionChange, onSupportClick, onQuoteClick
               </ButtonSecondary>
             </div>
           </div>
-          <div className="grid min-w-0 grid-cols-3 gap-2 sm:gap-3">
+          <div className="image-mosaic grid min-w-0 grid-cols-3 gap-2 sm:gap-3">
             {page.images.map((image, index) => (
               <OptimizedImage
                 key={image.src}
@@ -2849,7 +2851,7 @@ function HelpfulGuides({ onGuideClick, onRouteNavigate }) {
 
   return (
     <section id="faq" className="border-y border-neutral-200 bg-neutral-50">
-      <div className="mx-auto max-w-7xl px-4 py-5 sm:py-6">
+      <div className="mx-auto max-w-7xl px-4 py-6 sm:py-8">
         <div className="mb-3 max-w-3xl">
           <h2 className="text-xl font-semibold text-neutral-950 sm:text-2xl">Buying Guide & FAQs</h2>
           <p className="mt-1 text-sm leading-5 text-neutral-600">
@@ -3116,7 +3118,7 @@ function Contact({ onSupportFormClick, compact = false }) {
 
   return (
     <section id="contact" className={compact ? 'rounded-xl bg-neutral-950 text-white' : 'bg-neutral-950 text-white'}>
-      <div className={`${compact ? 'grid gap-4 p-4 sm:p-5' : 'mx-auto grid max-w-7xl gap-8 px-4 py-10'} lg:grid-cols-[0.9fr_1.1fr]`}>
+      <div className={`${compact ? 'grid gap-4 p-4 sm:p-5' : 'mx-auto grid max-w-7xl gap-6 px-4 py-6 sm:py-8'} lg:grid-cols-[0.9fr_1.1fr]`}>
         <div>
           <p className="text-sm font-semibold uppercase text-emerald-300">Contact Kleihaus</p>
           <h2 className="mt-1.5 text-2xl font-semibold sm:text-3xl">Request a quotation or talk to Kleihaus now.</h2>
@@ -3542,7 +3544,7 @@ function HubPage({ page, onSectionChange, onSupportClick, onQuoteClick }) {
               </ButtonSecondary>
             </div>
           </div>
-          <div className="grid grid-cols-3 gap-2 sm:gap-3">
+          <div className="image-mosaic grid grid-cols-3 gap-2 sm:gap-3">
             {page.images.slice(0, 3).map((image, index) => (
               <OptimizedImage
                 key={image.src}
@@ -3668,7 +3670,7 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
               </a>
             </div>
           </div>
-          <div className="grid grid-cols-3 gap-2 sm:gap-3">
+          <div className="image-mosaic grid grid-cols-3 gap-2 sm:gap-3">
             {page.images.slice(0, 3).map((image, index) => (
               <OptimizedImage
                 key={image.src}
@@ -3986,7 +3988,7 @@ function ProjectsPage({ page, onSectionChange, onSupportClick, onQuoteClick }) {
               </ButtonSecondary>
             </div>
           </div>
-          <div className="grid grid-cols-3 gap-2 sm:gap-3" aria-label="Featured project images">
+          <div className="image-mosaic grid grid-cols-3 gap-2 sm:gap-3" aria-label="Featured project images">
             {page.images.slice(0, 3).map((image, index) => (
               <button
                 key={image.src}
@@ -4003,7 +4005,7 @@ function ProjectsPage({ page, onSectionChange, onSupportClick, onQuoteClick }) {
                   decoding="async"
                   width={image.width}
                   height={image.height}
-                  className={`w-full object-cover transition duration-300 group-hover:scale-[1.03] ${index === 0 ? 'aspect-[4/3]' : 'aspect-square'}`}
+                  className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
                 />
               </button>
             ))}
@@ -4132,12 +4134,6 @@ function Footer() {
     { label: 'Paints', href: '/paints' },
     { label: 'Adhesives & grout', href: '/adhesives-grout' },
   ]
-  const popularSearchLinks = [
-    { label: 'Floor tiles', href: '/floor-tiles' },
-    { label: 'Bathroom tiles', href: '/bathroom-tiles' },
-    { label: 'Sanitaryware', href: '/sanitaryware' },
-    { label: 'Paints', href: '/paints' },
-  ]
   const projectGuideLinks = [
     { label: 'Guides hub', href: '/guides' },
     { label: 'Tile buying guide', href: '/tile-buying-guide' },
@@ -4156,7 +4152,7 @@ function Footer() {
           <h3 className="text-sm font-semibold uppercase text-white">Products</h3>
           <ul className="mt-2 grid gap-0.5 text-xs text-orange-50/90 sm:gap-1.5 sm:text-sm">
             {footerProductLinks.map((item) => (
-              <li key={item.href}>
+              <li key={`${item.href}-${item.label}`}>
                 <a href={item.href} className="transition hover:text-white focus:outline-none focus:ring-2 focus:ring-orange-100/70">
                   {item.label}
                 </a>
@@ -4210,11 +4206,9 @@ function Footer() {
         </div>
       </div>
       <div className="border-t border-white/15 px-4 py-4">
-        <div className="mx-auto grid max-w-6xl gap-4 text-xs text-orange-50/90 sm:grid-cols-3 sm:text-sm">
+        <div className="mx-auto max-w-6xl text-xs text-orange-50/90 sm:text-sm">
           {[
-            ['Popular products', popularSearchLinks],
             ['Guides', projectGuideLinks],
-            ['Project evidence', footerProjectLinks],
           ].map(([title, links]) => (
             <div key={title}>
               <h3 className="text-xs font-semibold uppercase text-white">{title}</h3>

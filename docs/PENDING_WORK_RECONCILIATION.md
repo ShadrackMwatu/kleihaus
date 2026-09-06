@@ -6,7 +6,7 @@ Reviewed 2026-09-06 against the working tree, commit history, prior market and v
 
 Push succeeded: 868e18e..b648e36 main -> main, preserving 9d2c36d and publishing 81ac11d (targeting), 247b373 (video planning) and b648e36 (verification/guide navigation). Active Workers Builds: kleihaus completed successfully. The stale Cloudflare Pages integration failed separately.
 
-Post-deployment production verification passed 39 routes and 7 endpoints. Live Chromium GA4 passed all nine events in 18 collection requests, with one loader and one config call. Quote success was mocked. Desktop/mobile homepage plus products, sanitaryware, projects and contact checks returned HTTP 200 with no horizontal overflow, one H1 each and no broken loaded images. Screenshots are local ignored test artifacts. Computed body background-image is none, confirming the previously pending background removal.
+Post-deployment production verification passed 39 routes and 7 endpoints. A fresh live run during the block presentation audit reconfirmed all nine requested GA4 events in 18 collection requests, with one loader/config. Quote success was mocked. This supersedes the incorrect pending-rerun note. Desktop/mobile homepage plus products, sanitaryware, projects and contact checks returned HTTP 200 with no horizontal overflow, one H1 each and no broken loaded images. Screenshots are local ignored test artifacts. Computed body background-image is none, confirming the previously pending background removal.
 
 The completion update contains only final test assertions and evidence documentation. See GA4_PLAYWRIGHT_VERIFICATION.md for event details. FFmpeg rendering and owner-supplied business/measurement evidence remain outstanding.
 

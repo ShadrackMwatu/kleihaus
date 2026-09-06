@@ -1,5 +1,12 @@
 # Kleihaus Project Changelog
 
+## Block presentation and spacing audit
+
+- Aligned main homepage section spacing and heading typography; replaced internal editorial language with concise customer-focused copy.
+- Corrected shared photo mosaic layout, project frame filling, hero indicator touch targets and the four-badge desktop grid.
+- Removed duplicate secondary footer product/project links while retaining primary navigation, guides and contact/social links.
+- Added responsive layout regression checks and BLOCK_PRESENTATION_AUDIT.md. Fresh production GA4 verification confirms all nine events.
+
 ## 2026-09-06 - Pending work reconciliation
 
 - Confirmed successful Workers deployment, production SEO 39/39 routes and 7/7 endpoints, and all nine live GA4 event names in 18 collection requests with one loader/config. Quote response mocked; desktop/mobile layout smoke checks passed.
