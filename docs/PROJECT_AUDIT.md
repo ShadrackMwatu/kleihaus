@@ -2,6 +2,8 @@
 
 ## 2026-09-06 commercial acquisition evidence
 
+Final verification update: implementation 15dbaa1 deployed successfully through Workers Builds. Post-deployment SEO verification passed 39 routes/7 endpoints. Elevated GitHub API inspection confirmed seven successful daily scheduled monitor runs (August 30-September 5). This supersedes the initial access limitation below; GA4 WhatsApp delivery remains unconfirmed. See the dedicated acquisition audit for exact evidence.
+
 See SEO_CLIENT_ACQUISITION_AUDIT.md and SEO_30_DAY_CLIENT_ACQUISITION_PLAN.md. Technical automation works, but private Search Console/GA4 reporting and customer outcomes are not connected. Generated public metrics now preserve null values and provenance, with editorial route journeys and opportunity scoring. Business success is no longer assigned a fixed 90 score.
 
 Production SEO verification passed 39 routes and seven endpoints. Static analytics passed; elevated live Chromium failed to capture whatsapp_click after capturing page_view and cta_click. Full live event delivery, actual monitor history and active Workers Build status remain unverified. Build passed (352.39 kB JS / 92.99 kB gzip, 37.89 kB CSS / 7.53 kB gzip). These are asset sizes, not field Core Web Vitals. The two new acquisition tests pass with Node test isolation disabled because sandbox process spawning is restricted.

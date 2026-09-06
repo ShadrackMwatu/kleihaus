@@ -2,6 +2,16 @@
 
 Audit date: 2026-09-06. Scope: all 39 manifest routes, engine, HTML generator, analytics implementation, existing browser test and monitoring workflow. The public dashboard now carries a reproducible per-route inventory under acquisition.routeCoverage; it is configuration evidence, not measured traffic.
 
+## Final deployment evidence (supersedes initial access limitations below)
+
+Implementation commit 15dbaa1 was pushed successfully (1ab1b86..15dbaa1); this also published the pre-existing local SEO commit 726fd6c. GitHub check-runs confirmed **Workers Builds: kleihaus: success**. The separate stale Cloudflare Pages check failed and is not the active deployment.
+
+Post-deployment all-route verification passed: 39 routes, 7 endpoints, average response 299 ms. Local report: reports/seo-production/seo-production-2026-09-06T01-10-00-446Z.json. An immediate pre-propagation run reported the three old sanitaryware description tags; the final run resolves those mismatches.
+
+Elevated read-only GitHub API access succeeded after the sandbox request failed. Seven scheduled monitor runs from August 30 through September 5 completed successfully; example: https://github.com/ShadrackMwatu/kleihaus/actions/runs/33953829946. The current push-triggered run was observed in progress. Manual dispatch and alert delivery were not observed. Continuous-monitoring editorial score is therefore revised from provisional 50 to 85 for both before and after: this is newly obtained evidence of existing functionality, not an improvement caused by this change. The generated dashboard's conservative continuity label remains configuration-only because it does not ingest workflow history.
+
+The live GA4 failure remains unresolved and honestly reported. No complete mobile visual audit or field CWV measurement was performed. The acquisition plan still requires approved private reporting access and owner outcome records.
+
 ## Decision
 
 Kleihaus has functioning technical automation and commercial enquiry paths. It cannot currently demonstrate continuous qualified customer acquisition, and cannot prove which organic leads become paying customers. Search Console and GA4 reporting importers and business outcome records are absent. A high internal technical score does not close those gaps.
