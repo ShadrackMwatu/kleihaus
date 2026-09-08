@@ -1,3 +1,4 @@
+import { buildCommercialModel, priorityScore } from './seo-commercial.mjs'
 // Repository evidence is separate from private search, lead and sales measurements.
 const targetClientSegments = [
   {
@@ -100,6 +101,7 @@ export const buildAcquisitionSnapshot = (routes, generatedAt) => {
   })
   return {
     generatedAt,
+    commercialIntent: buildCommercialModel(routes),
     classification: 'technical_automation_with_unverified_commercial_outcomes',
     scoreMeaning: 'Technical checks are not rankings, customers or revenue.',
     searchVisibility: pending('Google Search Console API; no importer configured', ['impressions', 'clicks', 'ctr', 'averagePosition', 'indexedPages']),
@@ -154,7 +156,7 @@ export const scoreOpportunity = (item, routes) => {
     status: routes.some((route) => route.path === item.targetRoute) ? 'improve_existing' : 'proposed_not_published',
     searchIntent: /calculator|cost|buying/i.test(item.title) ? 'commercial_investigation' : 'informational_to_commercial',
     commercialIntent, localRelevance: 3, conversionPotential: commercialIntent, contentEffort,
-    priorityScore: commercialIntent * 2 + 3 + commercialIntent - contentEffort,
-    evidence: 'Editorial 1-5 rubric; not search volume or predicted revenue. Local relevance provisional until query data is connected.',
+    priorityScore: priorityScore({ commercialIntentScore: commercialIntent * 20, productFit: 85, audienceValue: 75, routeGap: routes.some((route) => route.path === item.targetRoute) ? 35 : 80, conversionPotential: commercialIntent * 20 }),
+    evidence: 'Weighted commercial rubric; not search volume or predicted revenue. Proposed routes require evidence and review before publication.',
   }
 }

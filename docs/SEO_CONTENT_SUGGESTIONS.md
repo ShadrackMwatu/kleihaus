@@ -1,6 +1,6 @@
 # Kleihaus SEO Content Suggestions
 
-Generated: 2026-09-06T17:07:40.307Z
+Generated: 2026-09-08T10:16:59.438Z
 
 These are review-ready suggestions from the automated SEO engine. They do not publish content and they do not invent facts.
 
@@ -61,20 +61,20 @@ Editorial scoring uses 1-5 scales, not measured search demand. Higher effort red
 
 | Opportunity | Search intent | Commercial intent | Local relevance | Conversion potential | Effort | Priority score | Status |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | --- |
-| Bathroom Renovation Cost Guide | commercial_investigation | 5 | 3 | 5 | 3 | 15 | proposed_not_published |
-| Tile Quantity Calculator | commercial_investigation | 5 | 3 | 5 | 5 | 13 | proposed_not_published |
-| Adhesive Calculator | commercial_investigation | 5 | 3 | 5 | 5 | 13 | proposed_not_published |
-| Sanitaryware Buying Guide | commercial_investigation | 4 | 3 | 4 | 3 | 12 | proposed_not_published |
-| Kitchen Renovation Guide | informational_to_commercial | 4 | 3 | 4 | 3 | 12 | proposed_not_published |
-| Tile Installation Guide | informational_to_commercial | 4 | 3 | 4 | 3 | 12 | proposed_not_published |
-| Tile Layout Guide | informational_to_commercial | 3 | 3 | 3 | 3 | 9 | proposed_not_published |
-| Commercial Tile Guide | informational_to_commercial | 3 | 3 | 3 | 3 | 9 | proposed_not_published |
-| Tile Tools And Accessories Guide | informational_to_commercial | 3 | 3 | 3 | 3 | 9 | proposed_not_published |
-| Delivery Planning Guide | informational_to_commercial | 3 | 3 | 3 | 3 | 9 | proposed_not_published |
-| Project Advisory Checklist | informational_to_commercial | 3 | 3 | 3 | 3 | 9 | proposed_not_published |
-| Warehouse Flooring Guide | informational_to_commercial | 2 | 3 | 2 | 3 | 6 | proposed_not_published |
-| Paint Selection Guide Expansion | informational_to_commercial | 2 | 3 | 2 | 3 | 6 | improve_existing |
-| Fundis And Installer Training Guide | informational_to_commercial | 2 | 3 | 2 | 3 | 6 | proposed_not_published |
+| Tile Quantity Calculator | commercial_investigation | 5 | 3 | 5 | 5 | 90 | proposed_not_published |
+| Adhesive Calculator | commercial_investigation | 5 | 3 | 5 | 5 | 90 | proposed_not_published |
+| Bathroom Renovation Cost Guide | commercial_investigation | 5 | 3 | 5 | 3 | 90 | proposed_not_published |
+| Sanitaryware Buying Guide | commercial_investigation | 4 | 3 | 4 | 3 | 81 | proposed_not_published |
+| Kitchen Renovation Guide | informational_to_commercial | 4 | 3 | 4 | 3 | 81 | proposed_not_published |
+| Tile Installation Guide | informational_to_commercial | 4 | 3 | 4 | 3 | 81 | proposed_not_published |
+| Tile Layout Guide | informational_to_commercial | 3 | 3 | 3 | 3 | 72 | proposed_not_published |
+| Commercial Tile Guide | informational_to_commercial | 3 | 3 | 3 | 3 | 72 | proposed_not_published |
+| Tile Tools And Accessories Guide | informational_to_commercial | 3 | 3 | 3 | 3 | 72 | proposed_not_published |
+| Delivery Planning Guide | informational_to_commercial | 3 | 3 | 3 | 3 | 72 | proposed_not_published |
+| Project Advisory Checklist | informational_to_commercial | 3 | 3 | 3 | 3 | 72 | proposed_not_published |
+| Warehouse Flooring Guide | informational_to_commercial | 2 | 3 | 2 | 3 | 63 | proposed_not_published |
+| Fundis And Installer Training Guide | informational_to_commercial | 2 | 3 | 2 | 3 | 63 | proposed_not_published |
+| Paint Selection Guide Expansion | informational_to_commercial | 2 | 3 | 2 | 3 | 56 | improve_existing |
 
 - Tile Quantity Calculator: Captures homeowners, contractors and builders who are close to requesting tile quantities and quotes.
 - Adhesive Calculator: Connects tile size, substrate and area planning to adhesive, grout and accessory quote enquiries.

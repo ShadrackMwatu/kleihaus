@@ -1225,15 +1225,15 @@ const tradeProjectsPage = {
   path: '/trade-projects',
   title: 'Trade & Project Supply Kenya | Kleihaus Ceramics',
   description:
-    'Trade and project quote support for homeowners, home builders, contractors, property developers, design professionals, dealers and institutional buyers in Kenya.',
+    'Request a project quotation for tiles, sanitaryware and paints in Kenya. Share BOQ quantities or specifications, location and delivery requirements with Kleihaus.',
   eyebrow: 'Trade and project support',
   h1: 'Trade and project support',
   intro:
-    'Kleihaus supports quote-led enquiries for tiles, sanitaryware, kitchen sinks and mixers, paints, adhesives, grout, tools, delivery coordination, installation support and tailored product training. The six pathways below help homeowners, home builders, contractors, property developers, design professionals, dealers and institutional buyers share the right details without relying on unsupported claims about stock, prices, brands or delivery timelines.',
+    'Plan tiles, sanitaryware, kitchen sinks and mixers, paints, adhesives and grout for your project. Share quantities from your BOQ, room measurements or product specifications to request a focused quotation. Discuss delivery coordination and installation support with the team, then confirm availability, prices and timing before ordering.',
   category: 'Trade & Projects',
   schemaType: 'WebPage',
   pageType: 'trade',
-  ctaLabel: 'Request trade or project quote',
+  ctaLabel: 'Request a project quotation',
   audiences: audienceSegments,
   images: projectImageItems.slice(0, 3),
 }
@@ -2832,7 +2832,7 @@ function TradeProjectsPage({ page, onSectionChange, onSupportClick, onQuoteClick
         <div className="mx-auto grid max-w-7xl gap-4 px-4 py-6 sm:py-8 lg:grid-cols-3">
           {[
             ['Products to mention', 'Tiles, sanitaryware, kitchen sinks and mixers, paints, adhesives, grout, tools and any finish inspiration images.'],
-            ['Project details to share', 'Room measurements, quantities, preferred finishes, location, timing, site access and whether installation support or product training is needed.'],
+            ['Project details to share', 'Share BOQ line items or room measurements, quantities, product specifications, preferred finishes, location, timing and site access. Mention any delivery or installation support needed.'],
             ['What remains owner-confirmed', 'Current stock, brands, prices, delivery timing, warranties, returns and trade terms should be confirmed by the Kleihaus team before quoting.'],
           ].map(([title, text]) => (
             <article key={title} className="rounded-lg border border-neutral-200 bg-white p-4 shadow-sm">

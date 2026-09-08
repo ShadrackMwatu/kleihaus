@@ -23,7 +23,7 @@ test('unconnected acquisition metrics stay null and have provenance', () => {
 test('existing opportunities are improvements, not duplicate page proposals', () => {
   const result = scoreOpportunity({ title: 'Paint Selection', targetRoute: '/paint-selection-guide', commercialValue: 'High' }, seoConfig)
   assert.equal(result.status, 'improve_existing')
-  assert.equal(result.priorityScore, 12)
+  assert.equal(result.priorityScore, 74)
 })
 
 test('location hubs and installation guidance use consistent intent', () => {

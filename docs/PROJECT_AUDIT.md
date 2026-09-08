@@ -1,5 +1,9 @@
 # Kleihaus Project Audit
 
+## Commercial acquisition model
+
+See COMMERCIAL_INTENT_IMPLEMENTATION.md and the four generated KLEIHAUS commercial reports. Commercial route readiness is now separate from technical checks and actual business performance. Unverified specifications and trust evidence prevent strong-coverage claims. The model maps demand to existing routes; no calculators, upload workflow, new locations or unsupported product claims were published.
+
 ## Block presentation audit
 
 See BLOCK_PRESENTATION_AUDIT.md for the block inventory, messaging decisions, common spacing scale, corrected photo mosaics and responsive checks. No route, metadata, image source, Cloudflare or analytics architecture changes were required. Main footer order and contact workflows remain intact.

@@ -3,6 +3,7 @@ import { mkdir, readFile, readdir, stat, writeFile } from 'node:fs/promises'
 import { dirname, extname, join, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { buildAcquisitionSnapshot, scoreOpportunity } from './seo-acquisition.mjs'
+import { buildCommercialModel, commercialReports } from './seo-commercial.mjs'
 import {
   SITE_ORIGIN,
   buildNavigationManifest,
@@ -240,6 +241,10 @@ const groupImages = async () => {
 
 const buildInternalLinkManifest = () => {
   const routes = seoConfig
+  const commercial = buildCommercialModel(routes)
+  const intentByRoute = new Map()
+  for (const row of commercial.matrix) intentByRoute.set(row.recommendedRoute, Math.max(intentByRoute.get(row.recommendedRoute) || 0, row.commercialIntentScore))
+  const candidates = [...routes].sort((a, b) => (intentByRoute.get(b.path) || 0) - (intentByRoute.get(a.path) || 0) || a.path.localeCompare(b.path))
   return Object.fromEntries(
     routes.map((route) => {
       const related = new Map()
@@ -248,7 +253,7 @@ const buildInternalLinkManifest = () => {
         if (link.href && link.href !== route.path) related.set(link.href, { label: link.label, href: link.href, reason: 'declared' })
       }
 
-      for (const candidate of routes) {
+      for (const candidate of candidates) {
         if (candidate.path === route.path || related.has(candidate.path)) continue
         const sameCategory = route.category && candidate.category && route.category === candidate.category
         const sameService = route.serviceType && candidate.serviceType && route.serviceType === candidate.serviceType
@@ -260,6 +265,7 @@ const buildInternalLinkManifest = () => {
             label: candidate.category || candidate.title,
             href: candidate.path,
             reason: sameCategory ? 'same category' : sameService ? 'same service' : sameArea ? 'same location' : 'guide match',
+            commercialIntentScore: intentByRoute.get(candidate.path) || null,
           })
         }
 
@@ -782,6 +788,9 @@ const run = async () => {
   await writeFile(resolve(docsDir, 'GBP_SOCIAL_DRAFTS.md'), buildSocialDraftsMarkdown(audit), 'utf8')
   await writeFile(resolve(docsDir, 'SEO_EXECUTIVE_REPORT.md'), buildExecutiveReportMarkdown(audit, internalLinks, imageManifest), 'utf8')
   await writeJson(resolve(publicDir, 'seo-dashboard.json'), buildDashboardSnapshot(audit, internalLinks, imageManifest))
+  for (const [name, content] of Object.entries(commercialReports(buildCommercialModel(seoConfig), audit.score))) {
+    await writeFile(resolve(docsDir, name), content, 'utf8')
+  }
 
   if (audit.issues.length) {
     console.error(`SEO automation found ${audit.issues.length} blocking issue(s). See docs/SEO_REPORT.md.`)

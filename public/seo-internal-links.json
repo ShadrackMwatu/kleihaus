@@ -462,19 +462,22 @@
       "reason": "declared"
     },
     {
-      "label": "Tiles Machakos",
-      "href": "/tiles-machakos",
-      "reason": "same service"
+      "label": "Paints Nairobi",
+      "href": "/paints-nairobi",
+      "reason": "same location",
+      "commercialIntentScore": 92
     },
     {
-      "label": "Tiles Makueni",
-      "href": "/tiles-makueni",
-      "reason": "same service"
+      "label": "Installation Support Nairobi",
+      "href": "/installation-support-nairobi",
+      "reason": "same location",
+      "commercialIntentScore": null
     },
     {
-      "label": "Tiles Kenya",
-      "href": "/tiles-kenya",
-      "reason": "same service"
+      "label": "Sanitaryware Nairobi",
+      "href": "/sanitaryware-nairobi",
+      "reason": "same location",
+      "commercialIntentScore": null
     }
   ],
   "/tiles-machakos": [
@@ -494,19 +497,22 @@
       "reason": "declared"
     },
     {
-      "label": "Tiles Nairobi",
-      "href": "/tiles-nairobi",
-      "reason": "same service"
+      "label": "Installation Support Machakos",
+      "href": "/installation-support-machakos",
+      "reason": "same location",
+      "commercialIntentScore": null
     },
     {
-      "label": "Tiles Makueni",
-      "href": "/tiles-makueni",
-      "reason": "same service"
+      "label": "Paints Machakos",
+      "href": "/paints-machakos",
+      "reason": "same location",
+      "commercialIntentScore": null
     },
     {
-      "label": "Tiles Kenya",
-      "href": "/tiles-kenya",
-      "reason": "same service"
+      "label": "Sanitaryware Machakos",
+      "href": "/sanitaryware-machakos",
+      "reason": "same location",
+      "commercialIntentScore": null
     }
   ],
   "/tiles-makueni": [
@@ -526,19 +532,22 @@
       "reason": "declared"
     },
     {
-      "label": "Tiles Nairobi",
-      "href": "/tiles-nairobi",
-      "reason": "same service"
+      "label": "Installation Support Makueni",
+      "href": "/installation-support-makueni",
+      "reason": "same location",
+      "commercialIntentScore": null
     },
     {
-      "label": "Tiles Machakos",
-      "href": "/tiles-machakos",
-      "reason": "same service"
+      "label": "Paints Makueni",
+      "href": "/paints-makueni",
+      "reason": "same location",
+      "commercialIntentScore": null
     },
     {
-      "label": "Tiles Kenya",
-      "href": "/tiles-kenya",
-      "reason": "same service"
+      "label": "Sanitaryware Makueni",
+      "href": "/sanitaryware-makueni",
+      "reason": "same location",
+      "commercialIntentScore": null
     }
   ],
   "/tiles-kenya": [
@@ -558,19 +567,22 @@
       "reason": "declared"
     },
     {
-      "label": "Tiles Nairobi",
-      "href": "/tiles-nairobi",
-      "reason": "same service"
+      "label": "Installation Support Kenya",
+      "href": "/installation-support-kenya",
+      "reason": "same location",
+      "commercialIntentScore": null
     },
     {
-      "label": "Tiles Machakos",
-      "href": "/tiles-machakos",
-      "reason": "same service"
+      "label": "Paints Kenya",
+      "href": "/paints-kenya",
+      "reason": "same location",
+      "commercialIntentScore": null
     },
     {
-      "label": "Tiles Makueni",
-      "href": "/tiles-makueni",
-      "reason": "same service"
+      "label": "Sanitaryware Kenya",
+      "href": "/sanitaryware-kenya",
+      "reason": "same location",
+      "commercialIntentScore": null
     }
   ],
   "/sanitaryware-nairobi": [
@@ -590,19 +602,22 @@
       "reason": "declared"
     },
     {
-      "label": "Tiles Nairobi",
-      "href": "/tiles-nairobi",
-      "reason": "same location"
+      "label": "Paints Nairobi",
+      "href": "/paints-nairobi",
+      "reason": "same location",
+      "commercialIntentScore": 92
     },
     {
-      "label": "Sanitaryware Machakos",
-      "href": "/sanitaryware-machakos",
-      "reason": "same service"
+      "label": "Installation Support Nairobi",
+      "href": "/installation-support-nairobi",
+      "reason": "same location",
+      "commercialIntentScore": null
     },
     {
-      "label": "Sanitaryware Makueni",
-      "href": "/sanitaryware-makueni",
-      "reason": "same service"
+      "label": "Sanitaryware Kenya",
+      "href": "/sanitaryware-kenya",
+      "reason": "same service",
+      "commercialIntentScore": null
     }
   ],
   "/sanitaryware-machakos": [
@@ -622,19 +637,22 @@
       "reason": "declared"
     },
     {
-      "label": "Tiles Machakos",
-      "href": "/tiles-machakos",
-      "reason": "same location"
+      "label": "Installation Support Machakos",
+      "href": "/installation-support-machakos",
+      "reason": "same location",
+      "commercialIntentScore": null
     },
     {
-      "label": "Sanitaryware Nairobi",
-      "href": "/sanitaryware-nairobi",
-      "reason": "same service"
+      "label": "Paints Machakos",
+      "href": "/paints-machakos",
+      "reason": "same location",
+      "commercialIntentScore": null
     },
     {
-      "label": "Sanitaryware Makueni",
-      "href": "/sanitaryware-makueni",
-      "reason": "same service"
+      "label": "Sanitaryware Kenya",
+      "href": "/sanitaryware-kenya",
+      "reason": "same service",
+      "commercialIntentScore": null
     }
   ],
   "/sanitaryware-makueni": [
@@ -654,19 +672,22 @@
       "reason": "declared"
     },
     {
-      "label": "Tiles Makueni",
-      "href": "/tiles-makueni",
-      "reason": "same location"
+      "label": "Installation Support Makueni",
+      "href": "/installation-support-makueni",
+      "reason": "same location",
+      "commercialIntentScore": null
     },
     {
-      "label": "Sanitaryware Nairobi",
-      "href": "/sanitaryware-nairobi",
-      "reason": "same service"
+      "label": "Paints Makueni",
+      "href": "/paints-makueni",
+      "reason": "same location",
+      "commercialIntentScore": null
     },
     {
-      "label": "Sanitaryware Machakos",
-      "href": "/sanitaryware-machakos",
-      "reason": "same service"
+      "label": "Sanitaryware Kenya",
+      "href": "/sanitaryware-kenya",
+      "reason": "same service",
+      "commercialIntentScore": null
     }
   ],
   "/sanitaryware-kenya": [
@@ -686,19 +707,22 @@
       "reason": "declared"
     },
     {
-      "label": "Tiles Kenya",
-      "href": "/tiles-kenya",
-      "reason": "same location"
+      "label": "Installation Support Kenya",
+      "href": "/installation-support-kenya",
+      "reason": "same location",
+      "commercialIntentScore": null
     },
     {
-      "label": "Sanitaryware Nairobi",
-      "href": "/sanitaryware-nairobi",
-      "reason": "same service"
+      "label": "Paints Kenya",
+      "href": "/paints-kenya",
+      "reason": "same location",
+      "commercialIntentScore": null
     },
     {
       "label": "Sanitaryware Machakos",
       "href": "/sanitaryware-machakos",
-      "reason": "same service"
+      "reason": "same service",
+      "commercialIntentScore": null
     }
   ],
   "/paints-nairobi": [
@@ -718,19 +742,22 @@
       "reason": "declared"
     },
     {
-      "label": "Tiles Nairobi",
-      "href": "/tiles-nairobi",
-      "reason": "same location"
+      "label": "Installation Support Nairobi",
+      "href": "/installation-support-nairobi",
+      "reason": "same location",
+      "commercialIntentScore": null
     },
     {
-      "label": "Sanitaryware Nairobi",
-      "href": "/sanitaryware-nairobi",
-      "reason": "same location"
+      "label": "Paints Kenya",
+      "href": "/paints-kenya",
+      "reason": "same service",
+      "commercialIntentScore": null
     },
     {
       "label": "Paints Machakos",
       "href": "/paints-machakos",
-      "reason": "same service"
+      "reason": "same service",
+      "commercialIntentScore": null
     }
   ],
   "/paints-machakos": [
@@ -750,19 +777,22 @@
       "reason": "declared"
     },
     {
-      "label": "Tiles Machakos",
-      "href": "/tiles-machakos",
-      "reason": "same location"
-    },
-    {
-      "label": "Sanitaryware Machakos",
-      "href": "/sanitaryware-machakos",
-      "reason": "same location"
-    },
-    {
       "label": "Paints Nairobi",
       "href": "/paints-nairobi",
-      "reason": "same service"
+      "reason": "same service",
+      "commercialIntentScore": 92
+    },
+    {
+      "label": "Installation Support Machakos",
+      "href": "/installation-support-machakos",
+      "reason": "same location",
+      "commercialIntentScore": null
+    },
+    {
+      "label": "Paints Kenya",
+      "href": "/paints-kenya",
+      "reason": "same service",
+      "commercialIntentScore": null
     }
   ],
   "/paints-makueni": [
@@ -782,19 +812,22 @@
       "reason": "declared"
     },
     {
-      "label": "Tiles Makueni",
-      "href": "/tiles-makueni",
-      "reason": "same location"
-    },
-    {
-      "label": "Sanitaryware Makueni",
-      "href": "/sanitaryware-makueni",
-      "reason": "same location"
-    },
-    {
       "label": "Paints Nairobi",
       "href": "/paints-nairobi",
-      "reason": "same service"
+      "reason": "same service",
+      "commercialIntentScore": 92
+    },
+    {
+      "label": "Installation Support Makueni",
+      "href": "/installation-support-makueni",
+      "reason": "same location",
+      "commercialIntentScore": null
+    },
+    {
+      "label": "Paints Kenya",
+      "href": "/paints-kenya",
+      "reason": "same service",
+      "commercialIntentScore": null
     }
   ],
   "/paints-kenya": [
@@ -814,19 +847,22 @@
       "reason": "declared"
     },
     {
-      "label": "Tiles Kenya",
-      "href": "/tiles-kenya",
-      "reason": "same location"
-    },
-    {
-      "label": "Sanitaryware Kenya",
-      "href": "/sanitaryware-kenya",
-      "reason": "same location"
-    },
-    {
       "label": "Paints Nairobi",
       "href": "/paints-nairobi",
-      "reason": "same service"
+      "reason": "same service",
+      "commercialIntentScore": 92
+    },
+    {
+      "label": "Installation Support Kenya",
+      "href": "/installation-support-kenya",
+      "reason": "same location",
+      "commercialIntentScore": null
+    },
+    {
+      "label": "Paints Machakos",
+      "href": "/paints-machakos",
+      "reason": "same service",
+      "commercialIntentScore": null
     }
   ],
   "/installation-support-nairobi": [
@@ -846,19 +882,22 @@
       "reason": "declared"
     },
     {
+      "label": "Paints Nairobi",
+      "href": "/paints-nairobi",
+      "reason": "same location",
+      "commercialIntentScore": 92
+    },
+    {
       "label": "Guides",
       "href": "/guides",
-      "reason": "guide match"
+      "reason": "guide match",
+      "commercialIntentScore": null
     },
     {
-      "label": "Tiles Nairobi",
-      "href": "/tiles-nairobi",
-      "reason": "same location"
-    },
-    {
-      "label": "Sanitaryware Nairobi",
-      "href": "/sanitaryware-nairobi",
-      "reason": "same location"
+      "label": "Installation Support Kenya",
+      "href": "/installation-support-kenya",
+      "reason": "same service",
+      "commercialIntentScore": null
     }
   ],
   "/installation-support-machakos": [
@@ -880,17 +919,20 @@
     {
       "label": "Guides",
       "href": "/guides",
-      "reason": "guide match"
+      "reason": "guide match",
+      "commercialIntentScore": null
     },
     {
-      "label": "Tiles Machakos",
-      "href": "/tiles-machakos",
-      "reason": "same location"
+      "label": "Installation Support Kenya",
+      "href": "/installation-support-kenya",
+      "reason": "same service",
+      "commercialIntentScore": null
     },
     {
-      "label": "Sanitaryware Machakos",
-      "href": "/sanitaryware-machakos",
-      "reason": "same location"
+      "label": "Installation Support Makueni",
+      "href": "/installation-support-makueni",
+      "reason": "same service",
+      "commercialIntentScore": null
     }
   ],
   "/installation-support-makueni": [
@@ -912,17 +954,20 @@
     {
       "label": "Guides",
       "href": "/guides",
-      "reason": "guide match"
+      "reason": "guide match",
+      "commercialIntentScore": null
     },
     {
-      "label": "Tiles Makueni",
-      "href": "/tiles-makueni",
-      "reason": "same location"
+      "label": "Installation Support Kenya",
+      "href": "/installation-support-kenya",
+      "reason": "same service",
+      "commercialIntentScore": null
     },
     {
-      "label": "Sanitaryware Makueni",
-      "href": "/sanitaryware-makueni",
-      "reason": "same location"
+      "label": "Installation Support Machakos",
+      "href": "/installation-support-machakos",
+      "reason": "same service",
+      "commercialIntentScore": null
     }
   ],
   "/installation-support-kenya": [
@@ -944,29 +989,34 @@
     {
       "label": "Guides",
       "href": "/guides",
-      "reason": "guide match"
+      "reason": "guide match",
+      "commercialIntentScore": null
     },
     {
-      "label": "Tiles Kenya",
-      "href": "/tiles-kenya",
-      "reason": "same location"
+      "label": "Installation Support Machakos",
+      "href": "/installation-support-machakos",
+      "reason": "same service",
+      "commercialIntentScore": null
     },
     {
-      "label": "Sanitaryware Kenya",
-      "href": "/sanitaryware-kenya",
-      "reason": "same location"
+      "label": "Installation Support Makueni",
+      "href": "/installation-support-makueni",
+      "reason": "same service",
+      "commercialIntentScore": null
     }
   ],
   "/tile-buying-guide": [
     {
       "label": "Adhesive & Grout Guide",
       "href": "/adhesive-grout-guide",
-      "reason": "guide match"
+      "reason": "guide match",
+      "commercialIntentScore": null
     },
     {
       "label": "Cost Estimation Guide",
       "href": "/cost-estimation-guide",
-      "reason": "guide match"
+      "reason": "guide match",
+      "commercialIntentScore": null
     }
   ],
   "/bathroom-renovation-guide": [],
@@ -974,7 +1024,8 @@
     {
       "label": "Cost Estimation Guide",
       "href": "/cost-estimation-guide",
-      "reason": "guide match"
+      "reason": "guide match",
+      "commercialIntentScore": null
     }
   ],
   "/adhesive-grout-guide": [],
@@ -982,7 +1033,8 @@
     {
       "label": "Guides",
       "href": "/guides",
-      "reason": "guide match"
+      "reason": "guide match",
+      "commercialIntentScore": null
     }
   ],
   "/cost-estimation-guide": []

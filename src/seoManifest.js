@@ -251,7 +251,8 @@ const coreRoutes = [
     path: '/trade-projects',
     title: 'Trade & Project Supply Kenya | Kleihaus Ceramics',
     description:
-      'Trade and project quote support for homeowners, home builders, contractors, property developers, design professionals, dealers and institutional buyers in Kenya.',
+      'Request a project quotation for tiles, sanitaryware and paints in Kenya. Share BOQ quantities or specifications, location and delivery requirements with Kleihaus.',
+    lastModified: '2026-09-08',
     image: '/images/projects/project-kitchen-overview-01.jpg',
     imageAlt: 'Kitchen finishing project image for trade and project quote support',
     category: 'Trade & Projects',

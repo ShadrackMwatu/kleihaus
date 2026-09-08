@@ -1,5 +1,12 @@
 # Kleihaus Project Changelog
 
+## Commercial intent acquisition - 2026-09-08
+
+- Extended the acquisition engine with 73 query hypotheses, 25 clusters, eight intent classes, 14 client segments, evidence-aware coverage and weighted priorities.
+- Added four build-generated commercial reports and a detailed dashboard matrix, preserving technical scores and null private metrics.
+- Refined existing project quotation language and metadata; prioritized contextual commercial internal-link recommendations without adding routes or changing enquiry workflows.
+- Added commercial regression tests and documented methodology in COMMERCIAL_INTENT_IMPLEMENTATION.md.
+
 ## Standalone video rendering completion
 
 - Added a reproducible FFmpeg renderer for silent 15/30/60-second review drafts, isolated from website dependencies and assets.
