@@ -1,6 +1,6 @@
 # Kleihaus SEO Executive Report
 
-Generated: 2026-09-08T10:16:59.438Z
+Generated: 2026-09-08T16:40:23.856Z
 
 ## Current SEO Health
 
@@ -21,7 +21,7 @@ Kleihaus has a strong automated SEO foundation. The current automation score is 
 | Image SEO | 100/100 |
 | Schema SEO | 96/100 |
 | Monitoring readiness | 88/100 |
-| Internal linking | 100/100 |
+| Internal linking | 95/100 |
 | Business SEO | Unmeasured |
 
 ## Improvements Generated

@@ -1,6 +1,6 @@
 # Kleihaus Automated SEO Report
 
-Generated: 2026-09-08T10:16:59.438Z
+Generated: 2026-09-08T16:40:23.856Z
 
 Status: PASS
 
@@ -25,7 +25,7 @@ Acquisition measurement is not connected. See SEO_CLIENT_ACQUISITION_AUDIT.md an
 - Product SEO score: 92/100
 - Automation score: 100/100
 - Performance score: 94/100
-- Internal linking score: 100/100
+- Internal linking score: 95/100
 - Schema score: 96/100
 - Image SEO score: 100/100
 - Monitoring score: 88/100
@@ -37,7 +37,7 @@ Acquisition measurement is not connected. See SEO_CLIENT_ACQUISITION_AUDIT.md an
 
 ## Warnings
 
-- None detected.
+- Internal reference not found in route manifest or public assets: /not-a-route (tests/seo-categories.test.mjs)
 
 ## Automation Outputs
 

@@ -657,7 +657,7 @@ const buildLocalSeoLandingPage = (service, location) => ({
   relatedLinks: [
     { label: service.label, href: service.basePath },
     { label: `${service.label} guide`, href: service.guidePath },
-    { label: `${location.label} hub`, href: `/locations/${location.slug}` },
+    { label: location.slug === 'kenya' ? 'Service areas' : `${location.label} hub`, href: location.slug === 'kenya' ? '/locations' : `/locations/${location.slug}` },
     { label: 'Cost estimation guide', href: '/cost-estimation-guide' },
     { label: 'Request quote', href: '/#contact' },
   ],

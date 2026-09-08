@@ -1,5 +1,12 @@
 # Kleihaus Project Changelog
 
+## Six-category SEO workflows
+
+- Added six-category build reporting, asset budgets, editorial freshness review, schema NAP consistency and evidence-gated commerce readiness.
+- Added approval-only outreach/local review drafts and rendered-page SEO diagnostics; retained existing commercial, social and technical automation.
+- Added `seo:test` and `seo:browser` commands without new dependencies or application/workflow changes.
+- Corrected the browser-detected country-page link from undeclared /locations/kenya to the existing /locations hub; no workflow changes.
+
 ## Commercial intent acquisition - 2026-09-08
 
 - Extended the acquisition engine with 73 query hypotheses, 25 clusters, eight intent classes, 14 client segments, evidence-aware coverage and weighted priorities.

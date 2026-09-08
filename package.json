@@ -8,6 +8,8 @@
     "seo": "npm run seo:generate",
     "seo:generate": "node scripts/seo-engine.mjs",
     "seo:audit": "node scripts/seo-engine.mjs --audit-only",
+    "seo:test": "node --test tests/seo-acquisition.test.mjs tests/seo-commercial.test.mjs tests/seo-categories.test.mjs",
+    "seo:browser": "playwright test tests/seo-browser.spec.js",
     "seo:verify-production": "node scripts/verify-production-seo.mjs",
     "seo:verify-production:all": "node scripts/verify-production-seo.mjs --all-routes",
     "analytics:verify": "node scripts/verify-analytics-events.mjs",

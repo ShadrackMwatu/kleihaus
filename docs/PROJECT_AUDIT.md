@@ -1,5 +1,9 @@
 # Kleihaus Project Audit
 
+## Six-category SEO automation
+
+See SEO_CATEGORY_IMPLEMENTATION.md for the new build-time category checks, generated review queue and browser diagnostic command. Off-page outcomes, external NAP verification and field Core Web Vitals remain explicitly unmeasured; product/review schema remains evidence-gated. No website redesign or external publishing was performed.
+
 ## Commercial acquisition model
 
 See COMMERCIAL_INTENT_IMPLEMENTATION.md and the four generated KLEIHAUS commercial reports. Commercial route readiness is now separate from technical checks and actual business performance. Unverified specifications and trust evidence prevent strong-coverage claims. The model maps demand to existing routes; no calculators, upload workflow, new locations or unsupported product claims were published.

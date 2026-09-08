@@ -4,6 +4,7 @@ import { dirname, extname, join, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { buildAcquisitionSnapshot, scoreOpportunity } from './seo-acquisition.mjs'
 import { buildCommercialModel, commercialReports } from './seo-commercial.mjs'
+import { buildCategoryAudit, categoryReports, extractBaseSchema } from './seo-categories.mjs'
 import {
   SITE_ORIGIN,
   buildNavigationManifest,
@@ -787,7 +788,14 @@ const run = async () => {
   await writeFile(resolve(docsDir, 'SEO_CONTENT_SUGGESTIONS.md'), buildContentSuggestionsMarkdown(audit, internalLinks), 'utf8')
   await writeFile(resolve(docsDir, 'GBP_SOCIAL_DRAFTS.md'), buildSocialDraftsMarkdown(audit), 'utf8')
   await writeFile(resolve(docsDir, 'SEO_EXECUTIVE_REPORT.md'), buildExecutiveReportMarkdown(audit, internalLinks, imageManifest), 'utf8')
-  await writeJson(resolve(publicDir, 'seo-dashboard.json'), buildDashboardSnapshot(audit, internalLinks, imageManifest))
+  const assets = await Promise.all((await listFiles(resolve(distDir, 'assets')))
+    .filter((file) => ['.js', '.css'].includes(extname(file)))
+    .map(async (file) => ({ path: toPosix(relative(distDir, file)), sizeBytes: (await stat(file)).size })))
+  const categoryAudit = buildCategoryAudit({ routes: seoConfig, imageManifest, assets, schemas: extractBaseSchema(await readTextIfExists(resolve(root, 'index.html'))), technicalAudit: audit, generatedAt: audit.generatedAt })
+  await writeJson(resolve(publicDir, 'seo-dashboard.json'), { ...buildDashboardSnapshot(audit, internalLinks, imageManifest), categories: categoryAudit })
+  for (const [name, content] of Object.entries(categoryReports(categoryAudit))) {
+    await writeFile(resolve(docsDir, name), content, 'utf8')
+  }
   for (const [name, content] of Object.entries(commercialReports(buildCommercialModel(seoConfig), audit.score))) {
     await writeFile(resolve(docsDir, name), content, 'utf8')
   }
