@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-09T09:54:33.496Z",
+  "generatedAt": "2026-09-09T15:02:29.929Z",
   "seoScore": 100,
   "scores": {
     "overallSeoScore": 100,
@@ -217,7 +217,7 @@
   "internalLinkSets": 39,
   "internalLinkRecommendations": 183,
   "acquisition": {
-    "generatedAt": "2026-09-09T09:54:33.496Z",
+    "generatedAt": "2026-09-09T15:02:29.929Z",
     "commercialIntent": {
       "modelVersion": 1,
       "metrics": {
@@ -6867,7 +6867,7 @@
     "project partner mentions"
   ],
   "categories": {
-    "generatedAt": "2026-09-09T09:54:33.496Z",
+    "generatedAt": "2026-09-09T15:02:29.929Z",
     "mode": "checks_and_human_review_workflows",
     "onPage": {
       "routeChecks": [
@@ -7422,12 +7422,12 @@
       },
       "assets": [
         {
-          "path": "assets/index-5knVvw1v.js",
-          "sizeBytes": 353793
-        },
-        {
           "path": "assets/index-DBJ5EF-r.css",
           "sizeBytes": 37957
+        },
+        {
+          "path": "assets/index-DCqzTW3e.js",
+          "sizeBytes": 353981
         }
       ],
       "oversizedAssets": [],

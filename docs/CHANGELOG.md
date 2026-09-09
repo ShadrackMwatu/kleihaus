@@ -1,5 +1,10 @@
 # Kleihaus Project Changelog
 
+## Consolidated service areas
+
+- Consolidated the general-site Nairobi, Machakos and Makueni list in Contact under Service areas. General product/guide links point there without repeating the county names.
+- Preserved dedicated location pages, local content, route metadata, sitemap and contact workflows.
+
 ## First-customer enquiry improvements
 
 - Preserved product/page interest into quotation requests with a clear-selection control, without changing the endpoint or requiring both phone and email.

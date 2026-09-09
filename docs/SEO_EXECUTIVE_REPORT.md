@@ -1,6 +1,6 @@
 # Kleihaus SEO Executive Report
 
-Generated: 2026-09-09T09:54:33.496Z
+Generated: 2026-09-09T15:02:29.929Z
 
 ## Current SEO Health
 

@@ -1,6 +1,6 @@
 # Six-Category SEO Automation
 
-Generated: 2026-09-09T09:54:33.496Z
+Generated: 2026-09-09T15:02:29.929Z
 
 Build-time checks and review workflows are separate from measured ranking or sales results.
 
@@ -570,12 +570,12 @@ Build-time checks and review workflows are separate from measured ranking or sal
   },
   "assets": [
     {
-      "path": "assets/index-5knVvw1v.js",
-      "sizeBytes": 353793
-    },
-    {
       "path": "assets/index-DBJ5EF-r.css",
       "sizeBytes": 37957
+    },
+    {
+      "path": "assets/index-DCqzTW3e.js",
+      "sizeBytes": 353981
     }
   ],
   "oversizedAssets": [],

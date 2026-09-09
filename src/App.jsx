@@ -1275,7 +1275,7 @@ const productsHubPage = {
       links: [
         { label: 'View projects', href: '/projects', detail: 'Genuine project inspiration and finishing references' },
         { label: 'Get selection guidance', href: '/guides', detail: 'Buying, planning, installation and estimation guides' },
-        { label: 'Find your location', href: '/locations', detail: 'Nairobi, Machakos and Makueni support hubs' },
+        { label: 'Service areas', href: '/#contact', detail: 'Check project support and delivery coverage' },
       ],
     },
   ],
@@ -1476,9 +1476,9 @@ const buyingGuideCards = [
   {
     title: 'Project Locations',
     question: 'How do I plan local delivery?',
-    text: 'Review Nairobi, Machakos and Makueni support for home and project planning.',
+    text: 'Check service areas and discuss delivery needs for your project.',
     icon: Truck,
-    href: '/locations/nairobi',
+    href: '/#contact',
   },
   {
     title: 'Installation Support',
@@ -3163,7 +3163,8 @@ function Contact({ onSupportFormClick, quoteInterest = null, onClearInterest, co
             </a>
             <div className="flex items-start gap-3">
               <MapPin className="mt-1 h-4 w-4 text-emerald-300" />
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="w-full text-sm font-semibold">Service areas</span>
                 {serviceAreaLinks.map((location) => (
                   <a
                     key={location.href}
@@ -3239,7 +3240,7 @@ function Contact({ onSupportFormClick, quoteInterest = null, onClearInterest, co
             <Textarea
               name="message"
               autoComplete="off"
-              placeholder="Example: 32 m2 floor tiles, matte finish, 85 pieces, delivery to Machakos, budget range..."
+              placeholder="Example: 32 m2 floor tiles, matte finish, 85 pieces, delivery location, budget range..."
               rows={4}
               value={quoteForm.message}
               onChange={updateQuoteField('message')}
@@ -3447,7 +3448,7 @@ function SupportModal({ open, source, initialMessage = '', onClose }) {
             <Textarea
               name="support-message"
               autoComplete="off"
-              placeholder="Example: Need bathroom tiles and shower fittings for a Nairobi apartment. I can share photos and measurements..."
+              placeholder="Example: Need bathroom tiles and shower fittings for an apartment. I can share photos and measurements..."
               rows={3}
               value={form.message}
               onChange={updateField('message')}
@@ -3769,7 +3770,7 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
                 Share measurements, photos, product category, delivery location and timing so the team can connect guidance with availability, matching materials and practical next steps.
               </p>
               <div className="mt-3 flex flex-wrap gap-2">
-                {serviceAreaLinks.map((location) => (
+                {[{ label: 'Service areas', href: '/#contact' }].map((location) => (
                   <a
                     key={`guide-${location.href}`}
                     href={location.href}
@@ -3822,12 +3823,12 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
         <div className="grid gap-3 rounded-xl border border-neutral-200 bg-neutral-50 p-4 sm:p-5 lg:grid-cols-[1fr_auto] lg:items-center">
           <div>
             <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Local support</p>
-            <h2 className="mt-1.5 text-lg font-semibold text-neutral-950 sm:text-xl">Plan with Kleihaus in Nairobi, Machakos or Makueni.</h2>
+            <h2 className="mt-1.5 text-lg font-semibold text-neutral-950 sm:text-xl">Plan delivery for your project.</h2>
             <p className="mt-2 text-sm leading-6 text-neutral-600">
-              Choose a location hub for delivery context, project guidance and related tiles, sanitaryware, paints and installation support pages.
+              Share your site location, quantities and access requirements to discuss delivery arrangements.
             </p>
             <div className="mt-3 flex flex-wrap gap-2">
-              {serviceAreaLinks.map((location) => (
+              {[{ label: 'Service areas', href: '/#contact' }].map((location) => (
                 <a
                   key={location.href}
                   href={location.href}
@@ -3872,6 +3873,7 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
           <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Explore related pages</p>
           <div className="mt-3 flex flex-wrap gap-2">
             {(page.relatedLinks || seoLandingPages.filter((relatedPage) => relatedPage.path !== page.path).slice(0, 6))
+              .filter((relatedPage) => page.areaServed || page.eyebrow === 'Location hub' || !/nairobi|machakos|makueni/i.test(relatedPage.href || relatedPage.path))
               .map((relatedPage) => (
                 <a
                   key={relatedPage.href || relatedPage.path}
