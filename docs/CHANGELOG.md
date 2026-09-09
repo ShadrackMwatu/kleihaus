@@ -1,5 +1,11 @@
 # Kleihaus Project Changelog
 
+## Commercial voice and typography
+
+- Refined commercial category introductions and shared homepage, trade, project and enquiry blocks around Kleihaus's actual material-selection, sourcing and support role.
+- Replaced repeated instructional sales copy while retaining useful buying-guide advice, form requirements and order safeguards. No stock, price, installation-completion or performance guarantees added.
+- Standardized section heading, body-copy and eyebrow typography with consistent line and letter spacing; preserved distinct form, navigation and caption roles.
+
 ## Consolidated service areas
 
 - Consolidated the general-site Nairobi, Machakos and Makueni list in Contact under Service areas. General product/guide links point there without repeating the county names.

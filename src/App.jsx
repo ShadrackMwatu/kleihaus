@@ -349,10 +349,10 @@ const categoryLandingPages = [
     category: 'Tiles',
     title: 'Tiles Kenya | Floor, Wall & Bathroom Tiles | Kleihaus Ceramics',
     description: 'Explore tile quote guidance for floor tiles, wall tiles, bathroom tiles and outdoor finishes from Kleihaus Ceramics in Nairobi, Machakos, Makueni and Kenya.',
-    eyebrow: 'Tile quote support',
+    eyebrow: 'Tiles',
     h1: 'Tiles for homes, commercial spaces and projects in Kenya',
     intro:
-      'Kleihaus helps customers compare floor tiles, wall tiles, bathroom tiles and outdoor tile finishes for homes, shops, rentals and project sites. Share measurements, finish preference, quantity and delivery location for focused quote support.',
+      'Floor, wall, bathroom and outdoor tiles for residential and commercial spaces. Kleihaus brings finish selection, quantity planning and matching installation materials together for a considered, coordinated result.',
     notes: ['Floor, wall, bathroom and outdoor tile planning', 'Quantity estimates and finish matching', 'Adhesives, grout, trims and installation support'],
     images: [
       { src: '/images/tiles-floor.jpg', alt: 'Floor tile finishes for homes and project quote planning in Kenya', label: 'Floor tiles' },
@@ -368,10 +368,10 @@ const categoryLandingPages = [
     category: 'Floor Tiles',
     title: 'Floor Tiles Kenya | Kleihaus Ceramics',
     description: 'Browse floor tile ideas for homes, shops and projects in Kenya. Request a Kleihaus quote based on quantity, location and project details.',
-    eyebrow: 'Floor tile quotes',
+    eyebrow: 'Floor tiles',
     h1: 'Floor tiles for homes, shops and projects in Kenya',
     intro:
-      'Kleihaus is helping customers compare floor tile finishes for living rooms, kitchens, shops, offices and rental projects. Share room size, preferred finish, quantity estimate and delivery location for practical quote support.',
+      'Floor finishes for living rooms, kitchens, offices and retail spaces, with options considered around everyday use, texture and maintenance. Kleihaus supports selection and quantity planning for individual rooms and larger orders.',
     notes: ['Living rooms and kitchens', 'Retail and office floors', 'Rental units and project sites'],
     images: [
       { src: '/images/tiles-floor.jpg', alt: 'Polished floor tiles for Kenyan home and project interiors', label: 'Polished indoor floors' },
@@ -385,10 +385,10 @@ const categoryLandingPages = [
     category: 'Wall Tiles',
     title: 'Wall Tiles Kenya | Kitchen & Interior Wall Tiles | Kleihaus',
     description: 'Explore wall tile options for kitchens, bathrooms and feature walls. Request Kleihaus quote guidance for availability, quantity and delivery details.',
-    eyebrow: 'Wall tile quotes',
+    eyebrow: 'Wall tiles',
     h1: 'Wall tiles for kitchens, bathrooms and feature interiors',
     intro:
-      'Wall tiles lift kitchens, bathrooms and feature areas while keeping surfaces easy to clean. Kleihaus is helping customers match colors, textures and quantities for retail or project quotations.',
+      'Colour, texture and proportion give kitchens, bathrooms and feature walls their character. Kleihaus supports coordinated wall tile selections, with matching trims and quantities suited to each space.',
     notes: ['Kitchen splashbacks', 'Bathroom walls', 'Decor and feature surfaces'],
     images: [
       { src: '/images/tiles-wall.jpg', alt: 'Kitchen wall tiles and splashback finishes supplied by Kleihaus', label: 'Kitchen wall tiles' },
@@ -402,10 +402,10 @@ const categoryLandingPages = [
     category: 'Bathroom Tiles',
     title: 'Bathroom Tiles Kenya | Shower & Wet Area Tiles | Kleihaus',
     description: 'Plan bathroom tile combinations for showers, walls and floors. Request a Kleihaus quote based on room size, tile type and location.',
-    eyebrow: 'Bathroom tile quotes',
+    eyebrow: 'Bathroom tiles',
     h1: 'Bathroom tiles for modern wet areas and coordinated suites',
     intro:
-      'Bathroom tile choices should balance slip resistance, cleaning, moisture exposure and visual comfort. Kleihaus supports wall and floor combinations for compact bathrooms, shower areas and full suites.',
+      'Coordinated wall and floor finishes for compact bathrooms, shower areas and full suites. Kleihaus helps balance appearance with wet-area suitability, maintenance and the surrounding sanitaryware.',
     notes: ['Bathroom walls and floors', 'Shower and wet areas', 'Coordinated sanitaryware support'],
     images: [
       { src: '/images/bathroom-blue-1.jpg', alt: 'Blue bathroom tile and sanitaryware display for quote planning', label: 'Coordinated bathroom look' },
@@ -419,10 +419,10 @@ const categoryLandingPages = [
     category: 'Sanitaryware',
     title: 'Sanitaryware Kenya | Basins, Toilets, Taps & Showers | Kleihaus',
     description: 'Compare basins, toilets, kitchen sinks, mixers and showers. Ask Kleihaus about quantities, availability and delivery to Nairobi, Machakos or Makueni.',
-    eyebrow: 'Sanitaryware quotes',
+    eyebrow: 'Sanitaryware',
     h1: 'Sanitaryware and kitchen sinks for renovation and project orders',
     intro:
-      'Compare basins, toilets, showers, kitchen sinks, taps, mixers and bathroom accessories with Kleihaus. For a focused enquiry, share quantities, room measurements, existing plumbing positions and delivery location. Confirm dimensions, fitting compatibility and availability before ordering.',
+      'Basins, toilets, showers, sinks and mixers that bring a coordinated finish to bathrooms and kitchens. Kleihaus supports selection around proportions, finishes and fitting compatibility, with availability and specifications confirmed for each order.',
     notes: ['Basins and toilets', 'Kitchen sinks and mixers', 'Showers and bathroom accessories'],
     images: [
       ...sanitarywareShowroomImages,
@@ -439,10 +439,10 @@ const categoryLandingPages = [
     category: 'Paints',
     title: 'Paints Kenya | Interior, Exterior, Roof & Floor Paints | Kleihaus',
     description: 'Request Kleihaus paint quote guidance for interior, exterior, roof and floor finishes based on surface area, location and project needs.',
-    eyebrow: 'Paint quote support',
+    eyebrow: 'Paints and coatings',
     h1: 'Paints for interior, exterior, roof and floor finishing',
     intro:
-      'Paint choices depend on the surface, weather exposure, cleaning needs and finish preference. Kleihaus helps customers plan paint inquiries for rooms, exterior walls, floors and roofs.',
+      'Interior, exterior, roof and floor coatings for a cohesive finish across the property. Kleihaus supports paint selection and quantity planning around surface condition, exposure and the desired appearance.',
     notes: ['Interior wall finishes', 'Exterior and roof paint', 'Floor and utility coatings'],
     images: [
       { src: '/images/paint-interior.jpg', alt: 'Interior paint finish options for Kleihaus quote planning', label: 'Interior paints' },
@@ -456,10 +456,10 @@ const categoryLandingPages = [
     category: 'Adhesives & Grout',
     title: 'Tile Adhesives & Grout Kenya | Kleihaus Ceramics',
     description: 'Plan tile adhesive, grout, trims, spacers and installation essentials with Kleihaus quote support for tile projects in Kenya.',
-    eyebrow: 'Installation material quotes',
+    eyebrow: 'Adhesives and grout',
     h1: 'Tile adhesives, grout and installation essentials',
     intro:
-      'Good tile performance depends on the right adhesive, grout and finishing accessories for the tile type, surface and wet or dry area. Kleihaus is helping customers plan installation material requests.',
+      'Adhesives, grout, trims and accessories complete the tile specification. Kleihaus supports material matching for the tile format, substrate and intended use, from fixing through to the final joint finish.',
     notes: ['Tile adhesive and grout', 'Trims, spacers and fittings', 'Installer support materials'],
     images: [
       { src: '/images/adhesive.jpg', alt: 'Tile adhesive for floor and wall tile installation', label: 'Tile adhesive' },
@@ -476,7 +476,7 @@ const categoryLandingPages = [
     eyebrow: 'Installation support',
     h1: 'Installation support from site planning to final finish',
     intro:
-      'Kleihaus helps homeowners, fundis, contractors and project teams plan the full finishing workflow: measurements, quantity guidance, product matching, surface preparation, cutting and drilling needs, fixing, grouting, cleaning and handover.',
+      'Practical technical guidance for homeowners, fundis and project teams, from measurements and material matching to preparation, fixing and finishing. Kleihaus connects product selection with installation planning, tools and tailored product-use support.',
     notes: [
       'Site measurement and quantity planning',
       'Product matching for tiles, adhesives, grout, trims, sanitaryware and paints',
@@ -1120,7 +1120,7 @@ const projectsPage = {
   eyebrow: 'Projects',
   h1: 'Selected kitchen finishing project gallery',
   intro:
-    'Explore selected kitchen projects featuring tiles, sinks and finishing solutions supplied or supported by Kleihaus. Compare material details for your own project.',
+    'Selected kitchen projects featuring tiles, sinks and finishing solutions supplied or supported by Kleihaus. A closer look at the materials and details that bring a space together.',
   category: 'Projects',
   schemaType: 'CollectionPage',
   ctaLabel: 'Request a similar quote',
@@ -1229,7 +1229,7 @@ const tradeProjectsPage = {
   eyebrow: 'Trade and project support',
   h1: 'Trade and project support',
   intro:
-    'Plan tiles, sanitaryware, kitchen sinks and mixers, paints, adhesives and grout for your project. Share quantities from your BOQ, room measurements or product specifications to request a focused quotation. Discuss delivery coordination and installation support with the team, then confirm availability, prices and timing before ordering.',
+    'Finishing-material sourcing and quotation support for residential, commercial and institutional projects. Kleihaus coordinates tiles, sanitaryware, paints and installation essentials around project specifications, with delivery and technical support discussed for each order.',
   category: 'Trade & Projects',
   schemaType: 'WebPage',
   pageType: 'trade',
@@ -2194,7 +2194,7 @@ function Hero({ onSectionChange }) {
               Tiles, sanitaryware and paints for your space
             </h1>
             <p className="mt-3 max-w-[18.5rem] break-words text-sm leading-5 text-neutral-100 sm:mt-4 sm:max-w-xl sm:text-base sm:leading-7">
-              Practical help choosing finishes and planning your order, for homes, renovations and project teams.
+              Considered finishes, material sourcing and practical project support for homes, renovations and commercial spaces.
             </p>
             <div className="mt-4 flex flex-wrap items-center gap-2 max-sm:[&>*]:w-full max-sm:[&>*]:justify-center sm:mt-6 sm:gap-3">
               <Button
@@ -2275,7 +2275,7 @@ function AboutSection() {
             Kleihaus Ceramics brings tiles, sanitaryware, paints and finishing essentials together for homes, renovations and project teams.
           </p>
           <p className="mt-3 text-sm leading-6 text-neutral-600">
-            Discuss your preferred finishes, measurements and site requirements with us for product selection, quantity planning and delivery coordination.
+            Our support connects product selection with quantity planning and delivery coordination, balancing the look of a space with its practical requirements.
           </p>
           <details className="mt-5">
             <summary className="cursor-pointer py-2 text-sm font-semibold text-emerald-800">Our purpose and values</summary>
@@ -2310,7 +2310,7 @@ function ShopByCategory({ selectedCategory, onCategoryClick, onGuideClick, onSup
           <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Product catalogue</p>
           <h2 className="mt-1.5 text-xl font-semibold text-neutral-950 sm:mt-2 sm:text-3xl">Explore products by category</h2>
           <p className="mt-2 max-w-2xl text-xs leading-5 text-neutral-600 sm:text-sm sm:leading-6">
-            Find finishes for floors, walls, bathrooms and kitchens, plus paint and installation essentials.
+            Coordinated finishes for floors, walls, bathrooms and kitchens, complemented by paints and installation essentials.
           </p>
         </div>
       </div>
@@ -2682,7 +2682,7 @@ function AudiencePathways() {
             <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Who Kleihaus supports</p>
             <h2 className="mt-1.5 text-xl font-semibold text-neutral-950 sm:text-2xl">Product and project pathways for every customer</h2>
             <p className="mt-1.5 text-sm leading-6 text-neutral-600">
-              Choose the path closest to your work to see relevant products, project needs and selection guidance.
+              Material selection and sourcing support for homeowners, designers, fundis and procurement teams, shaped around the scale and requirements of each project.
             </p>
           </div>
           <a
@@ -2769,9 +2769,9 @@ function TradeProjectsPage({ page, onSectionChange, onSupportClick, onQuoteClick
       <section className="mx-auto max-w-7xl px-4 py-6 sm:py-8">
         <div className="mb-4 max-w-3xl">
           <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Audience pathways</p>
-          <h2 className="mt-2 text-xl font-semibold text-neutral-950 sm:text-2xl">What each customer group should share</h2>
+          <h2 className="mt-2 text-xl font-semibold text-neutral-950 sm:text-2xl">Support shaped around your project</h2>
           <p className="mt-2 text-sm leading-6 text-neutral-600">
-            These pathways reduce back-and-forth by matching each enquiry to product categories, planning details and the most useful next action.
+            From individual renovations to coordinated project orders, Kleihaus connects material requirements with sourcing, quotation and technical support.
           </p>
         </div>
         <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
@@ -3182,9 +3182,9 @@ function Contact({ onSupportFormClick, quoteInterest = null, onClearInterest, co
           <div className="mt-5 border-t border-white/10 pt-4">
             <h3 className="text-sm font-semibold text-white">From enquiry to order</h3>
             <ol className="mt-2 list-inside list-decimal space-y-2 text-sm leading-6 text-neutral-200">
-              <li>Share the product, quantity and delivery location.</li>
-              <li>Review the available options and quotation with Kleihaus.</li>
-              <li>Confirm payment and delivery arrangements before ordering.</li>
+              <li>Product requirements and project scope.</li>
+              <li>Available options and a tailored quotation.</li>
+              <li>Agreed payment and delivery arrangements.</li>
             </ol>
             <p className="mt-2 text-xs leading-5 text-neutral-300">Sending an enquiry does not place an order or take payment.</p>
           </div>
@@ -3213,7 +3213,7 @@ function Contact({ onSupportFormClick, quoteInterest = null, onClearInterest, co
             </div>
           )}
           <div className="mb-4 rounded-md border border-emerald-100 bg-emerald-50 px-3 py-2 text-xs leading-5 text-emerald-950 sm:text-sm">
-            For a faster quotation, include room size or bill of quantities, preferred finish, delivery location, timing and whether you need installation guidance.
+            Quotations are tailored to quantities, finishes and delivery requirements. Measurements or a bill of quantities are welcome where available.
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
             <label className="grid gap-2 text-sm font-medium text-neutral-700">
@@ -3614,9 +3614,9 @@ function HubPage({ page, onSectionChange, onSupportClick, onQuoteClick }) {
         <div className="grid gap-3 rounded-xl bg-neutral-950 p-4 text-white sm:p-5 lg:grid-cols-[1fr_auto] lg:items-center">
           <div>
             <p className="text-xs font-semibold uppercase text-emerald-300 sm:text-sm">Next step</p>
-            <h2 className="mt-1.5 text-xl font-semibold sm:text-2xl">Ready to turn this into a clearer Kleihaus enquiry?</h2>
+            <h2 className="mt-1.5 text-xl font-semibold sm:text-2xl">Materials and support for your project</h2>
             <p className="mt-2 max-w-3xl text-sm leading-6 text-neutral-300">
-              Share product category, measurements, location, quantity and timing so the team can guide the most relevant support path.
+              Product selection, tailored quotations and practical project support, brought together by Kleihaus.
             </p>
           </div>
           <div className="flex flex-wrap gap-2 lg:justify-end">
@@ -3765,9 +3765,9 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
           <div className="grid gap-4 rounded-xl border border-emerald-100 bg-emerald-50 p-4 sm:p-5 lg:grid-cols-[1fr_auto] lg:items-center">
             <div>
               <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Plan your finishing project</p>
-              <h2 className="mt-1.5 text-lg font-semibold text-neutral-950 sm:text-xl">Turn this guide into a clearer Kleihaus quote request.</h2>
+              <h2 className="mt-1.5 text-lg font-semibold text-neutral-950 sm:text-xl">Product guidance, backed by project support.</h2>
               <p className="mt-2 max-w-3xl text-sm leading-6 text-neutral-700">
-                Share measurements, photos, product category, delivery location and timing so the team can connect guidance with availability, matching materials and practical next steps.
+                Kleihaus connects material selection with quantity planning, availability and delivery requirements for a quotation suited to the project.
               </p>
               <div className="mt-3 flex flex-wrap gap-2">
                 {[{ label: 'Service areas', href: '/#contact' }].map((location) => (
@@ -3825,7 +3825,7 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
             <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Local support</p>
             <h2 className="mt-1.5 text-lg font-semibold text-neutral-950 sm:text-xl">Plan delivery for your project.</h2>
             <p className="mt-2 text-sm leading-6 text-neutral-600">
-              Share your site location, quantities and access requirements to discuss delivery arrangements.
+              Delivery coordination considers order volume, site access and timing, with arrangements confirmed for each project.
             </p>
             <div className="mt-3 flex flex-wrap gap-2">
               {[{ label: 'Service areas', href: '/#contact' }].map((location) => (
