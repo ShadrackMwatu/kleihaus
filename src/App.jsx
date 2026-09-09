@@ -2905,7 +2905,7 @@ function HelpfulGuides({ onGuideClick, onRouteNavigate }) {
   )
 }
 
-function Contact({ onSupportFormClick, compact = false }) {
+function Contact({ onSupportFormClick, quoteInterest = null, onClearInterest, compact = false }) {
   const quoteFormRef = useRef(null)
   const quoteStatusRef = useRef(null)
   const quoteStatusTimeoutRef = useRef(null)
@@ -2969,6 +2969,9 @@ function Contact({ onSupportFormClick, compact = false }) {
 
     const preparedRequest = quoteRequestService.prepare({
       ...quoteForm,
+      message: quoteForm.message.trim() && quoteInterest
+        ? `Interest: ${quoteInterest.label}\nPage: ${quoteInterest.path}\n\n${quoteForm.message}`
+        : quoteForm.message,
       channel: 'email',
       intent: 'quote',
     })
@@ -2984,7 +2987,7 @@ function Contact({ onSupportFormClick, compact = false }) {
 
     analyticsService.track('quote_form_submit_attempt', {
       clickedElement: 'contact_form',
-      productCategory: 'Project quotation',
+      productCategory: quoteInterest?.label || 'Project quotation',
       location: preparedRequest.payload.location || 'not_provided',
       hasEmail: Boolean(preparedRequest.payload.email),
       hasPhone: Boolean(preparedRequest.payload.phone),
@@ -3021,6 +3024,7 @@ function Contact({ onSupportFormClick, compact = false }) {
         emailSent: backendResult.data?.email?.sent,
       })
       setQuoteForm(getEmptyQuoteForm())
+      onClearInterest?.()
       quoteFormRef.current?.reset()
       setQuoteFormResetKey((current) => current + 1)
       window.setTimeout(() => {
@@ -3033,9 +3037,6 @@ function Contact({ onSupportFormClick, compact = false }) {
           behavior: 'smooth',
         })
       }, 0)
-      quoteStatusTimeoutRef.current = window.setTimeout(() => {
-        setQuoteStatus('')
-      }, 8000)
       window.setTimeout(() => setIsQuoteSubmitting(false), 800)
       return
     }
@@ -3178,6 +3179,15 @@ function Contact({ onSupportFormClick, compact = false }) {
           </div>
 
           <div className="mt-5 border-t border-white/10 pt-4">
+            <h3 className="text-sm font-semibold text-white">From enquiry to order</h3>
+            <ol className="mt-2 list-inside list-decimal space-y-2 text-sm leading-6 text-neutral-200">
+              <li>Share the product, quantity and delivery location.</li>
+              <li>Review the available options and quotation with Kleihaus.</li>
+              <li>Confirm payment and delivery arrangements before ordering.</li>
+            </ol>
+            <p className="mt-2 text-xs leading-5 text-neutral-300">Sending an enquiry does not place an order or take payment.</p>
+          </div>
+          <div className="mt-5 border-t border-white/10 pt-4">
             <p className="text-xs font-semibold uppercase text-neutral-300">Follow Kleihaus</p>
             <SocialLinks placement="contact" className="mt-2" />
           </div>
@@ -3193,8 +3203,14 @@ function Contact({ onSupportFormClick, compact = false }) {
         >
           <div className="mb-4">
             <h3 className="text-lg font-semibold">Tell us what you need</h3>
-            <p className="mt-1 text-sm leading-5 text-neutral-600">Kleihaus will review your request and respond by phone or email.</p>
+            <p className="mt-1 text-sm leading-5 text-neutral-600">Provide your name, request details and either a phone number or email address. You do not need both.</p>
           </div>
+          {quoteInterest && (
+            <div className="mb-4 flex items-center justify-between gap-3 rounded-md border border-neutral-200 p-3 text-sm">
+              <p>Enquiry about <strong>{quoteInterest.label}</strong></p>
+              <button type="button" onClick={onClearInterest} className="min-h-11 shrink-0 px-2 text-sm font-semibold text-emerald-800 underline underline-offset-4">Clear selection</button>
+            </div>
+          )}
           <div className="mb-4 rounded-md border border-emerald-100 bg-emerald-50 px-3 py-2 text-xs leading-5 text-emerald-950 sm:text-sm">
             For a faster quotation, include room size or bill of quantities, preferred finish, delivery location, timing and whether you need installation guidance.
           </div>
@@ -3230,7 +3246,7 @@ function Contact({ onSupportFormClick, compact = false }) {
             />
           </label>
           {quoteErrors.length > 0 && (
-            <div className="mt-3 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
+            <div role="alert" className="mt-3 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
               {quoteErrors.map((error) => (
                 <p key={error}>{error}</p>
               ))}
@@ -3239,6 +3255,8 @@ function Contact({ onSupportFormClick, compact = false }) {
           {quoteStatus && (
             <p
               ref={quoteStatusRef}
+              role="status"
+              aria-live="polite"
               className={`mt-3 rounded-md border px-4 py-3 text-sm ${
                 quoteStatusType === 'success'
                   ? 'border-emerald-200 bg-emerald-50 text-emerald-800'
@@ -4242,6 +4260,7 @@ export default function App() {
   const [activeSection, setActiveSection] = useState('home')
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('')
+  const [quoteInterest, setQuoteInterest] = useState(null)
   const [eventRevision, setEventRevision] = useState(0)
   const [supportModal, setSupportModal] = useState({
     open: false,
@@ -4428,6 +4447,7 @@ export default function App() {
   }
 
   const handleQuoteClick = (source) => {
+    if (activeCategoryPage) setQuoteInterest({ label: activeCategoryPage.category, path: currentPath })
     analyticsService.track('contact_click', {
       clickedElement: source,
       projectType,
@@ -4510,7 +4530,7 @@ export default function App() {
           <AudiencePathways />
           <AboutSection />
           <HelpfulGuides onGuideClick={handleGuideClick} onRouteNavigate={handleRouteNavigate} />
-          <Contact onSupportFormClick={handleSupportFormClick} />
+          <Contact onSupportFormClick={handleSupportFormClick} quoteInterest={quoteInterest} onClearInterest={() => setQuoteInterest(null)} />
         </>
       )}
       <Footer />

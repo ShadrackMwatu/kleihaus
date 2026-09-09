@@ -1,5 +1,9 @@
 # Kleihaus Project Audit
 
+## First-customer conversion
+
+See FIRST_CUSTOMER_CONVERSION.md. Product context now reaches the existing quotation payload, acknowledgements remain visible, and phone/email requirements are explicit. Real sales still depend on confirmed availability, pricing, payment terms and owner follow-through; no paying-customer outcome is inferred from analytics events.
+
 ## Browsing refinements
 
 See BROWSING_PRESENTATION_REFINEMENTS.md for the implementation of the block review. Existing routes and image assets remain; direct navigation, image selection, concise copy and enquiry autofill improve browsing without introducing new claims or activating the unsafe dormant calculator.

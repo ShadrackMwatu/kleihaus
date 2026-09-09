@@ -1,5 +1,11 @@
 # Kleihaus Project Changelog
 
+## First-customer enquiry improvements
+
+- Preserved product/page interest into quotation requests with a clear-selection control, without changing the endpoint or requiring both phone and email.
+- Clarified enquiry-to-order steps and made confirmation persistent and accessible.
+- Added mocked quote-context, required-message, failure/retry and acknowledgement regression tests; documented owner-dependent sales follow-through.
+
 ## Browsing and presentation refinements
 
 - Added direct category/sink destinations, route-aware navigation selection and application links.
