@@ -1,5 +1,12 @@
 # Kleihaus Project Changelog
 
+## Browsing and presentation refinements
+
+- Added direct category/sink destinations, route-aware navigation selection and application links.
+- Shortened hero/contact copy, compacted mobile badges and removed repeated About/audience material.
+- Separated sanitaryware hero/gallery photos, diversified project previews and preserved existing enquiry/analytics architecture.
+- Added focused browsing regressions; see BROWSING_PRESENTATION_REFINEMENTS.md.
+
 ## Six-category SEO workflows
 
 - Added six-category build reporting, asset budgets, editorial freshness review, schema NAP consistency and evidence-gated commerce readiness.

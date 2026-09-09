@@ -1,6 +1,6 @@
 # Six-Category SEO Automation
 
-Generated: 2026-09-08T16:40:23.856Z
+Generated: 2026-09-09T05:46:19.246Z
 
 Build-time checks and review workflows are separate from measured ranking or sales results.
 
@@ -18,7 +18,7 @@ Build-time checks and review workflows are separate from measured ranking or sal
       "descriptiveImageAlt": true,
       "brokenDeclaredLinks": [],
       "lastModified": "2026-08-20",
-      "reviewAgeDays": 19,
+      "reviewAgeDays": 20,
       "reviewRequired": false,
       "reviewMeaning": "Editorial review reminder, not a reason to change lastmod without a substantive edit."
     },
@@ -31,7 +31,7 @@ Build-time checks and review workflows are separate from measured ranking or sal
       "descriptiveImageAlt": true,
       "brokenDeclaredLinks": [],
       "lastModified": "2026-08-20",
-      "reviewAgeDays": 19,
+      "reviewAgeDays": 20,
       "reviewRequired": false,
       "reviewMeaning": "Editorial review reminder, not a reason to change lastmod without a substantive edit."
     },
@@ -44,7 +44,7 @@ Build-time checks and review workflows are separate from measured ranking or sal
       "descriptiveImageAlt": true,
       "brokenDeclaredLinks": [],
       "lastModified": "2026-08-20",
-      "reviewAgeDays": 19,
+      "reviewAgeDays": 20,
       "reviewRequired": false,
       "reviewMeaning": "Editorial review reminder, not a reason to change lastmod without a substantive edit."
     },
@@ -57,7 +57,7 @@ Build-time checks and review workflows are separate from measured ranking or sal
       "descriptiveImageAlt": true,
       "brokenDeclaredLinks": [],
       "lastModified": "2026-08-20",
-      "reviewAgeDays": 19,
+      "reviewAgeDays": 20,
       "reviewRequired": false,
       "reviewMeaning": "Editorial review reminder, not a reason to change lastmod without a substantive edit."
     },
@@ -70,7 +70,7 @@ Build-time checks and review workflows are separate from measured ranking or sal
       "descriptiveImageAlt": true,
       "brokenDeclaredLinks": [],
       "lastModified": "2026-08-20",
-      "reviewAgeDays": 19,
+      "reviewAgeDays": 20,
       "reviewRequired": false,
       "reviewMeaning": "Editorial review reminder, not a reason to change lastmod without a substantive edit."
     },
@@ -83,7 +83,7 @@ Build-time checks and review workflows are separate from measured ranking or sal
       "descriptiveImageAlt": true,
       "brokenDeclaredLinks": [],
       "lastModified": "2026-08-20",
-      "reviewAgeDays": 19,
+      "reviewAgeDays": 20,
       "reviewRequired": false,
       "reviewMeaning": "Editorial review reminder, not a reason to change lastmod without a substantive edit."
     },
@@ -96,7 +96,7 @@ Build-time checks and review workflows are separate from measured ranking or sal
       "descriptiveImageAlt": true,
       "brokenDeclaredLinks": [],
       "lastModified": "2026-09-06",
-      "reviewAgeDays": 2,
+      "reviewAgeDays": 3,
       "reviewRequired": false,
       "reviewMeaning": "Editorial review reminder, not a reason to change lastmod without a substantive edit."
     },
@@ -109,7 +109,7 @@ Build-time checks and review workflows are separate from measured ranking or sal
       "descriptiveImageAlt": true,
       "brokenDeclaredLinks": [],
       "lastModified": "2026-08-20",
-      "reviewAgeDays": 19,
+      "reviewAgeDays": 20,
       "reviewRequired": false,
       "reviewMeaning": "Editorial review reminder, not a reason to change lastmod without a substantive edit."
     },
@@ -122,7 +122,7 @@ Build-time checks and review workflows are separate from measured ranking or sal
       "descriptiveImageAlt": true,
       "brokenDeclaredLinks": [],
       "lastModified": "2026-08-20",
-      "reviewAgeDays": 19,
+      "reviewAgeDays": 20,
       "reviewRequired": false,
       "reviewMeaning": "Editorial review reminder, not a reason to change lastmod without a substantive edit."
     },
@@ -135,7 +135,7 @@ Build-time checks and review workflows are separate from measured ranking or sal
       "descriptiveImageAlt": true,
       "brokenDeclaredLinks": [],
       "lastModified": "2026-08-20",
-      "reviewAgeDays": 19,
+      "reviewAgeDays": 20,
       "reviewRequired": false,
       "reviewMeaning": "Editorial review reminder, not a reason to change lastmod without a substantive edit."
     },
@@ -148,7 +148,7 @@ Build-time checks and review workflows are separate from measured ranking or sal
       "descriptiveImageAlt": true,
       "brokenDeclaredLinks": [],
       "lastModified": "2026-08-20",
-      "reviewAgeDays": 19,
+      "reviewAgeDays": 20,
       "reviewRequired": false,
       "reviewMeaning": "Editorial review reminder, not a reason to change lastmod without a substantive edit."
     },
@@ -161,7 +161,7 @@ Build-time checks and review workflows are separate from measured ranking or sal
       "descriptiveImageAlt": true,
       "brokenDeclaredLinks": [],
       "lastModified": "2026-08-20",
-      "reviewAgeDays": 19,
+      "reviewAgeDays": 20,
       "reviewRequired": false,
       "reviewMeaning": "Editorial review reminder, not a reason to change lastmod without a substantive edit."
     },
@@ -174,7 +174,7 @@ Build-time checks and review workflows are separate from measured ranking or sal
       "descriptiveImageAlt": true,
       "brokenDeclaredLinks": [],
       "lastModified": "2026-08-20",
-      "reviewAgeDays": 19,
+      "reviewAgeDays": 20,
       "reviewRequired": false,
       "reviewMeaning": "Editorial review reminder, not a reason to change lastmod without a substantive edit."
     },
@@ -187,7 +187,7 @@ Build-time checks and review workflows are separate from measured ranking or sal
       "descriptiveImageAlt": true,
       "brokenDeclaredLinks": [],
       "lastModified": "2026-09-08",
-      "reviewAgeDays": 0,
+      "reviewAgeDays": 1,
       "reviewRequired": false,
       "reviewMeaning": "Editorial review reminder, not a reason to change lastmod without a substantive edit."
     },
@@ -200,7 +200,7 @@ Build-time checks and review workflows are separate from measured ranking or sal
       "descriptiveImageAlt": true,
       "brokenDeclaredLinks": [],
       "lastModified": "2026-08-20",
-      "reviewAgeDays": 19,
+      "reviewAgeDays": 20,
       "reviewRequired": false,
       "reviewMeaning": "Editorial review reminder, not a reason to change lastmod without a substantive edit."
     },
@@ -213,7 +213,7 @@ Build-time checks and review workflows are separate from measured ranking or sal
       "descriptiveImageAlt": true,
       "brokenDeclaredLinks": [],
       "lastModified": "2026-08-20",
-      "reviewAgeDays": 19,
+      "reviewAgeDays": 20,
       "reviewRequired": false,
       "reviewMeaning": "Editorial review reminder, not a reason to change lastmod without a substantive edit."
     },
@@ -226,7 +226,7 @@ Build-time checks and review workflows are separate from measured ranking or sal
       "descriptiveImageAlt": true,
       "brokenDeclaredLinks": [],
       "lastModified": "2026-08-20",
-      "reviewAgeDays": 19,
+      "reviewAgeDays": 20,
       "reviewRequired": false,
       "reviewMeaning": "Editorial review reminder, not a reason to change lastmod without a substantive edit."
     },
@@ -239,7 +239,7 @@ Build-time checks and review workflows are separate from measured ranking or sal
       "descriptiveImageAlt": true,
       "brokenDeclaredLinks": [],
       "lastModified": "2026-08-20",
-      "reviewAgeDays": 19,
+      "reviewAgeDays": 20,
       "reviewRequired": false,
       "reviewMeaning": "Editorial review reminder, not a reason to change lastmod without a substantive edit."
     },
@@ -252,7 +252,7 @@ Build-time checks and review workflows are separate from measured ranking or sal
       "descriptiveImageAlt": true,
       "brokenDeclaredLinks": [],
       "lastModified": "2026-08-20",
-      "reviewAgeDays": 19,
+      "reviewAgeDays": 20,
       "reviewRequired": false,
       "reviewMeaning": "Editorial review reminder, not a reason to change lastmod without a substantive edit."
     },
@@ -265,7 +265,7 @@ Build-time checks and review workflows are separate from measured ranking or sal
       "descriptiveImageAlt": true,
       "brokenDeclaredLinks": [],
       "lastModified": "2026-08-20",
-      "reviewAgeDays": 19,
+      "reviewAgeDays": 20,
       "reviewRequired": false,
       "reviewMeaning": "Editorial review reminder, not a reason to change lastmod without a substantive edit."
     },
@@ -278,7 +278,7 @@ Build-time checks and review workflows are separate from measured ranking or sal
       "descriptiveImageAlt": true,
       "brokenDeclaredLinks": [],
       "lastModified": "2026-08-20",
-      "reviewAgeDays": 19,
+      "reviewAgeDays": 20,
       "reviewRequired": false,
       "reviewMeaning": "Editorial review reminder, not a reason to change lastmod without a substantive edit."
     },
@@ -291,7 +291,7 @@ Build-time checks and review workflows are separate from measured ranking or sal
       "descriptiveImageAlt": true,
       "brokenDeclaredLinks": [],
       "lastModified": "2026-08-20",
-      "reviewAgeDays": 19,
+      "reviewAgeDays": 20,
       "reviewRequired": false,
       "reviewMeaning": "Editorial review reminder, not a reason to change lastmod without a substantive edit."
     },
@@ -304,7 +304,7 @@ Build-time checks and review workflows are separate from measured ranking or sal
       "descriptiveImageAlt": true,
       "brokenDeclaredLinks": [],
       "lastModified": "2026-08-20",
-      "reviewAgeDays": 19,
+      "reviewAgeDays": 20,
       "reviewRequired": false,
       "reviewMeaning": "Editorial review reminder, not a reason to change lastmod without a substantive edit."
     },
@@ -317,7 +317,7 @@ Build-time checks and review workflows are separate from measured ranking or sal
       "descriptiveImageAlt": true,
       "brokenDeclaredLinks": [],
       "lastModified": "2026-08-20",
-      "reviewAgeDays": 19,
+      "reviewAgeDays": 20,
       "reviewRequired": false,
       "reviewMeaning": "Editorial review reminder, not a reason to change lastmod without a substantive edit."
     },
@@ -330,7 +330,7 @@ Build-time checks and review workflows are separate from measured ranking or sal
       "descriptiveImageAlt": true,
       "brokenDeclaredLinks": [],
       "lastModified": "2026-08-20",
-      "reviewAgeDays": 19,
+      "reviewAgeDays": 20,
       "reviewRequired": false,
       "reviewMeaning": "Editorial review reminder, not a reason to change lastmod without a substantive edit."
     },
@@ -343,7 +343,7 @@ Build-time checks and review workflows are separate from measured ranking or sal
       "descriptiveImageAlt": true,
       "brokenDeclaredLinks": [],
       "lastModified": "2026-08-20",
-      "reviewAgeDays": 19,
+      "reviewAgeDays": 20,
       "reviewRequired": false,
       "reviewMeaning": "Editorial review reminder, not a reason to change lastmod without a substantive edit."
     },
@@ -356,7 +356,7 @@ Build-time checks and review workflows are separate from measured ranking or sal
       "descriptiveImageAlt": true,
       "brokenDeclaredLinks": [],
       "lastModified": "2026-08-20",
-      "reviewAgeDays": 19,
+      "reviewAgeDays": 20,
       "reviewRequired": false,
       "reviewMeaning": "Editorial review reminder, not a reason to change lastmod without a substantive edit."
     },
@@ -369,7 +369,7 @@ Build-time checks and review workflows are separate from measured ranking or sal
       "descriptiveImageAlt": true,
       "brokenDeclaredLinks": [],
       "lastModified": "2026-08-20",
-      "reviewAgeDays": 19,
+      "reviewAgeDays": 20,
       "reviewRequired": false,
       "reviewMeaning": "Editorial review reminder, not a reason to change lastmod without a substantive edit."
     },
@@ -382,7 +382,7 @@ Build-time checks and review workflows are separate from measured ranking or sal
       "descriptiveImageAlt": true,
       "brokenDeclaredLinks": [],
       "lastModified": "2026-08-20",
-      "reviewAgeDays": 19,
+      "reviewAgeDays": 20,
       "reviewRequired": false,
       "reviewMeaning": "Editorial review reminder, not a reason to change lastmod without a substantive edit."
     },
@@ -395,7 +395,7 @@ Build-time checks and review workflows are separate from measured ranking or sal
       "descriptiveImageAlt": true,
       "brokenDeclaredLinks": [],
       "lastModified": "2026-08-20",
-      "reviewAgeDays": 19,
+      "reviewAgeDays": 20,
       "reviewRequired": false,
       "reviewMeaning": "Editorial review reminder, not a reason to change lastmod without a substantive edit."
     },
@@ -408,7 +408,7 @@ Build-time checks and review workflows are separate from measured ranking or sal
       "descriptiveImageAlt": true,
       "brokenDeclaredLinks": [],
       "lastModified": "2026-08-20",
-      "reviewAgeDays": 19,
+      "reviewAgeDays": 20,
       "reviewRequired": false,
       "reviewMeaning": "Editorial review reminder, not a reason to change lastmod without a substantive edit."
     },
@@ -421,7 +421,7 @@ Build-time checks and review workflows are separate from measured ranking or sal
       "descriptiveImageAlt": true,
       "brokenDeclaredLinks": [],
       "lastModified": "2026-08-20",
-      "reviewAgeDays": 19,
+      "reviewAgeDays": 20,
       "reviewRequired": false,
       "reviewMeaning": "Editorial review reminder, not a reason to change lastmod without a substantive edit."
     },
@@ -434,7 +434,7 @@ Build-time checks and review workflows are separate from measured ranking or sal
       "descriptiveImageAlt": true,
       "brokenDeclaredLinks": [],
       "lastModified": "2026-08-20",
-      "reviewAgeDays": 19,
+      "reviewAgeDays": 20,
       "reviewRequired": false,
       "reviewMeaning": "Editorial review reminder, not a reason to change lastmod without a substantive edit."
     },
@@ -447,7 +447,7 @@ Build-time checks and review workflows are separate from measured ranking or sal
       "descriptiveImageAlt": true,
       "brokenDeclaredLinks": [],
       "lastModified": "2026-08-20",
-      "reviewAgeDays": 19,
+      "reviewAgeDays": 20,
       "reviewRequired": false,
       "reviewMeaning": "Editorial review reminder, not a reason to change lastmod without a substantive edit."
     },
@@ -460,7 +460,7 @@ Build-time checks and review workflows are separate from measured ranking or sal
       "descriptiveImageAlt": true,
       "brokenDeclaredLinks": [],
       "lastModified": "2026-08-20",
-      "reviewAgeDays": 19,
+      "reviewAgeDays": 20,
       "reviewRequired": false,
       "reviewMeaning": "Editorial review reminder, not a reason to change lastmod without a substantive edit."
     },
@@ -473,7 +473,7 @@ Build-time checks and review workflows are separate from measured ranking or sal
       "descriptiveImageAlt": true,
       "brokenDeclaredLinks": [],
       "lastModified": "2026-08-20",
-      "reviewAgeDays": 19,
+      "reviewAgeDays": 20,
       "reviewRequired": false,
       "reviewMeaning": "Editorial review reminder, not a reason to change lastmod without a substantive edit."
     },
@@ -486,7 +486,7 @@ Build-time checks and review workflows are separate from measured ranking or sal
       "descriptiveImageAlt": true,
       "brokenDeclaredLinks": [],
       "lastModified": "2026-08-20",
-      "reviewAgeDays": 19,
+      "reviewAgeDays": 20,
       "reviewRequired": false,
       "reviewMeaning": "Editorial review reminder, not a reason to change lastmod without a substantive edit."
     },
@@ -499,7 +499,7 @@ Build-time checks and review workflows are separate from measured ranking or sal
       "descriptiveImageAlt": true,
       "brokenDeclaredLinks": [],
       "lastModified": "2026-08-20",
-      "reviewAgeDays": 19,
+      "reviewAgeDays": 20,
       "reviewRequired": false,
       "reviewMeaning": "Editorial review reminder, not a reason to change lastmod without a substantive edit."
     },
@@ -512,7 +512,7 @@ Build-time checks and review workflows are separate from measured ranking or sal
       "descriptiveImageAlt": true,
       "brokenDeclaredLinks": [],
       "lastModified": "2026-08-20",
-      "reviewAgeDays": 19,
+      "reviewAgeDays": 20,
       "reviewRequired": false,
       "reviewMeaning": "Editorial review reminder, not a reason to change lastmod without a substantive edit."
     }
@@ -570,12 +570,12 @@ Build-time checks and review workflows are separate from measured ranking or sal
   },
   "assets": [
     {
-      "path": "assets/index-CI4ej5ii.css",
-      "sizeBytes": 38195
+      "path": "assets/index-BchSPxXX.js",
+      "sizeBytes": 352414
     },
     {
-      "path": "assets/index-DgsN3Req.js",
-      "sizeBytes": 352185
+      "path": "assets/index-XBr7uJUn.css",
+      "sizeBytes": 37879
     }
   ],
   "oversizedAssets": [],

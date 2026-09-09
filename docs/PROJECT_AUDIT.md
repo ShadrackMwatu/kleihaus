@@ -1,5 +1,9 @@
 # Kleihaus Project Audit
 
+## Browsing refinements
+
+See BROWSING_PRESENTATION_REFINEMENTS.md for the implementation of the block review. Existing routes and image assets remain; direct navigation, image selection, concise copy and enquiry autofill improve browsing without introducing new claims or activating the unsafe dormant calculator.
+
 ## Six-category SEO automation
 
 See SEO_CATEGORY_IMPLEMENTATION.md for the new build-time category checks, generated review queue and browser diagnostic command. Off-page outcomes, external NAP verification and field Core Web Vitals remain explicitly unmeasured; product/review schema remains evidence-gated. No website redesign or external publishing was performed.

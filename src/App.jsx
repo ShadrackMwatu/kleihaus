@@ -32,9 +32,9 @@ import { primaryNavigation } from './seoManifest'
 
 const heroSlides = [
   {
-    image: '/images/kleihaus-structure.jpg',
-    alt: 'Kleihaus Ceramics showroom structure for tiles and finishing materials',
-    label: 'Showroom supply',
+    image: '/images/projects/project-kitchen-overview-01.jpg',
+    alt: 'Kitchen overview with cabinets, worktop and sink from supplied project photographs',
+    label: 'Kitchen finishes',
   },
   {
     image: '/images/tiles-floor.jpg',
@@ -1246,7 +1246,7 @@ const productsHubPage = {
   eyebrow: 'Products',
   h1: 'Explore Kleihaus products by category',
   intro:
-    'Start with the finishing category that matches your project, then move into product pages, guides, projects and quotation support when the requirements are clearer.',
+    'Browse tiles, bathroom fittings, kitchen sinks, paints and installation essentials for your space.',
   category: 'Products',
   schemaType: 'CollectionPage',
   pageType: 'products',
@@ -1263,7 +1263,7 @@ const productsHubPage = {
       links: [
         { label: 'Tiles', href: '/tiles', detail: 'Floor, wall, bathroom and outdoor tile options' },
         { label: 'Sanitaryware', href: '/sanitaryware', detail: 'Basins, toilets, showers, taps and bathroom accessories' },
-        { label: 'Kitchen sinks and mixers', href: '/sanitaryware', detail: 'Sink zones, kitchen mixers and coordinated finishing references' },
+        { label: 'Kitchen sinks and mixers', href: '/sanitaryware#kitchen-sinks', detail: 'Sink bowls, mixers and kitchen finishing references' },
         { label: 'Paints', href: '/paints', detail: 'Interior, exterior, roof and floor paint planning' },
         { label: 'Adhesives and grout', href: '/adhesives-grout', detail: 'Tile fixing materials, grout, trims and spacers' },
         { label: 'Finishing tools and support', href: '/installation-support', detail: 'Tools, workflow guidance, training and installation support' },
@@ -1364,7 +1364,7 @@ const categoryGuideTargets = {
   'Outdoor Tiles': '/floor-tiles',
   'Bathroom Tiles': '/bathroom-tiles',
   Sanitaryware: '/sanitaryware',
-  'Kitchen Sinks & Mixers': '/sanitaryware',
+  'Kitchen Sinks & Mixers': '/sanitaryware#kitchen-sinks',
   Paints: '/paints',
   'Adhesives & Grout': '/adhesives-grout',
   'Installation Support': '/installation-support',
@@ -1461,24 +1461,28 @@ const faqItems = [
 const buyingGuideCards = [
   {
     title: 'Selection Guidance',
+    question: 'Which tiles suit my space?',
     text: 'Choose tiles, sanitaryware and paints by room use, finish and budget.',
     icon: Ruler,
     href: '/tile-buying-guide',
   },
   {
     title: 'Quantity Planning',
+    question: 'What should I send for a quote?',
     text: 'Estimate product quantities before finalizing sizes, finishes and delivery needs.',
     icon: Store,
     href: '/cost-estimation-guide',
   },
   {
     title: 'Project Locations',
+    question: 'How do I plan local delivery?',
     text: 'Review Nairobi, Machakos and Makueni support for home and project planning.',
     icon: Truck,
     href: '/locations/nairobi',
   },
   {
     title: 'Installation Support',
+    question: 'What do I need for installation?',
     text: 'Explore adhesives, grout, tools, surface preparation and installer guidance.',
     icon: Wrench,
     href: '/installation-support',
@@ -1488,6 +1492,7 @@ const buyingGuideCards = [
 const projectGalleryItems = [
   {
     title: 'Tile finish planning',
+    href: '/tiles',
     text: 'Floor and wall tile combinations for homes, shops and project inspiration.',
     image: '/images/tiles-gallery-1.jpg',
     alt: 'Tile finish planning and product matching by Kleihaus Ceramics',
@@ -1495,6 +1500,7 @@ const projectGalleryItems = [
   },
   {
     title: 'Bathroom coordination',
+    href: '/bathroom-tiles',
     text: 'Sanitaryware, bathroom tiles and accessories matched for a cleaner finish.',
     image: '/images/bathroom-blue-1.jpg',
     alt: 'Bathroom tiles and sanitaryware coordination by Kleihaus Ceramics',
@@ -1502,6 +1508,7 @@ const projectGalleryItems = [
   },
   {
     title: 'Paint and finishing support',
+    href: '/paints',
     text: 'Paints, adhesives, grout and finishing materials selected around project needs.',
     image: '/images/paint-interior.jpg',
     alt: 'Interior paint and finishing materials support by Kleihaus Ceramics',
@@ -2069,26 +2076,25 @@ function Header({ projectType, searchQuery, setSearchQuery, onSearch, activeSect
       </div>
 
       <div className="border-t border-neutral-100 bg-white">
-        <div className="mx-auto flex max-w-7xl gap-1.5 overflow-x-auto px-4 py-1.5">
+        <nav aria-label="Product categories" className="mx-auto flex max-w-7xl gap-1.5 overflow-x-auto px-4 py-1.5">
           {categoryNav.map((item) => (
-            <button
+            <a
               key={item}
-              type="button"
+              href={categoryGuideTargets[item] || '/products'}
               aria-current={selectedCategory === item ? 'true' : undefined}
               onClick={() => {
-                onCategoryClick(item)
-                onSectionChange('catalogue')
+                analyticsService.track('category_click', { productCategory: item, clickedElement: 'category_navigation', projectType })
               }}
-              className={`shrink-0 rounded-full border px-3 py-1 text-xs font-medium transition focus:outline-none focus:ring-2 focus:ring-emerald-200 ${
+              className={`inline-flex min-h-11 shrink-0 items-center rounded-full border px-3 py-1 text-xs font-medium transition focus:outline-none focus:ring-2 focus:ring-emerald-200 ${
                 selectedCategory === item
                   ? 'border-emerald-600 bg-emerald-50 text-emerald-800'
                   : 'border-neutral-200 bg-white text-neutral-600 hover:border-emerald-600/40 hover:bg-emerald-50 hover:text-emerald-700'
               }`}
             >
               {item}
-            </button>
+            </a>
           ))}
-        </div>
+        </nav>
       </div>
 
       {menuOpen && (
@@ -2185,10 +2191,10 @@ function Hero({ onSectionChange }) {
           <div className="relative flex h-full w-full min-w-0 max-w-3xl flex-col justify-center px-5 py-6 pb-12 sm:px-9 sm:py-10 lg:px-10">
             <p className="max-w-[18rem] text-xs font-semibold uppercase tracking-wide text-emerald-200 sm:max-w-none">Tiles. Sanitaryware. Paints.</p>
             <h1 className="mt-2 max-w-[calc(100vw-4rem)] break-words text-[clamp(1.55rem,7.6vw,2.5rem)] font-semibold leading-[1.08] text-white sm:mt-3 sm:max-w-2xl sm:text-5xl sm:leading-tight lg:text-5xl">
-              Tiles, sanitaryware and paints for every stage of your project
+              Tiles, sanitaryware and paints for your space
             </h1>
             <p className="mt-3 max-w-[18.5rem] break-words text-sm leading-5 text-neutral-100 sm:mt-4 sm:max-w-xl sm:text-base sm:leading-7">
-              Explore practical finishing solutions for homes, renovations and commercial developments, with guidance on product selection, quantities, delivery and installation support.
+              Practical help choosing finishes and planning your order, for homes, renovations and project teams.
             </p>
             <div className="mt-4 flex flex-wrap items-center gap-2 max-sm:[&>*]:w-full max-sm:[&>*]:justify-center sm:mt-6 sm:gap-3">
               <Button
@@ -2240,7 +2246,7 @@ function Hero({ onSectionChange }) {
             </div>
           </div>
         </div>
-        <div className="mt-2.5 grid grid-cols-1 gap-2 sm:mt-3 sm:grid-cols-2 sm:gap-2.5 lg:grid-cols-4">
+        <div className="mt-2.5 grid grid-cols-2 gap-2 sm:mt-3 sm:gap-2.5 lg:grid-cols-4">
           {heroTrustBadges.map((badge) => {
             const Icon = badge.icon
             return (
@@ -2271,14 +2277,10 @@ function AboutSection() {
           <p className="mt-3 text-sm leading-6 text-neutral-600">
             Discuss your preferred finishes, measurements and site requirements with us for product selection, quantity planning and delivery coordination.
           </p>
-          <div className="mt-6 flex flex-wrap gap-2 text-xs font-semibold text-emerald-800">
-            {['Finishing advisory', 'Reliable guidance', 'Professional workflow', 'Customer success'].map((item) => (
-              <span key={item} className="rounded-full bg-emerald-50 px-3 py-1.5">
-                {item}
-              </span>
-            ))}
-          </div>
-          <VisionMissionValues />
+          <details className="mt-5">
+            <summary className="cursor-pointer py-2 text-sm font-semibold text-emerald-800">Our purpose and values</summary>
+            <VisionMissionValues />
+          </details>
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2">
@@ -2308,7 +2310,7 @@ function ShopByCategory({ selectedCategory, onCategoryClick, onGuideClick, onSup
           <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Product catalogue</p>
           <h2 className="mt-1.5 text-xl font-semibold text-neutral-950 sm:mt-2 sm:text-3xl">Explore products by category</h2>
           <p className="mt-2 max-w-2xl text-xs leading-5 text-neutral-600 sm:text-sm sm:leading-6">
-            Start with tiles, sanitaryware, kitchen sinks and mixers, paints, adhesives, grout and finishing tools, then ask for support when your project direction is clearer.
+            Find finishes for floors, walls, bathrooms and kitchens, plus paint and installation essentials.
           </p>
         </div>
       </div>
@@ -2334,10 +2336,10 @@ function ShopByCategory({ selectedCategory, onCategoryClick, onGuideClick, onSup
               key={category.name}
               className="group flex h-full flex-col overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-emerald-700 hover:shadow-md"
             >
-              <button
-                type="button"
+              <a
+                href={guideTarget}
                 aria-label={`View ${category.name} category`}
-                onClick={() => onCategoryClick(category.name)}
+                onClick={() => analyticsService.track('category_click', { productCategory: category.name, clickedElement: 'category_image' })}
                 className="block w-full text-left"
               >
                 <div className="relative aspect-[2/1] overflow-hidden bg-neutral-100 sm:aspect-[4/3]">
@@ -2357,7 +2359,7 @@ function ShopByCategory({ selectedCategory, onCategoryClick, onGuideClick, onSup
                     <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
                   </div>
                 </div>
-              </button>
+              </a>
               <div className="flex flex-1 flex-col p-2.5 sm:p-3">
                 <div className="flex items-center justify-between gap-2 sm:gap-3">
                   <h3 className="text-sm font-semibold leading-snug text-neutral-950 sm:text-base">{category.name}</h3>
@@ -2615,6 +2617,7 @@ function CustomerProjectGallery() {
                 <p className="text-[11px] font-semibold uppercase tracking-wide text-emerald-700">{item.label}</p>
                 <h3 className="mt-1 text-sm font-semibold text-neutral-950 sm:text-base">{item.title}</h3>
                 <p className="mt-1 text-xs leading-5 text-neutral-600 sm:text-sm sm:leading-5">{item.text}</p>
+                <a href={item.href} onClick={() => analyticsService.track('category_click', { clickedElement: 'application_category', productCategory: item.label, ctaPosition: 'homepage_applications' })} className="mt-2 inline-flex min-h-11 items-center gap-1 text-sm font-semibold text-emerald-800 underline underline-offset-4">Explore {item.label.toLowerCase()}<ArrowRight className="h-4 w-4" /></a>
               </div>
             </article>
           ))}
@@ -2646,7 +2649,7 @@ function ProjectsEvidence() {
           </a>
         </div>
         <div className="grid gap-2.5 sm:grid-cols-3 sm:gap-3">
-          {projectImageItems.slice(0, 3).map((item) => (
+          {[projectImageItems[3], projectImageItems[4], projectImageItems[0]].map((item) => (
             <article key={item.src} className="overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-sm">
               <OptimizedImage
                 src={item.src}
@@ -2696,20 +2699,13 @@ function AudiencePathways() {
             <article key={segment.slug} className="flex h-full flex-col rounded-lg border border-neutral-200 bg-neutral-50 p-4 shadow-sm">
               <h3 className="text-base font-semibold text-neutral-950">{segment.name}</h3>
               <p className="mt-2 text-sm leading-6 text-neutral-600">{segment.need}</p>
-              <div className="mt-3 flex flex-wrap gap-1.5">
-                {segment.products.slice(0, 3).map((item) => (
-                  <span key={item} className="rounded-md bg-white px-2.5 py-1 text-xs font-semibold text-emerald-900 ring-1 ring-emerald-100">
-                    {item}
-                  </span>
-                ))}
-              </div>
               <div className="mt-4 flex flex-wrap gap-2">
                 <a
                   href={`/trade-projects#${segment.slug}`}
                   onClick={() => analyticsService.track('audience_pathway_click', { clickedElement: `homepage_audience_${segment.slug}`, ctaLabel: segment.name, ctaPosition: 'homepage_audience_card', enquiryIntent: segment.intent, audienceSegment: segment.name })}
                   className="inline-flex min-h-10 items-center rounded-md border border-neutral-300 bg-white px-3 py-2 text-xs font-semibold text-neutral-900 transition hover:border-emerald-700 hover:text-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-200"
                 >
-                  View Solutions
+                  {segment.name} requirements
                 </a>
               </div>
             </article>
@@ -2876,7 +2872,7 @@ function HelpfulGuides({ onGuideClick, onRouteNavigate }) {
                     <Icon className="h-4 w-4" />
                   </span>
                   <span>
-                    <span className="block text-sm font-semibold text-neutral-950">{card.title}</span>
+                    <span className="block text-sm font-semibold text-neutral-950">{card.question || card.title}</span>
                     <span className="mt-0.5 block text-xs leading-5 text-neutral-600">{card.text}</span>
                   </span>
                 </div>
@@ -3123,7 +3119,7 @@ function Contact({ onSupportFormClick, compact = false }) {
           <p className="text-sm font-semibold uppercase text-emerald-300">Contact Kleihaus</p>
           <h2 className="mt-1.5 text-2xl font-semibold sm:text-3xl">Request a quotation or talk to Kleihaus now.</h2>
           <p className="mt-3 leading-6 text-neutral-300">
-            Share product type, measurements, quantity, location and budget range. Kleihaus uses those details to confirm availability, delivery options and the right next step.
+            Ask about product options and current availability, or send your requirements for a quotation.
           </p>
 
           <div className="mt-5 grid gap-2 sm:grid-cols-2">
@@ -3197,7 +3193,7 @@ function Contact({ onSupportFormClick, compact = false }) {
         >
           <div className="mb-4">
             <h3 className="text-lg font-semibold">Tell us what you need</h3>
-            <p className="mt-1 text-sm leading-5 text-neutral-600">Send your measurements, location and product needs. Kleihaus will review the request and respond by phone or email.</p>
+            <p className="mt-1 text-sm leading-5 text-neutral-600">Kleihaus will review your request and respond by phone or email.</p>
           </div>
           <div className="mb-4 rounded-md border border-emerald-100 bg-emerald-50 px-3 py-2 text-xs leading-5 text-emerald-950 sm:text-sm">
             For a faster quotation, include room size or bill of quantities, preferred finish, delivery location, timing and whether you need installation guidance.
@@ -3205,17 +3201,17 @@ function Contact({ onSupportFormClick, compact = false }) {
           <div className="grid gap-3 sm:grid-cols-2">
             <label className="grid gap-2 text-sm font-medium text-neutral-700">
               Name
-              <Input name="name" autoComplete="off" placeholder="Your name" value={quoteForm.name} onChange={updateQuoteField('name')} required />
+              <Input name="name" autoComplete="name" placeholder="Your name" value={quoteForm.name} onChange={updateQuoteField('name')} required />
             </label>
             <label className="grid gap-2 text-sm font-medium text-neutral-700">
               Email
-              <Input name="email" type="email" autoComplete="off" placeholder="Email address" value={quoteForm.email} onChange={updateQuoteField('email')} />
+              <Input name="email" type="email" autoComplete="email" placeholder="Email address" value={quoteForm.email} onChange={updateQuoteField('email')} />
             </label>
           </div>
           <div className="mt-3 grid gap-3 sm:grid-cols-2">
             <label className="grid gap-2 text-sm font-medium text-neutral-700">
               Phone
-              <Input name="phone" autoComplete="off" placeholder="Phone number" value={quoteForm.phone} onChange={updateQuoteField('phone')} />
+              <Input name="phone" type="tel" autoComplete="tel" placeholder="Phone number" value={quoteForm.phone} onChange={updateQuoteField('phone')} />
             </label>
             <label className="grid gap-2 text-sm font-medium text-neutral-700">
               Location
@@ -3628,6 +3624,9 @@ function HubPage({ page, onSectionChange, onSupportClick, onQuoteClick }) {
 }
 
 function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteClick }) {
+  const galleryImages = page.path === '/sanitaryware'
+    ? [...sanitarywareKitchenImages, ...page.images.filter((image) => !page.images.slice(0, 3).includes(image) && !sanitarywareKitchenImages.includes(image))]
+    : page.images
   return (
     <main className="bg-white">
       <Breadcrumbs page={page} />
@@ -3640,9 +3639,6 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
             </h1>
             <p className="mt-3 max-w-2xl text-sm leading-6 text-neutral-700 sm:text-base sm:leading-6">
               {page.intro}
-            </p>
-            <p className="mt-2 max-w-2xl text-xs leading-5 text-neutral-600 sm:text-sm sm:leading-5">
-              Quotes depend on current availability, quantity, delivery location and project details. Share measurements, finish preference and budget range so the Kleihaus team responds with useful guidance.
             </p>
             <div className="mt-4 flex flex-wrap gap-2 max-sm:[&>*]:w-full max-sm:[&>*]:justify-center">
               <Button
@@ -3694,7 +3690,7 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
         <div className="grid gap-5 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
             <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Quote planning</p>
-            <h2 className="mt-2 text-xl font-semibold text-neutral-950 sm:text-2xl">What to share</h2>
+            <h2 className="mt-2 text-xl font-semibold text-neutral-950 sm:text-2xl">{page.path === '/sanitaryware' ? 'Bathroom and kitchen options' : 'Selection and planning'}</h2>
             <ul className="mt-3 grid gap-1.5 text-sm text-neutral-700">
               {page.notes.map((note) => (
                 <li key={note} className="flex items-start gap-2">
@@ -3708,8 +3704,8 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
             </div>
           </div>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-            {page.images.map((image) => (
-              <figure key={image.src} className="overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-sm">
+            {galleryImages.map((image) => (
+              <figure id={page.path === '/sanitaryware' && image === sanitarywareKitchenImages[0] ? 'kitchen-sinks' : undefined} key={image.src} className="scroll-mt-36 overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-sm">
                 <OptimizedImage
                   src={image.src}
                   alt={image.alt}
@@ -4020,7 +4016,7 @@ function ProjectsPage({ page, onSectionChange, onSupportClick, onQuoteClick }) {
             <h2 className="mt-1 text-2xl font-semibold text-neutral-950 sm:text-3xl">Kitchen finishing details from supplied project photos.</h2>
           </div>
           <p className="max-w-xl text-sm leading-6 text-neutral-600">
-            Photos show kitchen cabinets, worktops, sinks, textured backsplashes and finishing materials. They are presented as visual project references only.
+            Overview and detail photographs show cabinets, worktops, sinks and textured backsplashes. Multiple photographs may show the same space; they are not separate project counts.
           </p>
         </div>
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -4245,7 +4241,7 @@ export default function App() {
   const [currentPath, setCurrentPath] = useState(() => (typeof window === 'undefined' ? '/' : normalizePath(window.location.pathname)))
   const [activeSection, setActiveSection] = useState('home')
   const [searchQuery, setSearchQuery] = useState('')
-  const [selectedCategory, setSelectedCategory] = useState('Floor Tiles')
+  const [selectedCategory, setSelectedCategory] = useState('')
   const [eventRevision, setEventRevision] = useState(0)
   const [supportModal, setSupportModal] = useState({
     open: false,
@@ -4371,6 +4367,7 @@ export default function App() {
 
   const handleCategoryGuideClick = (event, guideTarget, category) => {
     if (!guideTarget) return
+    if (guideTarget.includes('#') && !guideTarget.startsWith('/#')) return
 
     event.preventDefault()
     setSelectedCategory(category)
@@ -4464,7 +4461,7 @@ export default function App() {
         setSearchQuery={setSearchQuery}
         onSearch={handleSearch}
         activeSection={activeSection}
-        selectedCategory={selectedCategory}
+        selectedCategory={currentPath === '/' ? selectedCategory : activeCategoryPage?.category}
         onSectionChange={handleSectionChange}
         onCategoryClick={handleCategoryClick}
         onRouteNavigate={handleRouteNavigate}
