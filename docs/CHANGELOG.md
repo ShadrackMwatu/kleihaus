@@ -1,5 +1,11 @@
 # Kleihaus Project Changelog
 
+## Refined visual identity
+
+- Centralized forest, copper, ivory and warm neutral tokens; refined system-serif headings, logo sizing, cards, focus states and brand surfaces.
+- Replaced legacy brown footer and heavy decorative treatments. Updated hero category line to include Tiling; retained all carousel behavior and images.
+- Preserved content, contacts, analytics, quote backend and Cloudflare configuration. See BRAND_VISUAL_SYSTEM.md for accessibility checks and deliberate exceptions.
+
 ## About purpose and values
 
 - Replaced the About support-card summary with customer problems, value proposition and the owner-provided brand promise.

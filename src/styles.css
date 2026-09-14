@@ -3,10 +3,11 @@
 @tailwind utilities;
 
 :root {
-  --kleihaus-green: #16A34A;
-  --kleihaus-green-dark: #15803D;
-  --kleihaus-ink: #171717;
-  --kleihaus-soft: #F7F5F0;
+  --kleihaus-green: theme('colors.brand.action');
+  --kleihaus-green-dark: theme('colors.brand.forest');
+  --kleihaus-ink: theme('colors.brand.ink');
+  --kleihaus-soft: theme('colors.brand.ivory');
+  --kleihaus-copper: theme('colors.brand.copper');
 }
 
 html,
@@ -57,7 +58,7 @@ a:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
-  outline: 3px solid rgba(22, 163, 74, 0.34);
+  outline: 3px solid var(--kleihaus-copper);
   outline-offset: 3px;
 }
 
@@ -70,8 +71,49 @@ section {
 }
 
 section[id='top'] > div > div {
-  border-radius: 1.35rem;
-  box-shadow: 0 30px 80px rgba(23, 23, 23, 0.22);
+  border-radius: 0.5rem;
+  box-shadow: none;
+}
+
+.hero-shade {
+  background: linear-gradient(90deg, rgba(23, 23, 23, 0.87), rgba(23, 23, 23, 0.65) 62%, rgba(23, 23, 23, 0.18));
+}
+
+section h1[class],
+section h2[class],
+section h3[class] {
+  font-family: theme('fontFamily.display');
+}
+
+section :is(h1, h2, h3).text-neutral-950 {
+  color: var(--kleihaus-green-dark);
+}
+
+section p.uppercase.text-emerald-700 {
+  color: theme('colors.brand.copper-text');
+}
+
+header.sticky {
+  border-bottom: 1px solid theme('colors.brand.copper / 30%');
+}
+
+section article[class] {
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(23, 23, 23, 0.035);
+}
+
+section article[class]:hover {
+  transform: none;
+  box-shadow: 0 3px 12px rgba(23, 23, 23, 0.07);
+}
+
+section .backdrop-blur-sm {
+  backdrop-filter: none;
+}
+
+footer a:focus-visible,
+#contact a:focus-visible {
+  outline-color: white;
 }
 
 section[id='top'] h1,
@@ -177,18 +219,18 @@ section[id='catalogue'] article,
 section.border-y article,
 section .rounded-md.border,
 form.rounded-lg {
-  border-radius: 1rem;
+  border-radius: 0.5rem;
 }
 
 section[id='catalogue'] article:hover,
 section.border-y article:hover,
 section .rounded-md.border:hover {
-  box-shadow: 0 18px 45px rgba(23, 23, 23, 0.08);
+  box-shadow: 0 3px 12px rgba(23, 23, 23, 0.07);
 }
 
 section[id='catalogue'] img,
 section.border-y img {
-  background: #f3f4f6;
+  background: var(--kleihaus-soft);
 }
 
 input,
@@ -199,7 +241,7 @@ select {
 
 input::placeholder,
 textarea::placeholder {
-  color: #8a8178;
+  color: theme('colors.neutral.500');
 }
 
 form button,
@@ -211,7 +253,7 @@ section a button {
 }
 
 #contact form {
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
 }
 
 #contact textarea {

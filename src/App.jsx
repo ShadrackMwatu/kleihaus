@@ -1507,7 +1507,7 @@ const hasCustomBackground = (className = '') => /\bbg-/.test(className)
 const Button = ({ className = '', children, ...props }) => {
   const defaultVisuals = hasCustomBackground(className)
     ? ''
-    : 'border-neutral-950 bg-neutral-950 text-white hover:bg-neutral-800'
+    : 'border-brand-forest bg-brand-forest text-white hover:bg-emerald-900'
 
   return (
     <button
@@ -1522,7 +1522,7 @@ const Button = ({ className = '', children, ...props }) => {
 const ButtonSecondary = ({ className = '', children, ...props }) => {
   const defaultVisuals = hasCustomBackground(className)
     ? ''
-    : 'border-neutral-300 bg-white text-neutral-950 hover:border-neutral-600'
+    : 'border-brand-forest bg-white text-brand-forest hover:border-brand-copper'
 
   return (
     <button
@@ -1623,7 +1623,7 @@ const WhatsAppBrandText = ({ children = 'Chat on WhatsApp', iconClassName = 'h-4
 )
 
 const whatsappCtaClass =
-  'group gap-1.5 border-[#128C7E] bg-[#128C7E] text-white shadow-sm shadow-emerald-900/10 hover:border-[#075E54] hover:bg-[#075E54] focus:outline-none focus:ring-2 focus:ring-[#25D366]/40'
+  'group gap-1.5 border-brand-whatsapp bg-brand-whatsapp text-white shadow-sm shadow-emerald-900/10 hover:border-brand-whatsapp hover:bg-brand-whatsapp focus:outline-none focus:ring-2 focus:ring-[#25D366]/40'
 
 const KLEIHAUS_WHATSAPP_PHONE = '254748827166'
 const DEFAULT_WHATSAPP_MESSAGE =
@@ -1925,13 +1925,13 @@ function Logo({ compact = false }) {
       <OptimizedImage
         src="/images/kleihaus-logo.jpg"
         alt="Kleihaus Ceramics"
-        sizes={compact ? '36px' : '44px'}
+        sizes={compact ? '44px' : '48px'}
         loading="eager"
         decoding="async"
-        className={`${compact ? 'h-9 w-9' : 'h-11 w-11'} rounded-md border border-neutral-200 object-contain`}
+        className={`${compact ? 'h-11 w-11' : 'h-12 w-12'} shrink-0 rounded-md border border-brand-copper/30 object-contain`}
       />
       <div className={`${compact ? 'leading-tight' : ''} min-w-0`}>
-        <div className="truncate text-sm font-semibold text-neutral-950 sm:text-base">Kleihaus Ceramics</div>
+        <div className="truncate text-base font-semibold text-brand-forest sm:text-lg">Kleihaus Ceramics</div>
         <div className="truncate text-xs text-neutral-500">Inspiring living</div>
       </div>
     </div>
@@ -2172,10 +2172,9 @@ function Hero({ onSectionChange }) {
               )
             })}
           </div>
-          <div className="absolute inset-0 bg-gradient-to-r from-neutral-950/75 via-neutral-950/35 to-white/5" />
-          <div className="absolute inset-0 bg-gradient-to-br from-emerald-950/20 via-transparent to-white/10" />
+          <div className="hero-shade absolute inset-0" />
           <div className="relative flex h-full w-full min-w-0 max-w-3xl flex-col justify-center px-5 py-6 pb-12 sm:px-9 sm:py-10 lg:px-10">
-            <p className="max-w-[18rem] text-xs font-semibold uppercase tracking-wide text-emerald-200 sm:max-w-none">Tiles. Sanitaryware. Paints.</p>
+            <p className="max-w-[18rem] text-xs font-semibold uppercase tracking-wide text-white sm:max-w-none">Tiles. Sanitaryware. Paints. Tiling.</p>
             <h1 className="mt-2 max-w-[calc(100vw-4rem)] break-words text-[clamp(1.55rem,7.6vw,2.5rem)] font-semibold leading-[1.08] text-white sm:mt-3 sm:max-w-2xl sm:text-5xl sm:leading-tight lg:text-5xl">
               Tiles, sanitaryware and paints for your space
             </h1>
@@ -2189,7 +2188,7 @@ function Hero({ onSectionChange }) {
                   analyticsService.track('category_click', { clickedElement: 'hero_explore_products', ctaLabel: 'Explore Products', ctaPosition: 'hero', productCategory: 'All products', enquiryIntent: 'product_discovery' })
                   onSectionChange('catalogue')
                 }}
-                className="gap-1.5 border-emerald-600 bg-[#16A34A] px-3 py-2 text-xs text-white hover:bg-emerald-700 sm:gap-2 sm:px-5 sm:py-3 sm:text-sm"
+                className="gap-1.5 border-emerald-600 bg-brand-forest px-3 py-2 text-xs text-white hover:bg-emerald-700 sm:gap-2 sm:px-5 sm:py-3 sm:text-sm"
               >
                 Explore Products
                 <ArrowRight className="h-4 w-4" />
@@ -3064,7 +3063,7 @@ function Contact({ onSupportFormClick, quoteInterest = null, onClearInterest, co
       ariaLabel: 'Chat with Kleihaus Ceramics on WhatsApp',
       href: buildWhatsAppUrl('Hello Kleihaus, I would like help with a quote, products, delivery or installation support.'),
       icon: WhatsAppLogo,
-      className: 'border-[#128C7E] bg-[#128C7E] text-white hover:border-[#075E54] hover:bg-[#075E54]',
+      className: 'border-brand-whatsapp bg-brand-whatsapp text-white hover:border-brand-whatsapp hover:bg-brand-whatsapp',
       onClick: (event, href) =>
         handleTrackedWhatsAppClick(event, href, () =>
           analyticsService.track('whatsapp_click', {
@@ -3126,7 +3125,7 @@ function Contact({ onSupportFormClick, quoteInterest = null, onClearInterest, co
                 analyticsService.track('contact_click', { clickedElement: 'contact_action_quote', ctaLabel: 'Request a Quotation', ctaPosition: 'contact_actions', contactMethod: 'quote_form', enquiryIntent: 'quote' })
                 scrollToQuoteForm()
               }}
-              className="inline-flex items-center justify-center gap-2 rounded-md border border-emerald-500 bg-[#16A34A] px-3 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200"
+              className="inline-flex items-center justify-center gap-2 rounded-md border border-emerald-500 bg-brand-forest px-3 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200"
             >
               <ArrowRight className="h-4 w-4 shrink-0" />
               Request a Quotation
@@ -3249,7 +3248,7 @@ function Contact({ onSupportFormClick, quoteInterest = null, onClearInterest, co
             </p>
           )}
           <div className="mt-4 flex flex-wrap gap-2.5">
-            <Button disabled={isQuoteSubmitting} className="border-emerald-700 bg-[#16A34A] px-4 py-2.5 text-sm shadow-md shadow-emerald-900/10 hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-70">
+            <Button disabled={isQuoteSubmitting} className="border-emerald-700 bg-brand-forest px-4 py-2.5 text-sm shadow-md shadow-emerald-900/10 hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-70">
               {isQuoteSubmitting ? 'Sending...' : 'Send quotation request'}
             </Button>
             <ButtonSecondary type="button" onClick={() => onSupportFormClick('contact_form')} className={`${whatsappCtaClass} px-4 py-2.5 text-sm`}>
@@ -3468,7 +3467,7 @@ function SupportModal({ open, source, initialMessage = '', onClose }) {
             >
               <WhatsAppBrandText>Chat on WhatsApp</WhatsAppBrandText>
             </button>
-            <Button type="submit" disabled={submitting} className="border-emerald-700 bg-[#16A34A] px-4 py-2 text-sm shadow-sm shadow-emerald-900/10 hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-70">
+            <Button type="submit" disabled={submitting} className="border-emerald-700 bg-brand-forest px-4 py-2 text-sm shadow-sm shadow-emerald-900/10 hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-70">
               {submitting ? 'Sending...' : 'Send support request'}
             </Button>
           </div>
@@ -3611,7 +3610,7 @@ function HubPage({ page, onSectionChange, onSupportClick, onQuoteClick }) {
                 onQuoteClick(`${page.pageType}_bottom_quote`)
                 onSectionChange('contact')
               }}
-              className="inline-flex items-center justify-center gap-2 rounded-md border border-emerald-700 bg-[#16A34A] px-3 py-2 text-xs font-semibold text-white transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:text-sm"
+              className="inline-flex items-center justify-center gap-2 rounded-md border border-emerald-700 bg-brand-forest px-3 py-2 text-xs font-semibold text-white transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:text-sm"
             >
               Request a Quotation
               <ArrowRight className="h-4 w-4" />
@@ -3773,7 +3772,7 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
                   onQuoteClick(`guide_project_quote_${page.path}`)
                   onSectionChange('contact')
                 }}
-                className="inline-flex items-center justify-center gap-2 rounded-md border border-emerald-700 bg-[#16A34A] px-3 py-2 text-xs font-semibold text-white transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:text-sm"
+                className="inline-flex items-center justify-center gap-2 rounded-md border border-emerald-700 bg-brand-forest px-3 py-2 text-xs font-semibold text-white transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:text-sm"
               >
                 Request guide-based quote
                 <ArrowRight className="h-4 w-4" />
@@ -3840,7 +3839,7 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
                 onQuoteClick(`local_support_quote_${page.path}`)
                 onSectionChange('contact')
               }}
-              className="inline-flex items-center justify-center gap-2 rounded-md border border-emerald-700 bg-[#16A34A] px-3 py-2 text-xs font-semibold text-white transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:text-sm"
+              className="inline-flex items-center justify-center gap-2 rounded-md border border-emerald-700 bg-brand-forest px-3 py-2 text-xs font-semibold text-white transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:text-sm"
             >
               Request local quote
               <ArrowRight className="h-4 w-4" />
@@ -3971,7 +3970,7 @@ function ProjectsPage({ page, onSectionChange, onSupportClick, onQuoteClick }) {
                   onQuoteClick('projects_hero_quote')
                   onSectionChange('contact')
                 }}
-                className="inline-flex items-center justify-center gap-2 rounded-md border border-emerald-700 bg-[#16A34A] px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200"
+                className="inline-flex items-center justify-center gap-2 rounded-md border border-emerald-700 bg-brand-forest px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200"
               >
                 Request a Similar Quote
                 <ArrowRight className="h-4 w-4" />
@@ -4073,7 +4072,7 @@ function ProjectsPage({ page, onSectionChange, onSupportClick, onQuoteClick }) {
                 onQuoteClick('projects_bottom_quote')
                 onSectionChange('contact')
               }}
-              className="inline-flex items-center justify-center gap-2 rounded-md border border-emerald-700 bg-[#16A34A] px-3 py-2 text-xs font-semibold text-white transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:text-sm"
+              className="inline-flex items-center justify-center gap-2 rounded-md border border-emerald-700 bg-brand-forest px-3 py-2 text-xs font-semibold text-white transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:text-sm"
             >
               Request a Similar Quote
               <ArrowRight className="h-4 w-4" />
@@ -4143,14 +4142,14 @@ function Footer() {
     { label: 'Kitchen Projects', href: '/projects#kitchen-projects' },
   ]
   return (
-    <footer data-site-footer className="border-t border-white/30 bg-[linear-gradient(180deg,#8B4E1C_0%,#A65F1E_100%)] text-orange-50">
+    <footer data-site-footer className="border-t border-brand-copper bg-brand-forest text-white">
       <div className="mx-auto grid max-w-6xl gap-4 px-4 py-4 sm:grid-cols-2 sm:gap-6 sm:py-6 lg:grid-cols-4 lg:gap-10 lg:py-7">
         <div className="w-full md:justify-self-start">
           <h3 className="text-sm font-semibold uppercase text-white">Products</h3>
-          <ul className="mt-2 grid gap-0.5 text-xs text-orange-50/90 sm:gap-1.5 sm:text-sm">
+          <ul className="mt-2 grid gap-0.5 text-xs text-white/90 sm:gap-1.5 sm:text-sm">
             {footerProductLinks.map((item) => (
               <li key={`${item.href}-${item.label}`}>
-                <a href={item.href} className="transition hover:text-white focus:outline-none focus:ring-2 focus:ring-orange-100/70">
+                <a href={item.href} className="transition hover:text-white focus:outline-none focus:ring-2 focus:ring-white/70">
                   {item.label}
                 </a>
               </li>
@@ -4160,7 +4159,7 @@ function Footer() {
 
         <div className="w-full lg:max-w-max lg:justify-self-center">
           <h3 className="text-sm font-semibold uppercase text-white">Services</h3>
-          <ul className="mt-2 grid gap-0.5 text-xs text-orange-50/90 sm:gap-1.5 sm:text-sm">
+          <ul className="mt-2 grid gap-0.5 text-xs text-white/90 sm:gap-1.5 sm:text-sm">
             {['Finishing Advisory', 'Delivery', 'Installation'].map((item) => (
               <li key={item}>{item}</li>
             ))}
@@ -4169,13 +4168,13 @@ function Footer() {
 
         <div className="w-full lg:max-w-max lg:justify-self-center">
           <h3 className="text-sm font-semibold uppercase text-white">Projects</h3>
-          <ul className="mt-2 grid gap-1 text-xs text-orange-50/90 sm:gap-1.5 sm:text-sm">
+          <ul className="mt-2 grid gap-1 text-xs text-white/90 sm:gap-1.5 sm:text-sm">
             {footerProjectLinks.map((item) => (
               <li key={item.href}>
                 <a
                   href={item.href}
                   onClick={() => analyticsService.track('project_click', { clickedElement: `footer_project_${item.label.toLowerCase().replace(/\s+/g, '_')}`, ctaLabel: item.label, ctaPosition: 'footer_projects', enquiryIntent: 'project_gallery' })}
-                  className="inline-flex min-h-8 items-center transition hover:text-white focus:outline-none focus:ring-2 focus:ring-orange-100/70"
+                  className="inline-flex min-h-8 items-center transition hover:text-white focus:outline-none focus:ring-2 focus:ring-white/70"
                 >
                   {item.label}
                 </a>
@@ -4186,13 +4185,13 @@ function Footer() {
 
         <div className="w-full lg:max-w-max lg:justify-self-end">
           <h3 className="text-sm font-semibold uppercase text-white">Contact</h3>
-          <div className="mt-2 grid gap-1.5 text-xs text-orange-50/90 sm:gap-2 sm:text-sm">
+          <div className="mt-2 grid gap-1.5 text-xs text-white/90 sm:gap-2 sm:text-sm">
             <a href="mailto:sales@kleihaus.com" className="inline-flex items-center gap-2 hover:text-white">
-              <Mail className="h-4 w-4 text-orange-100" />
+              <Mail className="h-4 w-4 text-white" />
               sales@kleihaus.com
             </a>
             <a href="tel:+254748827166" className="inline-flex items-center gap-2 hover:text-white">
-              <Phone className="h-4 w-4 text-orange-100" />
+              <Phone className="h-4 w-4 text-white" />
               +254 748 827 166
             </a>
             <div className="pt-1">
@@ -4203,7 +4202,7 @@ function Footer() {
         </div>
       </div>
       <div className="border-t border-white/15 px-4 py-4">
-        <div className="mx-auto max-w-6xl text-xs text-orange-50/90 sm:text-sm">
+        <div className="mx-auto max-w-6xl text-xs text-white/90 sm:text-sm">
           {[
             ['Guides', projectGuideLinks],
           ].map(([title, links]) => (
@@ -4211,7 +4210,7 @@ function Footer() {
               <h3 className="text-xs font-semibold uppercase text-white">{title}</h3>
               <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1.5">
                 {links.map((link) => (
-                  <a key={link.href} href={link.href} className="transition hover:text-white focus:outline-none focus:ring-2 focus:ring-orange-100/70">
+                  <a key={link.href} href={link.href} className="transition hover:text-white focus:outline-none focus:ring-2 focus:ring-white/70">
                     {link.label}
                   </a>
                 ))}
@@ -4220,7 +4219,7 @@ function Footer() {
           ))}
         </div>
       </div>
-      <div className="border-t border-white/20 bg-[#16A34A]">
+      <div className="border-t border-brand-copper/50 bg-brand-forest">
         <div className="footer-brand-strip mx-auto flex max-w-7xl items-center justify-center px-4 py-2.5 text-center text-white sm:py-5">
           <p className="text-xs font-medium">
             © {new Date().getFullYear()} Kleihaus Ceramics. All Rights Reserved.{' '}
