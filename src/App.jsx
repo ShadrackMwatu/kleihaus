@@ -1585,7 +1585,7 @@ const socialLinks = [
   },
 ]
 
-function SocialLinks({ placement = 'footer', showText = true, className = '' }) {
+function SocialLinks({ placement = 'footer', showText = true, className = '', compact = false }) {
   return (
     <div className={`flex flex-wrap gap-2 ${className}`} aria-label="Kleihaus Ceramics social media links">
       {socialLinks.map(({ platform, href, label, Icon, colorClass, hoverClass }) => (
@@ -1605,7 +1605,7 @@ function SocialLinks({ placement = 'footer', showText = true, className = '' }) 
               socialPlatform: platform,
             })
           }
-          className={`inline-flex min-h-10 items-center justify-center gap-2 rounded-md border border-white/20 bg-white/10 px-3 py-2 text-xs font-semibold text-white transition ${hoverClass} hover:text-white focus:outline-none focus:ring-2 focus:ring-white/40`}
+          className={`inline-flex min-h-10 items-center justify-center gap-2 rounded-md border border-white/20 bg-white/10 ${compact ? 'h-10 w-10 p-2' : 'px-3 py-2'} text-xs font-semibold text-white transition ${hoverClass} hover:text-white focus:outline-none focus:ring-2 focus:ring-white/40`}
         >
           <Icon className={`h-4 w-4 shrink-0 ${colorClass}`} />
           {showText ? <span>{platform}</span> : <span className="sr-only">{label}</span>}
@@ -4143,10 +4143,10 @@ function Footer() {
   ]
   return (
     <footer data-site-footer className="border-t border-brand-copper bg-brand-forest text-white">
-      <div className="mx-auto grid max-w-6xl gap-4 px-4 py-4 sm:grid-cols-2 sm:gap-6 sm:py-6 lg:grid-cols-4 lg:gap-10 lg:py-7">
+      <nav aria-label="Footer navigation" className="footer-main mx-auto grid max-w-7xl gap-5 px-4 py-5">
         <div className="w-full md:justify-self-start">
           <h3 className="text-sm font-semibold uppercase text-white">Products</h3>
-          <ul className="mt-2 grid gap-0.5 text-xs text-white/90 sm:gap-1.5 sm:text-sm">
+          <ul className="footer-products mt-2 grid grid-cols-2 gap-x-4 text-xs text-white/90">
             {footerProductLinks.map((item) => (
               <li key={`${item.href}-${item.label}`}>
                 <a href={item.href} className="transition hover:text-white focus:outline-none focus:ring-2 focus:ring-white/70">
@@ -4183,7 +4183,17 @@ function Footer() {
           </ul>
         </div>
 
-        <div className="w-full lg:max-w-max lg:justify-self-end">
+        <div>
+          <h3 className="text-sm font-semibold uppercase text-white">Guides</h3>
+          <ul className="mt-2 grid text-xs text-white/90">
+            {projectGuideLinks.map((link) => (
+              <li key={link.href}>
+                <a href={link.href} className="transition hover:text-white focus:outline-none focus:ring-2 focus:ring-white/70">{link.label}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="footer-contact w-full">
           <h3 className="text-sm font-semibold uppercase text-white">Contact</h3>
           <div className="mt-2 grid gap-1.5 text-xs text-white/90 sm:gap-2 sm:text-sm">
             <a href="mailto:sales@kleihaus.com" className="inline-flex items-center gap-2 hover:text-white">
@@ -4196,31 +4206,13 @@ function Footer() {
             </a>
             <div className="pt-1">
               <p className="text-xs font-semibold uppercase text-white">Follow Kleihaus</p>
-              <SocialLinks placement="footer" className="mt-2" />
+              <SocialLinks placement="footer" showText={false} compact className="mt-2" />
             </div>
           </div>
         </div>
-      </div>
-      <div className="border-t border-white/15 px-4 py-4">
-        <div className="mx-auto max-w-6xl text-xs text-white/90 sm:text-sm">
-          {[
-            ['Guides', projectGuideLinks],
-          ].map(([title, links]) => (
-            <div key={title}>
-              <h3 className="text-xs font-semibold uppercase text-white">{title}</h3>
-              <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1.5">
-                {links.map((link) => (
-                  <a key={link.href} href={link.href} className="transition hover:text-white focus:outline-none focus:ring-2 focus:ring-white/70">
-                    {link.label}
-                  </a>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+      </nav>
       <div className="border-t border-brand-copper/50 bg-brand-forest">
-        <div className="footer-brand-strip mx-auto flex max-w-7xl items-center justify-center px-4 py-2.5 text-center text-white sm:py-5">
+        <div className="footer-brand-strip mx-auto flex max-w-7xl items-center justify-center px-4 py-2.5 text-center text-white">
           <p className="text-xs font-medium">
             © {new Date().getFullYear()} Kleihaus Ceramics. All Rights Reserved.{' '}
             <span className="font-semibold tracking-wide text-white">Inspiring Living</span>

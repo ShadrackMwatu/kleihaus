@@ -1,5 +1,12 @@
 # Kleihaus Project Changelog
 
+## Compact footer
+
+- Consolidated Guides into a five-column desktop footer, with two-column Products and a slim copyright bar. Desktop height at 1440px reduced from 447px to 244px (45%).
+- Tablet uses three columns; mobile keeps Contact first, with 44px link targets and all content expanded. Footer social controls are compact icon buttons with existing accessible labels and tracking.
+- Preserved all 21 link destinations and the three existing non-link Services labels. No route, contact, analytics, backend or Cloudflare changes.
+- Validation: production build, 11 SEO tests, 39-route rendered audit, eight analytics mappings, three responsive footer tests and diff checks passed. Desktop/mobile screenshots reviewed. Ivory/white footer text retains AA contrast on forest green; official social-icon colours retained.
+
 ## Refined visual identity
 
 - Centralized forest, copper, ivory and warm neutral tokens; refined system-serif headings, logo sizing, cards, focus states and brand surfaces.
