@@ -1,5 +1,11 @@
 # Kleihaus Project Changelog
 
+## About purpose and values
+
+- Replaced the About support-card summary with customer problems, value proposition and the owner-provided brand promise.
+- Updated Vision, Mission and seven explained core values in a keyboard-accessible disclosure, keeping the existing responsive two-column introduction.
+- Added Discuss Your Project through the existing Contact destination and CTA analytics. Included the owner-requested service-area sentence without adding another location-link list.
+
 ## Commercial voice and typography
 
 - Refined commercial category introductions and shared homepage, trade, project and enquiry blocks around Kleihaus's actual material-selection, sourcing and support role.

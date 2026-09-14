@@ -1383,57 +1383,43 @@ const serviceAreaLinks = [
   { label: 'Makueni', href: '/locations/makueni' },
 ]
 
-const aboutSupportPoints = [
-  {
-    title: 'Finishing advisory',
-    text: 'Product selection, quantity guidance and budget-fit options for homes, contractors, developers and project teams.',
-    icon: ClipboardList,
-  },
-  {
-    title: 'Logistics and delivery',
-    text: 'Practical coordination for material movement, site access, timing and wider Kenya service requests.',
-    icon: Truck,
-  },
-  {
-    title: 'Installation support',
-    text: 'Support across preparation, cutting, fixing, grouting and cleaning so the final finish is durable and neat.',
-    icon: Wrench,
-  },
-  {
-    title: 'Training and tools',
-    text: 'Tailored product-use guidance, right-tool recommendations and technical support for fundis and installation teams.',
-    icon: ShieldCheck,
-  },
+const companyValues = [
+  { title: 'Availability', text: 'We make essential finishing materials easier for homeowners, contractors and developers to find and access.' },
+  { title: 'Reliability', text: 'We prioritise consistent quality, accurate dimensions, dependable colours, product performance and honest information.' },
+  { title: 'Convenience', text: 'We simplify the buying process through clear recommendations, quantity guidance, coordinated products, delivery and installation support.' },
+  { title: 'Value and efficiency', text: 'We use sound procurement, supplier relationships, logistics and operational discipline to offer competitive value and reduce avoidable customer costs.' },
+  { title: 'Trust', text: 'We communicate clearly, keep our promises, stand behind the products we recommend and build relationships for the long term.' },
+  { title: 'Design with purpose', text: 'We help customers move beyond ordinary finishes by offering attractive, practical and aspirational design choices.' },
+  { title: 'Complete solutions', text: 'We do not only sell individual products. We help customers bring together compatible systems such as tiles, adhesives, grout, sanitaryware, paints, accessories and installation guidance.' },
 ]
-
-const companyValues = ['Integrity', 'Quality', 'Excellence', 'Innovation', 'Reliability', 'Customer Success', 'Sustainability']
 
 function VisionMissionValues({ compact = false }) {
   return (
-    <div className={`${compact ? 'mt-5' : 'mt-7'} rounded-xl border border-emerald-100 bg-emerald-50/70 p-4 shadow-sm sm:p-5`}>
+    <div className={`${compact ? 'mt-5' : 'mt-7'} border-t border-emerald-100 pt-5`}>
       <div className="grid gap-4 md:grid-cols-2">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wide text-emerald-700">Vision</p>
+          <h3 className="font-semibold text-emerald-800">Vision</h3>
           <p className={`${compact ? 'mt-1 text-sm leading-6' : 'mt-2 text-sm leading-6'} text-emerald-950`}>
-            To be the leading provider of inspiring finishing solutions in Africa.
+            To become the most trusted and accessible finishing-solutions brand in Kenya, helping people create durable, beautiful and functional spaces with confidence.
           </p>
         </div>
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wide text-emerald-700">Mission</p>
+          <h3 className="font-semibold text-emerald-800">Mission</h3>
           <p className={`${compact ? 'mt-1 text-sm leading-6' : 'mt-2 text-sm leading-6'} text-emerald-950`}>
-            To inspire living by delivering quality tiles, sanitaryware, paints, and finishing solutions backed by expert guidance, reliable service, and lasting customer relationships.
+            To make quality building finishes easier to access, understand and use by combining dependable products, transparent guidance, efficient delivery and complete project support.
           </p>
         </div>
       </div>
       <div className="mt-4 border-t border-emerald-200 pt-4">
-        <p className="text-xs font-semibold uppercase tracking-wide text-emerald-700">Core Values</p>
-        <div className="mt-2 flex flex-wrap gap-2">
+        <h3 className="font-semibold text-emerald-800">Core Values</h3>
+        <dl className="mt-3 grid gap-4 sm:grid-cols-2">
           {companyValues.map((value) => (
-            <span key={value} className="rounded-full bg-white px-3 py-1.5 text-xs font-semibold text-emerald-800 shadow-sm">
-              {value}
-            </span>
+            <div key={value.title}>
+              <dt className="text-sm font-semibold text-neutral-950">{value.title}</dt>
+              <dd className="mt-2 text-sm leading-6 text-neutral-600">{value.text}</dd>
+            </div>
           ))}
-        </div>
+        </dl>
       </div>
     </div>
   )
@@ -2270,33 +2256,28 @@ function AboutSection() {
       <div className="mx-auto grid max-w-7xl gap-6 px-4 py-6 sm:py-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
         <div>
           <p className="text-sm font-semibold uppercase text-emerald-700">About Kleihaus</p>
-          <h2 className="mt-2 text-xl font-semibold text-neutral-950 sm:text-2xl">Why choose Kleihaus</h2>
+          <h2 className="mt-2 text-xl font-semibold text-neutral-950 sm:text-2xl">Why Kleihaus exists</h2>
           <p className="mt-3 text-sm leading-6 text-neutral-600">
-            Kleihaus Ceramics brings tiles, sanitaryware, paints and finishing essentials together for homes, renovations and project teams.
+            Finding reliable building and finishing materials in Kenya can mean navigating fragmented suppliers, inconsistent quality, uncertain dimensions and colours, stock shortages and unclear pricing. Selection mistakes and delayed deliveries add cost and uncertainty.
           </p>
           <p className="mt-3 text-sm leading-6 text-neutral-600">
-            Our support connects product selection with quantity planning and delivery coordination, balancing the look of a space with its practical requirements.
+            Kleihaus brings tiles, sanitaryware, paints, adhesives, grout and installation support together through a dependable, design-led and customer-focused platform serving Nairobi, Machakos, Makueni and surrounding areas.
           </p>
-          <details className="mt-5">
-            <summary className="cursor-pointer py-2 text-sm font-semibold text-emerald-800">Our purpose and values</summary>
-            <VisionMissionValues />
-          </details>
+          <a href="/#contact" onClick={() => analyticsService.track('cta_click', { clickedElement: 'about_discuss_project', ctaLabel: 'Discuss Your Project', ctaPosition: 'about', enquiryIntent: 'project_support' })} className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-md bg-emerald-700 px-4 py-2 text-sm font-semibold text-white transition hover:bg-emerald-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700">
+            Discuss Your Project <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          </a>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2">
-          {aboutSupportPoints.map((point) => {
-            const Icon = point.icon
-            return (
-              <article key={point.title} className="rounded-lg border border-neutral-200 bg-white p-5 shadow-sm">
-                <div className="inline-flex h-11 w-11 items-center justify-center rounded-md bg-emerald-50 text-emerald-800">
-                  <Icon className="h-5 w-5" />
-                </div>
-                <h3 className="mt-4 text-base font-semibold text-neutral-950">{point.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-neutral-600">{point.text}</p>
-              </article>
-            )
-          })}
+        <div>
+          <h3 className="font-semibold text-neutral-950">Our value proposition</h3>
+          <p className="mt-2 text-sm leading-6 text-neutral-600">Better spaces with less uncertainty, wasted time and costly mistakes. Carefully selected tiles, sanitaryware, paints, adhesives and related products are backed by practical guidance, quantity estimation, logistics and installation support.</p>
+          <p className="mt-3 text-sm leading-6 text-neutral-600">For homeowners, contractors, property developers, interior designers and institutions, this means a more coordinated approach to finishing.</p>
+          <blockquote className="mt-4 border-l-2 border-emerald-700 pl-4 text-base font-semibold leading-6 text-emerald-950">Reliable finishing materials, thoughtfully selected and professionally supported—from product choice to completed space.</blockquote>
         </div>
+        <details className="border-t border-neutral-200 pt-3 lg:col-span-2">
+          <summary className="cursor-pointer py-2 text-sm font-semibold text-emerald-800">Our Vision, Mission and Core Values</summary>
+          <VisionMissionValues />
+        </details>
       </div>
     </section>
   )
