@@ -2564,7 +2564,7 @@ function CustomerProjectGallery() {
         <div className="mb-4 flex flex-col gap-2 sm:mb-5 md:flex-row md:items-end md:justify-between">
           <div className="max-w-3xl">
             <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Applications and inspiration</p>
-            <h2 className="mt-1.5 text-xl font-semibold text-neutral-950 sm:text-2xl">Choose finishes by room, surface and use.</h2>
+            <h2 className="mt-1.5 text-xl font-semibold text-neutral-950 sm:text-2xl">Finishes for every space</h2>
             <p className="mt-1.5 text-sm leading-6 text-neutral-600">
               Compare finishes for floors, walls, bathrooms and kitchens around the needs of your space.
             </p>
@@ -2660,7 +2660,7 @@ function AudiencePathways() {
         <div className="mb-4 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div className="max-w-3xl">
             <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Who Kleihaus supports</p>
-            <h2 className="mt-1.5 text-xl font-semibold text-neutral-950 sm:text-2xl">Product and project pathways for every customer</h2>
+            <h2 className="mt-1.5 text-xl font-semibold text-neutral-950 sm:text-2xl">Support for homes, trade and projects</h2>
             <p className="mt-1.5 text-sm leading-6 text-neutral-600">
               Material selection and sourcing support for homeowners, designers, fundis and procurement teams, shaped around the scale and requirements of each project.
             </p>
@@ -3688,7 +3688,7 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
       <section id="gallery" className="mx-auto max-w-7xl px-4 py-6 sm:py-8">
         <div className="grid gap-5 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
-            <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Quote planning</p>
+            <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Materials and details</p>
             <h2 className="mt-2 text-xl font-semibold text-neutral-950 sm:text-2xl">{page.path === '/sanitaryware' ? 'Bathroom and kitchen options' : 'Selection and planning'}</h2>
             <ul className="mt-3 grid gap-1.5 text-sm text-neutral-700">
               {page.notes.map((note) => (
@@ -3698,9 +3698,6 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
                 </li>
               ))}
             </ul>
-            <div className="mt-4 rounded-lg border border-emerald-100 bg-emerald-50 p-3 text-sm leading-5 text-emerald-950">
-              Include room size, product type, quantity, location and budget range. Photos or inspiration references help the team match finishes more quickly.
-            </div>
           </div>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
             {galleryImages.map((image) => (
@@ -3728,7 +3725,7 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
       </section>
 
       {page.sections?.length > 0 && (
-        <section className="mx-auto max-w-7xl px-4 py-4 sm:py-6">
+        <section className="mx-auto max-w-7xl px-4 py-6 sm:py-8">
           <div className="grid gap-3 md:grid-cols-3">
             {page.sections.map((section) => (
               <article key={section.title} className="rounded-xl border border-neutral-200 bg-white p-4 shadow-sm">
@@ -3741,7 +3738,7 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
       )}
 
       {page.eyebrow === 'Project guide' && (
-        <section className="mx-auto max-w-7xl px-4 py-4 sm:py-6">
+        <section className="mx-auto max-w-7xl px-4 py-6 sm:py-8">
           <div className="grid gap-4 rounded-xl border border-emerald-100 bg-emerald-50 p-4 sm:p-5 lg:grid-cols-[1fr_auto] lg:items-center">
             <div>
               <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Plan your finishing project</p>
@@ -3783,7 +3780,7 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
       )}
 
       {page.localFaqs?.length > 0 && (
-        <section className="mx-auto max-w-7xl px-4 py-4 sm:py-6">
+        <section className="mx-auto max-w-7xl px-4 py-6 sm:py-8">
           <div className="rounded-xl border border-emerald-100 bg-emerald-50/70 p-4 sm:p-5">
             <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Local FAQs</p>
             <h2 className="mt-2 text-xl font-semibold text-neutral-950 sm:text-2xl">Planning support for {page.category}</h2>
@@ -3799,7 +3796,7 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
         </section>
       )}
 
-      <section className="mx-auto max-w-7xl px-4 py-4 sm:py-6">
+      {page.eyebrow !== 'Project guide' && <section className="mx-auto max-w-7xl px-4 py-6 sm:py-8">
         <div className="grid gap-3 rounded-xl border border-neutral-200 bg-neutral-50 p-4 sm:p-5 lg:grid-cols-[1fr_auto] lg:items-center">
           <div>
             <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Local support</p>
@@ -3846,7 +3843,7 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
             </button>
           </div>
         </div>
-      </section>
+      </section>}
 
       <section className="mx-auto max-w-7xl px-4 py-6 sm:py-8">
         <div className="mb-4 rounded-xl border border-neutral-200 bg-white p-3 shadow-sm sm:p-4">
@@ -3868,9 +3865,9 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
         </div>
         <div className="flex flex-col gap-3 rounded-xl bg-neutral-950 p-4 text-white sm:p-5 md:flex-row md:items-center md:justify-between">
           <div>
-            <h2 className="text-xl font-semibold sm:text-2xl">Ready to plan a {page.category.toLowerCase()} quotation?</h2>
+            <h2 className="text-xl font-semibold sm:text-2xl">{page.eyebrow === 'Project guide' ? 'From ideas to materials' : `${page.category}: product enquiries`}</h2>
             <p className="mt-2 text-sm leading-6 text-neutral-300">
-              Send measurements, quantity, location and timing so the Kleihaus team can guide availability, matching options and next steps.
+              Product availability, matching finishes and quotation support from the Kleihaus team.
             </p>
           </div>
           <div className="flex shrink-0 flex-wrap gap-2">

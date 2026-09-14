@@ -1,5 +1,11 @@
 # Kleihaus Project Changelog
 
+## Block quality refinements
+
+- Removed duplicate guide delivery panel and repeated gallery enquiry instructions, shortened applications/audience headings and clarified category closing copy.
+- Aligned internal section padding and strengthened block screenshots to wait for visible images. Corrected stale footer-layout regression expectations.
+- See BLOCK_QUALITY_REVIEW.md for block inventory, validation and limitations.
+
 ## Compact footer
 
 - Consolidated Guides into a five-column desktop footer, with two-column Products and a slim copyright bar. Desktop height at 1440px reduced from 447px to 244px (45%).

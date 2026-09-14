@@ -13,6 +13,12 @@ for (const width of [390, 768, 1440]) {
       await expect(page.locator('h1')).toHaveCount(1)
       await expect(page.locator('h1')).toBeVisible()
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
+      for (const [index, section] of (await page.locator('section').all()).entries()) {
+        if (!(await section.isVisible())) continue
+        await section.scrollIntoViewIfNeeded()
+        await expect.poll(async () => section.locator('img').evaluateAll((images) => images.filter((img) => img.getBoundingClientRect().top < innerHeight && img.getBoundingClientRect().bottom > 0).every((img) => img.complete && img.naturalWidth > 0))).toBe(true)
+        await section.screenshot({ path: testInfo.outputPath(`${path.replaceAll('/', '-')}-block-${index}-${width}.png`) })
+      }
       for (const mosaic of await page.locator('.image-mosaic').all()) {
         const images = mosaic.locator('img')
         await expect(images).toHaveCount(3)
@@ -30,7 +36,7 @@ for (const width of [390, 768, 1440]) {
       await page.screenshot({ path: testInfo.outputPath(`${path.replaceAll('/', '-') || 'home'}-${width}.png`), fullPage: true })
     }
     await page.goto('/')
-    expect((await page.locator('footer h3').allTextContents()).slice(0, 4)).toEqual(['Products', 'Services', 'Projects', 'Contact'])
+    expect(await page.locator('footer h3').allTextContents()).toEqual(['Products', 'Services', 'Projects', 'Guides', 'Contact'])
     await expect(page.locator('footer a[href="/floor-tiles"]')).toHaveCount(1)
     await expect(page.locator('footer a[href="/projects"]')).toHaveCount(1)
     const slides = page.getByRole('button', { name: /^Show .* hero image$/ })

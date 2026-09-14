@@ -14,7 +14,12 @@ test('homepage presents named service areas only in Contact', async ({ page }) =
 test('general pages avoid repeated service-area lists while local pages remain available', async ({ page }) => {
   for (const path of ['/tiles', '/sanitaryware', '/tile-buying-guide']) {
     await page.goto(path)
-    await expect(page.getByRole('heading', { name: 'Plan delivery for your project.' })).toBeVisible()
+    if (path === '/tile-buying-guide') {
+      await expect(page.getByRole('heading', { name: 'Plan delivery for your project.' })).toHaveCount(0)
+      await expect(page.getByRole('heading', { name: 'Product guidance, backed by project support.' })).toBeVisible()
+    } else {
+      await expect(page.getByRole('heading', { name: 'Plan delivery for your project.' })).toBeVisible()
+    }
     for (const name of ['Nairobi', 'Machakos', 'Makueni']) {
       await expect(page.getByRole('link', { name, exact: true })).toHaveCount(0)
     }
