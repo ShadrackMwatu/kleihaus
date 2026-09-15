@@ -2332,7 +2332,7 @@ function ShopByCategory({ selectedCategory, onCategoryClick, onGuideClick, onSup
               key={category.name}
               className="group flex h-full flex-col overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-emerald-700 hover:shadow-md"
             >
-              <div className="relative aspect-[2/1] overflow-hidden bg-neutral-100 sm:aspect-[16/8]">
+              <div className="relative aspect-[2/1] overflow-hidden bg-neutral-100 sm:aspect-[16/7]">
                   <OptimizedImage
                     src={category.img}
                     alt={`${category.name} supplied by Kleihaus Ceramics in Kenya`}
@@ -2578,7 +2578,7 @@ function CustomerProjectGallery() {
                 sizes="(max-width: 640px) 100vw, 33vw"
                 loading="lazy"
                 decoding="async"
-                className="aspect-[16/7] w-full object-cover"
+                className="aspect-[16/6] w-full object-cover"
                 onError={(event) => {
                   event.currentTarget.onerror = null
                   event.currentTarget.src = '/images/placeholder.jpg'
@@ -2666,19 +2666,18 @@ function AudiencePathways() {
         </div>
         <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
           {audienceSegments.map((segment) => (
-            <article key={segment.slug} className="flex h-full flex-col rounded-lg border border-neutral-200 bg-neutral-50 p-3.5 shadow-sm">
-              <h3 className="text-base font-semibold text-neutral-950">{segment.name}</h3>
-              <p className="mt-1.5 text-sm leading-5 text-neutral-600">{homepageAudienceCopy[segment.slug]}</p>
-              <div className="mt-3 flex flex-wrap gap-2">
-                <a
-                  href={`/trade-projects#${segment.slug}`}
-                  onClick={() => analyticsService.track('audience_pathway_click', { clickedElement: `homepage_audience_${segment.slug}`, ctaLabel: segment.name, ctaPosition: 'homepage_audience_card', enquiryIntent: segment.intent, audienceSegment: segment.name })}
-                  className="inline-flex min-h-10 items-center rounded-md border border-neutral-300 bg-white px-3 py-2 text-xs font-semibold text-neutral-900 transition hover:border-emerald-700 hover:text-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-200"
-                >
-                  View support
-                </a>
-              </div>
-            </article>
+            <a
+              key={segment.slug}
+              href={`/trade-projects#${segment.slug}`}
+              onClick={() => analyticsService.track('audience_pathway_click', { clickedElement: `homepage_audience_${segment.slug}`, ctaLabel: segment.name, ctaPosition: 'homepage_audience_card', enquiryIntent: segment.intent, audienceSegment: segment.name })}
+              className="group flex h-full min-h-28 flex-col rounded-lg border border-neutral-200 bg-neutral-50 p-3.5 shadow-sm transition hover:border-emerald-700 hover:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-200"
+            >
+              <span className="flex items-center justify-between gap-3">
+                <h3 className="text-base font-semibold text-neutral-950">{segment.name}</h3>
+                <ArrowRight className="h-4 w-4 shrink-0 text-emerald-700 transition group-hover:translate-x-0.5" />
+              </span>
+              <span className="mt-1.5 text-sm leading-5 text-neutral-600">{homepageAudienceCopy[segment.slug]}</span>
+            </a>
           ))}
         </div>
       </div>
