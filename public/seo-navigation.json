@@ -2,9 +2,8 @@
   "primary": [
     {
       "label": "About",
-      "section": "about",
-      "href": "/#about",
-      "type": "section"
+      "href": "/about",
+      "type": "route"
     },
     {
       "label": "Products",
@@ -39,5 +38,5 @@
     }
   ],
   "generatedAt": "2026-08-20",
-  "routeCount": 39
+  "routeCount": 40
 }

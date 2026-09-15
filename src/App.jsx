@@ -3,7 +3,6 @@ import {
   ArrowRight,
   Brush,
   Calculator,
-  ClipboardList,
   ChevronLeft,
   ChevronRight,
   Droplets,
@@ -15,7 +14,6 @@ import {
   Search,
   ShieldCheck,
   ShowerHead,
-  Sparkles,
   Store,
   Ruler,
   Truck,
@@ -47,24 +45,9 @@ const heroSlides = [
     label: 'Bathroom sets',
   },
   {
-    image: '/images/sanitaryware/sanitaryware-shower-display-02.jpg',
-    alt: 'Sanitaryware shower and tap display at Kleihaus Ceramics',
-    label: 'Sanitaryware displays',
-  },
-  {
-    image: '/images/sanitaryware/sanitaryware-gold-shower-display-01.jpg',
-    alt: 'Gold shower and bathroom accessory display at Kleihaus Ceramics',
-    label: 'Shower fittings',
-  },
-  {
     image: '/images/paint-interior.jpg',
     alt: 'Interior paint options for Kleihaus finishing projects',
     label: 'Paint finishes',
-  },
-  {
-    image: '/images/adhesive.jpg',
-    alt: 'Tile adhesive and installation materials supplied by Kleihaus Ceramics',
-    label: 'Installation essentials',
   },
 ]
 
@@ -221,32 +204,11 @@ const categoryNav = ['Floor Tiles', 'Wall Tiles', 'Bathroom Tiles', 'Sanitarywar
 
 const categories = [
   {
-    name: 'Floor Tiles',
-    blurb: 'Durable finishes for homes, shops and projects.',
-    use: 'Homes, shops, offices and rental units',
+    name: 'Tiles',
+    blurb: 'Floor, wall, bathroom and outdoor finishes for every space.',
+    use: 'Homes, commercial spaces and projects',
     img: '/images/tiles-floor.jpg',
     icon: Store,
-  },
-  {
-    name: 'Wall Tiles',
-    blurb: 'Clean ceramic and decor wall finishes.',
-    use: 'Kitchens, bathrooms and feature walls',
-    img: '/images/tiles-wall.jpg',
-    icon: ClipboardList,
-  },
-  {
-    name: 'Outdoor Tiles',
-    blurb: 'Textured options for patios and wet areas.',
-    use: 'Balconies, patios, entries and wet zones',
-    img: '/images/tiles-floor-2.jpg',
-    icon: Sparkles,
-  },
-  {
-    name: 'Bathroom Tiles',
-    blurb: 'Coordinated wall and floor bathroom finishes.',
-    use: 'Bathrooms, showers and cloakrooms',
-    img: '/images/bathroom-blue-1.jpg',
-    icon: ShowerHead,
   },
   {
     name: 'Sanitaryware',
@@ -277,9 +239,9 @@ const categories = [
     icon: Brush,
   },
   {
-    name: 'Installation Support',
-    blurb: 'Tile planning, matching and site guidance.',
-    use: 'Quantity planning, product matching and site guidance',
+    name: 'Tiling & Installation',
+    blurb: 'Quantity planning, product matching and installation support.',
+    use: 'Preparation, fixing, grouting and guidance',
     img: '/images/tiler-service.jpg',
     icon: Wrench,
   },
@@ -1353,9 +1315,19 @@ const locationsIndexPage = {
   ],
 }
 
+const aboutPage = {
+  path: '/about',
+  title: 'About Kleihaus | Reliable Finishing Solutions in Kenya',
+  description: 'Learn why Kleihaus brings tiles, sanitaryware, paints, adhesives, grout, tiling and practical project support together for customers in Kenya.',
+  category: 'About Kleihaus',
+  schemaType: 'AboutPage',
+  pageType: 'about',
+  images: [{ src: '/images/kleihaus-structure.jpg', alt: 'Kleihaus Ceramics finishing solutions in Kenya', label: 'Kleihaus Ceramics' }],
+}
+
 const hubPages = [productsHubPage, guidesHubPage, locationsIndexPage]
 
-const categoryLandingByPath = Object.fromEntries([...hubPages, ...seoLandingPages, projectsPage, tradeProjectsPage].map((page) => [page.path, page]))
+const categoryLandingByPath = Object.fromEntries([...hubPages, ...seoLandingPages, projectsPage, tradeProjectsPage, aboutPage].map((page) => [page.path, page]))
 
 const categoryGuideTargets = {
   Tiles: '/tiles',
@@ -1368,6 +1340,7 @@ const categoryGuideTargets = {
   Paints: '/paints',
   'Adhesives & Grout': '/adhesives-grout',
   'Installation Support': '/installation-support',
+  'Tiling & Installation': '/installation-support',
 }
 
 const heroTrustBadges = [
@@ -1427,49 +1400,38 @@ function VisionMissionValues({ compact = false }) {
 
 const faqItems = [
   {
-    question: 'How much do tiles cost?',
-    answer: 'Prices vary by size, finish and quantity. Request a quote for current pricing.',
+    question: 'How much do tiles and sanitaryware cost?',
+    answer: 'Prices vary by product type, size, finish and quantity. Request a quotation for current options and pricing.',
   },
   {
-    question: 'How much does sanitaryware cost?',
-    answer: 'Prices depend on brand, finish and product type.',
+    question: 'What information is needed for a quotation?',
+    answer: 'Share the product type, measurements or quantities, preferred finish, project location and delivery or installation requirements.',
   },
   {
-    question: 'Do you support delivery?',
-    answer: 'Yes. Delivery support is available subject to location and order requirements.',
-  },
-  {
-    question: 'Do you offer installation guidance?',
-    answer: 'Yes. We provide product matching and installation advice.',
+    question: 'Do you provide delivery and installation support?',
+    answer: 'Yes. Delivery and installation support can be discussed according to the location, products and project requirements.',
   },
 ]
 
 const buyingGuideCards = [
   {
-    title: 'Selection Guidance',
-    question: 'Which tiles suit my space?',
+    title: 'Choosing the right finishes',
+    question: 'Choosing the right finishes',
     text: 'Choose tiles, sanitaryware and paints by room use, finish and budget.',
     icon: Ruler,
     href: '/tile-buying-guide',
   },
   {
-    title: 'Quantity Planning',
-    question: 'What should I send for a quote?',
+    title: 'Estimating quantities and costs',
+    question: 'Estimating quantities and costs',
     text: 'Estimate product quantities before finalizing sizes, finishes and delivery needs.',
     icon: Store,
     href: '/cost-estimation-guide',
   },
   {
-    title: 'Project Locations',
-    question: 'How do I plan local delivery?',
-    text: 'Check service areas and discuss delivery needs for your project.',
-    icon: Truck,
-    href: '/#contact',
-  },
-  {
-    title: 'Installation Support',
-    question: 'What do I need for installation?',
-    text: 'Explore adhesives, grout, tools, surface preparation and installer guidance.',
+    title: 'Planning installation and delivery',
+    question: 'Planning installation and delivery',
+    text: 'Prepare materials, delivery needs, surface conditions and installer guidance.',
     icon: Wrench,
     href: '/installation-support',
   },
@@ -1477,15 +1439,7 @@ const buyingGuideCards = [
 
 const projectGalleryItems = [
   {
-    title: 'Tile finish planning',
-    href: '/tiles',
-    text: 'Floor and wall tile combinations for homes, shops and project inspiration.',
-    image: '/images/tiles-gallery-1.jpg',
-    alt: 'Tile finish planning and product matching by Kleihaus Ceramics',
-    label: 'Tiles',
-  },
-  {
-    title: 'Bathroom coordination',
+    title: 'Bathrooms',
     href: '/bathroom-tiles',
     text: 'Sanitaryware, bathroom tiles and accessories matched for a cleaner finish.',
     image: '/images/bathroom-blue-1.jpg',
@@ -1493,14 +1447,31 @@ const projectGalleryItems = [
     label: 'Bathrooms',
   },
   {
-    title: 'Paint and finishing support',
-    href: '/paints',
-    text: 'Paints, adhesives, grout and finishing materials selected around project needs.',
-    image: '/images/paint-interior.jpg',
-    alt: 'Interior paint and finishing materials support by Kleihaus Ceramics',
-    label: 'Paints',
+    title: 'Kitchens',
+    href: '/sanitaryware#kitchen-sinks',
+    text: 'Sinks, mixers, tiles and surfaces considered together for a coherent kitchen.',
+    image: '/images/projects/project-kitchen-overview-01.jpg',
+    alt: 'Kitchen finishes coordinated by Kleihaus Ceramics',
+    label: 'Kitchens',
+  },
+  {
+    title: 'Floors, walls and commercial spaces',
+    href: '/tiles',
+    text: 'Coordinated floor and wall finishes for homes, offices, shops and larger projects.',
+    image: '/images/tiles-gallery-1.jpg',
+    alt: 'Tile finish planning and product matching by Kleihaus Ceramics',
+    label: 'Complete spaces',
   },
 ]
+
+const homepageAudienceCopy = {
+  homeowners: 'Product and quantity guidance for renovations, upgrades and new homes.',
+  'home-builders': 'Coordinated finishes for individual homes and residential developments.',
+  contractors: 'Responsive quotations, material matching and delivery support.',
+  'property-developers': 'Repeatable finishing schedules for multi-unit and commercial projects.',
+  'design-professionals': 'Specification-led options for architects, designers and consultants.',
+  'dealers-institutional-buyers': 'Consolidated supply support for organisations and facilities.',
+}
 
 const hasCustomBackground = (className = '') => /\bbg-/.test(className)
 
@@ -2035,19 +2006,42 @@ function Header({ projectType, searchQuery, setSearchQuery, onSearch, activeSect
 
         <nav className="hidden items-center justify-end gap-2 xl:flex">
           {navItems.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              aria-current={activeSection === item.section ? 'page' : undefined}
-              onClick={(event) => handlePrimaryNavClick(event, item)}
-              className={`rounded-md px-2 py-1.5 text-sm font-medium transition focus:outline-none focus:ring-2 focus:ring-emerald-200 ${
-                activeSection === item.section
-                  ? 'bg-emerald-50 text-emerald-800'
-                  : 'text-neutral-600 hover:bg-neutral-50 hover:text-neutral-950'
-              }`}
-            >
-              {item.label}
-            </a>
+            item.label === 'Products' ? (
+              <details key={item.label} className="group relative">
+                <summary className="cursor-pointer list-none rounded-md px-2 py-1.5 text-sm font-medium text-neutral-600 transition hover:bg-neutral-50 hover:text-neutral-950 focus:outline-none focus:ring-2 focus:ring-emerald-200">
+                  Products
+                </summary>
+                <div className="absolute right-0 top-full z-50 mt-2 w-[34rem] rounded-lg border border-brand-copper/25 bg-white p-4 shadow-xl">
+                  <div className="grid grid-cols-2 gap-2">
+                    {categoryNav.map((category) => (
+                      <a
+                        key={category}
+                        href={categoryGuideTargets[category] || '/products'}
+                        onClick={() => analyticsService.track('category_click', { productCategory: category, clickedElement: 'desktop_products_menu', projectType })}
+                        className="rounded-md border border-neutral-100 px-3 py-2 text-sm font-medium text-neutral-700 transition hover:border-brand-copper/40 hover:bg-brand-ivory hover:text-brand-forest focus:outline-none focus:ring-2 focus:ring-emerald-200"
+                      >
+                        {category}
+                      </a>
+                    ))}
+                  </div>
+                  <a href="/products" className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-brand-forest underline decoration-brand-copper/50 underline-offset-4">View all products <ArrowRight className="h-4 w-4" /></a>
+                </div>
+              </details>
+            ) : (
+              <a
+                key={item.label}
+                href={item.href}
+                aria-current={activeSection === item.section ? 'page' : undefined}
+                onClick={(event) => handlePrimaryNavClick(event, item)}
+                className={`rounded-md px-2 py-1.5 text-sm font-medium transition focus:outline-none focus:ring-2 focus:ring-emerald-200 ${
+                  activeSection === item.section
+                    ? 'bg-emerald-50 text-emerald-800'
+                    : 'text-neutral-600 hover:bg-neutral-50 hover:text-neutral-950'
+                }`}
+              >
+                {item.label}
+              </a>
+            )
           ))}
         </nav>
 
@@ -2059,28 +2053,6 @@ function Header({ projectType, searchQuery, setSearchQuery, onSearch, activeSect
         >
           {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
-      </div>
-
-      <div className="border-t border-neutral-100 bg-white">
-        <nav aria-label="Product categories" className="mx-auto flex max-w-7xl gap-1.5 overflow-x-auto px-4 py-1.5">
-          {categoryNav.map((item) => (
-            <a
-              key={item}
-              href={categoryGuideTargets[item] || '/products'}
-              aria-current={selectedCategory === item ? 'true' : undefined}
-              onClick={() => {
-                analyticsService.track('category_click', { productCategory: item, clickedElement: 'category_navigation', projectType })
-              }}
-              className={`inline-flex min-h-11 shrink-0 items-center rounded-full border px-3 py-1 text-xs font-medium transition focus:outline-none focus:ring-2 focus:ring-emerald-200 ${
-                selectedCategory === item
-                  ? 'border-emerald-600 bg-emerald-50 text-emerald-800'
-                  : 'border-neutral-200 bg-white text-neutral-600 hover:border-emerald-600/40 hover:bg-emerald-50 hover:text-emerald-700'
-              }`}
-            >
-              {item}
-            </a>
-          ))}
-        </nav>
       </div>
 
       {menuOpen && (
@@ -2103,6 +2075,16 @@ function Header({ projectType, searchQuery, setSearchQuery, onSearch, activeSect
               </a>
             ))}
           </nav>
+          <div className="mt-4 border-t border-neutral-200 pt-4">
+            <p className="mb-2 text-xs font-semibold uppercase text-brand-copper-text">Product categories</p>
+            <div className="grid grid-cols-2 gap-2">
+              {categoryNav.map((item) => (
+                <a key={item} href={categoryGuideTargets[item] || '/products'} onClick={() => setMenuOpen(false)} className="rounded-md border border-neutral-200 px-2 py-2 text-xs font-medium text-neutral-700 hover:border-emerald-600 hover:text-emerald-800">
+                  {item}
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
       )}
     </header>
@@ -2176,10 +2158,10 @@ function Hero({ onSectionChange }) {
           <div className="relative flex h-full w-full min-w-0 max-w-3xl flex-col justify-center px-5 py-6 pb-12 sm:px-9 sm:py-10 lg:px-10">
             <p className="max-w-[18rem] text-xs font-semibold uppercase tracking-wide text-white sm:max-w-none">Tiles. Sanitaryware. Paints. Tiling.</p>
             <h1 className="mt-2 max-w-[calc(100vw-4rem)] break-words text-[clamp(1.55rem,7.6vw,2.5rem)] font-semibold leading-[1.08] text-white sm:mt-3 sm:max-w-2xl sm:text-5xl sm:leading-tight lg:text-5xl">
-              Tiles, sanitaryware and paints for your space
+              Distinctive finishes. Dependable project support.
             </h1>
             <p className="mt-3 max-w-[18.5rem] break-words text-sm leading-5 text-neutral-100 sm:mt-4 sm:max-w-xl sm:text-base sm:leading-7">
-              Considered finishes, material sourcing and practical project support for homes, renovations and commercial spaces.
+              Tiles, sanitaryware, paints, tiling and coordinated finishing support for homes, renovations and commercial projects.
             </p>
             <div className="mt-4 flex flex-wrap items-center gap-2 max-sm:[&>*]:w-full max-sm:[&>*]:justify-center sm:mt-6 sm:gap-3">
               <Button
@@ -2193,6 +2175,16 @@ function Hero({ onSectionChange }) {
                 Explore Products
                 <ArrowRight className="h-4 w-4" />
               </Button>
+              <ButtonSecondary
+                type="button"
+                onClick={() => {
+                  analyticsService.track('contact_click', { clickedElement: 'hero_request_quote', ctaLabel: 'Request a Quotation', ctaPosition: 'hero', contactMethod: 'quote_form', enquiryIntent: 'quote' })
+                  onSectionChange('contact')
+                }}
+                className="border-white bg-white/10 px-3 py-2 text-xs text-white hover:bg-white/20 sm:px-5 sm:py-3 sm:text-sm"
+              >
+                Request a Quotation
+              </ButtonSecondary>
             </div>
           </div>
           <div className="absolute bottom-3 left-5 right-5 flex items-center justify-between gap-4 sm:bottom-4 sm:left-10 sm:right-10 lg:left-10 lg:right-10">
@@ -2252,33 +2244,57 @@ function Hero({ onSectionChange }) {
 function AboutSection() {
   return (
     <section id="about" className="bg-white">
-      <div className="mx-auto grid max-w-7xl gap-6 px-4 py-6 sm:py-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-        <div>
+      <div className="mx-auto max-w-7xl px-4 py-10 sm:py-12 lg:py-16">
+        <div className="max-w-3xl">
           <p className="text-sm font-semibold uppercase text-emerald-700">About Kleihaus</p>
-          <h2 className="mt-2 text-xl font-semibold text-neutral-950 sm:text-2xl">Why Kleihaus exists</h2>
-          <p className="mt-3 text-sm leading-6 text-neutral-600">
-            Finding reliable building and finishing materials in Kenya can mean navigating fragmented suppliers, inconsistent quality, uncertain dimensions and colours, stock shortages and unclear pricing. Selection mistakes and delayed deliveries add cost and uncertainty.
+          <h2 className="mt-2 text-xl font-semibold text-neutral-950 sm:text-2xl">Why Kleihaus</h2>
+          <p className="mt-3 text-base leading-7 text-neutral-600">
+            Finishing a project should not require coordinating multiple unreliable suppliers. Kleihaus brings tiles, sanitaryware, paints, adhesives and tiling support together—helping customers make confident choices, reduce delays and achieve better-finished spaces.
           </p>
-          <p className="mt-3 text-sm leading-6 text-neutral-600">
-            Kleihaus brings tiles, sanitaryware, paints, adhesives, grout and installation support together through a dependable, design-led and customer-focused platform serving Nairobi, Machakos, Makueni and surrounding areas.
-          </p>
-          <a href="/#contact" onClick={() => analyticsService.track('cta_click', { clickedElement: 'about_discuss_project', ctaLabel: 'Discuss Your Project', ctaPosition: 'about', enquiryIntent: 'project_support' })} className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-md bg-emerald-700 px-4 py-2 text-sm font-semibold text-white transition hover:bg-emerald-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700">
-            Discuss Your Project <ArrowRight className="h-4 w-4" aria-hidden="true" />
-          </a>
         </div>
-
-        <div>
-          <h3 className="font-semibold text-neutral-950">Our value proposition</h3>
-          <p className="mt-2 text-sm leading-6 text-neutral-600">Better spaces with less uncertainty, wasted time and costly mistakes. Carefully selected tiles, sanitaryware, paints, adhesives and related products are backed by practical guidance, quantity estimation, logistics and installation support.</p>
-          <p className="mt-3 text-sm leading-6 text-neutral-600">For homeowners, contractors, property developers, interior designers and institutions, this means a more coordinated approach to finishing.</p>
-          <blockquote className="mt-4 border-l-2 border-emerald-700 pl-4 text-base font-semibold leading-6 text-emerald-950">Reliable finishing materials, thoughtfully selected and professionally supported—from product choice to completed space.</blockquote>
+        <div className="mt-6 grid gap-3 sm:grid-cols-3">
+          {['Reliable products', 'Coordinated solutions', 'Practical project support'].map((value) => (
+            <div key={value} className="rounded-lg border border-brand-copper/20 bg-brand-ivory p-4 text-sm font-semibold text-brand-forest">{value}</div>
+          ))}
         </div>
-        <details className="border-t border-neutral-200 pt-3 lg:col-span-2">
-          <summary className="cursor-pointer py-2 text-sm font-semibold text-emerald-800">Our Vision, Mission and Core Values</summary>
-          <VisionMissionValues />
-        </details>
+        <a href="/about" onClick={() => analyticsService.track('cta_click', { clickedElement: 'about_learn_more', ctaLabel: 'About Kleihaus', ctaPosition: 'about', enquiryIntent: 'brand_trust' })} className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-md bg-brand-forest px-4 py-2 text-sm font-semibold text-white transition hover:bg-emerald-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700">
+          About Kleihaus <ArrowRight className="h-4 w-4" aria-hidden="true" />
+        </a>
       </div>
     </section>
+  )
+}
+
+function AboutPage({ page }) {
+  return (
+    <main className="bg-white">
+      <Breadcrumbs page={page} />
+      <section className="border-b border-emerald-100 bg-brand-ivory">
+        <div className="mx-auto max-w-4xl px-4 py-12 sm:py-16">
+          <p className="text-xs font-semibold uppercase text-emerald-700">About Kleihaus</p>
+          <h1 className="mt-2 text-3xl font-semibold text-neutral-950 sm:text-4xl">A more dependable way to finish spaces</h1>
+          <p className="mt-4 max-w-3xl text-base leading-7 text-neutral-700">Kleihaus exists to make quality finishing materials easier to access, understand and coordinate for homes, renovations and commercial projects in Kenya.</p>
+        </div>
+      </section>
+      <section className="mx-auto max-w-7xl px-4 py-10 sm:py-12 lg:py-16">
+        <div className="grid gap-8 lg:grid-cols-2">
+          <div>
+            <h2 className="text-2xl font-semibold text-neutral-950">Why Kleihaus exists</h2>
+            <p className="mt-3 text-base leading-7 text-neutral-600">Finding reliable building and finishing materials can mean navigating fragmented suppliers, inconsistent quality, stock uncertainty and unclear product information. Selection mistakes and delayed deliveries add avoidable cost.</p>
+            <p className="mt-3 text-base leading-7 text-neutral-600">Kleihaus brings tiles, sanitaryware, paints, adhesives, grout and tiling support together through a dependable, design-led and customer-focused platform serving Nairobi, Machakos, Makueni and surrounding areas.</p>
+          </div>
+          <div>
+            <h2 className="text-2xl font-semibold text-neutral-950">Our value proposition</h2>
+            <p className="mt-3 text-base leading-7 text-neutral-600">Better spaces with less uncertainty, wasted time and costly mistakes. Carefully selected products are supported by practical guidance, quantity estimation, logistics and installation assistance.</p>
+            <div className="mt-5 border-l-2 border-brand-copper pl-4">
+              <h2 className="text-sm font-semibold uppercase tracking-wide text-brand-copper-text">Brand promise</h2>
+              <blockquote className="mt-2 text-lg font-semibold leading-7 text-brand-forest">Reliable finishing materials, thoughtfully selected and professionally supported—from product choice to completed space.</blockquote>
+            </div>
+          </div>
+        </div>
+        <VisionMissionValues />
+      </section>
+    </main>
   )
 }
 
@@ -2295,7 +2311,7 @@ function ShopByCategory({ selectedCategory, onCategoryClick, onGuideClick, onSup
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 sm:gap-3 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {categories.map((category) => {
           const Icon = category.icon
           const landingPage = categoryLandingPages.find((page) => page.category === category.name)
@@ -2316,13 +2332,7 @@ function ShopByCategory({ selectedCategory, onCategoryClick, onGuideClick, onSup
               key={category.name}
               className="group flex h-full flex-col overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-emerald-700 hover:shadow-md"
             >
-              <a
-                href={guideTarget}
-                aria-label={`View ${category.name} category`}
-                onClick={() => analyticsService.track('category_click', { productCategory: category.name, clickedElement: 'category_image' })}
-                className="block w-full text-left"
-              >
-                <div className="relative aspect-[2/1] overflow-hidden bg-neutral-100 sm:aspect-[4/3]">
+              <div className="relative aspect-[2/1] overflow-hidden bg-neutral-100 sm:aspect-[16/10]">
                   <OptimizedImage
                     src={category.img}
                     alt={`${category.name} supplied by Kleihaus Ceramics in Kenya`}
@@ -2338,32 +2348,13 @@ function ShopByCategory({ selectedCategory, onCategoryClick, onGuideClick, onSup
                   <div className="absolute left-2 top-2 inline-flex h-7 w-7 items-center justify-center rounded-md bg-white/95 text-emerald-800 shadow-sm sm:left-3 sm:top-3 sm:h-9 sm:w-9">
                     <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
                   </div>
-                </div>
-              </a>
+              </div>
               <div className="flex flex-1 flex-col p-2.5 sm:p-3">
                 <div className="flex items-center justify-between gap-2 sm:gap-3">
                   <h3 className="text-sm font-semibold leading-snug text-neutral-950 sm:text-base">{category.name}</h3>
                   <ArrowRight className="h-4 w-4 shrink-0 text-neutral-400 transition group-hover:text-emerald-700" />
                 </div>
                 <p className="mt-1 line-clamp-2 text-[11px] leading-4 text-neutral-600 sm:text-sm sm:leading-5">{category.blurb}</p>
-                <div className="mt-1.5 flex flex-wrap gap-1.5">
-                  <span className="rounded-md bg-emerald-50 px-2 py-1 text-[10px] font-semibold text-emerald-800 sm:text-xs">{category.use}</span>
-                </div>
-                <a
-                  href={guideTarget}
-                  aria-label={`${destinationLabel} for ${category.name}`}
-                  className="group/link mt-1.5 inline-flex w-fit items-center gap-1 text-[10px] font-semibold uppercase tracking-wide text-emerald-700 underline decoration-emerald-200 underline-offset-4 transition hover:text-emerald-900 hover:decoration-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:text-xs"
-                  onClick={(event) => {
-                    analyticsService.track('category_click', {
-                      productCategory: category.name,
-                      clickedElement: `category_guide_${guideTarget}`,
-                    })
-                    onGuideClick(event, guideTarget, category.name)
-                  }}
-                >
-                  {destinationLabel}
-                  <ArrowRight className="h-3 w-3 transition group-hover/link:translate-x-0.5" />
-                </a>
                 {selectedCategory === category.name && (
                   <span className="mt-1.5 inline-flex rounded-md bg-emerald-50 px-2 py-1 text-[11px] font-semibold text-emerald-800 sm:text-xs">
                     Recommended for you
@@ -2374,7 +2365,7 @@ function ShopByCategory({ selectedCategory, onCategoryClick, onGuideClick, onSup
                   onClick={(event) => {
                     analyticsService.track('category_click', {
                       productCategory: category.name,
-                      clickedElement: `category_cta_${guideTarget}`,
+                      clickedElement: `category_card_${guideTarget}`,
                       ctaLabel: destinationLabel,
                       ctaPosition: 'category_card',
                       enquiryIntent: guideTarget.includes('guide') ? 'research' : 'product_discovery',
@@ -2564,7 +2555,7 @@ function CustomerProjectGallery() {
         <div className="mb-4 flex flex-col gap-2 sm:mb-5 md:flex-row md:items-end md:justify-between">
           <div className="max-w-3xl">
             <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Applications and inspiration</p>
-            <h2 className="mt-1.5 text-xl font-semibold text-neutral-950 sm:text-2xl">Finishes for every space</h2>
+            <h2 className="mt-1.5 text-xl font-semibold text-neutral-950 sm:text-2xl">Plan finishes by space</h2>
             <p className="mt-1.5 text-sm leading-6 text-neutral-600">
               Compare finishes for floors, walls, bathrooms and kitchens around the needs of your space.
             </p>
@@ -2614,9 +2605,9 @@ function ProjectsEvidence() {
         <div className="mb-4 flex flex-col gap-2 sm:mb-5 md:flex-row md:items-end md:justify-between">
           <div className="max-w-3xl">
             <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Projects</p>
-            <h2 className="mt-1.5 text-xl font-semibold text-neutral-950 sm:text-2xl">Kitchen finishes and material details.</h2>
+            <h2 className="mt-1.5 text-xl font-semibold text-neutral-950 sm:text-2xl">Selected project finishes</h2>
             <p className="mt-1.5 text-sm leading-6 text-neutral-600">
-              Explore selected projects featuring materials supplied or supported by Kleihaus, from sinks and worktops to tile details.
+              Explore kitchens, bathrooms and interior finishes featuring materials supplied or supported by Kleihaus.
             </p>
           </div>
           <a
@@ -2624,13 +2615,13 @@ function ProjectsEvidence() {
             onClick={() => analyticsService.track('project_click', { clickedElement: 'homepage_projects_gallery', ctaLabel: 'Browse Projects', ctaPosition: 'homepage_projects', enquiryIntent: 'project_gallery' })}
             className="inline-flex w-fit items-center gap-1.5 rounded-md border border-emerald-700 px-3 py-2 text-xs font-semibold text-emerald-800 transition hover:bg-emerald-50 focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:text-sm"
           >
-            Browse Projects
+            View Projects
             <ArrowRight className="h-4 w-4" />
           </a>
         </div>
-        <div className="grid gap-2.5 sm:grid-cols-3 sm:gap-3">
-          {[projectImageItems[3], projectImageItems[4], projectImageItems[0]].map((item) => (
-            <article key={item.src} className="overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-sm">
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {[projectImageItems[3], projectImageItems[4], projectImageItems[0]].map((item, index) => (
+            <article key={item.src} className={`overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-sm ${index === 0 ? 'sm:col-span-2 lg:col-span-2 lg:row-span-2' : 'lg:col-span-2'}`}>
               <OptimizedImage
                 src={item.src}
                 alt={item.alt}
@@ -2639,10 +2630,9 @@ function ProjectsEvidence() {
                 decoding="async"
                 width={item.width}
                 height={item.height}
-                className="aspect-[16/9] w-full object-cover"
+                className={`w-full object-cover ${index === 0 ? 'aspect-[16/9] lg:h-full lg:min-h-72' : 'aspect-[16/7]'}`}
               />
               <div className="p-3">
-                <p className="text-[11px] font-semibold uppercase tracking-wide text-emerald-700">{item.group}</p>
                 <h3 className="mt-1 text-sm font-semibold text-neutral-950 sm:text-base">{item.label}</h3>
               </div>
             </article>
@@ -2678,7 +2668,7 @@ function AudiencePathways() {
           {audienceSegments.map((segment) => (
             <article key={segment.slug} className="flex h-full flex-col rounded-lg border border-neutral-200 bg-neutral-50 p-4 shadow-sm">
               <h3 className="text-base font-semibold text-neutral-950">{segment.name}</h3>
-              <p className="mt-2 text-sm leading-6 text-neutral-600">{segment.need}</p>
+              <p className="mt-2 text-sm leading-6 text-neutral-600">{homepageAudienceCopy[segment.slug]}</p>
               <div className="mt-4 flex flex-wrap gap-2">
                 <a
                   href={`/trade-projects#${segment.slug}`}
@@ -2700,7 +2690,7 @@ function TradeProjectsPage({ page, onSectionChange, onSupportClick, onQuoteClick
   return (
     <main className="bg-white">
       <Breadcrumbs page={page} />
-      <section className="border-b border-emerald-100 bg-stone-50">
+      <section className="hub-hero border-b border-emerald-100 bg-stone-50">
         <div className="mx-auto grid max-w-7xl min-w-0 gap-5 px-4 py-6 sm:py-8 lg:grid-cols-[1fr_0.9fr] lg:items-center">
           <div className="min-w-0" style={{ maxWidth: 'calc(100vw - 2rem)' }}>
             <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">{page.eyebrow}</p>
@@ -2818,6 +2808,26 @@ function TradeProjectsPage({ page, onSectionChange, onSupportClick, onQuoteClick
           ))}
         </div>
       </section>
+
+      <section className="mx-auto max-w-7xl px-4 py-10 sm:py-12">
+        <div className="grid gap-4 rounded-xl bg-neutral-950 p-4 text-white sm:p-5 lg:grid-cols-[1fr_auto] lg:items-center">
+          <div>
+            <p className="text-xs font-semibold uppercase text-emerald-300 sm:text-sm">Next step</p>
+            <h2 className="mt-1.5 text-xl font-semibold sm:text-2xl">Send your BOQ or project requirements</h2>
+            <p className="mt-2 max-w-3xl text-sm leading-6 text-neutral-300">Share quantities, specifications, preferred finishes, location and timing for coordinated product and quotation support.</p>
+          </div>
+          <Button
+            type="button"
+            onClick={() => {
+              analyticsService.track('contact_click', { clickedElement: 'trade_projects_closing_quote', ctaLabel: 'Request a Quotation', ctaPosition: 'trade_projects_closing', contactMethod: 'quote_form', enquiryIntent: 'trade_project' })
+              onSectionChange('contact')
+            }}
+            className="w-full justify-center sm:w-auto"
+          >
+            Request a Quotation
+          </Button>
+        </div>
+      </section>
     </main>
   )
 }
@@ -2834,7 +2844,7 @@ function HelpfulGuides({ onGuideClick, onRouteNavigate }) {
             Quick answers on tiles, sanitaryware, paints, delivery and installation.
           </p>
         </div>
-        <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-3 sm:grid-cols-3">
           {buyingGuideCards.map((card) => {
             const Icon = card.icon
             return (
@@ -2860,6 +2870,9 @@ function HelpfulGuides({ onGuideClick, onRouteNavigate }) {
             )
           })}
         </div>
+        <a href="/guides" onClick={(event) => onRouteNavigate(event, '/guides')} className="mt-4 inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-brand-forest underline decoration-brand-copper/50 underline-offset-4">
+          View All Guides <ArrowRight className="h-4 w-4" />
+        </a>
         <div className="mt-3 rounded-md border border-neutral-200 bg-white shadow-sm">
           {faqItems.map((item, index) => (
             <div key={item.question} className={index > 0 ? 'border-t border-neutral-200' : ''}>
@@ -3042,13 +3055,6 @@ function Contact({ onSupportFormClick, quoteInterest = null, onClearInterest, co
     setIsQuoteSubmitting(false)
   }
 
-  const scrollToQuoteForm = () => {
-    quoteFormRef.current?.scrollIntoView({
-      behavior: window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
-      block: 'start',
-    })
-  }
-
   const handleTrackedWhatsAppClick = (event, href, trackClick) => {
     event.preventDefault()
     trackClick()
@@ -3075,22 +3081,6 @@ function Contact({ onSupportFormClick, quoteInterest = null, onClearInterest, co
           }),
         ),
     },
-    {
-      label: 'Call Kleihaus',
-      ariaLabel: 'Call Kleihaus Ceramics',
-      href: 'tel:+254748827166',
-      icon: Phone,
-      className: 'border-white/15 bg-white/10 text-white hover:bg-white/15',
-      onClick: () => analyticsService.track('phone_click', { clickedElement: 'contact_action_phone', ctaLabel: 'Call Kleihaus', ctaPosition: 'contact_actions', contactMethod: 'phone', enquiryIntent: 'contact' }),
-    },
-    {
-      label: 'Email Kleihaus',
-      ariaLabel: 'Email Kleihaus Ceramics',
-      href: 'mailto:sales@kleihaus.com',
-      icon: Mail,
-      className: 'border-white/15 bg-white/10 text-white hover:bg-white/15',
-      onClick: () => analyticsService.track('email_click', { clickedElement: 'contact_action_email', ctaLabel: 'Email Kleihaus', ctaPosition: 'contact_actions', contactMethod: 'email', enquiryIntent: 'contact' }),
-    },
   ]
 
   return (
@@ -3103,7 +3093,7 @@ function Contact({ onSupportFormClick, quoteInterest = null, onClearInterest, co
             Ask about product options and current availability, or send your requirements for a quotation.
           </p>
 
-          <div className="mt-5 grid gap-2 sm:grid-cols-2">
+          <div className="mt-5 max-w-xs">
             {contactActions.map((action) => {
               const Icon = action.icon
               return (
@@ -3119,17 +3109,6 @@ function Contact({ onSupportFormClick, quoteInterest = null, onClearInterest, co
                 </a>
               )
             })}
-            <button
-              type="button"
-              onClick={() => {
-                analyticsService.track('contact_click', { clickedElement: 'contact_action_quote', ctaLabel: 'Request a Quotation', ctaPosition: 'contact_actions', contactMethod: 'quote_form', enquiryIntent: 'quote' })
-                scrollToQuoteForm()
-              }}
-              className="inline-flex items-center justify-center gap-2 rounded-md border border-emerald-500 bg-brand-forest px-3 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200"
-            >
-              <ArrowRight className="h-4 w-4 shrink-0" />
-              Request a Quotation
-            </button>
           </div>
 
           <div className="mt-5 space-y-2 text-sm text-neutral-200">
@@ -3161,16 +3140,8 @@ function Contact({ onSupportFormClick, quoteInterest = null, onClearInterest, co
 
           <div className="mt-5 border-t border-white/10 pt-4">
             <h3 className="text-sm font-semibold text-white">From enquiry to order</h3>
-            <ol className="mt-2 list-inside list-decimal space-y-2 text-sm leading-6 text-neutral-200">
-              <li>Product requirements and project scope.</li>
-              <li>Available options and a tailored quotation.</li>
-              <li>Agreed payment and delivery arrangements.</li>
-            </ol>
+            <p className="mt-2 text-sm leading-6 text-neutral-200">Share requirements → Receive options and quotation → Confirm delivery</p>
             <p className="mt-2 text-xs leading-5 text-neutral-300">Sending an enquiry does not place an order or take payment.</p>
-          </div>
-          <div className="mt-5 border-t border-white/10 pt-4">
-            <p className="text-xs font-semibold uppercase text-neutral-300">Follow Kleihaus</p>
-            <SocialLinks placement="contact" className="mt-2" />
           </div>
         </div>
 
@@ -3192,7 +3163,7 @@ function Contact({ onSupportFormClick, quoteInterest = null, onClearInterest, co
               <button type="button" onClick={onClearInterest} className="min-h-11 shrink-0 px-2 text-sm font-semibold text-emerald-800 underline underline-offset-4">Clear selection</button>
             </div>
           )}
-          <div className="mb-4 rounded-md border border-emerald-100 bg-emerald-50 px-3 py-2 text-xs leading-5 text-emerald-950 sm:text-sm">
+          <div className="mb-3 rounded-md border border-emerald-100 bg-emerald-50 px-3 py-2 text-xs leading-5 text-emerald-950">
             Quotations are tailored to quantities, finishes and delivery requirements. Measurements or a bill of quantities are welcome where available.
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
@@ -3221,7 +3192,7 @@ function Contact({ onSupportFormClick, quoteInterest = null, onClearInterest, co
               name="message"
               autoComplete="off"
               placeholder="Example: 32 m2 floor tiles, matte finish, 85 pieces, delivery location, budget range..."
-              rows={4}
+              rows={3}
               value={quoteForm.message}
               onChange={updateQuoteField('message')}
             />
@@ -3506,11 +3477,17 @@ function Breadcrumbs({ page }) {
 }
 
 function HubPage({ page, onSectionChange, onSupportClick, onQuoteClick }) {
+  const closingTitles = {
+    products: 'Need current product options and pricing?',
+    guides: 'Still deciding what your project requires?',
+    locations: 'Discuss delivery and support in your area',
+  }
+
   return (
     <main className="bg-white">
       <Breadcrumbs page={page} />
-      <section className="border-b border-emerald-100 bg-stone-50">
-        <div className="mx-auto grid max-w-7xl gap-5 px-4 py-6 sm:py-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+      <section className="hub-hero border-b border-emerald-100 bg-stone-50">
+        <div className="mx-auto grid max-w-7xl gap-5 px-4 py-8 sm:py-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <div>
             <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">{page.eyebrow}</p>
             <h1 className="mt-2 max-w-3xl text-[clamp(1.75rem,6vw,2.5rem)] font-semibold leading-tight text-neutral-950 sm:text-4xl">
@@ -3594,7 +3571,7 @@ function HubPage({ page, onSectionChange, onSupportClick, onQuoteClick }) {
         <div className="grid gap-3 rounded-xl bg-neutral-950 p-4 text-white sm:p-5 lg:grid-cols-[1fr_auto] lg:items-center">
           <div>
             <p className="text-xs font-semibold uppercase text-emerald-300 sm:text-sm">Next step</p>
-            <h2 className="mt-1.5 text-xl font-semibold sm:text-2xl">Materials and support for your project</h2>
+            <h2 className="mt-1.5 text-xl font-semibold sm:text-2xl">{closingTitles[page.pageType]}</h2>
             <p className="mt-2 max-w-3xl text-sm leading-6 text-neutral-300">
               Product selection, tailored quotations and practical project support, brought together by Kleihaus.
             </p>
@@ -3949,7 +3926,7 @@ function ProjectsPage({ page, onSectionChange, onSupportClick, onQuoteClick }) {
   return (
     <main className="bg-white">
       <Breadcrumbs page={page} />
-      <section className="border-b border-emerald-100 bg-stone-50">
+      <section className="hub-hero border-b border-emerald-100 bg-stone-50">
         <div className="mx-auto grid max-w-7xl gap-6 px-4 py-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div>
             <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">{page.eyebrow}</p>
@@ -4049,7 +4026,7 @@ function ProjectsPage({ page, onSectionChange, onSupportClick, onQuoteClick }) {
         <div className="grid gap-4 rounded-xl bg-neutral-950 p-4 text-white sm:p-5 lg:grid-cols-[1fr_auto] lg:items-center">
           <div>
             <p className="text-xs font-semibold uppercase text-emerald-300 sm:text-sm">Plan a similar finish</p>
-            <h2 className="mt-1.5 text-xl font-semibold sm:text-2xl">Send measurements, photos and finish preferences for quote support.</h2>
+            <h2 className="mt-1.5 text-xl font-semibold sm:text-2xl">Request a similar finish for your project</h2>
             <p className="mt-2 max-w-3xl text-sm leading-6 text-neutral-300">
               Kleihaus can help compare tiles, sanitaryware, paints, adhesives, grout and finishing materials around your room, quantity, location and timing.
             </p>
@@ -4458,7 +4435,9 @@ export default function App() {
         onRouteNavigate={handleRouteNavigate}
       />
       {activeCategoryPage ? (
-        activeCategoryPage.pageType === 'projects' ? (
+        activeCategoryPage.pageType === 'about' ? (
+          <AboutPage page={activeCategoryPage} />
+        ) : activeCategoryPage.pageType === 'projects' ? (
           <ProjectsPage
             page={activeCategoryPage}
             onSectionChange={handleSectionChange}

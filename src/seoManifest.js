@@ -44,6 +44,24 @@ const coreRoutes = [
     ],
   },
   {
+    path: '/about',
+    title: 'About Kleihaus | Reliable Finishing Solutions in Kenya',
+    description:
+      'Learn why Kleihaus brings tiles, sanitaryware, paints, adhesives, grout, tiling and practical project support together for customers in Kenya.',
+    image: defaultImage,
+    imageAlt: 'Kleihaus Ceramics finishing solutions in Kenya',
+    category: 'About Kleihaus',
+    schemaType: 'AboutPage',
+    changefreq: 'monthly',
+    priority: '0.7',
+    relatedLinks: [
+      { label: 'Products', href: '/products' },
+      { label: 'Solutions', href: '/trade-projects' },
+      { label: 'Projects', href: '/projects' },
+      { label: 'Contact', href: '/#contact' },
+    ],
+  },
+  {
     path: '/tiles',
     title: 'Tiles Kenya | Floor, Wall & Bathroom Tiles | Kleihaus Ceramics',
     description:
@@ -553,7 +571,7 @@ export const seoConfig = seoRoutes.map(normalizeSeoRoute)
 export const seoConfigBySlug = Object.fromEntries(seoConfig.map((route) => [route.slug, route]))
 
 export const primaryNavigation = [
-  { label: 'About', section: 'about', href: '/#about', type: 'section' },
+  { label: 'About', href: '/about', type: 'route' },
   { label: 'Products', href: '/products', type: 'route' },
   { label: 'Solutions', href: '/trade-projects', type: 'route' },
   { label: 'Projects', href: '/projects', type: 'route' },
