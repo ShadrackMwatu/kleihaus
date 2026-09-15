@@ -2332,7 +2332,7 @@ function ShopByCategory({ selectedCategory, onCategoryClick, onGuideClick, onSup
               key={category.name}
               className="group flex h-full flex-col overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-emerald-700 hover:shadow-md"
             >
-              <div className="relative aspect-[2/1] overflow-hidden bg-neutral-100 sm:aspect-[16/10]">
+              <div className="relative aspect-[2/1] overflow-hidden bg-neutral-100 sm:aspect-[16/8]">
                   <OptimizedImage
                     src={category.img}
                     alt={`${category.name} supplied by Kleihaus Ceramics in Kenya`}
@@ -2578,7 +2578,7 @@ function CustomerProjectGallery() {
                 sizes="(max-width: 640px) 100vw, 33vw"
                 loading="lazy"
                 decoding="async"
-                className="aspect-[16/9] w-full object-cover"
+                className="aspect-[16/7] w-full object-cover"
                 onError={(event) => {
                   event.currentTarget.onerror = null
                   event.currentTarget.src = '/images/placeholder.jpg'
@@ -2619,9 +2619,9 @@ function ProjectsEvidence() {
             <ArrowRight className="h-4 w-4" />
           </a>
         </div>
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-3 lg:grid-cols-2">
           {[projectImageItems[3], projectImageItems[4], projectImageItems[0]].map((item, index) => (
-            <article key={item.src} className={`overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-sm ${index === 0 ? 'sm:col-span-2 lg:col-span-2 lg:row-span-2' : 'lg:col-span-2'}`}>
+            <article key={item.src} className={`overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-sm ${index === 0 ? 'lg:row-span-2' : ''}`}>
               <OptimizedImage
                 src={item.src}
                 alt={item.alt}
@@ -2630,7 +2630,7 @@ function ProjectsEvidence() {
                 decoding="async"
                 width={item.width}
                 height={item.height}
-                className={`w-full object-cover ${index === 0 ? 'aspect-[16/9] lg:h-full lg:min-h-72' : 'aspect-[16/7]'}`}
+                className={`w-full object-cover ${index === 0 ? 'aspect-[16/9] lg:h-[22rem]' : 'aspect-[16/6] lg:h-[9rem]'}`}
               />
               <div className="p-3">
                 <h3 className="mt-1 text-sm font-semibold text-neutral-950 sm:text-base">{item.label}</h3>
@@ -2666,16 +2666,16 @@ function AudiencePathways() {
         </div>
         <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
           {audienceSegments.map((segment) => (
-            <article key={segment.slug} className="flex h-full flex-col rounded-lg border border-neutral-200 bg-neutral-50 p-4 shadow-sm">
+            <article key={segment.slug} className="flex h-full flex-col rounded-lg border border-neutral-200 bg-neutral-50 p-3.5 shadow-sm">
               <h3 className="text-base font-semibold text-neutral-950">{segment.name}</h3>
-              <p className="mt-2 text-sm leading-6 text-neutral-600">{homepageAudienceCopy[segment.slug]}</p>
-              <div className="mt-4 flex flex-wrap gap-2">
+              <p className="mt-1.5 text-sm leading-5 text-neutral-600">{homepageAudienceCopy[segment.slug]}</p>
+              <div className="mt-3 flex flex-wrap gap-2">
                 <a
                   href={`/trade-projects#${segment.slug}`}
                   onClick={() => analyticsService.track('audience_pathway_click', { clickedElement: `homepage_audience_${segment.slug}`, ctaLabel: segment.name, ctaPosition: 'homepage_audience_card', enquiryIntent: segment.intent, audienceSegment: segment.name })}
                   className="inline-flex min-h-10 items-center rounded-md border border-neutral-300 bg-white px-3 py-2 text-xs font-semibold text-neutral-900 transition hover:border-emerald-700 hover:text-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-200"
                 >
-                  {segment.name} requirements
+                  View support
                 </a>
               </div>
             </article>
@@ -3085,15 +3085,15 @@ function Contact({ onSupportFormClick, quoteInterest = null, onClearInterest, co
 
   return (
     <section id="contact" className={compact ? 'rounded-xl bg-neutral-950 text-white' : 'bg-neutral-950 text-white'}>
-      <div className={`${compact ? 'grid gap-4 p-4 sm:p-5' : 'mx-auto grid max-w-7xl gap-6 px-4 py-6 sm:py-8'} lg:grid-cols-[0.9fr_1.1fr]`}>
+      <div className={`${compact ? 'grid gap-4 p-4 sm:p-5' : 'mx-auto grid max-w-7xl gap-5 px-4 py-6'} lg:grid-cols-[0.9fr_1.1fr]`}>
         <div>
           <p className="text-sm font-semibold uppercase text-emerald-300">Contact Kleihaus</p>
           <h2 className="mt-1.5 text-2xl font-semibold sm:text-3xl">Request a quotation or talk to Kleihaus now.</h2>
-          <p className="mt-3 leading-6 text-neutral-300">
+          <p className="mt-2 max-w-xl text-sm leading-6 text-neutral-300">
             Ask about product options and current availability, or send your requirements for a quotation.
           </p>
 
-          <div className="mt-5 max-w-xs">
+          <div className="mt-3 max-w-xs">
             {contactActions.map((action) => {
               const Icon = action.icon
               return (
@@ -3111,7 +3111,7 @@ function Contact({ onSupportFormClick, quoteInterest = null, onClearInterest, co
             })}
           </div>
 
-          <div className="mt-5 space-y-2 text-sm text-neutral-200">
+          <div className="mt-3 space-y-2 text-sm text-neutral-200">
             <a href="tel:+254748827166" className="flex items-center gap-3 hover:text-white" onClick={() => analyticsService.track('phone_click', { clickedElement: 'contact_phone' })}>
               <Phone className="h-4 w-4 text-emerald-300" />
               +254 748 827 166
@@ -3138,10 +3138,10 @@ function Contact({ onSupportFormClick, quoteInterest = null, onClearInterest, co
             </div>
           </div>
 
-          <div className="mt-5 border-t border-white/10 pt-4">
+          <div className="mt-3 border-t border-white/10 pt-3">
             <h3 className="text-sm font-semibold text-white">From enquiry to order</h3>
             <p className="mt-2 text-sm leading-6 text-neutral-200">Share requirements → Receive options and quotation → Confirm delivery</p>
-            <p className="mt-2 text-xs leading-5 text-neutral-300">Sending an enquiry does not place an order or take payment.</p>
+            <p className="mt-1 text-xs leading-5 text-neutral-300">Sending an enquiry does not place an order or take payment.</p>
           </div>
         </div>
 
@@ -3151,11 +3151,11 @@ function Contact({ onSupportFormClick, quoteInterest = null, onClearInterest, co
           onSubmit={submitQuoteRequest}
           noValidate
           autoComplete="off"
-          className="rounded-lg bg-white p-4 text-neutral-950 shadow-xl sm:p-5"
+          className="rounded-lg bg-white p-4 text-neutral-950 shadow-xl"
         >
-          <div className="mb-4">
+          <div className="mb-3">
             <h3 className="text-lg font-semibold">Tell us what you need</h3>
-            <p className="mt-1 text-sm leading-5 text-neutral-600">Provide your name, request details and either a phone number or email address. You do not need both.</p>
+            <p className="mt-1 text-xs leading-5 text-neutral-600">Add your request details and either a phone number or email address.</p>
           </div>
           {quoteInterest && (
             <div className="mb-4 flex items-center justify-between gap-3 rounded-md border border-neutral-200 p-3 text-sm">
@@ -3163,9 +3163,6 @@ function Contact({ onSupportFormClick, quoteInterest = null, onClearInterest, co
               <button type="button" onClick={onClearInterest} className="min-h-11 shrink-0 px-2 text-sm font-semibold text-emerald-800 underline underline-offset-4">Clear selection</button>
             </div>
           )}
-          <div className="mb-3 rounded-md border border-emerald-100 bg-emerald-50 px-3 py-2 text-xs leading-5 text-emerald-950">
-            Quotations are tailored to quantities, finishes and delivery requirements. Measurements or a bill of quantities are welcome where available.
-          </div>
           <div className="grid gap-3 sm:grid-cols-2">
             <label className="grid gap-2 text-sm font-medium text-neutral-700">
               Name
