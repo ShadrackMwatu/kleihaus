@@ -4111,9 +4111,47 @@ function Footer() {
     { label: 'View All Projects', href: '/projects' },
     { label: 'Kitchen Projects', href: '/projects#kitchen-projects' },
   ]
+  const mobileExploreLinks = [
+    { label: 'Products', href: '/products' },
+    { label: 'Projects', href: '/projects' },
+    { label: 'Guides', href: '/guides' },
+    { label: 'About', href: '/about' },
+  ]
+  const mobileServiceLinks = [
+    { label: 'Finishing Advisory', href: '/solutions' },
+    { label: 'Delivery', href: '/contact' },
+    { label: 'Tiling & Installation', href: '/installation-support' },
+  ]
   return (
     <footer data-site-footer className="border-t border-brand-copper bg-brand-forest text-white">
-      <nav aria-label="Footer navigation" className="footer-main mx-auto grid max-w-7xl gap-5 px-4 py-5">
+      <nav aria-label="Footer navigation" className="footer-mobile mx-auto max-w-7xl px-4 py-5 lg:hidden">
+        <div className="footer-mobile-contact">
+          <h3>Contact</h3>
+          <div className="mt-2 grid gap-1">
+            <a href="mailto:sales@kleihaus.com"><Mail className="h-4 w-4" />sales@kleihaus.com</a>
+            <a href="tel:+254748827166"><Phone className="h-4 w-4" />+254 748 827 166</a>
+          </div>
+        </div>
+
+        {[
+          { title: 'Explore', links: mobileExploreLinks },
+          { title: 'Services', links: mobileServiceLinks },
+        ].map((section) => (
+          <details className="footer-disclosure" key={section.title}>
+            <summary>{section.title}<span aria-hidden="true">+</span></summary>
+            <ul>
+              {section.links.map((link) => <li key={link.href}><a href={link.href}>{link.label}</a></li>)}
+            </ul>
+          </details>
+        ))}
+
+        <div className="footer-mobile-follow">
+          <h3>Follow Kleihaus</h3>
+          <SocialLinks placement="footer" showText={false} compact className="mt-2" />
+        </div>
+      </nav>
+
+      <nav aria-label="Footer navigation" className="footer-main mx-auto hidden max-w-7xl gap-5 px-4 py-5 lg:grid">
         <div className="w-full md:justify-self-start">
           <h3 className="text-sm font-semibold uppercase text-white">Products</h3>
           <ul className="footer-products mt-2 grid grid-cols-2 gap-x-4 text-xs text-white/90">
@@ -4130,7 +4168,7 @@ function Footer() {
         <div className="w-full lg:max-w-max lg:justify-self-center">
           <h3 className="text-sm font-semibold uppercase text-white">Services</h3>
           <ul className="mt-2 grid gap-0.5 text-xs text-white/90 sm:gap-1.5 sm:text-sm">
-            {['Finishing Advisory', 'Delivery', 'Installation'].map((item) => (
+            {['Finishing Advisory', 'Delivery', 'Tiling & Installation'].map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>
