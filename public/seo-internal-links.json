@@ -58,6 +58,28 @@
       "reason": "declared"
     }
   ],
+  "/about": [
+    {
+      "label": "Products",
+      "href": "/products",
+      "reason": "declared"
+    },
+    {
+      "label": "Solutions",
+      "href": "/trade-projects",
+      "reason": "declared"
+    },
+    {
+      "label": "Projects",
+      "href": "/projects",
+      "reason": "declared"
+    },
+    {
+      "label": "Contact",
+      "href": "/#contact",
+      "reason": "declared"
+    }
+  ],
   "/tiles": [
     {
       "label": "Floor tiles",

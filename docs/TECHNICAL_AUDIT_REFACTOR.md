@@ -1,5 +1,23 @@
 # Technical Audit and Safe Refactor
 
+## PR #2 Conflict Resolution Follow-up
+
+Current base: `d4a7917`. Git's trial merge confirmed one content conflict in `src/App.jsx`: main inserted `homepageAudienceCopy` next to the inline buttons removed by this PR. Resolution retains that content and main's other changes while keeping the shared-button import. Compared with current main, App differs only by the original button extraction. Main was merged into an isolated repair branch, never the reverse. The original working tree and its pending scrolling/report changes were not edited.
+
+At diagnosis, GitHub returned no commit status entries and no PR-triggered Actions runs. These APIs do not establish whether branch protection exists; the proven mergeability blocker was the content conflict. The PR was also draft. No branch protections or deployment settings were changed.
+
+Fresh validation on the resolved tree:
+
+- Lockfile install and production build passed. Main now has 40 routes and 62 image groups; the automated SEO score is 99/100 with no blocking generator errors.
+- 11 SEO unit tests and eight analytics mapping checks passed; git diff --check passed.
+- Browser suite: 4 passed, 9 failed. Both button parity tests and both mocked enquiry tests passed.
+- All three block-layout viewport tests reached the footer-heading assertion after their route/image/overflow checks, then failed because main now includes additional Contact and Follow Kleihaus headings.
+- All three footer tests passed destination-list comparison, then expected three external social anchors but found six across hidden desktop/mobile markup.
+- Two browsing tests still expect main's removed Product categories navigation and Kitchen Sinks & Mixers catalogue link.
+- The rendered SEO test checked all 40 routes and reported two unmapped destinations: `/solutions` and `/contact`. These references and the unchanged manifest come from current main. The static audit also reports `/not-a-route` from a deliberate negative test fixture.
+
+These failures remain explicitly reported rather than being hidden by relaxed tests or unrelated route/layout changes. No generated outputs or screenshots are included in the conflict-resolution commit. The earlier successful audit results below describe the older base, not this updated main. This PR is reviewable after conflict resolution but is not represented as fully green or deployment-ready.
+
 Audit date: 2026-09-16. Base commit: `279d6bc`. Review branch: `codex/technical-audit-refactor`.
 
 ## Executive Summary

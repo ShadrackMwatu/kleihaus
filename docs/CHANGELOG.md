@@ -1,5 +1,13 @@
 # Kleihaus Project Changelog
 
+## Premium structural refinement
+
+- Simplified the desktop header into an accessible Products menu, retained category discovery in the mobile menu and reduced the sticky-header footprint.
+- Focused the homepage around four hero images, six principal product categories, space-based planning, compact project evidence and shorter audience messaging.
+- Added a dedicated `/about` page for the full value proposition, Vision, Mission and seven core values while keeping a concise homepage introduction.
+- Consolidated buying guides and FAQs, removed repeated social and contact actions, and retained the compact footer, enquiry backend, analytics and page-height fix.
+- Added page-specific hub CTAs, restrained display typography to H1/H2 and reduced oversized internal hero treatments.
+
 ## Block quality refinements
 
 - Removed duplicate guide delivery panel and repeated gallery enquiry instructions, shortened applications/audience headings and clarified category closing copy.

@@ -13,6 +13,11 @@ for (const width of [390, 768, 1440]) {
       await expect(page.locator('h1')).toHaveCount(1)
       await expect(page.locator('h1')).toBeVisible()
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
+      const footerGap = await page.locator('footer').evaluate((footer) => {
+        const footerBottom = footer.getBoundingClientRect().bottom + window.scrollY
+        return Math.abs(document.documentElement.scrollHeight - footerBottom)
+      })
+      expect(footerGap).toBeLessThan(2)
       for (const [index, section] of (await page.locator('section').all()).entries()) {
         if (!(await section.isVisible())) continue
         await section.scrollIntoViewIfNeeded()
