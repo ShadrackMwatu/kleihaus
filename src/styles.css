@@ -289,21 +289,8 @@ footer {
   padding-bottom: max(0.625rem, env(safe-area-inset-bottom));
 }
 
-.footer-main {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
 .footer-main > div {
   min-width: 0;
-}
-
-.footer-main > div:first-child,
-.footer-contact {
-  grid-column: 1 / -1;
-}
-
-.footer-contact {
-  order: -1;
 }
 
 .footer-main h3 {
@@ -335,15 +322,74 @@ footer {
   flex-shrink: 0;
 }
 
-@media (min-width: 640px) {
-  .footer-main { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .footer-main > div:first-child { grid-column: span 2; }
-  .footer-contact { grid-column: auto; order: 0; }
+.footer-mobile h3,
+.footer-disclosure summary {
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.footer-mobile-contact a {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  gap: 0.5rem;
+  width: fit-content;
+  font-size: 0.875rem;
+  color: rgb(255 255 255 / 0.9);
+}
+
+.footer-disclosure {
+  border-top: 1px solid rgb(255 255 255 / 0.18);
+}
+
+.footer-disclosure summary {
+  display: flex;
+  min-height: 44px;
+  cursor: pointer;
+  list-style: none;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-disclosure summary::-webkit-details-marker {
+  display: none;
+}
+
+.footer-disclosure summary span {
+  color: var(--kleihaus-copper);
+  font-size: 1.25rem;
+  font-weight: 400;
+  transition: transform 180ms ease;
+}
+
+.footer-disclosure[open] summary span {
+  transform: rotate(45deg);
+}
+
+.footer-disclosure ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.125rem 1rem;
+  padding: 0 0 0.75rem;
+}
+
+.footer-disclosure a {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  font-size: 0.8125rem;
+  color: rgb(255 255 255 / 0.9);
+}
+
+.footer-mobile-follow {
+  border-top: 1px solid rgb(255 255 255 / 0.18);
+  padding-top: 0.75rem;
 }
 
 @media (min-width: 1024px) {
   .footer-main { grid-template-columns: 2fr 1fr 1fr 1.5fr 1.4fr; gap: 24px; padding-block: 20px; }
-  .footer-main > div:first-child { grid-column: auto; }
   .footer-main a:not([target='_blank']) { min-height: 28px; }
 }
 
