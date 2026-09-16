@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { Button, ButtonSecondary } from './components/Buttons.jsx'
 import {
   ArrowRight,
   Brush,
@@ -1501,38 +1502,6 @@ const projectGalleryItems = [
     label: 'Paints',
   },
 ]
-
-const hasCustomBackground = (className = '') => /\bbg-/.test(className)
-
-const Button = ({ className = '', children, ...props }) => {
-  const defaultVisuals = hasCustomBackground(className)
-    ? ''
-    : 'border-brand-forest bg-brand-forest text-white hover:bg-emerald-900'
-
-  return (
-    <button
-      className={`inline-flex items-center justify-center rounded-md border px-4 py-2.5 text-sm font-semibold shadow-sm transition ${defaultVisuals} ${className}`}
-      {...props}
-    >
-      {children}
-    </button>
-  )
-}
-
-const ButtonSecondary = ({ className = '', children, ...props }) => {
-  const defaultVisuals = hasCustomBackground(className)
-    ? ''
-    : 'border-brand-forest bg-white text-brand-forest hover:border-brand-copper'
-
-  return (
-    <button
-      className={`inline-flex items-center justify-center rounded-md border px-4 py-2.5 text-sm font-semibold shadow-sm transition ${defaultVisuals} ${className}`}
-      {...props}
-    >
-      {children}
-    </button>
-  )
-}
 
 const WhatsAppLogo = ({ className = 'h-4 w-4' }) => (
   <svg className={className} viewBox="0 0 32 32" aria-hidden="true" focusable="false" fill="currentColor">
