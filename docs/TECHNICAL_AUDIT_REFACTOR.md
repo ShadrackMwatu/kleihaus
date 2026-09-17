@@ -1,5 +1,31 @@
 # Technical Audit and Safe Refactor
 
+## Browser Failure Review and Corrections (2026-09-17)
+
+This follow-up supersedes the failing-browser status in the historical conflict-resolution section below. Classification is based on main `d4a7917` and the actual failed assertions, not on removing checks until they pass.
+
+| Original failing test | Classification | Root cause and correction |
+| --- | --- | --- |
+| block-layout, 390px | Obsolete assertion | Main's mobile footer intentionally adds Contact/Follow Kleihaus alongside hidden desktop headings. Assert exact headings for the active layout and open Explore to verify the project link. |
+| block-layout, 768px | Obsolete assertion | Same responsive markup change; exact tablet headings and disclosure labels now checked. |
+| block-layout, 1440px | Obsolete assertion | Global heading query included hidden mobile headings. Exact five-column desktop headings remain required. |
+| footer-compact, 390px | Obsolete assertion | Main renders separate mobile/desktop social groups. Require exactly three visible links, six total, the other layout hidden, and correct security attributes on every link. |
+| footer-compact, 768px | Obsolete assertion | Same duplication in hidden responsive markup. Also test keyboard opening of disclosures and real service-link navigation. |
+| footer-compact, 1440px | Obsolete assertion | Same hidden markup count. Preserve exact desktop destinations, height budget and focus check. |
+| browsing: category navigation | Obsolete assertion | Main replaced the category strip with a native Products disclosure. Test keyboard opening, exact destinations and actual kitchen-anchor navigation instead of removed aria-current state. |
+| browsing: homepage category links | Obsolete assertion | Main replaced the image-link aria-label with the visible View Sinks and Mixers CTA and removed the Explore bathrooms block. Test the current CTA's exact destination and actual target visibility. |
+| rendered SEO, all routes | Genuine application defect | Mobile footer used unregistered /solutions and /contact routes. Map to existing /trade-projects and /#contact, matching primary navigation. No route is removed or invented; the 40-route manifest remains unchanged. |
+
+The new click assertions additionally exposed a real cold-load fragment defect: URLs retained #kitchen-sinks or #contact but React mounted the destination after native scrolling had run. A narrowly scoped effect scrolls the matching element after rendering and on hash changes, cleans up listeners/animation frames, and safely ignores malformed fragments. It does not emit analytics events or alter form handling. The previously failing viewport assertions remain in place.
+
+The full local suite also revealed obsolete About and editorial expectations from before main's redesign: full purpose/values content now lives at /about, reached by a keyboard-activated About link; H2 uses the display serif and H3 uses sans-serif. Tests now verify the exact existing destination, all seven values, each heading's intended family, existing font sizes and spacing. The brand screenshot itinerary uses the existing /#contact destination rather than testing an unknown route's fallback.
+
+No tests are skipped or marked expected-to-fail. Layout bounds, exact link lists, image checks, keyboard interactions, quote success/retry and analytics mappings remain enforced. The local responsive suite is all 20 tests in the ten local spec files; the separate live GA4 network-delivery test is not part of local responsive validation and was not run against production. No production delivery claim is made.
+
+Application scope is only two footer hrefs and post-render fragment navigation. Original workspace changes and generated reports remain untouched; isolated build reports and screenshots are not committed.
+
+Final validation: production build PASS; 40-route/62-image-group SEO audit PASS (100/100 technical score); 11 SEO unit tests PASS; eight analytics mappings PASS; git diff --check PASS; all 20 local Chromium tests PASS with no skips (42.0 seconds). Responsive widths: 390, 768 and 1440px. Rendered route audit: zero unmapped destinations and zero heading skips. Footer heights: 357px mobile/tablet and 244px desktop. No merge or deployment performed.
+
 ## PR #2 Conflict Resolution Follow-up
 
 Current base: `d4a7917`. Git's trial merge confirmed one content conflict in `src/App.jsx`: main inserted `homepageAudienceCopy` next to the inline buttons removed by this PR. Resolution retains that content and main's other changes while keeping the shared-button import. Compared with current main, App differs only by the original button extraction. Main was merged into an isolated repair branch, never the reverse. The original working tree and its pending scrolling/report changes were not edited.

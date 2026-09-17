@@ -4087,8 +4087,8 @@ function Footer() {
     { label: 'About', href: '/about' },
   ]
   const mobileServiceLinks = [
-    { label: 'Finishing Advisory', href: '/solutions' },
-    { label: 'Delivery', href: '/contact' },
+    { label: 'Finishing Advisory', href: '/trade-projects' },
+    { label: 'Delivery', href: '/#contact' },
     { label: 'Tiling & Installation', href: '/installation-support' },
   ]
   return (
@@ -4221,6 +4221,29 @@ export default function App() {
   const activeCategoryPage = categoryLandingByPath[currentPath]
 
   const refreshSignals = () => setEventRevision((revision) => revision + 1)
+
+  useEffect(() => {
+    let frame
+    const scrollToFragment = () => {
+      window.cancelAnimationFrame(frame)
+      frame = window.requestAnimationFrame(() => {
+        const fragment = window.location.hash.slice(1)
+        if (!fragment) return
+        try {
+          document.getElementById(decodeURIComponent(fragment))?.scrollIntoView({ block: 'start' })
+        } catch {
+          // Ignore malformed URL fragments without interrupting navigation.
+        }
+      })
+    }
+    // Native fragment scrolling can run before React has mounted the target.
+    scrollToFragment()
+    window.addEventListener('hashchange', scrollToFragment)
+    return () => {
+      window.cancelAnimationFrame(frame)
+      window.removeEventListener('hashchange', scrollToFragment)
+    }
+  }, [currentPath])
 
   useEffect(() => {
     const pageType = currentPath.startsWith('/locations/')

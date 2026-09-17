@@ -11,8 +11,9 @@ test('commercial blocks share a consistent type hierarchy', async ({ page }) => 
         const style = getComputedStyle(node)
         return { tag: node.tagName, size: style.fontSize, spacing: style.letterSpacing, family: style.fontFamily }
       }))
-      expect(new Set(styles.map((style) => style.family)).size).toBe(1)
+      expect(styles.length).toBeGreaterThan(0)
       for (const style of styles) {
+        expect(style.family).toContain(style.tag === 'H3' ? 'ui-sans-serif' : 'Georgia')
         expect(style.size).toBe(style.tag === 'H3' ? '16px' : width === 390 ? '20px' : '24px')
         expect(['normal', '0px']).toContain(style.spacing)
       }
