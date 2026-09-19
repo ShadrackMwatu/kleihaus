@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { Button, ButtonSecondary } from './components/Buttons.jsx'
 import {
   ArrowRight,
   Brush,
@@ -1471,38 +1472,6 @@ const homepageAudienceCopy = {
   'property-developers': 'Repeatable finishing schedules for multi-unit and commercial projects.',
   'design-professionals': 'Specification-led options for architects, designers and consultants.',
   'dealers-institutional-buyers': 'Consolidated supply support for organisations and facilities.',
-}
-
-const hasCustomBackground = (className = '') => /\bbg-/.test(className)
-
-const Button = ({ className = '', children, ...props }) => {
-  const defaultVisuals = hasCustomBackground(className)
-    ? ''
-    : 'border-brand-forest bg-brand-forest text-white hover:bg-emerald-900'
-
-  return (
-    <button
-      className={`inline-flex items-center justify-center rounded-md border px-4 py-2.5 text-sm font-semibold shadow-sm transition ${defaultVisuals} ${className}`}
-      {...props}
-    >
-      {children}
-    </button>
-  )
-}
-
-const ButtonSecondary = ({ className = '', children, ...props }) => {
-  const defaultVisuals = hasCustomBackground(className)
-    ? ''
-    : 'border-brand-forest bg-white text-brand-forest hover:border-brand-copper'
-
-  return (
-    <button
-      className={`inline-flex items-center justify-center rounded-md border px-4 py-2.5 text-sm font-semibold shadow-sm transition ${defaultVisuals} ${className}`}
-      {...props}
-    >
-      {children}
-    </button>
-  )
 }
 
 const WhatsAppLogo = ({ className = 'h-4 w-4' }) => (
@@ -4118,8 +4087,8 @@ function Footer() {
     { label: 'About', href: '/about' },
   ]
   const mobileServiceLinks = [
-    { label: 'Finishing Advisory', href: '/solutions' },
-    { label: 'Delivery', href: '/contact' },
+    { label: 'Finishing Advisory', href: '/trade-projects' },
+    { label: 'Delivery', href: '/#contact' },
     { label: 'Tiling & Installation', href: '/installation-support' },
   ]
   return (
@@ -4252,6 +4221,29 @@ export default function App() {
   const activeCategoryPage = categoryLandingByPath[currentPath]
 
   const refreshSignals = () => setEventRevision((revision) => revision + 1)
+
+  useEffect(() => {
+    let frame
+    const scrollToFragment = () => {
+      window.cancelAnimationFrame(frame)
+      frame = window.requestAnimationFrame(() => {
+        const fragment = window.location.hash.slice(1)
+        if (!fragment) return
+        try {
+          document.getElementById(decodeURIComponent(fragment))?.scrollIntoView({ block: 'start' })
+        } catch {
+          // Ignore malformed URL fragments without interrupting navigation.
+        }
+      })
+    }
+    // Native fragment scrolling can run before React has mounted the target.
+    scrollToFragment()
+    window.addEventListener('hashchange', scrollToFragment)
+    return () => {
+      window.cancelAnimationFrame(frame)
+      window.removeEventListener('hashchange', scrollToFragment)
+    }
+  }, [currentPath])
 
   useEffect(() => {
     const pageType = currentPath.startsWith('/locations/')

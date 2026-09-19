@@ -41,9 +41,16 @@ for (const width of [390, 768, 1440]) {
       await page.screenshot({ path: testInfo.outputPath(`${path.replaceAll('/', '-') || 'home'}-${width}.png`), fullPage: true })
     }
     await page.goto('/')
-    expect(await page.locator('footer h3').allTextContents()).toEqual(['Products', 'Services', 'Projects', 'Guides', 'Contact'])
+    const footerNav = page.locator(width === 1440 ? 'footer .footer-main' : 'footer .footer-mobile')
+    expect(await footerNav.locator('h3').allTextContents()).toEqual(width === 1440 ? ['Products', 'Services', 'Projects', 'Guides', 'Contact'] : ['Contact', 'Follow Kleihaus'])
+    await expect(footerNav).toBeVisible()
+    if (width !== 1440) {
+      expect(await footerNav.locator('summary').allTextContents()).toEqual(['Explore+', 'Services+'])
+      await footerNav.locator('summary').filter({ hasText: 'Explore' }).click()
+    }
     await expect(page.locator('footer a[href="/floor-tiles"]')).toHaveCount(1)
-    await expect(page.locator('footer a[href="/projects"]')).toHaveCount(1)
+    await expect(footerNav.locator('a[href="/projects"]')).toHaveCount(1)
+    await expect(footerNav.locator('a[href="/projects"]')).toBeVisible()
     const slides = page.getByRole('button', { name: /^Show .* hero image$/ })
     await slides.nth(1).click()
     await expect(slides.nth(1)).toHaveAttribute('aria-current', 'true')
