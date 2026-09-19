@@ -12,6 +12,7 @@ on:
       - "public/**"
       - "scripts/**"
       - "src/**"
+      - "docs/CHANGELOG.md"
   schedule:
     - cron: "0 4 * * *"
   workflow_dispatch:
