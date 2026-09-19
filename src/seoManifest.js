@@ -1,14 +1,14 @@
 export const SITE_ORIGIN = 'https://www.kleihaus.com'
-export const SEO_LASTMOD = '2026-08-20'
+export const SEO_LASTMOD = '2026-09-19'
 
 const defaultImage = '/images/kleihaus-structure.jpg'
 
 const coreRoutes = [
   {
     path: '/',
-    title: 'Kleihaus Ceramics Kenya | Tiles, Sanitaryware & Paints',
+    title: 'Kleihaus Ceramics Kenya | Tiles, Sanitaryware, Paints & Tiling',
     description:
-      'Discover tiles, sanitaryware, kitchen sinks, paints, adhesives, grout, tools and project support from Kleihaus Ceramics in Nairobi, Machakos and Makueni.',
+      'Shop tiles, sanitaryware, kitchen sinks, paints, adhesives and grout with tiling, delivery and project support from Kleihaus in Nairobi, Machakos and Makueni.',
     image: defaultImage,
     imageAlt: 'Kleihaus Ceramics showroom structure for tiles and finishing materials',
     changefreq: 'weekly',
