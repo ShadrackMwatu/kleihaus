@@ -106,6 +106,29 @@ const writeEvents = (events) => {
   window.__kleihausIntelligenceEvents = cappedEvents
 }
 
+const classifyTraffic = (referrer = '', utmSource = '', utmMedium = '') => {
+  if (utmSource || utmMedium) {
+    return {
+      source: utmSource || 'direct',
+      medium: utmMedium || 'campaign',
+    }
+  }
+
+  if (!referrer) return { source: 'direct', medium: 'none' }
+
+  try {
+    const hostname = new URL(referrer).hostname.toLowerCase().replace(/^www\./, '')
+    if (hostname === 'google.com' || hostname.endsWith('.google.com') || hostname.startsWith('google.')) {
+      return { source: 'google', medium: 'organic' }
+    }
+    if (hostname === 'bing.com' || hostname.endsWith('.bing.com')) return { source: 'bing', medium: 'organic' }
+    if (hostname === 'duckduckgo.com') return { source: 'duckduckgo', medium: 'organic' }
+    return { source: hostname || 'referral', medium: 'referral' }
+  } catch {
+    return { source: 'referral', medium: 'referral' }
+  }
+}
+
 const getUrlContext = () => {
   if (typeof window === 'undefined') {
     return {
@@ -120,12 +143,18 @@ const getUrlContext = () => {
 
   const params = new URLSearchParams(window.location.search)
   const width = window.innerWidth || 0
+  const referrer = document.referrer || ''
+  const utmSource = params.get('utm_source') || ''
+  const utmMedium = params.get('utm_medium') || ''
+  const attribution = classifyTraffic(referrer, utmSource, utmMedium)
 
   return {
     pagePath: `${window.location.pathname}${window.location.search}`,
-    referrer: document.referrer || '',
-    utmSource: params.get('utm_source') || '',
-    utmMedium: params.get('utm_medium') || '',
+    referrer,
+    utmSource,
+    utmMedium,
+    trafficSource: attribution.source,
+    trafficMedium: attribution.medium,
     utmCampaign: params.get('utm_campaign') || '',
     deviceType: width < 768 ? 'mobile' : width < 1024 ? 'tablet' : 'desktop',
   }
@@ -161,7 +190,9 @@ const normalizeEvent = (eventType, payload = {}) => {
     formName: safePayload.formName || '',
     formStep: safePayload.formStep || '',
     formStatus: safePayload.formStatus || '',
-    leadSource: safePayload.leadSource || safePayload.source || urlContext.utmSource || '',
+    leadSource: safePayload.leadSource || safePayload.source || urlContext.utmSource || urlContext.trafficSource || '',
+    trafficSource: safePayload.trafficSource || urlContext.trafficSource || '',
+    trafficMedium: safePayload.trafficMedium || urlContext.trafficMedium || '',
     deviceType: safePayload.deviceType || urlContext.deviceType,
     searchQuery: safePayload.searchQuery || safePayload.query || '',
     clickedElement: safePayload.clickedElement || safePayload.source || safePayload.element || '',
@@ -281,6 +312,8 @@ const sendEventToGa = (event) => {
       form_step: event.formStep || undefined,
       form_status: event.formStatus || undefined,
       lead_source: event.leadSource || undefined,
+      traffic_source_classified: event.trafficSource || undefined,
+      traffic_medium_classified: event.trafficMedium || undefined,
       device_type: event.deviceType || undefined,
     }))
     logAnalyticsDebug(event, 'ga_event_sent')
@@ -371,7 +404,8 @@ export const analyticsService = {
       product_interest: countByAny(['product_click'], 'productName'),
       whatsapp_inquiry_trends: countByAny(['whatsapp_click'], 'clickedElement'),
       quote_request_trends: countBy('quote_form_submit_success', 'clickedElement'),
-      top_traffic_sources: countByAny(['page_view', 'quote_form_submit_success'], 'utmSource'),
+      top_traffic_sources: countByAny(['page_view', 'quote_form_submit_success'], 'trafficSource'),
+      top_traffic_mediums: countByAny(['page_view', 'quote_form_submit_success'], 'trafficMedium'),
       clicked_products: countByAny(['product_click'], 'productName'),
       clicked_categories: countByAny(['category_click'], 'productCategory'),
       lead_sources_by_utm: countByAny(['quote_form_submit_attempt', 'quote_form_submit_success'], 'utmSource'),
