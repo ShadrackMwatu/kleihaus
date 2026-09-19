@@ -1,3 +1,7 @@
+## 2026-09-19 — Trigger consolidated production SEO verification
+
+- Documentation-only checkpoint after the commercial SEO, kitchen sinks/mixers, attribution and Service schema changes. This commit intentionally triggers the production SEO monitor against the complete main-branch state rather than relying on intermediate push runs cancelled by workflow concurrency.
+
 ## 2026-09-19 — High-intent product and service SEO completion
 
 - Added a dedicated /kitchen-sinks-mixers commercial landing page using the existing Kleihaus kitchen sink and mixer imagery, with truthful selection guidance and quote preparation content.
