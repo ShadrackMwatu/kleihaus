@@ -1,3 +1,11 @@
+
+## 2026-09-19 — Commercial SEO acquisition upgrade
+
+- Refreshed the central SEO last-modified date after the verified Search Console recrawl and sitemap submission.
+- Aligned homepage SEO metadata with current commercial intent: tiles, sanitaryware, paints, tiling, delivery and project support in Nairobi, Machakos and Makueni.
+- Added privacy-safe referrer classification for Google, Bing, DuckDuckGo, referral and direct traffic so organic-search visits and quote-success events can be segmented without sending customer PII to GA4.
+- Added classified traffic source/medium fields to GA4 event parameters and first-party monthly summaries, while preserving explicit UTM attribution when present.
+- No speculative prices, stock claims, reviews, branches, Product/Offer schema or thin location pages were added.
 # Kleihaus Project Changelog
 
 ## Premium structural refinement
