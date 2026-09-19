@@ -174,6 +174,9 @@ const normalizePayload = (body = {}) => {
     utmSource: clean(body.utmSource || body.utm_source, 160),
     utmMedium: clean(body.utmMedium || body.utm_medium, 160),
     utmCampaign: clean(body.utmCampaign || body.utm_campaign, 180),
+    trafficSource: clean(body.trafficSource, 160),
+    trafficMedium: clean(body.trafficMedium, 80),
+    landingPage: clean(body.landingPage || body.pagePath, 600),
     lastSearchQuery: clean(body.lastSearchQuery || body.searchQuery, 240),
     clickedProducts: Array.isArray(body.clickedProducts) ? body.clickedProducts.map((item) => clean(item, 180)).filter(Boolean).slice(-8) : [],
     clickedCategories: Array.isArray(body.clickedCategories) ? body.clickedCategories.map((item) => clean(item, 180)).filter(Boolean).slice(-8) : [],
@@ -247,6 +250,11 @@ const ensureQuoteJourneyColumns = async (db) => {
   await ignoreDuplicateColumn(() => db.prepare('ALTER TABLE quote_requests ADD COLUMN lead_score INTEGER DEFAULT 0').run())
   await ignoreDuplicateColumn(() => db.prepare('ALTER TABLE quote_requests ADD COLUMN channel TEXT DEFAULT "email"').run())
   await ignoreDuplicateColumn(() => db.prepare('ALTER TABLE quote_requests ADD COLUMN intent TEXT DEFAULT "quote"').run())
+  await ignoreDuplicateColumn(() => db.prepare('ALTER TABLE quote_requests ADD COLUMN traffic_source TEXT').run())
+  await ignoreDuplicateColumn(() => db.prepare('ALTER TABLE quote_requests ADD COLUMN traffic_medium TEXT').run())
+  await ignoreDuplicateColumn(() => db.prepare('ALTER TABLE quote_requests ADD COLUMN landing_page TEXT').run())
+  await ignoreDuplicateColumn(() => db.prepare('ALTER TABLE quote_requests ADD COLUMN product_category TEXT').run())
+  await ignoreDuplicateColumn(() => db.prepare('ALTER TABLE quote_requests ADD COLUMN commercial_intent TEXT').run())
 }
 
 const getEventResults = (result) => result?.results || []
@@ -270,7 +278,8 @@ const summarizeJourneyContext = (payload, events = []) => {
     .slice(-8)
   const whatsappClicked = payload.whatsappClicked || events.some((event) => event.event_type === 'whatsapp_click')
   const searchQuery = searchQueries[0] || ''
-  const source = payload.utmSource || events.find((event) => event.utm_source)?.utm_source || ''
+  const source = payload.trafficSource || payload.utmSource || events.find((event) => event.utm_source)?.utm_source || ''
+  const medium = payload.trafficMedium || payload.utmMedium || events.find((event) => event.utm_medium)?.utm_medium || ''
   const referrer = payload.referrer || events.find((event) => event.referrer)?.referrer || ''
   const utmCampaign = payload.utmCampaign || events.find((event) => event.utm_campaign)?.utm_campaign || ''
   const engagementScore = Math.min(
@@ -294,6 +303,9 @@ const summarizeJourneyContext = (payload, events = []) => {
     referrer,
     utmSource: source,
     utmMedium: payload.utmMedium || events.find((event) => event.utm_medium)?.utm_medium || '',
+    trafficSource: source || 'direct',
+    trafficMedium: medium || (source && source !== 'direct' ? 'referral' : 'none'),
+    landingPage: payload.landingPage || events.find((event) => event.page_path)?.page_path || payload.pagePath || '',
     utmCampaign,
     searchQuery,
     clickedProducts: [...new Set(clickedProducts)].slice(-8),
@@ -375,8 +387,9 @@ const insertQuoteRequest = async (env, payload) => {
       .prepare(
         `INSERT INTO quote_requests
           (id, name, email, phone, location, message, source, status, created_at,
-           anonymous_visitor_id, session_id, lead_reference, journey_summary_json, lead_score, channel, intent)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+           anonymous_visitor_id, session_id, lead_reference, journey_summary_json, lead_score, channel, intent,
+           traffic_source, traffic_medium, landing_page, product_category, commercial_intent)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
       )
       .bind(
         payload.id,
@@ -394,7 +407,12 @@ const insertQuoteRequest = async (env, payload) => {
         JSON.stringify(payload.journey || {}),
         payload.journey?.engagementScore || 0,
         payload.channel,
-        payload.intent
+        payload.intent,
+        payload.journey?.trafficSource || payload.trafficSource || '',
+        payload.journey?.trafficMedium || payload.trafficMedium || '',
+        payload.journey?.landingPage || payload.landingPage || payload.pagePath || '',
+        payload.journey?.clickedCategories?.[0] || payload.clickedCategories?.[0] || '',
+        payload.intent || ''
       )
       .run()
 
