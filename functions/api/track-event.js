@@ -75,6 +75,11 @@ const normalizeEvent = (body = {}) => {
   const metadata = {
     source: clean(body.source, 80),
     requestId: clean(body.requestId, 120),
+    trafficSource: clean(body.trafficSource, 160),
+    trafficMedium: clean(body.trafficMedium, 80),
+    pageType: clean(body.pageType, 80),
+    enquiryIntent: clean(body.enquiryIntent || body.intent, 120),
+    contactMethod: clean(body.contactMethod, 80),
   }
 
   return {
