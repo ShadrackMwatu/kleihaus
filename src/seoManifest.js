@@ -523,6 +523,25 @@ export const buildRouteJsonLd = (route) => {
     })
   }
 
+  if (route.path === '/installation-support') {
+    graph.push({
+      '@type': 'Service',
+      '@id': `${pageUrl}#service`,
+      name: 'Tiling and installation support',
+      serviceType: 'Tiling and installation support',
+      provider: {
+        '@type': 'LocalBusiness',
+        '@id': `${SITE_ORIGIN}/#store`,
+        name: 'Kleihaus Ceramics',
+      },
+      areaServed: {
+        '@type': 'Country',
+        name: 'Kenya',
+      },
+      description: route.description,
+    })
+  }
+
   if (route.faqs?.length) {
     graph.push({
       '@type': 'FAQPage',
