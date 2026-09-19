@@ -1,3 +1,12 @@
+## 2026-09-19 — Commercial intelligence layer
+
+- Added an evidence-based commercial intelligence summary over first-party anonymous interaction events, including organic interactions, organic lead actions, organic lead-action rate, top organic landing pages, top organic lead pages, commercial categories, enquiry intents, acquisition sources and page-level opportunity signals.
+- Extended quote journey context with classified traffic source/medium and landing page attribution.
+- Extended D1 quote_requests safely and idempotently with traffic_source, traffic_medium, landing_page, product_category and commercial_intent columns; existing rows and fallback storage remain compatible.
+- Persisted attribution and commercial intent with captured quote leads so future analysis can connect acquisition source and landing page to real enquiries.
+- Retained commercial metadata in journey-event metadata without storing customer PII in analytics events.
+- Revenue, quote value, won/lost status and customer lifetime value are intentionally not inferred; those require verified CRM or sales outcomes before they can be used for SEO decisions.
+
 ## 2026-09-19 — Trigger consolidated production SEO verification
 
 - Documentation-only checkpoint after the commercial SEO, kitchen sinks/mixers, attribution and Service schema changes. This commit intentionally triggers the production SEO monitor against the complete main-branch state rather than relying on intermediate push runs cancelled by workflow concurrency.
