@@ -352,6 +352,9 @@ export const analyticsService = {
       utmSource: urlContext.utmSource,
       utmMedium: urlContext.utmMedium,
       utmCampaign: urlContext.utmCampaign,
+      trafficSource: urlContext.trafficSource,
+      trafficMedium: urlContext.trafficMedium,
+      landingPage: recentEvents.find((event) => event.eventType === 'page_view')?.pagePath || urlContext.pagePath,
       lastSearchQuery: lastSearch?.searchQuery || '',
       clickedProducts: [...new Set(clickedProducts)].slice(-8),
       clickedCategories: [...new Set(clickedCategories)].slice(-8),
@@ -375,6 +378,43 @@ export const analyticsService = {
       ),
       high_value_whatsapp_alerts: whatsappAlertService.getAlerts(),
       monthly_summary_data: this.buildMonthlySummary(events),
+    }
+  },
+
+  buildCommercialIntelligence(events = readEvents()) {
+    const leads = events.filter((event) => ['quote_form_submit_success', 'whatsapp_click', 'phone_click', 'email_click'].includes(event.eventType))
+    const organicEvents = events.filter((event) => event.trafficMedium === 'organic')
+    const organicLeads = leads.filter((event) => event.trafficMedium === 'organic')
+    const count = (items, field) => items.reduce((acc, event) => {
+      const value = event?.[field] || event?.payload?.[field]
+      if (value) acc[value] = (acc[value] || 0) + 1
+      return acc
+    }, {})
+    const ranked = (object) => Object.entries(object).sort((a, b) => b[1] - a[1]).slice(0, 12)
+    const organicPages = count(organicEvents, 'pagePath')
+    const organicLeadPages = count(organicLeads, 'pagePath')
+    const opportunities = Object.entries(organicPages)
+      .map(([pagePath, visits]) => ({
+        pagePath,
+        organicInteractions: visits,
+        organicLeads: organicLeadPages[pagePath] || 0,
+        signal: organicLeadPages[pagePath] ? 'conversion_signal' : visits >= 3 ? 'traffic_without_recorded_lead' : 'observe',
+      }))
+      .sort((a, b) => b.organicInteractions - a.organicInteractions)
+      .slice(0, 12)
+
+    return {
+      generatedAt: new Date().toISOString(),
+      organicInteractions: organicEvents.length,
+      organicLeadActions: organicLeads.length,
+      organicLeadActionRate: organicEvents.length ? Number((organicLeads.length / organicEvents.length).toFixed(4)) : 0,
+      topOrganicLandingPages: ranked(organicPages),
+      topOrganicLeadPages: ranked(organicLeadPages),
+      topCommercialCategories: ranked(count(leads, 'productCategory')),
+      topCommercialIntents: ranked(count(leads, 'enquiryIntent')),
+      topLeadSources: ranked(count(leads, 'trafficSource')),
+      opportunities,
+      note: 'Interaction-based intelligence only. Revenue, quote value and won/lost outcomes require verified CRM or sales data.',
     }
   },
 
@@ -421,6 +461,7 @@ export const analyticsService = {
       guide_topics_clicked: countBy('guide_topic_clicked', 'topic'),
       high_value_whatsapp_alerts: whatsappAlertService.getAlerts().map((alert) => alert.reason),
       county_location_interest: countBy('location_interest', 'location'),
+      commercial_intelligence: this.buildCommercialIntelligence(events),
       weak_signals: events
         .filter((event) => event.eventType === 'search_query' && event.searchQuery?.length > 2)
         .map((event) => event.searchQuery)
