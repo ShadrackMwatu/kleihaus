@@ -192,9 +192,9 @@ const getEmptyQuoteForm = () => ({
   details: '',
 })
 
-const seoTitle = 'Kleihaus Ceramics Kenya | Tiles, Sanitaryware, Paints & Project Support'
+const seoTitle = 'Kleihaus Ceramics Kenya | Tiles, Sanitaryware, Paints & Tiling'
 const seoDescription =
-  'Discover tiles, sanitaryware, kitchen sinks, paints, adhesives, grout, tools and project support from Kleihaus Ceramics in Nairobi, Machakos and Makueni.'
+  'Shop tiles, sanitaryware, kitchen sinks, paints, adhesives and grout with tiling, delivery and project support from Kleihaus in Nairobi, Machakos and Makueni.'
 const canonicalUrl = 'https://www.kleihaus.com/'
 const defaultSeoImage = 'https://www.kleihaus.com/images/kleihaus-structure.jpg'
 
@@ -1073,7 +1073,37 @@ const projectImageItems = [
   },
 ]
 
-const seoLandingPages = [...categoryLandingPages, ...localSeoLandingPages, ...guideSeoPages, ...locationHubPages]
+const kitchenSinksPage = {
+  path: '/kitchen-sinks-mixers',
+  category: 'Kitchen Sinks & Mixers',
+  title: 'Kitchen Sinks & Mixers Kenya | Kleihaus Ceramics',
+  description: 'Explore kitchen sinks and mixers for Kenyan homes and projects. Compare bowl layouts, finishes and fitting needs, then request current availability and a Kleihaus quote.',
+  eyebrow: 'Kitchen sinks & mixers',
+  h1: 'Kitchen sinks and mixers for coordinated kitchen finishes',
+  intro:
+    'Plan the sink zone as part of the complete kitchen finish. Kleihaus helps customers compare sink layouts, mixer finishes, countertop coordination and fitting requirements before confirming current product availability and quotation details.',
+  notes: [
+    'Single, double-bowl and drainer-style sink references',
+    'Black, chrome and coordinated mixer finish inspiration',
+    'Confirm dimensions, mounting, plumbing points and current availability before ordering',
+  ],
+  images: sanitarywareKitchenImages,
+  sections: [
+    { title: 'Choose the sink layout', text: 'Start with cabinet width, bowl configuration, drainer preference and how the kitchen will be used. Confirm the exact dimensions of the selected sink before countertop cutting.' },
+    { title: 'Coordinate the mixer', text: 'Review mixer finish, mounting position, spout reach and the surrounding countertop and backsplash so the sink zone works as one finish.' },
+    { title: 'Prepare a useful quote request', text: 'Share the preferred sink style, approximate dimensions, mixer finish, quantity, project location and photos or plans where useful. Kleihaus can then confirm relevant current options.' },
+  ],
+  relatedLinks: [
+    { label: 'Sanitaryware', href: '/sanitaryware' },
+    { label: 'Kitchen projects', href: '/projects' },
+    { label: 'Wall tiles', href: '/wall-tiles' },
+    { label: 'Cost estimation guide', href: '/cost-estimation-guide' },
+    { label: 'Products', href: '/products' },
+    { label: 'Trade and project support', href: '/trade-projects' },
+  ],
+}
+
+const seoLandingPages = [...categoryLandingPages, kitchenSinksPage, ...localSeoLandingPages, ...guideSeoPages, ...locationHubPages]
 
 const projectsPage = {
   path: '/projects',
@@ -1225,7 +1255,7 @@ const productsHubPage = {
       links: [
         { label: 'Tiles', href: '/tiles', detail: 'Floor, wall, bathroom and outdoor tile options' },
         { label: 'Sanitaryware', href: '/sanitaryware', detail: 'Basins, toilets, showers, taps and bathroom accessories' },
-        { label: 'Kitchen sinks and mixers', href: '/sanitaryware#kitchen-sinks', detail: 'Sink bowls, mixers and kitchen finishing references' },
+        { label: 'Kitchen sinks and mixers', href: '/kitchen-sinks-mixers', detail: 'Sink bowls, mixers and kitchen finishing references' },
         { label: 'Paints', href: '/paints', detail: 'Interior, exterior, roof and floor paint planning' },
         { label: 'Adhesives and grout', href: '/adhesives-grout', detail: 'Tile fixing materials, grout, trims and spacers' },
         { label: 'Finishing tools and support', href: '/installation-support', detail: 'Tools, workflow guidance, training and installation support' },
