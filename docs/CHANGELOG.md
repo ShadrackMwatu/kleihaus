@@ -1,3 +1,12 @@
+## 2026-09-19 — High-intent product and service SEO completion
+
+- Added a dedicated /kitchen-sinks-mixers commercial landing page using the existing Kleihaus kitchen sink and mixer imagery, with truthful selection guidance and quote preparation content.
+- Registered the route in the central SEO manifest so it receives canonical metadata, route HTML generation, sitemap coverage, breadcrumbs and image metadata automatically.
+- Updated product-hub and sanitaryware internal linking to expose the new route to users and crawlers.
+- Synchronized the legacy homepage SEO constants in App.jsx with the central commercial homepage metadata to remove an internal metadata mismatch.
+- Added conservative Service structured data for the existing /installation-support page only; no unverified Product, Offer, Review or AggregateRating markup was introduced.
+- Kept product availability, exact dimensions, pricing, branch addresses and performance claims explicitly subject to confirmation rather than inventing commercial facts.
+
 
 ## 2026-09-19 — Commercial SEO acquisition upgrade
 
