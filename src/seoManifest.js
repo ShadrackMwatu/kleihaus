@@ -37,6 +37,7 @@ const coreRoutes = [
     relatedLinks: [
       { label: 'Tiles', href: '/tiles' },
       { label: 'Sanitaryware', href: '/sanitaryware' },
+      { label: 'Kitchen sinks and mixers', href: '/kitchen-sinks-mixers' },
       { label: 'Paints', href: '/paints' },
       { label: 'Adhesives and grout', href: '/adhesives-grout' },
       { label: 'Installation support', href: '/installation-support' },
@@ -140,11 +141,32 @@ const coreRoutes = [
     category: 'Sanitaryware',
     relatedLinks: [
       { label: 'Bathroom tiles', href: '/bathroom-tiles' },
+      { label: 'Kitchen sinks and mixers', href: '/kitchen-sinks-mixers' },
       { label: 'Bathroom renovation guide', href: '/bathroom-renovation-guide' },
       { label: 'Cost estimation guide', href: '/cost-estimation-guide' },
       { label: 'Sanitaryware Nairobi', href: '/sanitaryware-nairobi' },
       { label: 'Projects', href: '/projects' },
       { label: 'Installation support', href: '/installation-support' },
+    ],
+  },
+  {
+    path: '/kitchen-sinks-mixers',
+    title: 'Kitchen Sinks & Mixers Kenya | Kleihaus Ceramics',
+    description:
+      'Explore kitchen sinks and mixers for Kenyan homes and projects. Compare bowl layouts, finishes and fitting needs, then request current availability and a Kleihaus quote.',
+    image: '/images/sanitaryware/sanitaryware-kitchen-sink-backsplash-01.jpg',
+    imageAlt: 'Kitchen sink, mixer and backsplash finishing reference from Kleihaus Ceramics',
+    category: 'Kitchen Sinks & Mixers',
+    schemaType: 'CollectionPage',
+    changefreq: 'weekly',
+    priority: '0.82',
+    relatedLinks: [
+      { label: 'Sanitaryware', href: '/sanitaryware' },
+      { label: 'Kitchen projects', href: '/projects' },
+      { label: 'Wall tiles', href: '/wall-tiles' },
+      { label: 'Cost estimation guide', href: '/cost-estimation-guide' },
+      { label: 'Products', href: '/products' },
+      { label: 'Trade and project support', href: '/trade-projects' },
     ],
   },
   {
