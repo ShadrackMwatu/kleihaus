@@ -3269,7 +3269,7 @@ function Contact({ onSupportFormClick, quoteInterest = null, onClearInterest, co
             </p>
           )}
           <div className="mt-4 flex flex-wrap gap-2.5">
-            <Button disabled={isQuoteSubmitting} className="border-emerald-700 bg-brand-forest px-4 py-2.5 text-sm shadow-md shadow-emerald-900/10 hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-70">
+            <Button disabled={isQuoteSubmitting} className="border-emerald-700 bg-brand-forest px-4 py-2.5 text-sm text-white shadow-md shadow-emerald-900/10 hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-70">
               {isQuoteSubmitting ? 'Sending...' : 'Request my quotation'}
             </Button>
             <ButtonSecondary type="button" onClick={() => onSupportFormClick('contact_form')} className={`${whatsappCtaClass} whatsapp-secondary-entry px-4 py-2.5 text-sm`}>
@@ -3278,7 +3278,7 @@ function Contact({ onSupportFormClick, quoteInterest = null, onClearInterest, co
           </div>
           <div className="mt-4 border-t border-neutral-200 pt-3">
             <p className="text-xs font-semibold leading-5 text-neutral-700">Product guidance · Current availability · Quotation · Delivery planning · Installation support</p>
-            <p className="mt-1 text-xs leading-5 text-neutral-500">Your enquiry goes directly to our project support team. No payment or obligation is required to submit it.</p>
+            <p className="mt-1 text-xs leading-5 text-neutral-600">Your enquiry goes directly to our project support team. No payment or obligation is required to submit it.</p>
           </div>
         </form>
       </div>
@@ -4208,7 +4208,7 @@ function Footer() {
     { label: 'Tiling & Installation', href: '/installation-support' },
   ]
   return (
-    <footer data-site-footer className="border-t border-brand-copper bg-brand-forest text-white">
+    <footer data-site-footer className="border-t border-brand-copper bg-[#07523F] text-white">
       <nav aria-label="Footer navigation" className="footer-mobile mx-auto max-w-7xl px-4 py-5 lg:hidden">
         <div className="footer-mobile-contact">
           <h3>Contact</h3>
@@ -4304,7 +4304,7 @@ function Footer() {
           </div>
         </div>
       </nav>
-      <div className="border-t border-brand-copper/50 bg-brand-forest">
+      <div className="border-t border-brand-copper/50 bg-[#07523F]">
         <div className="footer-brand-strip mx-auto flex max-w-7xl items-center justify-center px-4 py-2.5 text-center text-white">
           <p className="text-xs font-medium">
             © {new Date().getFullYear()} Kleihaus Ceramics. All Rights Reserved.{' '}
