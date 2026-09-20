@@ -3140,10 +3140,10 @@ function Contact({ onSupportFormClick, quoteInterest = null, onClearInterest, co
     <section id="contact" className={compact ? 'rounded-xl bg-neutral-950 text-white' : 'bg-neutral-950 text-white'}>
       <div className={`${compact ? 'grid gap-4 p-4 sm:p-5' : 'mx-auto grid max-w-7xl gap-5 px-4 py-6'} lg:grid-cols-[0.9fr_1.1fr]`}>
         <div>
-          <p className="text-sm font-semibold uppercase text-emerald-300">Contact Kleihaus</p>
-          <h2 className="mt-1.5 text-2xl font-semibold sm:text-3xl">Request a quotation or talk to Kleihaus now.</h2>
+          <p className="text-sm font-semibold uppercase text-emerald-300">Project & Product Support</p>
+          <h2 className="mt-1.5 text-2xl font-semibold sm:text-3xl">Tell us what you’re working on. We’ll help you take the next step.</h2>
           <p className="mt-2 max-w-xl text-sm leading-6 text-neutral-300">
-            Ask about product options and current availability, or send your requirements for a quotation.
+            Share your requirements and we’ll help with product selection, availability, pricing, quantities, delivery and installation planning.
           </p>
 
           <div className="mt-3 max-w-xs">
@@ -3176,7 +3176,7 @@ function Contact({ onSupportFormClick, quoteInterest = null, onClearInterest, co
             <div className="flex items-start gap-3">
               <MapPin className="mt-1 h-4 w-4 text-emerald-300" />
               <div className="flex flex-wrap items-center gap-2">
-                <span className="w-full text-sm font-semibold">Service areas</span>
+                <span className="w-full text-sm font-semibold">Serving projects across</span>
                 {serviceAreaLinks.map((location) => (
                   <a
                     key={location.href}
@@ -3192,9 +3192,9 @@ function Contact({ onSupportFormClick, quoteInterest = null, onClearInterest, co
           </div>
 
           <div className="mt-3 border-t border-white/10 pt-3">
-            <h3 className="text-sm font-semibold text-white">From enquiry to order</h3>
-            <p className="mt-2 text-sm leading-6 text-neutral-200">Share requirements → Receive options and quotation → Confirm delivery</p>
-            <p className="mt-1 text-xs leading-5 text-neutral-300">Sending an enquiry does not place an order or take payment.</p>
+            <h3 className="text-sm font-semibold text-white">A simpler path from selection to delivery</h3>
+            <p className="mt-2 text-sm leading-6 text-neutral-200">Share your requirements → Receive tailored options & quotation → Confirm supply & delivery</p>
+            <p className="mt-1 text-xs leading-5 text-neutral-300">No payment is required when you submit an enquiry.</p>
           </div>
         </div>
 
@@ -3207,12 +3207,12 @@ function Contact({ onSupportFormClick, quoteInterest = null, onClearInterest, co
           className="rounded-lg bg-white p-4 text-neutral-950 shadow-xl"
         >
           <div className="mb-3">
-            <h3 className="text-lg font-semibold">Tell us what you need</h3>
-            <p className="mt-1 text-xs leading-5 text-neutral-600">Add your request details and either a phone number or email address.</p>
+            <h3 className="text-lg font-semibold">Tell us about your project</h3>
+            <p className="mt-1 text-xs leading-5 text-neutral-600">Share a few details. Our team will review your requirements and help you identify the right next step.</p>
           </div>
           {quoteInterest && (
             <div className="mb-4 flex items-center justify-between gap-3 rounded-md border border-neutral-200 p-3 text-sm">
-              <p>Enquiry about <strong>{quoteInterest.label}</strong></p>
+              <div><p className="text-xs font-semibold uppercase tracking-wide text-neutral-500">Your enquiry</p><p className="mt-1"><strong>{quoteInterest.label}</strong> <span className="text-emerald-700" aria-hidden="true">✓</span></p><p className="mt-1 text-xs text-neutral-500">We’ll tailor the response to this service.</p></div>
               <button type="button" onClick={onClearInterest} className="min-h-11 shrink-0 px-2 text-sm font-semibold text-emerald-800 underline underline-offset-4">Clear selection</button>
             </div>
           )}
@@ -3241,7 +3241,7 @@ function Contact({ onSupportFormClick, quoteInterest = null, onClearInterest, co
             <Textarea
               name="message"
               autoComplete="off"
-              placeholder="Example: 32 m2 floor tiles, matte finish, 85 pieces, delivery location, budget range..."
+              placeholder="Example: products or finishes needed, quantities or dimensions, preferred style, delivery location and budget range..."
               rows={3}
               value={quoteForm.message}
               onChange={updateQuoteField('message')}
@@ -3270,11 +3270,15 @@ function Contact({ onSupportFormClick, quoteInterest = null, onClearInterest, co
           )}
           <div className="mt-4 flex flex-wrap gap-2.5">
             <Button disabled={isQuoteSubmitting} className="border-emerald-700 bg-brand-forest px-4 py-2.5 text-sm shadow-md shadow-emerald-900/10 hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-70">
-              {isQuoteSubmitting ? 'Sending...' : 'Send quotation request'}
+              {isQuoteSubmitting ? 'Sending...' : 'Request my quotation'}
             </Button>
             <ButtonSecondary type="button" onClick={() => onSupportFormClick('contact_form')} className={`${whatsappCtaClass} whatsapp-secondary-entry px-4 py-2.5 text-sm`}>
               <WhatsAppBrandText>WhatsApp support</WhatsAppBrandText>
             </ButtonSecondary>
+          </div>
+          <div className="mt-4 border-t border-neutral-200 pt-3">
+            <p className="text-xs font-semibold leading-5 text-neutral-700">Product guidance · Current availability · Quotation · Delivery planning · Installation support</p>
+            <p className="mt-1 text-xs leading-5 text-neutral-500">Your enquiry goes directly to our project support team. No payment or obligation is required to submit it.</p>
           </div>
         </form>
       </div>
