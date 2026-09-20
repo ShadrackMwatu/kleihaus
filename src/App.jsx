@@ -3141,7 +3141,7 @@ function Contact({ onSupportFormClick, quoteInterest = null, onClearInterest, co
       <div className={`${compact ? 'grid gap-4 p-4 sm:p-5' : 'mx-auto grid max-w-7xl gap-5 px-4 py-6'} lg:grid-cols-[0.9fr_1.1fr]`}>
         <div>
           <p className="text-sm font-semibold uppercase text-emerald-300">Project & Product Support</p>
-          <h2 className="mt-1.5 text-2xl font-semibold sm:text-3xl">Tell us what you’re working on. We’ll help you take the next step.</h2>
+          <h2 className="mt-1.5 text-2xl font-semibold sm:text-3xl">Talk to Kleihaus now.</h2>
           <p className="mt-2 max-w-xl text-sm leading-6 text-neutral-300">
             Share your requirements and we’ll help with product selection, availability, pricing, quantities, delivery and installation planning.
           </p>
