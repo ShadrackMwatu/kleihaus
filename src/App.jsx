@@ -1616,10 +1616,10 @@ function SocialLinks({ placement = 'footer', showText = true, className = '', co
   )
 }
 
-const WhatsAppBrandText = ({ children = 'Chat on WhatsApp', iconClassName = 'h-4 w-4' }) => (
+const WhatsAppBrandText = ({ children = 'WhatsApp', iconClassName = 'h-4 w-4' }) => (
   <>
     <WhatsAppLogo className={`${iconClassName} shrink-0 text-white transition group-hover:text-white`} />
-    <span className="text-white transition group-hover:text-white">{children}</span>
+    <span className="text-white transition group-hover:text-white">WhatsApp</span>
   </>
 )
 
@@ -2767,7 +2767,7 @@ function TradeProjectsPage({ page, onSectionChange, onSupportClick, onQuoteClick
               <ButtonSecondary
                 type="button"
                 onClick={() => onSupportClick('trade_projects_hero_whatsapp', 'Hello Kleihaus, I need trade or project support for tiles, sanitaryware, sinks, mixers, paints, adhesives, grout, tools, delivery or installation planning.')}
-                className={`${whatsappCtaClass} px-3 py-2 text-xs sm:px-4 sm:py-2.5 sm:text-sm`}
+                className={`${whatsappCtaClass} whatsapp-secondary-entry px-3 py-2 text-xs sm:px-4 sm:py-2.5 sm:text-sm`}
               >
                 <WhatsAppBrandText>Ask on WhatsApp</WhatsAppBrandText>
               </ButtonSecondary>
@@ -2837,7 +2837,7 @@ function TradeProjectsPage({ page, onSectionChange, onSupportClick, onQuoteClick
                 <button
                   type="button"
                   onClick={() => onSupportClick(`trade_projects_whatsapp_${segment.slug}`, `Hello Kleihaus, I am enquiring as a ${segment.name.toLowerCase()}. Please help me plan products, quantities, quote details and next steps.`)}
-                  className={`${whatsappCtaClass} inline-flex min-h-10 items-center rounded-md px-3 py-2 text-xs font-semibold`}
+                  className={`${whatsappCtaClass} whatsapp-secondary-entry inline-flex min-h-10 items-center rounded-md px-3 py-2 text-xs font-semibold`}
                 >
                   <WhatsAppBrandText>WhatsApp support</WhatsAppBrandText>
                 </button>
@@ -3122,12 +3122,12 @@ function Contact({ onSupportFormClick, quoteInterest = null, onClearInterest, co
       ariaLabel: 'Chat with Kleihaus Ceramics on WhatsApp',
       href: buildWhatsAppUrl('Hello Kleihaus, I would like help with a quote, products, delivery or installation support.'),
       icon: WhatsAppLogo,
-      className: 'border-brand-whatsapp bg-brand-whatsapp text-white hover:border-brand-whatsapp hover:bg-brand-whatsapp',
+      className: 'whatsapp-secondary-entry border-brand-whatsapp bg-brand-whatsapp text-white hover:border-brand-whatsapp hover:bg-brand-whatsapp',
       onClick: (event, href) =>
         handleTrackedWhatsAppClick(event, href, () =>
           analyticsService.track('whatsapp_click', {
             clickedElement: 'contact_action_whatsapp',
-            ctaLabel: 'Chat on WhatsApp',
+            ctaLabel: 'WhatsApp',
             ctaPosition: 'contact_actions',
             contactMethod: 'whatsapp',
             enquiryIntent: 'quote_support',
@@ -3272,7 +3272,7 @@ function Contact({ onSupportFormClick, quoteInterest = null, onClearInterest, co
             <Button disabled={isQuoteSubmitting} className="border-emerald-700 bg-brand-forest px-4 py-2.5 text-sm shadow-md shadow-emerald-900/10 hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-70">
               {isQuoteSubmitting ? 'Sending...' : 'Send quotation request'}
             </Button>
-            <ButtonSecondary type="button" onClick={() => onSupportFormClick('contact_form')} className={`${whatsappCtaClass} px-4 py-2.5 text-sm`}>
+            <ButtonSecondary type="button" onClick={() => onSupportFormClick('contact_form')} className={`${whatsappCtaClass} whatsapp-secondary-entry px-4 py-2.5 text-sm`}>
               <WhatsAppBrandText>WhatsApp support</WhatsAppBrandText>
             </ButtonSecondary>
           </div>
@@ -3477,14 +3477,14 @@ function SupportModal({ open, source, initialMessage = '', onClose }) {
               onClick={() => {
                 analyticsService.track('whatsapp_click', {
                   clickedElement: source || 'support_modal_chat',
-                  ctaLabel: 'Chat on WhatsApp',
+                  ctaLabel: 'WhatsApp',
                   ctaPosition: 'support_modal',
                   contactMethod: 'whatsapp',
                   enquiryIntent: 'support',
                 })
                 openWhatsAppChat(form.message || initialMessage || DEFAULT_WHATSAPP_MESSAGE)
               }}
-              className={`${whatsappCtaClass} inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-semibold`}
+              className={`${whatsappCtaClass} whatsapp-secondary-entry inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-semibold`}
             >
               <WhatsAppBrandText>Chat on WhatsApp</WhatsAppBrandText>
             </button>
@@ -3560,7 +3560,7 @@ function HubPage({ page, onSectionChange, onSupportClick, onQuoteClick }) {
               <ButtonSecondary
                 type="button"
                 onClick={() => onSupportClick(`${page.pageType}_hero_whatsapp`, `Hello Kleihaus, I am exploring ${page.category.toLowerCase()} and would like help choosing the right next step.`)}
-                className={`${whatsappCtaClass} px-3 py-2 text-xs sm:px-4 sm:py-2.5 sm:text-sm`}
+                className={`${whatsappCtaClass} whatsapp-secondary-entry px-3 py-2 text-xs sm:px-4 sm:py-2.5 sm:text-sm`}
               >
                 <WhatsAppBrandText>Ask on WhatsApp</WhatsAppBrandText>
               </ButtonSecondary>
@@ -3627,7 +3627,7 @@ function HubPage({ page, onSectionChange, onSupportClick, onQuoteClick }) {
             </p>
           </div>
           <div className="flex flex-wrap gap-2 lg:justify-end">
-            <ButtonSecondary type="button" onClick={() => onSupportClick(`${page.pageType}_bottom_whatsapp`)} className={`${whatsappCtaClass} px-3 py-2 text-xs sm:text-sm`}>
+            <ButtonSecondary type="button" onClick={() => onSupportClick(`${page.pageType}_bottom_whatsapp`)} className={`${whatsappCtaClass} whatsapp-secondary-entry px-3 py-2 text-xs sm:text-sm`}>
               <WhatsAppBrandText>WhatsApp help</WhatsAppBrandText>
             </ButtonSecondary>
             <button
@@ -3678,7 +3678,7 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
                 {page.ctaLabel || 'Request quotation'}
                 <ArrowRight className="h-4 w-4" />
               </Button>
-              <ButtonSecondary type="button" onClick={() => onSupportClick(`category_page_${page.path}`, `I would like a quote for ${page.category}. Please share availability, price guidance and delivery details.`)} className={`${whatsappCtaClass} px-3 py-2 text-xs sm:px-4 sm:py-2.5 sm:text-sm`}>
+              <ButtonSecondary type="button" onClick={() => onSupportClick(`category_page_${page.path}`, `I would like a quote for ${page.category}. Please share availability, price guidance and delivery details.`)} className={`${whatsappCtaClass} whatsapp-secondary-entry px-3 py-2 text-xs sm:px-4 sm:py-2.5 sm:text-sm`}>
                 <WhatsAppBrandText>Ask on WhatsApp</WhatsAppBrandText>
               </ButtonSecondary>
               <a
@@ -3787,7 +3787,7 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
               </div>
             </div>
             <div className="flex flex-wrap gap-2 lg:justify-end">
-              <ButtonSecondary type="button" onClick={() => onSupportClick(`guide_project_support_${page.path}`, `Hello Kleihaus, I read the ${page.category}. Please help me plan products, quantities, delivery and quote details.`)} className={`${whatsappCtaClass} px-3 py-2 text-xs sm:text-sm`}>
+              <ButtonSecondary type="button" onClick={() => onSupportClick(`guide_project_support_${page.path}`, `Hello Kleihaus, I read the ${page.category}. Please help me plan products, quantities, delivery and quote details.`)} className={`${whatsappCtaClass} whatsapp-secondary-entry px-3 py-2 text-xs sm:text-sm`}>
                 <WhatsAppBrandText>Ask guide question</WhatsAppBrandText>
               </ButtonSecondary>
               <button
@@ -3854,7 +3854,7 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
               <Phone className="h-4 w-4" />
               Call adviser
             </a>
-            <ButtonSecondary type="button" onClick={() => onSupportClick(`local_support_whatsapp_${page.path}`, `Hello Kleihaus, I need local support for ${page.category}. Please help with product guidance, delivery and quote details.`)} className={`${whatsappCtaClass} px-3 py-2 text-xs sm:text-sm`}>
+            <ButtonSecondary type="button" onClick={() => onSupportClick(`local_support_whatsapp_${page.path}`, `Hello Kleihaus, I need local support for ${page.category}. Please help with product guidance, delivery and quote details.`)} className={`${whatsappCtaClass} whatsapp-secondary-entry px-3 py-2 text-xs sm:text-sm`}>
               <WhatsAppBrandText>Ask local question</WhatsAppBrandText>
             </ButtonSecondary>
             <button
@@ -3904,7 +3904,7 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
             <a href="/#catalogue" className="inline-flex items-center justify-center rounded-md border border-white/30 px-3 py-2 text-xs font-semibold text-white hover:bg-white/10 sm:text-sm">
               Browse catalogue
             </a>
-            <ButtonSecondary type="button" onClick={() => onSupportClick(`category_page_bottom_${page.path}`, `I would like a quote for ${page.category}. Please share availability, price guidance and delivery details.`)} className={`${whatsappCtaClass} px-3 py-2 text-xs sm:text-sm`}>
+            <ButtonSecondary type="button" onClick={() => onSupportClick(`category_page_bottom_${page.path}`, `I would like a quote for ${page.category}. Please share availability, price guidance and delivery details.`)} className={`${whatsappCtaClass} whatsapp-secondary-entry px-3 py-2 text-xs sm:text-sm`}>
               <WhatsAppBrandText>WhatsApp quotation help</WhatsAppBrandText>
             </ButtonSecondary>
           </div>
@@ -4002,7 +4002,7 @@ function ProjectsPage({ page, onSectionChange, onSupportClick, onQuoteClick }) {
               <ButtonSecondary
                 type="button"
                 onClick={() => onSupportClick('projects_whatsapp_support', 'Hello Kleihaus, I viewed the projects gallery. Please help me plan a similar kitchen finishing quote.')}
-                className={`${whatsappCtaClass} px-4 py-2.5 text-sm`}
+                className={`${whatsappCtaClass} whatsapp-secondary-entry px-4 py-2.5 text-sm`}
               >
                 <WhatsAppBrandText>Ask on WhatsApp</WhatsAppBrandText>
               </ButtonSecondary>
@@ -4085,7 +4085,7 @@ function ProjectsPage({ page, onSectionChange, onSupportClick, onQuoteClick }) {
             <ButtonSecondary
               type="button"
               onClick={() => onSupportClick('projects_bottom_whatsapp', 'Hello Kleihaus, I would like help planning a similar kitchen finishing project.')}
-              className={`${whatsappCtaClass} px-3 py-2 text-xs sm:text-sm`}
+              className={`${whatsappCtaClass} whatsapp-secondary-entry px-3 py-2 text-xs sm:text-sm`}
             >
               <WhatsAppBrandText>WhatsApp project help</WhatsAppBrandText>
             </ButtonSecondary>
@@ -4146,7 +4146,7 @@ function FloatingWhatsApp() {
   const handleClick = () => {
     analyticsService.track('whatsapp_click', {
       clickedElement: 'floating_whatsapp',
-      ctaLabel: 'Chat on WhatsApp',
+      ctaLabel: 'WhatsApp',
       ctaPosition: 'floating_bottom_right',
       contactMethod: 'whatsapp',
       enquiryIntent: 'quote_support',
@@ -4158,13 +4158,13 @@ function FloatingWhatsApp() {
       href={buildWhatsAppUrl('Hello Kleihaus, I would like help with tiles, sanitaryware, paints, tiling, delivery or a quotation.')}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Chat with Kleihaus Ceramics on WhatsApp"
+      aria-label="WhatsApp Kleihaus Ceramics"
       onClick={handleClick}
       className="floating-whatsapp group fixed bottom-4 right-4 z-[60] inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-[#1fb85a] bg-brand-whatsapp px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-950/20 transition hover:-translate-y-0.5 hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#25D366] sm:bottom-5 sm:right-5"
     >
       <WhatsAppLogo className="h-5 w-5 shrink-0 text-white" />
-      <span className="hidden sm:inline">Chat on WhatsApp</span>
-      <span className="sr-only sm:hidden">Chat on WhatsApp</span>
+      <span className="hidden sm:inline">WhatsApp</span>
+      <span className="sr-only sm:hidden">WhatsApp</span>
     </a>
   )
 }
@@ -4496,7 +4496,7 @@ export default function App() {
       clickedElement: source,
       projectType,
       productCategory: selectedCategory,
-      ctaLabel: 'WhatsApp support form',
+      ctaLabel: 'WhatsApp',
       ctaPosition: source,
       contactMethod: 'support_form',
       enquiryIntent: 'quote_support',

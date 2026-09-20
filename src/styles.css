@@ -513,3 +513,20 @@ footer {
     transform: none !important;
   }
 }
+
+
+/* Keep one persistent WhatsApp conversion control site-wide without changing section structure. */
+.whatsapp-secondary-entry {
+  display: none !important;
+}
+
+.floating-whatsapp {
+  background-color: #25D366 !important;
+  border-color: #25D366 !important;
+}
+
+.floating-whatsapp:hover,
+.floating-whatsapp:focus-visible {
+  background-color: #25D366 !important;
+  border-color: #25D366 !important;
+}
