@@ -1,4 +1,10 @@
-<!-- CI retrigger: verify canonical 79-keyword registry after duplicate-target fix -->
+## 2026-09-20 — Consolidated SEO merge gate
+
+- Consolidated PR validation into one authoritative sequence: dependency install, production build/SEO generation and audit, all SEO tests, analytics mapping verification, Chromium installation and browser SEO regression tests.
+- Updated the CI runtime to Node 24 to remove the deprecated Node 20 project runtime configuration.
+- Removed the temporary CI-retrigger changelog marker; historical failed/cancelled Actions runs remain audit history and are not treated as current defects.
+- PR #24 must not merge until the latest full validation run on the final PR head completes successfully.
+
 ## 2026-09-20 — Closed commercial SEO feedback framework
 
 - Added an opt-in closed-loop commercial SEO engine linking measured search demand, organic traffic, enquiries, qualification, quotes, customers, attributable revenue, ROI and evidence-based SEO opportunities.
