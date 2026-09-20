@@ -6,6 +6,7 @@ import { AUTOMATION_STATUS, buildAutomationRegistry, buildReportingWorkflow } fr
 test('commercial keyword registry stays bounded, unique and explicitly unmeasured', () => {
   assert.ok(commercialKeywordTargets.length > 50)
   assert.ok(commercialKeywordTargets.length <= 100)
+  assert.equal(commercialKeywordTargets.length, 79)
   assert.equal(new Set(commercialKeywordTargets.map((item) => item.keyword.toLowerCase())).size, commercialKeywordTargets.length)
   assert.ok(commercialKeywordTargets.every((item) => Object.values(item.measurement).every((value) => value === null)))
   assert.ok(commercialKeywordTargets.every((item) => item.cluster && item.location && item.intent && item.source))
