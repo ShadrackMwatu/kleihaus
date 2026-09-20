@@ -11,9 +11,11 @@ const categories = [
 ]
 const locationFor = (keyword) => ['Nairobi','Machakos','Makueni'].find((place) => keyword.includes(place)) || 'Kenya'
 const intentFor = (keyword) => /guide|selection/.test(keyword) ? 'commercial_investigation' : /contractors|developers|bulk|project/.test(keyword) ? 'trade_procurement' : 'local_purchase'
-export const commercialKeywordTargets = categories.flatMap(([cluster, keywords]) => keywords.map((keyword, index) => ({
+const rawTargets = categories.flatMap(([cluster, keywords]) => keywords.map((keyword, index) => ({
   keyword, cluster, location: locationFor(keyword), intent: intentFor(keyword), priority: index < 4 ? 'P1' : 'P2',
   measurement: { impressions: null, clicks: null, ctr: null, averagePosition: null, observedAt: null },
   source: 'editorial_target_pending_search_console_or_approved_rank_tracker',
 })))
+// Keep one canonical target per query. Duplicate editorial phrases across product/local clusters must not create competing owners.
+export const commercialKeywordTargets = [...new Map(rawTargets.map((item) => [item.keyword.toLowerCase(), item])).values()]
 if (commercialKeywordTargets.length > 100) throw new Error('Commercial keyword target registry exceeds 100 keywords')
