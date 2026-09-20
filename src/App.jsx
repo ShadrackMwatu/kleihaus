@@ -4042,7 +4042,7 @@ function ProjectsPage({ page, onSectionChange, onSupportClick, onQuoteClick }) {
             <h2 className="mt-1 text-2xl font-semibold text-neutral-950 sm:text-3xl">Kitchen finishing details from supplied project photos.</h2>
           </div>
           <p className="max-w-xl text-sm leading-6 text-neutral-600">
-            Overview and detail photographs show cabinets, worktops, sinks and textured backsplashes. Multiple photographs may show the same space; they are not separate project counts.
+            Overview and detail photographs show cabinets, worktops, sinks and textured backsplashes. 
           </p>
         </div>
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
