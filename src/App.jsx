@@ -2701,7 +2701,7 @@ function FloatingWhatsApp() {
   const handleClick = () => {
     analyticsService.track('whatsapp_click', {
       clickedElement: 'floating_whatsapp',
-      ctaLabel: 'Chat on WhatsApp',
+      ctaLabel: 'WhatsApp',
       ctaPosition: 'floating_bottom_right',
       contactMethod: 'whatsapp',
       enquiryIntent: 'quote_support',
