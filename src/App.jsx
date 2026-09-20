@@ -2340,6 +2340,15 @@ function AboutPage({ page }) {
         </div>
       </section>
       <section className="mx-auto max-w-7xl px-4 py-10 sm:py-12 lg:py-16">
+        <figure className="mb-8 overflow-hidden rounded-xl border border-brand-copper/20 bg-brand-ivory shadow-sm sm:mb-10">
+          <img
+            src="/images/kleihaus-structure.jpg"
+            alt="Kleihaus Ceramics finishing solutions in Kenya"
+            className="h-auto max-h-[560px] w-full object-cover"
+            loading="eager"
+            decoding="async"
+          />
+        </figure>
         <div className="grid gap-8 lg:grid-cols-2">
           <div>
             <h2 className="text-2xl font-semibold text-neutral-950">Why Kleihaus exists</h2>
