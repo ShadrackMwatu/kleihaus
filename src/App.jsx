@@ -1580,7 +1580,7 @@ const socialLinks = [
     label: 'Follow Kleihaus Ceramics on Instagram',
     Icon: InstagramLogo,
     brandClass:
-      'border-[#C13584] bg-[radial-gradient(circle_at_30%_107%,#FDF497_0%,#FDF497_5%,#FD5949_45%,#D6249F_60%,#285AEB_90%)] text-white hover:border-[#E1306C] hover:brightness-110',
+      'border-[#C13584] bg-[radial-gradient(circle_at_32%_106%,#FDF497_0%,#FDF497_5%,#FD5949_45%,#D6249F_60%,transparent_78%),linear-gradient(135deg,#405DE6_0%,#5851DB_20%,#833AB4_40%,#C13584_58%,#E1306C_72%,#FD1D1D_84%,#F56040_92%,#FCAF45_100%)] text-white hover:border-[#E1306C] hover:brightness-110',
   },
 ]
 
