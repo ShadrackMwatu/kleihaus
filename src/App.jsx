@@ -3194,7 +3194,6 @@ function Contact({ onSupportFormClick, quoteInterest = null, onClearInterest, co
           <div className="mt-3 border-t border-white/10 pt-3">
             <h3 className="text-sm font-semibold text-white">A simpler path from selection to delivery</h3>
             <p className="mt-2 text-sm leading-6 text-[#E3E2DC]">Share your requirements → Receive tailored options & quotation → Confirm supply & delivery</p>
-            <p className="mt-1 text-xs leading-5 text-[#D7D8D2]">No payment is required when you submit an enquiry.</p>
           </div>
         </div>
 
