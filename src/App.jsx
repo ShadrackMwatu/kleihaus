@@ -3269,8 +3269,8 @@ function Contact({ onSupportFormClick, quoteInterest = null, onClearInterest, co
             </p>
           )}
           <div className="mt-4 flex flex-wrap gap-2.5">
-            <Button disabled={isQuoteSubmitting} className="border-emerald-700 bg-brand-forest px-4 py-2.5 text-sm text-white shadow-md shadow-emerald-900/10 hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-70">
-              {isQuoteSubmitting ? 'Sending...' : 'Request my quotation'}
+            <Button disabled={isQuoteSubmitting} className="border-[#065F4B] bg-[#08745A] px-4 py-2.5 text-sm text-white shadow-md shadow-emerald-900/10 hover:border-[#065F4B] hover:bg-[#065F4B] disabled:cursor-not-allowed disabled:opacity-70">
+              {isQuoteSubmitting ? 'Sending...' : 'Send quotation request'}
             </Button>
             <ButtonSecondary type="button" onClick={() => onSupportFormClick('contact_form')} className={`${whatsappCtaClass} whatsapp-secondary-entry px-4 py-2.5 text-sm`}>
               <WhatsAppBrandText>WhatsApp support</WhatsAppBrandText>
