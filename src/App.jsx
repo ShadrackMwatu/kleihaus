@@ -4215,8 +4215,8 @@ function Footer() {
     { label: 'About', href: '/about' },
   ]
   const mobileServiceLinks = [
-    { label: 'Finishing Advisory', href: '/solutions' },
-    { label: 'Delivery', href: '/contact' },
+    { label: 'Finishing Advisory', href: '/trade-projects' },
+    { label: 'Delivery', href: '/#contact' },
     { label: 'Tiling & Installation', href: '/installation-support' },
   ]
   return (
