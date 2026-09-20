@@ -1565,31 +1565,29 @@ const socialLinks = [
     href: 'https://www.facebook.com/profile.php?id=61579324481913',
     label: 'Follow Kleihaus Ceramics on Facebook',
     Icon: FacebookLogo,
-    colorClass: 'text-[#1877F2]',
-    hoverClass: 'hover:border-[#1877F2]/70 hover:bg-[#1877F2]/10',
+    brandClass: 'border-[#1877F2] bg-[#1877F2] text-white hover:border-[#166FE5] hover:bg-[#166FE5]',
   },
   {
     platform: 'LinkedIn',
     href: 'https://www.linkedin.com/company/108657250/',
     label: 'Follow Kleihaus Ceramics on LinkedIn',
     Icon: LinkedInLogo,
-    colorClass: 'text-[#0A66C2]',
-    hoverClass: 'hover:border-[#0A66C2]/70 hover:bg-[#0A66C2]/10',
+    brandClass: 'border-[#0A66C2] bg-[#0A66C2] text-white hover:border-[#004182] hover:bg-[#004182]',
   },
   {
     platform: 'Instagram',
     href: 'https://www.instagram.com/kleihausceramics',
     label: 'Follow Kleihaus Ceramics on Instagram',
     Icon: InstagramLogo,
-    colorClass: 'instagram-brand-icon',
-    hoverClass: 'hover:border-[#E4405F]/70 hover:bg-white/15',
+    brandClass:
+      'border-[#C13584] bg-[radial-gradient(circle_at_30%_107%,#FDF497_0%,#FDF497_5%,#FD5949_45%,#D6249F_60%,#285AEB_90%)] text-white hover:border-[#E1306C] hover:brightness-110',
   },
 ]
 
 function SocialLinks({ placement = 'footer', showText = true, className = '', compact = false }) {
   return (
     <div className={`flex flex-wrap gap-2 ${className}`} aria-label="Kleihaus Ceramics social media links">
-      {socialLinks.map(({ platform, href, label, Icon, colorClass, hoverClass }) => (
+      {socialLinks.map(({ platform, href, label, Icon, brandClass }) => (
         <a
           key={platform}
           href={href}
@@ -1606,18 +1604,9 @@ function SocialLinks({ placement = 'footer', showText = true, className = '', co
               socialPlatform: platform,
             })
           }
-          className={`inline-flex min-h-10 items-center justify-center gap-2 rounded-md border border-white/20 bg-white/10 ${compact ? 'h-10 w-10 p-2' : 'px-3 py-2'} text-xs font-semibold text-white transition ${hoverClass} hover:text-white focus:outline-none focus:ring-2 focus:ring-white/40`}
+          className={`inline-flex min-h-10 items-center justify-center gap-2 rounded-md border ${compact ? 'h-10 w-10 p-2' : 'px-3 py-2'} text-xs font-semibold shadow-sm transition ${brandClass} focus:outline-none focus:ring-2 focus:ring-white/60`}
         >
-          {platform === 'Instagram' ? (
-            <span
-              className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-[5px] bg-[radial-gradient(circle_at_30%_107%,#fdf497_0%,#fdf497_5%,#fd5949_45%,#d6249f_60%,#285AEB_90%)] text-white"
-              aria-hidden="true"
-            >
-              <Icon className="h-3.5 w-3.5" />
-            </span>
-          ) : (
-            <Icon className={`h-4 w-4 shrink-0 ${colorClass}`} />
-          )}
+          <Icon className="h-5 w-5 shrink-0 text-white" />
           {showText ? <span>{platform}</span> : <span className="sr-only">{label}</span>}
         </a>
       ))}
