@@ -1581,8 +1581,8 @@ const socialLinks = [
     href: 'https://www.instagram.com/kleihausceramics',
     label: 'Follow Kleihaus Ceramics on Instagram',
     Icon: InstagramLogo,
-    colorClass: 'text-[#E4405F]',
-    hoverClass: 'hover:border-[#E4405F]/70 hover:bg-[#E4405F]/10',
+    colorClass: 'instagram-brand-icon',
+    hoverClass: 'hover:border-[#E4405F]/70 hover:bg-white/15',
   },
 ]
 
@@ -1608,7 +1608,16 @@ function SocialLinks({ placement = 'footer', showText = true, className = '', co
           }
           className={`inline-flex min-h-10 items-center justify-center gap-2 rounded-md border border-white/20 bg-white/10 ${compact ? 'h-10 w-10 p-2' : 'px-3 py-2'} text-xs font-semibold text-white transition ${hoverClass} hover:text-white focus:outline-none focus:ring-2 focus:ring-white/40`}
         >
-          <Icon className={`h-4 w-4 shrink-0 ${colorClass}`} />
+          {platform === 'Instagram' ? (
+            <span
+              className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-[5px] bg-[radial-gradient(circle_at_30%_107%,#fdf497_0%,#fdf497_5%,#fd5949_45%,#d6249f_60%,#285AEB_90%)] text-white"
+              aria-hidden="true"
+            >
+              <Icon className="h-3.5 w-3.5" />
+            </span>
+          ) : (
+            <Icon className={`h-4 w-4 shrink-0 ${colorClass}`} />
+          )}
           {showText ? <span>{platform}</span> : <span className="sr-only">{label}</span>}
         </a>
       ))}
