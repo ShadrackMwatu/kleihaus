@@ -4191,8 +4191,8 @@ function Footer() {
     { label: 'Cost estimation guide', href: '/cost-estimation-guide' },
   ]
   const footerProjectLinks = [
-    { label: 'View All Projects', href: '/projects' },
-    { label: 'Kitchen Projects', href: '/projects#kitchen-projects' },
+    { label: 'Past Projects', href: '/projects#kitchen-projects' },
+    { label: 'Current Projects', href: '/projects' },
   ]
   const mobileExploreLinks = [
     { label: 'Products', href: '/products' },
@@ -4258,7 +4258,15 @@ function Footer() {
         </div>
 
         <div className="w-full lg:max-w-max lg:justify-self-center">
-          <h3 className="text-sm font-semibold uppercase text-white">Projects</h3>
+          <h3 className="text-sm font-semibold uppercase text-white">
+            <a
+              href="/projects"
+              className="transition hover:text-white/90 focus:outline-none focus:ring-2 focus:ring-white/70"
+              onClick={() => analyticsService.track('project_click', { clickedElement: 'footer_projects_heading', ctaLabel: 'Projects', ctaPosition: 'footer_projects', enquiryIntent: 'project_gallery' })}
+            >
+              Projects
+            </a>
+          </h3>
           <ul className="mt-2 grid gap-1 text-xs text-white/90 sm:gap-1.5 sm:text-sm">
             {footerProjectLinks.map((item) => (
               <li key={item.href}>
