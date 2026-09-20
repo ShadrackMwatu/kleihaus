@@ -8,7 +8,7 @@
     "seo": "npm run seo:generate",
     "seo:generate": "node scripts/seo-engine.mjs",
     "seo:audit": "node scripts/seo-engine.mjs --audit-only",
-    "seo:test": "node --test tests/seo-acquisition.test.mjs tests/seo-commercial.test.mjs tests/seo-categories.test.mjs",
+    "seo:test": "node --test tests/seo-acquisition.test.mjs tests/seo-commercial.test.mjs tests/seo-categories.test.mjs tests/seo-automation-registry.test.mjs",
     "seo:browser": "playwright test tests/seo-browser.spec.js",
     "seo:verify-production": "node scripts/verify-production-seo.mjs",
     "seo:verify-production:all": "node scripts/verify-production-seo.mjs --all-routes",
@@ -17,7 +17,8 @@
     "generate:sitemap": "node scripts/generate-sitemap.mjs",
     "generate:route-html": "node scripts/generate-route-html.mjs",
     "build": "npm run seo:generate && vite build && npm run generate:route-html && npm run seo:audit",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "ci:seo": "npm run build && npm run seo:test && npm run analytics:verify"
   },
   "dependencies": {
     "framer-motion": "^11.0.0",

@@ -1,3 +1,18 @@
+## 2026-09-20 — SEO pull-request validation gate
+
+- Added a pull-request CI gate for SEO-affecting changes targeting main.
+- The gate runs the production build, SEO unit/regression tests, analytics event mapping verification and Chromium SEO browser tests before merge.
+- Added a consolidated `npm run ci:seo` command so the non-browser validation sequence is reproducible locally and in CI.
+- Kept production verification separate because it validates the deployed main branch after deployment rather than an unmerged PR branch.
+
+## 2026-09-20 — SEO measurement and automation integrity upgrade
+
+- Added a bounded commercial keyword monitoring registry across Kleihaus product, service and target-market intent; all external performance measurements remain null until authoritative data is connected.
+- Added a machine-readable automation registry that distinguishes functioning automation, configured-but-unverified processes, manual work, missing integrations and external/human-approval dependencies.
+- Added weekly/monthly reporting contracts for search visibility, organic traffic, enquiries, conversions, verified revenue/ROI, technical health, content, backlinks, competitors and prioritized actions without fabricating unavailable data.
+- Added tests enforcing keyword uniqueness/ceiling, null unconnected metrics, external-access boundaries and verified-input ROI calculations.
+- Preserved existing routes, metadata, analytics, conversion flows, production monitor schedule, Cloudflare configuration and all third-party authorization safeguards.
+
 ## 2026-09-19 — Commercial intelligence layer
 
 - Added an evidence-based commercial intelligence summary over first-party anonymous interaction events, including organic interactions, organic lead actions, organic lead-action rate, top organic landing pages, top organic lead pages, commercial categories, enquiry intents, acquisition sources and page-level opportunity signals.
