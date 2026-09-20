@@ -1,3 +1,4 @@
+<!-- CI retrigger: verify canonical 79-keyword registry after duplicate-target fix -->
 ## 2026-09-20 — Closed commercial SEO feedback framework
 
 - Added an opt-in closed-loop commercial SEO engine linking measured search demand, organic traffic, enquiries, qualification, quotes, customers, attributable revenue, ROI and evidence-based SEO opportunities.
