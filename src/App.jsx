@@ -3137,12 +3137,12 @@ function Contact({ onSupportFormClick, quoteInterest = null, onClearInterest, co
   ]
 
   return (
-    <section id="contact" className={compact ? 'rounded-xl bg-neutral-950 text-white' : 'bg-neutral-950 text-white'}>
+    <section id="contact" className={compact ? 'rounded-xl bg-[#071F1A] text-[#F7F5EF]' : 'bg-[#071F1A] text-[#F7F5EF]'}>
       <div className={`${compact ? 'grid gap-4 p-4 sm:p-5' : 'mx-auto grid max-w-7xl gap-5 px-4 py-6'} lg:grid-cols-[0.9fr_1.1fr]`}>
         <div>
           <p className="text-sm font-semibold uppercase text-emerald-300">Project & Product Support</p>
           <h2 className="mt-1.5 text-2xl font-semibold sm:text-3xl">Talk to Kleihaus now.</h2>
-          <p className="mt-2 max-w-xl text-sm leading-6 text-neutral-300">
+          <p className="mt-2 max-w-xl text-sm leading-6 text-[#D7D8D2]">
             Share your requirements and we’ll help with product selection, availability, pricing, quantities, delivery and installation planning.
           </p>
 
@@ -3164,7 +3164,7 @@ function Contact({ onSupportFormClick, quoteInterest = null, onClearInterest, co
             })}
           </div>
 
-          <div className="mt-3 space-y-2 text-sm text-neutral-200">
+          <div className="mt-3 space-y-2 text-sm text-[#E3E2DC]">
             <a href="tel:+254748827166" className="flex items-center gap-3 hover:text-white" onClick={() => analyticsService.track('phone_click', { clickedElement: 'contact_phone' })}>
               <Phone className="h-4 w-4 text-emerald-300" />
               +254 748 827 166
@@ -3193,8 +3193,8 @@ function Contact({ onSupportFormClick, quoteInterest = null, onClearInterest, co
 
           <div className="mt-3 border-t border-white/10 pt-3">
             <h3 className="text-sm font-semibold text-white">A simpler path from selection to delivery</h3>
-            <p className="mt-2 text-sm leading-6 text-neutral-200">Share your requirements → Receive tailored options & quotation → Confirm supply & delivery</p>
-            <p className="mt-1 text-xs leading-5 text-neutral-300">No payment is required when you submit an enquiry.</p>
+            <p className="mt-2 text-sm leading-6 text-[#E3E2DC]">Share your requirements → Receive tailored options & quotation → Confirm supply & delivery</p>
+            <p className="mt-1 text-xs leading-5 text-[#D7D8D2]">No payment is required when you submit an enquiry.</p>
           </div>
         </div>
 
@@ -3204,7 +3204,7 @@ function Contact({ onSupportFormClick, quoteInterest = null, onClearInterest, co
           onSubmit={submitQuoteRequest}
           noValidate
           autoComplete="off"
-          className="rounded-lg bg-white p-4 text-neutral-950 shadow-xl"
+          className="rounded-lg border border-[#E8E3D8] bg-[#FCFBF7] p-4 text-neutral-950 shadow-lg shadow-black/10"
         >
           <div className="mb-3">
             <h3 className="text-lg font-semibold">Tell us about your project</h3>
