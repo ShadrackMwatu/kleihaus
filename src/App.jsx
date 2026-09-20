@@ -1251,7 +1251,7 @@ const productsHubPage = {
   hubGroups: [
     {
       title: 'Product categories',
-      text: 'Compare the core commercial categories before requesting a quote.',
+      text: 'Explore our core product categories and find the right options for your project.',
       links: [
         { label: 'Tiles', href: '/tiles', detail: 'Floor, wall, bathroom and outdoor tile options' },
         { label: 'Sanitaryware', href: '/sanitaryware', detail: 'Basins, toilets, showers, taps and bathroom accessories' },
@@ -1263,7 +1263,7 @@ const productsHubPage = {
     },
     {
       title: 'Plan by next step',
-      text: 'Use projects, guides and local hubs to refine product choices before enquiry.',
+      text: 'Explore projects, practical guides and local support to plan your next step with confidence.',
       links: [
         { label: 'View projects', href: '/projects', detail: 'Genuine project inspiration and finishing references' },
         { label: 'Get selection guidance', href: '/guides', detail: 'Buying, planning, installation and estimation guides' },
@@ -1281,7 +1281,7 @@ const guidesHubPage = {
   eyebrow: 'Guides',
   h1: 'Buying and planning guides',
   intro:
-    'Use the resource centre to choose products, plan quantities, prepare for installation and structure a clearer quote request without relying on unsupported prices or claims.',
+    'Use our practical guides to choose products, plan quantities, prepare for installation and request a more accurate quotation.',
   category: 'Guides',
   schemaType: 'CollectionPage',
   pageType: 'guides',
@@ -1294,7 +1294,7 @@ const guidesHubPage = {
   hubGroups: [
     {
       title: 'Resource centre',
-      text: 'Pick the guide that matches the practical decision in front of you.',
+      text: 'Choose the guide that best matches your project or the decision you need to make.',
       links: guideSeoPages.map((guide) => ({
         label: guide.category,
         href: guide.path,
@@ -1325,7 +1325,7 @@ const locationsIndexPage = {
   hubGroups: [
     {
       title: 'Principal location hubs',
-      text: 'Start with the county or service-area hub, then move to product-specific pages where useful.',
+      text: 'Choose your location to find relevant product guidance, delivery planning and project support.',
       links: [
         { label: 'Nairobi', href: '/locations/nairobi', detail: 'Support for apartments, retail spaces, offices, renovations and project sites' },
         { label: 'Machakos', href: '/locations/machakos', detail: 'Support for new homes, rentals, shops, institutions and construction sites' },
@@ -1334,7 +1334,7 @@ const locationsIndexPage = {
     },
     {
       title: 'Product-location pages',
-      text: 'Use these only when the product and location are both relevant to your enquiry.',
+      text: 'Explore product-specific support available for your location.',
       links: [
         { label: 'Tiles Nairobi', href: '/tiles-nairobi', detail: 'Tile planning and quote context for Nairobi' },
         { label: 'Sanitaryware Machakos', href: '/sanitaryware-machakos', detail: 'Bathroom fixture planning and support for Machakos' },
@@ -3912,9 +3912,9 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
         </div>
         <div className="flex flex-col gap-3 rounded-xl bg-neutral-950 p-4 text-white sm:p-5 md:flex-row md:items-center md:justify-between">
           <div>
-            <h2 className="text-xl font-semibold sm:text-2xl">{page.eyebrow === 'Project guide' ? 'From ideas to materials' : `${page.category}: product enquiries`}</h2>
+            <h2 className="text-xl font-semibold sm:text-2xl">{page.eyebrow === 'Project guide' ? 'From ideas to materials' : `Need help choosing the right ${page.category.toLowerCase()}?`}</h2>
             <p className="mt-2 text-sm leading-6 text-neutral-300">
-              Product availability, matching finishes and quotation support from the Kleihaus team.
+              Talk to Kleihaus about current options, matching finishes, quantities, delivery and quotation support.
             </p>
           </div>
           <div className="flex shrink-0 flex-wrap gap-2">
@@ -4057,10 +4057,10 @@ function ProjectsPage({ page, onSectionChange, onSupportClick, onQuoteClick }) {
         <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="text-xs font-semibold uppercase text-emerald-700 sm:text-sm">Kitchen projects</p>
-            <h2 className="mt-1 text-2xl font-semibold text-neutral-950 sm:text-3xl">Kitchen finishing details from supplied project photos.</h2>
+            <h2 className="mt-1 text-2xl font-semibold text-neutral-950 sm:text-3xl">Explore kitchen finishing details and ideas for your project.</h2>
           </div>
           <p className="max-w-xl text-sm leading-6 text-neutral-600">
-            Overview and detail photographs show cabinets, worktops, sinks and textured backsplashes.
+            See how cabinets, worktops, sinks and textured backsplashes come together to create a coordinated kitchen finish.
           </p>
         </div>
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
