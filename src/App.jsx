@@ -2297,12 +2297,23 @@ function AboutSection() {
   return (
     <section id="about" className="bg-white">
       <div className="mx-auto max-w-7xl px-4 py-10 sm:py-12 lg:py-16">
-        <div className="max-w-3xl">
-          <p className="text-sm font-semibold uppercase text-emerald-700">About Kleihaus</p>
-          <h2 className="mt-2 text-xl font-semibold text-neutral-950 sm:text-2xl">Why Kleihaus</h2>
-          <p className="mt-3 text-base leading-7 text-neutral-600">
-            Finishing a project should not require coordinating multiple unreliable suppliers. Kleihaus brings tiles, sanitaryware, paints, adhesives and tiling support together—helping customers make confident choices, reduce delays and achieve better-finished spaces.
-          </p>
+        <div className="grid items-stretch gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(320px,0.85fr)]">
+          <div className="max-w-3xl">
+            <p className="text-sm font-semibold uppercase text-emerald-700">About Kleihaus</p>
+            <h2 className="mt-2 text-xl font-semibold text-neutral-950 sm:text-2xl">Why Kleihaus</h2>
+            <p className="mt-3 text-base leading-7 text-neutral-600">
+              Finishing a project should not require coordinating multiple unreliable suppliers. Kleihaus brings tiles, sanitaryware, paints, adhesives and tiling support together—helping customers make confident choices, reduce delays and achieve better-finished spaces.
+            </p>
+          </div>
+          <figure className="overflow-hidden rounded-xl border border-brand-copper/20 bg-brand-ivory shadow-sm">
+            <img
+              src="/images/kleihaus-structure.jpg"
+              alt="Kleihaus Ceramics finishing solutions in Kenya"
+              className="h-full min-h-56 w-full object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
         </div>
         <div className="mt-6 grid gap-3 sm:grid-cols-3">
           {['Reliable products', 'Coordinated solutions', 'Practical project support'].map((value) => (
