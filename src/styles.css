@@ -513,3 +513,31 @@ footer {
     transform: none !important;
   }
 }
+
+
+/* Single site-wide WhatsApp entry point: official WhatsApp brand green. */
+.floating-whatsapp {
+  background-color: #25D366;
+  border-color: #25D366;
+}
+
+.floating-whatsapp:hover,
+.floating-whatsapp:focus-visible {
+  background-color: #25D366;
+  border-color: #25D366;
+}
+
+.whatsapp-attention {
+  animation: whatsapp-attention 700ms ease-out;
+}
+
+@keyframes whatsapp-attention {
+  0%, 100% { transform: scale(1); }
+  45% { transform: scale(1.08); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .whatsapp-attention {
+    animation: none;
+  }
+}
