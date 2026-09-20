@@ -2867,7 +2867,7 @@ function TradeProjectsPage({ page, onSectionChange, onSupportClick, onQuoteClick
           <div>
             <p className="text-xs font-semibold uppercase text-emerald-300 sm:text-sm">Next step</p>
             <h2 className="mt-1.5 text-xl font-semibold sm:text-2xl">Send your BOQ or project requirements</h2>
-            <p className="mt-2 max-w-3xl text-sm leading-6 text-[#D7D8D2]">Share quantities, specifications, preferred finishes, location and timing for coordinated product and quotation support.</p>
+            <p className="mt-2 max-w-3xl text-sm leading-6 text-neutral-300">Share quantities, specifications, preferred finishes, location and timing for coordinated product and quotation support.</p>
           </div>
           <Button
             type="button"
@@ -3512,7 +3512,7 @@ function Breadcrumbs({ page }) {
           const isCurrent = index === breadcrumbs.length - 1
           return (
             <li key={`${item.href}-${item.name}`} className="flex shrink-0 items-center gap-1">
-              {index > 0 && <ChevronRight className="h-3.5 w-3.5 text-[#D7D8D2]" aria-hidden="true" />}
+              {index > 0 && <ChevronRight className="h-3.5 w-3.5 text-neutral-300" aria-hidden="true" />}
               {isCurrent ? (
                 <span aria-current="page" className="max-w-[14rem] truncate text-neutral-800 sm:max-w-none">
                   {item.name}
@@ -3626,7 +3626,7 @@ function HubPage({ page, onSectionChange, onSupportClick, onQuoteClick }) {
           <div>
             <p className="text-xs font-semibold uppercase text-emerald-300 sm:text-sm">Next step</p>
             <h2 className="mt-1.5 text-xl font-semibold sm:text-2xl">{closingTitles[page.pageType]}</h2>
-            <p className="mt-2 max-w-3xl text-sm leading-6 text-[#D7D8D2]">
+            <p className="mt-2 max-w-3xl text-sm leading-6 text-neutral-300">
               Product selection, tailored quotations and practical project support, brought together by Kleihaus.
             </p>
           </div>
@@ -3897,7 +3897,7 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
         <div className="flex flex-col gap-3 rounded-xl bg-neutral-950 p-4 text-white sm:p-5 md:flex-row md:items-center md:justify-between">
           <div>
             <h2 className="text-xl font-semibold sm:text-2xl">{page.eyebrow === 'Project guide' ? 'From ideas to materials' : `${page.category}: product enquiries`}</h2>
-            <p className="mt-2 text-sm leading-6 text-[#D7D8D2]">
+            <p className="mt-2 text-sm leading-6 text-neutral-300">
               Product availability, matching finishes and quotation support from the Kleihaus team.
             </p>
           </div>
@@ -4081,7 +4081,7 @@ function ProjectsPage({ page, onSectionChange, onSupportClick, onQuoteClick }) {
           <div>
             <p className="text-xs font-semibold uppercase text-emerald-300 sm:text-sm">Plan a similar finish</p>
             <h2 className="mt-1.5 text-xl font-semibold sm:text-2xl">Request a similar finish for your project</h2>
-            <p className="mt-2 max-w-3xl text-sm leading-6 text-[#D7D8D2]">
+            <p className="mt-2 max-w-3xl text-sm leading-6 text-neutral-300">
               Kleihaus can help compare tiles, sanitaryware, paints, adhesives, grout and finishing materials around your room, quantity, location and timing.
             </p>
           </div>
