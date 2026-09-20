@@ -17,7 +17,8 @@
     "generate:sitemap": "node scripts/generate-sitemap.mjs",
     "generate:route-html": "node scripts/generate-route-html.mjs",
     "build": "npm run seo:generate && vite build && npm run generate:route-html && npm run seo:audit",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "ci:seo": "npm run build && npm run seo:test && npm run analytics:verify"
   },
   "dependencies": {
     "framer-motion": "^11.0.0",
