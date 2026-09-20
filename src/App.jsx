@@ -3278,7 +3278,6 @@ function Contact({ onSupportFormClick, quoteInterest = null, onClearInterest, co
           </div>
           <div className="mt-4 border-t border-neutral-200 pt-3">
             <p className="text-xs font-semibold leading-5 text-neutral-700">Product guidance · Current availability · Quotation · Delivery planning · Installation support</p>
-            <p className="mt-1 text-xs leading-5 text-neutral-600">Your enquiry goes directly to our project support team. No payment or obligation is required to submit it.</p>
           </div>
         </form>
       </div>
