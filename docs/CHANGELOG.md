@@ -1,3 +1,10 @@
+## 2026-09-20 — Closed commercial SEO feedback framework
+
+- Added an opt-in closed-loop commercial SEO engine linking measured search demand, organic traffic, enquiries, qualification, quotes, customers, attributable revenue, ROI and evidence-based SEO opportunities.
+- Added fail-closed readiness gates for Search Console, GA4 and private commercial-outcome connectors; all remain inactive until explicitly enabled with authorized identifiers and secrets.
+- Added privacy-safe attribution rules, null-preserving calculations and opportunity detection without autonomous publishing or third-party actions.
+- Added a weekly commercial feedback workflow, test coverage and operator documentation.
+
 ## 2026-09-20 — SEO pull-request validation gate
 
 - Added a pull-request CI gate for SEO-affecting changes targeting main.
