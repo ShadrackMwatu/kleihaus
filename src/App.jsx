@@ -2142,7 +2142,10 @@ function usePrefersReducedMotion() {
 function Hero({ onSectionChange }) {
   const [activeSlide, setActiveSlide] = useState(0)
   const [hasInteracted, setHasInteracted] = useState(false)
+  const [heroVideoReady, setHeroVideoReady] = useState(false)
+  const [heroVideoFailed, setHeroVideoFailed] = useState(false)
   const prefersReducedMotion = usePrefersReducedMotion()
+  const showHeroVideo = !prefersReducedMotion && !heroVideoFailed
 
   useEffect(() => {
     if (prefersReducedMotion || hasInteracted) return undefined
@@ -2178,11 +2181,32 @@ function Hero({ onSectionChange }) {
                   sizes="100vw"
                   loading={index === 0 ? 'eager' : 'lazy'}
                   decoding="async"
-                  aria-hidden={!isActive}
-                  className={`absolute inset-0 h-full w-full object-cover transition-[opacity,transform] duration-1000 ease-out ${isActive ? 'opacity-100' : 'opacity-0'} ${motionClass}`}
+                  aria-hidden={!isActive || (showHeroVideo && heroVideoReady)}
+                  className={`absolute inset-0 h-full w-full object-cover transition-[opacity,transform] duration-1000 ease-out ${isActive && !(showHeroVideo && heroVideoReady) ? 'opacity-100' : 'opacity-0'} ${motionClass}`}
                 />
               )
             })}
+            {showHeroVideo && (
+              <video
+                className={`hero-video absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${heroVideoReady ? 'opacity-100' : 'opacity-0'}`}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                poster="/images/projects/project-kitchen-overview-01.jpg"
+                aria-hidden="true"
+                tabIndex={-1}
+                onCanPlay={() => setHeroVideoReady(true)}
+                onError={() => {
+                  setHeroVideoFailed(true)
+                  setHeroVideoReady(false)
+                }}
+              >
+                <source src="/media/kleihaus-hero.webm" type="video/webm" />
+                <source src="/media/kleihaus-hero.mp4" type="video/mp4" />
+              </video>
+            )}
           </div>
           <div className="hero-shade absolute inset-0" />
           <div className="relative flex h-full w-full min-w-0 max-w-3xl flex-col justify-center px-5 py-6 pb-12 sm:px-9 sm:py-10 lg:px-10">
@@ -4118,6 +4142,33 @@ function ProjectsPage({ page, onSectionChange, onSupportClick, onQuoteClick }) {
   )
 }
 
+function FloatingWhatsApp() {
+  const handleClick = () => {
+    analyticsService.track('whatsapp_click', {
+      clickedElement: 'floating_whatsapp',
+      ctaLabel: 'Chat on WhatsApp',
+      ctaPosition: 'floating_bottom_right',
+      contactMethod: 'whatsapp',
+      enquiryIntent: 'quote_support',
+    })
+  }
+
+  return (
+    <a
+      href={buildWhatsAppUrl('Hello Kleihaus, I would like help with tiles, sanitaryware, paints, tiling, delivery or a quotation.')}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Chat with Kleihaus Ceramics on WhatsApp"
+      onClick={handleClick}
+      className="floating-whatsapp group fixed bottom-4 right-4 z-[60] inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-[#1fb85a] bg-brand-whatsapp px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-950/20 transition hover:-translate-y-0.5 hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#25D366] sm:bottom-5 sm:right-5"
+    >
+      <WhatsAppLogo className="h-5 w-5 shrink-0 text-white" />
+      <span className="hidden sm:inline">Chat on WhatsApp</span>
+      <span className="sr-only sm:hidden">Chat on WhatsApp</span>
+    </a>
+  )
+}
+
 function Footer() {
   const footerProductLinks = [
     { label: 'All products', href: '/products' },
@@ -4548,6 +4599,7 @@ export default function App() {
         </>
       )}
       <Footer />
+      <FloatingWhatsApp />
       <SupportModal
         open={supportModal.open}
         source={supportModal.source}
