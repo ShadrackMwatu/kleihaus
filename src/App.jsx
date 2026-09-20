@@ -2339,12 +2339,12 @@ function AboutPage({ page }) {
           <p className="mt-4 max-w-3xl text-base leading-7 text-neutral-700">Kleihaus exists to make quality finishing materials easier to access, understand and coordinate for homes, renovations and commercial projects in Kenya.</p>
         </div>
       </section>
-      <section className="mx-auto max-w-7xl px-4 py-10 sm:py-12 lg:py-16">
+      <section className="mx-auto max-w-[1440px] px-3 py-10 sm:px-4 sm:py-12 lg:px-5 lg:py-16">
         <figure className="mb-8 overflow-hidden rounded-xl border border-brand-copper/20 bg-brand-ivory shadow-sm sm:mb-10">
           <img
             src="/images/kleihaus-structure.jpg"
             alt="Kleihaus Ceramics finishing solutions in Kenya"
-            className="h-auto max-h-[560px] w-full object-cover"
+            className="block h-auto w-full"
             loading="eager"
             decoding="async"
           />
