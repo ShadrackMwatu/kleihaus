@@ -4190,10 +4190,6 @@ function Footer() {
     { label: 'Paint selection guide', href: '/paint-selection-guide' },
     { label: 'Cost estimation guide', href: '/cost-estimation-guide' },
   ]
-  const footerProjectLinks = [
-    { label: 'Past Projects', href: '/projects#kitchen-projects' },
-    { label: 'Current Projects', href: '/projects' },
-  ]
   const mobileExploreLinks = [
     { label: 'Products', href: '/products' },
     { label: 'Projects', href: '/projects' },
@@ -4267,19 +4263,6 @@ function Footer() {
               Projects
             </a>
           </h3>
-          <ul className="mt-2 grid gap-1 text-xs text-white/90 sm:gap-1.5 sm:text-sm">
-            {footerProjectLinks.map((item) => (
-              <li key={item.href}>
-                <a
-                  href={item.href}
-                  onClick={() => analyticsService.track('project_click', { clickedElement: `footer_project_${item.label.toLowerCase().replace(/\s+/g, '_')}`, ctaLabel: item.label, ctaPosition: 'footer_projects', enquiryIntent: 'project_gallery' })}
-                  className="inline-flex min-h-8 items-center transition hover:text-white focus:outline-none focus:ring-2 focus:ring-white/70"
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
         </div>
 
         <div>
