@@ -1,0 +1,41 @@
+name: Commercial SEO Feedback Loop
+
+on:
+  schedule:
+    - cron: "30 4 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  commercial-seo-feedback:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      SEO_GSC_ENABLED: ${{ vars.SEO_GSC_ENABLED }}
+      SEO_GSC_PROPERTY: ${{ vars.SEO_GSC_PROPERTY }}
+      SEO_GSC_CREDENTIALS_JSON: ${{ secrets.SEO_GSC_CREDENTIALS_JSON }}
+      SEO_GA4_ENABLED: ${{ vars.SEO_GA4_ENABLED }}
+      SEO_GA4_PROPERTY_ID: ${{ vars.SEO_GA4_PROPERTY_ID }}
+      SEO_GA4_CREDENTIALS_JSON: ${{ secrets.SEO_GA4_CREDENTIALS_JSON }}
+      SEO_OUTCOMES_ENABLED: ${{ vars.SEO_OUTCOMES_ENABLED }}
+      SEO_OUTCOMES_SOURCE: ${{ vars.SEO_OUTCOMES_SOURCE }}
+      SEO_OUTCOMES_TOKEN: ${{ secrets.SEO_OUTCOMES_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Validate commercial SEO engine
+        run: npm run seo:test
+      - name: Build safe commercial feedback snapshot
+        run: npm run seo:commercial-loop -- --output=reports/seo-commercial/closed-loop.json
+      - name: Upload non-sensitive feedback snapshot
+        uses: actions/upload-artifact@v4
+        with:
+          name: kleihaus-commercial-seo-feedback-${{ github.run_number }}
+          path: reports/seo-commercial/closed-loop.json
+          retention-days: 60

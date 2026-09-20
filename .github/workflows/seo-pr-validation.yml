@@ -24,17 +24,34 @@ concurrency:
 jobs:
   validate:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout final PR head
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           cache: npm
-      - run: npm ci
+      - name: Install dependencies
+        run: npm ci
       - name: Build, SEO tests and analytics mappings
         run: npm run ci:seo
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
+      - name: Start built PR preview
+        run: |
+          npm run preview -- --host 127.0.0.1 --port 4173 > /tmp/kleihaus-vite-preview.log 2>&1 &
+          echo $! > /tmp/kleihaus-vite-preview.pid
+          for attempt in {1..30}; do
+            if curl --fail --silent http://127.0.0.1:4173/ > /dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/kleihaus-vite-preview.log
+          exit 1
       - name: Browser SEO regression tests
+        env:
+          PLAYWRIGHT_BASE_URL: http://127.0.0.1:4173
         run: npm run seo:browser
