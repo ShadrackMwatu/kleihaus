@@ -480,3 +480,36 @@ footer {
     transform: none;
   }
 }
+
+
+.hero-video {
+  background: #171717;
+  object-position: center center;
+}
+
+.floating-whatsapp {
+  isolation: isolate;
+  max-width: calc(100vw - 2rem);
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 639px) {
+  .floating-whatsapp {
+    width: 3.25rem;
+    height: 3.25rem;
+    min-height: 3.25rem;
+    padding: 0;
+    bottom: max(1rem, env(safe-area-inset-bottom));
+    right: max(1rem, env(safe-area-inset-right));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-video {
+    display: none;
+  }
+
+  .floating-whatsapp {
+    transform: none !important;
+  }
+}
