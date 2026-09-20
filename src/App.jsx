@@ -1312,7 +1312,7 @@ const locationsIndexPage = {
   eyebrow: 'Locations',
   h1: 'Kleihaus support by location',
   intro:
-    'Use the main location hub to move into Nairobi, Machakos or Makueni support pages, then review relevant product-location pages for local planning context.',
+    'Find Kleihaus support in Nairobi, Machakos and Makueni, with local guidance on tiles, sanitaryware, paints, tiling and project finishing solutions.',
   category: 'Locations',
   schemaType: 'CollectionPage',
   pageType: 'locations',
