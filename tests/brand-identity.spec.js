@@ -18,7 +18,7 @@ for (const width of [390, 768, 1440]) {
     await page.keyboard.press('Tab')
     await page.getByRole('button', { name: 'Explore Products', exact: true }).focus()
     expect(await page.evaluate(() => getComputedStyle(document.activeElement).outlineStyle)).not.toBe('none')
-    for (const path of ['/', '/sanitaryware', '/projects', '/contact']) {
+    for (const path of ['/', '/sanitaryware', '/projects', '/#contact']) {
       await page.goto(path)
       await page.waitForFunction(() => [...document.images].filter((img) => img.getBoundingClientRect().top < innerHeight && img.getBoundingClientRect().bottom > 0).every((img) => img.complete && img.naturalWidth > 0))
       await page.screenshot({ path: testInfo.outputPath(`${path.replaceAll('/', '-')}-${width}.png`), fullPage: true })
