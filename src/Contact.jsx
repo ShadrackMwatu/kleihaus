@@ -1,3 +1,4 @@
+import RevealPhone from './RevealPhone'
 import React from 'react'
 
 const WhatsAppIcon = () => (
@@ -22,14 +23,12 @@ export default function Contact({ locations }) {
           WhatsApp:{' '}
           <a href="https://wa.me/254748827166?text=Hello%20Kleihaus%2C%20I%20would%20like%20support." className="inline-flex items-center gap-1.5 font-medium text-[#128C7E]">
             <WhatsAppIcon />
-            +254 748 827 166
+            Chat on WhatsApp
           </a>
         </p>
         <p>
           Phone:{' '}
-          <a href="tel:+254748827166" className="font-medium text-emerald-700">
-            +254 748 827 166
-          </a>
+          <RevealPhone className="font-medium text-emerald-700" clickedElement="standalone_contact_1" />
         </p>
       </div>
     </section>

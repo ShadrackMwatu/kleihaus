@@ -149,9 +149,10 @@ test('live production sends expected GA4 events for safe interactions', async ({
     const contact = page.locator('#contact')
     await contact.scrollIntoViewIfNeeded()
     await waitForEvent('whatsapp_click', async () => {
-      await contact.locator('a[href*="wa.me"]').first().click()
+      await page.locator('a.floating-whatsapp').click()
     })
 
+    await contact.getByRole('button', { name: /reveal phone number/ }).click()
     await waitForEvent('phone_click', async () => {
       await contact.locator('a[href^="tel:"]').first().click()
     })

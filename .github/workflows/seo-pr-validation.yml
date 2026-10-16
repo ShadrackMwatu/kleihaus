@@ -54,4 +54,5 @@ jobs:
       - name: Browser SEO regression tests
         env:
           PLAYWRIGHT_BASE_URL: http://127.0.0.1:4173
-        run: npm run seo:browser
+          LAYOUT_BASE_URL: http://127.0.0.1:4173
+        run: npx playwright test tests/seo-browser.spec.js tests/phone-reveal.spec.js tests/footer-compact.spec.js

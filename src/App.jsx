@@ -1,3 +1,4 @@
+import RevealPhone from './RevealPhone'
 import React, { useEffect, useRef, useState } from 'react'
 import {
   ArrowRight,
@@ -10,7 +11,6 @@ import {
   MapPin,
   Menu,
   PaintBucket,
-  Phone,
   Search,
   ShieldCheck,
   ShowerHead,
@@ -1614,10 +1614,10 @@ function SocialLinks({ placement = 'footer', showText = true, className = '', co
   )
 }
 
-const WhatsAppBrandText = ({ children = 'WhatsApp', iconClassName = 'h-4 w-4' }) => (
+const WhatsAppBrandText = ({ iconClassName = 'h-4 w-4' }) => (
   <>
     <WhatsAppLogo className={`${iconClassName} shrink-0 text-white transition group-hover:text-white`} />
-    <span className="text-white transition group-hover:text-white">WhatsApp</span>
+    <span className="text-white transition group-hover:text-white">Chat on WhatsApp</span>
   </>
 )
 
@@ -3183,10 +3183,7 @@ function Contact({ onSupportFormClick, quoteInterest = null, onClearInterest, co
           </div>
 
           <div className="mt-3 space-y-2 text-sm text-[#E3E2DC]">
-            <a href="tel:+254748827166" className="flex items-center gap-3 hover:text-white" onClick={() => analyticsService.track('phone_click', { clickedElement: 'contact_phone' })}>
-              <Phone className="h-4 w-4 text-emerald-300" />
-              +254 748 827 166
-            </a>
+            <RevealPhone className="flex items-center gap-3 hover:text-white" iconClassName="h-4 w-4 text-emerald-300" clickedElement="contact_phone" />
             <a href="mailto:sales@kleihaus.com" className="flex items-center gap-3 hover:text-white" onClick={() => analyticsService.track('email_click', { clickedElement: 'contact_email' })}>
               <Mail className="h-4 w-4 text-emerald-300" />
               sales@kleihaus.com
@@ -3439,9 +3436,7 @@ function SupportModal({ open, source, initialMessage = '', onClose }) {
             </p>
             <p className="mt-1 text-xs leading-5 text-neutral-500">
               Prefer calling?{' '}
-              <a href="tel:+254748827166" className="font-semibold text-emerald-700 hover:text-emerald-900">
-                +254 748 827 166
-              </a>
+              <RevealPhone className="font-semibold text-emerald-700 hover:text-emerald-900" clickedElement="support_phone" />
             </p>
           </div>
           <button type="button" onClick={onClose} className="rounded-md p-2 text-neutral-500 hover:bg-neutral-100 hover:text-neutral-950" aria-label="Close support form">
@@ -3701,15 +3696,11 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
               <ButtonSecondary type="button" onClick={() => onSupportClick(`category_page_${page.path}`, `I would like a quote for ${page.category}. Please share availability, price guidance and delivery details.`)} className={`${whatsappCtaClass} whatsapp-secondary-entry px-3 py-2 text-xs sm:px-4 sm:py-2.5 sm:text-sm`}>
                 <WhatsAppBrandText>Ask on WhatsApp</WhatsAppBrandText>
               </ButtonSecondary>
-              <a
-                href="tel:+254748827166"
+              <RevealPhone
                 aria-label={`Call Kleihaus Ceramics about ${page.category}`}
                 onClick={() => analyticsService.track('phone_click', { clickedElement: `category_call_${page.path}`, productCategory: page.category })}
                 className="inline-flex items-center justify-center gap-1.5 rounded-md border border-neutral-300 bg-white px-3 py-2 text-xs font-semibold text-neutral-900 shadow-sm transition hover:border-emerald-700 hover:text-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:px-4 sm:py-2.5 sm:text-sm"
-              >
-                <Phone className="h-4 w-4" />
-                Call adviser
-              </a>
+               clickedElement="category_phone" />
             </div>
           </div>
           <div className="image-mosaic grid grid-cols-3 gap-2 sm:gap-3">
@@ -3865,15 +3856,11 @@ function CategoryLandingPage({ page, onSectionChange, onSupportClick, onQuoteCli
             </div>
           </div>
           <div className="flex flex-wrap gap-2 lg:justify-end">
-            <a
-              href="tel:+254748827166"
+            <RevealPhone
               aria-label="Call Kleihaus Ceramics"
               onClick={() => analyticsService.track('phone_click', { clickedElement: `local_support_call_${page.path}`, productCategory: page.category })}
               className="inline-flex items-center justify-center gap-2 rounded-md border border-neutral-300 bg-white px-3 py-2 text-xs font-semibold text-neutral-900 transition hover:border-emerald-700 hover:text-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:text-sm"
-            >
-              <Phone className="h-4 w-4" />
-              Call adviser
-            </a>
+             clickedElement="local_support_phone" />
             <ButtonSecondary type="button" onClick={() => onSupportClick(`local_support_whatsapp_${page.path}`, `Hello Kleihaus, I need local support for ${page.category}. Please help with product guidance, delivery and quote details.`)} className={`${whatsappCtaClass} whatsapp-secondary-entry px-3 py-2 text-xs sm:text-sm`}>
               <WhatsAppBrandText>Ask local question</WhatsAppBrandText>
             </ButtonSecondary>
@@ -4178,13 +4165,13 @@ function FloatingWhatsApp() {
       href={buildWhatsAppUrl('Hello Kleihaus, I would like help with tiles, sanitaryware, paints, tiling, delivery or a quotation.')}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="WhatsApp Kleihaus Ceramics"
+      aria-label="Chat on WhatsApp with Kleihaus Ceramics"
       onClick={handleClick}
       className="floating-whatsapp group fixed bottom-4 right-4 z-[60] inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-[#1fb85a] bg-brand-whatsapp px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-950/20 transition hover:-translate-y-0.5 hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#25D366] sm:bottom-5 sm:right-5"
     >
       <WhatsAppLogo className="h-5 w-5 shrink-0 text-white" />
-      <span className="hidden sm:inline">WhatsApp</span>
-      <span className="sr-only sm:hidden">WhatsApp</span>
+      <span className="hidden sm:inline">Chat on WhatsApp</span>
+      <span className="sr-only sm:hidden">Chat on WhatsApp</span>
     </a>
   )
 }
@@ -4226,7 +4213,7 @@ function Footer() {
           <h3>Contact</h3>
           <div className="mt-2 grid gap-1">
             <a href="mailto:sales@kleihaus.com"><Mail className="h-4 w-4" />sales@kleihaus.com</a>
-            <a href="tel:+254748827166"><Phone className="h-4 w-4" />+254 748 827 166</a>
+            <RevealPhone clickedElement="footer_mobile_phone" />
           </div>
         </div>
 
@@ -4300,10 +4287,7 @@ function Footer() {
               <Mail className="h-4 w-4 text-white" />
               sales@kleihaus.com
             </a>
-            <a href="tel:+254748827166" className="inline-flex items-center gap-2 hover:text-white">
-              <Phone className="h-4 w-4 text-white" />
-              +254 748 827 166
-            </a>
+            <RevealPhone className="inline-flex items-center gap-2 hover:text-white" clickedElement="footer_desktop_phone" />
             <div className="pt-1">
               <p className="text-xs font-semibold uppercase text-white">Follow Kleihaus</p>
               <SocialLinks placement="footer" showText={false} compact className="mt-2" />

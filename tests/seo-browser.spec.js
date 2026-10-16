@@ -8,6 +8,8 @@ test('rendered routes expose usable SEO content', async ({ page }, testInfo) => 
   const paths = new Set(seoConfig.map((route) => route.path))
   for (const route of seoConfig) {
     await page.goto(route.path, { waitUntil: 'domcontentloaded', timeout: 30000 })
+    expect(await page.locator('body').innerText()).not.toMatch(/\+?254\s*748\s*827\s*166/)
+    await expect(page.locator('a[href^="tel:"]')).toHaveCount(0)
     await expect(page.locator('h1')).toHaveCount(1)
     await expect(page.locator('h1')).toBeVisible()
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', route.canonical)
