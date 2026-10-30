@@ -1,0 +1,59 @@
+name: SEO Commercial Readiness Monitor
+
+on:
+  schedule:
+    - cron: "30 5 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: kleihaus-seo-commercial-readiness
+  cancel-in-progress: false
+
+jobs:
+  commercial-readiness:
+    name: Verify SEO measurement readiness
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Run existing closed-loop readiness assessment
+        run: npm run seo:commercial-loop
+      - name: Write actionable summary
+        if: always()
+        shell: bash
+        run: |
+          node --input-type=module <<'NODE'
+          import { existsSync, readFileSync, appendFileSync } from 'node:fs'
+          const path = 'reports/seo-commercial/closed-loop.json'
+          const lines = ['# Kleihaus SEO commercial readiness', '', 'This is a measurement-readiness report, not evidence of traffic, sales or rankings.', '']
+          if (!existsSync(path)) {
+            lines.push('Snapshot unavailable. Inspect workflow logs.')
+          } else {
+            const snapshot = JSON.parse(readFileSync(path, 'utf8'))
+            lines.push('Classification: ' + String(snapshot.classification || 'unknown'), '', '## Integration status')
+            for (const [name, state] of Object.entries(snapshot.readiness || {})) {
+              lines.push('- ' + name + ': ' + (state.active ? 'active' : 'not connected') + (state.active ? '' : ' — missing: ' + (state.missing || []).join(', ')))
+            }
+            lines.push('', 'Missing integrations must not be interpreted as zero leads, zero revenue or zero search traffic.')
+          }
+          appendFileSync(process.env.GITHUB_STEP_SUMMARY, lines.join('\n') + '\n')
+          NODE
+      - name: Preserve readiness snapshot
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: seo-commercial-readiness-${{ github.run_number }}
+          path: reports/seo-commercial/closed-loop.json
+          retention-days: 90
+          if-no-files-found: warn
